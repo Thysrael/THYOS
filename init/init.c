@@ -2,7 +2,7 @@
 
 void mips_init()
 {
-	printf("init.c:\tmips_init() is called\n");
+	printf("mips_init() is called\n");
 
-	panic("init.c:\tend of mips_init() reached!");
+	panic("end of mips_init() reached!");
 }

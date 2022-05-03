@@ -5,9 +5,10 @@
 int main()
 {
     uart_init();
-    uart_puts("Hello World!\n");
+    printf("start is over.\n");
+    printf("Current exception level switched to: %d \r\n", get_EL());
 
-    printf("main.c:\tmain is start ...\n");
+    printf("main is start ...\n");
 
 	mips_init();
 
