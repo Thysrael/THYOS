@@ -7,7 +7,7 @@ INCLUDES := -I../include/
 
 .PHONY: clean
 
-all: print.o printf.o get_EL.o
+all: print.o printf.o tool.o get_EL.o
 
 clean:
 	rm -rf *~ *.o

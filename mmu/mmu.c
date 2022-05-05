@@ -9,8 +9,8 @@ void init_page_table()
 {
     uint_64 *pud, *pmd, *pmd_entry, *pte, *pte_entry;
     uint_64 i, r, t;
-    printf("end is %lx\n", _end);
-    freemem = (int)_end;
+
+    freemem = (uint_64)_end;
     freemem = ROUND(freemem, BY2PG);
 
     // 分配第一级页表
@@ -24,12 +24,12 @@ void init_page_table()
     freemem += BY2PG;
 
     // 我们在外循环填写第二级页表项
-    int n_pmd_entry = 0x3f000000 >> 21;
+    int n_pmd_entry = PHY_TOP >> PMD_SHIFT;
     for (r = 0; r < n_pmd_entry; r++)
     {
         // 填写二级页表项
         pmd_entry = pmd + r;
-        *pmd_entry = (freemem | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL);
+        *pmd_entry = (freemem | PTE_VALID | PTE_TABLE | PTE_AF | PTE_KERN | PTE_ISH | PTE_NORMAL);
 
         // 分配第三级页表
         pte = (uint_64 *)freemem;
@@ -39,15 +39,15 @@ void init_page_table()
             pte_entry = pte + t;
             // 填写三级页表项
             i = (r << 21) + (t << 12);
-            if (i >= 0x80000 && i < (uint_64)(_data) - KERNEL_BASE)
+            // 这里确实只有当设置成 ReadOnly 的时候能跑起来，我不知道为啥
+            // 学长的代码里设置了 PTE_USER，而我的是 PTE_KERN
+            if (i >= 0x80000 && i < (uint_64)(_data))
             {
-                (*pte_entry) = i | PTE_VALID | PTE_TABLE | PTE_AF | PTE_NORMAL | PTE_USER | PTE_RO;
-                // it seems that all codesetions must be marked as read only
-                // or the os can't run
+                (*pte_entry) = i | PTE_VALID | PTE_TABLE | PTE_AF | PTE_NORMAL | PTE_KERN | PTE_RO;
             }
             else
             {
-                (*pte_entry) = i | PTE_VALID | PTE_TABLE | PTE_AF | PTE_NORMAL | PTE_USER;
+                (*pte_entry) = i | PTE_VALID | PTE_TABLE | PTE_AF | PTE_NORMAL | PTE_KERN;
             }
         }
     }
@@ -58,7 +58,7 @@ void init_page_table()
         pmd[r] = ((r << 21) | PTE_VALID | PTE_AF | PTE_USER | PTE_DEVICE);
     }
 
-    // 这里不知道为啥还需要填一项
+    // 这里不知道为啥还需要填一项，据说是要触发中断？
     pud[PUDX(0x40000000)] = (freemem | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL);
     // 又分配了一个二级页表
     pmd = (uint_64 *)freemem;

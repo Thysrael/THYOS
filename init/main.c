@@ -1,17 +1,17 @@
 #include "printf.h"
 #include "init.h"
 #include "uart.h"
-#include "get_EL.h"
+#include "tool.h"
 
 extern unsigned long freemem;
+extern char _end[];
 int main()
 {
     uart_init();
     printf("start is over.\n");
-    printf("Current exception level switched to: %d \r\n", get_EL());
-    printf("freemem is 0x%lx\n", freemem);
+    print_exception_level();
     printf("main is start ...\n");
-
+    print_stack();
 	mips_init();
 
 	panic("main is over is error!");

@@ -1,92 +1,134 @@
+/*********************** SCR 配置 ***********************/
+// SCR 是异常等级为 3 的时候的配置寄存器
+// 在白书 P144 有讲，但是不全
+
+// 这位与安全内存有关，但是我不知道啥意思
+#define SCR_NS				1
+// 这位置 1 说明是 Arch64 而置 0 说明是 Arch32
+#define SCR_RW				(1 << 10)
+
+#define	SCR_VALUE			(SCR_NS | SCR_RW | 0x1b0)
+
+/*********************** HCR ***********************/
+// HCR 是异常等级为 2 的时候的配置寄存器
+// 在白书 P144 有讲，但不全
+#define HCR_RW				(1 << 31)
+// SWIO hardwired on Pi3, 我不知达到哦啥意思
+#define HCR_SWIO 			(1 << 1)
+
+#define HCR_VALUE			(HCR_RW | HCR_SWIO)
+
+/*********************** SPSR ***********************/
+// Saved Process Status Register
+// SPSR 主要用来保存发生异常时的 PSTATE 寄存器，在白书 P154，或者普通手册 4.1.5
+
+// 对应 [9:6] DAIF 意思是关闭中断
+#define	SPSR_MASK_ALL		(15 << 6)
+// 对应 [3:0] 设置异常返回哪一个等级，我不知道具体的对应规则
+#define SPSR_EL2H			(9 << 0)
+#define SPSR_EL1H			(5 << 0)
+
+#define SPSR_EL3_VALUE		(SPSR_MASK_ALL | SPSR_EL2H)
+#define SPSR_EL2_VALUE		(SPSR_MASK_ALL | SPSR_EL1H)
+
+/*********************** SCTLR ***********************/
+// system control register 系统控制寄存器，在指导书有详细配置
+// 我还没有设置
+// 开启MMU
+#define SCTLR_MMU_EN		(1 << 0)
+// 开启数据 Cache
+#define SCTLR_D_CACHE		(1 << 2)
+// 开启指令 Cache
+#define	SCTLR_I_CACHE		(1 << 12)
+
+#define SCTLR_VALUE			(SCTLR_D_CACHE | SCTLR_I_CACHE)	
+
 .global _start
 
 .section ".text.boot"
 _start:
-    mrs x0, mpidr_el1
-    and x0, x0, #3 // & 0b11
-    cbz x0, _start_master
-1:  wfe
-    b 1b
+	// X1 will store the ID of processor, different processor has different ID
+    mrs     X1,			MPIDR_EL1
+	and		X1,			X1,			#3
+	// Only the processor who has the ID equals 0 can jump to the _start_master, others will wait
+	cbz		X1,			_start_master
 
-_start_master:
-    adr     x1, _start
- // set up EL1
-    mrs     x0, CurrentEL
-    and     x0, x0, #12 // clear reserved bits
+pro_hang:
+	// wfe is instruction just like nop, wfe = wait for event
+	wfe
+	// a tradtional endless loop, use to hang the pro
+	b		pro_hang
 
-    // running at EL3?
-    cmp     x0, #12
-    bne     5f
-    // should never be executed, just for completeness
-    mov     x2, #0x5b1
-    msr     scr_el3, x2
-    mov     x2, #0x3c9
-    msr     spsr_el3, x2
-    adr     x2, 5f
-    msr     elr_el3, x2
+// this is the actual _start
+_start_master:    
+    // 从这里看异常等级，CurrentEL 的 [3:2] 是异常等级
+    mrs     X0, 		CurrentEL
+	and     X0, 		X0, 		#12 
+    // 如果是 EL2 那么就会发生跳转
+    cmp     X0, 		#12
+    bne     judge_EL2
+    // 下面是处理 EL3，但是这种情况一般不会发生
+    // 异常处理路由指的是异常发生时应当在哪个异常等级处理，SCR_EL3 和 HCR_EL2 都相当于配置寄存器
+    ldr     X2, 		=(SCR_VALUE)
+    msr     scr_el3,	X2
+    ldr     X2, 		=(SPSR_EL3_VALUE)
+    msr     spsr_el3, 	X2
+    adr     x2, 		judge_EL2
+    msr     elr_el3, 	X2
     eret
 
-    // running at EL2?
-5:  cmp     x0, #4
-    beq     5f
-    msr     sp_el1, x1
-    // enable CNTP for EL1
-    /*it seems that this part is unnecessary in lab1
-    and from the reference,P2172,it seems that this code can give the access 
-    to some registers from el1?*/
-    mrs     x0, cnthctl_el2 
-    orr     x0, x0, #3
-    msr     cnthctl_el2, x0
-    msr     cntvoff_el2, xzr
 
-    // disable coprocessor traps
-    mov     x0, #0x33FF
-    msr     cptr_el2, x0    //essential! give access to SIMD,see reference 1891
-    msr     hstr_el2, xzr //seems not so useful. reference P1931
-    mov     x0, #(0xf << 20)//essential! give access to SIMD,see reference 3808
-    msr     cpacr_el1, x0
-    // enable AArch64 in EL1
-    mov     x0, #(1 << 31)      // set to AArch64
-    orr     x0, x0, #(1 << 1)   // SWIO hardwired on Pi3,Reference 1928 ???
-    msr     hcr_el2, x0
-    mrs     x0, hcr_el2
-    // Setup SCTLR access
-    mov     x2, #0x0800
-    movk    x2, #0x30d0, lsl #16//MOVK :move with keep
-    msr     sctlr_el1, x2
-    // set up exception handlers
-    //ldr     x2, =_vectors
-    //msr     vbar_el1, x2
-    // change execution level to EL1
-    mov     x2, #0x004
-    msr     spsr_el2, x2
-    adr     x2, 5f
-    msr     elr_el2, x2
+judge_EL2:  
+	// 如果是 EL1 就会发生跳转
+    cmp     X0, 		#4
+    beq     clear_bss
+	// TODO 这里顺序
+	adr     X1, 		_start
+	msr     sp_el1, 	X1
+    
+    // 底下的寄存器在普通手册里没有，但在专有手册中有，也是设置，似乎不用看
+	// disable coprocessor traps
+    mov     X0,         #0x33FF
+    msr     cptr_el2,   X0          //essential! give access to SIMD, see reference 1891
+    msr     hstr_el2,   xzr         //seems not so useful. reference P1931
+    mov     X0,         #0xf<<20    //essential! give access to SIMD,see reference 3808
+    msr     cpacr_el1,  X0
+
+    // 设置 HCR
+    ldr 	X0,			=(HCR_VALUE)
+    msr     hcr_el2, 	X0
+    // 设置 SCTLR，但是此时没有开启 MMU
+    ldr		X0,			=(SCTLR_VALUE)
+    msr     sctlr_el1, 	X0
+    
+    ldr     X0, 		=(SPSR_EL2_VALUE)
+    msr     spsr_el2, 	X0
+    adr     X0, 		clear_bss
+    msr     elr_el2, 	X0
     eret
 
-5:  //mov     sp, x1
+clear_bss:
+    adr     X1, 		__bss_start
+    ldr     W2, 		=__bss_size
+clear_loop:
+	cbz     W2, 		en_mmu
+    str     xzr, 		[X1], 			#8
+    sub     W2, 		W2, 			#1
+    cbnz    W2, 		clear_loop
 
-    // clear bss
-    adr     x1, __bss_start
-    ldr     w2, =__bss_size
-3:  cbz     w2, 4f
-    str     xzr, [x1], #8
-    sub     w2, w2, #1
-    cbnz    w2, 3b
+en_mmu:
+    msr 	spsel,		#1
+    adr     X0, 		init_page_table
+    blr     X0
+    adr     X0, 		enable_mmu
+    blr     X0
+	// 这就是重定向
+    ldr     X0, 		=jump_main
+    br      X0
 
-    adr x0, _start
-    mov sp, x0
-4:
-    msr spsel,#1
-    adr     x0, init_page_table
-    blr     x0
-    adr     x0, enable_mmu
-    blr     x0
-    ldr     x0, =h
-    br      x0
-
-h:  
-    ldr x0, =_start
-    mov sp, x0
-    bl main
-    b 1b
+jump_main:  
+	// TODO 重新设置栈指针
+    ldr 	X0, 		=(_start)
+    mov 	sp, 		X0
+    bl 		main
+    b 		pro_hang
