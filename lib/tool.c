@@ -9,12 +9,12 @@ void alouha()
 void print_stack()
 {
     int tmp;
-    printf("Kernel stack base at 0x%lx .\n", &tmp);
+    printf("Kernel stack base at 0x%lx.\n", &tmp);
 }
 
 void print_exception_level()
 {
-    printf("Current exception level switched to Level %d .\n", get_EL());
+    printf("Current exception level switched to Level %d.\n", get_EL());
 }
 
 void bcopy(const void *src, void *dst, unsigned long len)

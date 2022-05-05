@@ -23,7 +23,7 @@ void mips_detect_memory()
     npage = basemem / BY2PG;
     extmem = 0;
     printf("Physical memory: 0x%lxK available, ", (int)(maxpa / 1024));
-    printf("base = 0x%lxK, extended = 0x%lxK\n", (int)(basemem / 1024), (int)(extmem / 1024));
+    printf("base = 0x%lxK, extended = 0x%lxK.\n", (int)(basemem / 1024), (int)(extmem / 1024));
 }
 
 static void *alloc(uint_64 n, uint_64 align, int clear)
@@ -33,7 +33,7 @@ static void *alloc(uint_64 n, uint_64 align, int clear)
     if (freemem < (uint_64)_end)
     {
         freemem = (uint_64)kernel_sp;
-        printf("freemem has been adjusted to 0x%lx\n", freemem);
+        printf("freemem has been adjusted to 0x%lx.\n", freemem);
     }
     // Step 1: Round up `freemem` up to be aligned properly
     freemem = ROUND(freemem, align);
@@ -130,7 +130,7 @@ void arch_basic_init()
     //boot_map_segment(pgdir, UENVS, n, PADDR(envs), PTE_R);
 
     page_init();
-    printf("pages and envs init success\n");
+    printf("pages and envs init success.\n");
 }
 
 void page_init()
