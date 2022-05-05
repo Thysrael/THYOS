@@ -55,9 +55,60 @@ extern char _data[];
 
 /*================== 物理内存 =======================*/
 // 这是物理内存的可用上限，剩下的需要留给外设
-#define PHY_TOP              0x3f000000
+#define PHY_TOP                 0x3f000000
+// 这是物理内存的容量，一个第一级页表项对应的虚拟地址空间刚好是物理地址空间的大小
+#define PHY_LIM					0x40000000
 
+/*================== 地址转换 =======================*/
+
+extern u_long npage;
+#define PPN(pa) (((u_long)(pa)) >> PTE_SHIFT)
+#define VPN(va) PPN(va)
+#define PTE_ADDR(pte) ((unsigned long)(pte) & ~0xfff)
+
+#define PADDR(kva)                                           \
+	({                                                       \
+		u_long a = (u_long)(kva);                            \
+		if (a < KERNEL_BASE)                                 \
+			panic("PADDR called with invalid kva %08lx", a); \
+		a - KERNEL_BASE;                                     \
+	})
+
+// translates from physical address to kernel virtual address
+#define KADDR(pa)                                                    \
+	({                                                               \
+		u_long ppn = PPN(pa);                                        \
+		if (ppn >= npage)                                            \
+			panic("KADDR called with invalid pa %08lx", (u_long)pa); \
+		(pa) + KERNEL_BASE;                                          \
+	})
+
+#define assert(x)                              \
+	do                                         \
+	{                                          \
+		if (!(x))                              \
+			panic("assertion failed: %s", #x); \
+	} while (0)
+
+/*================== 错误码 =======================*/
+#define E_UNSPECIFIED 	1	 		// Unspecified or unknown problem
+#define E_BAD_ENV 		2		 	// Environment doesn't exist or otherwise
+						 			// cannot be used in requested action
+#define E_INVAL 		3		 	// Invalid parameter
+#define E_NO_MEM 		4		 	// Request failed due to memory shortage
+#define E_NO_FREE_ENV 	5	 		// Attempt to create a new environment beyond
+						 			// the maximum allowed
+#define E_IPC_NOT_RECV 	6 			// Attempt to send to env that is not recving.
+
+// File system error codes -- only seen in user-level
+#define E_NO_DISK 		7		 	// No free space left on disk
+#define E_MAX_OPEN 		8	 		// Too many files are open
+#define E_NOT_FOUND 	9	 		// File or block not found
+#define E_BAD_PATH 		10	 		// Bad path
+#define E_FILE_EXISTS 	11 			// File already exists
+#define E_NOT_EXEC 		12	 		// File not a valid executable
 
 void init_page_table();
+
 
 #endif

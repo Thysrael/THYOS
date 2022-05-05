@@ -9,4 +9,8 @@ void print_exception_level();
 
 int get_EL();
 
+void bcopy(const void *src, void *dst, unsigned long len);
+
+void bzero(void *b, unsigned long len);
+
 #endif

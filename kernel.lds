@@ -55,6 +55,9 @@ SECTIONS
 
     _end = .;
     _pg_dir = .;
+
+    . = 0xffffff8000400000;
+    kernel_sp = .;
 }
 
 /*

@@ -91,7 +91,7 @@ en_mmu:
 
 jump_main:  
 	// TODO 重新设置栈指针
-    ldr 	X0, 		=(_start)
+    ldr 	X0, 		=(kernel_sp)
     mov 	sp, 		X0
     bl 		main
     b 		pro_hang
