@@ -1,46 +1,9 @@
-/*********************** SCR 配置 ***********************/
-// SCR 是异常等级为 3 的时候的配置寄存器
-// 在白书 P144 有讲，但是不全
-
-// 这位与安全内存有关，但是我不知道啥意思
-#define SCR_NS				1
-// 这位置 1 说明是 Arch64 而置 0 说明是 Arch32
-#define SCR_RW				(1 << 10)
+#include "sysreg.h"
 
 #define	SCR_VALUE			(SCR_NS | SCR_RW | 0x1b0)
-
-/*********************** HCR ***********************/
-// HCR 是异常等级为 2 的时候的配置寄存器
-// 在白书 P144 有讲，但不全
-#define HCR_RW				(1 << 31)
-// SWIO hardwired on Pi3, 我不知达到哦啥意思
-#define HCR_SWIO 			(1 << 1)
-
 #define HCR_VALUE			(HCR_RW | HCR_SWIO)
-
-/*********************** SPSR ***********************/
-// Saved Process Status Register
-// SPSR 主要用来保存发生异常时的 PSTATE 寄存器，在白书 P154，或者普通手册 4.1.5
-
-// 对应 [9:6] DAIF 意思是关闭中断
-#define	SPSR_MASK_ALL		(15 << 6)
-// 对应 [3:0] 设置异常返回哪一个等级，我不知道具体的对应规则
-#define SPSR_EL2H			(9 << 0)
-#define SPSR_EL1H			(5 << 0)
-
 #define SPSR_EL3_VALUE		(SPSR_MASK_ALL | SPSR_EL2H)
 #define SPSR_EL2_VALUE		(SPSR_MASK_ALL | SPSR_EL1H)
-
-/*********************** SCTLR ***********************/
-// system control register 系统控制寄存器，在指导书有详细配置
-// 我还没有设置
-// 开启MMU
-#define SCTLR_MMU_EN		(1 << 0)
-// 开启数据 Cache
-#define SCTLR_D_CACHE		(1 << 2)
-// 开启指令 Cache
-#define	SCTLR_I_CACHE		(1 << 12)
-
 #define SCTLR_VALUE			(SCTLR_D_CACHE | SCTLR_I_CACHE)	
 
 .global _start

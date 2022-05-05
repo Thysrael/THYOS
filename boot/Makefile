@@ -5,7 +5,7 @@ INCLUDES	  := -I../include/
 
 .PHONY: clean
 
-all: start.o enable_mmu.o
+all: start.o enmmu.o
 
 clean:
 	rm -rf *~ *.o
