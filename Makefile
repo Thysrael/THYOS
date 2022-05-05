@@ -2,6 +2,7 @@ drivers_dir   := drivers
 boot_dir      := boot
 init_dir      := init
 lib_dir       := lib
+mmu_dir       := mmu
 
 vmlinux_elf   := kernel.elf
 vmlinux_img   := kernel.img
@@ -9,12 +10,13 @@ vmlinux_img   := kernel.img
 link_script   := kernel.lds
 
 # calling them directory other than modules maybe more easy to understand
-modules       := drivers boot init lib
+modules       := drivers boot init lib mmu
 
 objects       := $(drivers_dir)/*.o 	\
 				 $(boot_dir)/*.o 		\
                  $(init_dir)/*.o 		\
-                 $(lib_dir)/*.o 
+                 $(lib_dir)/*.o 		\
+				 $(mmu_dir)/*.o
 
 .PHONY: all $(modules) clean debug run
 
