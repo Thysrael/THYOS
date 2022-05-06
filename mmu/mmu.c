@@ -4,6 +4,7 @@
 
 // freemem 是物理地址的游标
 uint_64 freemem;
+uint_64 *kernel_pud;
 
 void init_page_table()
 {
@@ -65,5 +66,7 @@ void init_page_table()
     freemem += BY2PG;
     pmd[0] = (0x40000000 | PTE_VALID | PTE_AF | PTE_USER | PTE_DEVICE);
 
+
+    kernel_pud = pud;
     return;
 }

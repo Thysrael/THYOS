@@ -51,7 +51,9 @@
 // end 是所有段都结束的标志，我们在这个位置开始放置页表
 extern char _end[];
 extern char _data[];
-#define KERNEL_BASE        0xffffff8000000000
+#define KERNEL_BASE             0xffffff8000000000
+#define KERNEL_STACK_BASE       0xffffff8000800000
+#define TIMESTACK               0xffffff8002000000             
 
 /*================== 物理内存 =======================*/
 // 这是物理内存的可用上限，剩下的需要留给外设
