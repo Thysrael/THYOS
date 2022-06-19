@@ -27,6 +27,15 @@ void printf(char *fmt, ...)
 	va_end(ap);
 }
 
+void debug_printf(char *src ,char *fmt, ...)
+{
+	printf("[DEBUG_INFO] %s: ",src);
+	va_list ap;
+	va_start(ap, fmt);
+	lp_Print(myoutput, 0, fmt, ap);
+	va_end(ap);
+}
+
 void
 _panic(const char *file, int line, const char *fmt, ...)
 {

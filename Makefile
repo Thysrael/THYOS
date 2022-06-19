@@ -44,10 +44,10 @@ clean:
 	rm -rf *.o *~ $(vmlinux_elf) $(vmlinux_img)
 
 run:
-	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img)
+	qemu-system-aarch64 -M raspi3b -serial null -serial stdio -kernel $(vmlinux_img)
 
 debug:
-	qemu-system-aarch64 -S -s -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) 
+	qemu-system-aarch64 -S -s -M raspi3b -serial null -serial stdio -kernel $(vmlinux_img) 
 
 target:
 	aarch64-none-elf-gdb kernel.elf

@@ -1,0 +1,31 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/dofingert/Source/OS/THYOS'
+make --directory=drivers
+ 
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/drivers'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/drivers'
+make --directory=boot
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/boot'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/boot'
+make --directory=init
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/init'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/init'
+make --directory=lib
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/lib'
+make[1]: 'all' is up to date.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/lib'
+make --directory=mmu
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/mmu'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/mmu'
+make --directory=user
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/user'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/user'
+aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x
+aarch64-none-elf-objcopy kernel.elf -O binary kernel.img
+make: Leaving directory '/home/dofingert/Source/OS/THYOS'
+ 
