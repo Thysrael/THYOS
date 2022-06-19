@@ -410,7 +410,7 @@ ffffff80000803c4:	910003fd 	mov	x29, sp
 /home/dofingert/Source/OS/THYOS/init/init.c:18
 ffffff80000803c8:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff80000803cc:	9127c000 	add	x0, x0, #0x9f0
-ffffff80000803d0:	94000a44 	bl	ffffff8000082ce0 <printf>
+ffffff80000803d0:	94000a45 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/init.c:21
 ffffff80000803d4:	940012dc 	bl	ffffff8000084f44 <mips_detect_memory>
 /home/dofingert/Source/OS/THYOS/init/init.c:23
@@ -430,19 +430,19 @@ ffffff80000803fc:	94000511 	bl	ffffff8000081840 <irq_vector_init>
 /home/dofingert/Source/OS/THYOS/init/init.c:32
 ffffff8000080400:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080404:	91282000 	add	x0, x0, #0xa08
-ffffff8000080408:	94000a36 	bl	ffffff8000082ce0 <printf>
+ffffff8000080408:	94000a37 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/init.c:34
 ffffff800008040c:	940011c0 	bl	ffffff8000084b0c <enable_interrupt_controller>
 /home/dofingert/Source/OS/THYOS/init/init.c:35
 ffffff8000080410:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080414:	9128c000 	add	x0, x0, #0xa30
-ffffff8000080418:	94000a32 	bl	ffffff8000082ce0 <printf>
+ffffff8000080418:	94000a33 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/init.c:37
 ffffff800008041c:	94001137 	bl	ffffff80000848f8 <reset_timer>
 /home/dofingert/Source/OS/THYOS/init/init.c:38
 ffffff8000080420:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080424:	91296000 	add	x0, x0, #0xa58
-ffffff8000080428:	94000a2e 	bl	ffffff8000082ce0 <printf>
+ffffff8000080428:	94000a2f 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/init.c:41 (discriminator 1)
 ffffff800008042c:	14000000 	b	ffffff800008042c <arm_init+0x6c>
 
@@ -456,13 +456,13 @@ ffffff8000080438:	97ffff34 	bl	ffffff8000080108 <uart_init>
 /home/dofingert/Source/OS/THYOS/init/main.c:20
 ffffff800008043c:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080440:	9129a000 	add	x0, x0, #0xa68
-ffffff8000080444:	94000a27 	bl	ffffff8000082ce0 <printf>
+ffffff8000080444:	94000a28 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/main.c:21
 ffffff8000080448:	94001148 	bl	ffffff8000084968 <print_exception_level>
 /home/dofingert/Source/OS/THYOS/init/main.c:22
 ffffff800008044c:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080450:	9129e000 	add	x0, x0, #0xa78
-ffffff8000080454:	94000a23 	bl	ffffff8000082ce0 <printf>
+ffffff8000080454:	94000a24 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/init/main.c:23
 ffffff8000080458:	9400113a 	bl	ffffff8000084940 <print_stack>
 /home/dofingert/Source/OS/THYOS/init/main.c:24
@@ -473,7 +473,7 @@ ffffff8000080464:	912a4002 	add	x2, x0, #0xa90
 ffffff8000080468:	52800341 	mov	w1, #0x1a                  	// #26
 ffffff800008046c:	d0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000080470:	912aa000 	add	x0, x0, #0xaa8
-ffffff8000080474:	94000a78 	bl	ffffff8000082e54 <_panic>
+ffffff8000080474:	94000a79 	bl	ffffff8000082e58 <_panic>
 
 ffffff8000080478 <get_EL>:
 get_EL():
@@ -1538,7 +1538,7 @@ ffffff80000816ec:	f9008bf0 	str	x16, [sp, #272]
 ffffff80000816f0:	d5385210 	mrs	x16, esr_el1
 ffffff80000816f4:	f9008ff0 	str	x16, [sp, #280]
 /home/dofingert/Source/OS/THYOS/lib/entry.S:195
-ffffff80000816f8:	94000a7a 	bl	ffffff80000840e0 <handle_irq>
+ffffff80000816f8:	94000a7b 	bl	ffffff80000840e4 <handle_irq>
 /home/dofingert/Source/OS/THYOS/lib/entry.S:197
 ffffff80000816fc:	a94007e0 	ldp	x0, x1, [sp]
 ffffff8000081700:	a9410fe2 	ldp	x2, x3, [sp, #16]
@@ -1607,7 +1607,7 @@ ffffff80000817d4:	d5382001 	mrs	x1, ttbr0_el1
 /home/dofingert/Source/OS/THYOS/lib/entry.S:210
 ffffff80000817d8:	d5382022 	mrs	x2, ttbr1_el1
 /home/dofingert/Source/OS/THYOS/lib/entry.S:211
-ffffff80000817dc:	94000be4 	bl	ffffff800008476c <handle_sync>
+ffffff80000817dc:	94000be5 	bl	ffffff8000084770 <handle_sync>
 /home/dofingert/Source/OS/THYOS/lib/entry.S:213
 ffffff80000817e0:	a94007e0 	ldp	x0, x1, [sp]
 ffffff80000817e4:	a9410fe2 	ldp	x2, x3, [sp, #16]
@@ -1758,7 +1758,7 @@ ffffff8000081950:	912ac002 	add	x2, x0, #0xab0
 ffffff8000081954:	52800441 	mov	w1, #0x22                  	// #34
 ffffff8000081958:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff800008195c:	912b6000 	add	x0, x0, #0xad8
-ffffff8000081960:	9400053d 	bl	ffffff8000082e54 <_panic>
+ffffff8000081960:	9400053e 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:35
 ffffff8000081964:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000081968:	913b8000 	add	x0, x0, #0xee0
@@ -1800,7 +1800,7 @@ ffffff80000819d8:	912bc002 	add	x2, x0, #0xaf0
 ffffff80000819dc:	52800501 	mov	w1, #0x28                  	// #40
 ffffff80000819e0:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff80000819e4:	912b6000 	add	x0, x0, #0xad8
-ffffff80000819e8:	9400051b 	bl	ffffff8000082e54 <_panic>
+ffffff80000819e8:	9400051c 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
 ffffff80000819ec:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000819f0:	97ffffc4 	bl	ffffff8000081900 <page2pa>
@@ -1868,7 +1868,7 @@ ffffff8000081aac:	912c6002 	add	x2, x0, #0xb18
 ffffff8000081ab0:	52800761 	mov	w1, #0x3b                  	// #59
 ffffff8000081ab4:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000081ab8:	912cc000 	add	x0, x0, #0xb30
-ffffff8000081abc:	940004e6 	bl	ffffff8000082e54 <_panic>
+ffffff8000081abc:	940004e7 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/env.c:60 (discriminator 1)
 ffffff8000081ac0:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000081ac4:	d65f03c0 	ret
@@ -2137,7 +2137,7 @@ ffffff8000081e10:	912ce002 	add	x2, x0, #0xb38
 ffffff8000081e14:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000081e18:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000081e1c:	912cc000 	add	x0, x0, #0xb30
-ffffff8000081e20:	940003dc 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000081e20:	940003dd 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:176
 ffffff8000081e24:	d503201f 	nop
 ffffff8000081e28:	a8c27bfd 	ldp	x29, x30, [sp], #32
@@ -2164,7 +2164,7 @@ ffffff8000081e5c:	912d8002 	add	x2, x0, #0xb60
 ffffff8000081e60:	528018e1 	mov	w1, #0xc7                  	// #199
 ffffff8000081e64:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000081e68:	912cc000 	add	x0, x0, #0xb30
-ffffff8000081e6c:	940003fa 	bl	ffffff8000082e54 <_panic>
+ffffff8000081e6c:	940003fb 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/env.c:203
 ffffff8000081e70:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000081e74:	79402001 	ldrh	w1, [x0, #16]
@@ -2198,7 +2198,7 @@ ffffff8000081ec8:	912e2002 	add	x2, x0, #0xb88
 ffffff8000081ecc:	52801a81 	mov	w1, #0xd4                  	// #212
 ffffff8000081ed0:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000081ed4:	912cc000 	add	x0, x0, #0xb30
-ffffff8000081ed8:	940003ae 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000081ed8:	940003af 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:213
 ffffff8000081edc:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000081ee0:	9400125d 	bl	ffffff8000086854 <debug_print_pgdir>
@@ -2220,7 +2220,7 @@ ffffff8000081f10:	912e6002 	add	x2, x0, #0xb98
 ffffff8000081f14:	52801b21 	mov	w1, #0xd9                  	// #217
 ffffff8000081f18:	b0000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000081f1c:	912cc000 	add	x0, x0, #0xb30
-ffffff8000081f20:	940003cd 	bl	ffffff8000082e54 <_panic>
+ffffff8000081f20:	940003ce 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/env.c:217 (discriminator 2)
 ffffff8000081f24:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000081f28:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -2391,7 +2391,7 @@ ffffff8000082110:	912f0002 	add	x2, x0, #0xbc0
 ffffff8000082114:	52802701 	mov	w1, #0x138                 	// #312
 ffffff8000082118:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff800008211c:	912cc000 	add	x0, x0, #0xb30
-ffffff8000082120:	9400031c 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082120:	9400031d 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:313
 ffffff8000082124:	d503201f 	nop
 ffffff8000082128:	a8c27bfd 	ldp	x29, x30, [sp], #32
@@ -2427,7 +2427,7 @@ ffffff800008217c:	912f6002 	add	x2, x0, #0xbd8
 ffffff8000082180:	52802841 	mov	w1, #0x142                 	// #322
 ffffff8000082184:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082188:	912cc000 	add	x0, x0, #0xb30
-ffffff800008218c:	94000301 	bl	ffffff8000082d90 <debug_printf>
+ffffff800008218c:	94000302 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:324 (discriminator 4)
 ffffff8000082190:	f90027ff 	str	xzr, [sp, #72]
 ffffff8000082194:	14000055 	b	ffffff80000822e8 <env_free+0x1b8>
@@ -2641,9 +2641,9 @@ ffffff800008242c:	912fc002 	add	x2, x0, #0xbf0
 ffffff8000082430:	52802f01 	mov	w1, #0x178                 	// #376
 ffffff8000082434:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082438:	912cc000 	add	x0, x0, #0xb30
-ffffff800008243c:	94000255 	bl	ffffff8000082d90 <debug_printf>
+ffffff800008243c:	94000256 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:377
-ffffff8000082440:	94000732 	bl	ffffff8000084108 <sched_yield>
+ffffff8000082440:	94000733 	bl	ffffff800008410c <sched_yield>
 /home/dofingert/Source/OS/THYOS/lib/env.c:379
 ffffff8000082444:	d503201f 	nop
 ffffff8000082448:	a8c27bfd 	ldp	x29, x30, [sp], #32
@@ -2689,7 +2689,7 @@ ffffff80000824bc:	91302002 	add	x2, x0, #0xc08
 ffffff80000824c0:	52803361 	mov	w1, #0x19b                 	// #411
 ffffff80000824c4:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff80000824c8:	912cc000 	add	x0, x0, #0xb30
-ffffff80000824cc:	94000231 	bl	ffffff8000082d90 <debug_printf>
+ffffff80000824cc:	94000232 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:414
 ffffff80000824d0:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff80000824d4:	913ae000 	add	x0, x0, #0xeb8
@@ -2711,7 +2711,7 @@ ffffff8000082508:	91308002 	add	x2, x0, #0xc20
 ffffff800008250c:	52803401 	mov	w1, #0x1a0                 	// #416
 ffffff8000082510:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082514:	912cc000 	add	x0, x0, #0xb30
-ffffff8000082518:	9400021e 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082518:	9400021f 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:417
 ffffff800008251c:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000082520:	9139a000 	add	x0, x0, #0xe68
@@ -2723,7 +2723,7 @@ ffffff8000082534:	9130e002 	add	x2, x0, #0xc38
 ffffff8000082538:	52803421 	mov	w1, #0x1a1                 	// #417
 ffffff800008253c:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082540:	912cc000 	add	x0, x0, #0xb30
-ffffff8000082544:	94000213 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082544:	94000214 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/env.c:418
 ffffff8000082548:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff800008254c:	9139a000 	add	x0, x0, #0xe68
@@ -2800,7 +2800,7 @@ ffffff8000082618:	91314002 	add	x2, x0, #0xc50
 ffffff800008261c:	52800501 	mov	w1, #0x28                  	// #40
 ffffff8000082620:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082624:	9131e000 	add	x0, x0, #0xc78
-ffffff8000082628:	9400020b 	bl	ffffff8000082e54 <_panic>
+ffffff8000082628:	9400020c 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
 ffffff800008262c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082630:	97ffffe1 	bl	ffffff80000825b4 <page2pa>
@@ -2849,7 +2849,7 @@ ffffff80000826a0:	91324002 	add	x2, x0, #0xc90
 ffffff80000826a4:	52800461 	mov	w1, #0x23                  	// #35
 ffffff80000826a8:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff80000826ac:	9132c000 	add	x0, x0, #0xcb0
-ffffff80000826b0:	940001e9 	bl	ffffff8000082e54 <_panic>
+ffffff80000826b0:	940001ea 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/lib/load.c:39
 ffffff80000826b4:	52800020 	mov	w0, #0x1                   	// #1
 /home/dofingert/Source/OS/THYOS/lib/load.c:40
@@ -3104,7 +3104,7 @@ ffffff80000829d0:	9132e002 	add	x2, x0, #0xcb8
 ffffff80000829d4:	52800e81 	mov	w1, #0x74                  	// #116
 ffffff80000829d8:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff80000829dc:	9132c000 	add	x0, x0, #0xcb0
-ffffff80000829e0:	940000ec 	bl	ffffff8000082d90 <debug_printf>
+ffffff80000829e0:	940000ed 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:117
 ffffff80000829e4:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000829e8:	f9401400 	ldr	x0, [x0, #40]
@@ -3114,7 +3114,7 @@ ffffff80000829f4:	91334002 	add	x2, x0, #0xcd0
 ffffff80000829f8:	52800ea1 	mov	w1, #0x75                  	// #117
 ffffff80000829fc:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082a00:	9132c000 	add	x0, x0, #0xcb0
-ffffff8000082a04:	940000e3 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082a04:	940000e4 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:118
 ffffff8000082a08:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000082a0c:	f9400400 	ldr	x0, [x0, #8]
@@ -3126,7 +3126,7 @@ ffffff8000082a20:	9133a002 	add	x2, x0, #0xce8
 ffffff8000082a24:	52800ec1 	mov	w1, #0x76                  	// #118
 ffffff8000082a28:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082a2c:	9132c000 	add	x0, x0, #0xcb0
-ffffff8000082a30:	940000d8 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082a30:	940000d9 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:119
 ffffff8000082a34:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000082a38:	f9401000 	ldr	x0, [x0, #32]
@@ -3136,7 +3136,7 @@ ffffff8000082a44:	91340002 	add	x2, x0, #0xd00
 ffffff8000082a48:	52800ee1 	mov	w1, #0x77                  	// #119
 ffffff8000082a4c:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082a50:	9132c000 	add	x0, x0, #0xcb0
-ffffff8000082a54:	940000cf 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082a54:	940000d0 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:122
 ffffff8000082a58:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000082a5c:	f9400806 	ldr	x6, [x0, #16]
@@ -3204,14 +3204,14 @@ ffffff8000082b1c:	91346002 	add	x2, x0, #0xd18
 ffffff8000082b20:	52801181 	mov	w1, #0x8c                  	// #140
 ffffff8000082b24:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000082b28:	9132c000 	add	x0, x0, #0xcb0
-ffffff8000082b2c:	94000099 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082b2c:	9400009a 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:147
 ffffff8000082b30:	f9001fff 	str	xzr, [sp, #56]
 /home/dofingert/Source/OS/THYOS/lib/load.c:153
 ffffff8000082b34:	9100e3e0 	add	x0, sp, #0x38
 ffffff8000082b38:	94000d70 	bl	ffffff80000860f8 <page_alloc>
 ffffff8000082b3c:	3100101f 	cmn	w0, #0x4
-ffffff8000082b40:	54000860 	b.eq	ffffff8000082c4c <load_icode+0x148>  // b.none
+ffffff8000082b40:	54000880 	b.eq	ffffff8000082c50 <load_icode+0x14c>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/load.c:161
 ffffff8000082b44:	f9002bff 	str	xzr, [sp, #80]
 /home/dofingert/Source/OS/THYOS/lib/load.c:162
@@ -3227,7 +3227,7 @@ ffffff8000082b68:	b9004fe0 	str	w0, [sp, #76]
 /home/dofingert/Source/OS/THYOS/lib/load.c:163
 ffffff8000082b6c:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000082b70:	3100101f 	cmn	w0, #0x4
-ffffff8000082b74:	54000700 	b.eq	ffffff8000082c54 <load_icode+0x150>  // b.none
+ffffff8000082b74:	54000720 	b.eq	ffffff8000082c58 <load_icode+0x154>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/load.c:167
 ffffff8000082b78:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082b7c:	2a0003e5 	mov	w5, w0
@@ -3243,7 +3243,7 @@ ffffff8000082ba0:	b9004fe0 	str	w0, [sp, #76]
 /home/dofingert/Source/OS/THYOS/lib/load.c:169
 ffffff8000082ba4:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000082ba8:	7100001f 	cmp	w0, #0x0
-ffffff8000082bac:	5400058b 	b.lt	ffffff8000082c5c <load_icode+0x158>  // b.tstop
+ffffff8000082bac:	540005ab 	b.lt	ffffff8000082c60 <load_icode+0x15c>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/load.c:173
 ffffff8000082bb0:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000082bb4:	f94017e0 	ldr	x0, [sp, #40]
@@ -3253,2230 +3253,2230 @@ ffffff8000082bbc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082bc0:	f940a000 	ldr	x0, [x0, #320]
 ffffff8000082bc4:	94000f24 	bl	ffffff8000086854 <debug_print_pgdir>
 /home/dofingert/Source/OS/THYOS/lib/load.c:176
-ffffff8000082bc8:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082bcc:	f940a000 	ldr	x0, [x0, #320]
-ffffff8000082bd0:	97fff5ed 	bl	ffffff8000080384 <set_ttbr0>
+ffffff8000082bc8:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000082bcc:	913ae000 	add	x0, x0, #0xeb8
+ffffff8000082bd0:	f9400000 	ldr	x0, [x0]
+ffffff8000082bd4:	97fff5ec 	bl	ffffff8000080384 <set_ttbr0>
 /home/dofingert/Source/OS/THYOS/lib/load.c:177
-ffffff8000082bd4:	94000f81 	bl	ffffff80000869d8 <tlb_invalidate>
+ffffff8000082bd8:	94000f80 	bl	ffffff80000869d8 <tlb_invalidate>
 /home/dofingert/Source/OS/THYOS/lib/load.c:179
-ffffff8000082bd8:	d2a00800 	mov	x0, #0x400000              	// #4194304
-ffffff8000082bdc:	f90023e0 	str	x0, [sp, #64]
+ffffff8000082bdc:	d2a00800 	mov	x0, #0x400000              	// #4194304
+ffffff8000082be0:	f90023e0 	str	x0, [sp, #64]
 /home/dofingert/Source/OS/THYOS/lib/load.c:180
-ffffff8000082be0:	b9005fff 	str	wzr, [sp, #92]
-ffffff8000082be4:	14000016 	b	ffffff8000082c3c <load_icode+0x138>
+ffffff8000082be4:	b9005fff 	str	wzr, [sp, #92]
+ffffff8000082be8:	14000016 	b	ffffff8000082c40 <load_icode+0x13c>
 /home/dofingert/Source/OS/THYOS/lib/load.c:182 (discriminator 3)
-ffffff8000082be8:	b9805fe0 	ldrsw	x0, [sp, #92]
-ffffff8000082bec:	d37df000 	lsl	x0, x0, #3
-ffffff8000082bf0:	f94023e1 	ldr	x1, [sp, #64]
-ffffff8000082bf4:	8b000022 	add	x2, x1, x0
-ffffff8000082bf8:	b9805fe0 	ldrsw	x0, [sp, #92]
-ffffff8000082bfc:	d37df000 	lsl	x0, x0, #3
-ffffff8000082c00:	f94023e1 	ldr	x1, [sp, #64]
-ffffff8000082c04:	8b000020 	add	x0, x1, x0
-ffffff8000082c08:	f9400000 	ldr	x0, [x0]
-ffffff8000082c0c:	aa0003e5 	mov	x5, x0
-ffffff8000082c10:	aa0203e4 	mov	x4, x2
-ffffff8000082c14:	b9405fe3 	ldr	w3, [sp, #92]
-ffffff8000082c18:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082c1c:	9134a002 	add	x2, x0, #0xd28
-ffffff8000082c20:	528016c1 	mov	w1, #0xb6                  	// #182
-ffffff8000082c24:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082c28:	9132c000 	add	x0, x0, #0xcb0
-ffffff8000082c2c:	94000059 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000082bec:	b9805fe0 	ldrsw	x0, [sp, #92]
+ffffff8000082bf0:	d37df000 	lsl	x0, x0, #3
+ffffff8000082bf4:	f94023e1 	ldr	x1, [sp, #64]
+ffffff8000082bf8:	8b000022 	add	x2, x1, x0
+ffffff8000082bfc:	b9805fe0 	ldrsw	x0, [sp, #92]
+ffffff8000082c00:	d37df000 	lsl	x0, x0, #3
+ffffff8000082c04:	f94023e1 	ldr	x1, [sp, #64]
+ffffff8000082c08:	8b000020 	add	x0, x1, x0
+ffffff8000082c0c:	f9400000 	ldr	x0, [x0]
+ffffff8000082c10:	aa0003e5 	mov	x5, x0
+ffffff8000082c14:	aa0203e4 	mov	x4, x2
+ffffff8000082c18:	b9405fe3 	ldr	w3, [sp, #92]
+ffffff8000082c1c:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082c20:	9134a002 	add	x2, x0, #0xd28
+ffffff8000082c24:	528016c1 	mov	w1, #0xb6                  	// #182
+ffffff8000082c28:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082c2c:	9132c000 	add	x0, x0, #0xcb0
+ffffff8000082c30:	94000059 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/lib/load.c:180 (discriminator 3)
-ffffff8000082c30:	b9405fe0 	ldr	w0, [sp, #92]
-ffffff8000082c34:	11000400 	add	w0, w0, #0x1
-ffffff8000082c38:	b9005fe0 	str	w0, [sp, #92]
+ffffff8000082c34:	b9405fe0 	ldr	w0, [sp, #92]
+ffffff8000082c38:	11000400 	add	w0, w0, #0x1
+ffffff8000082c3c:	b9005fe0 	str	w0, [sp, #92]
 /home/dofingert/Source/OS/THYOS/lib/load.c:180 (discriminator 1)
-ffffff8000082c3c:	b9405fe0 	ldr	w0, [sp, #92]
-ffffff8000082c40:	71001c1f 	cmp	w0, #0x7
-ffffff8000082c44:	54fffd2d 	b.le	ffffff8000082be8 <load_icode+0xe4>
-ffffff8000082c48:	14000006 	b	ffffff8000082c60 <load_icode+0x15c>
+ffffff8000082c40:	b9405fe0 	ldr	w0, [sp, #92]
+ffffff8000082c44:	71001c1f 	cmp	w0, #0x7
+ffffff8000082c48:	54fffd2d 	b.le	ffffff8000082bec <load_icode+0xe8>
+ffffff8000082c4c:	14000006 	b	ffffff8000082c64 <load_icode+0x160>
 /home/dofingert/Source/OS/THYOS/lib/load.c:155
-ffffff8000082c4c:	d503201f 	nop
-ffffff8000082c50:	14000004 	b	ffffff8000082c60 <load_icode+0x15c>
+ffffff8000082c50:	d503201f 	nop
+ffffff8000082c54:	14000004 	b	ffffff8000082c64 <load_icode+0x160>
 /home/dofingert/Source/OS/THYOS/lib/load.c:164
-ffffff8000082c54:	d503201f 	nop
-ffffff8000082c58:	14000002 	b	ffffff8000082c60 <load_icode+0x15c>
+ffffff8000082c58:	d503201f 	nop
+ffffff8000082c5c:	14000002 	b	ffffff8000082c64 <load_icode+0x160>
 /home/dofingert/Source/OS/THYOS/lib/load.c:170
-ffffff8000082c5c:	d503201f 	nop
+ffffff8000082c60:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/lib/load.c:185
-ffffff8000082c60:	a8c67bfd 	ldp	x29, x30, [sp], #96
-ffffff8000082c64:	d65f03c0 	ret
+ffffff8000082c64:	a8c67bfd 	ldp	x29, x30, [sp], #96
+ffffff8000082c68:	d65f03c0 	ret
 
-ffffff8000082c68 <myoutput>:
+ffffff8000082c6c <myoutput>:
 myoutput():
 /home/dofingert/Source/OS/THYOS/lib/printf.c:6
-ffffff8000082c68:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
-ffffff8000082c6c:	910003fd 	mov	x29, sp
-ffffff8000082c70:	f90017e0 	str	x0, [sp, #40]
-ffffff8000082c74:	f90013e1 	str	x1, [sp, #32]
-ffffff8000082c78:	b9001fe2 	str	w2, [sp, #28]
+ffffff8000082c6c:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+ffffff8000082c70:	910003fd 	mov	x29, sp
+ffffff8000082c74:	f90017e0 	str	x0, [sp, #40]
+ffffff8000082c78:	f90013e1 	str	x1, [sp, #32]
+ffffff8000082c7c:	b9001fe2 	str	w2, [sp, #28]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:10
-ffffff8000082c7c:	b9401fe0 	ldr	w0, [sp, #28]
-ffffff8000082c80:	7100041f 	cmp	w0, #0x1
-ffffff8000082c84:	540000a1 	b.ne	ffffff8000082c98 <myoutput+0x30>  // b.any
+ffffff8000082c80:	b9401fe0 	ldr	w0, [sp, #28]
+ffffff8000082c84:	7100041f 	cmp	w0, #0x1
+ffffff8000082c88:	540000a1 	b.ne	ffffff8000082c9c <myoutput+0x30>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/printf.c:10 (discriminator 1)
-ffffff8000082c88:	f94013e0 	ldr	x0, [sp, #32]
-ffffff8000082c8c:	39400000 	ldrb	w0, [x0]
-ffffff8000082c90:	7100001f 	cmp	w0, #0x0
-ffffff8000082c94:	54000200 	b.eq	ffffff8000082cd4 <myoutput+0x6c>  // b.none
+ffffff8000082c8c:	f94013e0 	ldr	x0, [sp, #32]
+ffffff8000082c90:	39400000 	ldrb	w0, [x0]
+ffffff8000082c94:	7100001f 	cmp	w0, #0x0
+ffffff8000082c98:	54000200 	b.eq	ffffff8000082cd8 <myoutput+0x6c>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/printf.c:16
-ffffff8000082c98:	b9003fff 	str	wzr, [sp, #60]
-ffffff8000082c9c:	14000009 	b	ffffff8000082cc0 <myoutput+0x58>
+ffffff8000082c9c:	b9003fff 	str	wzr, [sp, #60]
+ffffff8000082ca0:	14000009 	b	ffffff8000082cc4 <myoutput+0x58>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:18 (discriminator 3)
-ffffff8000082ca0:	b9803fe0 	ldrsw	x0, [sp, #60]
-ffffff8000082ca4:	f94013e1 	ldr	x1, [sp, #32]
-ffffff8000082ca8:	8b000020 	add	x0, x1, x0
-ffffff8000082cac:	39400000 	ldrb	w0, [x0]
-ffffff8000082cb0:	97fff56a 	bl	ffffff8000080258 <uart_send>
+ffffff8000082ca4:	b9803fe0 	ldrsw	x0, [sp, #60]
+ffffff8000082ca8:	f94013e1 	ldr	x1, [sp, #32]
+ffffff8000082cac:	8b000020 	add	x0, x1, x0
+ffffff8000082cb0:	39400000 	ldrb	w0, [x0]
+ffffff8000082cb4:	97fff569 	bl	ffffff8000080258 <uart_send>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:16 (discriminator 3)
-ffffff8000082cb4:	b9403fe0 	ldr	w0, [sp, #60]
-ffffff8000082cb8:	11000400 	add	w0, w0, #0x1
-ffffff8000082cbc:	b9003fe0 	str	w0, [sp, #60]
+ffffff8000082cb8:	b9403fe0 	ldr	w0, [sp, #60]
+ffffff8000082cbc:	11000400 	add	w0, w0, #0x1
+ffffff8000082cc0:	b9003fe0 	str	w0, [sp, #60]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:16 (discriminator 1)
-ffffff8000082cc0:	b9403fe1 	ldr	w1, [sp, #60]
-ffffff8000082cc4:	b9401fe0 	ldr	w0, [sp, #28]
-ffffff8000082cc8:	6b00003f 	cmp	w1, w0
-ffffff8000082ccc:	54fffeab 	b.lt	ffffff8000082ca0 <myoutput+0x38>  // b.tstop
-ffffff8000082cd0:	14000002 	b	ffffff8000082cd8 <myoutput+0x70>
+ffffff8000082cc4:	b9403fe1 	ldr	w1, [sp, #60]
+ffffff8000082cc8:	b9401fe0 	ldr	w0, [sp, #28]
+ffffff8000082ccc:	6b00003f 	cmp	w1, w0
+ffffff8000082cd0:	54fffeab 	b.lt	ffffff8000082ca4 <myoutput+0x38>  // b.tstop
+ffffff8000082cd4:	14000002 	b	ffffff8000082cdc <myoutput+0x70>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:12
-ffffff8000082cd4:	d503201f 	nop
+ffffff8000082cd8:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/lib/printf.c:20
-ffffff8000082cd8:	a8c47bfd 	ldp	x29, x30, [sp], #64
-ffffff8000082cdc:	d65f03c0 	ret
+ffffff8000082cdc:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ffffff8000082ce0:	d65f03c0 	ret
 
-ffffff8000082ce0 <printf>:
+ffffff8000082ce4 <printf>:
 printf():
 /home/dofingert/Source/OS/THYOS/lib/printf.c:23
-ffffff8000082ce0:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
-ffffff8000082ce4:	910003fd 	mov	x29, sp
-ffffff8000082ce8:	f9001fe0 	str	x0, [sp, #56]
-ffffff8000082cec:	f90077e1 	str	x1, [sp, #232]
-ffffff8000082cf0:	f9007be2 	str	x2, [sp, #240]
-ffffff8000082cf4:	f9007fe3 	str	x3, [sp, #248]
-ffffff8000082cf8:	f90083e4 	str	x4, [sp, #256]
-ffffff8000082cfc:	f90087e5 	str	x5, [sp, #264]
-ffffff8000082d00:	f9008be6 	str	x6, [sp, #272]
-ffffff8000082d04:	f9008fe7 	str	x7, [sp, #280]
-ffffff8000082d08:	3d801be0 	str	q0, [sp, #96]
-ffffff8000082d0c:	3d801fe1 	str	q1, [sp, #112]
-ffffff8000082d10:	3d8023e2 	str	q2, [sp, #128]
-ffffff8000082d14:	3d8027e3 	str	q3, [sp, #144]
-ffffff8000082d18:	3d802be4 	str	q4, [sp, #160]
-ffffff8000082d1c:	3d802fe5 	str	q5, [sp, #176]
-ffffff8000082d20:	3d8033e6 	str	q6, [sp, #192]
-ffffff8000082d24:	3d8037e7 	str	q7, [sp, #208]
+ffffff8000082ce4:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
+ffffff8000082ce8:	910003fd 	mov	x29, sp
+ffffff8000082cec:	f9001fe0 	str	x0, [sp, #56]
+ffffff8000082cf0:	f90077e1 	str	x1, [sp, #232]
+ffffff8000082cf4:	f9007be2 	str	x2, [sp, #240]
+ffffff8000082cf8:	f9007fe3 	str	x3, [sp, #248]
+ffffff8000082cfc:	f90083e4 	str	x4, [sp, #256]
+ffffff8000082d00:	f90087e5 	str	x5, [sp, #264]
+ffffff8000082d04:	f9008be6 	str	x6, [sp, #272]
+ffffff8000082d08:	f9008fe7 	str	x7, [sp, #280]
+ffffff8000082d0c:	3d801be0 	str	q0, [sp, #96]
+ffffff8000082d10:	3d801fe1 	str	q1, [sp, #112]
+ffffff8000082d14:	3d8023e2 	str	q2, [sp, #128]
+ffffff8000082d18:	3d8027e3 	str	q3, [sp, #144]
+ffffff8000082d1c:	3d802be4 	str	q4, [sp, #160]
+ffffff8000082d20:	3d802fe5 	str	q5, [sp, #176]
+ffffff8000082d24:	3d8033e6 	str	q6, [sp, #192]
+ffffff8000082d28:	3d8037e7 	str	q7, [sp, #208]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:25
-ffffff8000082d28:	910483e0 	add	x0, sp, #0x120
-ffffff8000082d2c:	f90023e0 	str	x0, [sp, #64]
-ffffff8000082d30:	910483e0 	add	x0, sp, #0x120
-ffffff8000082d34:	f90027e0 	str	x0, [sp, #72]
-ffffff8000082d38:	910383e0 	add	x0, sp, #0xe0
-ffffff8000082d3c:	f9002be0 	str	x0, [sp, #80]
-ffffff8000082d40:	128006e0 	mov	w0, #0xffffffc8            	// #-56
-ffffff8000082d44:	b9005be0 	str	w0, [sp, #88]
-ffffff8000082d48:	12800fe0 	mov	w0, #0xffffff80            	// #-128
-ffffff8000082d4c:	b9005fe0 	str	w0, [sp, #92]
+ffffff8000082d2c:	910483e0 	add	x0, sp, #0x120
+ffffff8000082d30:	f90023e0 	str	x0, [sp, #64]
+ffffff8000082d34:	910483e0 	add	x0, sp, #0x120
+ffffff8000082d38:	f90027e0 	str	x0, [sp, #72]
+ffffff8000082d3c:	910383e0 	add	x0, sp, #0xe0
+ffffff8000082d40:	f9002be0 	str	x0, [sp, #80]
+ffffff8000082d44:	128006e0 	mov	w0, #0xffffffc8            	// #-56
+ffffff8000082d48:	b9005be0 	str	w0, [sp, #88]
+ffffff8000082d4c:	12800fe0 	mov	w0, #0xffffff80            	// #-128
+ffffff8000082d50:	b9005fe0 	str	w0, [sp, #92]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:26
-ffffff8000082d50:	910043e2 	add	x2, sp, #0x10
-ffffff8000082d54:	910103e3 	add	x3, sp, #0x40
-ffffff8000082d58:	a9400460 	ldp	x0, x1, [x3]
-ffffff8000082d5c:	a9000440 	stp	x0, x1, [x2]
-ffffff8000082d60:	a9410460 	ldp	x0, x1, [x3, #16]
-ffffff8000082d64:	a9010440 	stp	x0, x1, [x2, #16]
-ffffff8000082d68:	910043e0 	add	x0, sp, #0x10
-ffffff8000082d6c:	aa0003e3 	mov	x3, x0
-ffffff8000082d70:	f9401fe2 	ldr	x2, [sp, #56]
-ffffff8000082d74:	d2800001 	mov	x1, #0x0                   	// #0
-ffffff8000082d78:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
-ffffff8000082d7c:	9131a000 	add	x0, x0, #0xc68
-ffffff8000082d80:	94000067 	bl	ffffff8000082f1c <lp_Print>
+ffffff8000082d54:	910043e2 	add	x2, sp, #0x10
+ffffff8000082d58:	910103e3 	add	x3, sp, #0x40
+ffffff8000082d5c:	a9400460 	ldp	x0, x1, [x3]
+ffffff8000082d60:	a9000440 	stp	x0, x1, [x2]
+ffffff8000082d64:	a9410460 	ldp	x0, x1, [x3, #16]
+ffffff8000082d68:	a9010440 	stp	x0, x1, [x2, #16]
+ffffff8000082d6c:	910043e0 	add	x0, sp, #0x10
+ffffff8000082d70:	aa0003e3 	mov	x3, x0
+ffffff8000082d74:	f9401fe2 	ldr	x2, [sp, #56]
+ffffff8000082d78:	d2800001 	mov	x1, #0x0                   	// #0
+ffffff8000082d7c:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
+ffffff8000082d80:	9131b000 	add	x0, x0, #0xc6c
+ffffff8000082d84:	94000067 	bl	ffffff8000082f20 <lp_Print>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:28
-ffffff8000082d84:	d503201f 	nop
-ffffff8000082d88:	a8d27bfd 	ldp	x29, x30, [sp], #288
-ffffff8000082d8c:	d65f03c0 	ret
+ffffff8000082d88:	d503201f 	nop
+ffffff8000082d8c:	a8d27bfd 	ldp	x29, x30, [sp], #288
+ffffff8000082d90:	d65f03c0 	ret
 
-ffffff8000082d90 <debug_printf>:
+ffffff8000082d94 <debug_printf>:
 debug_printf():
 /home/dofingert/Source/OS/THYOS/lib/printf.c:31
-ffffff8000082d90:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
-ffffff8000082d94:	910003fd 	mov	x29, sp
-ffffff8000082d98:	f90027e0 	str	x0, [sp, #72]
-ffffff8000082d9c:	f90023e1 	str	x1, [sp, #64]
-ffffff8000082da0:	f9001fe2 	str	x2, [sp, #56]
-ffffff8000082da4:	f9007fe3 	str	x3, [sp, #248]
-ffffff8000082da8:	f90083e4 	str	x4, [sp, #256]
-ffffff8000082dac:	f90087e5 	str	x5, [sp, #264]
-ffffff8000082db0:	f9008be6 	str	x6, [sp, #272]
-ffffff8000082db4:	f9008fe7 	str	x7, [sp, #280]
-ffffff8000082db8:	3d801fe0 	str	q0, [sp, #112]
-ffffff8000082dbc:	3d8023e1 	str	q1, [sp, #128]
-ffffff8000082dc0:	3d8027e2 	str	q2, [sp, #144]
-ffffff8000082dc4:	3d802be3 	str	q3, [sp, #160]
-ffffff8000082dc8:	3d802fe4 	str	q4, [sp, #176]
-ffffff8000082dcc:	3d8033e5 	str	q5, [sp, #192]
-ffffff8000082dd0:	3d8037e6 	str	q6, [sp, #208]
-ffffff8000082dd4:	3d803be7 	str	q7, [sp, #224]
+ffffff8000082d94:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
+ffffff8000082d98:	910003fd 	mov	x29, sp
+ffffff8000082d9c:	f90027e0 	str	x0, [sp, #72]
+ffffff8000082da0:	f90023e1 	str	x1, [sp, #64]
+ffffff8000082da4:	f9001fe2 	str	x2, [sp, #56]
+ffffff8000082da8:	f9007fe3 	str	x3, [sp, #248]
+ffffff8000082dac:	f90083e4 	str	x4, [sp, #256]
+ffffff8000082db0:	f90087e5 	str	x5, [sp, #264]
+ffffff8000082db4:	f9008be6 	str	x6, [sp, #272]
+ffffff8000082db8:	f9008fe7 	str	x7, [sp, #280]
+ffffff8000082dbc:	3d801fe0 	str	q0, [sp, #112]
+ffffff8000082dc0:	3d8023e1 	str	q1, [sp, #128]
+ffffff8000082dc4:	3d8027e2 	str	q2, [sp, #144]
+ffffff8000082dc8:	3d802be3 	str	q3, [sp, #160]
+ffffff8000082dcc:	3d802fe4 	str	q4, [sp, #176]
+ffffff8000082dd0:	3d8033e5 	str	q5, [sp, #192]
+ffffff8000082dd4:	3d8037e6 	str	q6, [sp, #208]
+ffffff8000082dd8:	3d803be7 	str	q7, [sp, #224]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:32
-ffffff8000082dd8:	f94023e2 	ldr	x2, [sp, #64]
-ffffff8000082ddc:	f94027e1 	ldr	x1, [sp, #72]
-ffffff8000082de0:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082de4:	91354000 	add	x0, x0, #0xd50
-ffffff8000082de8:	97ffffbe 	bl	ffffff8000082ce0 <printf>
+ffffff8000082ddc:	f94023e2 	ldr	x2, [sp, #64]
+ffffff8000082de0:	f94027e1 	ldr	x1, [sp, #72]
+ffffff8000082de4:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082de8:	91354000 	add	x0, x0, #0xd50
+ffffff8000082dec:	97ffffbe 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:34
-ffffff8000082dec:	910483e0 	add	x0, sp, #0x120
-ffffff8000082df0:	f9002be0 	str	x0, [sp, #80]
-ffffff8000082df4:	910483e0 	add	x0, sp, #0x120
-ffffff8000082df8:	f9002fe0 	str	x0, [sp, #88]
-ffffff8000082dfc:	9103c3e0 	add	x0, sp, #0xf0
-ffffff8000082e00:	f90033e0 	str	x0, [sp, #96]
-ffffff8000082e04:	128004e0 	mov	w0, #0xffffffd8            	// #-40
-ffffff8000082e08:	b9006be0 	str	w0, [sp, #104]
-ffffff8000082e0c:	12800fe0 	mov	w0, #0xffffff80            	// #-128
-ffffff8000082e10:	b9006fe0 	str	w0, [sp, #108]
+ffffff8000082df0:	910483e0 	add	x0, sp, #0x120
+ffffff8000082df4:	f9002be0 	str	x0, [sp, #80]
+ffffff8000082df8:	910483e0 	add	x0, sp, #0x120
+ffffff8000082dfc:	f9002fe0 	str	x0, [sp, #88]
+ffffff8000082e00:	9103c3e0 	add	x0, sp, #0xf0
+ffffff8000082e04:	f90033e0 	str	x0, [sp, #96]
+ffffff8000082e08:	128004e0 	mov	w0, #0xffffffd8            	// #-40
+ffffff8000082e0c:	b9006be0 	str	w0, [sp, #104]
+ffffff8000082e10:	12800fe0 	mov	w0, #0xffffff80            	// #-128
+ffffff8000082e14:	b9006fe0 	str	w0, [sp, #108]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:35
-ffffff8000082e14:	910043e2 	add	x2, sp, #0x10
-ffffff8000082e18:	910143e3 	add	x3, sp, #0x50
-ffffff8000082e1c:	a9400460 	ldp	x0, x1, [x3]
-ffffff8000082e20:	a9000440 	stp	x0, x1, [x2]
-ffffff8000082e24:	a9410460 	ldp	x0, x1, [x3, #16]
-ffffff8000082e28:	a9010440 	stp	x0, x1, [x2, #16]
-ffffff8000082e2c:	910043e0 	add	x0, sp, #0x10
-ffffff8000082e30:	aa0003e3 	mov	x3, x0
-ffffff8000082e34:	f9401fe2 	ldr	x2, [sp, #56]
-ffffff8000082e38:	d2800001 	mov	x1, #0x0                   	// #0
-ffffff8000082e3c:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
-ffffff8000082e40:	9131a000 	add	x0, x0, #0xc68
-ffffff8000082e44:	94000036 	bl	ffffff8000082f1c <lp_Print>
+ffffff8000082e18:	910043e2 	add	x2, sp, #0x10
+ffffff8000082e1c:	910143e3 	add	x3, sp, #0x50
+ffffff8000082e20:	a9400460 	ldp	x0, x1, [x3]
+ffffff8000082e24:	a9000440 	stp	x0, x1, [x2]
+ffffff8000082e28:	a9410460 	ldp	x0, x1, [x3, #16]
+ffffff8000082e2c:	a9010440 	stp	x0, x1, [x2, #16]
+ffffff8000082e30:	910043e0 	add	x0, sp, #0x10
+ffffff8000082e34:	aa0003e3 	mov	x3, x0
+ffffff8000082e38:	f9401fe2 	ldr	x2, [sp, #56]
+ffffff8000082e3c:	d2800001 	mov	x1, #0x0                   	// #0
+ffffff8000082e40:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
+ffffff8000082e44:	9131b000 	add	x0, x0, #0xc6c
+ffffff8000082e48:	94000036 	bl	ffffff8000082f20 <lp_Print>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:37
-ffffff8000082e48:	d503201f 	nop
-ffffff8000082e4c:	a8d27bfd 	ldp	x29, x30, [sp], #288
-ffffff8000082e50:	d65f03c0 	ret
+ffffff8000082e4c:	d503201f 	nop
+ffffff8000082e50:	a8d27bfd 	ldp	x29, x30, [sp], #288
+ffffff8000082e54:	d65f03c0 	ret
 
-ffffff8000082e54 <_panic>:
+ffffff8000082e58 <_panic>:
 _panic():
 /home/dofingert/Source/OS/THYOS/lib/printf.c:41
-ffffff8000082e54:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
-ffffff8000082e58:	910003fd 	mov	x29, sp
-ffffff8000082e5c:	f90027e0 	str	x0, [sp, #72]
-ffffff8000082e60:	b90047e1 	str	w1, [sp, #68]
-ffffff8000082e64:	f9001fe2 	str	x2, [sp, #56]
-ffffff8000082e68:	f9007fe3 	str	x3, [sp, #248]
-ffffff8000082e6c:	f90083e4 	str	x4, [sp, #256]
-ffffff8000082e70:	f90087e5 	str	x5, [sp, #264]
-ffffff8000082e74:	f9008be6 	str	x6, [sp, #272]
-ffffff8000082e78:	f9008fe7 	str	x7, [sp, #280]
-ffffff8000082e7c:	3d801fe0 	str	q0, [sp, #112]
-ffffff8000082e80:	3d8023e1 	str	q1, [sp, #128]
-ffffff8000082e84:	3d8027e2 	str	q2, [sp, #144]
-ffffff8000082e88:	3d802be3 	str	q3, [sp, #160]
-ffffff8000082e8c:	3d802fe4 	str	q4, [sp, #176]
-ffffff8000082e90:	3d8033e5 	str	q5, [sp, #192]
-ffffff8000082e94:	3d8037e6 	str	q6, [sp, #208]
-ffffff8000082e98:	3d803be7 	str	q7, [sp, #224]
+ffffff8000082e58:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
+ffffff8000082e5c:	910003fd 	mov	x29, sp
+ffffff8000082e60:	f90027e0 	str	x0, [sp, #72]
+ffffff8000082e64:	b90047e1 	str	w1, [sp, #68]
+ffffff8000082e68:	f9001fe2 	str	x2, [sp, #56]
+ffffff8000082e6c:	f9007fe3 	str	x3, [sp, #248]
+ffffff8000082e70:	f90083e4 	str	x4, [sp, #256]
+ffffff8000082e74:	f90087e5 	str	x5, [sp, #264]
+ffffff8000082e78:	f9008be6 	str	x6, [sp, #272]
+ffffff8000082e7c:	f9008fe7 	str	x7, [sp, #280]
+ffffff8000082e80:	3d801fe0 	str	q0, [sp, #112]
+ffffff8000082e84:	3d8023e1 	str	q1, [sp, #128]
+ffffff8000082e88:	3d8027e2 	str	q2, [sp, #144]
+ffffff8000082e8c:	3d802be3 	str	q3, [sp, #160]
+ffffff8000082e90:	3d802fe4 	str	q4, [sp, #176]
+ffffff8000082e94:	3d8033e5 	str	q5, [sp, #192]
+ffffff8000082e98:	3d8037e6 	str	q6, [sp, #208]
+ffffff8000082e9c:	3d803be7 	str	q7, [sp, #224]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:44
-ffffff8000082e9c:	910483e0 	add	x0, sp, #0x120
-ffffff8000082ea0:	f9002be0 	str	x0, [sp, #80]
-ffffff8000082ea4:	910483e0 	add	x0, sp, #0x120
-ffffff8000082ea8:	f9002fe0 	str	x0, [sp, #88]
-ffffff8000082eac:	9103c3e0 	add	x0, sp, #0xf0
-ffffff8000082eb0:	f90033e0 	str	x0, [sp, #96]
-ffffff8000082eb4:	128004e0 	mov	w0, #0xffffffd8            	// #-40
-ffffff8000082eb8:	b9006be0 	str	w0, [sp, #104]
-ffffff8000082ebc:	12800fe0 	mov	w0, #0xffffff80            	// #-128
-ffffff8000082ec0:	b9006fe0 	str	w0, [sp, #108]
+ffffff8000082ea0:	910483e0 	add	x0, sp, #0x120
+ffffff8000082ea4:	f9002be0 	str	x0, [sp, #80]
+ffffff8000082ea8:	910483e0 	add	x0, sp, #0x120
+ffffff8000082eac:	f9002fe0 	str	x0, [sp, #88]
+ffffff8000082eb0:	9103c3e0 	add	x0, sp, #0xf0
+ffffff8000082eb4:	f90033e0 	str	x0, [sp, #96]
+ffffff8000082eb8:	128004e0 	mov	w0, #0xffffffd8            	// #-40
+ffffff8000082ebc:	b9006be0 	str	w0, [sp, #104]
+ffffff8000082ec0:	12800fe0 	mov	w0, #0xffffff80            	// #-128
+ffffff8000082ec4:	b9006fe0 	str	w0, [sp, #108]
 /home/dofingert/Source/OS/THYOS/lib/printf.c:45
-ffffff8000082ec4:	b94047e2 	ldr	w2, [sp, #68]
-ffffff8000082ec8:	f94027e1 	ldr	x1, [sp, #72]
-ffffff8000082ecc:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082ed0:	9135a000 	add	x0, x0, #0xd68
-ffffff8000082ed4:	97ffff83 	bl	ffffff8000082ce0 <printf>
+ffffff8000082ec8:	b94047e2 	ldr	w2, [sp, #68]
+ffffff8000082ecc:	f94027e1 	ldr	x1, [sp, #72]
+ffffff8000082ed0:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082ed4:	9135a000 	add	x0, x0, #0xd68
+ffffff8000082ed8:	97ffff83 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:46
-ffffff8000082ed8:	910043e2 	add	x2, sp, #0x10
-ffffff8000082edc:	910143e3 	add	x3, sp, #0x50
-ffffff8000082ee0:	a9400460 	ldp	x0, x1, [x3]
-ffffff8000082ee4:	a9000440 	stp	x0, x1, [x2]
-ffffff8000082ee8:	a9410460 	ldp	x0, x1, [x3, #16]
-ffffff8000082eec:	a9010440 	stp	x0, x1, [x2, #16]
-ffffff8000082ef0:	910043e0 	add	x0, sp, #0x10
-ffffff8000082ef4:	aa0003e3 	mov	x3, x0
-ffffff8000082ef8:	f9401fe2 	ldr	x2, [sp, #56]
-ffffff8000082efc:	d2800001 	mov	x1, #0x0                   	// #0
-ffffff8000082f00:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
-ffffff8000082f04:	9131a000 	add	x0, x0, #0xc68
-ffffff8000082f08:	94000005 	bl	ffffff8000082f1c <lp_Print>
+ffffff8000082edc:	910043e2 	add	x2, sp, #0x10
+ffffff8000082ee0:	910143e3 	add	x3, sp, #0x50
+ffffff8000082ee4:	a9400460 	ldp	x0, x1, [x3]
+ffffff8000082ee8:	a9000440 	stp	x0, x1, [x2]
+ffffff8000082eec:	a9410460 	ldp	x0, x1, [x3, #16]
+ffffff8000082ef0:	a9010440 	stp	x0, x1, [x2, #16]
+ffffff8000082ef4:	910043e0 	add	x0, sp, #0x10
+ffffff8000082ef8:	aa0003e3 	mov	x3, x0
+ffffff8000082efc:	f9401fe2 	ldr	x2, [sp, #56]
+ffffff8000082f00:	d2800001 	mov	x1, #0x0                   	// #0
+ffffff8000082f04:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xb0>
+ffffff8000082f08:	9131b000 	add	x0, x0, #0xc6c
+ffffff8000082f0c:	94000005 	bl	ffffff8000082f20 <lp_Print>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:47
-ffffff8000082f0c:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082f10:	91360000 	add	x0, x0, #0xd80
-ffffff8000082f14:	97ffff73 	bl	ffffff8000082ce0 <printf>
+ffffff8000082f10:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082f14:	91360000 	add	x0, x0, #0xd80
+ffffff8000082f18:	97ffff73 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/printf.c:50 (discriminator 1)
-ffffff8000082f18:	14000000 	b	ffffff8000082f18 <_panic+0xc4>
+ffffff8000082f1c:	14000000 	b	ffffff8000082f1c <_panic+0xc4>
 
-ffffff8000082f1c <lp_Print>:
+ffffff8000082f20 <lp_Print>:
 lp_Print():
 /home/dofingert/Source/OS/THYOS/lib/print.c:19
-ffffff8000082f1c:	d111c3ff 	sub	sp, sp, #0x470
-ffffff8000082f20:	a9007bfd 	stp	x29, x30, [sp]
-ffffff8000082f24:	910003fd 	mov	x29, sp
-ffffff8000082f28:	f9000bf3 	str	x19, [sp, #16]
-ffffff8000082f2c:	f9001fe0 	str	x0, [sp, #56]
-ffffff8000082f30:	f9001be1 	str	x1, [sp, #48]
-ffffff8000082f34:	f90017e2 	str	x2, [sp, #40]
-ffffff8000082f38:	aa0303f3 	mov	x19, x3
+ffffff8000082f20:	d111c3ff 	sub	sp, sp, #0x470
+ffffff8000082f24:	a9007bfd 	stp	x29, x30, [sp]
+ffffff8000082f28:	910003fd 	mov	x29, sp
+ffffff8000082f2c:	f9000bf3 	str	x19, [sp, #16]
+ffffff8000082f30:	f9001fe0 	str	x0, [sp, #56]
+ffffff8000082f34:	f9001be1 	str	x1, [sp, #48]
+ffffff8000082f38:	f90017e2 	str	x2, [sp, #40]
+ffffff8000082f3c:	aa0303f3 	mov	x19, x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:53
-ffffff8000082f3c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082f40:	f90227e0 	str	x0, [sp, #1096]
+ffffff8000082f40:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000082f44:	f90227e0 	str	x0, [sp, #1096]
 /home/dofingert/Source/OS/THYOS/lib/print.c:56
-ffffff8000082f44:	f94227e0 	ldr	x0, [sp, #1096]
-ffffff8000082f48:	39400000 	ldrb	w0, [x0]
-ffffff8000082f4c:	7100001f 	cmp	w0, #0x0
-ffffff8000082f50:	54000120 	b.eq	ffffff8000082f74 <lp_Print+0x58>  // b.none
+ffffff8000082f48:	f94227e0 	ldr	x0, [sp, #1096]
+ffffff8000082f4c:	39400000 	ldrb	w0, [x0]
+ffffff8000082f50:	7100001f 	cmp	w0, #0x0
+ffffff8000082f54:	54000120 	b.eq	ffffff8000082f78 <lp_Print+0x58>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:60
-ffffff8000082f54:	f94227e0 	ldr	x0, [sp, #1096]
-ffffff8000082f58:	39400000 	ldrb	w0, [x0]
-ffffff8000082f5c:	7100941f 	cmp	w0, #0x25
-ffffff8000082f60:	540000e0 	b.eq	ffffff8000082f7c <lp_Print+0x60>  // b.none
+ffffff8000082f58:	f94227e0 	ldr	x0, [sp, #1096]
+ffffff8000082f5c:	39400000 	ldrb	w0, [x0]
+ffffff8000082f60:	7100941f 	cmp	w0, #0x25
+ffffff8000082f64:	540000e0 	b.eq	ffffff8000082f80 <lp_Print+0x60>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:64
-ffffff8000082f64:	f94227e0 	ldr	x0, [sp, #1096]
-ffffff8000082f68:	91000400 	add	x0, x0, #0x1
-ffffff8000082f6c:	f90227e0 	str	x0, [sp, #1096]
+ffffff8000082f68:	f94227e0 	ldr	x0, [sp, #1096]
+ffffff8000082f6c:	91000400 	add	x0, x0, #0x1
+ffffff8000082f70:	f90227e0 	str	x0, [sp, #1096]
 /home/dofingert/Source/OS/THYOS/lib/print.c:56
-ffffff8000082f70:	17fffff5 	b	ffffff8000082f44 <lp_Print+0x28>
+ffffff8000082f74:	17fffff5 	b	ffffff8000082f48 <lp_Print+0x28>
 /home/dofingert/Source/OS/THYOS/lib/print.c:58
-ffffff8000082f74:	d503201f 	nop
-ffffff8000082f78:	14000002 	b	ffffff8000082f80 <lp_Print+0x64>
+ffffff8000082f78:	d503201f 	nop
+ffffff8000082f7c:	14000002 	b	ffffff8000082f84 <lp_Print+0x64>
 /home/dofingert/Source/OS/THYOS/lib/print.c:62
-ffffff8000082f7c:	d503201f 	nop
+ffffff8000082f80:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/lib/print.c:67
-ffffff8000082f80:	f94227e1 	ldr	x1, [sp, #1096]
-ffffff8000082f84:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082f88:	cb000020 	sub	x0, x1, x0
-ffffff8000082f8c:	f100001f 	cmp	x0, #0x0
-ffffff8000082f90:	540000cb 	b.lt	ffffff8000082fa8 <lp_Print+0x8c>  // b.tstop
+ffffff8000082f84:	f94227e1 	ldr	x1, [sp, #1096]
+ffffff8000082f88:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000082f8c:	cb000020 	sub	x0, x1, x0
+ffffff8000082f90:	f100001f 	cmp	x0, #0x0
+ffffff8000082f94:	540000cb 	b.lt	ffffff8000082fac <lp_Print+0x8c>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 2)
-ffffff8000082f94:	f94227e1 	ldr	x1, [sp, #1096]
-ffffff8000082f98:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082f9c:	cb000020 	sub	x0, x1, x0
-ffffff8000082fa0:	f10fa01f 	cmp	x0, #0x3e8
-ffffff8000082fa4:	5400010d 	b.le	ffffff8000082fc4 <lp_Print+0xa8>
+ffffff8000082f98:	f94227e1 	ldr	x1, [sp, #1096]
+ffffff8000082f9c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000082fa0:	cb000020 	sub	x0, x1, x0
+ffffff8000082fa4:	f10fa01f 	cmp	x0, #0x3e8
+ffffff8000082fa8:	5400010d 	b.le	ffffff8000082fc8 <lp_Print+0xa8>
 /home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 3)
-ffffff8000082fa8:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000082fac:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000082fb0:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000082fb4:	91362001 	add	x1, x0, #0xd88
-ffffff8000082fb8:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000082fbc:	d63f0060 	blr	x3
+ffffff8000082fac:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000082fb0:	52800302 	mov	w2, #0x18                  	// #24
+ffffff8000082fb4:	90000020 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000082fb8:	91362001 	add	x1, x0, #0xd88
+ffffff8000082fbc:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000082fc0:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 1)
-ffffff8000082fc0:	14000000 	b	ffffff8000082fc0 <lp_Print+0xa4>
+ffffff8000082fc4:	14000000 	b	ffffff8000082fc4 <lp_Print+0xa4>
 /home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 4)
-ffffff8000082fc4:	f94227e1 	ldr	x1, [sp, #1096]
-ffffff8000082fc8:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082fcc:	cb000020 	sub	x0, x1, x0
-ffffff8000082fd0:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000082fd4:	2a0003e2 	mov	w2, w0
-ffffff8000082fd8:	f94017e1 	ldr	x1, [sp, #40]
-ffffff8000082fdc:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000082fe0:	d63f0060 	blr	x3
+ffffff8000082fc8:	f94227e1 	ldr	x1, [sp, #1096]
+ffffff8000082fcc:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000082fd0:	cb000020 	sub	x0, x1, x0
+ffffff8000082fd4:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000082fd8:	2a0003e2 	mov	w2, w0
+ffffff8000082fdc:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000082fe0:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000082fe4:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:68 (discriminator 4)
-ffffff8000082fe4:	f94227e0 	ldr	x0, [sp, #1096]
-ffffff8000082fe8:	f90017e0 	str	x0, [sp, #40]
+ffffff8000082fe8:	f94227e0 	ldr	x0, [sp, #1096]
+ffffff8000082fec:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:71 (discriminator 4)
-ffffff8000082fec:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000082ff0:	39400000 	ldrb	w0, [x0]
-ffffff8000082ff4:	7100001f 	cmp	w0, #0x0
-ffffff8000082ff8:	54005c60 	b.eq	ffffff8000083b84 <lp_Print+0xc68>  // b.none
+ffffff8000082ff0:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000082ff4:	39400000 	ldrb	w0, [x0]
+ffffff8000082ff8:	7100001f 	cmp	w0, #0x0
+ffffff8000082ffc:	54005c60 	b.eq	ffffff8000083b88 <lp_Print+0xc68>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:78
-ffffff8000082ffc:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083000:	91000400 	add	x0, x0, #0x1
-ffffff8000083004:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083000:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083004:	91000400 	add	x0, x0, #0x1
+ffffff8000083008:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:83
-ffffff8000083008:	52800400 	mov	w0, #0x20                  	// #32
-ffffff800008300c:	39114fe0 	strb	w0, [sp, #1107]
+ffffff800008300c:	52800400 	mov	w0, #0x20                  	// #32
+ffffff8000083010:	39114fe0 	strb	w0, [sp, #1107]
 /home/dofingert/Source/OS/THYOS/lib/print.c:84
-ffffff8000083010:	b90457ff 	str	wzr, [sp, #1108]
+ffffff8000083014:	b90457ff 	str	wzr, [sp, #1108]
 /home/dofingert/Source/OS/THYOS/lib/print.c:85
-ffffff8000083014:	14000011 	b	ffffff8000083058 <lp_Print+0x13c>
+ffffff8000083018:	14000011 	b	ffffff800008305c <lp_Print+0x13c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:87
-ffffff8000083018:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008301c:	39400000 	ldrb	w0, [x0]
-ffffff8000083020:	7100b41f 	cmp	w0, #0x2d
-ffffff8000083024:	54000081 	b.ne	ffffff8000083034 <lp_Print+0x118>  // b.any
+ffffff800008301c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083020:	39400000 	ldrb	w0, [x0]
+ffffff8000083024:	7100b41f 	cmp	w0, #0x2d
+ffffff8000083028:	54000081 	b.ne	ffffff8000083038 <lp_Print+0x118>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:89
-ffffff8000083028:	52800020 	mov	w0, #0x1                   	// #1
-ffffff800008302c:	b90457e0 	str	w0, [sp, #1108]
-ffffff8000083030:	14000007 	b	ffffff800008304c <lp_Print+0x130>
+ffffff800008302c:	52800020 	mov	w0, #0x1                   	// #1
+ffffff8000083030:	b90457e0 	str	w0, [sp, #1108]
+ffffff8000083034:	14000007 	b	ffffff8000083050 <lp_Print+0x130>
 /home/dofingert/Source/OS/THYOS/lib/print.c:91
-ffffff8000083034:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083038:	39400000 	ldrb	w0, [x0]
-ffffff800008303c:	7100c01f 	cmp	w0, #0x30
-ffffff8000083040:	54000061 	b.ne	ffffff800008304c <lp_Print+0x130>  // b.any
+ffffff8000083038:	f94017e0 	ldr	x0, [sp, #40]
+ffffff800008303c:	39400000 	ldrb	w0, [x0]
+ffffff8000083040:	7100c01f 	cmp	w0, #0x30
+ffffff8000083044:	54000061 	b.ne	ffffff8000083050 <lp_Print+0x130>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:93
-ffffff8000083044:	52800600 	mov	w0, #0x30                  	// #48
-ffffff8000083048:	39114fe0 	strb	w0, [sp, #1107]
+ffffff8000083048:	52800600 	mov	w0, #0x30                  	// #48
+ffffff800008304c:	39114fe0 	strb	w0, [sp, #1107]
 /home/dofingert/Source/OS/THYOS/lib/print.c:96
-ffffff800008304c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083050:	91000400 	add	x0, x0, #0x1
-ffffff8000083054:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083050:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083054:	91000400 	add	x0, x0, #0x1
+ffffff8000083058:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:85
-ffffff8000083058:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008305c:	39400000 	ldrb	w0, [x0]
-ffffff8000083060:	7100b41f 	cmp	w0, #0x2d
-ffffff8000083064:	54fffda0 	b.eq	ffffff8000083018 <lp_Print+0xfc>  // b.none
+ffffff800008305c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083060:	39400000 	ldrb	w0, [x0]
+ffffff8000083064:	7100b41f 	cmp	w0, #0x2d
+ffffff8000083068:	54fffda0 	b.eq	ffffff800008301c <lp_Print+0xfc>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:85 (discriminator 1)
-ffffff8000083068:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008306c:	39400000 	ldrb	w0, [x0]
-ffffff8000083070:	7100c01f 	cmp	w0, #0x30
-ffffff8000083074:	54fffd20 	b.eq	ffffff8000083018 <lp_Print+0xfc>  // b.none
+ffffff800008306c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083070:	39400000 	ldrb	w0, [x0]
+ffffff8000083074:	7100c01f 	cmp	w0, #0x30
+ffffff8000083078:	54fffd20 	b.eq	ffffff800008301c <lp_Print+0xfc>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:100
-ffffff8000083078:	b9045fff 	str	wzr, [sp, #1116]
+ffffff800008307c:	b9045fff 	str	wzr, [sp, #1116]
 /home/dofingert/Source/OS/THYOS/lib/print.c:101
-ffffff800008307c:	1400000f 	b	ffffff80000830b8 <lp_Print+0x19c>
+ffffff8000083080:	1400000f 	b	ffffff80000830bc <lp_Print+0x19c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:103
-ffffff8000083080:	b9445fe1 	ldr	w1, [sp, #1116]
-ffffff8000083084:	2a0103e0 	mov	w0, w1
-ffffff8000083088:	531e7400 	lsl	w0, w0, #2
-ffffff800008308c:	0b010000 	add	w0, w0, w1
-ffffff8000083090:	531f7800 	lsl	w0, w0, #1
-ffffff8000083094:	2a0003e1 	mov	w1, w0
-ffffff8000083098:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008309c:	39400000 	ldrb	w0, [x0]
-ffffff80000830a0:	5100c000 	sub	w0, w0, #0x30
-ffffff80000830a4:	0b000020 	add	w0, w1, w0
-ffffff80000830a8:	b9045fe0 	str	w0, [sp, #1116]
+ffffff8000083084:	b9445fe1 	ldr	w1, [sp, #1116]
+ffffff8000083088:	2a0103e0 	mov	w0, w1
+ffffff800008308c:	531e7400 	lsl	w0, w0, #2
+ffffff8000083090:	0b010000 	add	w0, w0, w1
+ffffff8000083094:	531f7800 	lsl	w0, w0, #1
+ffffff8000083098:	2a0003e1 	mov	w1, w0
+ffffff800008309c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830a0:	39400000 	ldrb	w0, [x0]
+ffffff80000830a4:	5100c000 	sub	w0, w0, #0x30
+ffffff80000830a8:	0b000020 	add	w0, w1, w0
+ffffff80000830ac:	b9045fe0 	str	w0, [sp, #1116]
 /home/dofingert/Source/OS/THYOS/lib/print.c:104
-ffffff80000830ac:	f94017e0 	ldr	x0, [sp, #40]
-ffffff80000830b0:	91000400 	add	x0, x0, #0x1
-ffffff80000830b4:	f90017e0 	str	x0, [sp, #40]
+ffffff80000830b0:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830b4:	91000400 	add	x0, x0, #0x1
+ffffff80000830b8:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:101
-ffffff80000830b8:	f94017e0 	ldr	x0, [sp, #40]
-ffffff80000830bc:	39400000 	ldrb	w0, [x0]
-ffffff80000830c0:	7100bc1f 	cmp	w0, #0x2f
-ffffff80000830c4:	540000a9 	b.ls	ffffff80000830d8 <lp_Print+0x1bc>  // b.plast
+ffffff80000830bc:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830c0:	39400000 	ldrb	w0, [x0]
+ffffff80000830c4:	7100bc1f 	cmp	w0, #0x2f
+ffffff80000830c8:	540000a9 	b.ls	ffffff80000830dc <lp_Print+0x1bc>  // b.plast
 /home/dofingert/Source/OS/THYOS/lib/print.c:101 (discriminator 1)
-ffffff80000830c8:	f94017e0 	ldr	x0, [sp, #40]
-ffffff80000830cc:	39400000 	ldrb	w0, [x0]
-ffffff80000830d0:	7100e41f 	cmp	w0, #0x39
-ffffff80000830d4:	54fffd69 	b.ls	ffffff8000083080 <lp_Print+0x164>  // b.plast
+ffffff80000830cc:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830d0:	39400000 	ldrb	w0, [x0]
+ffffff80000830d4:	7100e41f 	cmp	w0, #0x39
+ffffff80000830d8:	54fffd69 	b.ls	ffffff8000083084 <lp_Print+0x164>  // b.plast
 /home/dofingert/Source/OS/THYOS/lib/print.c:108
-ffffff80000830d8:	f94017e0 	ldr	x0, [sp, #40]
-ffffff80000830dc:	39400000 	ldrb	w0, [x0]
-ffffff80000830e0:	7100b81f 	cmp	w0, #0x2e
-ffffff80000830e4:	540003a1 	b.ne	ffffff8000083158 <lp_Print+0x23c>  // b.any
+ffffff80000830dc:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830e0:	39400000 	ldrb	w0, [x0]
+ffffff80000830e4:	7100b81f 	cmp	w0, #0x2e
+ffffff80000830e8:	540003a1 	b.ne	ffffff800008315c <lp_Print+0x23c>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:110
-ffffff80000830e8:	b9045bff 	str	wzr, [sp, #1112]
+ffffff80000830ec:	b9045bff 	str	wzr, [sp, #1112]
 /home/dofingert/Source/OS/THYOS/lib/print.c:111
-ffffff80000830ec:	f94017e0 	ldr	x0, [sp, #40]
-ffffff80000830f0:	91000400 	add	x0, x0, #0x1
-ffffff80000830f4:	f90017e0 	str	x0, [sp, #40]
+ffffff80000830f0:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000830f4:	91000400 	add	x0, x0, #0x1
+ffffff80000830f8:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:112
-ffffff80000830f8:	1400000f 	b	ffffff8000083134 <lp_Print+0x218>
+ffffff80000830fc:	1400000f 	b	ffffff8000083138 <lp_Print+0x218>
 /home/dofingert/Source/OS/THYOS/lib/print.c:114
-ffffff80000830fc:	b9445be1 	ldr	w1, [sp, #1112]
-ffffff8000083100:	2a0103e0 	mov	w0, w1
-ffffff8000083104:	531e7400 	lsl	w0, w0, #2
-ffffff8000083108:	0b010000 	add	w0, w0, w1
-ffffff800008310c:	531f7800 	lsl	w0, w0, #1
-ffffff8000083110:	2a0003e1 	mov	w1, w0
-ffffff8000083114:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083118:	39400000 	ldrb	w0, [x0]
-ffffff800008311c:	5100c000 	sub	w0, w0, #0x30
-ffffff8000083120:	0b000020 	add	w0, w1, w0
-ffffff8000083124:	b9045be0 	str	w0, [sp, #1112]
+ffffff8000083100:	b9445be1 	ldr	w1, [sp, #1112]
+ffffff8000083104:	2a0103e0 	mov	w0, w1
+ffffff8000083108:	531e7400 	lsl	w0, w0, #2
+ffffff800008310c:	0b010000 	add	w0, w0, w1
+ffffff8000083110:	531f7800 	lsl	w0, w0, #1
+ffffff8000083114:	2a0003e1 	mov	w1, w0
+ffffff8000083118:	f94017e0 	ldr	x0, [sp, #40]
+ffffff800008311c:	39400000 	ldrb	w0, [x0]
+ffffff8000083120:	5100c000 	sub	w0, w0, #0x30
+ffffff8000083124:	0b000020 	add	w0, w1, w0
+ffffff8000083128:	b9045be0 	str	w0, [sp, #1112]
 /home/dofingert/Source/OS/THYOS/lib/print.c:115
-ffffff8000083128:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008312c:	91000400 	add	x0, x0, #0x1
-ffffff8000083130:	f90017e0 	str	x0, [sp, #40]
+ffffff800008312c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083130:	91000400 	add	x0, x0, #0x1
+ffffff8000083134:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:112
-ffffff8000083134:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083138:	39400000 	ldrb	w0, [x0]
-ffffff800008313c:	7100bc1f 	cmp	w0, #0x2f
-ffffff8000083140:	54000109 	b.ls	ffffff8000083160 <lp_Print+0x244>  // b.plast
+ffffff8000083138:	f94017e0 	ldr	x0, [sp, #40]
+ffffff800008313c:	39400000 	ldrb	w0, [x0]
+ffffff8000083140:	7100bc1f 	cmp	w0, #0x2f
+ffffff8000083144:	54000109 	b.ls	ffffff8000083164 <lp_Print+0x244>  // b.plast
 /home/dofingert/Source/OS/THYOS/lib/print.c:112 (discriminator 1)
-ffffff8000083144:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083148:	39400000 	ldrb	w0, [x0]
-ffffff800008314c:	7100e41f 	cmp	w0, #0x39
-ffffff8000083150:	54fffd69 	b.ls	ffffff80000830fc <lp_Print+0x1e0>  // b.plast
-ffffff8000083154:	14000003 	b	ffffff8000083160 <lp_Print+0x244>
+ffffff8000083148:	f94017e0 	ldr	x0, [sp, #40]
+ffffff800008314c:	39400000 	ldrb	w0, [x0]
+ffffff8000083150:	7100e41f 	cmp	w0, #0x39
+ffffff8000083154:	54fffd69 	b.ls	ffffff8000083100 <lp_Print+0x1e0>  // b.plast
+ffffff8000083158:	14000003 	b	ffffff8000083164 <lp_Print+0x244>
 /home/dofingert/Source/OS/THYOS/lib/print.c:121
-ffffff8000083158:	528000c0 	mov	w0, #0x6                   	// #6
-ffffff800008315c:	b9045be0 	str	w0, [sp, #1112]
+ffffff800008315c:	528000c0 	mov	w0, #0x6                   	// #6
+ffffff8000083160:	b9045be0 	str	w0, [sp, #1112]
 /home/dofingert/Source/OS/THYOS/lib/print.c:125
-ffffff8000083160:	b90467ff 	str	wzr, [sp, #1124]
+ffffff8000083164:	b90467ff 	str	wzr, [sp, #1124]
 /home/dofingert/Source/OS/THYOS/lib/print.c:126
-ffffff8000083164:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083168:	39400000 	ldrb	w0, [x0]
-ffffff800008316c:	7101b01f 	cmp	w0, #0x6c
-ffffff8000083170:	540000c1 	b.ne	ffffff8000083188 <lp_Print+0x26c>  // b.any
+ffffff8000083168:	f94017e0 	ldr	x0, [sp, #40]
+ffffff800008316c:	39400000 	ldrb	w0, [x0]
+ffffff8000083170:	7101b01f 	cmp	w0, #0x6c
+ffffff8000083174:	540000c1 	b.ne	ffffff800008318c <lp_Print+0x26c>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:128
-ffffff8000083174:	52800020 	mov	w0, #0x1                   	// #1
-ffffff8000083178:	b90467e0 	str	w0, [sp, #1124]
+ffffff8000083178:	52800020 	mov	w0, #0x1                   	// #1
+ffffff800008317c:	b90467e0 	str	w0, [sp, #1124]
 /home/dofingert/Source/OS/THYOS/lib/print.c:129
-ffffff800008317c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083180:	91000400 	add	x0, x0, #0x1
-ffffff8000083184:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083180:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083184:	91000400 	add	x0, x0, #0x1
+ffffff8000083188:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:132
-ffffff8000083188:	b90463ff 	str	wzr, [sp, #1120]
+ffffff800008318c:	b90463ff 	str	wzr, [sp, #1120]
 /home/dofingert/Source/OS/THYOS/lib/print.c:133
-ffffff800008318c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083190:	39400000 	ldrb	w0, [x0]
-ffffff8000083194:	7101e01f 	cmp	w0, #0x78
-ffffff8000083198:	54002e00 	b.eq	ffffff8000083758 <lp_Print+0x83c>  // b.none
-ffffff800008319c:	7101e01f 	cmp	w0, #0x78
-ffffff80000831a0:	54004e0c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831a4:	7101d41f 	cmp	w0, #0x75
-ffffff80000831a8:	540023a0 	b.eq	ffffff800008361c <lp_Print+0x700>  // b.none
-ffffff80000831ac:	7101d41f 	cmp	w0, #0x75
-ffffff80000831b0:	54004d8c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831b4:	7101cc1f 	cmp	w0, #0x73
-ffffff80000831b8:	540046c0 	b.eq	ffffff8000083a90 <lp_Print+0xb74>  // b.none
-ffffff80000831bc:	7101cc1f 	cmp	w0, #0x73
-ffffff80000831c0:	54004d0c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831c4:	7101bc1f 	cmp	w0, #0x6f
-ffffff80000831c8:	540018c0 	b.eq	ffffff80000834e0 <lp_Print+0x5c4>  // b.none
-ffffff80000831cc:	7101bc1f 	cmp	w0, #0x6f
-ffffff80000831d0:	54004c8c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831d4:	7101901f 	cmp	w0, #0x64
-ffffff80000831d8:	54000d60 	b.eq	ffffff8000083384 <lp_Print+0x468>  // b.none
-ffffff80000831dc:	7101901f 	cmp	w0, #0x64
-ffffff80000831e0:	54004c0c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831e4:	71018c1f 	cmp	w0, #0x63
-ffffff80000831e8:	54003f40 	b.eq	ffffff80000839d0 <lp_Print+0xab4>  // b.none
-ffffff80000831ec:	71018c1f 	cmp	w0, #0x63
-ffffff80000831f0:	54004b8c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff80000831f4:	7101881f 	cmp	w0, #0x62
-ffffff80000831f8:	54000280 	b.eq	ffffff8000083248 <lp_Print+0x32c>  // b.none
-ffffff80000831fc:	7101881f 	cmp	w0, #0x62
-ffffff8000083200:	54004b0c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff8000083204:	7101601f 	cmp	w0, #0x58
-ffffff8000083208:	54003460 	b.eq	ffffff8000083894 <lp_Print+0x978>  // b.none
-ffffff800008320c:	7101601f 	cmp	w0, #0x58
-ffffff8000083210:	54004a8c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff8000083214:	7101541f 	cmp	w0, #0x55
-ffffff8000083218:	54002020 	b.eq	ffffff800008361c <lp_Print+0x700>  // b.none
-ffffff800008321c:	7101541f 	cmp	w0, #0x55
-ffffff8000083220:	54004a0c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff8000083224:	71013c1f 	cmp	w0, #0x4f
-ffffff8000083228:	540015c0 	b.eq	ffffff80000834e0 <lp_Print+0x5c4>  // b.none
-ffffff800008322c:	71013c1f 	cmp	w0, #0x4f
-ffffff8000083230:	5400498c 	b.gt	ffffff8000083b60 <lp_Print+0xc44>
-ffffff8000083234:	7100001f 	cmp	w0, #0x0
-ffffff8000083238:	540048c0 	b.eq	ffffff8000083b50 <lp_Print+0xc34>  // b.none
-ffffff800008323c:	7101101f 	cmp	w0, #0x44
-ffffff8000083240:	54000a20 	b.eq	ffffff8000083384 <lp_Print+0x468>  // b.none
-ffffff8000083244:	14000247 	b	ffffff8000083b60 <lp_Print+0xc44>
+ffffff8000083190:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083194:	39400000 	ldrb	w0, [x0]
+ffffff8000083198:	7101e01f 	cmp	w0, #0x78
+ffffff800008319c:	54002e00 	b.eq	ffffff800008375c <lp_Print+0x83c>  // b.none
+ffffff80000831a0:	7101e01f 	cmp	w0, #0x78
+ffffff80000831a4:	54004e0c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831a8:	7101d41f 	cmp	w0, #0x75
+ffffff80000831ac:	540023a0 	b.eq	ffffff8000083620 <lp_Print+0x700>  // b.none
+ffffff80000831b0:	7101d41f 	cmp	w0, #0x75
+ffffff80000831b4:	54004d8c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831b8:	7101cc1f 	cmp	w0, #0x73
+ffffff80000831bc:	540046c0 	b.eq	ffffff8000083a94 <lp_Print+0xb74>  // b.none
+ffffff80000831c0:	7101cc1f 	cmp	w0, #0x73
+ffffff80000831c4:	54004d0c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831c8:	7101bc1f 	cmp	w0, #0x6f
+ffffff80000831cc:	540018c0 	b.eq	ffffff80000834e4 <lp_Print+0x5c4>  // b.none
+ffffff80000831d0:	7101bc1f 	cmp	w0, #0x6f
+ffffff80000831d4:	54004c8c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831d8:	7101901f 	cmp	w0, #0x64
+ffffff80000831dc:	54000d60 	b.eq	ffffff8000083388 <lp_Print+0x468>  // b.none
+ffffff80000831e0:	7101901f 	cmp	w0, #0x64
+ffffff80000831e4:	54004c0c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831e8:	71018c1f 	cmp	w0, #0x63
+ffffff80000831ec:	54003f40 	b.eq	ffffff80000839d4 <lp_Print+0xab4>  // b.none
+ffffff80000831f0:	71018c1f 	cmp	w0, #0x63
+ffffff80000831f4:	54004b8c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff80000831f8:	7101881f 	cmp	w0, #0x62
+ffffff80000831fc:	54000280 	b.eq	ffffff800008324c <lp_Print+0x32c>  // b.none
+ffffff8000083200:	7101881f 	cmp	w0, #0x62
+ffffff8000083204:	54004b0c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff8000083208:	7101601f 	cmp	w0, #0x58
+ffffff800008320c:	54003460 	b.eq	ffffff8000083898 <lp_Print+0x978>  // b.none
+ffffff8000083210:	7101601f 	cmp	w0, #0x58
+ffffff8000083214:	54004a8c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff8000083218:	7101541f 	cmp	w0, #0x55
+ffffff800008321c:	54002020 	b.eq	ffffff8000083620 <lp_Print+0x700>  // b.none
+ffffff8000083220:	7101541f 	cmp	w0, #0x55
+ffffff8000083224:	54004a0c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff8000083228:	71013c1f 	cmp	w0, #0x4f
+ffffff800008322c:	540015c0 	b.eq	ffffff80000834e4 <lp_Print+0x5c4>  // b.none
+ffffff8000083230:	71013c1f 	cmp	w0, #0x4f
+ffffff8000083234:	5400498c 	b.gt	ffffff8000083b64 <lp_Print+0xc44>
+ffffff8000083238:	7100001f 	cmp	w0, #0x0
+ffffff800008323c:	540048c0 	b.eq	ffffff8000083b54 <lp_Print+0xc34>  // b.none
+ffffff8000083240:	7101101f 	cmp	w0, #0x44
+ffffff8000083244:	54000a20 	b.eq	ffffff8000083388 <lp_Print+0x468>  // b.none
+ffffff8000083248:	14000247 	b	ffffff8000083b64 <lp_Print+0xc44>
 /home/dofingert/Source/OS/THYOS/lib/print.c:136
-ffffff8000083248:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff800008324c:	7100001f 	cmp	w0, #0x0
-ffffff8000083250:	54000300 	b.eq	ffffff80000832b0 <lp_Print+0x394>  // b.none
+ffffff800008324c:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff8000083250:	7100001f 	cmp	w0, #0x0
+ffffff8000083254:	54000300 	b.eq	ffffff80000832b4 <lp_Print+0x394>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:138
-ffffff8000083254:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083258:	f9400260 	ldr	x0, [x19]
-ffffff800008325c:	7100003f 	cmp	w1, #0x0
-ffffff8000083260:	540000ab 	b.lt	ffffff8000083274 <lp_Print+0x358>  // b.tstop
-ffffff8000083264:	91003c01 	add	x1, x0, #0xf
-ffffff8000083268:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff800008326c:	f9000261 	str	x1, [x19]
-ffffff8000083270:	1400000d 	b	ffffff80000832a4 <lp_Print+0x388>
-ffffff8000083274:	11002022 	add	w2, w1, #0x8
-ffffff8000083278:	b9001a62 	str	w2, [x19, #24]
-ffffff800008327c:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083280:	7100005f 	cmp	w2, #0x0
-ffffff8000083284:	540000ad 	b.le	ffffff8000083298 <lp_Print+0x37c>
-ffffff8000083288:	91003c01 	add	x1, x0, #0xf
-ffffff800008328c:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083290:	f9000261 	str	x1, [x19]
-ffffff8000083294:	14000004 	b	ffffff80000832a4 <lp_Print+0x388>
-ffffff8000083298:	f9400662 	ldr	x2, [x19, #8]
-ffffff800008329c:	93407c20 	sxtw	x0, w1
-ffffff80000832a0:	8b000040 	add	x0, x2, x0
-ffffff80000832a4:	f9400000 	ldr	x0, [x0]
-ffffff80000832a8:	f90237e0 	str	x0, [sp, #1128]
-ffffff80000832ac:	14000018 	b	ffffff800008330c <lp_Print+0x3f0>
+ffffff8000083258:	b9401a61 	ldr	w1, [x19, #24]
+ffffff800008325c:	f9400260 	ldr	x0, [x19]
+ffffff8000083260:	7100003f 	cmp	w1, #0x0
+ffffff8000083264:	540000ab 	b.lt	ffffff8000083278 <lp_Print+0x358>  // b.tstop
+ffffff8000083268:	91003c01 	add	x1, x0, #0xf
+ffffff800008326c:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083270:	f9000261 	str	x1, [x19]
+ffffff8000083274:	1400000d 	b	ffffff80000832a8 <lp_Print+0x388>
+ffffff8000083278:	11002022 	add	w2, w1, #0x8
+ffffff800008327c:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083280:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083284:	7100005f 	cmp	w2, #0x0
+ffffff8000083288:	540000ad 	b.le	ffffff800008329c <lp_Print+0x37c>
+ffffff800008328c:	91003c01 	add	x1, x0, #0xf
+ffffff8000083290:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083294:	f9000261 	str	x1, [x19]
+ffffff8000083298:	14000004 	b	ffffff80000832a8 <lp_Print+0x388>
+ffffff800008329c:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000832a0:	93407c20 	sxtw	x0, w1
+ffffff80000832a4:	8b000040 	add	x0, x2, x0
+ffffff80000832a8:	f9400000 	ldr	x0, [x0]
+ffffff80000832ac:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000832b0:	14000018 	b	ffffff8000083310 <lp_Print+0x3f0>
 /home/dofingert/Source/OS/THYOS/lib/print.c:142
-ffffff80000832b0:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000832b4:	f9400260 	ldr	x0, [x19]
-ffffff80000832b8:	7100003f 	cmp	w1, #0x0
-ffffff80000832bc:	540000ab 	b.lt	ffffff80000832d0 <lp_Print+0x3b4>  // b.tstop
-ffffff80000832c0:	91002c01 	add	x1, x0, #0xb
-ffffff80000832c4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000832c8:	f9000261 	str	x1, [x19]
-ffffff80000832cc:	1400000d 	b	ffffff8000083300 <lp_Print+0x3e4>
-ffffff80000832d0:	11002022 	add	w2, w1, #0x8
-ffffff80000832d4:	b9001a62 	str	w2, [x19, #24]
-ffffff80000832d8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000832dc:	7100005f 	cmp	w2, #0x0
-ffffff80000832e0:	540000ad 	b.le	ffffff80000832f4 <lp_Print+0x3d8>
-ffffff80000832e4:	91002c01 	add	x1, x0, #0xb
-ffffff80000832e8:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000832ec:	f9000261 	str	x1, [x19]
-ffffff80000832f0:	14000004 	b	ffffff8000083300 <lp_Print+0x3e4>
-ffffff80000832f4:	f9400662 	ldr	x2, [x19, #8]
-ffffff80000832f8:	93407c20 	sxtw	x0, w1
-ffffff80000832fc:	8b000040 	add	x0, x2, x0
-ffffff8000083300:	b9400000 	ldr	w0, [x0]
-ffffff8000083304:	93407c00 	sxtw	x0, w0
-ffffff8000083308:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000832b4:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000832b8:	f9400260 	ldr	x0, [x19]
+ffffff80000832bc:	7100003f 	cmp	w1, #0x0
+ffffff80000832c0:	540000ab 	b.lt	ffffff80000832d4 <lp_Print+0x3b4>  // b.tstop
+ffffff80000832c4:	91002c01 	add	x1, x0, #0xb
+ffffff80000832c8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000832cc:	f9000261 	str	x1, [x19]
+ffffff80000832d0:	1400000d 	b	ffffff8000083304 <lp_Print+0x3e4>
+ffffff80000832d4:	11002022 	add	w2, w1, #0x8
+ffffff80000832d8:	b9001a62 	str	w2, [x19, #24]
+ffffff80000832dc:	b9401a62 	ldr	w2, [x19, #24]
+ffffff80000832e0:	7100005f 	cmp	w2, #0x0
+ffffff80000832e4:	540000ad 	b.le	ffffff80000832f8 <lp_Print+0x3d8>
+ffffff80000832e8:	91002c01 	add	x1, x0, #0xb
+ffffff80000832ec:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000832f0:	f9000261 	str	x1, [x19]
+ffffff80000832f4:	14000004 	b	ffffff8000083304 <lp_Print+0x3e4>
+ffffff80000832f8:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000832fc:	93407c20 	sxtw	x0, w1
+ffffff8000083300:	8b000040 	add	x0, x2, x0
+ffffff8000083304:	b9400000 	ldr	w0, [x0]
+ffffff8000083308:	93407c00 	sxtw	x0, w0
+ffffff800008330c:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:144
-ffffff800008330c:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff8000083310:	910123e0 	add	x0, sp, #0x48
-ffffff8000083314:	52800007 	mov	w7, #0x0                   	// #0
-ffffff8000083318:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff800008331c:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff8000083320:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff8000083324:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff8000083328:	52800042 	mov	w2, #0x2                   	// #2
-ffffff800008332c:	940002c2 	bl	ffffff8000083e34 <PrintNum>
-ffffff8000083330:	b90447e0 	str	w0, [sp, #1092]
+ffffff8000083310:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff8000083314:	910123e0 	add	x0, sp, #0x48
+ffffff8000083318:	52800007 	mov	w7, #0x0                   	// #0
+ffffff800008331c:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff8000083320:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff8000083324:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff8000083328:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff800008332c:	52800042 	mov	w2, #0x2                   	// #2
+ffffff8000083330:	940002c2 	bl	ffffff8000083e38 <PrintNum>
+ffffff8000083334:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:146
-ffffff8000083334:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083338:	7100001f 	cmp	w0, #0x0
-ffffff800008333c:	5400008b 	b.lt	ffffff800008334c <lp_Print+0x430>  // b.tstop
+ffffff8000083338:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff800008333c:	7100001f 	cmp	w0, #0x0
+ffffff8000083340:	5400008b 	b.lt	ffffff8000083350 <lp_Print+0x430>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 2)
-ffffff8000083340:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083344:	710fa01f 	cmp	w0, #0x3e8
-ffffff8000083348:	5400010d 	b.le	ffffff8000083368 <lp_Print+0x44c>
+ffffff8000083344:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083348:	710fa01f 	cmp	w0, #0x3e8
+ffffff800008334c:	5400010d 	b.le	ffffff800008336c <lp_Print+0x44c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 3)
-ffffff800008334c:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083350:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000083354:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000083358:	91362001 	add	x1, x0, #0xd88
-ffffff800008335c:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083360:	d63f0060 	blr	x3
+ffffff8000083350:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083354:	52800302 	mov	w2, #0x18                  	// #24
+ffffff8000083358:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff800008335c:	91362001 	add	x1, x0, #0xd88
+ffffff8000083360:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083364:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 2)
-ffffff8000083364:	14000000 	b	ffffff8000083364 <lp_Print+0x448>
+ffffff8000083368:	14000000 	b	ffffff8000083368 <lp_Print+0x448>
 /home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 4)
-ffffff8000083368:	910123e0 	add	x0, sp, #0x48
-ffffff800008336c:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083370:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff8000083374:	aa0003e1 	mov	x1, x0
-ffffff8000083378:	f9401be0 	ldr	x0, [sp, #48]
-ffffff800008337c:	d63f0060 	blr	x3
+ffffff800008336c:	910123e0 	add	x0, sp, #0x48
+ffffff8000083370:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083374:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff8000083378:	aa0003e1 	mov	x1, x0
+ffffff800008337c:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083380:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:147 (discriminator 4)
-ffffff8000083380:	140001fd 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083384:	140001fd 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:151
-ffffff8000083384:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff8000083388:	7100001f 	cmp	w0, #0x0
-ffffff800008338c:	54000300 	b.eq	ffffff80000833ec <lp_Print+0x4d0>  // b.none
+ffffff8000083388:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff800008338c:	7100001f 	cmp	w0, #0x0
+ffffff8000083390:	54000300 	b.eq	ffffff80000833f0 <lp_Print+0x4d0>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:153
-ffffff8000083390:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083394:	f9400260 	ldr	x0, [x19]
-ffffff8000083398:	7100003f 	cmp	w1, #0x0
-ffffff800008339c:	540000ab 	b.lt	ffffff80000833b0 <lp_Print+0x494>  // b.tstop
-ffffff80000833a0:	91003c01 	add	x1, x0, #0xf
-ffffff80000833a4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000833a8:	f9000261 	str	x1, [x19]
-ffffff80000833ac:	1400000d 	b	ffffff80000833e0 <lp_Print+0x4c4>
-ffffff80000833b0:	11002022 	add	w2, w1, #0x8
-ffffff80000833b4:	b9001a62 	str	w2, [x19, #24]
-ffffff80000833b8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000833bc:	7100005f 	cmp	w2, #0x0
-ffffff80000833c0:	540000ad 	b.le	ffffff80000833d4 <lp_Print+0x4b8>
-ffffff80000833c4:	91003c01 	add	x1, x0, #0xf
-ffffff80000833c8:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000833cc:	f9000261 	str	x1, [x19]
-ffffff80000833d0:	14000004 	b	ffffff80000833e0 <lp_Print+0x4c4>
-ffffff80000833d4:	f9400662 	ldr	x2, [x19, #8]
-ffffff80000833d8:	93407c20 	sxtw	x0, w1
-ffffff80000833dc:	8b000040 	add	x0, x2, x0
-ffffff80000833e0:	f9400000 	ldr	x0, [x0]
-ffffff80000833e4:	f90237e0 	str	x0, [sp, #1128]
-ffffff80000833e8:	14000018 	b	ffffff8000083448 <lp_Print+0x52c>
+ffffff8000083394:	b9401a61 	ldr	w1, [x19, #24]
+ffffff8000083398:	f9400260 	ldr	x0, [x19]
+ffffff800008339c:	7100003f 	cmp	w1, #0x0
+ffffff80000833a0:	540000ab 	b.lt	ffffff80000833b4 <lp_Print+0x494>  // b.tstop
+ffffff80000833a4:	91003c01 	add	x1, x0, #0xf
+ffffff80000833a8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000833ac:	f9000261 	str	x1, [x19]
+ffffff80000833b0:	1400000d 	b	ffffff80000833e4 <lp_Print+0x4c4>
+ffffff80000833b4:	11002022 	add	w2, w1, #0x8
+ffffff80000833b8:	b9001a62 	str	w2, [x19, #24]
+ffffff80000833bc:	b9401a62 	ldr	w2, [x19, #24]
+ffffff80000833c0:	7100005f 	cmp	w2, #0x0
+ffffff80000833c4:	540000ad 	b.le	ffffff80000833d8 <lp_Print+0x4b8>
+ffffff80000833c8:	91003c01 	add	x1, x0, #0xf
+ffffff80000833cc:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000833d0:	f9000261 	str	x1, [x19]
+ffffff80000833d4:	14000004 	b	ffffff80000833e4 <lp_Print+0x4c4>
+ffffff80000833d8:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000833dc:	93407c20 	sxtw	x0, w1
+ffffff80000833e0:	8b000040 	add	x0, x2, x0
+ffffff80000833e4:	f9400000 	ldr	x0, [x0]
+ffffff80000833e8:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000833ec:	14000018 	b	ffffff800008344c <lp_Print+0x52c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:157
-ffffff80000833ec:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000833f0:	f9400260 	ldr	x0, [x19]
-ffffff80000833f4:	7100003f 	cmp	w1, #0x0
-ffffff80000833f8:	540000ab 	b.lt	ffffff800008340c <lp_Print+0x4f0>  // b.tstop
-ffffff80000833fc:	91002c01 	add	x1, x0, #0xb
-ffffff8000083400:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083404:	f9000261 	str	x1, [x19]
-ffffff8000083408:	1400000d 	b	ffffff800008343c <lp_Print+0x520>
-ffffff800008340c:	11002022 	add	w2, w1, #0x8
-ffffff8000083410:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083414:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083418:	7100005f 	cmp	w2, #0x0
-ffffff800008341c:	540000ad 	b.le	ffffff8000083430 <lp_Print+0x514>
-ffffff8000083420:	91002c01 	add	x1, x0, #0xb
-ffffff8000083424:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083428:	f9000261 	str	x1, [x19]
-ffffff800008342c:	14000004 	b	ffffff800008343c <lp_Print+0x520>
-ffffff8000083430:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083434:	93407c20 	sxtw	x0, w1
-ffffff8000083438:	8b000040 	add	x0, x2, x0
-ffffff800008343c:	b9400000 	ldr	w0, [x0]
-ffffff8000083440:	93407c00 	sxtw	x0, w0
-ffffff8000083444:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000833f0:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000833f4:	f9400260 	ldr	x0, [x19]
+ffffff80000833f8:	7100003f 	cmp	w1, #0x0
+ffffff80000833fc:	540000ab 	b.lt	ffffff8000083410 <lp_Print+0x4f0>  // b.tstop
+ffffff8000083400:	91002c01 	add	x1, x0, #0xb
+ffffff8000083404:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083408:	f9000261 	str	x1, [x19]
+ffffff800008340c:	1400000d 	b	ffffff8000083440 <lp_Print+0x520>
+ffffff8000083410:	11002022 	add	w2, w1, #0x8
+ffffff8000083414:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083418:	b9401a62 	ldr	w2, [x19, #24]
+ffffff800008341c:	7100005f 	cmp	w2, #0x0
+ffffff8000083420:	540000ad 	b.le	ffffff8000083434 <lp_Print+0x514>
+ffffff8000083424:	91002c01 	add	x1, x0, #0xb
+ffffff8000083428:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff800008342c:	f9000261 	str	x1, [x19]
+ffffff8000083430:	14000004 	b	ffffff8000083440 <lp_Print+0x520>
+ffffff8000083434:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083438:	93407c20 	sxtw	x0, w1
+ffffff800008343c:	8b000040 	add	x0, x2, x0
+ffffff8000083440:	b9400000 	ldr	w0, [x0]
+ffffff8000083444:	93407c00 	sxtw	x0, w0
+ffffff8000083448:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:160
-ffffff8000083448:	f94237e0 	ldr	x0, [sp, #1128]
-ffffff800008344c:	f100001f 	cmp	x0, #0x0
-ffffff8000083450:	540000ca 	b.ge	ffffff8000083468 <lp_Print+0x54c>  // b.tcont
+ffffff800008344c:	f94237e0 	ldr	x0, [sp, #1128]
+ffffff8000083450:	f100001f 	cmp	x0, #0x0
+ffffff8000083454:	540000ca 	b.ge	ffffff800008346c <lp_Print+0x54c>  // b.tcont
 /home/dofingert/Source/OS/THYOS/lib/print.c:162
-ffffff8000083454:	52800020 	mov	w0, #0x1                   	// #1
-ffffff8000083458:	b90463e0 	str	w0, [sp, #1120]
+ffffff8000083458:	52800020 	mov	w0, #0x1                   	// #1
+ffffff800008345c:	b90463e0 	str	w0, [sp, #1120]
 /home/dofingert/Source/OS/THYOS/lib/print.c:163
-ffffff800008345c:	f94237e0 	ldr	x0, [sp, #1128]
-ffffff8000083460:	cb0003e0 	neg	x0, x0
-ffffff8000083464:	f90237e0 	str	x0, [sp, #1128]
+ffffff8000083460:	f94237e0 	ldr	x0, [sp, #1128]
+ffffff8000083464:	cb0003e0 	neg	x0, x0
+ffffff8000083468:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:165
-ffffff8000083468:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff800008346c:	910123e0 	add	x0, sp, #0x48
-ffffff8000083470:	52800007 	mov	w7, #0x0                   	// #0
-ffffff8000083474:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff8000083478:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff800008347c:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff8000083480:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff8000083484:	52800142 	mov	w2, #0xa                   	// #10
-ffffff8000083488:	9400026b 	bl	ffffff8000083e34 <PrintNum>
-ffffff800008348c:	b90447e0 	str	w0, [sp, #1092]
+ffffff800008346c:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff8000083470:	910123e0 	add	x0, sp, #0x48
+ffffff8000083474:	52800007 	mov	w7, #0x0                   	// #0
+ffffff8000083478:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff800008347c:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff8000083480:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff8000083484:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff8000083488:	52800142 	mov	w2, #0xa                   	// #10
+ffffff800008348c:	9400026b 	bl	ffffff8000083e38 <PrintNum>
+ffffff8000083490:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:166
-ffffff8000083490:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083494:	7100001f 	cmp	w0, #0x0
-ffffff8000083498:	5400008b 	b.lt	ffffff80000834a8 <lp_Print+0x58c>  // b.tstop
+ffffff8000083494:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083498:	7100001f 	cmp	w0, #0x0
+ffffff800008349c:	5400008b 	b.lt	ffffff80000834ac <lp_Print+0x58c>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 2)
-ffffff800008349c:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff80000834a0:	710fa01f 	cmp	w0, #0x3e8
-ffffff80000834a4:	5400010d 	b.le	ffffff80000834c4 <lp_Print+0x5a8>
+ffffff80000834a0:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff80000834a4:	710fa01f 	cmp	w0, #0x3e8
+ffffff80000834a8:	5400010d 	b.le	ffffff80000834c8 <lp_Print+0x5a8>
 /home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 3)
-ffffff80000834a8:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff80000834ac:	52800302 	mov	w2, #0x18                  	// #24
-ffffff80000834b0:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000834b4:	91362001 	add	x1, x0, #0xd88
-ffffff80000834b8:	f9401be0 	ldr	x0, [sp, #48]
-ffffff80000834bc:	d63f0060 	blr	x3
-ffffff80000834c0:	14000000 	b	ffffff80000834c0 <lp_Print+0x5a4>
+ffffff80000834ac:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff80000834b0:	52800302 	mov	w2, #0x18                  	// #24
+ffffff80000834b4:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000834b8:	91362001 	add	x1, x0, #0xd88
+ffffff80000834bc:	f9401be0 	ldr	x0, [sp, #48]
+ffffff80000834c0:	d63f0060 	blr	x3
+ffffff80000834c4:	14000000 	b	ffffff80000834c4 <lp_Print+0x5a4>
 /home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 4)
-ffffff80000834c4:	910123e0 	add	x0, sp, #0x48
-ffffff80000834c8:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff80000834cc:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff80000834d0:	aa0003e1 	mov	x1, x0
-ffffff80000834d4:	f9401be0 	ldr	x0, [sp, #48]
-ffffff80000834d8:	d63f0060 	blr	x3
+ffffff80000834c8:	910123e0 	add	x0, sp, #0x48
+ffffff80000834cc:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff80000834d0:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff80000834d4:	aa0003e1 	mov	x1, x0
+ffffff80000834d8:	f9401be0 	ldr	x0, [sp, #48]
+ffffff80000834dc:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:167 (discriminator 4)
-ffffff80000834dc:	140001a6 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff80000834e0:	140001a6 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:171
-ffffff80000834e0:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff80000834e4:	7100001f 	cmp	w0, #0x0
-ffffff80000834e8:	54000300 	b.eq	ffffff8000083548 <lp_Print+0x62c>  // b.none
+ffffff80000834e4:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff80000834e8:	7100001f 	cmp	w0, #0x0
+ffffff80000834ec:	54000300 	b.eq	ffffff800008354c <lp_Print+0x62c>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:173
-ffffff80000834ec:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000834f0:	f9400260 	ldr	x0, [x19]
-ffffff80000834f4:	7100003f 	cmp	w1, #0x0
-ffffff80000834f8:	540000ab 	b.lt	ffffff800008350c <lp_Print+0x5f0>  // b.tstop
-ffffff80000834fc:	91003c01 	add	x1, x0, #0xf
-ffffff8000083500:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083504:	f9000261 	str	x1, [x19]
-ffffff8000083508:	1400000d 	b	ffffff800008353c <lp_Print+0x620>
-ffffff800008350c:	11002022 	add	w2, w1, #0x8
-ffffff8000083510:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083514:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083518:	7100005f 	cmp	w2, #0x0
-ffffff800008351c:	540000ad 	b.le	ffffff8000083530 <lp_Print+0x614>
-ffffff8000083520:	91003c01 	add	x1, x0, #0xf
-ffffff8000083524:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083528:	f9000261 	str	x1, [x19]
-ffffff800008352c:	14000004 	b	ffffff800008353c <lp_Print+0x620>
-ffffff8000083530:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083534:	93407c20 	sxtw	x0, w1
-ffffff8000083538:	8b000040 	add	x0, x2, x0
-ffffff800008353c:	f9400000 	ldr	x0, [x0]
-ffffff8000083540:	f90237e0 	str	x0, [sp, #1128]
-ffffff8000083544:	14000018 	b	ffffff80000835a4 <lp_Print+0x688>
+ffffff80000834f0:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000834f4:	f9400260 	ldr	x0, [x19]
+ffffff80000834f8:	7100003f 	cmp	w1, #0x0
+ffffff80000834fc:	540000ab 	b.lt	ffffff8000083510 <lp_Print+0x5f0>  // b.tstop
+ffffff8000083500:	91003c01 	add	x1, x0, #0xf
+ffffff8000083504:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083508:	f9000261 	str	x1, [x19]
+ffffff800008350c:	1400000d 	b	ffffff8000083540 <lp_Print+0x620>
+ffffff8000083510:	11002022 	add	w2, w1, #0x8
+ffffff8000083514:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083518:	b9401a62 	ldr	w2, [x19, #24]
+ffffff800008351c:	7100005f 	cmp	w2, #0x0
+ffffff8000083520:	540000ad 	b.le	ffffff8000083534 <lp_Print+0x614>
+ffffff8000083524:	91003c01 	add	x1, x0, #0xf
+ffffff8000083528:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff800008352c:	f9000261 	str	x1, [x19]
+ffffff8000083530:	14000004 	b	ffffff8000083540 <lp_Print+0x620>
+ffffff8000083534:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083538:	93407c20 	sxtw	x0, w1
+ffffff800008353c:	8b000040 	add	x0, x2, x0
+ffffff8000083540:	f9400000 	ldr	x0, [x0]
+ffffff8000083544:	f90237e0 	str	x0, [sp, #1128]
+ffffff8000083548:	14000018 	b	ffffff80000835a8 <lp_Print+0x688>
 /home/dofingert/Source/OS/THYOS/lib/print.c:177
-ffffff8000083548:	b9401a61 	ldr	w1, [x19, #24]
-ffffff800008354c:	f9400260 	ldr	x0, [x19]
-ffffff8000083550:	7100003f 	cmp	w1, #0x0
-ffffff8000083554:	540000ab 	b.lt	ffffff8000083568 <lp_Print+0x64c>  // b.tstop
-ffffff8000083558:	91002c01 	add	x1, x0, #0xb
-ffffff800008355c:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083560:	f9000261 	str	x1, [x19]
-ffffff8000083564:	1400000d 	b	ffffff8000083598 <lp_Print+0x67c>
-ffffff8000083568:	11002022 	add	w2, w1, #0x8
-ffffff800008356c:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083570:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083574:	7100005f 	cmp	w2, #0x0
-ffffff8000083578:	540000ad 	b.le	ffffff800008358c <lp_Print+0x670>
-ffffff800008357c:	91002c01 	add	x1, x0, #0xb
-ffffff8000083580:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083584:	f9000261 	str	x1, [x19]
-ffffff8000083588:	14000004 	b	ffffff8000083598 <lp_Print+0x67c>
-ffffff800008358c:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083590:	93407c20 	sxtw	x0, w1
-ffffff8000083594:	8b000040 	add	x0, x2, x0
-ffffff8000083598:	b9400000 	ldr	w0, [x0]
-ffffff800008359c:	93407c00 	sxtw	x0, w0
-ffffff80000835a0:	f90237e0 	str	x0, [sp, #1128]
+ffffff800008354c:	b9401a61 	ldr	w1, [x19, #24]
+ffffff8000083550:	f9400260 	ldr	x0, [x19]
+ffffff8000083554:	7100003f 	cmp	w1, #0x0
+ffffff8000083558:	540000ab 	b.lt	ffffff800008356c <lp_Print+0x64c>  // b.tstop
+ffffff800008355c:	91002c01 	add	x1, x0, #0xb
+ffffff8000083560:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083564:	f9000261 	str	x1, [x19]
+ffffff8000083568:	1400000d 	b	ffffff800008359c <lp_Print+0x67c>
+ffffff800008356c:	11002022 	add	w2, w1, #0x8
+ffffff8000083570:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083574:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083578:	7100005f 	cmp	w2, #0x0
+ffffff800008357c:	540000ad 	b.le	ffffff8000083590 <lp_Print+0x670>
+ffffff8000083580:	91002c01 	add	x1, x0, #0xb
+ffffff8000083584:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083588:	f9000261 	str	x1, [x19]
+ffffff800008358c:	14000004 	b	ffffff800008359c <lp_Print+0x67c>
+ffffff8000083590:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083594:	93407c20 	sxtw	x0, w1
+ffffff8000083598:	8b000040 	add	x0, x2, x0
+ffffff800008359c:	b9400000 	ldr	w0, [x0]
+ffffff80000835a0:	93407c00 	sxtw	x0, w0
+ffffff80000835a4:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:179
-ffffff80000835a4:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff80000835a8:	910123e0 	add	x0, sp, #0x48
-ffffff80000835ac:	52800007 	mov	w7, #0x0                   	// #0
-ffffff80000835b0:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff80000835b4:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff80000835b8:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff80000835bc:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff80000835c0:	52800102 	mov	w2, #0x8                   	// #8
-ffffff80000835c4:	9400021c 	bl	ffffff8000083e34 <PrintNum>
-ffffff80000835c8:	b90447e0 	str	w0, [sp, #1092]
+ffffff80000835a8:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff80000835ac:	910123e0 	add	x0, sp, #0x48
+ffffff80000835b0:	52800007 	mov	w7, #0x0                   	// #0
+ffffff80000835b4:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff80000835b8:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff80000835bc:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff80000835c0:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff80000835c4:	52800102 	mov	w2, #0x8                   	// #8
+ffffff80000835c8:	9400021c 	bl	ffffff8000083e38 <PrintNum>
+ffffff80000835cc:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:180
-ffffff80000835cc:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff80000835d0:	7100001f 	cmp	w0, #0x0
-ffffff80000835d4:	5400008b 	b.lt	ffffff80000835e4 <lp_Print+0x6c8>  // b.tstop
+ffffff80000835d0:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff80000835d4:	7100001f 	cmp	w0, #0x0
+ffffff80000835d8:	5400008b 	b.lt	ffffff80000835e8 <lp_Print+0x6c8>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 2)
-ffffff80000835d8:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff80000835dc:	710fa01f 	cmp	w0, #0x3e8
-ffffff80000835e0:	5400010d 	b.le	ffffff8000083600 <lp_Print+0x6e4>
+ffffff80000835dc:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff80000835e0:	710fa01f 	cmp	w0, #0x3e8
+ffffff80000835e4:	5400010d 	b.le	ffffff8000083604 <lp_Print+0x6e4>
 /home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 3)
-ffffff80000835e4:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff80000835e8:	52800302 	mov	w2, #0x18                  	// #24
-ffffff80000835ec:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000835f0:	91362001 	add	x1, x0, #0xd88
-ffffff80000835f4:	f9401be0 	ldr	x0, [sp, #48]
-ffffff80000835f8:	d63f0060 	blr	x3
+ffffff80000835e8:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff80000835ec:	52800302 	mov	w2, #0x18                  	// #24
+ffffff80000835f0:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000835f4:	91362001 	add	x1, x0, #0xd88
+ffffff80000835f8:	f9401be0 	ldr	x0, [sp, #48]
+ffffff80000835fc:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 4)
-ffffff80000835fc:	14000000 	b	ffffff80000835fc <lp_Print+0x6e0>
-ffffff8000083600:	910123e0 	add	x0, sp, #0x48
-ffffff8000083604:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083608:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff800008360c:	aa0003e1 	mov	x1, x0
-ffffff8000083610:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083614:	d63f0060 	blr	x3
+ffffff8000083600:	14000000 	b	ffffff8000083600 <lp_Print+0x6e0>
+ffffff8000083604:	910123e0 	add	x0, sp, #0x48
+ffffff8000083608:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff800008360c:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff8000083610:	aa0003e1 	mov	x1, x0
+ffffff8000083614:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083618:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:181 (discriminator 4)
-ffffff8000083618:	14000157 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff800008361c:	14000157 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:185
-ffffff800008361c:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff8000083620:	7100001f 	cmp	w0, #0x0
-ffffff8000083624:	54000300 	b.eq	ffffff8000083684 <lp_Print+0x768>  // b.none
+ffffff8000083620:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff8000083624:	7100001f 	cmp	w0, #0x0
+ffffff8000083628:	54000300 	b.eq	ffffff8000083688 <lp_Print+0x768>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:187
-ffffff8000083628:	b9401a61 	ldr	w1, [x19, #24]
-ffffff800008362c:	f9400260 	ldr	x0, [x19]
-ffffff8000083630:	7100003f 	cmp	w1, #0x0
-ffffff8000083634:	540000ab 	b.lt	ffffff8000083648 <lp_Print+0x72c>  // b.tstop
-ffffff8000083638:	91003c01 	add	x1, x0, #0xf
-ffffff800008363c:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083640:	f9000261 	str	x1, [x19]
-ffffff8000083644:	1400000d 	b	ffffff8000083678 <lp_Print+0x75c>
-ffffff8000083648:	11002022 	add	w2, w1, #0x8
-ffffff800008364c:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083650:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083654:	7100005f 	cmp	w2, #0x0
-ffffff8000083658:	540000ad 	b.le	ffffff800008366c <lp_Print+0x750>
-ffffff800008365c:	91003c01 	add	x1, x0, #0xf
-ffffff8000083660:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083664:	f9000261 	str	x1, [x19]
-ffffff8000083668:	14000004 	b	ffffff8000083678 <lp_Print+0x75c>
-ffffff800008366c:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083670:	93407c20 	sxtw	x0, w1
-ffffff8000083674:	8b000040 	add	x0, x2, x0
-ffffff8000083678:	f9400000 	ldr	x0, [x0]
-ffffff800008367c:	f90237e0 	str	x0, [sp, #1128]
-ffffff8000083680:	14000018 	b	ffffff80000836e0 <lp_Print+0x7c4>
+ffffff800008362c:	b9401a61 	ldr	w1, [x19, #24]
+ffffff8000083630:	f9400260 	ldr	x0, [x19]
+ffffff8000083634:	7100003f 	cmp	w1, #0x0
+ffffff8000083638:	540000ab 	b.lt	ffffff800008364c <lp_Print+0x72c>  // b.tstop
+ffffff800008363c:	91003c01 	add	x1, x0, #0xf
+ffffff8000083640:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083644:	f9000261 	str	x1, [x19]
+ffffff8000083648:	1400000d 	b	ffffff800008367c <lp_Print+0x75c>
+ffffff800008364c:	11002022 	add	w2, w1, #0x8
+ffffff8000083650:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083654:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083658:	7100005f 	cmp	w2, #0x0
+ffffff800008365c:	540000ad 	b.le	ffffff8000083670 <lp_Print+0x750>
+ffffff8000083660:	91003c01 	add	x1, x0, #0xf
+ffffff8000083664:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083668:	f9000261 	str	x1, [x19]
+ffffff800008366c:	14000004 	b	ffffff800008367c <lp_Print+0x75c>
+ffffff8000083670:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083674:	93407c20 	sxtw	x0, w1
+ffffff8000083678:	8b000040 	add	x0, x2, x0
+ffffff800008367c:	f9400000 	ldr	x0, [x0]
+ffffff8000083680:	f90237e0 	str	x0, [sp, #1128]
+ffffff8000083684:	14000018 	b	ffffff80000836e4 <lp_Print+0x7c4>
 /home/dofingert/Source/OS/THYOS/lib/print.c:191
-ffffff8000083684:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083688:	f9400260 	ldr	x0, [x19]
-ffffff800008368c:	7100003f 	cmp	w1, #0x0
-ffffff8000083690:	540000ab 	b.lt	ffffff80000836a4 <lp_Print+0x788>  // b.tstop
-ffffff8000083694:	91002c01 	add	x1, x0, #0xb
-ffffff8000083698:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff800008369c:	f9000261 	str	x1, [x19]
-ffffff80000836a0:	1400000d 	b	ffffff80000836d4 <lp_Print+0x7b8>
-ffffff80000836a4:	11002022 	add	w2, w1, #0x8
-ffffff80000836a8:	b9001a62 	str	w2, [x19, #24]
-ffffff80000836ac:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000836b0:	7100005f 	cmp	w2, #0x0
-ffffff80000836b4:	540000ad 	b.le	ffffff80000836c8 <lp_Print+0x7ac>
-ffffff80000836b8:	91002c01 	add	x1, x0, #0xb
-ffffff80000836bc:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000836c0:	f9000261 	str	x1, [x19]
-ffffff80000836c4:	14000004 	b	ffffff80000836d4 <lp_Print+0x7b8>
-ffffff80000836c8:	f9400662 	ldr	x2, [x19, #8]
-ffffff80000836cc:	93407c20 	sxtw	x0, w1
-ffffff80000836d0:	8b000040 	add	x0, x2, x0
-ffffff80000836d4:	b9400000 	ldr	w0, [x0]
-ffffff80000836d8:	93407c00 	sxtw	x0, w0
-ffffff80000836dc:	f90237e0 	str	x0, [sp, #1128]
+ffffff8000083688:	b9401a61 	ldr	w1, [x19, #24]
+ffffff800008368c:	f9400260 	ldr	x0, [x19]
+ffffff8000083690:	7100003f 	cmp	w1, #0x0
+ffffff8000083694:	540000ab 	b.lt	ffffff80000836a8 <lp_Print+0x788>  // b.tstop
+ffffff8000083698:	91002c01 	add	x1, x0, #0xb
+ffffff800008369c:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000836a0:	f9000261 	str	x1, [x19]
+ffffff80000836a4:	1400000d 	b	ffffff80000836d8 <lp_Print+0x7b8>
+ffffff80000836a8:	11002022 	add	w2, w1, #0x8
+ffffff80000836ac:	b9001a62 	str	w2, [x19, #24]
+ffffff80000836b0:	b9401a62 	ldr	w2, [x19, #24]
+ffffff80000836b4:	7100005f 	cmp	w2, #0x0
+ffffff80000836b8:	540000ad 	b.le	ffffff80000836cc <lp_Print+0x7ac>
+ffffff80000836bc:	91002c01 	add	x1, x0, #0xb
+ffffff80000836c0:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000836c4:	f9000261 	str	x1, [x19]
+ffffff80000836c8:	14000004 	b	ffffff80000836d8 <lp_Print+0x7b8>
+ffffff80000836cc:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000836d0:	93407c20 	sxtw	x0, w1
+ffffff80000836d4:	8b000040 	add	x0, x2, x0
+ffffff80000836d8:	b9400000 	ldr	w0, [x0]
+ffffff80000836dc:	93407c00 	sxtw	x0, w0
+ffffff80000836e0:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:193
-ffffff80000836e0:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff80000836e4:	910123e0 	add	x0, sp, #0x48
-ffffff80000836e8:	52800007 	mov	w7, #0x0                   	// #0
-ffffff80000836ec:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff80000836f0:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff80000836f4:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff80000836f8:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff80000836fc:	52800142 	mov	w2, #0xa                   	// #10
-ffffff8000083700:	940001cd 	bl	ffffff8000083e34 <PrintNum>
-ffffff8000083704:	b90447e0 	str	w0, [sp, #1092]
+ffffff80000836e4:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff80000836e8:	910123e0 	add	x0, sp, #0x48
+ffffff80000836ec:	52800007 	mov	w7, #0x0                   	// #0
+ffffff80000836f0:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff80000836f4:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff80000836f8:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff80000836fc:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff8000083700:	52800142 	mov	w2, #0xa                   	// #10
+ffffff8000083704:	940001cd 	bl	ffffff8000083e38 <PrintNum>
+ffffff8000083708:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:194
-ffffff8000083708:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff800008370c:	7100001f 	cmp	w0, #0x0
-ffffff8000083710:	5400008b 	b.lt	ffffff8000083720 <lp_Print+0x804>  // b.tstop
+ffffff800008370c:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083710:	7100001f 	cmp	w0, #0x0
+ffffff8000083714:	5400008b 	b.lt	ffffff8000083724 <lp_Print+0x804>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 2)
-ffffff8000083714:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083718:	710fa01f 	cmp	w0, #0x3e8
-ffffff800008371c:	5400010d 	b.le	ffffff800008373c <lp_Print+0x820>
+ffffff8000083718:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff800008371c:	710fa01f 	cmp	w0, #0x3e8
+ffffff8000083720:	5400010d 	b.le	ffffff8000083740 <lp_Print+0x820>
 /home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 3)
-ffffff8000083720:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083724:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000083728:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff800008372c:	91362001 	add	x1, x0, #0xd88
-ffffff8000083730:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083734:	d63f0060 	blr	x3
+ffffff8000083724:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083728:	52800302 	mov	w2, #0x18                  	// #24
+ffffff800008372c:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000083730:	91362001 	add	x1, x0, #0xd88
+ffffff8000083734:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083738:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 5)
-ffffff8000083738:	14000000 	b	ffffff8000083738 <lp_Print+0x81c>
+ffffff800008373c:	14000000 	b	ffffff800008373c <lp_Print+0x81c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 4)
-ffffff800008373c:	910123e0 	add	x0, sp, #0x48
-ffffff8000083740:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083744:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff8000083748:	aa0003e1 	mov	x1, x0
-ffffff800008374c:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083750:	d63f0060 	blr	x3
+ffffff8000083740:	910123e0 	add	x0, sp, #0x48
+ffffff8000083744:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083748:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff800008374c:	aa0003e1 	mov	x1, x0
+ffffff8000083750:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083754:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:195 (discriminator 4)
-ffffff8000083754:	14000108 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083758:	14000108 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:198
-ffffff8000083758:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff800008375c:	7100001f 	cmp	w0, #0x0
-ffffff8000083760:	54000300 	b.eq	ffffff80000837c0 <lp_Print+0x8a4>  // b.none
+ffffff800008375c:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff8000083760:	7100001f 	cmp	w0, #0x0
+ffffff8000083764:	54000300 	b.eq	ffffff80000837c4 <lp_Print+0x8a4>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:200
-ffffff8000083764:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083768:	f9400260 	ldr	x0, [x19]
-ffffff800008376c:	7100003f 	cmp	w1, #0x0
-ffffff8000083770:	540000ab 	b.lt	ffffff8000083784 <lp_Print+0x868>  // b.tstop
-ffffff8000083774:	91003c01 	add	x1, x0, #0xf
-ffffff8000083778:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff800008377c:	f9000261 	str	x1, [x19]
-ffffff8000083780:	1400000d 	b	ffffff80000837b4 <lp_Print+0x898>
-ffffff8000083784:	11002022 	add	w2, w1, #0x8
-ffffff8000083788:	b9001a62 	str	w2, [x19, #24]
-ffffff800008378c:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083790:	7100005f 	cmp	w2, #0x0
-ffffff8000083794:	540000ad 	b.le	ffffff80000837a8 <lp_Print+0x88c>
-ffffff8000083798:	91003c01 	add	x1, x0, #0xf
-ffffff800008379c:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000837a0:	f9000261 	str	x1, [x19]
-ffffff80000837a4:	14000004 	b	ffffff80000837b4 <lp_Print+0x898>
-ffffff80000837a8:	f9400662 	ldr	x2, [x19, #8]
-ffffff80000837ac:	93407c20 	sxtw	x0, w1
-ffffff80000837b0:	8b000040 	add	x0, x2, x0
-ffffff80000837b4:	f9400000 	ldr	x0, [x0]
-ffffff80000837b8:	f90237e0 	str	x0, [sp, #1128]
-ffffff80000837bc:	14000018 	b	ffffff800008381c <lp_Print+0x900>
+ffffff8000083768:	b9401a61 	ldr	w1, [x19, #24]
+ffffff800008376c:	f9400260 	ldr	x0, [x19]
+ffffff8000083770:	7100003f 	cmp	w1, #0x0
+ffffff8000083774:	540000ab 	b.lt	ffffff8000083788 <lp_Print+0x868>  // b.tstop
+ffffff8000083778:	91003c01 	add	x1, x0, #0xf
+ffffff800008377c:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083780:	f9000261 	str	x1, [x19]
+ffffff8000083784:	1400000d 	b	ffffff80000837b8 <lp_Print+0x898>
+ffffff8000083788:	11002022 	add	w2, w1, #0x8
+ffffff800008378c:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083790:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083794:	7100005f 	cmp	w2, #0x0
+ffffff8000083798:	540000ad 	b.le	ffffff80000837ac <lp_Print+0x88c>
+ffffff800008379c:	91003c01 	add	x1, x0, #0xf
+ffffff80000837a0:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000837a4:	f9000261 	str	x1, [x19]
+ffffff80000837a8:	14000004 	b	ffffff80000837b8 <lp_Print+0x898>
+ffffff80000837ac:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000837b0:	93407c20 	sxtw	x0, w1
+ffffff80000837b4:	8b000040 	add	x0, x2, x0
+ffffff80000837b8:	f9400000 	ldr	x0, [x0]
+ffffff80000837bc:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000837c0:	14000018 	b	ffffff8000083820 <lp_Print+0x900>
 /home/dofingert/Source/OS/THYOS/lib/print.c:204
-ffffff80000837c0:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000837c4:	f9400260 	ldr	x0, [x19]
-ffffff80000837c8:	7100003f 	cmp	w1, #0x0
-ffffff80000837cc:	540000ab 	b.lt	ffffff80000837e0 <lp_Print+0x8c4>  // b.tstop
-ffffff80000837d0:	91002c01 	add	x1, x0, #0xb
-ffffff80000837d4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000837d8:	f9000261 	str	x1, [x19]
-ffffff80000837dc:	1400000d 	b	ffffff8000083810 <lp_Print+0x8f4>
-ffffff80000837e0:	11002022 	add	w2, w1, #0x8
-ffffff80000837e4:	b9001a62 	str	w2, [x19, #24]
-ffffff80000837e8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000837ec:	7100005f 	cmp	w2, #0x0
-ffffff80000837f0:	540000ad 	b.le	ffffff8000083804 <lp_Print+0x8e8>
-ffffff80000837f4:	91002c01 	add	x1, x0, #0xb
-ffffff80000837f8:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000837fc:	f9000261 	str	x1, [x19]
-ffffff8000083800:	14000004 	b	ffffff8000083810 <lp_Print+0x8f4>
-ffffff8000083804:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083808:	93407c20 	sxtw	x0, w1
-ffffff800008380c:	8b000040 	add	x0, x2, x0
-ffffff8000083810:	b9400000 	ldr	w0, [x0]
-ffffff8000083814:	93407c00 	sxtw	x0, w0
-ffffff8000083818:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000837c4:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000837c8:	f9400260 	ldr	x0, [x19]
+ffffff80000837cc:	7100003f 	cmp	w1, #0x0
+ffffff80000837d0:	540000ab 	b.lt	ffffff80000837e4 <lp_Print+0x8c4>  // b.tstop
+ffffff80000837d4:	91002c01 	add	x1, x0, #0xb
+ffffff80000837d8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000837dc:	f9000261 	str	x1, [x19]
+ffffff80000837e0:	1400000d 	b	ffffff8000083814 <lp_Print+0x8f4>
+ffffff80000837e4:	11002022 	add	w2, w1, #0x8
+ffffff80000837e8:	b9001a62 	str	w2, [x19, #24]
+ffffff80000837ec:	b9401a62 	ldr	w2, [x19, #24]
+ffffff80000837f0:	7100005f 	cmp	w2, #0x0
+ffffff80000837f4:	540000ad 	b.le	ffffff8000083808 <lp_Print+0x8e8>
+ffffff80000837f8:	91002c01 	add	x1, x0, #0xb
+ffffff80000837fc:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083800:	f9000261 	str	x1, [x19]
+ffffff8000083804:	14000004 	b	ffffff8000083814 <lp_Print+0x8f4>
+ffffff8000083808:	f9400662 	ldr	x2, [x19, #8]
+ffffff800008380c:	93407c20 	sxtw	x0, w1
+ffffff8000083810:	8b000040 	add	x0, x2, x0
+ffffff8000083814:	b9400000 	ldr	w0, [x0]
+ffffff8000083818:	93407c00 	sxtw	x0, w0
+ffffff800008381c:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:206
-ffffff800008381c:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff8000083820:	910123e0 	add	x0, sp, #0x48
-ffffff8000083824:	52800007 	mov	w7, #0x0                   	// #0
-ffffff8000083828:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff800008382c:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff8000083830:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff8000083834:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff8000083838:	52800202 	mov	w2, #0x10                  	// #16
-ffffff800008383c:	9400017e 	bl	ffffff8000083e34 <PrintNum>
-ffffff8000083840:	b90447e0 	str	w0, [sp, #1092]
+ffffff8000083820:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff8000083824:	910123e0 	add	x0, sp, #0x48
+ffffff8000083828:	52800007 	mov	w7, #0x0                   	// #0
+ffffff800008382c:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff8000083830:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff8000083834:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff8000083838:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff800008383c:	52800202 	mov	w2, #0x10                  	// #16
+ffffff8000083840:	9400017e 	bl	ffffff8000083e38 <PrintNum>
+ffffff8000083844:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:207
-ffffff8000083844:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083848:	7100001f 	cmp	w0, #0x0
-ffffff800008384c:	5400008b 	b.lt	ffffff800008385c <lp_Print+0x940>  // b.tstop
+ffffff8000083848:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff800008384c:	7100001f 	cmp	w0, #0x0
+ffffff8000083850:	5400008b 	b.lt	ffffff8000083860 <lp_Print+0x940>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 2)
-ffffff8000083850:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083854:	710fa01f 	cmp	w0, #0x3e8
-ffffff8000083858:	5400010d 	b.le	ffffff8000083878 <lp_Print+0x95c>
+ffffff8000083854:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083858:	710fa01f 	cmp	w0, #0x3e8
+ffffff800008385c:	5400010d 	b.le	ffffff800008387c <lp_Print+0x95c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 3)
-ffffff800008385c:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083860:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000083864:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000083868:	91362001 	add	x1, x0, #0xd88
-ffffff800008386c:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083870:	d63f0060 	blr	x3
+ffffff8000083860:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083864:	52800302 	mov	w2, #0x18                  	// #24
+ffffff8000083868:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff800008386c:	91362001 	add	x1, x0, #0xd88
+ffffff8000083870:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083874:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 6)
-ffffff8000083874:	14000000 	b	ffffff8000083874 <lp_Print+0x958>
+ffffff8000083878:	14000000 	b	ffffff8000083878 <lp_Print+0x958>
 /home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 4)
-ffffff8000083878:	910123e0 	add	x0, sp, #0x48
-ffffff800008387c:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083880:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff8000083884:	aa0003e1 	mov	x1, x0
-ffffff8000083888:	f9401be0 	ldr	x0, [sp, #48]
-ffffff800008388c:	d63f0060 	blr	x3
+ffffff800008387c:	910123e0 	add	x0, sp, #0x48
+ffffff8000083880:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083884:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff8000083888:	aa0003e1 	mov	x1, x0
+ffffff800008388c:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083890:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:208 (discriminator 4)
-ffffff8000083890:	140000b9 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083894:	140000b9 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:211
-ffffff8000083894:	b94467e0 	ldr	w0, [sp, #1124]
-ffffff8000083898:	7100001f 	cmp	w0, #0x0
-ffffff800008389c:	54000300 	b.eq	ffffff80000838fc <lp_Print+0x9e0>  // b.none
+ffffff8000083898:	b94467e0 	ldr	w0, [sp, #1124]
+ffffff800008389c:	7100001f 	cmp	w0, #0x0
+ffffff80000838a0:	54000300 	b.eq	ffffff8000083900 <lp_Print+0x9e0>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:213
-ffffff80000838a0:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000838a4:	f9400260 	ldr	x0, [x19]
-ffffff80000838a8:	7100003f 	cmp	w1, #0x0
-ffffff80000838ac:	540000ab 	b.lt	ffffff80000838c0 <lp_Print+0x9a4>  // b.tstop
-ffffff80000838b0:	91003c01 	add	x1, x0, #0xf
-ffffff80000838b4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000838b8:	f9000261 	str	x1, [x19]
-ffffff80000838bc:	1400000d 	b	ffffff80000838f0 <lp_Print+0x9d4>
-ffffff80000838c0:	11002022 	add	w2, w1, #0x8
-ffffff80000838c4:	b9001a62 	str	w2, [x19, #24]
-ffffff80000838c8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000838cc:	7100005f 	cmp	w2, #0x0
-ffffff80000838d0:	540000ad 	b.le	ffffff80000838e4 <lp_Print+0x9c8>
-ffffff80000838d4:	91003c01 	add	x1, x0, #0xf
-ffffff80000838d8:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000838dc:	f9000261 	str	x1, [x19]
-ffffff80000838e0:	14000004 	b	ffffff80000838f0 <lp_Print+0x9d4>
-ffffff80000838e4:	f9400662 	ldr	x2, [x19, #8]
-ffffff80000838e8:	93407c20 	sxtw	x0, w1
-ffffff80000838ec:	8b000040 	add	x0, x2, x0
-ffffff80000838f0:	f9400000 	ldr	x0, [x0]
-ffffff80000838f4:	f90237e0 	str	x0, [sp, #1128]
-ffffff80000838f8:	14000018 	b	ffffff8000083958 <lp_Print+0xa3c>
+ffffff80000838a4:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000838a8:	f9400260 	ldr	x0, [x19]
+ffffff80000838ac:	7100003f 	cmp	w1, #0x0
+ffffff80000838b0:	540000ab 	b.lt	ffffff80000838c4 <lp_Print+0x9a4>  // b.tstop
+ffffff80000838b4:	91003c01 	add	x1, x0, #0xf
+ffffff80000838b8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000838bc:	f9000261 	str	x1, [x19]
+ffffff80000838c0:	1400000d 	b	ffffff80000838f4 <lp_Print+0x9d4>
+ffffff80000838c4:	11002022 	add	w2, w1, #0x8
+ffffff80000838c8:	b9001a62 	str	w2, [x19, #24]
+ffffff80000838cc:	b9401a62 	ldr	w2, [x19, #24]
+ffffff80000838d0:	7100005f 	cmp	w2, #0x0
+ffffff80000838d4:	540000ad 	b.le	ffffff80000838e8 <lp_Print+0x9c8>
+ffffff80000838d8:	91003c01 	add	x1, x0, #0xf
+ffffff80000838dc:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000838e0:	f9000261 	str	x1, [x19]
+ffffff80000838e4:	14000004 	b	ffffff80000838f4 <lp_Print+0x9d4>
+ffffff80000838e8:	f9400662 	ldr	x2, [x19, #8]
+ffffff80000838ec:	93407c20 	sxtw	x0, w1
+ffffff80000838f0:	8b000040 	add	x0, x2, x0
+ffffff80000838f4:	f9400000 	ldr	x0, [x0]
+ffffff80000838f8:	f90237e0 	str	x0, [sp, #1128]
+ffffff80000838fc:	14000018 	b	ffffff800008395c <lp_Print+0xa3c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:217
-ffffff80000838fc:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083900:	f9400260 	ldr	x0, [x19]
-ffffff8000083904:	7100003f 	cmp	w1, #0x0
-ffffff8000083908:	540000ab 	b.lt	ffffff800008391c <lp_Print+0xa00>  // b.tstop
-ffffff800008390c:	91002c01 	add	x1, x0, #0xb
-ffffff8000083910:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083914:	f9000261 	str	x1, [x19]
-ffffff8000083918:	1400000d 	b	ffffff800008394c <lp_Print+0xa30>
-ffffff800008391c:	11002022 	add	w2, w1, #0x8
-ffffff8000083920:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083924:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083928:	7100005f 	cmp	w2, #0x0
-ffffff800008392c:	540000ad 	b.le	ffffff8000083940 <lp_Print+0xa24>
-ffffff8000083930:	91002c01 	add	x1, x0, #0xb
-ffffff8000083934:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083938:	f9000261 	str	x1, [x19]
-ffffff800008393c:	14000004 	b	ffffff800008394c <lp_Print+0xa30>
-ffffff8000083940:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083944:	93407c20 	sxtw	x0, w1
-ffffff8000083948:	8b000040 	add	x0, x2, x0
-ffffff800008394c:	b9400000 	ldr	w0, [x0]
-ffffff8000083950:	93407c00 	sxtw	x0, w0
-ffffff8000083954:	f90237e0 	str	x0, [sp, #1128]
+ffffff8000083900:	b9401a61 	ldr	w1, [x19, #24]
+ffffff8000083904:	f9400260 	ldr	x0, [x19]
+ffffff8000083908:	7100003f 	cmp	w1, #0x0
+ffffff800008390c:	540000ab 	b.lt	ffffff8000083920 <lp_Print+0xa00>  // b.tstop
+ffffff8000083910:	91002c01 	add	x1, x0, #0xb
+ffffff8000083914:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083918:	f9000261 	str	x1, [x19]
+ffffff800008391c:	1400000d 	b	ffffff8000083950 <lp_Print+0xa30>
+ffffff8000083920:	11002022 	add	w2, w1, #0x8
+ffffff8000083924:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083928:	b9401a62 	ldr	w2, [x19, #24]
+ffffff800008392c:	7100005f 	cmp	w2, #0x0
+ffffff8000083930:	540000ad 	b.le	ffffff8000083944 <lp_Print+0xa24>
+ffffff8000083934:	91002c01 	add	x1, x0, #0xb
+ffffff8000083938:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff800008393c:	f9000261 	str	x1, [x19]
+ffffff8000083940:	14000004 	b	ffffff8000083950 <lp_Print+0xa30>
+ffffff8000083944:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083948:	93407c20 	sxtw	x0, w1
+ffffff800008394c:	8b000040 	add	x0, x2, x0
+ffffff8000083950:	b9400000 	ldr	w0, [x0]
+ffffff8000083954:	93407c00 	sxtw	x0, w0
+ffffff8000083958:	f90237e0 	str	x0, [sp, #1128]
 /home/dofingert/Source/OS/THYOS/lib/print.c:219
-ffffff8000083958:	f94237e1 	ldr	x1, [sp, #1128]
-ffffff800008395c:	910123e0 	add	x0, sp, #0x48
-ffffff8000083960:	52800027 	mov	w7, #0x1                   	// #1
-ffffff8000083964:	39514fe6 	ldrb	w6, [sp, #1107]
-ffffff8000083968:	b94457e5 	ldr	w5, [sp, #1108]
-ffffff800008396c:	b9445fe4 	ldr	w4, [sp, #1116]
-ffffff8000083970:	b94463e3 	ldr	w3, [sp, #1120]
-ffffff8000083974:	52800202 	mov	w2, #0x10                  	// #16
-ffffff8000083978:	9400012f 	bl	ffffff8000083e34 <PrintNum>
-ffffff800008397c:	b90447e0 	str	w0, [sp, #1092]
+ffffff800008395c:	f94237e1 	ldr	x1, [sp, #1128]
+ffffff8000083960:	910123e0 	add	x0, sp, #0x48
+ffffff8000083964:	52800027 	mov	w7, #0x1                   	// #1
+ffffff8000083968:	39514fe6 	ldrb	w6, [sp, #1107]
+ffffff800008396c:	b94457e5 	ldr	w5, [sp, #1108]
+ffffff8000083970:	b9445fe4 	ldr	w4, [sp, #1116]
+ffffff8000083974:	b94463e3 	ldr	w3, [sp, #1120]
+ffffff8000083978:	52800202 	mov	w2, #0x10                  	// #16
+ffffff800008397c:	9400012f 	bl	ffffff8000083e38 <PrintNum>
+ffffff8000083980:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:220
-ffffff8000083980:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083984:	7100001f 	cmp	w0, #0x0
-ffffff8000083988:	5400008b 	b.lt	ffffff8000083998 <lp_Print+0xa7c>  // b.tstop
+ffffff8000083984:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083988:	7100001f 	cmp	w0, #0x0
+ffffff800008398c:	5400008b 	b.lt	ffffff800008399c <lp_Print+0xa7c>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 2)
-ffffff800008398c:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083990:	710fa01f 	cmp	w0, #0x3e8
-ffffff8000083994:	5400010d 	b.le	ffffff80000839b4 <lp_Print+0xa98>
+ffffff8000083990:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083994:	710fa01f 	cmp	w0, #0x3e8
+ffffff8000083998:	5400010d 	b.le	ffffff80000839b8 <lp_Print+0xa98>
 /home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 3)
-ffffff8000083998:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff800008399c:	52800302 	mov	w2, #0x18                  	// #24
-ffffff80000839a0:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000839a4:	91362001 	add	x1, x0, #0xd88
-ffffff80000839a8:	f9401be0 	ldr	x0, [sp, #48]
-ffffff80000839ac:	d63f0060 	blr	x3
+ffffff800008399c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff80000839a0:	52800302 	mov	w2, #0x18                  	// #24
+ffffff80000839a4:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000839a8:	91362001 	add	x1, x0, #0xd88
+ffffff80000839ac:	f9401be0 	ldr	x0, [sp, #48]
+ffffff80000839b0:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 7)
-ffffff80000839b0:	14000000 	b	ffffff80000839b0 <lp_Print+0xa94>
+ffffff80000839b4:	14000000 	b	ffffff80000839b4 <lp_Print+0xa94>
 /home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 4)
-ffffff80000839b4:	910123e0 	add	x0, sp, #0x48
-ffffff80000839b8:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff80000839bc:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff80000839c0:	aa0003e1 	mov	x1, x0
-ffffff80000839c4:	f9401be0 	ldr	x0, [sp, #48]
-ffffff80000839c8:	d63f0060 	blr	x3
+ffffff80000839b8:	910123e0 	add	x0, sp, #0x48
+ffffff80000839bc:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff80000839c0:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff80000839c4:	aa0003e1 	mov	x1, x0
+ffffff80000839c8:	f9401be0 	ldr	x0, [sp, #48]
+ffffff80000839cc:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:221 (discriminator 4)
-ffffff80000839cc:	1400006a 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff80000839d0:	1400006a 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:224
-ffffff80000839d0:	b9401a61 	ldr	w1, [x19, #24]
-ffffff80000839d4:	f9400260 	ldr	x0, [x19]
-ffffff80000839d8:	7100003f 	cmp	w1, #0x0
-ffffff80000839dc:	540000ab 	b.lt	ffffff80000839f0 <lp_Print+0xad4>  // b.tstop
-ffffff80000839e0:	91002c01 	add	x1, x0, #0xb
-ffffff80000839e4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff80000839e8:	f9000261 	str	x1, [x19]
-ffffff80000839ec:	1400000d 	b	ffffff8000083a20 <lp_Print+0xb04>
-ffffff80000839f0:	11002022 	add	w2, w1, #0x8
-ffffff80000839f4:	b9001a62 	str	w2, [x19, #24]
-ffffff80000839f8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff80000839fc:	7100005f 	cmp	w2, #0x0
-ffffff8000083a00:	540000ad 	b.le	ffffff8000083a14 <lp_Print+0xaf8>
-ffffff8000083a04:	91002c01 	add	x1, x0, #0xb
-ffffff8000083a08:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083a0c:	f9000261 	str	x1, [x19]
-ffffff8000083a10:	14000004 	b	ffffff8000083a20 <lp_Print+0xb04>
-ffffff8000083a14:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083a18:	93407c20 	sxtw	x0, w1
-ffffff8000083a1c:	8b000040 	add	x0, x2, x0
-ffffff8000083a20:	b9400000 	ldr	w0, [x0]
-ffffff8000083a24:	3910dfe0 	strb	w0, [sp, #1079]
+ffffff80000839d4:	b9401a61 	ldr	w1, [x19, #24]
+ffffff80000839d8:	f9400260 	ldr	x0, [x19]
+ffffff80000839dc:	7100003f 	cmp	w1, #0x0
+ffffff80000839e0:	540000ab 	b.lt	ffffff80000839f4 <lp_Print+0xad4>  // b.tstop
+ffffff80000839e4:	91002c01 	add	x1, x0, #0xb
+ffffff80000839e8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff80000839ec:	f9000261 	str	x1, [x19]
+ffffff80000839f0:	1400000d 	b	ffffff8000083a24 <lp_Print+0xb04>
+ffffff80000839f4:	11002022 	add	w2, w1, #0x8
+ffffff80000839f8:	b9001a62 	str	w2, [x19, #24]
+ffffff80000839fc:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083a00:	7100005f 	cmp	w2, #0x0
+ffffff8000083a04:	540000ad 	b.le	ffffff8000083a18 <lp_Print+0xaf8>
+ffffff8000083a08:	91002c01 	add	x1, x0, #0xb
+ffffff8000083a0c:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083a10:	f9000261 	str	x1, [x19]
+ffffff8000083a14:	14000004 	b	ffffff8000083a24 <lp_Print+0xb04>
+ffffff8000083a18:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083a1c:	93407c20 	sxtw	x0, w1
+ffffff8000083a20:	8b000040 	add	x0, x2, x0
+ffffff8000083a24:	b9400000 	ldr	w0, [x0]
+ffffff8000083a28:	3910dfe0 	strb	w0, [sp, #1079]
 /home/dofingert/Source/OS/THYOS/lib/print.c:225
-ffffff8000083a28:	910123e0 	add	x0, sp, #0x48
-ffffff8000083a2c:	b94457e3 	ldr	w3, [sp, #1108]
-ffffff8000083a30:	b9445fe2 	ldr	w2, [sp, #1116]
-ffffff8000083a34:	3950dfe1 	ldrb	w1, [sp, #1079]
-ffffff8000083a38:	9400005f 	bl	ffffff8000083bb4 <PrintChar>
-ffffff8000083a3c:	b90447e0 	str	w0, [sp, #1092]
+ffffff8000083a2c:	910123e0 	add	x0, sp, #0x48
+ffffff8000083a30:	b94457e3 	ldr	w3, [sp, #1108]
+ffffff8000083a34:	b9445fe2 	ldr	w2, [sp, #1116]
+ffffff8000083a38:	3950dfe1 	ldrb	w1, [sp, #1079]
+ffffff8000083a3c:	9400005f 	bl	ffffff8000083bb8 <PrintChar>
+ffffff8000083a40:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:226
-ffffff8000083a40:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083a44:	7100001f 	cmp	w0, #0x0
-ffffff8000083a48:	5400008b 	b.lt	ffffff8000083a58 <lp_Print+0xb3c>  // b.tstop
+ffffff8000083a44:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083a48:	7100001f 	cmp	w0, #0x0
+ffffff8000083a4c:	5400008b 	b.lt	ffffff8000083a5c <lp_Print+0xb3c>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 2)
-ffffff8000083a4c:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083a50:	710fa01f 	cmp	w0, #0x3e8
-ffffff8000083a54:	5400010d 	b.le	ffffff8000083a74 <lp_Print+0xb58>
+ffffff8000083a50:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083a54:	710fa01f 	cmp	w0, #0x3e8
+ffffff8000083a58:	5400010d 	b.le	ffffff8000083a78 <lp_Print+0xb58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 3)
-ffffff8000083a58:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083a5c:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000083a60:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000083a64:	91362001 	add	x1, x0, #0xd88
-ffffff8000083a68:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083a6c:	d63f0060 	blr	x3
+ffffff8000083a5c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083a60:	52800302 	mov	w2, #0x18                  	// #24
+ffffff8000083a64:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000083a68:	91362001 	add	x1, x0, #0xd88
+ffffff8000083a6c:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083a70:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 8)
-ffffff8000083a70:	14000000 	b	ffffff8000083a70 <lp_Print+0xb54>
+ffffff8000083a74:	14000000 	b	ffffff8000083a74 <lp_Print+0xb54>
 /home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 4)
-ffffff8000083a74:	910123e0 	add	x0, sp, #0x48
-ffffff8000083a78:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083a7c:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff8000083a80:	aa0003e1 	mov	x1, x0
-ffffff8000083a84:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083a88:	d63f0060 	blr	x3
+ffffff8000083a78:	910123e0 	add	x0, sp, #0x48
+ffffff8000083a7c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083a80:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff8000083a84:	aa0003e1 	mov	x1, x0
+ffffff8000083a88:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083a8c:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:227 (discriminator 4)
-ffffff8000083a8c:	1400003a 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083a90:	1400003a 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:230
-ffffff8000083a90:	b9401a61 	ldr	w1, [x19, #24]
-ffffff8000083a94:	f9400260 	ldr	x0, [x19]
-ffffff8000083a98:	7100003f 	cmp	w1, #0x0
-ffffff8000083a9c:	540000ab 	b.lt	ffffff8000083ab0 <lp_Print+0xb94>  // b.tstop
-ffffff8000083aa0:	91003c01 	add	x1, x0, #0xf
-ffffff8000083aa4:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083aa8:	f9000261 	str	x1, [x19]
-ffffff8000083aac:	1400000d 	b	ffffff8000083ae0 <lp_Print+0xbc4>
-ffffff8000083ab0:	11002022 	add	w2, w1, #0x8
-ffffff8000083ab4:	b9001a62 	str	w2, [x19, #24]
-ffffff8000083ab8:	b9401a62 	ldr	w2, [x19, #24]
-ffffff8000083abc:	7100005f 	cmp	w2, #0x0
-ffffff8000083ac0:	540000ad 	b.le	ffffff8000083ad4 <lp_Print+0xbb8>
-ffffff8000083ac4:	91003c01 	add	x1, x0, #0xf
-ffffff8000083ac8:	927df021 	and	x1, x1, #0xfffffffffffffff8
-ffffff8000083acc:	f9000261 	str	x1, [x19]
-ffffff8000083ad0:	14000004 	b	ffffff8000083ae0 <lp_Print+0xbc4>
-ffffff8000083ad4:	f9400662 	ldr	x2, [x19, #8]
-ffffff8000083ad8:	93407c20 	sxtw	x0, w1
-ffffff8000083adc:	8b000040 	add	x0, x2, x0
-ffffff8000083ae0:	f9400000 	ldr	x0, [x0]
-ffffff8000083ae4:	f9021fe0 	str	x0, [sp, #1080]
+ffffff8000083a94:	b9401a61 	ldr	w1, [x19, #24]
+ffffff8000083a98:	f9400260 	ldr	x0, [x19]
+ffffff8000083a9c:	7100003f 	cmp	w1, #0x0
+ffffff8000083aa0:	540000ab 	b.lt	ffffff8000083ab4 <lp_Print+0xb94>  // b.tstop
+ffffff8000083aa4:	91003c01 	add	x1, x0, #0xf
+ffffff8000083aa8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083aac:	f9000261 	str	x1, [x19]
+ffffff8000083ab0:	1400000d 	b	ffffff8000083ae4 <lp_Print+0xbc4>
+ffffff8000083ab4:	11002022 	add	w2, w1, #0x8
+ffffff8000083ab8:	b9001a62 	str	w2, [x19, #24]
+ffffff8000083abc:	b9401a62 	ldr	w2, [x19, #24]
+ffffff8000083ac0:	7100005f 	cmp	w2, #0x0
+ffffff8000083ac4:	540000ad 	b.le	ffffff8000083ad8 <lp_Print+0xbb8>
+ffffff8000083ac8:	91003c01 	add	x1, x0, #0xf
+ffffff8000083acc:	927df021 	and	x1, x1, #0xfffffffffffffff8
+ffffff8000083ad0:	f9000261 	str	x1, [x19]
+ffffff8000083ad4:	14000004 	b	ffffff8000083ae4 <lp_Print+0xbc4>
+ffffff8000083ad8:	f9400662 	ldr	x2, [x19, #8]
+ffffff8000083adc:	93407c20 	sxtw	x0, w1
+ffffff8000083ae0:	8b000040 	add	x0, x2, x0
+ffffff8000083ae4:	f9400000 	ldr	x0, [x0]
+ffffff8000083ae8:	f9021fe0 	str	x0, [sp, #1080]
 /home/dofingert/Source/OS/THYOS/lib/print.c:231
-ffffff8000083ae8:	910123e0 	add	x0, sp, #0x48
-ffffff8000083aec:	b94457e3 	ldr	w3, [sp, #1108]
-ffffff8000083af0:	b9445fe2 	ldr	w2, [sp, #1116]
-ffffff8000083af4:	f9421fe1 	ldr	x1, [sp, #1080]
-ffffff8000083af8:	94000067 	bl	ffffff8000083c94 <PrintString>
-ffffff8000083afc:	b90447e0 	str	w0, [sp, #1092]
+ffffff8000083aec:	910123e0 	add	x0, sp, #0x48
+ffffff8000083af0:	b94457e3 	ldr	w3, [sp, #1108]
+ffffff8000083af4:	b9445fe2 	ldr	w2, [sp, #1116]
+ffffff8000083af8:	f9421fe1 	ldr	x1, [sp, #1080]
+ffffff8000083afc:	94000067 	bl	ffffff8000083c98 <PrintString>
+ffffff8000083b00:	b90447e0 	str	w0, [sp, #1092]
 /home/dofingert/Source/OS/THYOS/lib/print.c:232
-ffffff8000083b00:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083b04:	7100001f 	cmp	w0, #0x0
-ffffff8000083b08:	5400008b 	b.lt	ffffff8000083b18 <lp_Print+0xbfc>  // b.tstop
+ffffff8000083b04:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083b08:	7100001f 	cmp	w0, #0x0
+ffffff8000083b0c:	5400008b 	b.lt	ffffff8000083b1c <lp_Print+0xbfc>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 2)
-ffffff8000083b0c:	b94447e0 	ldr	w0, [sp, #1092]
-ffffff8000083b10:	710fa01f 	cmp	w0, #0x3e8
-ffffff8000083b14:	5400010d 	b.le	ffffff8000083b34 <lp_Print+0xc18>
+ffffff8000083b10:	b94447e0 	ldr	w0, [sp, #1092]
+ffffff8000083b14:	710fa01f 	cmp	w0, #0x3e8
+ffffff8000083b18:	5400010d 	b.le	ffffff8000083b38 <lp_Print+0xc18>
 /home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 3)
-ffffff8000083b18:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083b1c:	52800302 	mov	w2, #0x18                  	// #24
-ffffff8000083b20:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000083b24:	91362001 	add	x1, x0, #0xd88
-ffffff8000083b28:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083b2c:	d63f0060 	blr	x3
+ffffff8000083b1c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083b20:	52800302 	mov	w2, #0x18                  	// #24
+ffffff8000083b24:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000083b28:	91362001 	add	x1, x0, #0xd88
+ffffff8000083b2c:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083b30:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 9)
-ffffff8000083b30:	14000000 	b	ffffff8000083b30 <lp_Print+0xc14>
+ffffff8000083b34:	14000000 	b	ffffff8000083b34 <lp_Print+0xc14>
 /home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 4)
-ffffff8000083b34:	910123e0 	add	x0, sp, #0x48
-ffffff8000083b38:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083b3c:	b94447e2 	ldr	w2, [sp, #1092]
-ffffff8000083b40:	aa0003e1 	mov	x1, x0
-ffffff8000083b44:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083b48:	d63f0060 	blr	x3
+ffffff8000083b38:	910123e0 	add	x0, sp, #0x48
+ffffff8000083b3c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083b40:	b94447e2 	ldr	w2, [sp, #1092]
+ffffff8000083b44:	aa0003e1 	mov	x1, x0
+ffffff8000083b48:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083b4c:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:233 (discriminator 4)
-ffffff8000083b4c:	1400000a 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083b50:	1400000a 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:236
-ffffff8000083b50:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083b54:	d1000400 	sub	x0, x0, #0x1
-ffffff8000083b58:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083b54:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083b58:	d1000400 	sub	x0, x0, #0x1
+ffffff8000083b5c:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:237
-ffffff8000083b5c:	14000006 	b	ffffff8000083b74 <lp_Print+0xc58>
+ffffff8000083b60:	14000006 	b	ffffff8000083b78 <lp_Print+0xc58>
 /home/dofingert/Source/OS/THYOS/lib/print.c:241 (discriminator 2)
-ffffff8000083b60:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083b64:	52800022 	mov	w2, #0x1                   	// #1
-ffffff8000083b68:	f94017e1 	ldr	x1, [sp, #40]
-ffffff8000083b6c:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083b70:	d63f0060 	blr	x3
+ffffff8000083b64:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083b68:	52800022 	mov	w2, #0x1                   	// #1
+ffffff8000083b6c:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000083b70:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083b74:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:244
-ffffff8000083b74:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083b78:	91000400 	add	x0, x0, #0x1
-ffffff8000083b7c:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083b78:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083b7c:	91000400 	add	x0, x0, #0x1
+ffffff8000083b80:	f90017e0 	str	x0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:50
-ffffff8000083b80:	17fffcef 	b	ffffff8000082f3c <lp_Print+0x20>
+ffffff8000083b84:	17fffcef 	b	ffffff8000082f40 <lp_Print+0x20>
 /home/dofingert/Source/OS/THYOS/lib/print.c:73
-ffffff8000083b84:	d503201f 	nop
+ffffff8000083b88:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/lib/print.c:248
-ffffff8000083b88:	f9401fe3 	ldr	x3, [sp, #56]
-ffffff8000083b8c:	52800022 	mov	w2, #0x1                   	// #1
-ffffff8000083b90:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000083b94:	9136a001 	add	x1, x0, #0xda8
-ffffff8000083b98:	f9401be0 	ldr	x0, [sp, #48]
-ffffff8000083b9c:	d63f0060 	blr	x3
+ffffff8000083b8c:	f9401fe3 	ldr	x3, [sp, #56]
+ffffff8000083b90:	52800022 	mov	w2, #0x1                   	// #1
+ffffff8000083b94:	f0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000083b98:	9136a001 	add	x1, x0, #0xda8
+ffffff8000083b9c:	f9401be0 	ldr	x0, [sp, #48]
+ffffff8000083ba0:	d63f0060 	blr	x3
 /home/dofingert/Source/OS/THYOS/lib/print.c:249
-ffffff8000083ba0:	d503201f 	nop
-ffffff8000083ba4:	f9400bf3 	ldr	x19, [sp, #16]
-ffffff8000083ba8:	a9407bfd 	ldp	x29, x30, [sp]
-ffffff8000083bac:	9111c3ff 	add	sp, sp, #0x470
-ffffff8000083bb0:	d65f03c0 	ret
+ffffff8000083ba4:	d503201f 	nop
+ffffff8000083ba8:	f9400bf3 	ldr	x19, [sp, #16]
+ffffff8000083bac:	a9407bfd 	ldp	x29, x30, [sp]
+ffffff8000083bb0:	9111c3ff 	add	sp, sp, #0x470
+ffffff8000083bb4:	d65f03c0 	ret
 
-ffffff8000083bb4 <PrintChar>:
+ffffff8000083bb8 <PrintChar>:
 PrintChar():
 /home/dofingert/Source/OS/THYOS/lib/print.c:254
-ffffff8000083bb4:	d100c3ff 	sub	sp, sp, #0x30
-ffffff8000083bb8:	f9000fe0 	str	x0, [sp, #24]
-ffffff8000083bbc:	39005fe1 	strb	w1, [sp, #23]
-ffffff8000083bc0:	b90013e2 	str	w2, [sp, #16]
-ffffff8000083bc4:	b9000fe3 	str	w3, [sp, #12]
+ffffff8000083bb8:	d100c3ff 	sub	sp, sp, #0x30
+ffffff8000083bbc:	f9000fe0 	str	x0, [sp, #24]
+ffffff8000083bc0:	39005fe1 	strb	w1, [sp, #23]
+ffffff8000083bc4:	b90013e2 	str	w2, [sp, #16]
+ffffff8000083bc8:	b9000fe3 	str	w3, [sp, #12]
 /home/dofingert/Source/OS/THYOS/lib/print.c:257
-ffffff8000083bc8:	b94013e0 	ldr	w0, [sp, #16]
-ffffff8000083bcc:	7100001f 	cmp	w0, #0x0
-ffffff8000083bd0:	5400006c 	b.gt	ffffff8000083bdc <PrintChar+0x28>
+ffffff8000083bcc:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083bd0:	7100001f 	cmp	w0, #0x0
+ffffff8000083bd4:	5400006c 	b.gt	ffffff8000083be0 <PrintChar+0x28>
 /home/dofingert/Source/OS/THYOS/lib/print.c:258
-ffffff8000083bd4:	52800020 	mov	w0, #0x1                   	// #1
-ffffff8000083bd8:	b90013e0 	str	w0, [sp, #16]
+ffffff8000083bd8:	52800020 	mov	w0, #0x1                   	// #1
+ffffff8000083bdc:	b90013e0 	str	w0, [sp, #16]
 /home/dofingert/Source/OS/THYOS/lib/print.c:259
-ffffff8000083bdc:	b9400fe0 	ldr	w0, [sp, #12]
-ffffff8000083be0:	7100001f 	cmp	w0, #0x0
-ffffff8000083be4:	54000280 	b.eq	ffffff8000083c34 <PrintChar+0x80>  // b.none
+ffffff8000083be0:	b9400fe0 	ldr	w0, [sp, #12]
+ffffff8000083be4:	7100001f 	cmp	w0, #0x0
+ffffff8000083be8:	54000280 	b.eq	ffffff8000083c38 <PrintChar+0x80>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:261
-ffffff8000083be8:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000083bec:	39405fe1 	ldrb	w1, [sp, #23]
-ffffff8000083bf0:	39000001 	strb	w1, [x0]
+ffffff8000083bec:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000083bf0:	39405fe1 	ldrb	w1, [sp, #23]
+ffffff8000083bf4:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:262
-ffffff8000083bf4:	52800020 	mov	w0, #0x1                   	// #1
-ffffff8000083bf8:	b9002fe0 	str	w0, [sp, #44]
-ffffff8000083bfc:	14000009 	b	ffffff8000083c20 <PrintChar+0x6c>
+ffffff8000083bf8:	52800020 	mov	w0, #0x1                   	// #1
+ffffff8000083bfc:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083c00:	14000009 	b	ffffff8000083c24 <PrintChar+0x6c>
 /home/dofingert/Source/OS/THYOS/lib/print.c:263 (discriminator 3)
-ffffff8000083c00:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083c04:	f9400fe1 	ldr	x1, [sp, #24]
-ffffff8000083c08:	8b000020 	add	x0, x1, x0
-ffffff8000083c0c:	52800401 	mov	w1, #0x20                  	// #32
-ffffff8000083c10:	39000001 	strb	w1, [x0]
+ffffff8000083c04:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083c08:	f9400fe1 	ldr	x1, [sp, #24]
+ffffff8000083c0c:	8b000020 	add	x0, x1, x0
+ffffff8000083c10:	52800401 	mov	w1, #0x20                  	// #32
+ffffff8000083c14:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:262 (discriminator 3)
-ffffff8000083c14:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083c18:	11000400 	add	w0, w0, #0x1
-ffffff8000083c1c:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083c18:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083c1c:	11000400 	add	w0, w0, #0x1
+ffffff8000083c20:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:262 (discriminator 1)
-ffffff8000083c20:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083c24:	b94013e0 	ldr	w0, [sp, #16]
-ffffff8000083c28:	6b00003f 	cmp	w1, w0
-ffffff8000083c2c:	54fffeab 	b.lt	ffffff8000083c00 <PrintChar+0x4c>  // b.tstop
-ffffff8000083c30:	14000016 	b	ffffff8000083c88 <PrintChar+0xd4>
+ffffff8000083c24:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083c28:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083c2c:	6b00003f 	cmp	w1, w0
+ffffff8000083c30:	54fffeab 	b.lt	ffffff8000083c04 <PrintChar+0x4c>  // b.tstop
+ffffff8000083c34:	14000016 	b	ffffff8000083c8c <PrintChar+0xd4>
 /home/dofingert/Source/OS/THYOS/lib/print.c:267
-ffffff8000083c34:	b9002fff 	str	wzr, [sp, #44]
-ffffff8000083c38:	14000009 	b	ffffff8000083c5c <PrintChar+0xa8>
+ffffff8000083c38:	b9002fff 	str	wzr, [sp, #44]
+ffffff8000083c3c:	14000009 	b	ffffff8000083c60 <PrintChar+0xa8>
 /home/dofingert/Source/OS/THYOS/lib/print.c:268 (discriminator 3)
-ffffff8000083c3c:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083c40:	f9400fe1 	ldr	x1, [sp, #24]
-ffffff8000083c44:	8b000020 	add	x0, x1, x0
-ffffff8000083c48:	52800401 	mov	w1, #0x20                  	// #32
-ffffff8000083c4c:	39000001 	strb	w1, [x0]
+ffffff8000083c40:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083c44:	f9400fe1 	ldr	x1, [sp, #24]
+ffffff8000083c48:	8b000020 	add	x0, x1, x0
+ffffff8000083c4c:	52800401 	mov	w1, #0x20                  	// #32
+ffffff8000083c50:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:267 (discriminator 3)
-ffffff8000083c50:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083c54:	11000400 	add	w0, w0, #0x1
-ffffff8000083c58:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083c54:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083c58:	11000400 	add	w0, w0, #0x1
+ffffff8000083c5c:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:267 (discriminator 1)
-ffffff8000083c5c:	b94013e0 	ldr	w0, [sp, #16]
-ffffff8000083c60:	51000400 	sub	w0, w0, #0x1
-ffffff8000083c64:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083c68:	6b00003f 	cmp	w1, w0
-ffffff8000083c6c:	54fffe8b 	b.lt	ffffff8000083c3c <PrintChar+0x88>  // b.tstop
+ffffff8000083c60:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083c64:	51000400 	sub	w0, w0, #0x1
+ffffff8000083c68:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083c6c:	6b00003f 	cmp	w1, w0
+ffffff8000083c70:	54fffe8b 	b.lt	ffffff8000083c40 <PrintChar+0x88>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:269
-ffffff8000083c70:	b98013e0 	ldrsw	x0, [sp, #16]
-ffffff8000083c74:	d1000400 	sub	x0, x0, #0x1
-ffffff8000083c78:	f9400fe1 	ldr	x1, [sp, #24]
-ffffff8000083c7c:	8b000020 	add	x0, x1, x0
-ffffff8000083c80:	39405fe1 	ldrb	w1, [sp, #23]
-ffffff8000083c84:	39000001 	strb	w1, [x0]
+ffffff8000083c74:	b98013e0 	ldrsw	x0, [sp, #16]
+ffffff8000083c78:	d1000400 	sub	x0, x0, #0x1
+ffffff8000083c7c:	f9400fe1 	ldr	x1, [sp, #24]
+ffffff8000083c80:	8b000020 	add	x0, x1, x0
+ffffff8000083c84:	39405fe1 	ldrb	w1, [sp, #23]
+ffffff8000083c88:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:271
-ffffff8000083c88:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083c8c:	b94013e0 	ldr	w0, [sp, #16]
 /home/dofingert/Source/OS/THYOS/lib/print.c:272
-ffffff8000083c8c:	9100c3ff 	add	sp, sp, #0x30
-ffffff8000083c90:	d65f03c0 	ret
+ffffff8000083c90:	9100c3ff 	add	sp, sp, #0x30
+ffffff8000083c94:	d65f03c0 	ret
 
-ffffff8000083c94 <PrintString>:
+ffffff8000083c98 <PrintString>:
 PrintString():
 /home/dofingert/Source/OS/THYOS/lib/print.c:275
-ffffff8000083c94:	d100c3ff 	sub	sp, sp, #0x30
-ffffff8000083c98:	f9000fe0 	str	x0, [sp, #24]
-ffffff8000083c9c:	f9000be1 	str	x1, [sp, #16]
-ffffff8000083ca0:	b9000fe2 	str	w2, [sp, #12]
-ffffff8000083ca4:	b9000be3 	str	w3, [sp, #8]
+ffffff8000083c98:	d100c3ff 	sub	sp, sp, #0x30
+ffffff8000083c9c:	f9000fe0 	str	x0, [sp, #24]
+ffffff8000083ca0:	f9000be1 	str	x1, [sp, #16]
+ffffff8000083ca4:	b9000fe2 	str	w2, [sp, #12]
+ffffff8000083ca8:	b9000be3 	str	w3, [sp, #8]
 /home/dofingert/Source/OS/THYOS/lib/print.c:277
-ffffff8000083ca8:	b9002bff 	str	wzr, [sp, #40]
+ffffff8000083cac:	b9002bff 	str	wzr, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:279
-ffffff8000083cac:	f9400be0 	ldr	x0, [sp, #16]
-ffffff8000083cb0:	f90013e0 	str	x0, [sp, #32]
+ffffff8000083cb0:	f9400be0 	ldr	x0, [sp, #16]
+ffffff8000083cb4:	f90013e0 	str	x0, [sp, #32]
 /home/dofingert/Source/OS/THYOS/lib/print.c:280
-ffffff8000083cb4:	14000004 	b	ffffff8000083cc4 <PrintString+0x30>
+ffffff8000083cb8:	14000004 	b	ffffff8000083cc8 <PrintString+0x30>
 /home/dofingert/Source/OS/THYOS/lib/print.c:281
-ffffff8000083cb8:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083cbc:	11000400 	add	w0, w0, #0x1
-ffffff8000083cc0:	b9002be0 	str	w0, [sp, #40]
+ffffff8000083cbc:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083cc0:	11000400 	add	w0, w0, #0x1
+ffffff8000083cc4:	b9002be0 	str	w0, [sp, #40]
 /home/dofingert/Source/OS/THYOS/lib/print.c:280
-ffffff8000083cc4:	f94013e0 	ldr	x0, [sp, #32]
-ffffff8000083cc8:	91000401 	add	x1, x0, #0x1
-ffffff8000083ccc:	f90013e1 	str	x1, [sp, #32]
-ffffff8000083cd0:	39400000 	ldrb	w0, [x0]
-ffffff8000083cd4:	7100001f 	cmp	w0, #0x0
-ffffff8000083cd8:	54ffff01 	b.ne	ffffff8000083cb8 <PrintString+0x24>  // b.any
+ffffff8000083cc8:	f94013e0 	ldr	x0, [sp, #32]
+ffffff8000083ccc:	91000401 	add	x1, x0, #0x1
+ffffff8000083cd0:	f90013e1 	str	x1, [sp, #32]
+ffffff8000083cd4:	39400000 	ldrb	w0, [x0]
+ffffff8000083cd8:	7100001f 	cmp	w0, #0x0
+ffffff8000083cdc:	54ffff01 	b.ne	ffffff8000083cbc <PrintString+0x24>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:283
-ffffff8000083cdc:	b9400fe1 	ldr	w1, [sp, #12]
-ffffff8000083ce0:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083ce4:	6b00003f 	cmp	w1, w0
-ffffff8000083ce8:	5400006a 	b.ge	ffffff8000083cf4 <PrintString+0x60>  // b.tcont
+ffffff8000083ce0:	b9400fe1 	ldr	w1, [sp, #12]
+ffffff8000083ce4:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083ce8:	6b00003f 	cmp	w1, w0
+ffffff8000083cec:	5400006a 	b.ge	ffffff8000083cf8 <PrintString+0x60>  // b.tcont
 /home/dofingert/Source/OS/THYOS/lib/print.c:284
-ffffff8000083cec:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083cf0:	b9000fe0 	str	w0, [sp, #12]
+ffffff8000083cf0:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083cf4:	b9000fe0 	str	w0, [sp, #12]
 /home/dofingert/Source/OS/THYOS/lib/print.c:286
-ffffff8000083cf4:	b9400be0 	ldr	w0, [sp, #8]
-ffffff8000083cf8:	7100001f 	cmp	w0, #0x0
-ffffff8000083cfc:	54000440 	b.eq	ffffff8000083d84 <PrintString+0xf0>  // b.none
+ffffff8000083cf8:	b9400be0 	ldr	w0, [sp, #8]
+ffffff8000083cfc:	7100001f 	cmp	w0, #0x0
+ffffff8000083d00:	54000440 	b.eq	ffffff8000083d88 <PrintString+0xf0>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:288
-ffffff8000083d00:	b9002fff 	str	wzr, [sp, #44]
-ffffff8000083d04:	1400000c 	b	ffffff8000083d34 <PrintString+0xa0>
+ffffff8000083d04:	b9002fff 	str	wzr, [sp, #44]
+ffffff8000083d08:	1400000c 	b	ffffff8000083d38 <PrintString+0xa0>
 /home/dofingert/Source/OS/THYOS/lib/print.c:289 (discriminator 3)
-ffffff8000083d08:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083d0c:	f9400be1 	ldr	x1, [sp, #16]
-ffffff8000083d10:	8b000021 	add	x1, x1, x0
-ffffff8000083d14:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083d18:	f9400fe2 	ldr	x2, [sp, #24]
-ffffff8000083d1c:	8b000040 	add	x0, x2, x0
-ffffff8000083d20:	39400021 	ldrb	w1, [x1]
-ffffff8000083d24:	39000001 	strb	w1, [x0]
+ffffff8000083d0c:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083d10:	f9400be1 	ldr	x1, [sp, #16]
+ffffff8000083d14:	8b000021 	add	x1, x1, x0
+ffffff8000083d18:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083d1c:	f9400fe2 	ldr	x2, [sp, #24]
+ffffff8000083d20:	8b000040 	add	x0, x2, x0
+ffffff8000083d24:	39400021 	ldrb	w1, [x1]
+ffffff8000083d28:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:288 (discriminator 3)
-ffffff8000083d28:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083d2c:	11000400 	add	w0, w0, #0x1
-ffffff8000083d30:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083d2c:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083d30:	11000400 	add	w0, w0, #0x1
+ffffff8000083d34:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:288 (discriminator 1)
-ffffff8000083d34:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083d38:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083d3c:	6b00003f 	cmp	w1, w0
-ffffff8000083d40:	54fffe4b 	b.lt	ffffff8000083d08 <PrintString+0x74>  // b.tstop
+ffffff8000083d38:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083d3c:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083d40:	6b00003f 	cmp	w1, w0
+ffffff8000083d44:	54fffe4b 	b.lt	ffffff8000083d0c <PrintString+0x74>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:290
-ffffff8000083d44:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083d48:	b9002fe0 	str	w0, [sp, #44]
-ffffff8000083d4c:	14000009 	b	ffffff8000083d70 <PrintString+0xdc>
+ffffff8000083d48:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083d4c:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083d50:	14000009 	b	ffffff8000083d74 <PrintString+0xdc>
 /home/dofingert/Source/OS/THYOS/lib/print.c:291 (discriminator 3)
-ffffff8000083d50:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083d54:	f9400fe1 	ldr	x1, [sp, #24]
-ffffff8000083d58:	8b000020 	add	x0, x1, x0
-ffffff8000083d5c:	52800401 	mov	w1, #0x20                  	// #32
-ffffff8000083d60:	39000001 	strb	w1, [x0]
+ffffff8000083d54:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083d58:	f9400fe1 	ldr	x1, [sp, #24]
+ffffff8000083d5c:	8b000020 	add	x0, x1, x0
+ffffff8000083d60:	52800401 	mov	w1, #0x20                  	// #32
+ffffff8000083d64:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:290 (discriminator 3)
-ffffff8000083d64:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083d68:	11000400 	add	w0, w0, #0x1
-ffffff8000083d6c:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083d68:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083d6c:	11000400 	add	w0, w0, #0x1
+ffffff8000083d70:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:290 (discriminator 1)
-ffffff8000083d70:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083d74:	b9400fe0 	ldr	w0, [sp, #12]
-ffffff8000083d78:	6b00003f 	cmp	w1, w0
-ffffff8000083d7c:	54fffeab 	b.lt	ffffff8000083d50 <PrintString+0xbc>  // b.tstop
-ffffff8000083d80:	1400002a 	b	ffffff8000083e28 <PrintString+0x194>
+ffffff8000083d74:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083d78:	b9400fe0 	ldr	w0, [sp, #12]
+ffffff8000083d7c:	6b00003f 	cmp	w1, w0
+ffffff8000083d80:	54fffeab 	b.lt	ffffff8000083d54 <PrintString+0xbc>  // b.tstop
+ffffff8000083d84:	1400002a 	b	ffffff8000083e2c <PrintString+0x194>
 /home/dofingert/Source/OS/THYOS/lib/print.c:295
-ffffff8000083d84:	b9002fff 	str	wzr, [sp, #44]
-ffffff8000083d88:	14000009 	b	ffffff8000083dac <PrintString+0x118>
+ffffff8000083d88:	b9002fff 	str	wzr, [sp, #44]
+ffffff8000083d8c:	14000009 	b	ffffff8000083db0 <PrintString+0x118>
 /home/dofingert/Source/OS/THYOS/lib/print.c:296 (discriminator 3)
-ffffff8000083d8c:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083d90:	f9400fe1 	ldr	x1, [sp, #24]
-ffffff8000083d94:	8b000020 	add	x0, x1, x0
-ffffff8000083d98:	52800401 	mov	w1, #0x20                  	// #32
-ffffff8000083d9c:	39000001 	strb	w1, [x0]
+ffffff8000083d90:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083d94:	f9400fe1 	ldr	x1, [sp, #24]
+ffffff8000083d98:	8b000020 	add	x0, x1, x0
+ffffff8000083d9c:	52800401 	mov	w1, #0x20                  	// #32
+ffffff8000083da0:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:295 (discriminator 3)
-ffffff8000083da0:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083da4:	11000400 	add	w0, w0, #0x1
-ffffff8000083da8:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083da4:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083da8:	11000400 	add	w0, w0, #0x1
+ffffff8000083dac:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:295 (discriminator 1)
-ffffff8000083dac:	b9400fe1 	ldr	w1, [sp, #12]
-ffffff8000083db0:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083db4:	4b000020 	sub	w0, w1, w0
-ffffff8000083db8:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083dbc:	6b00003f 	cmp	w1, w0
-ffffff8000083dc0:	54fffe6b 	b.lt	ffffff8000083d8c <PrintString+0xf8>  // b.tstop
+ffffff8000083db0:	b9400fe1 	ldr	w1, [sp, #12]
+ffffff8000083db4:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083db8:	4b000020 	sub	w0, w1, w0
+ffffff8000083dbc:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083dc0:	6b00003f 	cmp	w1, w0
+ffffff8000083dc4:	54fffe6b 	b.lt	ffffff8000083d90 <PrintString+0xf8>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:297
-ffffff8000083dc4:	b9400fe1 	ldr	w1, [sp, #12]
-ffffff8000083dc8:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083dcc:	4b000020 	sub	w0, w1, w0
-ffffff8000083dd0:	b9002fe0 	str	w0, [sp, #44]
-ffffff8000083dd4:	14000011 	b	ffffff8000083e18 <PrintString+0x184>
+ffffff8000083dc8:	b9400fe1 	ldr	w1, [sp, #12]
+ffffff8000083dcc:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083dd0:	4b000020 	sub	w0, w1, w0
+ffffff8000083dd4:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083dd8:	14000011 	b	ffffff8000083e1c <PrintString+0x184>
 /home/dofingert/Source/OS/THYOS/lib/print.c:298 (discriminator 3)
-ffffff8000083dd8:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083ddc:	b9400fe0 	ldr	w0, [sp, #12]
-ffffff8000083de0:	4b000021 	sub	w1, w1, w0
-ffffff8000083de4:	b9402be0 	ldr	w0, [sp, #40]
-ffffff8000083de8:	0b000020 	add	w0, w1, w0
-ffffff8000083dec:	93407c00 	sxtw	x0, w0
-ffffff8000083df0:	f9400be1 	ldr	x1, [sp, #16]
-ffffff8000083df4:	8b000021 	add	x1, x1, x0
-ffffff8000083df8:	b9802fe0 	ldrsw	x0, [sp, #44]
-ffffff8000083dfc:	f9400fe2 	ldr	x2, [sp, #24]
-ffffff8000083e00:	8b000040 	add	x0, x2, x0
-ffffff8000083e04:	39400021 	ldrb	w1, [x1]
-ffffff8000083e08:	39000001 	strb	w1, [x0]
+ffffff8000083ddc:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083de0:	b9400fe0 	ldr	w0, [sp, #12]
+ffffff8000083de4:	4b000021 	sub	w1, w1, w0
+ffffff8000083de8:	b9402be0 	ldr	w0, [sp, #40]
+ffffff8000083dec:	0b000020 	add	w0, w1, w0
+ffffff8000083df0:	93407c00 	sxtw	x0, w0
+ffffff8000083df4:	f9400be1 	ldr	x1, [sp, #16]
+ffffff8000083df8:	8b000021 	add	x1, x1, x0
+ffffff8000083dfc:	b9802fe0 	ldrsw	x0, [sp, #44]
+ffffff8000083e00:	f9400fe2 	ldr	x2, [sp, #24]
+ffffff8000083e04:	8b000040 	add	x0, x2, x0
+ffffff8000083e08:	39400021 	ldrb	w1, [x1]
+ffffff8000083e0c:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:297 (discriminator 3)
-ffffff8000083e0c:	b9402fe0 	ldr	w0, [sp, #44]
-ffffff8000083e10:	11000400 	add	w0, w0, #0x1
-ffffff8000083e14:	b9002fe0 	str	w0, [sp, #44]
+ffffff8000083e10:	b9402fe0 	ldr	w0, [sp, #44]
+ffffff8000083e14:	11000400 	add	w0, w0, #0x1
+ffffff8000083e18:	b9002fe0 	str	w0, [sp, #44]
 /home/dofingert/Source/OS/THYOS/lib/print.c:297 (discriminator 1)
-ffffff8000083e18:	b9402fe1 	ldr	w1, [sp, #44]
-ffffff8000083e1c:	b9400fe0 	ldr	w0, [sp, #12]
-ffffff8000083e20:	6b00003f 	cmp	w1, w0
-ffffff8000083e24:	54fffdab 	b.lt	ffffff8000083dd8 <PrintString+0x144>  // b.tstop
+ffffff8000083e1c:	b9402fe1 	ldr	w1, [sp, #44]
+ffffff8000083e20:	b9400fe0 	ldr	w0, [sp, #12]
+ffffff8000083e24:	6b00003f 	cmp	w1, w0
+ffffff8000083e28:	54fffdab 	b.lt	ffffff8000083ddc <PrintString+0x144>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:300
-ffffff8000083e28:	b9400fe0 	ldr	w0, [sp, #12]
+ffffff8000083e2c:	b9400fe0 	ldr	w0, [sp, #12]
 /home/dofingert/Source/OS/THYOS/lib/print.c:301
-ffffff8000083e2c:	9100c3ff 	add	sp, sp, #0x30
-ffffff8000083e30:	d65f03c0 	ret
+ffffff8000083e30:	9100c3ff 	add	sp, sp, #0x30
+ffffff8000083e34:	d65f03c0 	ret
 
-ffffff8000083e34 <PrintNum>:
+ffffff8000083e38 <PrintNum>:
 PrintNum():
 /home/dofingert/Source/OS/THYOS/lib/print.c:307
-ffffff8000083e34:	d10143ff 	sub	sp, sp, #0x50
-ffffff8000083e38:	f90017e0 	str	x0, [sp, #40]
-ffffff8000083e3c:	f90013e1 	str	x1, [sp, #32]
-ffffff8000083e40:	b9001fe2 	str	w2, [sp, #28]
-ffffff8000083e44:	b9001be3 	str	w3, [sp, #24]
-ffffff8000083e48:	b90017e4 	str	w4, [sp, #20]
-ffffff8000083e4c:	b90013e5 	str	w5, [sp, #16]
-ffffff8000083e50:	39003fe6 	strb	w6, [sp, #15]
-ffffff8000083e54:	b9000be7 	str	w7, [sp, #8]
+ffffff8000083e38:	d10143ff 	sub	sp, sp, #0x50
+ffffff8000083e3c:	f90017e0 	str	x0, [sp, #40]
+ffffff8000083e40:	f90013e1 	str	x1, [sp, #32]
+ffffff8000083e44:	b9001fe2 	str	w2, [sp, #28]
+ffffff8000083e48:	b9001be3 	str	w3, [sp, #24]
+ffffff8000083e4c:	b90017e4 	str	w4, [sp, #20]
+ffffff8000083e50:	b90013e5 	str	w5, [sp, #16]
+ffffff8000083e54:	39003fe6 	strb	w6, [sp, #15]
+ffffff8000083e58:	b9000be7 	str	w7, [sp, #8]
 /home/dofingert/Source/OS/THYOS/lib/print.c:318
-ffffff8000083e58:	b9003bff 	str	wzr, [sp, #56]
+ffffff8000083e5c:	b9003bff 	str	wzr, [sp, #56]
 /home/dofingert/Source/OS/THYOS/lib/print.c:319
-ffffff8000083e5c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083e60:	f90027e0 	str	x0, [sp, #72]
+ffffff8000083e60:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083e64:	f90027e0 	str	x0, [sp, #72]
 /home/dofingert/Source/OS/THYOS/lib/print.c:324
-ffffff8000083e64:	b9801fe1 	ldrsw	x1, [sp, #28]
-ffffff8000083e68:	f94013e0 	ldr	x0, [sp, #32]
-ffffff8000083e6c:	9ac10802 	udiv	x2, x0, x1
-ffffff8000083e70:	9b017c41 	mul	x1, x2, x1
-ffffff8000083e74:	cb010000 	sub	x0, x0, x1
-ffffff8000083e78:	b90037e0 	str	w0, [sp, #52]
+ffffff8000083e68:	b9801fe1 	ldrsw	x1, [sp, #28]
+ffffff8000083e6c:	f94013e0 	ldr	x0, [sp, #32]
+ffffff8000083e70:	9ac10802 	udiv	x2, x0, x1
+ffffff8000083e74:	9b017c41 	mul	x1, x2, x1
+ffffff8000083e78:	cb010000 	sub	x0, x0, x1
+ffffff8000083e7c:	b90037e0 	str	w0, [sp, #52]
 /home/dofingert/Source/OS/THYOS/lib/print.c:325
-ffffff8000083e7c:	b94037e0 	ldr	w0, [sp, #52]
-ffffff8000083e80:	7100241f 	cmp	w0, #0x9
-ffffff8000083e84:	5400014c 	b.gt	ffffff8000083eac <PrintNum+0x78>
+ffffff8000083e80:	b94037e0 	ldr	w0, [sp, #52]
+ffffff8000083e84:	7100241f 	cmp	w0, #0x9
+ffffff8000083e88:	5400014c 	b.gt	ffffff8000083eb0 <PrintNum+0x78>
 /home/dofingert/Source/OS/THYOS/lib/print.c:327
-ffffff8000083e88:	b94037e0 	ldr	w0, [sp, #52]
-ffffff8000083e8c:	12001c01 	and	w1, w0, #0xff
-ffffff8000083e90:	f94027e0 	ldr	x0, [sp, #72]
-ffffff8000083e94:	91000402 	add	x2, x0, #0x1
-ffffff8000083e98:	f90027e2 	str	x2, [sp, #72]
-ffffff8000083e9c:	1100c021 	add	w1, w1, #0x30
-ffffff8000083ea0:	12001c21 	and	w1, w1, #0xff
-ffffff8000083ea4:	39000001 	strb	w1, [x0]
-ffffff8000083ea8:	14000015 	b	ffffff8000083efc <PrintNum+0xc8>
+ffffff8000083e8c:	b94037e0 	ldr	w0, [sp, #52]
+ffffff8000083e90:	12001c01 	and	w1, w0, #0xff
+ffffff8000083e94:	f94027e0 	ldr	x0, [sp, #72]
+ffffff8000083e98:	91000402 	add	x2, x0, #0x1
+ffffff8000083e9c:	f90027e2 	str	x2, [sp, #72]
+ffffff8000083ea0:	1100c021 	add	w1, w1, #0x30
+ffffff8000083ea4:	12001c21 	and	w1, w1, #0xff
+ffffff8000083ea8:	39000001 	strb	w1, [x0]
+ffffff8000083eac:	14000015 	b	ffffff8000083f00 <PrintNum+0xc8>
 /home/dofingert/Source/OS/THYOS/lib/print.c:329
-ffffff8000083eac:	b9400be0 	ldr	w0, [sp, #8]
-ffffff8000083eb0:	7100001f 	cmp	w0, #0x0
-ffffff8000083eb4:	54000140 	b.eq	ffffff8000083edc <PrintNum+0xa8>  // b.none
+ffffff8000083eb0:	b9400be0 	ldr	w0, [sp, #8]
+ffffff8000083eb4:	7100001f 	cmp	w0, #0x0
+ffffff8000083eb8:	54000140 	b.eq	ffffff8000083ee0 <PrintNum+0xa8>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:331
-ffffff8000083eb8:	b94037e0 	ldr	w0, [sp, #52]
-ffffff8000083ebc:	12001c01 	and	w1, w0, #0xff
-ffffff8000083ec0:	f94027e0 	ldr	x0, [sp, #72]
-ffffff8000083ec4:	91000402 	add	x2, x0, #0x1
-ffffff8000083ec8:	f90027e2 	str	x2, [sp, #72]
-ffffff8000083ecc:	1100dc21 	add	w1, w1, #0x37
-ffffff8000083ed0:	12001c21 	and	w1, w1, #0xff
-ffffff8000083ed4:	39000001 	strb	w1, [x0]
-ffffff8000083ed8:	14000009 	b	ffffff8000083efc <PrintNum+0xc8>
+ffffff8000083ebc:	b94037e0 	ldr	w0, [sp, #52]
+ffffff8000083ec0:	12001c01 	and	w1, w0, #0xff
+ffffff8000083ec4:	f94027e0 	ldr	x0, [sp, #72]
+ffffff8000083ec8:	91000402 	add	x2, x0, #0x1
+ffffff8000083ecc:	f90027e2 	str	x2, [sp, #72]
+ffffff8000083ed0:	1100dc21 	add	w1, w1, #0x37
+ffffff8000083ed4:	12001c21 	and	w1, w1, #0xff
+ffffff8000083ed8:	39000001 	strb	w1, [x0]
+ffffff8000083edc:	14000009 	b	ffffff8000083f00 <PrintNum+0xc8>
 /home/dofingert/Source/OS/THYOS/lib/print.c:335
-ffffff8000083edc:	b94037e0 	ldr	w0, [sp, #52]
-ffffff8000083ee0:	12001c01 	and	w1, w0, #0xff
-ffffff8000083ee4:	f94027e0 	ldr	x0, [sp, #72]
-ffffff8000083ee8:	91000402 	add	x2, x0, #0x1
-ffffff8000083eec:	f90027e2 	str	x2, [sp, #72]
-ffffff8000083ef0:	11015c21 	add	w1, w1, #0x57
-ffffff8000083ef4:	12001c21 	and	w1, w1, #0xff
-ffffff8000083ef8:	39000001 	strb	w1, [x0]
+ffffff8000083ee0:	b94037e0 	ldr	w0, [sp, #52]
+ffffff8000083ee4:	12001c01 	and	w1, w0, #0xff
+ffffff8000083ee8:	f94027e0 	ldr	x0, [sp, #72]
+ffffff8000083eec:	91000402 	add	x2, x0, #0x1
+ffffff8000083ef0:	f90027e2 	str	x2, [sp, #72]
+ffffff8000083ef4:	11015c21 	add	w1, w1, #0x57
+ffffff8000083ef8:	12001c21 	and	w1, w1, #0xff
+ffffff8000083efc:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:337
-ffffff8000083efc:	b9801fe0 	ldrsw	x0, [sp, #28]
-ffffff8000083f00:	f94013e1 	ldr	x1, [sp, #32]
-ffffff8000083f04:	9ac00820 	udiv	x0, x1, x0
-ffffff8000083f08:	f90013e0 	str	x0, [sp, #32]
+ffffff8000083f00:	b9801fe0 	ldrsw	x0, [sp, #28]
+ffffff8000083f04:	f94013e1 	ldr	x1, [sp, #32]
+ffffff8000083f08:	9ac00820 	udiv	x0, x1, x0
+ffffff8000083f0c:	f90013e0 	str	x0, [sp, #32]
 /home/dofingert/Source/OS/THYOS/lib/print.c:338
-ffffff8000083f0c:	f94013e0 	ldr	x0, [sp, #32]
-ffffff8000083f10:	f100001f 	cmp	x0, #0x0
-ffffff8000083f14:	54fffa81 	b.ne	ffffff8000083e64 <PrintNum+0x30>  // b.any
+ffffff8000083f10:	f94013e0 	ldr	x0, [sp, #32]
+ffffff8000083f14:	f100001f 	cmp	x0, #0x0
+ffffff8000083f18:	54fffa81 	b.ne	ffffff8000083e68 <PrintNum+0x30>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:340
-ffffff8000083f18:	b9401be0 	ldr	w0, [sp, #24]
-ffffff8000083f1c:	7100001f 	cmp	w0, #0x0
-ffffff8000083f20:	540000c0 	b.eq	ffffff8000083f38 <PrintNum+0x104>  // b.none
+ffffff8000083f1c:	b9401be0 	ldr	w0, [sp, #24]
+ffffff8000083f20:	7100001f 	cmp	w0, #0x0
+ffffff8000083f24:	540000c0 	b.eq	ffffff8000083f3c <PrintNum+0x104>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:342
-ffffff8000083f24:	f94027e0 	ldr	x0, [sp, #72]
-ffffff8000083f28:	91000401 	add	x1, x0, #0x1
-ffffff8000083f2c:	f90027e1 	str	x1, [sp, #72]
-ffffff8000083f30:	528005a1 	mov	w1, #0x2d                  	// #45
-ffffff8000083f34:	39000001 	strb	w1, [x0]
+ffffff8000083f28:	f94027e0 	ldr	x0, [sp, #72]
+ffffff8000083f2c:	91000401 	add	x1, x0, #0x1
+ffffff8000083f30:	f90027e1 	str	x1, [sp, #72]
+ffffff8000083f34:	528005a1 	mov	w1, #0x2d                  	// #45
+ffffff8000083f38:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:346
-ffffff8000083f38:	f94027e1 	ldr	x1, [sp, #72]
-ffffff8000083f3c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000083f40:	cb000020 	sub	x0, x1, x0
-ffffff8000083f44:	b9003be0 	str	w0, [sp, #56]
+ffffff8000083f3c:	f94027e1 	ldr	x1, [sp, #72]
+ffffff8000083f40:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000083f44:	cb000020 	sub	x0, x1, x0
+ffffff8000083f48:	b9003be0 	str	w0, [sp, #56]
 /home/dofingert/Source/OS/THYOS/lib/print.c:347
-ffffff8000083f48:	b94017e1 	ldr	w1, [sp, #20]
-ffffff8000083f4c:	b9403be0 	ldr	w0, [sp, #56]
-ffffff8000083f50:	6b00003f 	cmp	w1, w0
-ffffff8000083f54:	5400006a 	b.ge	ffffff8000083f60 <PrintNum+0x12c>  // b.tcont
+ffffff8000083f4c:	b94017e1 	ldr	w1, [sp, #20]
+ffffff8000083f50:	b9403be0 	ldr	w0, [sp, #56]
+ffffff8000083f54:	6b00003f 	cmp	w1, w0
+ffffff8000083f58:	5400006a 	b.ge	ffffff8000083f64 <PrintNum+0x12c>  // b.tcont
 /home/dofingert/Source/OS/THYOS/lib/print.c:348
-ffffff8000083f58:	b9403be0 	ldr	w0, [sp, #56]
-ffffff8000083f5c:	b90017e0 	str	w0, [sp, #20]
+ffffff8000083f5c:	b9403be0 	ldr	w0, [sp, #56]
+ffffff8000083f60:	b90017e0 	str	w0, [sp, #20]
 /home/dofingert/Source/OS/THYOS/lib/print.c:351
-ffffff8000083f60:	b94013e0 	ldr	w0, [sp, #16]
-ffffff8000083f64:	7100001f 	cmp	w0, #0x0
-ffffff8000083f68:	54000060 	b.eq	ffffff8000083f74 <PrintNum+0x140>  // b.none
+ffffff8000083f64:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083f68:	7100001f 	cmp	w0, #0x0
+ffffff8000083f6c:	54000060 	b.eq	ffffff8000083f78 <PrintNum+0x140>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:353
-ffffff8000083f6c:	52800400 	mov	w0, #0x20                  	// #32
-ffffff8000083f70:	39003fe0 	strb	w0, [sp, #15]
+ffffff8000083f70:	52800400 	mov	w0, #0x20                  	// #32
+ffffff8000083f74:	39003fe0 	strb	w0, [sp, #15]
 /home/dofingert/Source/OS/THYOS/lib/print.c:356
-ffffff8000083f74:	b9401be0 	ldr	w0, [sp, #24]
-ffffff8000083f78:	7100001f 	cmp	w0, #0x0
-ffffff8000083f7c:	540003e0 	b.eq	ffffff8000083ff8 <PrintNum+0x1c4>  // b.none
+ffffff8000083f78:	b9401be0 	ldr	w0, [sp, #24]
+ffffff8000083f7c:	7100001f 	cmp	w0, #0x0
+ffffff8000083f80:	540003e0 	b.eq	ffffff8000083ffc <PrintNum+0x1c4>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:356 (discriminator 1)
-ffffff8000083f80:	b94013e0 	ldr	w0, [sp, #16]
-ffffff8000083f84:	7100001f 	cmp	w0, #0x0
-ffffff8000083f88:	54000381 	b.ne	ffffff8000083ff8 <PrintNum+0x1c4>  // b.any
+ffffff8000083f84:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000083f88:	7100001f 	cmp	w0, #0x0
+ffffff8000083f8c:	54000381 	b.ne	ffffff8000083ffc <PrintNum+0x1c4>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:356 (discriminator 2)
-ffffff8000083f8c:	39403fe0 	ldrb	w0, [sp, #15]
-ffffff8000083f90:	7100c01f 	cmp	w0, #0x30
-ffffff8000083f94:	54000321 	b.ne	ffffff8000083ff8 <PrintNum+0x1c4>  // b.any
+ffffff8000083f90:	39403fe0 	ldrb	w0, [sp, #15]
+ffffff8000083f94:	7100c01f 	cmp	w0, #0x30
+ffffff8000083f98:	54000321 	b.ne	ffffff8000083ffc <PrintNum+0x1c4>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/print.c:358
-ffffff8000083f98:	b9403be0 	ldr	w0, [sp, #56]
-ffffff8000083f9c:	51000400 	sub	w0, w0, #0x1
-ffffff8000083fa0:	b90047e0 	str	w0, [sp, #68]
-ffffff8000083fa4:	14000009 	b	ffffff8000083fc8 <PrintNum+0x194>
+ffffff8000083f9c:	b9403be0 	ldr	w0, [sp, #56]
+ffffff8000083fa0:	51000400 	sub	w0, w0, #0x1
+ffffff8000083fa4:	b90047e0 	str	w0, [sp, #68]
+ffffff8000083fa8:	14000009 	b	ffffff8000083fcc <PrintNum+0x194>
 /home/dofingert/Source/OS/THYOS/lib/print.c:359 (discriminator 3)
-ffffff8000083fa8:	b98047e0 	ldrsw	x0, [sp, #68]
-ffffff8000083fac:	f94017e1 	ldr	x1, [sp, #40]
-ffffff8000083fb0:	8b000020 	add	x0, x1, x0
-ffffff8000083fb4:	39403fe1 	ldrb	w1, [sp, #15]
-ffffff8000083fb8:	39000001 	strb	w1, [x0]
+ffffff8000083fac:	b98047e0 	ldrsw	x0, [sp, #68]
+ffffff8000083fb0:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000083fb4:	8b000020 	add	x0, x1, x0
+ffffff8000083fb8:	39403fe1 	ldrb	w1, [sp, #15]
+ffffff8000083fbc:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:358 (discriminator 3)
-ffffff8000083fbc:	b94047e0 	ldr	w0, [sp, #68]
-ffffff8000083fc0:	11000400 	add	w0, w0, #0x1
-ffffff8000083fc4:	b90047e0 	str	w0, [sp, #68]
+ffffff8000083fc0:	b94047e0 	ldr	w0, [sp, #68]
+ffffff8000083fc4:	11000400 	add	w0, w0, #0x1
+ffffff8000083fc8:	b90047e0 	str	w0, [sp, #68]
 /home/dofingert/Source/OS/THYOS/lib/print.c:358 (discriminator 1)
-ffffff8000083fc8:	b94017e0 	ldr	w0, [sp, #20]
-ffffff8000083fcc:	51000400 	sub	w0, w0, #0x1
-ffffff8000083fd0:	b94047e1 	ldr	w1, [sp, #68]
-ffffff8000083fd4:	6b00003f 	cmp	w1, w0
-ffffff8000083fd8:	54fffe8b 	b.lt	ffffff8000083fa8 <PrintNum+0x174>  // b.tstop
+ffffff8000083fcc:	b94017e0 	ldr	w0, [sp, #20]
+ffffff8000083fd0:	51000400 	sub	w0, w0, #0x1
+ffffff8000083fd4:	b94047e1 	ldr	w1, [sp, #68]
+ffffff8000083fd8:	6b00003f 	cmp	w1, w0
+ffffff8000083fdc:	54fffe8b 	b.lt	ffffff8000083fac <PrintNum+0x174>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:361
-ffffff8000083fdc:	b98017e0 	ldrsw	x0, [sp, #20]
-ffffff8000083fe0:	d1000400 	sub	x0, x0, #0x1
-ffffff8000083fe4:	f94017e1 	ldr	x1, [sp, #40]
-ffffff8000083fe8:	8b000020 	add	x0, x1, x0
-ffffff8000083fec:	528005a1 	mov	w1, #0x2d                  	// #45
-ffffff8000083ff0:	39000001 	strb	w1, [x0]
-ffffff8000083ff4:	14000010 	b	ffffff8000084034 <PrintNum+0x200>
+ffffff8000083fe0:	b98017e0 	ldrsw	x0, [sp, #20]
+ffffff8000083fe4:	d1000400 	sub	x0, x0, #0x1
+ffffff8000083fe8:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000083fec:	8b000020 	add	x0, x1, x0
+ffffff8000083ff0:	528005a1 	mov	w1, #0x2d                  	// #45
+ffffff8000083ff4:	39000001 	strb	w1, [x0]
+ffffff8000083ff8:	14000010 	b	ffffff8000084038 <PrintNum+0x200>
 /home/dofingert/Source/OS/THYOS/lib/print.c:365
-ffffff8000083ff8:	b9403be0 	ldr	w0, [sp, #56]
-ffffff8000083ffc:	b90047e0 	str	w0, [sp, #68]
-ffffff8000084000:	14000009 	b	ffffff8000084024 <PrintNum+0x1f0>
+ffffff8000083ffc:	b9403be0 	ldr	w0, [sp, #56]
+ffffff8000084000:	b90047e0 	str	w0, [sp, #68]
+ffffff8000084004:	14000009 	b	ffffff8000084028 <PrintNum+0x1f0>
 /home/dofingert/Source/OS/THYOS/lib/print.c:366 (discriminator 3)
-ffffff8000084004:	b98047e0 	ldrsw	x0, [sp, #68]
-ffffff8000084008:	f94017e1 	ldr	x1, [sp, #40]
-ffffff800008400c:	8b000020 	add	x0, x1, x0
-ffffff8000084010:	39403fe1 	ldrb	w1, [sp, #15]
-ffffff8000084014:	39000001 	strb	w1, [x0]
+ffffff8000084008:	b98047e0 	ldrsw	x0, [sp, #68]
+ffffff800008400c:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000084010:	8b000020 	add	x0, x1, x0
+ffffff8000084014:	39403fe1 	ldrb	w1, [sp, #15]
+ffffff8000084018:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:365 (discriminator 3)
-ffffff8000084018:	b94047e0 	ldr	w0, [sp, #68]
-ffffff800008401c:	11000400 	add	w0, w0, #0x1
-ffffff8000084020:	b90047e0 	str	w0, [sp, #68]
+ffffff800008401c:	b94047e0 	ldr	w0, [sp, #68]
+ffffff8000084020:	11000400 	add	w0, w0, #0x1
+ffffff8000084024:	b90047e0 	str	w0, [sp, #68]
 /home/dofingert/Source/OS/THYOS/lib/print.c:365 (discriminator 1)
-ffffff8000084024:	b94047e1 	ldr	w1, [sp, #68]
-ffffff8000084028:	b94017e0 	ldr	w0, [sp, #20]
-ffffff800008402c:	6b00003f 	cmp	w1, w0
-ffffff8000084030:	54fffeab 	b.lt	ffffff8000084004 <PrintNum+0x1d0>  // b.tstop
+ffffff8000084028:	b94047e1 	ldr	w1, [sp, #68]
+ffffff800008402c:	b94017e0 	ldr	w0, [sp, #20]
+ffffff8000084030:	6b00003f 	cmp	w1, w0
+ffffff8000084034:	54fffeab 	b.lt	ffffff8000084008 <PrintNum+0x1d0>  // b.tstop
 /home/dofingert/Source/OS/THYOS/lib/print.c:370
-ffffff8000084034:	b90043ff 	str	wzr, [sp, #64]
+ffffff8000084038:	b90043ff 	str	wzr, [sp, #64]
 /home/dofingert/Source/OS/THYOS/lib/print.c:372
-ffffff8000084038:	b94013e0 	ldr	w0, [sp, #16]
-ffffff800008403c:	7100001f 	cmp	w0, #0x0
-ffffff8000084040:	540000a0 	b.eq	ffffff8000084054 <PrintNum+0x220>  // b.none
+ffffff800008403c:	b94013e0 	ldr	w0, [sp, #16]
+ffffff8000084040:	7100001f 	cmp	w0, #0x0
+ffffff8000084044:	540000a0 	b.eq	ffffff8000084058 <PrintNum+0x220>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/print.c:374
-ffffff8000084044:	b9403be0 	ldr	w0, [sp, #56]
-ffffff8000084048:	51000400 	sub	w0, w0, #0x1
-ffffff800008404c:	b9003fe0 	str	w0, [sp, #60]
-ffffff8000084050:	1400001d 	b	ffffff80000840c4 <PrintNum+0x290>
+ffffff8000084048:	b9403be0 	ldr	w0, [sp, #56]
+ffffff800008404c:	51000400 	sub	w0, w0, #0x1
+ffffff8000084050:	b9003fe0 	str	w0, [sp, #60]
+ffffff8000084054:	1400001d 	b	ffffff80000840c8 <PrintNum+0x290>
 /home/dofingert/Source/OS/THYOS/lib/print.c:378
-ffffff8000084054:	b94017e0 	ldr	w0, [sp, #20]
-ffffff8000084058:	51000400 	sub	w0, w0, #0x1
-ffffff800008405c:	b9003fe0 	str	w0, [sp, #60]
+ffffff8000084058:	b94017e0 	ldr	w0, [sp, #20]
+ffffff800008405c:	51000400 	sub	w0, w0, #0x1
+ffffff8000084060:	b9003fe0 	str	w0, [sp, #60]
 /home/dofingert/Source/OS/THYOS/lib/print.c:381
-ffffff8000084060:	14000019 	b	ffffff80000840c4 <PrintNum+0x290>
+ffffff8000084064:	14000019 	b	ffffff80000840c8 <PrintNum+0x290>
 /home/dofingert/Source/OS/THYOS/lib/print.c:383
-ffffff8000084064:	b98043e0 	ldrsw	x0, [sp, #64]
-ffffff8000084068:	f94017e1 	ldr	x1, [sp, #40]
-ffffff800008406c:	8b000020 	add	x0, x1, x0
-ffffff8000084070:	39400000 	ldrb	w0, [x0]
-ffffff8000084074:	3900cfe0 	strb	w0, [sp, #51]
+ffffff8000084068:	b98043e0 	ldrsw	x0, [sp, #64]
+ffffff800008406c:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000084070:	8b000020 	add	x0, x1, x0
+ffffff8000084074:	39400000 	ldrb	w0, [x0]
+ffffff8000084078:	3900cfe0 	strb	w0, [sp, #51]
 /home/dofingert/Source/OS/THYOS/lib/print.c:384
-ffffff8000084078:	b9803fe0 	ldrsw	x0, [sp, #60]
-ffffff800008407c:	f94017e1 	ldr	x1, [sp, #40]
-ffffff8000084080:	8b000021 	add	x1, x1, x0
-ffffff8000084084:	b98043e0 	ldrsw	x0, [sp, #64]
-ffffff8000084088:	f94017e2 	ldr	x2, [sp, #40]
-ffffff800008408c:	8b000040 	add	x0, x2, x0
-ffffff8000084090:	39400021 	ldrb	w1, [x1]
-ffffff8000084094:	39000001 	strb	w1, [x0]
+ffffff800008407c:	b9803fe0 	ldrsw	x0, [sp, #60]
+ffffff8000084080:	f94017e1 	ldr	x1, [sp, #40]
+ffffff8000084084:	8b000021 	add	x1, x1, x0
+ffffff8000084088:	b98043e0 	ldrsw	x0, [sp, #64]
+ffffff800008408c:	f94017e2 	ldr	x2, [sp, #40]
+ffffff8000084090:	8b000040 	add	x0, x2, x0
+ffffff8000084094:	39400021 	ldrb	w1, [x1]
+ffffff8000084098:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:385
-ffffff8000084098:	b9803fe0 	ldrsw	x0, [sp, #60]
-ffffff800008409c:	f94017e1 	ldr	x1, [sp, #40]
-ffffff80000840a0:	8b000020 	add	x0, x1, x0
-ffffff80000840a4:	3940cfe1 	ldrb	w1, [sp, #51]
-ffffff80000840a8:	39000001 	strb	w1, [x0]
+ffffff800008409c:	b9803fe0 	ldrsw	x0, [sp, #60]
+ffffff80000840a0:	f94017e1 	ldr	x1, [sp, #40]
+ffffff80000840a4:	8b000020 	add	x0, x1, x0
+ffffff80000840a8:	3940cfe1 	ldrb	w1, [sp, #51]
+ffffff80000840ac:	39000001 	strb	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/print.c:386
-ffffff80000840ac:	b94043e0 	ldr	w0, [sp, #64]
-ffffff80000840b0:	11000400 	add	w0, w0, #0x1
-ffffff80000840b4:	b90043e0 	str	w0, [sp, #64]
+ffffff80000840b0:	b94043e0 	ldr	w0, [sp, #64]
+ffffff80000840b4:	11000400 	add	w0, w0, #0x1
+ffffff80000840b8:	b90043e0 	str	w0, [sp, #64]
 /home/dofingert/Source/OS/THYOS/lib/print.c:387
-ffffff80000840b8:	b9403fe0 	ldr	w0, [sp, #60]
-ffffff80000840bc:	51000400 	sub	w0, w0, #0x1
-ffffff80000840c0:	b9003fe0 	str	w0, [sp, #60]
+ffffff80000840bc:	b9403fe0 	ldr	w0, [sp, #60]
+ffffff80000840c0:	51000400 	sub	w0, w0, #0x1
+ffffff80000840c4:	b9003fe0 	str	w0, [sp, #60]
 /home/dofingert/Source/OS/THYOS/lib/print.c:381
-ffffff80000840c4:	b9403fe1 	ldr	w1, [sp, #60]
-ffffff80000840c8:	b94043e0 	ldr	w0, [sp, #64]
-ffffff80000840cc:	6b00003f 	cmp	w1, w0
-ffffff80000840d0:	54fffcac 	b.gt	ffffff8000084064 <PrintNum+0x230>
+ffffff80000840c8:	b9403fe1 	ldr	w1, [sp, #60]
+ffffff80000840cc:	b94043e0 	ldr	w0, [sp, #64]
+ffffff80000840d0:	6b00003f 	cmp	w1, w0
+ffffff80000840d4:	54fffcac 	b.gt	ffffff8000084068 <PrintNum+0x230>
 /home/dofingert/Source/OS/THYOS/lib/print.c:391
-ffffff80000840d4:	b94017e0 	ldr	w0, [sp, #20]
+ffffff80000840d8:	b94017e0 	ldr	w0, [sp, #20]
 /home/dofingert/Source/OS/THYOS/lib/print.c:392
-ffffff80000840d8:	910143ff 	add	sp, sp, #0x50
-ffffff80000840dc:	d65f03c0 	ret
+ffffff80000840dc:	910143ff 	add	sp, sp, #0x50
+ffffff80000840e0:	d65f03c0 	ret
 
-ffffff80000840e0 <handle_irq>:
+ffffff80000840e4 <handle_irq>:
 handle_irq():
 /home/dofingert/Source/OS/THYOS/lib/sched.c:16
-ffffff80000840e0:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
-ffffff80000840e4:	910003fd 	mov	x29, sp
+ffffff80000840e4:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+ffffff80000840e8:	910003fd 	mov	x29, sp
 /home/dofingert/Source/OS/THYOS/lib/sched.c:17
-ffffff80000840e8:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000840ec:	9136c000 	add	x0, x0, #0xdb0
-ffffff80000840f0:	97fffafc 	bl	ffffff8000082ce0 <printf>
+ffffff80000840ec:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000840f0:	9136c000 	add	x0, x0, #0xdb0
+ffffff80000840f4:	97fffafc 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:18
-ffffff80000840f4:	94000201 	bl	ffffff80000848f8 <reset_timer>
+ffffff80000840f8:	94000200 	bl	ffffff80000848f8 <reset_timer>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:19
-ffffff80000840f8:	94000004 	bl	ffffff8000084108 <sched_yield>
+ffffff80000840fc:	94000004 	bl	ffffff800008410c <sched_yield>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:20
-ffffff80000840fc:	d503201f 	nop
-ffffff8000084100:	a8c17bfd 	ldp	x29, x30, [sp], #16
-ffffff8000084104:	d65f03c0 	ret
+ffffff8000084100:	d503201f 	nop
+ffffff8000084104:	a8c17bfd 	ldp	x29, x30, [sp], #16
+ffffff8000084108:	d65f03c0 	ret
 
-ffffff8000084108 <sched_yield>:
+ffffff800008410c <sched_yield>:
 sched_yield():
 /home/dofingert/Source/OS/THYOS/lib/sched.c:23
-ffffff8000084108:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
-ffffff800008410c:	910003fd 	mov	x29, sp
+ffffff800008410c:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+ffffff8000084110:	910003fd 	mov	x29, sp
 /home/dofingert/Source/OS/THYOS/lib/sched.c:28
-ffffff8000084110:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084114:	913a0000 	add	x0, x0, #0xe80
-ffffff8000084118:	b9400000 	ldr	w0, [x0]
-ffffff800008411c:	7100001f 	cmp	w0, #0x0
-ffffff8000084120:	54000180 	b.eq	ffffff8000084150 <sched_yield+0x48>  // b.none
+ffffff8000084114:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084118:	913a0000 	add	x0, x0, #0xe80
+ffffff800008411c:	b9400000 	ldr	w0, [x0]
+ffffff8000084120:	7100001f 	cmp	w0, #0x0
+ffffff8000084124:	54000180 	b.eq	ffffff8000084154 <sched_yield+0x48>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:28 (discriminator 1)
-ffffff8000084124:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084128:	913a2000 	add	x0, x0, #0xe88
-ffffff800008412c:	f9400000 	ldr	x0, [x0]
-ffffff8000084130:	f100001f 	cmp	x0, #0x0
-ffffff8000084134:	540000e0 	b.eq	ffffff8000084150 <sched_yield+0x48>  // b.none
+ffffff8000084128:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008412c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084130:	f9400000 	ldr	x0, [x0]
+ffffff8000084134:	f100001f 	cmp	x0, #0x0
+ffffff8000084138:	540000e0 	b.eq	ffffff8000084154 <sched_yield+0x48>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:28 (discriminator 2)
-ffffff8000084138:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008413c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084140:	f9400000 	ldr	x0, [x0]
-ffffff8000084144:	b9413800 	ldr	w0, [x0, #312]
-ffffff8000084148:	7100041f 	cmp	w0, #0x1
-ffffff800008414c:	54002e80 	b.eq	ffffff800008471c <sched_yield+0x614>  // b.none
+ffffff800008413c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084140:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084144:	f9400000 	ldr	x0, [x0]
+ffffff8000084148:	b9413800 	ldr	w0, [x0, #312]
+ffffff800008414c:	7100041f 	cmp	w0, #0x1
+ffffff8000084150:	54002e80 	b.eq	ffffff8000084720 <sched_yield+0x614>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:30
-ffffff8000084150:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084154:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084158:	f9400000 	ldr	x0, [x0]
-ffffff800008415c:	f100001f 	cmp	x0, #0x0
-ffffff8000084160:	540013e0 	b.eq	ffffff80000843dc <sched_yield+0x2d4>  // b.none
+ffffff8000084154:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084158:	913a2000 	add	x0, x0, #0xe88
+ffffff800008415c:	f9400000 	ldr	x0, [x0]
+ffffff8000084160:	f100001f 	cmp	x0, #0x0
+ffffff8000084164:	540013e0 	b.eq	ffffff80000843e0 <sched_yield+0x2d4>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:32
-ffffff8000084164:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084168:	913a2000 	add	x0, x0, #0xe88
-ffffff800008416c:	f9400000 	ldr	x0, [x0]
-ffffff8000084170:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084174:	f100001f 	cmp	x0, #0x0
-ffffff8000084178:	54000140 	b.eq	ffffff80000841a0 <sched_yield+0x98>  // b.none
+ffffff8000084168:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008416c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084170:	f9400000 	ldr	x0, [x0]
+ffffff8000084174:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084178:	f100001f 	cmp	x0, #0x0
+ffffff800008417c:	54000140 	b.eq	ffffff80000841a4 <sched_yield+0x98>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:32 (discriminator 1)
-ffffff800008417c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084180:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084184:	f9400001 	ldr	x1, [x0]
-ffffff8000084188:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008418c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084190:	f9400000 	ldr	x0, [x0]
-ffffff8000084194:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084198:	f940ac21 	ldr	x1, [x1, #344]
-ffffff800008419c:	f900ac01 	str	x1, [x0, #344]
+ffffff8000084180:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084184:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084188:	f9400001 	ldr	x1, [x0]
+ffffff800008418c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084190:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084194:	f9400000 	ldr	x0, [x0]
+ffffff8000084198:	f940a800 	ldr	x0, [x0, #336]
+ffffff800008419c:	f940ac21 	ldr	x1, [x1, #344]
+ffffff80000841a0:	f900ac01 	str	x1, [x0, #344]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:32 (discriminator 3)
-ffffff80000841a0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000841a4:	913a2000 	add	x0, x0, #0xe88
-ffffff80000841a8:	f9400001 	ldr	x1, [x0]
-ffffff80000841ac:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000841b0:	913a2000 	add	x0, x0, #0xe88
-ffffff80000841b4:	f9400000 	ldr	x0, [x0]
-ffffff80000841b8:	f940ac00 	ldr	x0, [x0, #344]
-ffffff80000841bc:	f940a821 	ldr	x1, [x1, #336]
-ffffff80000841c0:	f9000001 	str	x1, [x0]
+ffffff80000841a4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000841a8:	913a2000 	add	x0, x0, #0xe88
+ffffff80000841ac:	f9400001 	ldr	x1, [x0]
+ffffff80000841b0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000841b4:	913a2000 	add	x0, x0, #0xe88
+ffffff80000841b8:	f9400000 	ldr	x0, [x0]
+ffffff80000841bc:	f940ac00 	ldr	x0, [x0, #344]
+ffffff80000841c0:	f940a821 	ldr	x1, [x1, #336]
+ffffff80000841c4:	f9000001 	str	x1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:33 (discriminator 3)
-ffffff80000841c4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000841c8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000841cc:	f9400000 	ldr	x0, [x0]
-ffffff80000841d0:	b9413800 	ldr	w0, [x0, #312]
-ffffff80000841d4:	7100001f 	cmp	w0, #0x0
-ffffff80000841d8:	54001020 	b.eq	ffffff80000843dc <sched_yield+0x2d4>  // b.none
+ffffff80000841c8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000841cc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000841d0:	f9400000 	ldr	x0, [x0]
+ffffff80000841d4:	b9413800 	ldr	w0, [x0, #312]
+ffffff80000841d8:	7100001f 	cmp	w0, #0x0
+ffffff80000841dc:	54001020 	b.eq	ffffff80000843e0 <sched_yield+0x2d4>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35
-ffffff80000841dc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000841e0:	913a4000 	add	x0, x0, #0xe90
-ffffff80000841e4:	b9400000 	ldr	w0, [x0]
-ffffff80000841e8:	52800021 	mov	w1, #0x1                   	// #1
-ffffff80000841ec:	4b000021 	sub	w1, w1, w0
-ffffff80000841f0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000841f4:	913a8000 	add	x0, x0, #0xea0
-ffffff80000841f8:	93407c21 	sxtw	x1, w1
-ffffff80000841fc:	f8617800 	ldr	x0, [x0, x1, lsl #3]
-ffffff8000084200:	f100001f 	cmp	x0, #0x0
-ffffff8000084204:	54000741 	b.ne	ffffff80000842ec <sched_yield+0x1e4>  // b.any
+ffffff80000841e0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000841e4:	913a4000 	add	x0, x0, #0xe90
+ffffff80000841e8:	b9400000 	ldr	w0, [x0]
+ffffff80000841ec:	52800021 	mov	w1, #0x1                   	// #1
+ffffff80000841f0:	4b000021 	sub	w1, w1, w0
+ffffff80000841f4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000841f8:	913a8000 	add	x0, x0, #0xea0
+ffffff80000841fc:	93407c21 	sxtw	x1, w1
+ffffff8000084200:	f8617800 	ldr	x0, [x0, x1, lsl #3]
+ffffff8000084204:	f100001f 	cmp	x0, #0x0
+ffffff8000084208:	54000741 	b.ne	ffffff80000842f0 <sched_yield+0x1e4>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 1)
-ffffff8000084208:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008420c:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084210:	b9400000 	ldr	w0, [x0]
-ffffff8000084214:	52800021 	mov	w1, #0x1                   	// #1
-ffffff8000084218:	4b000022 	sub	w2, w1, w0
-ffffff800008421c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084220:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084224:	f9400000 	ldr	x0, [x0]
-ffffff8000084228:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008422c:	913a8021 	add	x1, x1, #0xea0
-ffffff8000084230:	93407c42 	sxtw	x2, w2
-ffffff8000084234:	f8627821 	ldr	x1, [x1, x2, lsl #3]
-ffffff8000084238:	f900a801 	str	x1, [x0, #336]
-ffffff800008423c:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084240:	f100001f 	cmp	x0, #0x0
-ffffff8000084244:	540001e0 	b.eq	ffffff8000084280 <sched_yield+0x178>  // b.none
+ffffff800008420c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084210:	913a4000 	add	x0, x0, #0xe90
+ffffff8000084214:	b9400000 	ldr	w0, [x0]
+ffffff8000084218:	52800021 	mov	w1, #0x1                   	// #1
+ffffff800008421c:	4b000022 	sub	w2, w1, w0
+ffffff8000084220:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084224:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084228:	f9400000 	ldr	x0, [x0]
+ffffff800008422c:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084230:	913a8021 	add	x1, x1, #0xea0
+ffffff8000084234:	93407c42 	sxtw	x2, w2
+ffffff8000084238:	f8627821 	ldr	x1, [x1, x2, lsl #3]
+ffffff800008423c:	f900a801 	str	x1, [x0, #336]
+ffffff8000084240:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084244:	f100001f 	cmp	x0, #0x0
+ffffff8000084248:	540001e0 	b.eq	ffffff8000084284 <sched_yield+0x178>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 3)
-ffffff8000084248:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008424c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084250:	f9400001 	ldr	x1, [x0]
-ffffff8000084254:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084258:	913a4000 	add	x0, x0, #0xe90
-ffffff800008425c:	b9400000 	ldr	w0, [x0]
-ffffff8000084260:	52800022 	mov	w2, #0x1                   	// #1
-ffffff8000084264:	4b000042 	sub	w2, w2, w0
-ffffff8000084268:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008426c:	913a8000 	add	x0, x0, #0xea0
-ffffff8000084270:	93407c42 	sxtw	x2, w2
-ffffff8000084274:	f8627800 	ldr	x0, [x0, x2, lsl #3]
-ffffff8000084278:	91054021 	add	x1, x1, #0x150
-ffffff800008427c:	f900ac01 	str	x1, [x0, #344]
+ffffff800008424c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084250:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084254:	f9400001 	ldr	x1, [x0]
+ffffff8000084258:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008425c:	913a4000 	add	x0, x0, #0xe90
+ffffff8000084260:	b9400000 	ldr	w0, [x0]
+ffffff8000084264:	52800022 	mov	w2, #0x1                   	// #1
+ffffff8000084268:	4b000042 	sub	w2, w2, w0
+ffffff800008426c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084270:	913a8000 	add	x0, x0, #0xea0
+ffffff8000084274:	93407c42 	sxtw	x2, w2
+ffffff8000084278:	f8627800 	ldr	x0, [x0, x2, lsl #3]
+ffffff800008427c:	91054021 	add	x1, x1, #0x150
+ffffff8000084280:	f900ac01 	str	x1, [x0, #344]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 5)
-ffffff8000084280:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084284:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084288:	b9400000 	ldr	w0, [x0]
-ffffff800008428c:	52800021 	mov	w1, #0x1                   	// #1
-ffffff8000084290:	4b000021 	sub	w1, w1, w0
-ffffff8000084294:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084298:	913a2000 	add	x0, x0, #0xe88
-ffffff800008429c:	f9400002 	ldr	x2, [x0]
-ffffff80000842a0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000842a4:	913a8000 	add	x0, x0, #0xea0
-ffffff80000842a8:	93407c21 	sxtw	x1, w1
-ffffff80000842ac:	f8217802 	str	x2, [x0, x1, lsl #3]
-ffffff80000842b0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000842b4:	913a4000 	add	x0, x0, #0xe90
-ffffff80000842b8:	b9400000 	ldr	w0, [x0]
-ffffff80000842bc:	52800021 	mov	w1, #0x1                   	// #1
-ffffff80000842c0:	4b000021 	sub	w1, w1, w0
-ffffff80000842c4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000842c8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000842cc:	f9400000 	ldr	x0, [x0]
-ffffff80000842d0:	93407c21 	sxtw	x1, w1
-ffffff80000842d4:	d37df022 	lsl	x2, x1, #3
-ffffff80000842d8:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000842dc:	913a8021 	add	x1, x1, #0xea0
-ffffff80000842e0:	8b010041 	add	x1, x2, x1
-ffffff80000842e4:	f900ac01 	str	x1, [x0, #344]
-ffffff80000842e8:	1400003d 	b	ffffff80000843dc <sched_yield+0x2d4>
+ffffff8000084284:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084288:	913a4000 	add	x0, x0, #0xe90
+ffffff800008428c:	b9400000 	ldr	w0, [x0]
+ffffff8000084290:	52800021 	mov	w1, #0x1                   	// #1
+ffffff8000084294:	4b000021 	sub	w1, w1, w0
+ffffff8000084298:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008429c:	913a2000 	add	x0, x0, #0xe88
+ffffff80000842a0:	f9400002 	ldr	x2, [x0]
+ffffff80000842a4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000842a8:	913a8000 	add	x0, x0, #0xea0
+ffffff80000842ac:	93407c21 	sxtw	x1, w1
+ffffff80000842b0:	f8217802 	str	x2, [x0, x1, lsl #3]
+ffffff80000842b4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000842b8:	913a4000 	add	x0, x0, #0xe90
+ffffff80000842bc:	b9400000 	ldr	w0, [x0]
+ffffff80000842c0:	52800021 	mov	w1, #0x1                   	// #1
+ffffff80000842c4:	4b000021 	sub	w1, w1, w0
+ffffff80000842c8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000842cc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000842d0:	f9400000 	ldr	x0, [x0]
+ffffff80000842d4:	93407c21 	sxtw	x1, w1
+ffffff80000842d8:	d37df022 	lsl	x2, x1, #3
+ffffff80000842dc:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000842e0:	913a8021 	add	x1, x1, #0xea0
+ffffff80000842e4:	8b010041 	add	x1, x2, x1
+ffffff80000842e8:	f900ac01 	str	x1, [x0, #344]
+ffffff80000842ec:	1400003d 	b	ffffff80000843e0 <sched_yield+0x2d4>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 2)
-ffffff80000842ec:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000842f0:	913a4000 	add	x0, x0, #0xe90
-ffffff80000842f4:	b9400000 	ldr	w0, [x0]
-ffffff80000842f8:	52800021 	mov	w1, #0x1                   	// #1
-ffffff80000842fc:	4b000022 	sub	w2, w1, w0
-ffffff8000084300:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084304:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084308:	f9400000 	ldr	x0, [x0]
-ffffff800008430c:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084310:	913a8021 	add	x1, x1, #0xea0
-ffffff8000084314:	93407c42 	sxtw	x2, w2
-ffffff8000084318:	f8627821 	ldr	x1, [x1, x2, lsl #3]
-ffffff800008431c:	f900a801 	str	x1, [x0, #336]
-ffffff8000084320:	1400000a 	b	ffffff8000084348 <sched_yield+0x240>
+ffffff80000842f0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000842f4:	913a4000 	add	x0, x0, #0xe90
+ffffff80000842f8:	b9400000 	ldr	w0, [x0]
+ffffff80000842fc:	52800021 	mov	w1, #0x1                   	// #1
+ffffff8000084300:	4b000022 	sub	w2, w1, w0
+ffffff8000084304:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084308:	913a2000 	add	x0, x0, #0xe88
+ffffff800008430c:	f9400000 	ldr	x0, [x0]
+ffffff8000084310:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084314:	913a8021 	add	x1, x1, #0xea0
+ffffff8000084318:	93407c42 	sxtw	x2, w2
+ffffff800008431c:	f8627821 	ldr	x1, [x1, x2, lsl #3]
+ffffff8000084320:	f900a801 	str	x1, [x0, #336]
+ffffff8000084324:	1400000a 	b	ffffff800008434c <sched_yield+0x240>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 8)
-ffffff8000084324:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084328:	913a2000 	add	x0, x0, #0xe88
-ffffff800008432c:	f9400000 	ldr	x0, [x0]
-ffffff8000084330:	f940a801 	ldr	x1, [x0, #336]
-ffffff8000084334:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084338:	913a2000 	add	x0, x0, #0xe88
-ffffff800008433c:	f9400000 	ldr	x0, [x0]
-ffffff8000084340:	f940a821 	ldr	x1, [x1, #336]
-ffffff8000084344:	f900a801 	str	x1, [x0, #336]
+ffffff8000084328:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008432c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084330:	f9400000 	ldr	x0, [x0]
+ffffff8000084334:	f940a801 	ldr	x1, [x0, #336]
+ffffff8000084338:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008433c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084340:	f9400000 	ldr	x0, [x0]
+ffffff8000084344:	f940a821 	ldr	x1, [x1, #336]
+ffffff8000084348:	f900a801 	str	x1, [x0, #336]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 6)
-ffffff8000084348:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008434c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084350:	f9400000 	ldr	x0, [x0]
-ffffff8000084354:	f940a800 	ldr	x0, [x0, #336]
+ffffff800008434c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084350:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084354:	f9400000 	ldr	x0, [x0]
 ffffff8000084358:	f940a800 	ldr	x0, [x0, #336]
-ffffff800008435c:	f100001f 	cmp	x0, #0x0
-ffffff8000084360:	54fffe21 	b.ne	ffffff8000084324 <sched_yield+0x21c>  // b.any
+ffffff800008435c:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084360:	f100001f 	cmp	x0, #0x0
+ffffff8000084364:	54fffe21 	b.ne	ffffff8000084328 <sched_yield+0x21c>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 9)
-ffffff8000084364:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084368:	913a2000 	add	x0, x0, #0xe88
-ffffff800008436c:	f9400000 	ldr	x0, [x0]
-ffffff8000084370:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084374:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084378:	913a2021 	add	x1, x1, #0xe88
-ffffff800008437c:	f9400021 	ldr	x1, [x1]
-ffffff8000084380:	f900a801 	str	x1, [x0, #336]
-ffffff8000084384:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084388:	913a2000 	add	x0, x0, #0xe88
-ffffff800008438c:	f9400000 	ldr	x0, [x0]
-ffffff8000084390:	f940a801 	ldr	x1, [x0, #336]
-ffffff8000084394:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084398:	913a2000 	add	x0, x0, #0xe88
-ffffff800008439c:	f9400000 	ldr	x0, [x0]
-ffffff80000843a0:	91054021 	add	x1, x1, #0x150
-ffffff80000843a4:	f900ac01 	str	x1, [x0, #344]
-ffffff80000843a8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000843ac:	913a2000 	add	x0, x0, #0xe88
-ffffff80000843b0:	f9400000 	ldr	x0, [x0]
-ffffff80000843b4:	f900a81f 	str	xzr, [x0, #336]
+ffffff8000084368:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008436c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084370:	f9400000 	ldr	x0, [x0]
+ffffff8000084374:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084378:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008437c:	913a2021 	add	x1, x1, #0xe88
+ffffff8000084380:	f9400021 	ldr	x1, [x1]
+ffffff8000084384:	f900a801 	str	x1, [x0, #336]
+ffffff8000084388:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008438c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084390:	f9400000 	ldr	x0, [x0]
+ffffff8000084394:	f940a801 	ldr	x1, [x0, #336]
+ffffff8000084398:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008439c:	913a2000 	add	x0, x0, #0xe88
+ffffff80000843a0:	f9400000 	ldr	x0, [x0]
+ffffff80000843a4:	91054021 	add	x1, x1, #0x150
+ffffff80000843a8:	f900ac01 	str	x1, [x0, #344]
+ffffff80000843ac:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000843b0:	913a2000 	add	x0, x0, #0xe88
+ffffff80000843b4:	f9400000 	ldr	x0, [x0]
+ffffff80000843b8:	f900a81f 	str	xzr, [x0, #336]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:40 (discriminator 9)
-ffffff80000843b8:	14000009 	b	ffffff80000843dc <sched_yield+0x2d4>
+ffffff80000843bc:	14000009 	b	ffffff80000843e0 <sched_yield+0x2d4>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:41
-ffffff80000843bc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000843c0:	913a4000 	add	x0, x0, #0xe90
-ffffff80000843c4:	b9400000 	ldr	w0, [x0]
-ffffff80000843c8:	52800021 	mov	w1, #0x1                   	// #1
-ffffff80000843cc:	4b000021 	sub	w1, w1, w0
-ffffff80000843d0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000843d4:	913a4000 	add	x0, x0, #0xe90
-ffffff80000843d8:	b9000001 	str	w1, [x0]
+ffffff80000843c0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000843c4:	913a4000 	add	x0, x0, #0xe90
+ffffff80000843c8:	b9400000 	ldr	w0, [x0]
+ffffff80000843cc:	52800021 	mov	w1, #0x1                   	// #1
+ffffff80000843d0:	4b000021 	sub	w1, w1, w0
+ffffff80000843d4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000843d8:	913a4000 	add	x0, x0, #0xe90
+ffffff80000843dc:	b9000001 	str	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:40
-ffffff80000843dc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000843e0:	913a4000 	add	x0, x0, #0xe90
-ffffff80000843e4:	b9400001 	ldr	w1, [x0]
-ffffff80000843e8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000843ec:	913a8000 	add	x0, x0, #0xea0
-ffffff80000843f0:	93407c21 	sxtw	x1, w1
-ffffff80000843f4:	f8617800 	ldr	x0, [x0, x1, lsl #3]
-ffffff80000843f8:	f100001f 	cmp	x0, #0x0
-ffffff80000843fc:	54fffe00 	b.eq	ffffff80000843bc <sched_yield+0x2b4>  // b.none
+ffffff80000843e0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000843e4:	913a4000 	add	x0, x0, #0xe90
+ffffff80000843e8:	b9400001 	ldr	w1, [x0]
+ffffff80000843ec:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000843f0:	913a8000 	add	x0, x0, #0xea0
+ffffff80000843f4:	93407c21 	sxtw	x1, w1
+ffffff80000843f8:	f8617800 	ldr	x0, [x0, x1, lsl #3]
+ffffff80000843fc:	f100001f 	cmp	x0, #0x0
+ffffff8000084400:	54fffe00 	b.eq	ffffff80000843c0 <sched_yield+0x2b4>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:42
-ffffff8000084400:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084404:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084408:	b9400001 	ldr	w1, [x0]
-ffffff800008440c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084410:	913a8000 	add	x0, x0, #0xea0
-ffffff8000084414:	93407c21 	sxtw	x1, w1
-ffffff8000084418:	f8617801 	ldr	x1, [x0, x1, lsl #3]
-ffffff800008441c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084420:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084424:	f9000001 	str	x1, [x0]
+ffffff8000084404:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084408:	913a4000 	add	x0, x0, #0xe90
+ffffff800008440c:	b9400001 	ldr	w1, [x0]
+ffffff8000084410:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084414:	913a8000 	add	x0, x0, #0xea0
+ffffff8000084418:	93407c21 	sxtw	x1, w1
+ffffff800008441c:	f8617801 	ldr	x1, [x0, x1, lsl #3]
+ffffff8000084420:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084424:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084428:	f9000001 	str	x1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:43
-ffffff8000084428:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008442c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084430:	f9400000 	ldr	x0, [x0]
-ffffff8000084434:	b9413800 	ldr	w0, [x0, #312]
-ffffff8000084438:	7100001f 	cmp	w0, #0x0
-ffffff800008443c:	54000341 	b.ne	ffffff80000844a4 <sched_yield+0x39c>  // b.any
+ffffff800008442c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084430:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084434:	f9400000 	ldr	x0, [x0]
+ffffff8000084438:	b9413800 	ldr	w0, [x0, #312]
+ffffff800008443c:	7100001f 	cmp	w0, #0x0
+ffffff8000084440:	54000341 	b.ne	ffffff80000844a8 <sched_yield+0x39c>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:44
-ffffff8000084440:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084444:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084448:	f9400000 	ldr	x0, [x0]
-ffffff800008444c:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084450:	f100001f 	cmp	x0, #0x0
-ffffff8000084454:	54000140 	b.eq	ffffff800008447c <sched_yield+0x374>  // b.none
+ffffff8000084444:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084448:	913a2000 	add	x0, x0, #0xe88
+ffffff800008444c:	f9400000 	ldr	x0, [x0]
+ffffff8000084450:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084454:	f100001f 	cmp	x0, #0x0
+ffffff8000084458:	54000140 	b.eq	ffffff8000084480 <sched_yield+0x374>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:44 (discriminator 1)
-ffffff8000084458:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008445c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084460:	f9400001 	ldr	x1, [x0]
-ffffff8000084464:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084468:	913a2000 	add	x0, x0, #0xe88
-ffffff800008446c:	f9400000 	ldr	x0, [x0]
-ffffff8000084470:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084474:	f940ac21 	ldr	x1, [x1, #344]
-ffffff8000084478:	f900ac01 	str	x1, [x0, #344]
+ffffff800008445c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084460:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084464:	f9400001 	ldr	x1, [x0]
+ffffff8000084468:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008446c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084470:	f9400000 	ldr	x0, [x0]
+ffffff8000084474:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084478:	f940ac21 	ldr	x1, [x1, #344]
+ffffff800008447c:	f900ac01 	str	x1, [x0, #344]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:44 (discriminator 3)
-ffffff800008447c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084480:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084484:	f9400001 	ldr	x1, [x0]
-ffffff8000084488:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008448c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084490:	f9400000 	ldr	x0, [x0]
-ffffff8000084494:	f940ac00 	ldr	x0, [x0, #344]
-ffffff8000084498:	f940a821 	ldr	x1, [x1, #336]
-ffffff800008449c:	f9000001 	str	x1, [x0]
-ffffff80000844a0:	17ffffcf 	b	ffffff80000843dc <sched_yield+0x2d4>
+ffffff8000084480:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084484:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084488:	f9400001 	ldr	x1, [x0]
+ffffff800008448c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084490:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084494:	f9400000 	ldr	x0, [x0]
+ffffff8000084498:	f940ac00 	ldr	x0, [x0, #344]
+ffffff800008449c:	f940a821 	ldr	x1, [x1, #336]
+ffffff80000844a0:	f9000001 	str	x1, [x0]
+ffffff80000844a4:	17ffffcf 	b	ffffff80000843e0 <sched_yield+0x2d4>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:45
-ffffff80000844a4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000844a8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000844ac:	f9400000 	ldr	x0, [x0]
-ffffff80000844b0:	b9413800 	ldr	w0, [x0, #312]
-ffffff80000844b4:	7100081f 	cmp	w0, #0x2
-ffffff80000844b8:	54001221 	b.ne	ffffff80000846fc <sched_yield+0x5f4>  // b.any
+ffffff80000844a8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000844ac:	913a2000 	add	x0, x0, #0xe88
+ffffff80000844b0:	f9400000 	ldr	x0, [x0]
+ffffff80000844b4:	b9413800 	ldr	w0, [x0, #312]
+ffffff80000844b8:	7100081f 	cmp	w0, #0x2
+ffffff80000844bc:	54001221 	b.ne	ffffff8000084700 <sched_yield+0x5f4>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:47
-ffffff80000844bc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000844c0:	913a2000 	add	x0, x0, #0xe88
-ffffff80000844c4:	f9400000 	ldr	x0, [x0]
-ffffff80000844c8:	f940a800 	ldr	x0, [x0, #336]
-ffffff80000844cc:	f100001f 	cmp	x0, #0x0
-ffffff80000844d0:	54000140 	b.eq	ffffff80000844f8 <sched_yield+0x3f0>  // b.none
+ffffff80000844c0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000844c4:	913a2000 	add	x0, x0, #0xe88
+ffffff80000844c8:	f9400000 	ldr	x0, [x0]
+ffffff80000844cc:	f940a800 	ldr	x0, [x0, #336]
+ffffff80000844d0:	f100001f 	cmp	x0, #0x0
+ffffff80000844d4:	54000140 	b.eq	ffffff80000844fc <sched_yield+0x3f0>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:47 (discriminator 1)
-ffffff80000844d4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000844d8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000844dc:	f9400001 	ldr	x1, [x0]
-ffffff80000844e0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000844e4:	913a2000 	add	x0, x0, #0xe88
-ffffff80000844e8:	f9400000 	ldr	x0, [x0]
-ffffff80000844ec:	f940a800 	ldr	x0, [x0, #336]
-ffffff80000844f0:	f940ac21 	ldr	x1, [x1, #344]
-ffffff80000844f4:	f900ac01 	str	x1, [x0, #344]
+ffffff80000844d8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000844dc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000844e0:	f9400001 	ldr	x1, [x0]
+ffffff80000844e4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000844e8:	913a2000 	add	x0, x0, #0xe88
+ffffff80000844ec:	f9400000 	ldr	x0, [x0]
+ffffff80000844f0:	f940a800 	ldr	x0, [x0, #336]
+ffffff80000844f4:	f940ac21 	ldr	x1, [x1, #344]
+ffffff80000844f8:	f900ac01 	str	x1, [x0, #344]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:47 (discriminator 3)
-ffffff80000844f8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000844fc:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084500:	f9400001 	ldr	x1, [x0]
-ffffff8000084504:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084508:	913a2000 	add	x0, x0, #0xe88
-ffffff800008450c:	f9400000 	ldr	x0, [x0]
-ffffff8000084510:	f940ac00 	ldr	x0, [x0, #344]
-ffffff8000084514:	f940a821 	ldr	x1, [x1, #336]
-ffffff8000084518:	f9000001 	str	x1, [x0]
+ffffff80000844fc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084500:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084504:	f9400001 	ldr	x1, [x0]
+ffffff8000084508:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008450c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084510:	f9400000 	ldr	x0, [x0]
+ffffff8000084514:	f940ac00 	ldr	x0, [x0, #344]
+ffffff8000084518:	f940a821 	ldr	x1, [x1, #336]
+ffffff800008451c:	f9000001 	str	x1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 3)
-ffffff800008451c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084520:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084524:	b9400000 	ldr	w0, [x0]
-ffffff8000084528:	52800021 	mov	w1, #0x1                   	// #1
-ffffff800008452c:	4b000021 	sub	w1, w1, w0
-ffffff8000084530:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084534:	913a8000 	add	x0, x0, #0xea0
-ffffff8000084538:	93407c21 	sxtw	x1, w1
-ffffff800008453c:	f8617800 	ldr	x0, [x0, x1, lsl #3]
-ffffff8000084540:	f100001f 	cmp	x0, #0x0
-ffffff8000084544:	54000741 	b.ne	ffffff800008462c <sched_yield+0x524>  // b.any
+ffffff8000084520:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084524:	913a4000 	add	x0, x0, #0xe90
+ffffff8000084528:	b9400000 	ldr	w0, [x0]
+ffffff800008452c:	52800021 	mov	w1, #0x1                   	// #1
+ffffff8000084530:	4b000021 	sub	w1, w1, w0
+ffffff8000084534:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084538:	913a8000 	add	x0, x0, #0xea0
+ffffff800008453c:	93407c21 	sxtw	x1, w1
+ffffff8000084540:	f8617800 	ldr	x0, [x0, x1, lsl #3]
+ffffff8000084544:	f100001f 	cmp	x0, #0x0
+ffffff8000084548:	54000741 	b.ne	ffffff8000084630 <sched_yield+0x524>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 1)
-ffffff8000084548:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008454c:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084550:	b9400000 	ldr	w0, [x0]
-ffffff8000084554:	52800021 	mov	w1, #0x1                   	// #1
-ffffff8000084558:	4b000022 	sub	w2, w1, w0
-ffffff800008455c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084560:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084564:	f9400000 	ldr	x0, [x0]
-ffffff8000084568:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008456c:	913a8021 	add	x1, x1, #0xea0
-ffffff8000084570:	93407c42 	sxtw	x2, w2
-ffffff8000084574:	f8627821 	ldr	x1, [x1, x2, lsl #3]
-ffffff8000084578:	f900a801 	str	x1, [x0, #336]
-ffffff800008457c:	f940a800 	ldr	x0, [x0, #336]
-ffffff8000084580:	f100001f 	cmp	x0, #0x0
-ffffff8000084584:	540001e0 	b.eq	ffffff80000845c0 <sched_yield+0x4b8>  // b.none
+ffffff800008454c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084550:	913a4000 	add	x0, x0, #0xe90
+ffffff8000084554:	b9400000 	ldr	w0, [x0]
+ffffff8000084558:	52800021 	mov	w1, #0x1                   	// #1
+ffffff800008455c:	4b000022 	sub	w2, w1, w0
+ffffff8000084560:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084564:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084568:	f9400000 	ldr	x0, [x0]
+ffffff800008456c:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084570:	913a8021 	add	x1, x1, #0xea0
+ffffff8000084574:	93407c42 	sxtw	x2, w2
+ffffff8000084578:	f8627821 	ldr	x1, [x1, x2, lsl #3]
+ffffff800008457c:	f900a801 	str	x1, [x0, #336]
+ffffff8000084580:	f940a800 	ldr	x0, [x0, #336]
+ffffff8000084584:	f100001f 	cmp	x0, #0x0
+ffffff8000084588:	540001e0 	b.eq	ffffff80000845c4 <sched_yield+0x4b8>  // b.none
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 3)
-ffffff8000084588:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008458c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084590:	f9400001 	ldr	x1, [x0]
-ffffff8000084594:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084598:	913a4000 	add	x0, x0, #0xe90
-ffffff800008459c:	b9400000 	ldr	w0, [x0]
-ffffff80000845a0:	52800022 	mov	w2, #0x1                   	// #1
-ffffff80000845a4:	4b000042 	sub	w2, w2, w0
-ffffff80000845a8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000845ac:	913a8000 	add	x0, x0, #0xea0
-ffffff80000845b0:	93407c42 	sxtw	x2, w2
-ffffff80000845b4:	f8627800 	ldr	x0, [x0, x2, lsl #3]
-ffffff80000845b8:	91054021 	add	x1, x1, #0x150
-ffffff80000845bc:	f900ac01 	str	x1, [x0, #344]
+ffffff800008458c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084590:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084594:	f9400001 	ldr	x1, [x0]
+ffffff8000084598:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008459c:	913a4000 	add	x0, x0, #0xe90
+ffffff80000845a0:	b9400000 	ldr	w0, [x0]
+ffffff80000845a4:	52800022 	mov	w2, #0x1                   	// #1
+ffffff80000845a8:	4b000042 	sub	w2, w2, w0
+ffffff80000845ac:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000845b0:	913a8000 	add	x0, x0, #0xea0
+ffffff80000845b4:	93407c42 	sxtw	x2, w2
+ffffff80000845b8:	f8627800 	ldr	x0, [x0, x2, lsl #3]
+ffffff80000845bc:	91054021 	add	x1, x1, #0x150
+ffffff80000845c0:	f900ac01 	str	x1, [x0, #344]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 5)
-ffffff80000845c0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000845c4:	913a4000 	add	x0, x0, #0xe90
-ffffff80000845c8:	b9400000 	ldr	w0, [x0]
-ffffff80000845cc:	52800021 	mov	w1, #0x1                   	// #1
-ffffff80000845d0:	4b000021 	sub	w1, w1, w0
-ffffff80000845d4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000845d8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000845dc:	f9400002 	ldr	x2, [x0]
-ffffff80000845e0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000845e4:	913a8000 	add	x0, x0, #0xea0
-ffffff80000845e8:	93407c21 	sxtw	x1, w1
-ffffff80000845ec:	f8217802 	str	x2, [x0, x1, lsl #3]
-ffffff80000845f0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000845f4:	913a4000 	add	x0, x0, #0xe90
-ffffff80000845f8:	b9400000 	ldr	w0, [x0]
-ffffff80000845fc:	52800021 	mov	w1, #0x1                   	// #1
-ffffff8000084600:	4b000021 	sub	w1, w1, w0
-ffffff8000084604:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084608:	913a2000 	add	x0, x0, #0xe88
-ffffff800008460c:	f9400000 	ldr	x0, [x0]
-ffffff8000084610:	93407c21 	sxtw	x1, w1
-ffffff8000084614:	d37df022 	lsl	x2, x1, #3
-ffffff8000084618:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008461c:	913a8021 	add	x1, x1, #0xea0
-ffffff8000084620:	8b010041 	add	x1, x2, x1
-ffffff8000084624:	f900ac01 	str	x1, [x0, #344]
-ffffff8000084628:	17ffff6d 	b	ffffff80000843dc <sched_yield+0x2d4>
+ffffff80000845c4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000845c8:	913a4000 	add	x0, x0, #0xe90
+ffffff80000845cc:	b9400000 	ldr	w0, [x0]
+ffffff80000845d0:	52800021 	mov	w1, #0x1                   	// #1
+ffffff80000845d4:	4b000021 	sub	w1, w1, w0
+ffffff80000845d8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000845dc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000845e0:	f9400002 	ldr	x2, [x0]
+ffffff80000845e4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000845e8:	913a8000 	add	x0, x0, #0xea0
+ffffff80000845ec:	93407c21 	sxtw	x1, w1
+ffffff80000845f0:	f8217802 	str	x2, [x0, x1, lsl #3]
+ffffff80000845f4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000845f8:	913a4000 	add	x0, x0, #0xe90
+ffffff80000845fc:	b9400000 	ldr	w0, [x0]
+ffffff8000084600:	52800021 	mov	w1, #0x1                   	// #1
+ffffff8000084604:	4b000021 	sub	w1, w1, w0
+ffffff8000084608:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008460c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084610:	f9400000 	ldr	x0, [x0]
+ffffff8000084614:	93407c21 	sxtw	x1, w1
+ffffff8000084618:	d37df022 	lsl	x2, x1, #3
+ffffff800008461c:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084620:	913a8021 	add	x1, x1, #0xea0
+ffffff8000084624:	8b010041 	add	x1, x2, x1
+ffffff8000084628:	f900ac01 	str	x1, [x0, #344]
+ffffff800008462c:	17ffff6d 	b	ffffff80000843e0 <sched_yield+0x2d4>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 2)
-ffffff800008462c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084630:	913a4000 	add	x0, x0, #0xe90
-ffffff8000084634:	b9400000 	ldr	w0, [x0]
-ffffff8000084638:	52800021 	mov	w1, #0x1                   	// #1
-ffffff800008463c:	4b000022 	sub	w2, w1, w0
-ffffff8000084640:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084644:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084648:	f9400000 	ldr	x0, [x0]
-ffffff800008464c:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084650:	913a8021 	add	x1, x1, #0xea0
-ffffff8000084654:	93407c42 	sxtw	x2, w2
-ffffff8000084658:	f8627821 	ldr	x1, [x1, x2, lsl #3]
-ffffff800008465c:	f900a801 	str	x1, [x0, #336]
-ffffff8000084660:	1400000a 	b	ffffff8000084688 <sched_yield+0x580>
+ffffff8000084630:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084634:	913a4000 	add	x0, x0, #0xe90
+ffffff8000084638:	b9400000 	ldr	w0, [x0]
+ffffff800008463c:	52800021 	mov	w1, #0x1                   	// #1
+ffffff8000084640:	4b000022 	sub	w2, w1, w0
+ffffff8000084644:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084648:	913a2000 	add	x0, x0, #0xe88
+ffffff800008464c:	f9400000 	ldr	x0, [x0]
+ffffff8000084650:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084654:	913a8021 	add	x1, x1, #0xea0
+ffffff8000084658:	93407c42 	sxtw	x2, w2
+ffffff800008465c:	f8627821 	ldr	x1, [x1, x2, lsl #3]
+ffffff8000084660:	f900a801 	str	x1, [x0, #336]
+ffffff8000084664:	1400000a 	b	ffffff800008468c <sched_yield+0x580>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 8)
-ffffff8000084664:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084668:	913a2000 	add	x0, x0, #0xe88
-ffffff800008466c:	f9400000 	ldr	x0, [x0]
-ffffff8000084670:	f940a801 	ldr	x1, [x0, #336]
-ffffff8000084674:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084678:	913a2000 	add	x0, x0, #0xe88
-ffffff800008467c:	f9400000 	ldr	x0, [x0]
-ffffff8000084680:	f940a821 	ldr	x1, [x1, #336]
-ffffff8000084684:	f900a801 	str	x1, [x0, #336]
+ffffff8000084668:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008466c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084670:	f9400000 	ldr	x0, [x0]
+ffffff8000084674:	f940a801 	ldr	x1, [x0, #336]
+ffffff8000084678:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008467c:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084680:	f9400000 	ldr	x0, [x0]
+ffffff8000084684:	f940a821 	ldr	x1, [x1, #336]
+ffffff8000084688:	f900a801 	str	x1, [x0, #336]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 6)
-ffffff8000084688:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008468c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084690:	f9400000 	ldr	x0, [x0]
-ffffff8000084694:	f940a800 	ldr	x0, [x0, #336]
+ffffff800008468c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084690:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084694:	f9400000 	ldr	x0, [x0]
 ffffff8000084698:	f940a800 	ldr	x0, [x0, #336]
-ffffff800008469c:	f100001f 	cmp	x0, #0x0
-ffffff80000846a0:	54fffe21 	b.ne	ffffff8000084664 <sched_yield+0x55c>  // b.any
+ffffff800008469c:	f940a800 	ldr	x0, [x0, #336]
+ffffff80000846a0:	f100001f 	cmp	x0, #0x0
+ffffff80000846a4:	54fffe21 	b.ne	ffffff8000084668 <sched_yield+0x55c>  // b.any
 /home/dofingert/Source/OS/THYOS/lib/sched.c:48 (discriminator 9)
-ffffff80000846a4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000846a8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000846ac:	f9400000 	ldr	x0, [x0]
-ffffff80000846b0:	f940a800 	ldr	x0, [x0, #336]
-ffffff80000846b4:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000846b8:	913a2021 	add	x1, x1, #0xe88
-ffffff80000846bc:	f9400021 	ldr	x1, [x1]
-ffffff80000846c0:	f900a801 	str	x1, [x0, #336]
-ffffff80000846c4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000846c8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000846cc:	f9400000 	ldr	x0, [x0]
-ffffff80000846d0:	f940a801 	ldr	x1, [x0, #336]
-ffffff80000846d4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000846d8:	913a2000 	add	x0, x0, #0xe88
-ffffff80000846dc:	f9400000 	ldr	x0, [x0]
-ffffff80000846e0:	91054021 	add	x1, x1, #0x150
-ffffff80000846e4:	f900ac01 	str	x1, [x0, #344]
-ffffff80000846e8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000846ec:	913a2000 	add	x0, x0, #0xe88
-ffffff80000846f0:	f9400000 	ldr	x0, [x0]
-ffffff80000846f4:	f900a81f 	str	xzr, [x0, #336]
-ffffff80000846f8:	17ffff39 	b	ffffff80000843dc <sched_yield+0x2d4>
+ffffff80000846a8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000846ac:	913a2000 	add	x0, x0, #0xe88
+ffffff80000846b0:	f9400000 	ldr	x0, [x0]
+ffffff80000846b4:	f940a800 	ldr	x0, [x0, #336]
+ffffff80000846b8:	90000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000846bc:	913a2021 	add	x1, x1, #0xe88
+ffffff80000846c0:	f9400021 	ldr	x1, [x1]
+ffffff80000846c4:	f900a801 	str	x1, [x0, #336]
+ffffff80000846c8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000846cc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000846d0:	f9400000 	ldr	x0, [x0]
+ffffff80000846d4:	f940a801 	ldr	x1, [x0, #336]
+ffffff80000846d8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000846dc:	913a2000 	add	x0, x0, #0xe88
+ffffff80000846e0:	f9400000 	ldr	x0, [x0]
+ffffff80000846e4:	91054021 	add	x1, x1, #0x150
+ffffff80000846e8:	f900ac01 	str	x1, [x0, #344]
+ffffff80000846ec:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000846f0:	913a2000 	add	x0, x0, #0xe88
+ffffff80000846f4:	f9400000 	ldr	x0, [x0]
+ffffff80000846f8:	f900a81f 	str	xzr, [x0, #336]
+ffffff80000846fc:	17ffff39 	b	ffffff80000843e0 <sched_yield+0x2d4>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:52
-ffffff80000846fc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084700:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084704:	f9400000 	ldr	x0, [x0]
-ffffff8000084708:	b9416000 	ldr	w0, [x0, #352]
-ffffff800008470c:	2a0003e1 	mov	w1, w0
-ffffff8000084710:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084714:	913a0000 	add	x0, x0, #0xe80
-ffffff8000084718:	b9000001 	str	w1, [x0]
+ffffff8000084700:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084704:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084708:	f9400000 	ldr	x0, [x0]
+ffffff800008470c:	b9416000 	ldr	w0, [x0, #352]
+ffffff8000084710:	2a0003e1 	mov	w1, w0
+ffffff8000084714:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084718:	913a0000 	add	x0, x0, #0xe80
+ffffff800008471c:	b9000001 	str	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:57
-ffffff800008471c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084720:	913a0000 	add	x0, x0, #0xe80
-ffffff8000084724:	b9400000 	ldr	w0, [x0]
-ffffff8000084728:	51000401 	sub	w1, w0, #0x1
-ffffff800008472c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084730:	913a0000 	add	x0, x0, #0xe80
-ffffff8000084734:	b9000001 	str	w1, [x0]
+ffffff8000084720:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084724:	913a0000 	add	x0, x0, #0xe80
+ffffff8000084728:	b9400000 	ldr	w0, [x0]
+ffffff800008472c:	51000401 	sub	w1, w0, #0x1
+ffffff8000084730:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084734:	913a0000 	add	x0, x0, #0xe80
+ffffff8000084738:	b9000001 	str	w1, [x0]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:58
-ffffff8000084738:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff800008473c:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084740:	f9400000 	ldr	x0, [x0]
-ffffff8000084744:	b9419001 	ldr	w1, [x0, #400]
-ffffff8000084748:	11000421 	add	w1, w1, #0x1
-ffffff800008474c:	b9019001 	str	w1, [x0, #400]
+ffffff800008473c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084740:	913a2000 	add	x0, x0, #0xe88
+ffffff8000084744:	f9400000 	ldr	x0, [x0]
+ffffff8000084748:	b9419001 	ldr	w1, [x0, #400]
+ffffff800008474c:	11000421 	add	w1, w1, #0x1
+ffffff8000084750:	b9019001 	str	w1, [x0, #400]
 /home/dofingert/Source/OS/THYOS/lib/sched.c:59
-ffffff8000084750:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084754:	913a2000 	add	x0, x0, #0xe88
-ffffff8000084758:	f9400000 	ldr	x0, [x0]
-ffffff800008475c:	97fff73d 	bl	ffffff8000082450 <env_run>
+ffffff8000084754:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084758:	913a2000 	add	x0, x0, #0xe88
+ffffff800008475c:	f9400000 	ldr	x0, [x0]
+ffffff8000084760:	97fff73c 	bl	ffffff8000082450 <env_run>
 /home/dofingert/Source/OS/THYOS/lib/sched.c:60
-ffffff8000084760:	d503201f 	nop
-ffffff8000084764:	a8c17bfd 	ldp	x29, x30, [sp], #16
-ffffff8000084768:	d65f03c0 	ret
+ffffff8000084764:	d503201f 	nop
+ffffff8000084768:	a8c17bfd 	ldp	x29, x30, [sp], #16
+ffffff800008476c:	d65f03c0 	ret
 
-ffffff800008476c <handle_sync>:
+ffffff8000084770 <handle_sync>:
 handle_sync():
 /home/dofingert/Source/OS/THYOS/lib/sync.c:25
-ffffff800008476c:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
-ffffff8000084770:	910003fd 	mov	x29, sp
-ffffff8000084774:	f90017e0 	str	x0, [sp, #40]
-ffffff8000084778:	f90013e1 	str	x1, [sp, #32]
-ffffff800008477c:	f9000fe2 	str	x2, [sp, #24]
+ffffff8000084770:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+ffffff8000084774:	910003fd 	mov	x29, sp
+ffffff8000084778:	f90017e0 	str	x0, [sp, #40]
+ffffff800008477c:	f90013e1 	str	x1, [sp, #32]
+ffffff8000084780:	f9000fe2 	str	x2, [sp, #24]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:26
-ffffff8000084780:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff8000084784:	91374000 	add	x0, x0, #0xdd0
-ffffff8000084788:	97fff956 	bl	ffffff8000082ce0 <printf>
+ffffff8000084784:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff8000084788:	91374000 	add	x0, x0, #0xdd0
+ffffff800008478c:	97fff956 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:27
-ffffff800008478c:	f94017e0 	ldr	x0, [sp, #40]
-ffffff8000084790:	f9408800 	ldr	x0, [x0, #272]
-ffffff8000084794:	f90027e0 	str	x0, [sp, #72]
+ffffff8000084790:	f94017e0 	ldr	x0, [sp, #40]
+ffffff8000084794:	f9408800 	ldr	x0, [x0, #272]
+ffffff8000084798:	f90027e0 	str	x0, [sp, #72]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:28
-ffffff8000084798:	f94017e0 	ldr	x0, [sp, #40]
-ffffff800008479c:	f9408c00 	ldr	x0, [x0, #280]
-ffffff80000847a0:	f90023e0 	str	x0, [sp, #64]
+ffffff800008479c:	f94017e0 	ldr	x0, [sp, #40]
+ffffff80000847a0:	f9408c00 	ldr	x0, [x0, #280]
+ffffff80000847a4:	f90023e0 	str	x0, [sp, #64]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:29
-ffffff80000847a4:	f94023e0 	ldr	x0, [sp, #64]
-ffffff80000847a8:	d35afc00 	lsr	x0, x0, #26
-ffffff80000847ac:	f9001fe0 	str	x0, [sp, #56]
+ffffff80000847a8:	f94023e0 	ldr	x0, [sp, #64]
+ffffff80000847ac:	d35afc00 	lsr	x0, x0, #26
+ffffff80000847b0:	f9001fe0 	str	x0, [sp, #56]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:30
-ffffff80000847b0:	f94027e1 	ldr	x1, [sp, #72]
-ffffff80000847b4:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000847b8:	9137a000 	add	x0, x0, #0xde8
-ffffff80000847bc:	97fff949 	bl	ffffff8000082ce0 <printf>
+ffffff80000847b4:	f94027e1 	ldr	x1, [sp, #72]
+ffffff80000847b8:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000847bc:	9137a000 	add	x0, x0, #0xde8
+ffffff80000847c0:	97fff949 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:31
-ffffff80000847c0:	f94023e1 	ldr	x1, [sp, #64]
-ffffff80000847c4:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000847c8:	9137e000 	add	x0, x0, #0xdf8
-ffffff80000847cc:	97fff945 	bl	ffffff8000082ce0 <printf>
+ffffff80000847c4:	f94023e1 	ldr	x1, [sp, #64]
+ffffff80000847c8:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000847cc:	9137e000 	add	x0, x0, #0xdf8
+ffffff80000847d0:	97fff945 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:32
-ffffff80000847d0:	f9401fe1 	ldr	x1, [sp, #56]
-ffffff80000847d4:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000847d8:	91382000 	add	x0, x0, #0xe08
-ffffff80000847dc:	97fff941 	bl	ffffff8000082ce0 <printf>
+ffffff80000847d4:	f9401fe1 	ldr	x1, [sp, #56]
+ffffff80000847d8:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000847dc:	91382000 	add	x0, x0, #0xe08
+ffffff80000847e0:	97fff941 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:33
-ffffff80000847e0:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000847e4:	91386002 	add	x2, x0, #0xe18
-ffffff80000847e8:	52800421 	mov	w1, #0x21                  	// #33
-ffffff80000847ec:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
-ffffff80000847f0:	91388000 	add	x0, x0, #0xe20
-ffffff80000847f4:	97fff998 	bl	ffffff8000082e54 <_panic>
+ffffff80000847e4:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000847e8:	91386002 	add	x2, x0, #0xe18
+ffffff80000847ec:	52800421 	mov	w1, #0x21                  	// #33
+ffffff80000847f0:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
+ffffff80000847f4:	91388000 	add	x0, x0, #0xe20
+ffffff80000847f8:	97fff998 	bl	ffffff8000082e58 <_panic>
 
-ffffff80000847f8 <page_fault_handler>:
+ffffff80000847fc <page_fault_handler>:
 page_fault_handler():
 /home/dofingert/Source/OS/THYOS/lib/sync.c:126
-ffffff80000847f8:	a9ac7bfd 	stp	x29, x30, [sp, #-320]!
-ffffff80000847fc:	910003fd 	mov	x29, sp
-ffffff8000084800:	f9000fe0 	str	x0, [sp, #24]
+ffffff80000847fc:	a9ac7bfd 	stp	x29, x30, [sp, #-320]!
+ffffff8000084800:	910003fd 	mov	x29, sp
+ffffff8000084804:	f9000fe0 	str	x0, [sp, #24]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:130
-ffffff8000084804:	910083e0 	add	x0, sp, #0x20
-ffffff8000084808:	d2802402 	mov	x2, #0x120                 	// #288
-ffffff800008480c:	aa0003e1 	mov	x1, x0
-ffffff8000084810:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000084814:	9400005f 	bl	ffffff8000084990 <bcopy>
+ffffff8000084808:	910083e0 	add	x0, sp, #0x20
+ffffff800008480c:	d2802402 	mov	x2, #0x120                 	// #288
+ffffff8000084810:	aa0003e1 	mov	x1, x0
+ffffff8000084814:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000084818:	9400005e 	bl	ffffff8000084990 <bcopy>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:132
-ffffff8000084818:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff800008481c:	f9407c01 	ldr	x1, [x0, #248]
-ffffff8000084820:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084824:	9139a000 	add	x0, x0, #0xe68
-ffffff8000084828:	f9400000 	ldr	x0, [x0]
-ffffff800008482c:	f940c400 	ldr	x0, [x0, #392]
-ffffff8000084830:	d1400400 	sub	x0, x0, #0x1, lsl #12
-ffffff8000084834:	eb00003f 	cmp	x1, x0
-ffffff8000084838:	540002c3 	b.cc	ffffff8000084890 <page_fault_handler+0x98>  // b.lo, b.ul, b.last
+ffffff800008481c:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000084820:	f9407c01 	ldr	x1, [x0, #248]
+ffffff8000084824:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084828:	9139a000 	add	x0, x0, #0xe68
+ffffff800008482c:	f9400000 	ldr	x0, [x0]
+ffffff8000084830:	f940c400 	ldr	x0, [x0, #392]
+ffffff8000084834:	d1400400 	sub	x0, x0, #0x1, lsl #12
+ffffff8000084838:	eb00003f 	cmp	x1, x0
+ffffff800008483c:	540002c3 	b.cc	ffffff8000084894 <page_fault_handler+0x98>  // b.lo, b.ul, b.last
 /home/dofingert/Source/OS/THYOS/lib/sync.c:133 (discriminator 1)
-ffffff800008483c:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000084840:	f9407c01 	ldr	x1, [x0, #248]
-ffffff8000084844:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084848:	9139a000 	add	x0, x0, #0xe68
-ffffff800008484c:	f9400000 	ldr	x0, [x0]
-ffffff8000084850:	f940c400 	ldr	x0, [x0, #392]
-ffffff8000084854:	d1000400 	sub	x0, x0, #0x1
+ffffff8000084840:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000084844:	f9407c01 	ldr	x1, [x0, #248]
+ffffff8000084848:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff800008484c:	9139a000 	add	x0, x0, #0xe68
+ffffff8000084850:	f9400000 	ldr	x0, [x0]
+ffffff8000084854:	f940c400 	ldr	x0, [x0, #392]
+ffffff8000084858:	d1000400 	sub	x0, x0, #0x1
 /home/dofingert/Source/OS/THYOS/lib/sync.c:132 (discriminator 1)
-ffffff8000084858:	eb00003f 	cmp	x1, x0
-ffffff800008485c:	540001a8 	b.hi	ffffff8000084890 <page_fault_handler+0x98>  // b.pmore
+ffffff800008485c:	eb00003f 	cmp	x1, x0
+ffffff8000084860:	540001a8 	b.hi	ffffff8000084894 <page_fault_handler+0x98>  // b.pmore
 /home/dofingert/Source/OS/THYOS/lib/sync.c:135
-ffffff8000084860:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000084864:	f9407c00 	ldr	x0, [x0, #248]
-ffffff8000084868:	d1048001 	sub	x1, x0, #0x120
-ffffff800008486c:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000084870:	f9007c01 	str	x1, [x0, #248]
+ffffff8000084864:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000084868:	f9407c00 	ldr	x0, [x0, #248]
+ffffff800008486c:	d1048001 	sub	x1, x0, #0x120
+ffffff8000084870:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff8000084874:	f9007c01 	str	x1, [x0, #248]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:136
-ffffff8000084874:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff8000084878:	f9407c00 	ldr	x0, [x0, #248]
-ffffff800008487c:	aa0003e1 	mov	x1, x0
-ffffff8000084880:	910083e0 	add	x0, sp, #0x20
-ffffff8000084884:	d2802402 	mov	x2, #0x120                 	// #288
-ffffff8000084888:	94000042 	bl	ffffff8000084990 <bcopy>
-ffffff800008488c:	14000011 	b	ffffff80000848d0 <page_fault_handler+0xd8>
+ffffff8000084878:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff800008487c:	f9407c00 	ldr	x0, [x0, #248]
+ffffff8000084880:	aa0003e1 	mov	x1, x0
+ffffff8000084884:	910083e0 	add	x0, sp, #0x20
+ffffff8000084888:	d2802402 	mov	x2, #0x120                 	// #288
+ffffff800008488c:	94000041 	bl	ffffff8000084990 <bcopy>
+ffffff8000084890:	14000011 	b	ffffff80000848d4 <page_fault_handler+0xd8>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:140
-ffffff8000084890:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff8000084894:	9139a000 	add	x0, x0, #0xe68
-ffffff8000084898:	f9400000 	ldr	x0, [x0]
-ffffff800008489c:	f940c400 	ldr	x0, [x0, #392]
-ffffff80000848a0:	d1048001 	sub	x1, x0, #0x120
-ffffff80000848a4:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff80000848a8:	f9007c01 	str	x1, [x0, #248]
+ffffff8000084894:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff8000084898:	9139a000 	add	x0, x0, #0xe68
+ffffff800008489c:	f9400000 	ldr	x0, [x0]
+ffffff80000848a0:	f940c400 	ldr	x0, [x0, #392]
+ffffff80000848a4:	d1048001 	sub	x1, x0, #0x120
+ffffff80000848a8:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff80000848ac:	f9007c01 	str	x1, [x0, #248]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:141
-ffffff80000848ac:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000848b0:	9139a000 	add	x0, x0, #0xe68
-ffffff80000848b4:	f9400000 	ldr	x0, [x0]
-ffffff80000848b8:	f940c400 	ldr	x0, [x0, #392]
-ffffff80000848bc:	d1048000 	sub	x0, x0, #0x120
-ffffff80000848c0:	aa0003e1 	mov	x1, x0
-ffffff80000848c4:	910083e0 	add	x0, sp, #0x20
-ffffff80000848c8:	d2802402 	mov	x2, #0x120                 	// #288
-ffffff80000848cc:	94000031 	bl	ffffff8000084990 <bcopy>
+ffffff80000848b0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000848b4:	9139a000 	add	x0, x0, #0xe68
+ffffff80000848b8:	f9400000 	ldr	x0, [x0]
+ffffff80000848bc:	f940c400 	ldr	x0, [x0, #392]
+ffffff80000848c0:	d1048000 	sub	x0, x0, #0x120
+ffffff80000848c4:	aa0003e1 	mov	x1, x0
+ffffff80000848c8:	910083e0 	add	x0, sp, #0x20
+ffffff80000848cc:	d2802402 	mov	x2, #0x120                 	// #288
+ffffff80000848d0:	94000030 	bl	ffffff8000084990 <bcopy>
 /home/dofingert/Source/OS/THYOS/lib/sync.c:144
-ffffff80000848d0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
-ffffff80000848d4:	9139a000 	add	x0, x0, #0xe68
-ffffff80000848d8:	f9400000 	ldr	x0, [x0]
-ffffff80000848dc:	f940c001 	ldr	x1, [x0, #384]
-ffffff80000848e0:	f9400fe0 	ldr	x0, [sp, #24]
-ffffff80000848e4:	f9008001 	str	x1, [x0, #256]
+ffffff80000848d4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
+ffffff80000848d8:	9139a000 	add	x0, x0, #0xe68
+ffffff80000848dc:	f9400000 	ldr	x0, [x0]
+ffffff80000848e0:	f940c001 	ldr	x1, [x0, #384]
+ffffff80000848e4:	f9400fe0 	ldr	x0, [sp, #24]
+ffffff80000848e8:	f9008001 	str	x1, [x0, #256]
 /home/dofingert/Source/OS/THYOS/lib/sync.c:146
-ffffff80000848e8:	d503201f 	nop
+ffffff80000848ec:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/lib/sync.c:147
-ffffff80000848ec:	a8d47bfd 	ldp	x29, x30, [sp], #320
-ffffff80000848f0:	d65f03c0 	ret
-ffffff80000848f4:	00000000 	.inst	0x00000000 ; undefined
+ffffff80000848f0:	a8d47bfd 	ldp	x29, x30, [sp], #320
+ffffff80000848f4:	d65f03c0 	ret
 
 ffffff80000848f8 <reset_timer>:
 reset_timer():
@@ -5506,7 +5506,7 @@ ffffff8000084924:	910003fd 	mov	x29, sp
 /home/dofingert/Source/OS/THYOS/lib/tool.c:35
 ffffff8000084928:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff800008492c:	913ea000 	add	x0, x0, #0xfa8
-ffffff8000084930:	97fff8ec 	bl	ffffff8000082ce0 <printf>
+ffffff8000084930:	97fff8ed 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/tool.c:36
 ffffff8000084934:	d503201f 	nop
 ffffff8000084938:	a8c17bfd 	ldp	x29, x30, [sp], #16
@@ -5522,7 +5522,7 @@ ffffff8000084948:	910073e0 	add	x0, sp, #0x1c
 ffffff800008494c:	aa0003e1 	mov	x1, x0
 ffffff8000084950:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff8000084954:	913ee000 	add	x0, x0, #0xfb8
-ffffff8000084958:	97fff8e2 	bl	ffffff8000082ce0 <printf>
+ffffff8000084958:	97fff8e3 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/tool.c:42
 ffffff800008495c:	d503201f 	nop
 ffffff8000084960:	a8c27bfd 	ldp	x29, x30, [sp], #32
@@ -5538,7 +5538,7 @@ ffffff8000084970:	97ffeec2 	bl	ffffff8000080478 <get_EL>
 ffffff8000084974:	aa0003e1 	mov	x1, x0
 ffffff8000084978:	d0000000 	adrp	x0, ffffff8000086000 <page_init+0xaf4>
 ffffff800008497c:	913f6000 	add	x0, x0, #0xfd8
-ffffff8000084980:	97fff8d8 	bl	ffffff8000082ce0 <printf>
+ffffff8000084980:	97fff8d9 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/tool.c:47
 ffffff8000084984:	d503201f 	nop
 ffffff8000084988:	a8c17bfd 	ldp	x29, x30, [sp], #16
@@ -5665,14 +5665,14 @@ ffffff8000084ae0:	f94013e2 	ldr	x2, [sp, #32]
 ffffff8000084ae4:	aa0003e1 	mov	x1, x0
 ffffff8000084ae8:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084aec:	91002000 	add	x0, x0, #0x8
-ffffff8000084af0:	97fff87c 	bl	ffffff8000082ce0 <printf>
+ffffff8000084af0:	97fff87d 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/lib/tool.c:90
 ffffff8000084af4:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084af8:	9100a002 	add	x2, x0, #0x28
 ffffff8000084afc:	52800b41 	mov	w1, #0x5a                  	// #90
 ffffff8000084b00:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084b04:	91012000 	add	x0, x0, #0x48
-ffffff8000084b08:	97fff8d3 	bl	ffffff8000082e54 <_panic>
+ffffff8000084b08:	97fff8d4 	bl	ffffff8000082e58 <_panic>
 
 ffffff8000084b0c <enable_interrupt_controller>:
 enable_interrupt_controller():
@@ -5967,7 +5967,7 @@ ffffff8000084e8c:	91014002 	add	x2, x0, #0x50
 ffffff8000084e90:	52800441 	mov	w1, #0x22                  	// #34
 ffffff8000084e94:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084e98:	9101e000 	add	x0, x0, #0x78
-ffffff8000084e9c:	97fff7ee 	bl	ffffff8000082e54 <_panic>
+ffffff8000084e9c:	97fff7ef 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:35
 ffffff8000084ea0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000084ea4:	913b8000 	add	x0, x0, #0xee0
@@ -6009,7 +6009,7 @@ ffffff8000084f14:	91024002 	add	x2, x0, #0x90
 ffffff8000084f18:	52800501 	mov	w1, #0x28                  	// #40
 ffffff8000084f1c:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084f20:	9101e000 	add	x0, x0, #0x78
-ffffff8000084f24:	97fff7cc 	bl	ffffff8000082e54 <_panic>
+ffffff8000084f24:	97fff7cd 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:40 (discriminator 2)
 ffffff8000084f28:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084f2c:	97ffffc4 	bl	ffffff8000084e3c <page2pa>
@@ -6055,7 +6055,7 @@ ffffff8000084fa0:	d34afc00 	lsr	x0, x0, #10
 ffffff8000084fa4:	2a0003e1 	mov	w1, w0
 ffffff8000084fa8:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084fac:	9102e000 	add	x0, x0, #0xb8
-ffffff8000084fb0:	97fff74c 	bl	ffffff8000082ce0 <printf>
+ffffff8000084fb0:	97fff74d 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:36
 ffffff8000084fb4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000084fb8:	913b4000 	add	x0, x0, #0xed0
@@ -6069,7 +6069,7 @@ ffffff8000084fd4:	d34afc00 	lsr	x0, x0, #10
 ffffff8000084fd8:	2a0003e2 	mov	w2, w0
 ffffff8000084fdc:	f0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000084fe0:	91038000 	add	x0, x0, #0xe0
-ffffff8000084fe4:	97fff73f 	bl	ffffff8000082ce0 <printf>
+ffffff8000084fe4:	97fff740 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:37
 ffffff8000084fe8:	d503201f 	nop
 ffffff8000084fec:	a8c17bfd 	ldp	x29, x30, [sp], #16
@@ -6107,7 +6107,7 @@ ffffff800008504c:	91042002 	add	x2, x0, #0x108
 ffffff8000085050:	528005c1 	mov	w1, #0x2e                  	// #46
 ffffff8000085054:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085058:	9104c000 	add	x0, x0, #0x130
-ffffff800008505c:	97fff74d 	bl	ffffff8000082d90 <debug_printf>
+ffffff800008505c:	97fff74e 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:49
 ffffff8000085060:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000085064:	913ac000 	add	x0, x0, #0xeb0
@@ -6151,7 +6151,7 @@ ffffff80000850e8:	9104e002 	add	x2, x0, #0x138
 ffffff80000850ec:	52800701 	mov	w1, #0x38                  	// #56
 ffffff80000850f0:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000850f4:	9104c000 	add	x0, x0, #0x130
-ffffff80000850f8:	97fff757 	bl	ffffff8000082e54 <_panic>
+ffffff80000850f8:	97fff758 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:56 (discriminator 2)
 ffffff80000850fc:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000085100:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6167,7 +6167,7 @@ ffffff8000085120:	91058002 	add	x2, x0, #0x160
 ffffff8000085124:	52800741 	mov	w1, #0x3a                  	// #58
 ffffff8000085128:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff800008512c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085130:	97fff749 	bl	ffffff8000082e54 <_panic>
+ffffff8000085130:	97fff74a 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:63
 ffffff8000085134:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085138:	7100001f 	cmp	w0, #0x0
@@ -6357,7 +6357,7 @@ ffffff8000085378:	9105c002 	add	x2, x0, #0x170
 ffffff800008537c:	52801041 	mov	w1, #0x82                  	// #130
 ffffff8000085380:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085384:	9104c000 	add	x0, x0, #0x130
-ffffff8000085388:	97fff682 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000085388:	97fff683 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:131
 ffffff800008538c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff8000085390:	913b0000 	add	x0, x0, #0xec0
@@ -6389,7 +6389,7 @@ ffffff80000853ec:	9104e002 	add	x2, x0, #0x138
 ffffff80000853f0:	528010a1 	mov	w1, #0x85                  	// #133
 ffffff80000853f4:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000853f8:	9104c000 	add	x0, x0, #0x130
-ffffff80000853fc:	97fff696 	bl	ffffff8000082e54 <_panic>
+ffffff80000853fc:	97fff697 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:133 (discriminator 2)
 ffffff8000085400:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000085404:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6419,7 +6419,7 @@ ffffff8000085458:	91066002 	add	x2, x0, #0x198
 ffffff800008545c:	52801141 	mov	w1, #0x8a                  	// #138
 ffffff8000085460:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085464:	9104c000 	add	x0, x0, #0x130
-ffffff8000085468:	97fff64a 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000085468:	97fff64b 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:139 (discriminator 2)
 ffffff800008546c:	d28c0000 	mov	x0, #0x6000                	// #24576
 ffffff8000085470:	f2a000c0 	movk	x0, #0x6, lsl #16
@@ -6444,7 +6444,7 @@ ffffff80000854b0:	9104e002 	add	x2, x0, #0x138
 ffffff80000854b4:	52801181 	mov	w1, #0x8c                  	// #140
 ffffff80000854b8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000854bc:	9104c000 	add	x0, x0, #0x130
-ffffff80000854c0:	97fff665 	bl	ffffff8000082e54 <_panic>
+ffffff80000854c0:	97fff666 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:140 (discriminator 2)
 ffffff80000854c4:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000854c8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6462,7 +6462,7 @@ ffffff80000854ec:	9106e002 	add	x2, x0, #0x1b8
 ffffff80000854f0:	528011e1 	mov	w1, #0x8f                  	// #143
 ffffff80000854f4:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000854f8:	9104c000 	add	x0, x0, #0x130
-ffffff80000854fc:	97fff625 	bl	ffffff8000082d90 <debug_printf>
+ffffff80000854fc:	97fff626 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:144 (discriminator 2)
 ffffff8000085500:	d503201f 	nop
 ffffff8000085504:	a8c37bfd 	ldp	x29, x30, [sp], #48
@@ -6503,7 +6503,7 @@ ffffff800008556c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085570:	528013a1 	mov	w1, #0x9d                  	// #157
 ffffff8000085574:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085578:	9104c000 	add	x0, x0, #0x130
-ffffff800008557c:	97fff636 	bl	ffffff8000082e54 <_panic>
+ffffff800008557c:	97fff637 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:157 (discriminator 2)
 ffffff8000085580:	f94093e1 	ldr	x1, [sp, #288]
 ffffff8000085584:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6538,7 +6538,7 @@ ffffff80000855e0:	54fffdeb 	b.lt	ffffff800008559c <page_init+0x90>  // b.tstop
 ffffff80000855e4:	b9411fe1 	ldr	w1, [sp, #284]
 ffffff80000855e8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000855ec:	91076000 	add	x0, x0, #0x1d8
-ffffff80000855f0:	97fff5bc 	bl	ffffff8000082ce0 <printf>
+ffffff80000855f0:	97fff5bd 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:165
 ffffff80000855f4:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2048>
 ffffff80000855f8:	913b0000 	add	x0, x0, #0xec0
@@ -6631,7 +6631,7 @@ ffffff8000085734:	cb000020 	sub	x0, x1, x0
 ffffff8000085738:	aa0003e1 	mov	x1, x0
 ffffff800008573c:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085740:	91084000 	add	x0, x0, #0x210
-ffffff8000085744:	97fff567 	bl	ffffff8000082ce0 <printf>
+ffffff8000085744:	97fff568 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172
 ffffff8000085748:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff800008574c:	f29e0000 	movk	x0, #0xf000
@@ -6647,7 +6647,7 @@ ffffff800008576c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085770:	52801581 	mov	w1, #0xac                  	// #172
 ffffff8000085774:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085778:	9104c000 	add	x0, x0, #0x130
-ffffff800008577c:	97fff5b6 	bl	ffffff8000082e54 <_panic>
+ffffff800008577c:	97fff5b7 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 2)
 ffffff8000085780:	f9408be1 	ldr	x1, [sp, #272]
 ffffff8000085784:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6671,7 +6671,7 @@ ffffff80000857c0:	9104e002 	add	x2, x0, #0x138
 ffffff80000857c4:	52801581 	mov	w1, #0xac                  	// #172
 ffffff80000857c8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000857cc:	9104c000 	add	x0, x0, #0x130
-ffffff80000857d0:	97fff5a1 	bl	ffffff8000082e54 <_panic>
+ffffff80000857d0:	97fff5a2 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 6)
 ffffff80000857d4:	f94087e1 	ldr	x1, [sp, #264]
 ffffff80000857d8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6692,7 +6692,7 @@ ffffff800008580c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085810:	52801581 	mov	w1, #0xac                  	// #172
 ffffff8000085814:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085818:	9104c000 	add	x0, x0, #0x130
-ffffff800008581c:	97fff58e 	bl	ffffff8000082e54 <_panic>
+ffffff800008581c:	97fff58f 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 8)
 ffffff8000085820:	f94083e1 	ldr	x1, [sp, #256]
 ffffff8000085824:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6716,7 +6716,7 @@ ffffff8000085860:	9104e002 	add	x2, x0, #0x138
 ffffff8000085864:	52801581 	mov	w1, #0xac                  	// #172
 ffffff8000085868:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff800008586c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085870:	97fff579 	bl	ffffff8000082e54 <_panic>
+ffffff8000085870:	97fff57a 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 11)
 ffffff8000085874:	f9407fe1 	ldr	x1, [sp, #248]
 ffffff8000085878:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6737,7 +6737,7 @@ ffffff80000858ac:	9104e002 	add	x2, x0, #0x138
 ffffff80000858b0:	52801581 	mov	w1, #0xac                  	// #172
 ffffff80000858b4:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000858b8:	9104c000 	add	x0, x0, #0x130
-ffffff80000858bc:	97fff566 	bl	ffffff8000082e54 <_panic>
+ffffff80000858bc:	97fff567 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 13)
 ffffff80000858c0:	f9407be1 	ldr	x1, [sp, #240]
 ffffff80000858c4:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6761,7 +6761,7 @@ ffffff8000085900:	9104e002 	add	x2, x0, #0x138
 ffffff8000085904:	528015a1 	mov	w1, #0xad                  	// #173
 ffffff8000085908:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff800008590c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085910:	97fff551 	bl	ffffff8000082e54 <_panic>
+ffffff8000085910:	97fff552 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 2)
 ffffff8000085914:	f94077e1 	ldr	x1, [sp, #232]
 ffffff8000085918:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6785,7 +6785,7 @@ ffffff8000085954:	9104e002 	add	x2, x0, #0x138
 ffffff8000085958:	528015a1 	mov	w1, #0xad                  	// #173
 ffffff800008595c:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085960:	9104c000 	add	x0, x0, #0x130
-ffffff8000085964:	97fff53c 	bl	ffffff8000082e54 <_panic>
+ffffff8000085964:	97fff53d 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 6)
 ffffff8000085968:	f94073e1 	ldr	x1, [sp, #224]
 ffffff800008596c:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6806,7 +6806,7 @@ ffffff80000859a0:	9104e002 	add	x2, x0, #0x138
 ffffff80000859a4:	528015a1 	mov	w1, #0xad                  	// #173
 ffffff80000859a8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000859ac:	9104c000 	add	x0, x0, #0x130
-ffffff80000859b0:	97fff529 	bl	ffffff8000082e54 <_panic>
+ffffff80000859b0:	97fff52a 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 8)
 ffffff80000859b4:	f9406fe1 	ldr	x1, [sp, #216]
 ffffff80000859b8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6830,7 +6830,7 @@ ffffff80000859f4:	9104e002 	add	x2, x0, #0x138
 ffffff80000859f8:	528015a1 	mov	w1, #0xad                  	// #173
 ffffff80000859fc:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085a00:	9104c000 	add	x0, x0, #0x130
-ffffff8000085a04:	97fff514 	bl	ffffff8000082e54 <_panic>
+ffffff8000085a04:	97fff515 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 11)
 ffffff8000085a08:	f9406be1 	ldr	x1, [sp, #208]
 ffffff8000085a0c:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6851,7 +6851,7 @@ ffffff8000085a40:	9104e002 	add	x2, x0, #0x138
 ffffff8000085a44:	528015a1 	mov	w1, #0xad                  	// #173
 ffffff8000085a48:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085a4c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085a50:	97fff501 	bl	ffffff8000082e54 <_panic>
+ffffff8000085a50:	97fff502 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 13)
 ffffff8000085a54:	f94067e1 	ldr	x1, [sp, #200]
 ffffff8000085a58:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6875,7 +6875,7 @@ ffffff8000085a94:	9104e002 	add	x2, x0, #0x138
 ffffff8000085a98:	528015c1 	mov	w1, #0xae                  	// #174
 ffffff8000085a9c:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085aa0:	9104c000 	add	x0, x0, #0x130
-ffffff8000085aa4:	97fff4ec 	bl	ffffff8000082e54 <_panic>
+ffffff8000085aa4:	97fff4ed 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 2)
 ffffff8000085aa8:	f94063e1 	ldr	x1, [sp, #192]
 ffffff8000085aac:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6899,7 +6899,7 @@ ffffff8000085ae8:	9104e002 	add	x2, x0, #0x138
 ffffff8000085aec:	528015c1 	mov	w1, #0xae                  	// #174
 ffffff8000085af0:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085af4:	9104c000 	add	x0, x0, #0x130
-ffffff8000085af8:	97fff4d7 	bl	ffffff8000082e54 <_panic>
+ffffff8000085af8:	97fff4d8 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 6)
 ffffff8000085afc:	f9405fe1 	ldr	x1, [sp, #184]
 ffffff8000085b00:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6920,7 +6920,7 @@ ffffff8000085b34:	9104e002 	add	x2, x0, #0x138
 ffffff8000085b38:	528015c1 	mov	w1, #0xae                  	// #174
 ffffff8000085b3c:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085b40:	9104c000 	add	x0, x0, #0x130
-ffffff8000085b44:	97fff4c4 	bl	ffffff8000082e54 <_panic>
+ffffff8000085b44:	97fff4c5 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 8)
 ffffff8000085b48:	f9405be1 	ldr	x1, [sp, #176]
 ffffff8000085b4c:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6944,7 +6944,7 @@ ffffff8000085b88:	9104e002 	add	x2, x0, #0x138
 ffffff8000085b8c:	528015c1 	mov	w1, #0xae                  	// #174
 ffffff8000085b90:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085b94:	9104c000 	add	x0, x0, #0x130
-ffffff8000085b98:	97fff4af 	bl	ffffff8000082e54 <_panic>
+ffffff8000085b98:	97fff4b0 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 11)
 ffffff8000085b9c:	f94057e1 	ldr	x1, [sp, #168]
 ffffff8000085ba0:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6965,7 +6965,7 @@ ffffff8000085bd4:	9104e002 	add	x2, x0, #0x138
 ffffff8000085bd8:	528015c1 	mov	w1, #0xae                  	// #174
 ffffff8000085bdc:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085be0:	9104c000 	add	x0, x0, #0x130
-ffffff8000085be4:	97fff49c 	bl	ffffff8000082e54 <_panic>
+ffffff8000085be4:	97fff49d 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 13)
 ffffff8000085be8:	f94053e1 	ldr	x1, [sp, #160]
 ffffff8000085bec:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -6989,7 +6989,7 @@ ffffff8000085c28:	9104e002 	add	x2, x0, #0x138
 ffffff8000085c2c:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000085c30:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085c34:	9104c000 	add	x0, x0, #0x130
-ffffff8000085c38:	97fff487 	bl	ffffff8000082e54 <_panic>
+ffffff8000085c38:	97fff488 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:175 (discriminator 2)
 ffffff8000085c3c:	f9404fe1 	ldr	x1, [sp, #152]
 ffffff8000085c40:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7013,7 +7013,7 @@ ffffff8000085c7c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085c80:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000085c84:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085c88:	9104c000 	add	x0, x0, #0x130
-ffffff8000085c8c:	97fff472 	bl	ffffff8000082e54 <_panic>
+ffffff8000085c8c:	97fff473 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:175 (discriminator 6)
 ffffff8000085c90:	f9404be1 	ldr	x1, [sp, #144]
 ffffff8000085c94:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7034,7 +7034,7 @@ ffffff8000085cc8:	9104e002 	add	x2, x0, #0x138
 ffffff8000085ccc:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000085cd0:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085cd4:	9104c000 	add	x0, x0, #0x130
-ffffff8000085cd8:	97fff45f 	bl	ffffff8000082e54 <_panic>
+ffffff8000085cd8:	97fff460 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:175 (discriminator 8)
 ffffff8000085cdc:	f94047e1 	ldr	x1, [sp, #136]
 ffffff8000085ce0:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7058,7 +7058,7 @@ ffffff8000085d1c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085d20:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000085d24:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085d28:	9104c000 	add	x0, x0, #0x130
-ffffff8000085d2c:	97fff44a 	bl	ffffff8000082e54 <_panic>
+ffffff8000085d2c:	97fff44b 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:175 (discriminator 11)
 ffffff8000085d30:	f94043e1 	ldr	x1, [sp, #128]
 ffffff8000085d34:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7079,7 +7079,7 @@ ffffff8000085d68:	9104e002 	add	x2, x0, #0x138
 ffffff8000085d6c:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000085d70:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085d74:	9104c000 	add	x0, x0, #0x130
-ffffff8000085d78:	97fff437 	bl	ffffff8000082e54 <_panic>
+ffffff8000085d78:	97fff438 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:175 (discriminator 13)
 ffffff8000085d7c:	f9403fe1 	ldr	x1, [sp, #120]
 ffffff8000085d80:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7103,7 +7103,7 @@ ffffff8000085dbc:	9104e002 	add	x2, x0, #0x138
 ffffff8000085dc0:	52801601 	mov	w1, #0xb0                  	// #176
 ffffff8000085dc4:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085dc8:	9104c000 	add	x0, x0, #0x130
-ffffff8000085dcc:	97fff422 	bl	ffffff8000082e54 <_panic>
+ffffff8000085dcc:	97fff423 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:176 (discriminator 2)
 ffffff8000085dd0:	f9403be1 	ldr	x1, [sp, #112]
 ffffff8000085dd4:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7127,7 +7127,7 @@ ffffff8000085e10:	9104e002 	add	x2, x0, #0x138
 ffffff8000085e14:	52801601 	mov	w1, #0xb0                  	// #176
 ffffff8000085e18:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085e1c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085e20:	97fff40d 	bl	ffffff8000082e54 <_panic>
+ffffff8000085e20:	97fff40e 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:176 (discriminator 6)
 ffffff8000085e24:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000085e28:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7148,7 +7148,7 @@ ffffff8000085e5c:	9104e002 	add	x2, x0, #0x138
 ffffff8000085e60:	52801601 	mov	w1, #0xb0                  	// #176
 ffffff8000085e64:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085e68:	9104c000 	add	x0, x0, #0x130
-ffffff8000085e6c:	97fff3fa 	bl	ffffff8000082e54 <_panic>
+ffffff8000085e6c:	97fff3fb 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:176 (discriminator 8)
 ffffff8000085e70:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000085e74:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7172,7 +7172,7 @@ ffffff8000085eb0:	9104e002 	add	x2, x0, #0x138
 ffffff8000085eb4:	52801601 	mov	w1, #0xb0                  	// #176
 ffffff8000085eb8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085ebc:	9104c000 	add	x0, x0, #0x130
-ffffff8000085ec0:	97fff3e5 	bl	ffffff8000082e54 <_panic>
+ffffff8000085ec0:	97fff3e6 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:176 (discriminator 11)
 ffffff8000085ec4:	f9402fe1 	ldr	x1, [sp, #88]
 ffffff8000085ec8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7193,7 +7193,7 @@ ffffff8000085efc:	9104e002 	add	x2, x0, #0x138
 ffffff8000085f00:	52801601 	mov	w1, #0xb0                  	// #176
 ffffff8000085f04:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085f08:	9104c000 	add	x0, x0, #0x130
-ffffff8000085f0c:	97fff3d2 	bl	ffffff8000082e54 <_panic>
+ffffff8000085f0c:	97fff3d3 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:176 (discriminator 13)
 ffffff8000085f10:	f9402be1 	ldr	x1, [sp, #80]
 ffffff8000085f14:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7217,7 +7217,7 @@ ffffff8000085f50:	9104e002 	add	x2, x0, #0x138
 ffffff8000085f54:	52801621 	mov	w1, #0xb1                  	// #177
 ffffff8000085f58:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085f5c:	9104c000 	add	x0, x0, #0x130
-ffffff8000085f60:	97fff3bd 	bl	ffffff8000082e54 <_panic>
+ffffff8000085f60:	97fff3be 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:177 (discriminator 2)
 ffffff8000085f64:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000085f68:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7241,7 +7241,7 @@ ffffff8000085fa4:	9104e002 	add	x2, x0, #0x138
 ffffff8000085fa8:	52801621 	mov	w1, #0xb1                  	// #177
 ffffff8000085fac:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085fb0:	9104c000 	add	x0, x0, #0x130
-ffffff8000085fb4:	97fff3a8 	bl	ffffff8000082e54 <_panic>
+ffffff8000085fb4:	97fff3a9 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:177 (discriminator 6)
 ffffff8000085fb8:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000085fbc:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7262,7 +7262,7 @@ ffffff8000085ff0:	9104e002 	add	x2, x0, #0x138
 ffffff8000085ff4:	52801621 	mov	w1, #0xb1                  	// #177
 ffffff8000085ff8:	d0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000085ffc:	9104c000 	add	x0, x0, #0x130
-ffffff8000086000:	97fff395 	bl	ffffff8000082e54 <_panic>
+ffffff8000086000:	97fff396 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:177 (discriminator 8)
 ffffff8000086004:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff8000086008:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7286,7 +7286,7 @@ ffffff8000086044:	9104e002 	add	x2, x0, #0x138
 ffffff8000086048:	52801621 	mov	w1, #0xb1                  	// #177
 ffffff800008604c:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086050:	9104c000 	add	x0, x0, #0x130
-ffffff8000086054:	97fff380 	bl	ffffff8000082e54 <_panic>
+ffffff8000086054:	97fff381 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:177 (discriminator 11)
 ffffff8000086058:	f9401be1 	ldr	x1, [sp, #48]
 ffffff800008605c:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7307,7 +7307,7 @@ ffffff8000086090:	9104e002 	add	x2, x0, #0x138
 ffffff8000086094:	52801621 	mov	w1, #0xb1                  	// #177
 ffffff8000086098:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff800008609c:	9104c000 	add	x0, x0, #0x130
-ffffff80000860a0:	97fff36d 	bl	ffffff8000082e54 <_panic>
+ffffff80000860a0:	97fff36e 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:177 (discriminator 13)
 ffffff80000860a4:	f94017e1 	ldr	x1, [sp, #40]
 ffffff80000860a8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
@@ -7321,13 +7321,13 @@ ffffff80000860c0:	b25963e1 	mov	x1, #0xffffff8000000000    	// #-549755813888
 ffffff80000860c4:	f2a04001 	movk	x1, #0x200, lsl #16
 ffffff80000860c8:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000860cc:	9108c000 	add	x0, x0, #0x230
-ffffff80000860d0:	97fff304 	bl	ffffff8000082ce0 <printf>
+ffffff80000860d0:	97fff305 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:179 (discriminator 13)
 ffffff80000860d4:	b259c7e1 	mov	x1, #0xffffff8001ffffff    	// #-549722259457
 ffffff80000860d8:	f29a0001 	movk	x1, #0xd000
 ffffff80000860dc:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000860e0:	91098000 	add	x0, x0, #0x260
-ffffff80000860e4:	97fff2ff 	bl	ffffff8000082ce0 <printf>
+ffffff80000860e4:	97fff300 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:180 (discriminator 13)
 ffffff80000860e8:	d503201f 	nop
 ffffff80000860ec:	f9400bf3 	ldr	x19, [sp, #16]
@@ -7435,7 +7435,7 @@ ffffff800008621c:	910a6002 	add	x2, x0, #0x298
 ffffff8000086220:	52801b21 	mov	w1, #0xd9                  	// #217
 ffffff8000086224:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086228:	9104c000 	add	x0, x0, #0x130
-ffffff800008622c:	97fff30a 	bl	ffffff8000082e54 <_panic>
+ffffff800008622c:	97fff30b 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:205
 ffffff8000086230:	d503201f 	nop
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:218
@@ -7471,7 +7471,7 @@ ffffff8000086288:	910ae002 	add	x2, x0, #0x2b8
 ffffff800008628c:	52801ca1 	mov	w1, #0xe5                  	// #229
 ffffff8000086290:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086294:	9104c000 	add	x0, x0, #0x130
-ffffff8000086298:	97fff2be 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000086298:	97fff2bf 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:230
 ffffff800008629c:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000862a0:	f9400000 	ldr	x0, [x0]
@@ -7533,7 +7533,7 @@ ffffff8000086354:	91024002 	add	x2, x0, #0x90
 ffffff8000086358:	52801fa1 	mov	w1, #0xfd                  	// #253
 ffffff800008635c:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086360:	9104c000 	add	x0, x0, #0x130
-ffffff8000086364:	97fff2bc 	bl	ffffff8000082e54 <_panic>
+ffffff8000086364:	97fff2bd 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:253 (discriminator 2)
 ffffff8000086368:	f94037e0 	ldr	x0, [sp, #104]
 ffffff800008636c:	f9400000 	ldr	x0, [x0]
@@ -7558,7 +7558,7 @@ ffffff80000863ac:	910b4002 	add	x2, x0, #0x2d0
 ffffff80000863b0:	52801fe1 	mov	w1, #0xff                  	// #255
 ffffff80000863b4:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000863b8:	9104c000 	add	x0, x0, #0x130
-ffffff80000863bc:	97fff275 	bl	ffffff8000082d90 <debug_printf>
+ffffff80000863bc:	97fff276 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:256 (discriminator 2)
 ffffff80000863c0:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000863c4:	f9400000 	ldr	x0, [x0]
@@ -7620,7 +7620,7 @@ ffffff8000086478:	91024002 	add	x2, x0, #0x90
 ffffff800008647c:	528022e1 	mov	w1, #0x117                 	// #279
 ffffff8000086480:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086484:	9104c000 	add	x0, x0, #0x130
-ffffff8000086488:	97fff273 	bl	ffffff8000082e54 <_panic>
+ffffff8000086488:	97fff274 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:279 (discriminator 2)
 ffffff800008648c:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000086490:	f9400000 	ldr	x0, [x0]
@@ -7647,7 +7647,7 @@ ffffff80000864d8:	910ba002 	add	x2, x0, #0x2e8
 ffffff80000864dc:	52802321 	mov	w1, #0x119                 	// #281
 ffffff80000864e0:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000864e4:	9104c000 	add	x0, x0, #0x130
-ffffff80000864e8:	97fff22a 	bl	ffffff8000082d90 <debug_printf>
+ffffff80000864e8:	97fff22b 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:282 (discriminator 2)
 ffffff80000864ec:	52800000 	mov	w0, #0x0                   	// #0
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:283 (discriminator 1)
@@ -7673,7 +7673,7 @@ ffffff8000086524:	910c0002 	add	x2, x0, #0x300
 ffffff8000086528:	528023e1 	mov	w1, #0x11f                 	// #287
 ffffff800008652c:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086530:	9104c000 	add	x0, x0, #0x130
-ffffff8000086534:	97fff217 	bl	ffffff8000082d90 <debug_printf>
+ffffff8000086534:	97fff218 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:289
 ffffff8000086538:	f9001bff 	str	xzr, [sp, #48]
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:291
@@ -7893,7 +7893,7 @@ ffffff80000867ac:	f90017ff 	str	xzr, [sp, #40]
 ffffff80000867b0:	f9400be1 	ldr	x1, [sp, #16]
 ffffff80000867b4:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000867b8:	910cc000 	add	x0, x0, #0x330
-ffffff80000867bc:	97fff149 	bl	ffffff8000082ce0 <printf>
+ffffff80000867bc:	97fff14a 	bl	ffffff8000082ce4 <printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:401
 ffffff80000867c0:	f9400be1 	ldr	x1, [sp, #16]
 ffffff80000867c4:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
@@ -7910,7 +7910,7 @@ ffffff80000867e4:	910d2002 	add	x2, x0, #0x348
 ffffff80000867e8:	528032a1 	mov	w1, #0x195                 	// #405
 ffffff80000867ec:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff80000867f0:	9104c000 	add	x0, x0, #0x130
-ffffff80000867f4:	97fff198 	bl	ffffff8000082e54 <_panic>
+ffffff80000867f4:	97fff199 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:408
 ffffff80000867f8:	9100a3e0 	add	x0, sp, #0x28
 ffffff80000867fc:	97fffe3f 	bl	ffffff80000860f8 <page_alloc>
@@ -7924,7 +7924,7 @@ ffffff8000086814:	910d8002 	add	x2, x0, #0x360
 ffffff8000086818:	52803341 	mov	w1, #0x19a                 	// #410
 ffffff800008681c:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086820:	9104c000 	add	x0, x0, #0x130
-ffffff8000086824:	97fff18c 	bl	ffffff8000082e54 <_panic>
+ffffff8000086824:	97fff18d 	bl	ffffff8000082e58 <_panic>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:413
 ffffff8000086828:	f9401fe4 	ldr	x4, [sp, #56]
 ffffff800008682c:	f94017e1 	ldr	x1, [sp, #40]
@@ -8032,7 +8032,7 @@ ffffff800008696c:	910de002 	add	x2, x0, #0x378
 ffffff8000086970:	52803781 	mov	w1, #0x1bc                 	// #444
 ffffff8000086974:	b0000000 	adrp	x0, ffffff8000087000 <theFatalMsg+0x278>
 ffffff8000086978:	9104c000 	add	x0, x0, #0x130
-ffffff800008697c:	97fff105 	bl	ffffff8000082d90 <debug_printf>
+ffffff800008697c:	97fff106 	bl	ffffff8000082d94 <debug_printf>
 /home/dofingert/Source/OS/THYOS/mmu/pmap.c:435 (discriminator 2)
 ffffff8000086980:	f94033e0 	ldr	x0, [sp, #96]
 ffffff8000086984:	91000400 	add	x0, x0, #0x1
@@ -18417,7 +18417,7 @@ Disassembly of section .debug_info:
      f84:	14000004 	b	f94 <__bss_size+0xf83>
      f88:	80000003 	.inst	0x80000003 ; undefined
      f8c:	80000825 	.inst	0x80000825 ; undefined
-     f90:	e8ffffff 	.inst	0xe8ffffff ; undefined
+     f90:	ecffffff 	.inst	0xecffffff ; undefined
      f94:	00000006 	.inst	0x00000006 ; undefined
      f98:	d5000000 	msr	s0_0_c0_c0_0, x0
      f9c:	02000007 	.inst	0x02000007 ; undefined
@@ -18731,7 +18731,7 @@ Disassembly of section .debug_info:
     146c:	000005d7 	.inst	0x000005d7 ; undefined
     1470:	04068a02 	sqshl	z2.h, p2/m, z2.h, #0
     1474:	8000082b 	.inst	0x8000082b ; undefined
-    1478:	64ffffff 	.inst	0x64ffffff ; undefined
+    1478:	68ffffff 	.inst	0x68ffffff ; undefined
     147c:	00000001 	.inst	0x00000001 ; undefined
     1480:	01000000 	.inst	0x01000000 ; undefined
     1484:	0005ec9c 	.inst	0x0005ec9c ; undefined
@@ -18780,7 +18780,7 @@ Disassembly of section .debug_info:
     1530:	000004a1 	.inst	0x000004a1 ; undefined
     1534:	c00eb302 	.inst	0xc00eb302 ; undefined
     1538:	02000002 	.inst	0x02000002 ; undefined
-    153c:	e01a6091 	.inst	0xe01a6091 ; undefined
+    153c:	e41a6091 	stnt1b	{z17.b}, p0, [x4, x26]
     1540:	8000082b 	.inst	0x8000082b ; undefined
     1544:	6cffffff 	ldp	d31, d31, [sp], #-8
     1548:	00000000 	.inst	0x00000000 ; undefined
@@ -19012,7 +19012,7 @@ Disassembly of section .debug_info:
     18d0:	00000108 	.inst	0x00000108 ; undefined
     18d4:	260c0000 	.inst	0x260c0000 ; undefined
     18d8:	14000006 	b	18f0 <__bss_size+0x18df>
-    18dc:	68000003 	.inst	0x68000003 ; undefined
+    18dc:	6c000003 	stnp	d3, d0, [x0]
     18e0:	8000082c 	.inst	0x8000082c ; undefined
     18e4:	b4ffffff 	cbz	xzr, 18e0 <__bss_size+0x18cf>
     18e8:	00000002 	.inst	0x00000002 ; undefined
@@ -19043,7 +19043,7 @@ Disassembly of section .debug_info:
     194c:	2d186302 	stp	s2, s24, [x24, #192]
     1950:	07000000 	.inst	0x07000000 ; undefined
     1954:	000007bf 	.inst	0x000007bf ; undefined
-    1958:	54012801 	b.ne	3e58 <__bss_size+0x3e47>  // b.any
+    1958:	58012801 	ldr	x1, 3e58 <__bss_size+0x3e47>
     195c:	8000082e 	.inst	0x8000082e ; undefined
     1960:	c8ffffff 	casal	xzr, xzr, [sp]
     1964:	00000000 	.inst	0x00000000 ; undefined
@@ -19072,7 +19072,7 @@ Disassembly of section .debug_info:
     19c0:	000000f2 	.inst	0x000000f2 ; undefined
     19c4:	00034a0f 	.inst	0x00034a0f ; undefined
     19c8:	061e0100 	.inst	0x061e0100 ; undefined
-    19cc:	00082d90 	.inst	0x00082d90 ; undefined
+    19cc:	00082d94 	.inst	0x00082d94 ; undefined
     19d0:	ffffff80 	.inst	0xffffff80 ; undefined
     19d4:	000000c4 	.inst	0x000000c4 ; undefined
     19d8:	00000000 	.inst	0x00000000 ; undefined
@@ -19097,7 +19097,7 @@ Disassembly of section .debug_info:
     1a24:	0000f208 	.inst	0x0000f208 ; undefined
     1a28:	03500f00 	.inst	0x03500f00 ; undefined
     1a2c:	16010000 	b	fffffffff8041a2c <init_sp+0x7ff7841a2c>
-    1a30:	082ce006 	.inst	0x082ce006 ; undefined
+    1a30:	082ce406 	.inst	0x082ce406 ; undefined
     1a34:	ffff8000 	.inst	0xffff8000 ; undefined
     1a38:	0000b0ff 	.inst	0x0000b0ff ; undefined
     1a3c:	00000000 	.inst	0x00000000 ; undefined
@@ -19113,7 +19113,7 @@ Disassembly of section .debug_info:
     1a64:	007ea091 	.inst	0x007ea091 ; undefined
     1a68:	00065110 	.inst	0x00065110 ; undefined
     1a6c:	0d050100 	.inst	0x0d050100 ; undefined
-    1a70:	00082c68 	.inst	0x00082c68 ; undefined
+    1a70:	00082c6c 	.inst	0x00082c6c ; undefined
     1a74:	ffffff80 	.inst	0xffffff80 ; undefined
     1a78:	00000078 	.inst	0x00000078 ; undefined
     1a7c:	00000000 	.inst	0x00000000 ; undefined
@@ -19137,7 +19137,7 @@ Disassembly of section .debug_info:
     1ac4:	00000108 	.inst	0x00000108 ; undefined
     1ac8:	8b0c0000 	add	x0, x0, x12
     1acc:	14000006 	b	1ae4 <__bss_size+0x1ad3>
-    1ad0:	1c000003 	ldr	s3, 1ad0 <__bss_size+0x1abf>
+    1ad0:	20000003 	.inst	0x20000003 ; undefined
     1ad4:	8000082f 	.inst	0x8000082f ; undefined
     1ad8:	c4ffffff 	ldff1h	{z31.d}, p7/z, [sp, z31.d, lsl #1]
     1adc:	00000011 	.inst	0x00000011 ; undefined
@@ -19185,7 +19185,7 @@ Disassembly of section .debug_info:
     1b84:	06c50cff 	.inst	0x06c50cff ; undefined
     1b88:	31010000 	adds	w0, w0, #0x40
     1b8c:	007a0501 	.inst	0x007a0501 ; undefined
-    1b90:	3e340000 	.inst	0x3e340000 ; undefined
+    1b90:	3e380000 	.inst	0x3e380000 ; undefined
     1b94:	ff800008 	.inst	0xff800008 ; undefined
     1b98:	02acffff 	.inst	0x02acffff ; undefined
     1b9c:	00000000 	.inst	0x00000000 ; undefined
@@ -19242,7 +19242,7 @@ Disassembly of section .debug_info:
     1c68:	01730100 	.inst	0x01730100 ; undefined
     1c6c:	00007a06 	.inst	0x00007a06 ; undefined
     1c70:	6c910200 	stp	d0, d0, [x16], #272
-    1c74:	083e6411 	.inst	0x083e6411 ; undefined
+    1c74:	083e6811 	.inst	0x083e6811 ; undefined
     1c78:	ffff8000 	.inst	0xffff8000 ; undefined
     1c7c:	0000a8ff 	.inst	0x0000a8ff ; undefined
     1c80:	00000000 	.inst	0x00000000 ; undefined
@@ -19251,7 +19251,7 @@ Disassembly of section .debug_info:
     1c8c:	44010070 	.inst	0x44010070 ; undefined
     1c90:	007a0701 	.inst	0x007a0701 ; undefined
     1c94:	91020000 	add	x0, x0, #0x80
-    1c98:	64120064 	.inst	0x64120064 ; undefined
+    1c98:	68120064 	.inst	0x68120064 ; undefined
     1c9c:	80000840 	.inst	0x80000840 ; undefined
     1ca0:	60ffffff 	.inst	0x60ffffff ; undefined
     1ca4:	00000000 	.inst	0x00000000 ; undefined
@@ -19265,7 +19265,7 @@ Disassembly of section .debug_info:
     1cc4:	000006d4 	.inst	0x000006d4 ; undefined
     1cc8:	05011201 	orr	z1.s, z1.s, #0xc0007fff
     1ccc:	0000007a 	.inst	0x0000007a ; undefined
-    1cd0:	00083c94 	.inst	0x00083c94 ; undefined
+    1cd0:	00083c98 	.inst	0x00083c98 ; undefined
     1cd4:	ffffff80 	.inst	0xffffff80 ; undefined
     1cd8:	000001a0 	.inst	0x000001a0 ; undefined
     1cdc:	00000000 	.inst	0x00000000 ; undefined
@@ -19300,7 +19300,7 @@ Disassembly of section .debug_info:
     1d50:	14007091 	b	1df94 <__bss_size+0x1df83>
     1d54:	000006f6 	.inst	0x000006f6 ; undefined
     1d58:	7a05fd01 	.inst	0x7a05fd01 ; undefined
-    1d5c:	b4000000 	cbz	x0, 1d5c <__bss_size+0x1d4b>
+    1d5c:	b8000000 	stur	w0, [x0]
     1d60:	8000083b 	.inst	0x8000083b ; undefined
     1d64:	e0ffffff 	.inst	0xe0ffffff ; undefined
     1d68:	00000000 	.inst	0x00000000 ; undefined
@@ -19326,7 +19326,7 @@ Disassembly of section .debug_info:
     1db8:	7c910200 	.inst	0x7c910200 ; undefined
     1dbc:	067c1800 	.inst	0x067c1800 ; undefined
     1dc0:	12010000 	and	w0, w0, #0x80000000
-    1dc4:	082f1c06 	.inst	0x082f1c06 ; undefined
+    1dc4:	082f2006 	.inst	0x082f2006 ; undefined
     1dc8:	ffff8000 	.inst	0xffff8000 ; undefined
     1dcc:	000c98ff 	.inst	0x000c98ff ; undefined
     1dd0:	00000000 	.inst	0x00000000 ; undefined
@@ -19412,7 +19412,7 @@ Disassembly of section .debug_info:
     1f10:	00000001 	.inst	0x00000001 ; undefined
     1f14:	07070c00 	.inst	0x07070c00 ; undefined
     1f18:	03140000 	.inst	0x03140000 ; undefined
-    1f1c:	40e00000 	.inst	0x40e00000 ; undefined
+    1f1c:	40e40000 	.inst	0x40e40000 ; undefined
     1f20:	ff800008 	.inst	0xff800008 ; undefined
     1f24:	068cffff 	.inst	0x068cffff ; undefined
     1f28:	00000000 	.inst	0x00000000 ; undefined
@@ -19590,7 +19590,7 @@ Disassembly of section .debug_info:
     21d8:	02bd1832 	.inst	0x02bd1832 ; undefined
     21dc:	0f120000 	.inst	0x0f120000 ; undefined
     21e0:	01000007 	.inst	0x01000007 ; undefined
-    21e4:	41080616 	.inst	0x41080616 ; undefined
+    21e4:	410c0616 	.inst	0x410c0616 ; undefined
     21e8:	ff800008 	.inst	0xff800008 ; undefined
     21ec:	0664ffff 	.inst	0x0664ffff ; undefined
     21f0:	00000000 	.inst	0x00000000 ; undefined
@@ -19614,7 +19614,7 @@ Disassembly of section .debug_info:
     2238:	ffffff80 	.inst	0xffffff80 ; undefined
     223c:	071b1500 	.inst	0x071b1500 ; undefined
     2240:	0f010000 	.inst	0x0f010000 ; undefined
-    2244:	0840e006 	ldaxrb	w6, [x0]
+    2244:	0840e406 	ldaxrb	w6, [x0]
     2248:	ffff8000 	.inst	0xffff8000 ; undefined
     224c:	000028ff 	.inst	0x000028ff ; undefined
     2250:	00000000 	.inst	0x00000000 ; undefined
@@ -19625,7 +19625,7 @@ Disassembly of section .debug_info:
     2264:	00000000 	.inst	0x00000000 ; undefined
     2268:	0007780c 	.inst	0x0007780c ; undefined
     226c:	00031400 	.inst	0x00031400 ; undefined
-    2270:	08476c00 	ldxrb	w0, [x0]
+    2270:	08477000 	ldxrb	w0, [x0]
     2274:	ffff8000 	.inst	0xffff8000 ; undefined
     2278:	000188ff 	.inst	0x000188ff ; undefined
     227c:	00000000 	.inst	0x00000000 ; undefined
@@ -19860,7 +19860,7 @@ Disassembly of section .debug_info:
     2610:	03761512 	.inst	0x03761512 ; undefined
     2614:	97120000 	bl	fffffffffc482614 <init_sp+0x7ffbc82614>
     2618:	01000007 	.inst	0x01000007 ; undefined
-    261c:	47f8067d 	.inst	0x47f8067d ; undefined
+    261c:	47fc067d 	.inst	0x47fc067d ; undefined
     2620:	ff800008 	.inst	0xff800008 ; undefined
     2624:	00fcffff 	.inst	0x00fcffff ; undefined
     2628:	00000000 	.inst	0x00000000 ; undefined
@@ -19880,7 +19880,7 @@ Disassembly of section .debug_info:
     2660:	0095080d 	.inst	0x0095080d ; undefined
     2664:	f5150000 	.inst	0xf5150000 ; undefined
     2668:	01000007 	.inst	0x01000007 ; undefined
-    266c:	476c0618 	.inst	0x476c0618 ; undefined
+    266c:	47700618 	.inst	0x47700618 ; undefined
     2670:	ff800008 	.inst	0xff800008 ; undefined
     2674:	008cffff 	.inst	0x008cffff ; undefined
     2678:	00000000 	.inst	0x00000000 ; undefined
@@ -22587,13 +22587,13 @@ Disassembly of section .debug_aranges:
  1bc:	00000000 	.inst	0x00000000 ; undefined
  1c0:	00082580 	.inst	0x00082580 ; undefined
  1c4:	ffffff80 	.inst	0xffffff80 ; undefined
- 1c8:	000006e8 	.inst	0x000006e8 ; undefined
+ 1c8:	000006ec 	.inst	0x000006ec ; undefined
 	...
  1e0:	0000002c 	.inst	0x0000002c ; undefined
  1e4:	18c60002 	ldr	w2, fffffffffff8c1e4 <init_sp+0x7fff78c1e4>
  1e8:	00080000 	.inst	0x00080000 ; undefined
  1ec:	00000000 	.inst	0x00000000 ; undefined
- 1f0:	00082c68 	.inst	0x00082c68 ; undefined
+ 1f0:	00082c6c 	.inst	0x00082c6c ; undefined
  1f4:	ffffff80 	.inst	0xffffff80 ; undefined
  1f8:	000002b4 	.inst	0x000002b4 ; undefined
 	...
@@ -22601,7 +22601,7 @@ Disassembly of section .debug_aranges:
  214:	1aba0002 	.inst	0x1aba0002 ; undefined
  218:	00080000 	.inst	0x00080000 ; undefined
  21c:	00000000 	.inst	0x00000000 ; undefined
- 220:	00082f1c 	.inst	0x00082f1c ; undefined
+ 220:	00082f20 	.inst	0x00082f20 ; undefined
  224:	ffffff80 	.inst	0xffffff80 ; undefined
  228:	000011c4 	.inst	0x000011c4 ; undefined
 	...
@@ -22609,7 +22609,7 @@ Disassembly of section .debug_aranges:
  244:	1f050002 	fmadd	s2, s0, s5, s0
  248:	00080000 	.inst	0x00080000 ; undefined
  24c:	00000000 	.inst	0x00000000 ; undefined
- 250:	000840e0 	.inst	0x000840e0 ; undefined
+ 250:	000840e4 	.inst	0x000840e4 ; undefined
  254:	ffffff80 	.inst	0xffffff80 ; undefined
  258:	0000068c 	.inst	0x0000068c ; undefined
 	...
@@ -22617,7 +22617,7 @@ Disassembly of section .debug_aranges:
  274:	22580002 	.inst	0x22580002 ; undefined
  278:	00080000 	.inst	0x00080000 ; undefined
  27c:	00000000 	.inst	0x00000000 ; undefined
- 280:	0008476c 	.inst	0x0008476c ; undefined
+ 280:	00084770 	.inst	0x00084770 ; undefined
  284:	ffffff80 	.inst	0xffffff80 ; undefined
  288:	00000188 	.inst	0x00000188 ; undefined
 	...
@@ -23301,7 +23301,7 @@ Disassembly of section .debug_line:
      9d4:	40090591 	.inst	0x40090591 ; undefined
      9d8:	05ae0805 	.inst	0x05ae0805 ; undefined
      9dc:	05054013 	.inst	0x05054013 ; undefined
-     9e0:	053d3e3d 	.inst	0x053d3e3d ; undefined
+     9e0:	054b3e3d 	.inst	0x054b3e3d ; undefined
      9e4:	052f220e 	mov	z14.b, z16.b[7]
      9e8:	09052005 	.inst	0x09052005 ; undefined
      9ec:	03040200 	.inst	0x03040200 ; undefined
@@ -23342,7 +23342,7 @@ Disassembly of section .debug_line:
      a78:	6e692d74 	uqsub	v20.8h, v11.8h, v9.8h
      a7c:	0000003e 	.inst	0x0000003e ; undefined
      a80:	01050000 	.inst	0x01050000 ; undefined
-     a84:	68020900 	.inst	0x68020900 ; undefined
+     a84:	6c020900 	stnp	d0, d2, [x8, #32]
      a88:	8000082c 	.inst	0x8000082c ; undefined
      a8c:	17ffffff 	b	a88 <__bss_size+0xa77>
      a90:	055c0505 	mov	z5.h, p12/z, #40
@@ -23397,7 +23397,7 @@ Disassembly of section .debug_line:
      b54:	6e692d74 	uqsub	v20.8h, v11.8h, v9.8h
      b58:	0000003e 	.inst	0x0000003e ; undefined
      b5c:	01050000 	.inst	0x01050000 ; undefined
-     b60:	1c020900 	ldr	s0, 4c80 <__bss_size+0x4c6f>
+     b60:	20020900 	.inst	0x20020900 ; undefined
      b64:	8000082f 	.inst	0x8000082f ; undefined
      b68:	03ffffff 	.inst	0x03ffffff ; undefined
      b6c:	09050112 	.inst	0x09050112 ; undefined
@@ -23718,7 +23718,7 @@ Disassembly of section .debug_line:
     1058:	682e766e 	.inst	0x682e766e ; undefined
     105c:	00000100 	.inst	0x00000100 ; undefined
     1060:	00010500 	.inst	0x00010500 ; undefined
-    1064:	40e00209 	.inst	0x40e00209 ; undefined
+    1064:	40e40209 	.inst	0x40e40209 ; undefined
     1068:	ff800008 	.inst	0xff800008 ; undefined
     106c:	0f03ffff 	fmov	v31.4h, #1.937500000000000000e+00
     1070:	2f050501 	mvni	v1.2s, #0xa8
@@ -23823,7 +23823,7 @@ Disassembly of section .debug_line:
     11fc:	0100682e 	.inst	0x0100682e ; undefined
     1200:	05000000 	orr	z0.s, z0.s, #0x1
     1204:	02090001 	.inst	0x02090001 ; undefined
-    1208:	0008476c 	.inst	0x0008476c ; undefined
+    1208:	00084770 	.inst	0x00084770 ; undefined
     120c:	ffffff80 	.inst	0xffffff80 ; undefined
     1210:	05011803 	orr	z3.s, z3.s, #0x20000000
     1214:	0d055905 	.inst	0x0d055905 ; undefined
@@ -25579,11 +25579,11 @@ Disassembly of section .debug_frame:
  47c:	00000378 	.inst	0x00000378 ; undefined
  480:	00082b04 	.inst	0x00082b04 ; undefined
  484:	ffffff80 	.inst	0xffffff80 ; undefined
- 488:	00000164 	.inst	0x00000164 ; undefined
+ 488:	00000168 	.inst	0x00000168 ; undefined
  48c:	00000000 	.inst	0x00000000 ; undefined
  490:	9d600e41 	.inst	0x9d600e41 ; undefined
  494:	020b9e0c 	.inst	0x020b9e0c ; undefined
- 498:	0eddde57 	.inst	0x0eddde57 ; undefined
+ 498:	0eddde58 	.inst	0x0eddde58 ; undefined
  49c:	00000000 	.inst	0x00000000 ; undefined
  4a0:	0000000c 	.inst	0x0000000c ; undefined
  4a4:	ffffffff 	.inst	0xffffffff ; undefined
@@ -25591,7 +25591,7 @@ Disassembly of section .debug_frame:
  4ac:	001f0c1e 	.inst	0x001f0c1e ; undefined
  4b0:	00000024 	.inst	0x00000024 ; undefined
  4b4:	000004a0 	.inst	0x000004a0 ; undefined
- 4b8:	00082c68 	.inst	0x00082c68 ; undefined
+ 4b8:	00082c6c 	.inst	0x00082c6c ; undefined
  4bc:	ffffff80 	.inst	0xffffff80 ; undefined
  4c0:	00000078 	.inst	0x00000078 ; undefined
  4c4:	00000000 	.inst	0x00000000 ; undefined
@@ -25601,7 +25601,7 @@ Disassembly of section .debug_frame:
  4d4:	00000000 	.inst	0x00000000 ; undefined
  4d8:	00000024 	.inst	0x00000024 ; undefined
  4dc:	000004a0 	.inst	0x000004a0 ; undefined
- 4e0:	00082ce0 	.inst	0x00082ce0 ; undefined
+ 4e0:	00082ce4 	.inst	0x00082ce4 ; undefined
  4e4:	ffffff80 	.inst	0xffffff80 ; undefined
  4e8:	000000b0 	.inst	0x000000b0 ; undefined
  4ec:	00000000 	.inst	0x00000000 ; undefined
@@ -25611,7 +25611,7 @@ Disassembly of section .debug_frame:
  4fc:	00000000 	.inst	0x00000000 ; undefined
  500:	00000024 	.inst	0x00000024 ; undefined
  504:	000004a0 	.inst	0x000004a0 ; undefined
- 508:	00082d90 	.inst	0x00082d90 ; undefined
+ 508:	00082d94 	.inst	0x00082d94 ; undefined
  50c:	ffffff80 	.inst	0xffffff80 ; undefined
  510:	000000c4 	.inst	0x000000c4 ; undefined
  514:	00000000 	.inst	0x00000000 ; undefined
@@ -25621,7 +25621,7 @@ Disassembly of section .debug_frame:
  524:	00000000 	.inst	0x00000000 ; undefined
  528:	0000001c 	.inst	0x0000001c ; undefined
  52c:	000004a0 	.inst	0x000004a0 ; undefined
- 530:	00082e54 	.inst	0x00082e54 ; undefined
+ 530:	00082e58 	.inst	0x00082e58 ; undefined
  534:	ffffff80 	.inst	0xffffff80 ; undefined
  538:	000000c8 	.inst	0x000000c8 ; undefined
  53c:	00000000 	.inst	0x00000000 ; undefined
@@ -25633,7 +25633,7 @@ Disassembly of section .debug_frame:
  554:	001f0c1e 	.inst	0x001f0c1e ; undefined
  558:	0000002c 	.inst	0x0000002c ; undefined
  55c:	00000548 	.inst	0x00000548 ; undefined
- 560:	00082f1c 	.inst	0x00082f1c ; undefined
+ 560:	00082f20 	.inst	0x00082f20 ; undefined
  564:	ffffff80 	.inst	0xffffff80 ; undefined
  568:	00000c98 	.inst	0x00000c98 ; undefined
  56c:	00000000 	.inst	0x00000000 ; undefined
@@ -25645,7 +25645,7 @@ Disassembly of section .debug_frame:
  584:	00000ed3 	.inst	0x00000ed3 ; undefined
  588:	0000001c 	.inst	0x0000001c ; undefined
  58c:	00000548 	.inst	0x00000548 ; undefined
- 590:	00083bb4 	.inst	0x00083bb4 ; undefined
+ 590:	00083bb8 	.inst	0x00083bb8 ; undefined
  594:	ffffff80 	.inst	0xffffff80 ; undefined
  598:	000000e0 	.inst	0x000000e0 ; undefined
  59c:	00000000 	.inst	0x00000000 ; undefined
@@ -25653,7 +25653,7 @@ Disassembly of section .debug_frame:
  5a4:	0000000e 	.inst	0x0000000e ; undefined
  5a8:	0000001c 	.inst	0x0000001c ; undefined
  5ac:	00000548 	.inst	0x00000548 ; undefined
- 5b0:	00083c94 	.inst	0x00083c94 ; undefined
+ 5b0:	00083c98 	.inst	0x00083c98 ; undefined
  5b4:	ffffff80 	.inst	0xffffff80 ; undefined
  5b8:	000001a0 	.inst	0x000001a0 ; undefined
  5bc:	00000000 	.inst	0x00000000 ; undefined
@@ -25661,7 +25661,7 @@ Disassembly of section .debug_frame:
  5c4:	00000e66 	.inst	0x00000e66 ; undefined
  5c8:	0000001c 	.inst	0x0000001c ; undefined
  5cc:	00000548 	.inst	0x00000548 ; undefined
- 5d0:	00083e34 	.inst	0x00083e34 ; undefined
+ 5d0:	00083e38 	.inst	0x00083e38 ; undefined
  5d4:	ffffff80 	.inst	0xffffff80 ; undefined
  5d8:	000002ac 	.inst	0x000002ac ; undefined
  5dc:	00000000 	.inst	0x00000000 ; undefined
@@ -25673,7 +25673,7 @@ Disassembly of section .debug_frame:
  5f4:	001f0c1e 	.inst	0x001f0c1e ; undefined
  5f8:	00000024 	.inst	0x00000024 ; undefined
  5fc:	000005e8 	.inst	0x000005e8 ; undefined
- 600:	000840e0 	.inst	0x000840e0 ; undefined
+ 600:	000840e4 	.inst	0x000840e4 ; undefined
  604:	ffffff80 	.inst	0xffffff80 ; undefined
  608:	00000028 	.inst	0x00000028 ; undefined
  60c:	00000000 	.inst	0x00000000 ; undefined
@@ -25683,7 +25683,7 @@ Disassembly of section .debug_frame:
  61c:	00000000 	.inst	0x00000000 ; undefined
  620:	00000024 	.inst	0x00000024 ; undefined
  624:	000005e8 	.inst	0x000005e8 ; undefined
- 628:	00084108 	.inst	0x00084108 ; undefined
+ 628:	0008410c 	.inst	0x0008410c ; undefined
  62c:	ffffff80 	.inst	0xffffff80 ; undefined
  630:	00000664 	.inst	0x00000664 ; undefined
  634:	00000000 	.inst	0x00000000 ; undefined
@@ -25697,7 +25697,7 @@ Disassembly of section .debug_frame:
  654:	001f0c1e 	.inst	0x001f0c1e ; undefined
  658:	0000001c 	.inst	0x0000001c ; undefined
  65c:	00000648 	.inst	0x00000648 ; undefined
- 660:	0008476c 	.inst	0x0008476c ; undefined
+ 660:	00084770 	.inst	0x00084770 ; undefined
  664:	ffffff80 	.inst	0xffffff80 ; undefined
  668:	0000008c 	.inst	0x0000008c ; undefined
  66c:	00000000 	.inst	0x00000000 ; undefined
@@ -25705,7 +25705,7 @@ Disassembly of section .debug_frame:
  674:	00099e0a 	.inst	0x00099e0a ; undefined
  678:	00000024 	.inst	0x00000024 ; undefined
  67c:	00000648 	.inst	0x00000648 ; undefined
- 680:	000847f8 	.inst	0x000847f8 ; undefined
+ 680:	000847fc 	.inst	0x000847fc ; undefined
  684:	ffffff80 	.inst	0xffffff80 ; undefined
  688:	000000fc 	.inst	0x000000fc ; undefined
  68c:	00000000 	.inst	0x00000000 ; undefined
