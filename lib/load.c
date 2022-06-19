@@ -173,7 +173,7 @@ void load_icode(struct Env *e, u_char *binary, u_long size)
     e->env_tf.elr = entry_point;
     debug_print_pgdir(e->env_pgdir);
     extern uint_64 *kernel_pud;
-    set_ttbr0(e->env_pgdir);
+    set_ttbr0(kernel_pud);
     tlb_invalidate();
     //uint_64* datas = ((uint_64)binary) & 0xFFFFFFFF;
     uint_64* datas = 0x400000;
