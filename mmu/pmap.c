@@ -1,3 +1,12 @@
+/*
+
+这个文件主要是关于内存管理的内容。
+
+主要的差异在于页表项权限位的不同。
+
+*/
+
+
 #include "pmap.h"
 #include "mmu.h"
 #include "printf.h"
@@ -14,13 +23,13 @@ struct Page *pages;
 static struct Page_list page_free_list;
 extern uint_64 freemem;
 extern char _end[];
-extern char kernel_sp[];
+extern char init_sp[];
 extern uint_64 *kernel_pud;
 
 void mips_detect_memory()
 {
-    maxpa = PHY_LIM;
-    basemem = PHY_LIM;
+    maxpa = PHY_TOP;
+    basemem = PHY_TOP;
     npage = basemem / BY2PG;
     extmem = 0;
     printf("Physical memory: 0x%lxK available, ", (int)(maxpa / 1024));
@@ -33,7 +42,7 @@ static void *alloc(uint_64 n, uint_64 align, int clear)
     // 这里完成对 freemem 的重定位，因为需要 freemem 在高地址发挥作用
     if (freemem < (uint_64)_end)
     {
-        freemem = (uint_64)kernel_sp;
+        freemem = (uint_64)init_sp;
         printf("freemem has been adjusted to 0x%lx.\n", freemem);
     }
     // Step 1: Round up `freemem` up to be aligned properly
@@ -110,7 +119,7 @@ void arch_basic_init()
 {
     extern struct Env *envs;
 
-    //u_int n;
+    int_64 n;
 
     /* Step 2: Allocate proper size of physical memory for global array `pages`,
      * for physical memory management. Then, map virtual address `UPAGES` to
@@ -119,16 +128,16 @@ void arch_basic_init()
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
     printf("to memory %lx for struct Pages.\n", freemem);
-    //n = ROUND(npage * sizeof(struct Page), BY2PG);
+    n = ROUND(npage * sizeof(struct Page), BY2PG);
     // map the 'pages' in virtual address space to the physical address space
-    //boot_map_segment(pgdir, UPAGES, n, PADDR(pages), PTE_R);
+    boot_map_segment(kernel_pud, UPAGES, n, PADDR(pages), PTE_VALID | PTE_RO);
 
     /* Step 3, Allocate proper size of physical memory for global array `envs`,
      * for process management. Then map the physical address to `UENVS`. */
     envs = (struct Env *)alloc(NENV * sizeof(struct Env), BY2PG, 1);
     printf("to memory %lx for struct Envs.\n", freemem);
-    //n = ROUND(NENV * sizeof(struct Env), BY2PG);
-    //boot_map_segment(pgdir, UENVS, n, PADDR(envs), PTE_R);
+    n = ROUND(NENV * sizeof(struct Env), BY2PG);
+    boot_map_segment(kernel_pud, UENVS, n, PADDR(envs), PTE_VALID | PTE_RO);
 
     page_init();
     printf("pages and envs init success.\n");
@@ -161,7 +170,13 @@ void page_init()
     printf("There are %d pages are free.\n", npage - size);
     // that's for the TIMESTACK, which store the data of old env.tf
     LIST_REMOVE(pa2page(PADDR(TIMESTACK - BY2PG)), pp_link);
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 2 * BY2PG)), pp_link);
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 3 * BY2PG)), pp_link);
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 4 * BY2PG)), pp_link);
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 5 * BY2PG)), pp_link);
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 6 * BY2PG)), pp_link);
     printf("Timestack is at the virtual address 0x%lx.\n", TIMESTACK);
+    printf("Kernel stack base is at the virtual address 0x%lx.\n", KERNEL_SP);
 }
 
 int page_alloc(struct Page **pp)
@@ -211,6 +226,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
     // 首先看第一级页表项
     pud_entryp = pud + PUDX(va);
+    printf("pud_entry is 0x%lx.\n", *pud_entryp);
     if (!((*pud_entryp) & PTE_VALID))
     {
         if (create)
@@ -236,7 +252,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 然后看第二级页表项
     pmd = (uint_64 *)KADDR(PTE_ADDR(*pud_entryp));
     pmd_entryp = pmd + PMDX(va);
-
+    printf("pmd_entry is 0x%lx.\n", *pmd_entryp);
     if (!((*pmd_entryp) & PTE_VALID))
     {
         if (create)
@@ -262,7 +278,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 最后看三级页表项
     pte = (uint_64 *)KADDR(PTE_ADDR(*pmd_entryp));
     *ppte = pte + PTEX(va);
-
+    printf("pt_entry is 0x%lx.\n", **ppte);
     return 0;
 }
 
@@ -286,16 +302,15 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
         }
         else
         {
-            tlb_invalidate(pud, va);
+            tlb_invalidate();
             *pgtable_entry = (page2pa(pp) | PERM);
             return 0;
         }
     }
 
     /* Step 2: Update TLB. */
-
     /* hint: use tlb_invalidate function */
-    tlb_invalidate(pud, va);
+    tlb_invalidate();
 
     /* Step 3: Do check, re-get page table entry to validate the insertion. */
     /* Step 3.1 Check if the page can be insert, if can’t return -E_NO_MEM */
@@ -371,6 +386,28 @@ void page_remove(uint_64 *pud, uint_64 va)
     }
     /* Step 3: Update TLB. */
     *pagetable_entry = 0;
-    tlb_invalidate(pud, va);
+    tlb_invalidate();
     return;
+}
+
+void pageout(uint_64 va, uint_64 *context)
+{
+    int r;
+    struct Page *p = NULL;
+
+    printf("pud address is 0x%lx.\n", context);
+
+    uint_64 pud = (uint_64)context + KERNEL_BASE;
+
+    if (va < 0x10000)
+    {
+        panic("^^^^^^TOO LOW^^^^^^^^^");
+    }
+
+    if ((r = page_alloc(&p)) < 0)
+    {
+        panic("page alloc error!");
+    }
+
+    page_insert(pud, p, VA2PFN(va), PTE_RW);
 }

@@ -1,3 +1,9 @@
+/*
+
+这个文件主要是为了初始化页表。
+
+*/
+
 #include "types.h"
 #include "mmu.h"
 #include "printf.h"
@@ -59,13 +65,12 @@ void init_page_table()
         pmd[r] = ((r << 21) | PTE_VALID | PTE_AF | PTE_USER | PTE_DEVICE);
     }
 
-    // 这里不知道为啥还需要填一项，据说是要触发中断？
+    // 这里是 MMIO 的一种表现形式
     pud[PUDX(0x40000000)] = (freemem | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL);
     // 又分配了一个二级页表
     pmd = (uint_64 *)freemem;
     freemem += BY2PG;
     pmd[0] = (0x40000000 | PTE_VALID | PTE_AF | PTE_USER | PTE_DEVICE);
-
 
     kernel_pud = pud;
     return;

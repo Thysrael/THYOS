@@ -2,6 +2,7 @@
 #define _MMU_H_
 
 #define BY2PG 4096
+#define PMMAP (4 * 1024 * 1024)
 
 /*======================= 读取页表 ==========================*/
 #define	PUD_SHIFT   30
@@ -52,8 +53,19 @@
 extern char _end[];
 extern char _data[];
 #define KERNEL_BASE             0xffffff8000000000
-#define KERNEL_STACK_BASE       0xffffff8000800000
-#define TIMESTACK               0xffffff8002000000             
+#define KERNEL_INIT_STACK_BASE  0xffffff8000800000
+#define TIMESTACK               0xffffff8002000000
+#define KERNEL_SP               0xffffff8001ffd000
+
+#define UVPT                    0x0000004000000000
+#define UVMD                    (UVPT + (UVPT >> 9))
+#define UVUD                    (UVMD + (UVPT >> 18))
+#define UPAGES                  (UVPT - PMMAP)
+#define UENVS                   (UPAGES - PMMAP)
+#define UTOP                    (UENVS)
+#define UXSTACKTOP              (UTOP)
+#define USTACKTOP               (UXSTACKTOP - 2 * BY2PG)
+
 
 /*================== 物理内存 =======================*/
 // 这是物理内存的可用上限，剩下的需要留给外设
@@ -63,14 +75,15 @@ extern char _data[];
 
 /*================== 地址转换 =======================*/
 
-extern u_long npage;
-#define PPN(pa) (((u_long)(pa)) >> PTE_SHIFT)
+extern uint_64 npage;
+#define PPN(pa) (((uint_64)(pa)) >> PTE_SHIFT)
 #define VPN(va) PPN(va)
-#define PTE_ADDR(pte) ((unsigned long)(pte) & ~0xfff)
+#define PTE_ADDR(pte) ((uint_64)(pte) & ~0x0000000000000fff)
+#define VA2PFN(va) (((uint_64)(va)) & 0xFFFFF000)
 
 #define PADDR(kva)                                           \
 	({                                                       \
-		u_long a = (u_long)(kva);                            \
+		uint_64 a = (uint_64)(kva);                          \
 		if (a < KERNEL_BASE)                                 \
 			panic("PADDR called with invalid kva %08lx", a); \
 		a - KERNEL_BASE;                                     \
@@ -79,7 +92,7 @@ extern u_long npage;
 // translates from physical address to kernel virtual address
 #define KADDR(pa)                                                    \
 	({                                                               \
-		u_long ppn = PPN(pa);                                        \
+		uint_64 ppn = PPN(pa);                                       \
 		if (ppn >= npage)                                            \
 			panic("KADDR called with invalid pa %08lx", (u_long)pa); \
 		(pa) + KERNEL_BASE;                                          \

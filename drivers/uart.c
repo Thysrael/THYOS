@@ -1,3 +1,9 @@
+/*
+
+这个文件是跟树莓派平台串口有关的设置，文件里主要实现了写控制台的功能。
+
+*/
+
 #include "gpio.h"
 
 /* Auxilary mini UART registers */
@@ -50,7 +56,7 @@ void uart_init()
 void uart_send(unsigned int c) 
 {
     /* wait until we can send */
-    do{asm volatile("nop");}while(!(*AUX_MU_LSR&0x20));
+    do{asm volatile("nop");}while(!(*AUX_MU_LSR & 0x20));
     /* write the character to the buffer */
     *AUX_MU_IO=c;
 }
@@ -62,7 +68,7 @@ char uart_getc()
 {
     char r;
     /* wait until something is in the buffer */
-    do{asm volatile("nop");}while(!(*AUX_MU_LSR&0x01));
+    do{asm volatile("nop");}while(!(*AUX_MU_LSR & 0x01));
     /* read it and return */
     r=(char)(*AUX_MU_IO);
     /* convert carrige return to newline */

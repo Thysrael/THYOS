@@ -1,0 +1,22 @@
+modify the Makefile.Add -g to the arguements 
+step1: in one terminal,
+    make debug
+step2: in another terminal, 
+    aarch64-elf-gdb kernel.elf
+step3:(in gdb)
+    target remote localhost:1234
+step4:
+    break *0x80000
+    continue
+till now ,we have reach the start of the kernel.
+we have two kinds of debug methods:assemble and c
+
+assemble method:
+layout asm// show asm code
+si one step forward(enter function)
+ni: one step(won't enter function)
+
+c method:
+layout src //show the c original code
+step: one step forward(enter function)
+next: one step(won't enter function)

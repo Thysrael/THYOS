@@ -1,3 +1,11 @@
+/* 
+
+这个文件中的函数实现了开启 MMU。
+
+主要是将两个页表移入到了 ttbr 中，设置了 TCR 和 SCTLR 寄存器
+
+*/
+
 #include "sysreg.h"
 
 #define TCR_VALUE   (TCR_T0SZ | TCR_T1SZ | TCR_TG0_4K | TCR_TG1_4K | TCR_IGNORE1 | TCR_IGNORE0 | TCR_ISH1 | TCR_ISH0 | TCR_OWT | TCR_IWT)

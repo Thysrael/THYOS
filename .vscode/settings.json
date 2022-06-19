@@ -1,5 +1,21 @@
 {
     "files.associations": {
-        "random": "c"
-    }
+        "random": "c",
+        "tool.h": "c",
+        "gpio.h": "c",
+        "uart.h": "c",
+        "print.h": "c",
+        "printf.h": "c",
+        "unistd.h": "c",
+        "sysid.h": "c",
+        "mmu.h": "c",
+        "trap.h": "c",
+        "types.h": "c",
+        "init.h": "c",
+        "lib.h": "c",
+        "sched.h": "c",
+        "load.h": "c",
+        "env.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

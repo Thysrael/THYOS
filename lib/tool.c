@@ -1,5 +1,34 @@
+/*
+
+这个文件中主要是一些难以分类，而且工具性较强的 C 函数。
+
+*/
+
 #include "tool.h"
 #include "printf.h"
+
+const char *entry_error_messages[] = 
+{
+    "SYNC_INVALID_EL1t",
+    "IRQ_INVALID_EL1t",
+    "FIQ_INVALID_EL1t",
+    "ERROR_INVALID_EL1T",
+
+    "SYNC_INVALID_EL1h",
+    "IRQ_INVALID_EL1h",
+    "FIQ_INVALID_EL1h",
+    "ERROR_INVALID_EL1h",
+
+    "SYNC_INVALID_EL0_64",
+    "IRQ_INVALID_EL0_64",
+    "FIQ_INVALID_EL0_64",
+    "ERROR_INVALID_EL0_64",
+
+    "SYNC_INVALID_EL0_32",
+    "IRQ_INVALID_EL0_32",
+    "FIQ_INVALID_EL0_32",
+    "ERROR_INVALID_EL0_32"
+};
 
 void alouha()
 {
@@ -53,4 +82,20 @@ void bzero(void *b, unsigned long len)
     {
         *(char *)b++ = 0;
     }
+}
+
+void unimplement_handler(int type, unsigned long esr, unsigned long address)
+{
+    printf("%s, ESR: %x, address: %x\r\n", entry_error_messages[type], esr, address);
+    panic("unimplement exception raised!\r\n");
+}
+
+void enable_interrupt_controller()
+{
+    // enable all kind of exception!
+    // as for the register mapping,see guidebook.
+    put32((0x40000040), (0xf));
+    put32((0x40000044), (0xf));
+    put32((0x40000048), (0xf));
+    put32((0x4000004c), (0xf));
 }

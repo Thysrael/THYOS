@@ -1,9 +1,18 @@
+/*
+
+这个文件中主要是 _start 函数。
+
+这个函数里主要设置了异常配置寄存器，清空了 BSS, 初始化了页表，设置了页表配置寄存器，设置了栈指针。
+
+*/
+
+
 #include "sysreg.h"
 
 #define	SCR_VALUE			(SCR_NS | SCR_RW | 0x1b0)
 #define HCR_VALUE			(HCR_RW | HCR_SWIO)
 #define SPSR_EL3_VALUE		(SPSR_MASK_ALL | SPSR_EL2H)
-#define SPSR_EL2_VALUE		(SPSR_MASK_ALL | SPSR_EL1H)
+#define SPSR_EL2_VALUE		(SPSR_EL1H)
 #define SCTLR_VALUE			(SCTLR_D_CACHE | SCTLR_I_CACHE)	
 
 .global _start
@@ -91,7 +100,7 @@ en_mmu:
 
 jump_main:  
 	// TODO 重新设置栈指针
-    ldr 	X0, 		=(kernel_sp)
+    ldr 	X0, 		=(init_sp)
     mov 	sp, 		X0
     bl 		main
     b 		pro_hang

@@ -18,12 +18,12 @@ struct Page
 extern struct Page *pages;
 extern void tlb_invalidate();
 
-static inline u_long page2ppn(struct Page *pp)
+static inline uint_64 page2ppn(struct Page *pp)
 {
     return pp - pages;
 }
 
-static inline u_long page2pa(struct Page *pp)
+static inline uint_64 page2pa(struct Page *pp)
 {
     return page2ppn(pp) << PTE_SHIFT;
 }
@@ -76,7 +76,6 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm);
 struct Page *page_lookup(uint_64 *pud, uint_64 va, uint_64 **ppte);
 void page_decref(struct Page *pp);
 void page_remove(uint_64 *pud, uint_64 va);
-
-extern void tlb_invalidate();
+void pageout(uint_64 va, uint_64 *context);
 
 #endif /* _PMAP_H_ */
