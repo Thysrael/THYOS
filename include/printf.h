@@ -9,5 +9,6 @@ void _panic(const char *, int, const char *, ...)
 __attribute__((noreturn));
 
 #define panic(...) _panic(__FILE__, __LINE__, __VA_ARGS__)
+#define debug(...) debug_printf(__FILE__,__LINE__,__VA_ARGS__)
 
 #endif /* _printf_h_ */

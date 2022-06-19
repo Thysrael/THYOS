@@ -27,9 +27,9 @@ void printf(char *fmt, ...)
 	va_end(ap);
 }
 
-void debug_printf(char *src ,char *fmt, ...)
+void debug_printf(char *src ,char *line ,char *fmt, ...)
 {
-	printf("[DEBUG_INFO] %s: ",src);
+	printf("[DEBUG_INFO] %s@%d: ",src,line);
 	va_list ap;
 	va_start(ap, fmt);
 	lp_Print(myoutput, 0, fmt, ap);
