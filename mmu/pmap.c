@@ -43,7 +43,7 @@ static void *alloc(uint_64 n, uint_64 align, int clear)
     if (freemem < (uint_64)_end)
     {
         freemem = (uint_64)init_sp;
-        printf("freemem has been adjusted to 0x%lx.\n", freemem);
+        debug("freemem has been adjusted to 0x%lx.\n", freemem);
     }
     // Step 1: Round up `freemem` up to be aligned properly
     freemem = ROUND(freemem, align);
@@ -127,7 +127,7 @@ void arch_basic_init()
      * you should round up the memory size before map. */
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
-    printf("to memory %lx for struct Pages.\n", freemem);
+    debug("to memory %lx for struct Pages.\n", freemem);
     n = ROUND(npage * sizeof(struct Page), BY2PG);
     // map the 'pages' in virtual address space to the physical address space
     boot_map_segment(kernel_pud, UPAGES, n, PADDR(pages), PTE_VALID | PTE_RO);
@@ -135,12 +135,12 @@ void arch_basic_init()
     /* Step 3, Allocate proper size of physical memory for global array `envs`,
      * for process management. Then map the physical address to `UENVS`. */
     envs = (struct Env *)alloc(NENV * sizeof(struct Env), BY2PG, 1);
-    printf("to memory %lx for struct Envs.\n", freemem);
+    debug("to memory %lx for struct Envs.\n", freemem);
     n = ROUND(NENV * sizeof(struct Env), BY2PG);
     boot_map_segment(kernel_pud, UENVS, n, PADDR(envs), PTE_VALID | PTE_RO);
 
     page_init();
-    printf("pages and envs init success.\n");
+    debug("pages and envs init success.\n");
 }
 
 void page_init()
@@ -162,7 +162,7 @@ void page_init()
     }
     printf("There are %d pages has been used for the kernel.\n", size);
     /* Step 4: Mark the other memory as free. */
-    for (i = size; i < npage; ++i)
+    for (i = npage - 1; i >= size; --i)
     {
         pages[i].pp_ref = 0;
         LIST_INSERT_HEAD(&page_free_list, pages + i, pp_link);
@@ -223,10 +223,10 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     uint_64 *pud_entryp;
     uint_64 *pmd, *pmd_entryp;
     uint_64 *pte;
-
+    *ppte = NULL;
     // 首先看第一级页表项
-    pud_entryp = pud + PUDX(va);
-    printf("pud_entry is 0x%lx.\n", *pud_entryp);
+    pud_entryp = &pud[PUDX(va)];
+    debug("pud_entry is 0x%lx.\n", *pud_entryp);
     if (!((*pud_entryp) & PTE_VALID))
     {
         if (create)
@@ -238,8 +238,8 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             }
             else
             {
-                ppage->pp_ref++;
-                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+                ppage->pp_ref = 1;
+                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | 0x743/* | PTE_AF | PTE_USER | PTE_ISH*/;
             }
         }
         else
@@ -252,7 +252,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 然后看第二级页表项
     pmd = (uint_64 *)KADDR(PTE_ADDR(*pud_entryp));
     pmd_entryp = pmd + PMDX(va);
-    printf("pmd_entry is 0x%lx.\n", *pmd_entryp);
+    debug("pmd_entry is 0x%lx.\n", *pmd_entryp);
     if (!((*pmd_entryp) & PTE_VALID))
     {
         if (create)
@@ -264,8 +264,8 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             }
             else
             {
-                ppage->pp_ref++;
-                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+                ppage->pp_ref = 1;
+                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | 0x703/* | PTE_AF | PTE_USER | PTE_ISH*/;
             }
         }
         else
@@ -278,16 +278,17 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 最后看三级页表项
     pte = (uint_64 *)KADDR(PTE_ADDR(*pmd_entryp));
     *ppte = pte + PTEX(va);
-    printf("pt_entry is 0x%lx.\n", **ppte);
+    debug("pt_entry is 0x%lx.\n", **ppte);
     return 0;
 }
 
 int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 {
+    debug("Wanna to insert page at %lx to va %lx...\n",page2pa(pp),va);
     uint_64 PERM;
-    uint_64 *pgtable_entry;
+    uint_64 *pgtable_entry = NULL;
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
-    PERM = perm | PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+    PERM = perm  | 0x403 | PTE_VALID | PTE_NORMAL/* | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE */;
 
     // Step 1: Get corresponding page table entry.
     pgdir_walk(pud, va, 0, &pgtable_entry);
@@ -410,4 +411,43 @@ void pageout(uint_64 va, uint_64 *context)
     }
 
     page_insert(pud, p, VA2PFN(va), PTE_RW);
+}
+
+void debug_print_pgdir(uint_64 *pg_root)
+{
+    // We only print the first 16 casting
+    int limit = 2048;
+    for(uint_64 i = 0 ; i < 512 ; i++)
+    {
+        // First Level
+        uint_64 pg_info = pg_root[i];
+        if(pg_info & PTE_VALID)
+        {
+            // So we should go to level 2
+            uint_64 *level2_root = PTE_ADDR(pg_info);
+            for(uint_64 j = 0 ; j < 512 ;j++)
+            {
+                uint_64 level2_info = level2_root[j];
+                if(level2_info & PTE_VALID)
+                {
+                    // So we should go to level 3
+                    uint_64 *level3_root = PTE_ADDR(level2_info);
+                    for(uint_64 k = 0 ; k < 512 ;k++)
+                    {
+                        uint_64 level3_info = level3_root[k];
+                        if(level3_info & PTE_VALID)
+                        {
+                            // We should print our info here.
+                            uint_64 va = ((uint_64)i << PUD_SHIFT) | ((uint_64)j << PMD_SHIFT) | ((uint_64)k << PTE_SHIFT);
+                            uint_64 pa = PTE_ADDR(level3_info);
+                            if(limit--)
+                                debug("cast from ...0x%016lx to 0x%016lx... %d %d %d\n",va,pa,i,j,k);
+                            else
+                                return;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
