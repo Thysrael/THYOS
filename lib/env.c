@@ -405,9 +405,9 @@ void env_run(struct Env *e)
     tlb_invalidate();
 
     uint_64 *entryp;
-    printf("env_pgdir is 0x%lx\n", e->env_pgdir);
+    debug_printf("env_run","env_pgdir is 0x%lx\n", e->env_pgdir);
     pgdir_walk(e->env_pgdir, 0x400000, 0, &entryp);
-    printf("entry is 0x%lx.\n", *entryp);
-    printf("curenv cr3 is 0x%lx\n", curenv->env_cr3);
+    debug_printf("env_run","entry is 0x%lx.\n", *entryp);
+    debug_printf("env_run","curenv cr3 is 0x%lx\n", curenv->env_cr3);
     env_pop_tf(&(curenv->env_tf), curenv->env_cr3);
 }
