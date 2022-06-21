@@ -23,6 +23,7 @@ void arm_init()
     arch_basic_init();
     // 初始化进程管理
     env_init();
+    test_pgdir();
 
     // 初始化进程
     ENV_CREATE(test_sys);

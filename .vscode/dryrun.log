@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/dofingert/Source/OS/THYOS'
 make --directory=drivers
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/drivers'
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c uart.c 
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/drivers'
@@ -10,15 +9,12 @@ make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/boot'
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c start.S 
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c enmmu.S 
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/boot'
- 
 make --directory=init
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/init'
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c init.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c main.c
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/init'
 make --directory=lib
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/lib'
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c tool.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c asm_tool.S
@@ -32,7 +28,9 @@ aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c sched.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c sync.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c timer.S
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/lib'
+ 
 make --directory=mmu
+ 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/mmu'
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c mmu.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c pmap.c
@@ -54,17 +52,16 @@ aarch64-none-elf-ld -o test_sys.b  -G 0 -static -n -nostdlib -T ./user.lds test_
 chmod +x ./bintoc
 ./bintoc test_sys test_sys.b > test_sys.b.c~ && mv -f test_sys.b.c~ test_sys.b.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_sys.x test_sys.b.c
+aarch64-none-elf-ld -o test_sys.elf  -T ./user.lds test_sys.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o
+aarch64-none-elf-objdump -alD test_sys.elf > test_sys.asm
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_fork.o test_fork.c
 aarch64-none-elf-ld -o test_fork.b  -G 0 -static -n -nostdlib -T ./user.lds test_fork.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o
-chmod +x ./bintoc
-./bintoc test_fork test_fork.b > test_fork.b.c~ && mv -f test_fork.b.c~ test_fork.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_fork.x test_fork.b.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_ipc.o test_ipc.c
 aarch64-none-elf-ld -o test_ipc.b  -G 0 -static -n -nostdlib -T ./user.lds test_ipc.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o
 chmod +x ./bintoc
 ./bintoc test_ipc test_ipc.b > test_ipc.b.c~ && mv -f test_ipc.b.c~ test_ipc.b.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_ipc.x test_ipc.b.c
-rm test_ipc.b.c test_sys.o test_fork.o test_fork.b.c test_ipc.o test_sys.b.c
+rm test_sys.elf test_ipc.b.c test_sys.o test_fork.o test_ipc.o test_sys.b.c
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/user'
 aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x
 aarch64-none-elf-objcopy kernel.elf -O binary kernel.img

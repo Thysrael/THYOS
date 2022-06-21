@@ -217,6 +217,8 @@ static int env_setup_vm(struct Env *e)
     e->env_cr3 = PADDR(pgdir);
     // that's the self-map
     //e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL;
+    //page_insert(e->env_pgdir,p,page2pa(p),PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL);
+    debug("Second info:\n");
     debug_print_pgdir(e->env_pgdir);
     return 0;
 }
@@ -269,7 +271,7 @@ int env_alloc(struct Env **new, u_int parent_id)
     // TODO: 这里不知道要不要设置 pstate
     //e->env_tf.pstate = 0x1000100c;
 
-    e->env_tf.sp = USTACKTOP;
+    e->env_tf.sp = USTACKTOP - 32;
 
     /* Step 5: Remove the new Env from env_free_list. */
     LIST_REMOVE(e, env_link);
@@ -409,11 +411,11 @@ void env_run(struct Env *e)
 
     uint_64 *entryp;
     debug("env_pgdir is 0x%lx\n", e->env_pgdir);
-    extern uint_64* kernel_pud;
+    //extern uint_64* kernel_pud;
     //uint_64* test_pud = curenv->env_pgdir;
-    uint_64* test_pud = kernel_pud;
-    pgdir_walk(test_pud, 0x400000, 0, &entryp);
-    debug("entry is 0x%lx.\n", *entryp);
-    debug("curenv cr3 is 0x%lx\n", curenv->env_cr3);
+    //uint_64* test_pud = kernel_pud;
+    //pgdir_walk(test_pud, 0x400000, 0, &entryp);
+    //debug("entry is 0x%lx.\n", *entryp);
+    //debug("curenv cr3 is 0x%lx\n", curenv->env_cr3);
     env_pop_tf(&(curenv->env_tf), curenv->env_cr3);
 }
