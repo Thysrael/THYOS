@@ -37,7 +37,6 @@ void arm_init()
     reset_timer();
     printf("Timer start.\n");
 
-
     while(1);
     panic("end of arm_init() reached!");
 }

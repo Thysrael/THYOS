@@ -53,7 +53,7 @@ int load_icode_mapper(u_long va, u_long sgsize, u_char *bin, u_long bin_size, vo
         if ((r = page_alloc(&p)) != 0)
             return r;
         bcopy(bin, (void *)(page2kva(p) + offset), MIN(bin_size, BY2PG - offset));
-        page_insert(env->env_pgdir, p, va, PTE_RW);
+        page_insert(env->env_pgdir, p, va, 0);
     }
     /*Step 1: load all content of bin into memory. */
     for (i = offset ? MIN(bin_size, BY2PG - offset) : 0; i < bin_size; i += BY2PG)
@@ -62,7 +62,7 @@ int load_icode_mapper(u_long va, u_long sgsize, u_char *bin, u_long bin_size, vo
         if ((r = page_alloc(&p)) != 0)
             return r;
         bcopy(bin + i, (void *)page2kva(p), MIN(bin_size - i, BY2PG));
-        page_insert(env->env_pgdir, p, va + i, PTE_RW);
+        page_insert(env->env_pgdir, p, va + i, 0);
     }
     /*Step 2: alloc pages to reach `sgsize` when `bin_size` < `sgsize`.
      * hint: variable `i` has the value of `bin_size` now! */
@@ -70,7 +70,7 @@ int load_icode_mapper(u_long va, u_long sgsize, u_char *bin, u_long bin_size, vo
     {
         if ((r = page_alloc(&p)) != 0)
             return r;
-        page_insert(env->env_pgdir, p, va + i, PTE_RW);
+        page_insert(env->env_pgdir, p, va + i, 0);
         i += BY2PG;
     }
     return 0;
@@ -130,7 +130,6 @@ int load_elf(u_char *binary, int size, uint_64 *entry_point, void *user_data,
     return 0;
 }
 
-
 // 这个函数不止拷贝 elf，还完成了相关的进程控制块的设置
 void load_icode(struct Env *e, u_char *binary, u_long size)
 {
@@ -158,10 +157,10 @@ void load_icode(struct Env *e, u_char *binary, u_long size)
     r = page_insert(e->env_pgdir, p, USTACKTOP - BY2PG, perm);
     if (r == -E_NO_MEM)
         return;
-    
+
     /* Step 3: load the binary using elf loader. */
     r = load_elf(binary, size, &entry_point, e, load_icode_mapper);
-   
+
     if (r < 0)
         return;
 

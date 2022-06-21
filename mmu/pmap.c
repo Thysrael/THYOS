@@ -6,7 +6,6 @@
 
 */
 
-
 #include "pmap.h"
 #include "mmu.h"
 #include "printf.h"
@@ -43,7 +42,7 @@ static void *alloc(uint_64 n, uint_64 align, int clear)
     if (freemem < (uint_64)_end)
     {
         freemem = (uint_64)init_sp;
-        printf("freemem has been adjusted to 0x%lx.\n", freemem);
+        debug("freemem has been adjusted to 0x%lx.\n", freemem);
     }
     // Step 1: Round up `freemem` up to be aligned properly
     freemem = ROUND(freemem, align);
@@ -82,6 +81,7 @@ static uint_64 *boot_pgdir_walk(uint_64 *pud, uint_64 va, int create)
         {
             pmd = alloc(BY2PG, BY2PG, 1);
             *pud_entryp = (uint_64)pmd | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+            //*pud_entryp = (uint_64)pmd | 0x74b;
         }
     }
     pmd_entryp = pmd + PMDX(va);
@@ -92,6 +92,7 @@ static uint_64 *boot_pgdir_walk(uint_64 *pud, uint_64 va, int create)
         {
             pte = alloc(BY2PG, BY2PG, 1);
             *pmd_entryp = (uint_64)pte | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+            //*pmd_entryp = (uint_64)pte | 0x74b;
         }
     }
     pte_entryp = pte + PTEX(va);
@@ -127,7 +128,7 @@ void arch_basic_init()
      * you should round up the memory size before map. */
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
-    printf("to memory %lx for struct Pages.\n", freemem);
+    debug("to memory %lx for struct Pages.\n", freemem);
     n = ROUND(npage * sizeof(struct Page), BY2PG);
     // map the 'pages' in virtual address space to the physical address space
     boot_map_segment(kernel_pud, UPAGES, n, PADDR(pages), PTE_VALID | PTE_RO);
@@ -135,12 +136,12 @@ void arch_basic_init()
     /* Step 3, Allocate proper size of physical memory for global array `envs`,
      * for process management. Then map the physical address to `UENVS`. */
     envs = (struct Env *)alloc(NENV * sizeof(struct Env), BY2PG, 1);
-    printf("to memory %lx for struct Envs.\n", freemem);
+    debug("to memory %lx for struct Envs.\n", freemem);
     n = ROUND(NENV * sizeof(struct Env), BY2PG);
     boot_map_segment(kernel_pud, UENVS, n, PADDR(envs), PTE_VALID | PTE_RO);
 
     page_init();
-    printf("pages and envs init success.\n");
+    debug("pages and envs init success.\n");
 }
 
 void page_init()
@@ -162,7 +163,7 @@ void page_init()
     }
     printf("There are %d pages has been used for the kernel.\n", size);
     /* Step 4: Mark the other memory as free. */
-    for (i = size; i < npage; ++i)
+    for (i = npage - 1; i >= size; --i)
     {
         pages[i].pp_ref = 0;
         LIST_INSERT_HEAD(&page_free_list, pages + i, pp_link);
@@ -223,7 +224,8 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     uint_64 *pud_entryp;
     uint_64 *pmd, *pmd_entryp;
     uint_64 *pte;
-
+    *ppte = NULL;
+    
     // 首先看第一级页表项
     pud_entryp = pud + PUDX(va);
 
@@ -238,8 +240,8 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             }
             else
             {
-                ppage->pp_ref++;
-                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+                ppage->pp_ref = 1;
+                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF /*| 0x74b | PTE_AF | PTE_USER | PTE_ISH*/;
             }
         }
         else
@@ -264,8 +266,8 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             }
             else
             {
-                ppage->pp_ref++;
-                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+                ppage->pp_ref = 1;
+                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF /*| 0x70b | PTE_AF | PTE_USER | PTE_ISH*/;
             }
         }
         else
@@ -284,10 +286,11 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
 int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 {
+    debug("Wanna to insert page at %lx to va %lx...\n", page2pa(pp), va);
     uint_64 PERM;
-    uint_64 *pgtable_entry;
+    uint_64 *pgtable_entry = NULL;
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
-    PERM = perm | PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+    PERM = perm | PTE_VALID | PTE_NORMAL | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE /* | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE */;
 
     // Step 1: Get corresponding page table entry.
     pgdir_walk(pud, va, 0, &pgtable_entry);
@@ -310,7 +313,6 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 
     /* Step 2: Update TLB. */
     /* hint: use tlb_invalidate function */
-    tlb_invalidate();
 
     /* Step 3: Do check, re-get page table entry to validate the insertion. */
     /* Step 3.1 Check if the page can be insert, if can’t return -E_NO_MEM */
@@ -321,6 +323,7 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
     *pgtable_entry = page2pa(pp) | PERM;
     /* Step 3.2 Insert page and increment the pp_ref */
     pp->pp_ref++;
+    tlb_invalidate();
 
     return 0;
 }
@@ -407,5 +410,84 @@ void pageout(uint_64 va, uint_64 *context)
         panic("page alloc error!");
     }
 
-    page_insert(pud, p, VA2PFN(va), PTE_RW);
+    page_insert((uint_64 *)pud, p, VA2PFN(va), PTE_RW);
+}
+
+void debug_print_pgdir(uint_64 *pg_root)
+{
+    debug("start to retrieval address: %lx\n", pg_root);
+    // We only print the first 16 casting
+    int limit = 2048;
+    for (uint_64 i = 0; i < 512; i++)
+    {
+        // First Level
+        uint_64 pg_info = pg_root[i];
+        if (pg_info & PTE_VALID)
+        {
+            debug("|-Level1 OK %lx|\n", pg_info);
+            // So we should go to level 2
+            uint_64 *level2_root = (uint_64 *)KADDR(PTE_ADDR(pg_info));
+            for (uint_64 j = 0; j < 512; j++)
+            {
+                uint_64 level2_info = level2_root[j];
+                if (level2_info & PTE_VALID)
+                {
+                    debug("|-|-Level2 OK|\n");
+                    // So we should go to level 3
+                    uint_64 *level3_root = (uint_64 *)KADDR(PTE_ADDR(level2_info));
+                    for (uint_64 k = 0; k < 512; k++)
+                    {
+                        uint_64 level3_info = level3_root[k];
+                        if (level3_info & PTE_VALID)
+                        {
+                            debug("|-|-|-Level3 OK|\n");
+                            // We should print our info here.
+                            uint_64 va = ((uint_64)i << PUD_SHIFT) | ((uint_64)j << PMD_SHIFT) | ((uint_64)k << PTE_SHIFT);
+                            uint_64 pa = level3_info;
+                            if (limit--)
+                                debug("cast from ...0x%016lx to 0x%016lx... %d %d %d\n", va, pa, i, j, k);
+                            else
+                                return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void test_pgdir()
+{
+    printf("\n---test pgdir---\n");
+    printf("Stage 1 - build up a page table");
+    uint_64 *pgdir;
+    uint_32 *data;
+    struct Page *lut_page;
+    page_alloc(&lut_page);
+    pgdir = (uint_64 *)page2kva(lut_page);
+    struct Page *data_page;
+    page_alloc(&data_page);
+    data = (uint_32 *)page2kva(data_page);
+
+    for (int i = 0; i < 1024; i++)
+    {
+        data[i] = i; // Fill data into the data page
+    }
+
+    // Insert data_page into lut_page
+    extern uint_64 *kernel_pud;
+    extern uint_64 *user_pud;
+    uint_64 *kernel = (uint_64 *)KADDR((uint_64)kernel_pud);
+    uint_64 *user = (uint_64 *)KADDR((uint_64)user_pud);
+    debug("Kernel pud is %lx , User pud is %lx\n", kernel, user);
+    debug("kernel pud value is %lx\n", kernel[0]);
+    page_insert(pgdir, data_page, 0x400000, 0);
+    // page_insert(pgdir,lut_page,PADDR(pgdir),PTE_ISH | PTE_RO | PTE_AF | PTE_NON_CACHE);
+    // page_insert(user,data_page,0x80000,PTE_ISH | PTE_RO | PTE_AF | PTE_NON_CACHE);
+    debug_print_pgdir(pgdir);
+    set_ttbr0(page2pa(lut_page));
+    // set_ttbr0(PADDR(user));
+    tlb_invalidate();
+    data = (uint_32 *)0x400000;
+    debug("data is %d:%d @0x%lx,0x%lx\n", 800, data[800], data, page2pa(data_page));
 }

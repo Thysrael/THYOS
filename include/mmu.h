@@ -79,7 +79,7 @@ extern char _data[];
 extern uint_64 npage;
 #define PPN(pa) (((uint_64)(pa)) >> PTE_SHIFT)
 #define VPN(va) PPN(va)
-#define PTE_ADDR(pte) ((uint_64)(pte) & ~0x0000000000000fff)
+#define PTE_ADDR(pte) ((uint_64)(pte) & ~0xffffff8000000fff)
 #define VA2PFN(va) (((uint_64)(va)) & 0xFFFFF000)
 
 #define PADDR(kva)                                           \
@@ -94,9 +94,10 @@ extern uint_64 npage;
 #define KADDR(pa)                                                    \
 	({                                                               \
 		uint_64 ppn = PPN(pa);                                       \
+		uint_64 ppa = pa;											 \
 		if (ppn >= npage)                                            \
 			panic("KADDR called with invalid pa %08lx", (u_long)pa); \
-		(pa) + KERNEL_BASE;                                          \
+		(ppa) + KERNEL_BASE;                                          \
 	})
 
 #define assert(x)                              \

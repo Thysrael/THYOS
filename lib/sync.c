@@ -30,11 +30,13 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
     printf("far is 0x%lx.\n", far);
     printf("esr is 0x%lx.\n", esr);
     printf("EC is 0x%lx.\n", EC);
-    panic("stop");
+
     // 异常是系统调用
-    if ((esr >> 26) == 0b010101)
+    if ((esr >> 26) == 0x15)
     {
         uint_64 syscall_id = tf->x[0];
+        printf("Handling the syscall, the syscall id is %ld.\n", syscall_id);
+
         // 这里保存一个系统调用的值, x0 承担了第一个参数和返回值两个任务
         int r = 0;
         switch (syscall_id)
@@ -101,6 +103,7 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
         // 异常是页表缺失
         if (DFSC >= 4 && DFSC <= 7)
         {
+            printf("Handling the page lost.\n");
             if (far > KERNEL_BASE)
             {
                 pageout(far, ttbr1);
@@ -113,6 +116,7 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
         // 异常是 cow
         else if (DFSC >= 13 && DFSC <= 15)
         {
+            printf("Hanlding the copy on write.\n");
             page_fault_handler(tf);
         }
         else

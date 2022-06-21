@@ -4,7 +4,7 @@ USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o 
 
 CFLAGS += -nostdlib -static
 
-all: test_sys.x test_sys.b test_fork.x test_fork.b test_ipc.x test_ipc.b $(USERLIB)
+all: test_sys.x test_sys.b test_sys.asm test_fork.x test_fork.b test_ipc.x test_ipc.b $(USERLIB)
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -15,6 +15,12 @@ all: test_sys.x test_sys.b test_fork.x test_fork.b test_ipc.x test_ipc.b $(USERL
 
 %.b: %.o $(USERLIB)
 	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+
+%.elf: %.o $(USERLIB)
+	$(LD) -o $@ $(LDFLAGS) -T ./user.lds $^
+
+%.asm: %.elf
+	$(CROSS_COMPILE)objdump -alD $^ > $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<

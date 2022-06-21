@@ -57,7 +57,9 @@ void env_create(u_char *binary, int size);
 void env_destroy(struct Env *e);
 
 int envid2env(u_int envid, struct Env **penv, int checkperm);
-extern void env_pop_tf(struct Trapframe *tf, unsigned long *pgdir);
+extern void env_pop_tf(struct Trapframe *tf);
+extern void tlb_invalidate();
+extern void set_ttbr0(uint_64 cr3);
 void env_run(struct Env *e);
 
 // for the grading script

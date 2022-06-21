@@ -23,6 +23,7 @@ objects       := $(drivers_dir)/*.o 	\
 .PHONY: all $(modules) clean debug run
 
 all: $(modules) vmlinux
+	$(CROSS_COMPILE)objdump -alD $(vmlinux_elf) > ./asm.s
 
 vmlinux: $(modules)
 	$(LD) -o $(vmlinux_elf) -T $(link_script) $(objects)
@@ -47,7 +48,7 @@ run:
 	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img)
 
 debug:
-	qemu-system-aarch64 -S -s -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) 
+	qemu-system-aarch64 -S -s -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -d int
 
 target:
 	aarch64-none-elf-gdb kernel.elf
@@ -56,6 +57,6 @@ gdb:
 	gdb-multiarch kernel.elf
 
 int:
-	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -d int 
+	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -d int
 
 include include.mk

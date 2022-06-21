@@ -25,7 +25,7 @@
 #define SPSR_MASK_ALL       (15 << 6)
 // 对应 [3:0] 设置异常返回哪一个等级，我不知道具体的对应规则
 #define SPSR_EL2H           (9 << 0)
-#define SPSR_EL1H           (5 << 0)
+#define SPSR_EL1H           (4 << 0)
 
 
 /*********************** SCTLR ***********************/
@@ -48,18 +48,22 @@
 // 看指导书
 #define TCR_IGNORE1         (1 << 38)
 #define TCR_IGNORE0         (1 << 37)
+// TG1 的页面是 4K
+#define TCR_TG1_4K          (0 << 30)
 // 内部共享 TTBR1_EL1
 #define TCR_ISH1            (3 << 28)
-// 内部共享 TTBR0_EL1
-#define TCR_ISH0            (3 << 12)
 // TTBR1_EL1 外写通达可缓存
-#define TCR_OWT             (2 << 26)
+#define TCR_OWT1            (2 << 26)
 // TTBR1_EL1 内写通达可缓存
-#define TCR_IWT             (2 << 24)
+#define TCR_IWT1            (2 << 24)
 // 25 位掩码
 #define TCR_T0SZ            (25)
 #define TCR_T1SZ            (25 << 16)
 // TG2 的页面是 4K
 #define TCR_TG0_4K          (0 << 14)
-// TG1 的页面是 4K
-#define TCR_TG1_4K          (0 << 30)
+// 内部共享 TTBR0_EL1
+#define TCR_ISH0            (3 << 12)
+// TTBR0_EL1 外写通达可缓存
+#define TCR_OWT0            (2 << 10)
+// TTBR0_EL1 内写通达可缓存
+#define TCR_IWT0            (2 << 8)

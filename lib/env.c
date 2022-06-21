@@ -172,7 +172,7 @@ void env_init(void)
         LIST_INSERT_HEAD(&env_free_list, &envs[i], env_link);
     }
 
-    printf("Process management init success.\n");
+    debug("Process management init success.\n");
 }
 
 /* Overview:
@@ -217,6 +217,7 @@ static int env_setup_vm(struct Env *e)
     e->env_cr3 = PADDR(pgdir);
     // that's the self-map
     e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL;
+
     return 0;
 }
 
@@ -308,7 +309,7 @@ void env_create(u_char *binary, int size)
 {
     /* Step 1: Use env_create_priority to alloc a new env with priority 1 */
     env_create_priority(binary, size, 1);
-    printf("Create a process.\n");
+    debug("Create a process.\n");
 }
 
 /* Overview:
@@ -318,7 +319,7 @@ void env_free(struct Env *e)
 {
     uint_64 pudno, pmdno, pteno, pa;
     uint_64 *pud_entry, *pmd_entry;
-    printf("[%08x] free env %08x\n", curenv ? curenv->env_id : 0, e->env_id);
+    debug("[%08x] free env %08x\n", curenv ? curenv->env_id : 0, e->env_id);
     
     for (pudno = 0; pudno < PUDX(UTOP); pudno++)
     {
@@ -372,12 +373,11 @@ void env_destroy(struct Env *e)
         bcopy((void *)KERNEL_SP - sizeof(struct Trapframe),
               (void *)TIMESTACK - sizeof(struct Trapframe),
               sizeof(struct Trapframe));
-        printf("i am killed ... \n");
+        debug("i am killed ... \n");
         sched_yield();
     }
 }
 
-extern void tlb_invalidate();
 /* Overview:
  *  Restore the register values in the Trapframe with env_pop_tf,
  *  and switch the context from 'curenv' to 'e'.
@@ -404,7 +404,7 @@ void env_run(struct Env *e)
     }
     /* Step 2: Set 'curenv' to the new environment. */
     curenv = e;
+    set_ttbr0(curenv->env_cr3);
     tlb_invalidate();
-
-    env_pop_tf(&(curenv->env_tf), curenv->env_cr3);
+    env_pop_tf(&(curenv->env_tf));
 }
