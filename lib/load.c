@@ -113,10 +113,6 @@ int load_elf(u_char *binary, int size, uint_64 *entry_point, void *user_data,
 
             if (phdr->p_type == PT_LOAD)
             {
-                printf("p_vaddr is 0x%lx\n", phdr->p_vaddr);
-                printf("p_memsz is 0x%lx\n", phdr->p_memsz);
-                printf("bin adress is 0x%lx\n", binary + phdr->p_offset);
-                printf("file size is 0x%lx\n", phdr->p_filesz);
                 /* Real map all section at correct virtual address.Return < 0 if error. */
                 /* Hint: Call the callback function you have achieved before. */
                 r = map(phdr->p_vaddr, phdr->p_memsz, binary + phdr->p_offset, phdr->p_filesz, user_data);
@@ -138,7 +134,6 @@ int load_elf(u_char *binary, int size, uint_64 *entry_point, void *user_data,
 // 这个函数不止拷贝 elf，还完成了相关的进程控制块的设置
 void load_icode(struct Env *e, u_char *binary, u_long size)
 {
-    printf("load begin.\n");
     /* Hint:
      *  You must figure out which permissions you'll need
      *  for the different mappings you create.

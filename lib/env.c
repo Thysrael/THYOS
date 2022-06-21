@@ -24,7 +24,7 @@ struct Env *curenv = NULL;              // the current env
 static struct Env_list env_free_list;   // Free list
 struct Env_list env_sched_list[2];      // Runnable list
 
-extern uint_64 *boot_pgdir;
+extern uint_64 *kernel_pud;
 
 // bitmap means every bit of bitmap is a flag
 // ASID has 64 types, so we only need 64 bit to record it
@@ -203,12 +203,14 @@ static int env_setup_vm(struct Env *e)
     p->pp_ref++;
     pgdir = (uint_64 *)page2kva(p);
 
-    // 这里直接 512 项初始化，是因为 UPAGES 和 UENVS 没有用到
-    // TODO 把这里补上
+    // 这里直接 512 项初始化为 0 ，然后再进行内核的暴露
     for (i = 0; i < 512; i++)
     {
         pgdir[i] = 0;
     }
+
+    pgdir[PUDX(UENVS)] = kernel_pud[PUDX(UENVS)];
+    pgdir[PUDX(UPAGES)] = kernel_pud[PUDX(UPAGES)];
 
     // UVPT maps the env's own page table, with read-only permission.
     e->env_pgdir = pgdir;
@@ -404,10 +406,5 @@ void env_run(struct Env *e)
     curenv = e;
     tlb_invalidate();
 
-    uint_64 *entryp;
-    printf("env_pgdir is 0x%lx\n", e->env_pgdir);
-    pgdir_walk(e->env_pgdir, 0x400000, 0, &entryp);
-    printf("entry is 0x%lx.\n", *entryp);
-    printf("curenv cr3 is 0x%lx\n", curenv->env_cr3);
     env_pop_tf(&(curenv->env_tf), curenv->env_cr3);
 }

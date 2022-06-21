@@ -226,7 +226,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
     // 首先看第一级页表项
     pud_entryp = pud + PUDX(va);
-    printf("pud_entry is 0x%lx.\n", *pud_entryp);
+
     if (!((*pud_entryp) & PTE_VALID))
     {
         if (create)
@@ -252,7 +252,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 然后看第二级页表项
     pmd = (uint_64 *)KADDR(PTE_ADDR(*pud_entryp));
     pmd_entryp = pmd + PMDX(va);
-    printf("pmd_entry is 0x%lx.\n", *pmd_entryp);
+
     if (!((*pmd_entryp) & PTE_VALID))
     {
         if (create)
@@ -278,7 +278,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     // 最后看三级页表项
     pte = (uint_64 *)KADDR(PTE_ADDR(*pmd_entryp));
     *ppte = pte + PTEX(va);
-    printf("pt_entry is 0x%lx.\n", **ppte);
+
     return 0;
 }
 
@@ -394,8 +394,6 @@ void pageout(uint_64 va, uint_64 *context)
 {
     int r;
     struct Page *p = NULL;
-
-    printf("pud address is 0x%lx.\n", context);
 
     uint_64 pud = (uint_64)context + KERNEL_BASE;
 

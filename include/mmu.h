@@ -2,7 +2,8 @@
 #define _MMU_H_
 
 #define BY2PG 4096
-#define PMMAP (4 * 1024 * 1024)
+// 这是一个第一级页表项对应的大小
+#define PUDMAP (0x40000000)
 
 /*======================= 读取页表 ==========================*/
 #define	PUD_SHIFT   30
@@ -60,8 +61,8 @@ extern char _data[];
 #define UVPT                    0x0000004000000000
 #define UVMD                    (UVPT + (UVPT >> 9))
 #define UVUD                    (UVMD + (UVPT >> 18))
-#define UPAGES                  (UVPT - PMMAP)
-#define UENVS                   (UPAGES - PMMAP)
+#define UPAGES                  (UVPT - PUDMAP)
+#define UENVS                   (UPAGES - PUDMAP)
 #define UTOP                    (UENVS)
 #define UXSTACKTOP              (UTOP)
 #define USTACKTOP               (UXSTACKTOP - 2 * BY2PG)
