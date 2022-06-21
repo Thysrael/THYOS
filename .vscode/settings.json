@@ -15,7 +15,8 @@
         "lib.h": "c",
         "sched.h": "c",
         "load.h": "c",
-        "env.h": "c"
+        "env.h": "c",
+        "syscall.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

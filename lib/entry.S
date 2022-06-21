@@ -25,7 +25,7 @@ vectors:
 	handler	error_invalid_el1t			// Error EL1t
 
     // EL1 异常陷入 EL1 处理
-	handler	sync_invalid_el1h			// Synchronous EL1h
+	handler	el1_sync			        // Synchronous EL1h
 	handler	el1_irq					    // IRQ EL1h
 	handler	fiq_invalid_el1h			// FIQ EL1h
 	handler	error_invalid_el1h			// Error EL1h
@@ -152,8 +152,8 @@ fiq_invalid_el1t:
 error_invalid_el1t:
 	unimplement_entry  ERROR_INVALID_EL1t
 
-sync_invalid_el1h:
-	unimplement_entry  SYNC_INVALID_EL1h
+//sync_invalid_el1h:
+	//unimplement_entry  SYNC_INVALID_EL1h
 
 fiq_invalid_el1h:
 	unimplement_entry  FIQ_INVALID_EL1h
@@ -198,6 +198,7 @@ el0_irq:
 	eret 
 
 // 处理缺页异常和系统调用
+el1_sync:
 el0_sync:
 	// CLI
 	ldr     x16,    =(KERNEL_SP)

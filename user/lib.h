@@ -3,11 +3,8 @@
 
 #include "types.h"
 #include "trap.h"
+#include <stdarg.h>
 
-typedef __builtin_va_list va_list;
-#define va_start(ap, param) __builtin_va_start(ap, param)
-#define va_end(ap) __builtin_va_end(ap)
-#define va_arg(ap, type) __builtin_va_arg(ap, type)
 
 //------------------ fork.c ------------------//
 
@@ -44,6 +41,7 @@ void _user_panic(const char *, int, const char *, ...)
 
 //------------------ print.c ------------------//
 
+#define LP_MAX_BUF 1000
 void user_lp_Print(void (*output)(void *, const char *, int),
                    void *arg,
                    const char *fmt,

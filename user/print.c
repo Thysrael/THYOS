@@ -1,4 +1,4 @@
-#include "print.h"
+#include "lib.h"
 
 /* macros */
 #define IsDigit(x) (((x) >= '0') && ((x) <= '9'))

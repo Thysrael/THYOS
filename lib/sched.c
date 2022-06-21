@@ -38,7 +38,9 @@ void sched_yield(void)
         while (1)
         {
             while (LIST_EMPTY(&env_sched_list[point]))
+            {
                 point = 1 - point;
+            }
             e = LIST_FIRST(&env_sched_list[point]);
             if (e->env_status == ENV_FREE)
                 LIST_REMOVE(e, env_sched_link);

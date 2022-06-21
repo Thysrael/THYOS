@@ -2,5 +2,5 @@
 
 void umain()
 {
-    writef("alouha.\n");
+    writef("ABCDEFG\n");
 }

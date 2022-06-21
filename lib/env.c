@@ -318,7 +318,7 @@ void env_create(u_char *binary, int size)
 void env_free(struct Env *e)
 {
     uint_64 pudno, pmdno, pteno, pa;
-    uint_64 *pud_entry, *pmd_entry;
+    uint_64 *pmd, *pt;
     debug("[%08x] free env %08x\n", curenv ? curenv->env_id : 0, e->env_id);
     
     for (pudno = 0; pudno < PUDX(UTOP); pudno++)
@@ -327,24 +327,26 @@ void env_free(struct Env *e)
         {
             continue;
         }
-        pud_entry = (uint_64 *)PTE_ADDR(e->env_pgdir[pudno]);
+
+        pmd = (uint_64 *)KADDR(PTE_ADDR(e->env_pgdir[pudno]));
         for (pmdno = 0; pmdno < 512; pmdno++)
         {
-            if (!((pud_entry[pmdno]) & PTE_VALID))
+            if (!((pmd[pmdno]) & PTE_VALID))
             {
                 continue;
             }
-            pmd_entry = (uint_64 *)PTE_ADDR(pud_entry[pmdno]);
+
+            pt = (uint_64 *)KADDR(PTE_ADDR(pmd[pmdno]));
             for (pteno = 0; pteno < 512; pteno++)
             {
-                if (!((pmd_entry[pteno]) & PTE_VALID))
+                if (!((pt[pteno]) & PTE_VALID))
                 {
                     page_remove(e->env_pgdir, (pudno << 30) + (pmdno << 21) + (pteno << 12));
                 }
             }
-            page_remove(e->env_pgdir, (unsigned long)pmd_entry);
+            page_remove(e->env_pgdir, (uint_64)pt);
         }
-        page_remove(e->env_pgdir, (unsigned long)pud_entry);
+        page_remove(e->env_pgdir, (uint_64)pmd);
     }
     pa = e->env_cr3;
     e->env_pgdir = 0;
@@ -363,6 +365,7 @@ void env_free(struct Env *e)
 void env_destroy(struct Env *e)
 {
     /* Hint: free e. */
+    printf("Env %lx has been killed ... \n", e->env_id);
     env_free(e);
 
     /* Hint: schedule to run a new environment. */
@@ -373,7 +376,6 @@ void env_destroy(struct Env *e)
         bcopy((void *)KERNEL_SP - sizeof(struct Trapframe),
               (void *)TIMESTACK - sizeof(struct Trapframe),
               sizeof(struct Trapframe));
-        debug("i am killed ... \n");
         sched_yield();
     }
 }

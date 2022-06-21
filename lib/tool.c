@@ -6,6 +6,7 @@
 
 #include "tool.h"
 #include "printf.h"
+#include "types.h"
 
 const char *entry_error_messages[] = 
 {
@@ -86,7 +87,9 @@ void bzero(void *b, unsigned long len)
 
 void unimplement_handler(int type, unsigned long esr, unsigned long address)
 {
-    printf("%s, ESR: %x, address: %x\r\n", entry_error_messages[type], esr, address);
+    uint_64 EC = esr >> 26;
+    printf("EC is 0x%lx.\n", EC);
+    printf("%s, ESR: %x, bad address: %x\r\n", entry_error_messages[type], esr, address);
     panic("unimplement exception raised!\r\n");
 }
 

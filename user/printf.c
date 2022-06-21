@@ -23,11 +23,6 @@ static void user_myoutput(void *arg, const char *s, int l)
     for (i = 0; i < l; i++)
     {
         syscall_putchar(s[i]);
-
-        if (s[i] == '\n')
-        {
-            syscall_putchar('\n');
-        }
     }
 }
 

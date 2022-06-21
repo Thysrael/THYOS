@@ -13,6 +13,7 @@
 #include "env.h"
 #include "tool.h"
 #include "pmap.h"
+#include "sched.h"
 
 extern struct Env *curenv;
 
@@ -45,8 +46,7 @@ int sys_env_destroy(uint_32 envid)
     {
         return r;
     }
-
-    printf("[%08x] destroying %08x\n", curenv->env_id, e->env_id);
+    
     env_destroy(e);
     return 0;
 }
