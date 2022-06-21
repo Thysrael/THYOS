@@ -8,8 +8,9 @@
 
 #include "sysreg.h"
 
-#define TCR_VALUE   (TCR_T0SZ | TCR_T1SZ | TCR_TG0_4K | TCR_TG1_4K | TCR_IGNORE1 | TCR_IGNORE0 | TCR_ISH1 | TCR_ISH0 | TCR_OWT | TCR_IWT)
+#define TCR_VALUE   (0x303a193a19)
 #define MAIR_VALUE  (0x440488)
+#define SCTLR_VALUE (0x30d01825)
 
 .global enable_mmu
 enable_mmu:
