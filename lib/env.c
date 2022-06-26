@@ -208,7 +208,6 @@ static int env_setup_vm(struct Env *e)
     {
         pgdir[i] = 0;
     }
-
     pgdir[PUDX(UENVS)] = kernel_pud[PUDX(UENVS)];
     pgdir[PUDX(UPAGES)] = kernel_pud[PUDX(UPAGES)];
 
@@ -216,7 +215,7 @@ static int env_setup_vm(struct Env *e)
     e->env_pgdir = pgdir;
     e->env_cr3 = PADDR(pgdir);
     // that's the self-map
-    e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL;
+    e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_TABLE;
     
     return 0;
 }
@@ -309,7 +308,6 @@ void env_create(u_char *binary, int size)
 {
     /* Step 1: Use env_create_priority to alloc a new env with priority 1 */
     env_create_priority(binary, size, 1);
-    debug("Create a process.\n");
 }
 
 /* Overview:

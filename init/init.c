@@ -25,8 +25,7 @@ void arm_init()
     env_init();
 
     // 初始化进程
-    ENV_CREATE(test_sys);
-
+    ENV_CREATE(test_fork);
     // 初始化异常向量表
     irq_vector_init();
     printf("Irq vector has inited successfully.\n");

@@ -67,6 +67,7 @@ void libmain(int argc, char **argv)
     envid = syscall_getenvid();
     envid = ENVX(envid);
     env = envs + envid;
+    
     // call user main routine
     umain(argc, argv);
     // exit gracefully

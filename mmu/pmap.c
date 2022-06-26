@@ -13,10 +13,10 @@
 #include "env.h"
 #include "tool.h"
 
-unsigned long maxpa;   /* Maximum physical address */
-unsigned long npage;   /* Amount of memory(in pages) */
-unsigned long basemem; /* Amount of base memory(in bytes) */
-unsigned long extmem;  /* Amount of extended memory(in bytes) */
+uint_64 maxpa;   /* Maximum physical address */
+uint_64 npage;   /* Amount of memory(in pages) */
+uint_64 basemem; /* Amount of base memory(in bytes) */
+uint_64 extmem;  /* Amount of extended memory(in bytes) */
 
 struct Page *pages;
 static struct Page_list page_free_list;
@@ -31,18 +31,17 @@ void mips_detect_memory()
     basemem = PHY_TOP;
     npage = basemem / BY2PG;
     extmem = 0;
-    printf("Physical memory: 0x%lxK available, ", (int)(maxpa / 1024));
-    printf("base = 0x%lxK, extended = 0x%lxK.\n", (int)(basemem / 1024), (int)(extmem / 1024));
+    printf("Physical memory: 0x%lx pages available, ", (maxpa / BY2PG));
+    printf("base = 0x%lx pages, extended = 0x%lx pages.\n", (basemem / BY2PG), (extmem / BY2PG));
 }
 
 static void *alloc(uint_64 n, uint_64 align, int clear)
 {
-    u_long alloced_mem;
+    uint_64 alloced_mem;
     // 这里完成对 freemem 的重定位，因为需要 freemem 在高地址发挥作用
     if (freemem < (uint_64)_end)
     {
         freemem = (uint_64)init_sp;
-        debug("freemem has been adjusted to 0x%lx.\n", freemem);
     }
     // Step 1: Round up `freemem` up to be aligned properly
     freemem = ROUND(freemem, align);
@@ -64,6 +63,7 @@ static void *alloc(uint_64 n, uint_64 align, int clear)
         bzero((void *)alloced_mem, n);
     }
 
+    // printf("alloced memory is 0x%lx\n", alloced_mem);
     // Step 5: return allocated chunk.
     return (void *)alloced_mem;
 }
@@ -72,31 +72,32 @@ static uint_64 *boot_pgdir_walk(uint_64 *pud, uint_64 va, int create)
 {
     uint_64 *pud_entryp;
     uint_64 *pmd, *pmd_entryp;
-    uint_64 *pte, *pte_entryp;
+    uint_64 *pt, *pt_entryp;
+
     pud_entryp = pud + PUDX(va);
-    pmd = (uint_64 *)(PTE_ADDR(*pud_entryp));
+    pmd = (uint_64 *)KADDR((PTE_ADDR(*pud_entryp)));
     if ((((*pud_entryp) & (PTE_VALID)) == 0))
     {
         if (create)
         {
             pmd = alloc(BY2PG, BY2PG, 1);
-            *pud_entryp = (uint_64)pmd | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
-            //*pud_entryp = (uint_64)pmd | 0x74b;
+            *pud_entryp = PADDR((uint_64)pmd) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
         }
     }
+
     pmd_entryp = pmd + PMDX(va);
-    pte = (uint_64 *)(PTE_ADDR(*pmd_entryp));
+    pt = (uint_64 *)KADDR((PTE_ADDR(*pmd_entryp)));
     if ((((*pmd_entryp) & (PTE_VALID)) == 0))
     {
         if (create)
         {
-            pte = alloc(BY2PG, BY2PG, 1);
-            *pmd_entryp = (uint_64)pte | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
-            //*pmd_entryp = (uint_64)pte | 0x74b;
+            pt = alloc(BY2PG, BY2PG, 1);
+            *pmd_entryp = PADDR((uint_64)pt) | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
         }
     }
-    pte_entryp = pte + PTEX(va);
-    return pte_entryp;
+
+    pt_entryp = pt + PTEX(va);
+    return pt_entryp;
 }
 
 void boot_map_segment(uint_64 *pud, uint_64 va, uint_64 size, uint_64 pa, uint_64 perm)
@@ -112,7 +113,7 @@ void boot_map_segment(uint_64 *pud, uint_64 va, uint_64 size, uint_64 pa, uint_6
     for (i = 0; i < size; i += BY2PG)
     {
         pgtable_entry = boot_pgdir_walk(pud, va + i, 1);
-        *pgtable_entry = PTE_ADDR(pa + i) | perm | PTE_VALID | PTE_TABLE | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL;
+        *pgtable_entry = PTE_ADDR(pa + i) | perm | PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_TABLE;
     }
 }
 
@@ -122,13 +123,8 @@ void arch_basic_init()
 
     int_64 n;
 
-    /* Step 2: Allocate proper size of physical memory for global array `pages`,
-     * for physical memory management. Then, map virtual address `UPAGES` to
-     * physical address `pages` allocated before. In consideration of alignment,
-     * you should round up the memory size before map. */
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
-    debug("to memory %lx for struct Pages.\n", freemem);
     n = ROUND(npage * sizeof(struct Page), BY2PG);
     // map the 'pages' in virtual address space to the physical address space
     boot_map_segment(kernel_pud, UPAGES, n, PADDR(pages), PTE_VALID | PTE_RO);
@@ -136,12 +132,10 @@ void arch_basic_init()
     /* Step 3, Allocate proper size of physical memory for global array `envs`,
      * for process management. Then map the physical address to `UENVS`. */
     envs = (struct Env *)alloc(NENV * sizeof(struct Env), BY2PG, 1);
-    debug("to memory %lx for struct Envs.\n", freemem);
     n = ROUND(NENV * sizeof(struct Env), BY2PG);
     boot_map_segment(kernel_pud, UENVS, n, PADDR(envs), PTE_VALID | PTE_RO);
 
     page_init();
-    debug("pages and envs init success.\n");
 }
 
 void page_init()
@@ -169,13 +163,12 @@ void page_init()
         LIST_INSERT_HEAD(&page_free_list, pages + i, pp_link);
     }
     printf("There are %d pages are free.\n", npage - size);
+
+    // 这里没有采用原有的 list_remove，我觉得这样写更好
     // that's for the TIMESTACK, which store the data of old env.tf
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - BY2PG)), pp_link);
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 2 * BY2PG)), pp_link);
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 3 * BY2PG)), pp_link);
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 4 * BY2PG)), pp_link);
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 5 * BY2PG)), pp_link);
-    LIST_REMOVE(pa2page(PADDR(TIMESTACK - 6 * BY2PG)), pp_link);
+    page_insert(kernel_pud, pa2page(PADDR(TIMESTACK - BY2PG)), TIMESTACK - BY2PG, PTE_VALID);
+    // 这是 kernel stack
+    page_insert(kernel_pud, pa2page(PADDR(KERNEL_SP - BY2PG)), KERNEL_SP - BY2PG, PTE_VALID);
     printf("Timestack is at the virtual address 0x%lx.\n", TIMESTACK);
     printf("Kernel stack base is at the virtual address 0x%lx.\n", KERNEL_SP);
 }
@@ -191,8 +184,8 @@ int page_alloc(struct Page **pp)
     }
     ppage_temp = LIST_FIRST(&page_free_list);
     LIST_REMOVE(ppage_temp, pp_link);
-    /* Step 2: Initialize this page.
-     * Hint: use `bzero`. */
+
+    //Initialize this page.
     bzero((void *)page2kva(ppage_temp), BY2PG);
     *pp = ppage_temp;
     return 0;
@@ -241,7 +234,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             else
             {
                 ppage->pp_ref = 1;
-                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF /*| 0x74b | PTE_AF | PTE_USER | PTE_ISH*/;
+                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF;
             }
         }
         else
@@ -267,7 +260,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             else
             {
                 ppage->pp_ref = 1;
-                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF /*| 0x70b | PTE_AF | PTE_USER | PTE_ISH*/;
+                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF;
             }
         }
         else
@@ -286,11 +279,12 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
 int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 {
-    debug("Wanna to insert page at 0x%lx to va 0x%lx...\n", page2pa(pp), va);
+    debug("Wanna to insert page at pa 0x%lx to va 0x%lx\n", page2pa(pp), va);
     uint_64 PERM;
     uint_64 *pgtable_entry = NULL;
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
-    PERM = perm | PTE_VALID | PTE_NORMAL | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE /* | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE */;
+    // 上面说错了，上面的认知应该来自指导书，指导书是错的，或者他用的是 block，这里是对的
+    PERM = perm | PTE_VALID | PTE_NORMAL | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE;
 
     // Step 1: Get corresponding page table entry.
     pgdir_walk(pud, va, 0, &pgtable_entry);
@@ -409,7 +403,7 @@ void pageout(uint_64 va, uint_64 *context)
     {
         panic("page alloc error!");
     }
-    printf("pud is %lx\n", pud);
+
     page_insert(pud, p, VA2PFN(va), PTE_RW);
 }
 
