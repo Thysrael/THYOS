@@ -217,7 +217,7 @@ static int env_setup_vm(struct Env *e)
     e->env_cr3 = PADDR(pgdir);
     // that's the self-map
     e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL;
-
+    
     return 0;
 }
 

@@ -80,7 +80,7 @@ extern uint_64 npage;
 #define PPN(pa) (((uint_64)(pa)) >> PTE_SHIFT)
 #define VPN(va) PPN(va)
 #define PTE_ADDR(pte) ((uint_64)(pte) & ~0xffffff8000000fff)
-#define VA2PFN(va) (((uint_64)(va)) & 0xFFFFF000)
+#define VA2PFN(va) (((uint_64)(va)) & 0xfffffffffffff000)
 
 #define PADDR(kva)                                           \
 	({                                                       \

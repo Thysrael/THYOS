@@ -97,7 +97,7 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
         // 将返回值修改
         tf->x[0] = (long)r;
     }
-    else if (EC == 0x20 || EC == 0x21 || EC == 0x25)
+    else if (EC == 0x20 || EC == 0x21 || EC == 0x24 || EC == 0x25)
     {
         uint_64 DFSC = esr & 0x3f;
         debug("DFSC is %ld,\n", DFSC);

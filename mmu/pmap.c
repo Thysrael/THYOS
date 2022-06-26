@@ -286,7 +286,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
 int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 {
-    debug("Wanna to insert page at %lx to va %lx...\n", page2pa(pp), va);
+    debug("Wanna to insert page at 0x%lx to va 0x%lx...\n", page2pa(pp), va);
     uint_64 PERM;
     uint_64 *pgtable_entry = NULL;
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
@@ -398,7 +398,7 @@ void pageout(uint_64 va, uint_64 *context)
     int r;
     struct Page *p = NULL;
 
-    uint_64 pud = (uint_64)context + KERNEL_BASE;
+    uint_64* pud = (uint_64 *)KADDR((uint_64)context);
 
     if (va < 0x10000)
     {
@@ -409,8 +409,8 @@ void pageout(uint_64 va, uint_64 *context)
     {
         panic("page alloc error!");
     }
-
-    page_insert((uint_64 *)pud, p, VA2PFN(va), PTE_RW);
+    printf("pud is %lx\n", pud);
+    page_insert(pud, p, VA2PFN(va), PTE_RW);
 }
 
 void debug_print_pgdir(uint_64 *pg_root)
