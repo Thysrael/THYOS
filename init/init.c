@@ -4,18 +4,19 @@
 
 */
 
-
 #include "printf.h"
 #include "pmap.h"
 #include "env.h"
 #include "tool.h"
+#include "emmc.h"
 
 extern void reset_timer();
 extern void irq_vector_init();
+char buf[4096];
 
 void arm_init()
 {
-	printf("arm_init() is called\n");
+    printf("arm_init() is called\n");
 
     // 初始化物理地址
     mips_detect_memory();
@@ -23,9 +24,10 @@ void arm_init()
     arch_basic_init();
     // 初始化进程管理
     env_init();
+    sd_init();
 
     // 初始化进程
-    ENV_CREATE(test_sys);
+    // ENV_CREATE(test_sys);
     // 初始化异常向量表
     irq_vector_init();
     printf("Irq vector has inited successfully.\n");
@@ -36,6 +38,7 @@ void arm_init()
     reset_timer();
     printf("Timer start.\n");
 
-    while(1);
+    while (1)
+        ;
     panic("end of arm_init() reached!");
 }

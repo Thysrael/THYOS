@@ -23,6 +23,25 @@
 #define MMIO_H
 
 #include <stdint.h>
+#include <stddef.h>
+
+struct block_device
+{
+    char *driver_name;
+    char *device_name;
+    uint8_t *device_id;
+    size_t dev_id_len;
+
+    int supports_multiple_block_read;
+    int supports_multiple_block_write;
+
+    int (*read)(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_num);
+    int (*write)(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_num);
+    size_t block_size;
+    size_t num_blocks;
+
+    struct fs *fs;
+};
 
 void mmio_write(uintptr_t reg, uint32_t data);
 uint32_t mmio_read(uintptr_t reg);

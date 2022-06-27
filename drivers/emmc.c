@@ -35,13 +35,47 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "mmio.h"
+#include "emmc.h"
 //#include "block.h"
 //#include "timer.h"
 //#include "util.h"
 
 unsigned char sd_malloc_buf[128 * 1024];
 unsigned int allocated = 0;
+
+void sd_init()
+{
+    struct block_device *emmc_dev;
+    sd_card_init(&emmc_dev);
+    int block_size = emmc_dev->block_size;
+    printf("Block size is %d\n", block_size);
+    char buf[512];
+    int i;
+    printf("write info...\n");
+    for (i = 0; i < block_size; i++)
+    {
+        buf[i] = i * i + 31941;
+        printf("%lx ", buf[i]);
+    }
+    printf("\ncleanup buf.,,\n");
+    emmc_dev->write(emmc_dev, buf, 4096, 0);
+    for (i = 0; i < block_size; i++)
+    {
+        buf[i] = 0;
+    }
+    printf("read info...\n");
+    emmc_dev->read(emmc_dev, buf, 4096, 0);
+    for (i = 0; i < block_size; i++)
+    {
+        if(buf[i] != (i * i + 31941) % 256)
+        {
+            printf("Error-");
+        }
+        printf("%lx ", buf[i]);
+    }
+    printf("\nsd card init ok,test ok...\n");
+}
+
 void *sd_malloc(size_t size)
 {
     int allocate = allocated;
@@ -157,24 +191,6 @@ inline uint32_t mmio_read(uintptr_t reg)
 {
     return *(volatile uint32_t *)(reg + MMIO_BASE);
 }
-
-struct block_device
-{
-    char *driver_name;
-    char *device_name;
-    uint8_t *device_id;
-    size_t dev_id_len;
-
-    int supports_multiple_block_read;
-    int supports_multiple_block_write;
-
-    int (*read)(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_num);
-    int (*write)(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_num);
-    size_t block_size;
-    size_t num_blocks;
-
-    struct fs *fs;
-};
 
 size_t block_read(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t starting_block);
 size_t block_write(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t starting_block);
@@ -1537,7 +1553,7 @@ int sd_card_init(struct block_device **dev)
 
     // assert(ret);
 
-    //memset(ret, 0, sizeof(struct emmc_block_dev));
+    // memset(ret, 0, sizeof(struct emmc_block_dev));
     bzero(ret, sizeof(struct emmc_block_dev));
     ret->bd.driver_name = driver_name;
     ret->bd.device_name = device_name;

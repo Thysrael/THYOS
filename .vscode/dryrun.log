@@ -3,7 +3,7 @@ make: Entering directory '/home/dofingert/Source/OS/THYOS'
 make --directory=drivers
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/drivers'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c emmc.c 
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/drivers'
  
 make --directory=boot
@@ -36,7 +36,17 @@ make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/user'
 make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/user'
  
-aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x
+make --directory=fs
+ 
+make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/fs'
+dd if=/dev/zero of=../fs.img bs=4096 count=1024 2>/dev/null
+gcc -I../include/ -I../user/ fsformat.c -o ./fsformat -m32
+chmod +x ./fsformat
+ 
+./fsformat ../fs.img motd newmotd 
+make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/fs'
+ 
+aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x		
 aarch64-none-elf-objcopy kernel.elf -O binary kernel.img
  
 aarch64-none-elf-objdump -alD kernel.elf > ./asm.s
