@@ -49,7 +49,7 @@ clean:
 	rm -rf *.o *~ $(vmlinux_elf) $(vmlinux_img)
 
 run:
-	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -drive file=$(vmlinux_img),format=raw
+	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -drive file=fs.img,format=raw
 
 debug:
 	qemu-system-aarch64 -S -s -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -d int -drive file=fs.img,format=raw
