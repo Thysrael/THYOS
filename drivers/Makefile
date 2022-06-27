@@ -5,7 +5,7 @@ INCLUDES	  := -I../include/
 
 .PHONY: clean
 
-all: uart.o
+all: uart.o emmc.o
 
 clean:
 	rm -rf *~ *.o
