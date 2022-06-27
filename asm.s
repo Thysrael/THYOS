@@ -7,128 +7,128 @@ Disassembly of section .text:
 
 ffffff8000080000 <_start>:
 _start():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:23
+/home/dofingert/Source/OS/THYOS/boot/start.S:23
 ffffff8000080000:	d53800a1 	mrs	x1, mpidr_el1
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:24
+/home/dofingert/Source/OS/THYOS/boot/start.S:24
 ffffff8000080004:	92400421 	and	x1, x1, #0x3
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:26
+/home/dofingert/Source/OS/THYOS/boot/start.S:26
 ffffff8000080008:	b4000061 	cbz	x1, ffffff8000080014 <_start_master>
 
 ffffff800008000c <pro_hang>:
 pro_hang():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:30
+/home/dofingert/Source/OS/THYOS/boot/start.S:30
 ffffff800008000c:	d503205f 	wfe
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:32
+/home/dofingert/Source/OS/THYOS/boot/start.S:32
 ffffff8000080010:	17ffffff 	b	ffffff800008000c <pro_hang>
 
 ffffff8000080014 <_start_master>:
 _start_master():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:37
+/home/dofingert/Source/OS/THYOS/boot/start.S:37
 ffffff8000080014:	d5384240 	mrs	x0, currentel
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:38
+/home/dofingert/Source/OS/THYOS/boot/start.S:38
 ffffff8000080018:	927e0400 	and	x0, x0, #0xc
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:40
+/home/dofingert/Source/OS/THYOS/boot/start.S:40
 ffffff800008001c:	f100301f 	cmp	x0, #0xc
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:41
+/home/dofingert/Source/OS/THYOS/boot/start.S:41
 ffffff8000080020:	54000101 	b.ne	ffffff8000080040 <judge_EL2>  // b.any
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:44
+/home/dofingert/Source/OS/THYOS/boot/start.S:44
 ffffff8000080024:	58000562 	ldr	x2, ffffff80000800d0 <jump_main+0x14>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:45
+/home/dofingert/Source/OS/THYOS/boot/start.S:45
 ffffff8000080028:	d51e1102 	msr	scr_el3, x2
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:46
+/home/dofingert/Source/OS/THYOS/boot/start.S:46
 ffffff800008002c:	58000562 	ldr	x2, ffffff80000800d8 <jump_main+0x1c>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:47
+/home/dofingert/Source/OS/THYOS/boot/start.S:47
 ffffff8000080030:	d51e4002 	msr	spsr_el3, x2
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:48
+/home/dofingert/Source/OS/THYOS/boot/start.S:48
 ffffff8000080034:	10000062 	adr	x2, ffffff8000080040 <judge_EL2>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:49
+/home/dofingert/Source/OS/THYOS/boot/start.S:49
 ffffff8000080038:	d51e4022 	msr	elr_el3, x2
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:50
+/home/dofingert/Source/OS/THYOS/boot/start.S:50
 ffffff800008003c:	d69f03e0 	eret
 
 ffffff8000080040 <judge_EL2>:
 judge_EL2():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:55
+/home/dofingert/Source/OS/THYOS/boot/start.S:55
 ffffff8000080040:	f100101f 	cmp	x0, #0x4
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:56
+/home/dofingert/Source/OS/THYOS/boot/start.S:56
 ffffff8000080044:	54000220 	b.eq	ffffff8000080088 <clear_bss>  // b.none
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:58
+/home/dofingert/Source/OS/THYOS/boot/start.S:58
 ffffff8000080048:	10fffdc1 	adr	x1, ffffff8000080000 <_start>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:59
+/home/dofingert/Source/OS/THYOS/boot/start.S:59
 ffffff800008004c:	d51c4101 	msr	sp_el1, x1
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:63
+/home/dofingert/Source/OS/THYOS/boot/start.S:63
 ffffff8000080050:	d2867fe0 	mov	x0, #0x33ff                	// #13311
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:64
+/home/dofingert/Source/OS/THYOS/boot/start.S:64
 ffffff8000080054:	d51c1140 	msr	cptr_el2, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:65
+/home/dofingert/Source/OS/THYOS/boot/start.S:65
 ffffff8000080058:	d51c117f 	msr	hstr_el2, xzr
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:66
+/home/dofingert/Source/OS/THYOS/boot/start.S:66
 ffffff800008005c:	d2a01e00 	mov	x0, #0xf00000              	// #15728640
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:67
+/home/dofingert/Source/OS/THYOS/boot/start.S:67
 ffffff8000080060:	d5181040 	msr	cpacr_el1, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:70
+/home/dofingert/Source/OS/THYOS/boot/start.S:70
 ffffff8000080064:	580003e0 	ldr	x0, ffffff80000800e0 <jump_main+0x24>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:71
+/home/dofingert/Source/OS/THYOS/boot/start.S:71
 ffffff8000080068:	d51c1100 	msr	hcr_el2, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:73
+/home/dofingert/Source/OS/THYOS/boot/start.S:73
 ffffff800008006c:	580003e0 	ldr	x0, ffffff80000800e8 <jump_main+0x2c>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:74
+/home/dofingert/Source/OS/THYOS/boot/start.S:74
 ffffff8000080070:	d5181000 	msr	sctlr_el1, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:76
+/home/dofingert/Source/OS/THYOS/boot/start.S:76
 ffffff8000080074:	580003e0 	ldr	x0, ffffff80000800f0 <jump_main+0x34>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:77
+/home/dofingert/Source/OS/THYOS/boot/start.S:77
 ffffff8000080078:	d51c4000 	msr	spsr_el2, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:78
+/home/dofingert/Source/OS/THYOS/boot/start.S:78
 ffffff800008007c:	10000060 	adr	x0, ffffff8000080088 <clear_bss>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:79
+/home/dofingert/Source/OS/THYOS/boot/start.S:79
 ffffff8000080080:	d51c4020 	msr	elr_el2, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:80
+/home/dofingert/Source/OS/THYOS/boot/start.S:80
 ffffff8000080084:	d69f03e0 	eret
 
 ffffff8000080088 <clear_bss>:
 clear_bss():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:83
+/home/dofingert/Source/OS/THYOS/boot/start.S:83
 ffffff8000080088:	100871c1 	adr	x1, ffffff8000090ec0 <envs>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:84
+/home/dofingert/Source/OS/THYOS/boot/start.S:84
 ffffff800008008c:	18000202 	ldr	w2, ffffff80000800cc <jump_main+0x10>
 
 ffffff8000080090 <clear_loop>:
 clear_loop():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:86
+/home/dofingert/Source/OS/THYOS/boot/start.S:86
 ffffff8000080090:	34000082 	cbz	w2, ffffff80000800a0 <en_mmu>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:87
+/home/dofingert/Source/OS/THYOS/boot/start.S:87
 ffffff8000080094:	f800843f 	str	xzr, [x1], #8
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:88
+/home/dofingert/Source/OS/THYOS/boot/start.S:88
 ffffff8000080098:	51000442 	sub	w2, w2, #0x1
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:89
+/home/dofingert/Source/OS/THYOS/boot/start.S:89
 ffffff800008009c:	35ffffa2 	cbnz	w2, ffffff8000080090 <clear_loop>
 
 ffffff80000800a0 <en_mmu>:
 en_mmu():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:92
+/home/dofingert/Source/OS/THYOS/boot/start.S:92
 ffffff80000800a0:	d50041bf 	msr	spsel, #0x1
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:93
+/home/dofingert/Source/OS/THYOS/boot/start.S:93
 ffffff80000800a4:	1002ba80 	adr	x0, ffffff80000857f4 <init_page_table>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:94
+/home/dofingert/Source/OS/THYOS/boot/start.S:94
 ffffff80000800a8:	d63f0000 	blr	x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:95
+/home/dofingert/Source/OS/THYOS/boot/start.S:95
 ffffff80000800ac:	10001560 	adr	x0, ffffff8000080358 <enable_mmu>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:96
+/home/dofingert/Source/OS/THYOS/boot/start.S:96
 ffffff80000800b0:	d63f0000 	blr	x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:98
+/home/dofingert/Source/OS/THYOS/boot/start.S:98
 ffffff80000800b4:	58000220 	ldr	x0, ffffff80000800f8 <jump_main+0x3c>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:99
+/home/dofingert/Source/OS/THYOS/boot/start.S:99
 ffffff80000800b8:	d61f0000 	br	x0
 
 ffffff80000800bc <jump_main>:
 jump_main():
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:103
+/home/dofingert/Source/OS/THYOS/boot/start.S:103
 ffffff80000800bc:	58000220 	ldr	x0, ffffff8000080100 <jump_main+0x44>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:104
+/home/dofingert/Source/OS/THYOS/boot/start.S:104
 ffffff80000800c0:	9100001f 	mov	sp, x0
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:105
+/home/dofingert/Source/OS/THYOS/boot/start.S:105
 ffffff80000800c4:	940000d1 	bl	ffffff8000080408 <main>
-/home/thysrael/OS/PIOS/THYOS/boot/start.S:106
+/home/dofingert/Source/OS/THYOS/boot/start.S:106
 ffffff80000800c8:	17ffffd1 	b	ffffff800008000c <pro_hang>
 ffffff80000800cc:	00000012 	.inst	0x00000012 ; undefined
 ffffff80000800d0:	000005b1 	.inst	0x000005b1 ; undefined
@@ -148,9 +148,9 @@ ffffff8000080104:	ffffff80 	.inst	0xffffff80 ; undefined
 
 ffffff8000080108 <uart_init>:
 uart_init():
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:27
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:27
 ffffff8000080108:	f81f0ff3 	str	x19, [sp, #-16]!
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:31
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:31
 ffffff800008010c:	9295ff60 	mov	x0, #0xffffffffffff5004    	// #-45052
 ffffff8000080110:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080114:	f2dff000 	movk	x0, #0xff80, lsl #32
@@ -160,110 +160,110 @@ ffffff8000080120:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080124:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080128:	32000021 	orr	w1, w1, #0x1
 ffffff800008012c:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:32
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:32
 ffffff8000080130:	9295f3e0 	mov	x0, #0xffffffffffff5060    	// #-44960
 ffffff8000080134:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080138:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff800008013c:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:33
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:33
 ffffff8000080140:	9295f660 	mov	x0, #0xffffffffffff504c    	// #-44980
 ffffff8000080144:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080148:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff800008014c:	52800061 	mov	w1, #0x3                   	// #3
 ffffff8000080150:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:34
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:34
 ffffff8000080154:	9295f5e0 	mov	x0, #0xffffffffffff5050    	// #-44976
 ffffff8000080158:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff800008015c:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080160:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:35
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:35
 ffffff8000080164:	9295f760 	mov	x0, #0xffffffffffff5044    	// #-44988
 ffffff8000080168:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff800008016c:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080170:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:36
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:36
 ffffff8000080174:	9295f6e0 	mov	x0, #0xffffffffffff5048    	// #-44984
 ffffff8000080178:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff800008017c:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080180:	528018c1 	mov	w1, #0xc6                  	// #198
 ffffff8000080184:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:37
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:37
 ffffff8000080188:	9295f2e0 	mov	x0, #0xffffffffffff5068    	// #-44952
 ffffff800008018c:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080190:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080194:	528021c1 	mov	w1, #0x10e                 	// #270
 ffffff8000080198:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:39
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:39
 ffffff800008019c:	929fff60 	mov	x0, #0xffffffffffff0004    	// #-65532
 ffffff80000801a0:	f2a7e400 	movk	x0, #0x3f20, lsl #16
 ffffff80000801a4:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000801a8:	b9400013 	ldr	w19, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:40
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:40
 ffffff80000801ac:	120e6673 	and	w19, w19, #0xfffc0fff
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:41
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:41
 ffffff80000801b0:	52840000 	mov	w0, #0x2000                	// #8192
 ffffff80000801b4:	72a00020 	movk	w0, #0x1, lsl #16
 ffffff80000801b8:	2a000273 	orr	w19, w19, w0
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:42
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:42
 ffffff80000801bc:	929fff60 	mov	x0, #0xffffffffffff0004    	// #-65532
 ffffff80000801c0:	f2a7e400 	movk	x0, #0x3f20, lsl #16
 ffffff80000801c4:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000801c8:	b9000013 	str	w19, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:43
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:43
 ffffff80000801cc:	929fed60 	mov	x0, #0xffffffffffff0094    	// #-65388
 ffffff80000801d0:	f2a7e400 	movk	x0, #0x3f20, lsl #16
 ffffff80000801d4:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000801d8:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:44
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:44
 ffffff80000801dc:	528012d3 	mov	w19, #0x96                  	// #150
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:45
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:45
 ffffff80000801e0:	14000002 	b	ffffff80000801e8 <uart_init+0xe0>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:45 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:45 (discriminator 2)
 ffffff80000801e4:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:45 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:45 (discriminator 1)
 ffffff80000801e8:	2a1303e0 	mov	w0, w19
 ffffff80000801ec:	51000413 	sub	w19, w0, #0x1
 ffffff80000801f0:	7100001f 	cmp	w0, #0x0
 ffffff80000801f4:	54ffff81 	b.ne	ffffff80000801e4 <uart_init+0xdc>  // b.any
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:46
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:46
 ffffff80000801f8:	929fece0 	mov	x0, #0xffffffffffff0098    	// #-65384
 ffffff80000801fc:	f2a7e400 	movk	x0, #0x3f20, lsl #16
 ffffff8000080200:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080204:	52980001 	mov	w1, #0xc000                	// #49152
 ffffff8000080208:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:47
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:47
 ffffff800008020c:	528012d3 	mov	w19, #0x96                  	// #150
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:48
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:48
 ffffff8000080210:	14000002 	b	ffffff8000080218 <uart_init+0x110>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:48 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:48 (discriminator 2)
 ffffff8000080214:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:48 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:48 (discriminator 1)
 ffffff8000080218:	2a1303e0 	mov	w0, w19
 ffffff800008021c:	51000413 	sub	w19, w0, #0x1
 ffffff8000080220:	7100001f 	cmp	w0, #0x0
 ffffff8000080224:	54ffff81 	b.ne	ffffff8000080214 <uart_init+0x10c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:49
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:49
 ffffff8000080228:	929fece0 	mov	x0, #0xffffffffffff0098    	// #-65384
 ffffff800008022c:	f2a7e400 	movk	x0, #0x3f20, lsl #16
 ffffff8000080230:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080234:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:50
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:50
 ffffff8000080238:	9295f3e0 	mov	x0, #0xffffffffffff5060    	// #-44960
 ffffff800008023c:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080240:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff8000080244:	52800061 	mov	w1, #0x3                   	// #3
 ffffff8000080248:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:51
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:51
 ffffff800008024c:	d503201f 	nop
 ffffff8000080250:	f84107f3 	ldr	x19, [sp], #16
 ffffff8000080254:	d65f03c0 	ret
 
 ffffff8000080258 <uart_send>:
 uart_send():
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:57
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:57
 ffffff8000080258:	d10043ff 	sub	sp, sp, #0x10
 ffffff800008025c:	b9000fe0 	str	w0, [sp, #12]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:59 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:59 (discriminator 1)
 ffffff8000080260:	d503201f 	nop
 ffffff8000080264:	9295f560 	mov	x0, #0xffffffffffff5054    	// #-44972
 ffffff8000080268:	f2a7e420 	movk	x0, #0x3f21, lsl #16
@@ -272,22 +272,22 @@ ffffff8000080270:	b9400000 	ldr	w0, [x0]
 ffffff8000080274:	121b0000 	and	w0, w0, #0x20
 ffffff8000080278:	7100001f 	cmp	w0, #0x0
 ffffff800008027c:	54ffff20 	b.eq	ffffff8000080260 <uart_send+0x8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:61
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:61
 ffffff8000080280:	9295f7e0 	mov	x0, #0xffffffffffff5040    	// #-44992
 ffffff8000080284:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff8000080288:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff800008028c:	b9400fe1 	ldr	w1, [sp, #12]
 ffffff8000080290:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:62
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:62
 ffffff8000080294:	d503201f 	nop
 ffffff8000080298:	910043ff 	add	sp, sp, #0x10
 ffffff800008029c:	d65f03c0 	ret
 
 ffffff80000802a0 <uart_getc>:
 uart_getc():
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:68
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:68
 ffffff80000802a0:	d10043ff 	sub	sp, sp, #0x10
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:71 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:71 (discriminator 1)
 ffffff80000802a4:	d503201f 	nop
 ffffff80000802a8:	9295f560 	mov	x0, #0xffffffffffff5054    	// #-44972
 ffffff80000802ac:	f2a7e420 	movk	x0, #0x3f21, lsl #16
@@ -296,53 +296,53 @@ ffffff80000802b4:	b9400000 	ldr	w0, [x0]
 ffffff80000802b8:	12000000 	and	w0, w0, #0x1
 ffffff80000802bc:	7100001f 	cmp	w0, #0x0
 ffffff80000802c0:	54ffff20 	b.eq	ffffff80000802a4 <uart_getc+0x4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:73
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:73
 ffffff80000802c4:	9295f7e0 	mov	x0, #0xffffffffffff5040    	// #-44992
 ffffff80000802c8:	f2a7e420 	movk	x0, #0x3f21, lsl #16
 ffffff80000802cc:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000802d0:	b9400000 	ldr	w0, [x0]
 ffffff80000802d4:	39003fe0 	strb	w0, [sp, #15]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:75
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:75
 ffffff80000802d8:	39403fe0 	ldrb	w0, [sp, #15]
 ffffff80000802dc:	7100341f 	cmp	w0, #0xd
 ffffff80000802e0:	54000060 	b.eq	ffffff80000802ec <uart_getc+0x4c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:75 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:75 (discriminator 1)
 ffffff80000802e4:	39403fe0 	ldrb	w0, [sp, #15]
 ffffff80000802e8:	14000002 	b	ffffff80000802f0 <uart_getc+0x50>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:75 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:75 (discriminator 2)
 ffffff80000802ec:	52800140 	mov	w0, #0xa                   	// #10
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:76 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:76 (discriminator 4)
 ffffff80000802f0:	910043ff 	add	sp, sp, #0x10
 ffffff80000802f4:	d65f03c0 	ret
 
 ffffff80000802f8 <uart_puts>:
 uart_puts():
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:82
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:82
 ffffff80000802f8:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000802fc:	910003fd 	mov	x29, sp
 ffffff8000080300:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:83
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:83
 ffffff8000080304:	1400000c 	b	ffffff8000080334 <uart_puts+0x3c>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:86
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:86
 ffffff8000080308:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008030c:	39400000 	ldrb	w0, [x0]
 ffffff8000080310:	7100281f 	cmp	w0, #0xa
 ffffff8000080314:	54000061 	b.ne	ffffff8000080320 <uart_puts+0x28>  // b.any
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:87
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:87
 ffffff8000080318:	528001a0 	mov	w0, #0xd                   	// #13
 ffffff800008031c:	97ffffcf 	bl	ffffff8000080258 <uart_send>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:88
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:88
 ffffff8000080320:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000080324:	91000401 	add	x1, x0, #0x1
 ffffff8000080328:	f9000fe1 	str	x1, [sp, #24]
 ffffff800008032c:	39400000 	ldrb	w0, [x0]
 ffffff8000080330:	97ffffca 	bl	ffffff8000080258 <uart_send>
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:83
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:83
 ffffff8000080334:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000080338:	39400000 	ldrb	w0, [x0]
 ffffff800008033c:	7100001f 	cmp	w0, #0x0
 ffffff8000080340:	54fffe41 	b.ne	ffffff8000080308 <uart_puts+0x10>  // b.any
-/home/thysrael/OS/PIOS/THYOS/drivers/uart.c:90
+/home/dofingert/Source/OS/THYOS/drivers/uart.c:90
 ffffff8000080344:	d503201f 	nop
 ffffff8000080348:	d503201f 	nop
 ffffff800008034c:	a8c27bfd 	ldp	x29, x30, [sp], #32
@@ -351,29 +351,29 @@ ffffff8000080354:	00000000 	.inst	0x00000000 ; undefined
 
 ffffff8000080358 <enable_mmu>:
 enable_mmu():
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:17
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:17
 ffffff8000080358:	58085e40 	ldr	x0, ffffff8000090f20 <kernel_pud>
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:18
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:18
 ffffff800008035c:	58085da1 	ldr	x1, ffffff8000090f10 <user_pud>
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:19
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:19
 ffffff8000080360:	d5182001 	msr	ttbr0_el1, x1
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:20
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:20
 ffffff8000080364:	d5182021 	msr	ttbr1_el1, x1
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:22
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:22
 ffffff8000080368:	58000100 	ldr	x0, ffffff8000080388 <enable_mmu+0x30>
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:23
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:23
 ffffff800008036c:	d518a200 	msr	mair_el1, x0
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:26
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:26
 ffffff8000080370:	58000100 	ldr	x0, ffffff8000080390 <enable_mmu+0x38>
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:27
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:27
 ffffff8000080374:	d5182040 	msr	tcr_el1, x0
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:29
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:29
 ffffff8000080378:	d5381000 	mrs	x0, sctlr_el1
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:30
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:30
 ffffff800008037c:	b2400000 	orr	x0, x0, #0x1
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:31
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:31
 ffffff8000080380:	d5181000 	msr	sctlr_el1, x0
-/home/thysrael/OS/PIOS/THYOS/boot/enmmu.S:33
+/home/dofingert/Source/OS/THYOS/boot/enmmu.S:33
 ffffff8000080384:	d65f03c0 	ret
 ffffff8000080388:	00440488 	.inst	0x00440488 ; undefined
 ffffff800008038c:	00000000 	.inst	0x00000000 ; undefined
@@ -382,70 +382,70 @@ ffffff8000080394:	00000060 	.inst	0x00000060 ; undefined
 
 ffffff8000080398 <arm_init>:
 arm_init():
-/home/thysrael/OS/PIOS/THYOS/init/init.c:17
+/home/dofingert/Source/OS/THYOS/init/init.c:17
 ffffff8000080398:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff800008039c:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/init/init.c:18
+/home/dofingert/Source/OS/THYOS/init/init.c:18
 ffffff80000803a0:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000803a4:	91080000 	add	x0, x0, #0x200
 ffffff80000803a8:	94000a07 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:21
+/home/dofingert/Source/OS/THYOS/init/init.c:21
 ffffff80000803ac:	9400161c 	bl	ffffff8000085c1c <mips_detect_memory>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:23
+/home/dofingert/Source/OS/THYOS/init/init.c:23
 ffffff80000803b0:	94001758 	bl	ffffff8000086110 <arch_basic_init>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:25
+/home/dofingert/Source/OS/THYOS/init/init.c:25
 ffffff80000803b4:	94000623 	bl	ffffff8000081c40 <env_init>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:28
-ffffff80000803b8:	d0000040 	adrp	x0, ffffff800008a000 <binary_user_test_fork_start+0x1f80>
-ffffff80000803bc:	913cd000 	add	x0, x0, #0xf34
+/home/dofingert/Source/OS/THYOS/init/init.c:28
+ffffff80000803b8:	90000080 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
+ffffff80000803bc:	913af000 	add	x0, x0, #0xebc
 ffffff80000803c0:	b9400000 	ldr	w0, [x0]
 ffffff80000803c4:	2a0003e1 	mov	w1, w0
-ffffff80000803c8:	90000040 	adrp	x0, ffffff8000088000 <entry_error_messages>
-ffffff80000803cc:	91020000 	add	x0, x0, #0x80
+ffffff80000803c8:	b0000060 	adrp	x0, ffffff800008d000 <binary_user_test_ipc_start+0x20c8>
+ffffff80000803cc:	913c0000 	add	x0, x0, #0xf00
 ffffff80000803d0:	9400073d 	bl	ffffff80000820c4 <env_create>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:30
+/home/dofingert/Source/OS/THYOS/init/init.c:30
 ffffff80000803d4:	940004fb 	bl	ffffff80000817c0 <irq_vector_init>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:31
+/home/dofingert/Source/OS/THYOS/init/init.c:31
 ffffff80000803d8:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000803dc:	91086000 	add	x0, x0, #0x218
 ffffff80000803e0:	940009f9 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:33
+/home/dofingert/Source/OS/THYOS/init/init.c:33
 ffffff80000803e4:	940014eb 	bl	ffffff8000085790 <enable_interrupt_controller>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:34
+/home/dofingert/Source/OS/THYOS/init/init.c:34
 ffffff80000803e8:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000803ec:	91090000 	add	x0, x0, #0x240
 ffffff80000803f0:	940009f5 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:36
+/home/dofingert/Source/OS/THYOS/init/init.c:36
 ffffff80000803f4:	9400145b 	bl	ffffff8000085560 <reset_timer>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:37
+/home/dofingert/Source/OS/THYOS/init/init.c:37
 ffffff80000803f8:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000803fc:	9109a000 	add	x0, x0, #0x268
 ffffff8000080400:	940009f1 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/init.c:39 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/init/init.c:39 (discriminator 1)
 ffffff8000080404:	14000000 	b	ffffff8000080404 <arm_init+0x6c>
 
 ffffff8000080408 <main>:
 main():
-/home/thysrael/OS/PIOS/THYOS/init/main.c:18
+/home/dofingert/Source/OS/THYOS/init/main.c:18
 ffffff8000080408:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff800008040c:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/init/main.c:19
+/home/dofingert/Source/OS/THYOS/init/main.c:19
 ffffff8000080410:	97ffff3e 	bl	ffffff8000080108 <uart_init>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:20
+/home/dofingert/Source/OS/THYOS/init/main.c:20
 ffffff8000080414:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000080418:	9109e000 	add	x0, x0, #0x278
 ffffff800008041c:	940009ea 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:21
+/home/dofingert/Source/OS/THYOS/init/main.c:21
 ffffff8000080420:	9400146c 	bl	ffffff80000855d0 <print_exception_level>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:22
+/home/dofingert/Source/OS/THYOS/init/main.c:22
 ffffff8000080424:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000080428:	910a2000 	add	x0, x0, #0x288
 ffffff800008042c:	940009e6 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:23
+/home/dofingert/Source/OS/THYOS/init/main.c:23
 ffffff8000080430:	9400145e 	bl	ffffff80000855a8 <print_stack>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:24
+/home/dofingert/Source/OS/THYOS/init/main.c:24
 ffffff8000080434:	97ffffd9 	bl	ffffff8000080398 <arm_init>
-/home/thysrael/OS/PIOS/THYOS/init/main.c:26
+/home/dofingert/Source/OS/THYOS/init/main.c:26
 ffffff8000080438:	f0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008043c:	910a8002 	add	x2, x0, #0x2a0
 ffffff8000080440:	52800341 	mov	w1, #0x1a                  	// #26
@@ -455,31 +455,31 @@ ffffff800008044c:	94000a3b 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000080450 <get_EL>:
 get_EL():
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:10
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:10
 ffffff8000080450:	d5384240 	mrs	x0, currentel
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:11
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:11
 ffffff8000080454:	d342fc00 	lsr	x0, x0, #2
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:12
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:12
 ffffff8000080458:	d65f03c0 	ret
 
 ffffff800008045c <put32>:
 put32():
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:16
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:16
 ffffff800008045c:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:17
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:17
 ffffff8000080460:	d65f03c0 	ret
 
 ffffff8000080464 <get32>:
 get32():
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:21
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:21
 ffffff8000080464:	b9400000 	ldr	w0, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/asm_tool.S:22
+/home/dofingert/Source/OS/THYOS/lib/asm_tool.S:22
 ffffff8000080468:	d65f03c0 	ret
 	...
 
 ffffff8000080800 <vectors>:
 vectors():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:22
+/home/dofingert/Source/OS/THYOS/lib/entry.S:22
 ffffff8000080800:	140001e1 	b	ffffff8000080f84 <sync_invalid_el1t>
 ffffff8000080804:	d503201f 	nop
 ffffff8000080808:	d503201f 	nop
@@ -512,7 +512,7 @@ ffffff8000080870:	d503201f 	nop
 ffffff8000080874:	d503201f 	nop
 ffffff8000080878:	d503201f 	nop
 ffffff800008087c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:23
+/home/dofingert/Source/OS/THYOS/lib/entry.S:23
 ffffff8000080880:	140001e1 	b	ffffff8000081004 <irq_invalid_el1t>
 ffffff8000080884:	d503201f 	nop
 ffffff8000080888:	d503201f 	nop
@@ -545,7 +545,7 @@ ffffff80000808f0:	d503201f 	nop
 ffffff80000808f4:	d503201f 	nop
 ffffff80000808f8:	d503201f 	nop
 ffffff80000808fc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:24
+/home/dofingert/Source/OS/THYOS/lib/entry.S:24
 ffffff8000080900:	140001e1 	b	ffffff8000081084 <fiq_invalid_el1t>
 ffffff8000080904:	d503201f 	nop
 ffffff8000080908:	d503201f 	nop
@@ -578,7 +578,7 @@ ffffff8000080970:	d503201f 	nop
 ffffff8000080974:	d503201f 	nop
 ffffff8000080978:	d503201f 	nop
 ffffff800008097c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:25
+/home/dofingert/Source/OS/THYOS/lib/entry.S:25
 ffffff8000080980:	140001e1 	b	ffffff8000081104 <error_invalid_el1t>
 ffffff8000080984:	d503201f 	nop
 ffffff8000080988:	d503201f 	nop
@@ -611,7 +611,7 @@ ffffff80000809f0:	d503201f 	nop
 ffffff80000809f4:	d503201f 	nop
 ffffff80000809f8:	d503201f 	nop
 ffffff80000809fc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:28
+/home/dofingert/Source/OS/THYOS/lib/entry.S:28
 ffffff8000080a00:	14000337 	b	ffffff80000816dc <el0_sync>
 ffffff8000080a04:	d503201f 	nop
 ffffff8000080a08:	d503201f 	nop
@@ -644,7 +644,7 @@ ffffff8000080a70:	d503201f 	nop
 ffffff8000080a74:	d503201f 	nop
 ffffff8000080a78:	d503201f 	nop
 ffffff8000080a7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:29
+/home/dofingert/Source/OS/THYOS/lib/entry.S:29
 ffffff8000080a80:	140002e1 	b	ffffff8000081604 <el0_irq>
 ffffff8000080a84:	d503201f 	nop
 ffffff8000080a88:	d503201f 	nop
@@ -677,7 +677,7 @@ ffffff8000080af0:	d503201f 	nop
 ffffff8000080af4:	d503201f 	nop
 ffffff8000080af8:	d503201f 	nop
 ffffff8000080afc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:30
+/home/dofingert/Source/OS/THYOS/lib/entry.S:30
 ffffff8000080b00:	140001a1 	b	ffffff8000081184 <fiq_invalid_el1h>
 ffffff8000080b04:	d503201f 	nop
 ffffff8000080b08:	d503201f 	nop
@@ -710,7 +710,7 @@ ffffff8000080b70:	d503201f 	nop
 ffffff8000080b74:	d503201f 	nop
 ffffff8000080b78:	d503201f 	nop
 ffffff8000080b7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:31
+/home/dofingert/Source/OS/THYOS/lib/entry.S:31
 ffffff8000080b80:	140001a1 	b	ffffff8000081204 <error_invalid_el1h>
 ffffff8000080b84:	d503201f 	nop
 ffffff8000080b88:	d503201f 	nop
@@ -743,7 +743,7 @@ ffffff8000080bf0:	d503201f 	nop
 ffffff8000080bf4:	d503201f 	nop
 ffffff8000080bf8:	d503201f 	nop
 ffffff8000080bfc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:34
+/home/dofingert/Source/OS/THYOS/lib/entry.S:34
 ffffff8000080c00:	140002b7 	b	ffffff80000816dc <el0_sync>
 ffffff8000080c04:	d503201f 	nop
 ffffff8000080c08:	d503201f 	nop
@@ -776,7 +776,7 @@ ffffff8000080c70:	d503201f 	nop
 ffffff8000080c74:	d503201f 	nop
 ffffff8000080c78:	d503201f 	nop
 ffffff8000080c7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:35
+/home/dofingert/Source/OS/THYOS/lib/entry.S:35
 ffffff8000080c80:	14000261 	b	ffffff8000081604 <el0_irq>
 ffffff8000080c84:	d503201f 	nop
 ffffff8000080c88:	d503201f 	nop
@@ -809,7 +809,7 @@ ffffff8000080cf0:	d503201f 	nop
 ffffff8000080cf4:	d503201f 	nop
 ffffff8000080cf8:	d503201f 	nop
 ffffff8000080cfc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:36
+/home/dofingert/Source/OS/THYOS/lib/entry.S:36
 ffffff8000080d00:	14000181 	b	ffffff8000081304 <fiq_invalid_el0_64>
 ffffff8000080d04:	d503201f 	nop
 ffffff8000080d08:	d503201f 	nop
@@ -842,7 +842,7 @@ ffffff8000080d70:	d503201f 	nop
 ffffff8000080d74:	d503201f 	nop
 ffffff8000080d78:	d503201f 	nop
 ffffff8000080d7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:37
+/home/dofingert/Source/OS/THYOS/lib/entry.S:37
 ffffff8000080d80:	14000181 	b	ffffff8000081384 <error_invalid_el0_64>
 ffffff8000080d84:	d503201f 	nop
 ffffff8000080d88:	d503201f 	nop
@@ -875,7 +875,7 @@ ffffff8000080df0:	d503201f 	nop
 ffffff8000080df4:	d503201f 	nop
 ffffff8000080df8:	d503201f 	nop
 ffffff8000080dfc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:39
+/home/dofingert/Source/OS/THYOS/lib/entry.S:39
 ffffff8000080e00:	14000181 	b	ffffff8000081404 <sync_invalid_el0_32>
 ffffff8000080e04:	d503201f 	nop
 ffffff8000080e08:	d503201f 	nop
@@ -908,7 +908,7 @@ ffffff8000080e70:	d503201f 	nop
 ffffff8000080e74:	d503201f 	nop
 ffffff8000080e78:	d503201f 	nop
 ffffff8000080e7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:40
+/home/dofingert/Source/OS/THYOS/lib/entry.S:40
 ffffff8000080e80:	14000181 	b	ffffff8000081484 <irq_invalid_el0_32>
 ffffff8000080e84:	d503201f 	nop
 ffffff8000080e88:	d503201f 	nop
@@ -941,7 +941,7 @@ ffffff8000080ef0:	d503201f 	nop
 ffffff8000080ef4:	d503201f 	nop
 ffffff8000080ef8:	d503201f 	nop
 ffffff8000080efc:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:41
+/home/dofingert/Source/OS/THYOS/lib/entry.S:41
 ffffff8000080f00:	14000181 	b	ffffff8000081504 <fiq_invalid_el0_32>
 ffffff8000080f04:	d503201f 	nop
 ffffff8000080f08:	d503201f 	nop
@@ -974,12 +974,12 @@ ffffff8000080f70:	d503201f 	nop
 ffffff8000080f74:	d503201f 	nop
 ffffff8000080f78:	d503201f 	nop
 ffffff8000080f7c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:42
+/home/dofingert/Source/OS/THYOS/lib/entry.S:42
 ffffff8000080f80:	14000181 	b	ffffff8000081584 <error_invalid_el0_32>
 
 ffffff8000080f84 <sync_invalid_el1t>:
 sync_invalid_el1t():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:144
+/home/dofingert/Source/OS/THYOS/lib/entry.S:144
 ffffff8000080f84:	d50342df 	msr	daifset, #0x2
 ffffff8000080f88:	d10483ff 	sub	sp, sp, #0x120
 ffffff8000080f8c:	a90007e0 	stp	x0, x1, [sp]
@@ -1015,7 +1015,7 @@ ffffff8000081000:	940011c8 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081004 <irq_invalid_el1t>:
 irq_invalid_el1t():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:147
+/home/dofingert/Source/OS/THYOS/lib/entry.S:147
 ffffff8000081004:	d50342df 	msr	daifset, #0x2
 ffffff8000081008:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008100c:	a90007e0 	stp	x0, x1, [sp]
@@ -1051,7 +1051,7 @@ ffffff8000081080:	940011a8 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081084 <fiq_invalid_el1t>:
 fiq_invalid_el1t():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:150
+/home/dofingert/Source/OS/THYOS/lib/entry.S:150
 ffffff8000081084:	d50342df 	msr	daifset, #0x2
 ffffff8000081088:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008108c:	a90007e0 	stp	x0, x1, [sp]
@@ -1087,7 +1087,7 @@ ffffff8000081100:	94001188 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081104 <error_invalid_el1t>:
 error_invalid_el1t():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:153
+/home/dofingert/Source/OS/THYOS/lib/entry.S:153
 ffffff8000081104:	d50342df 	msr	daifset, #0x2
 ffffff8000081108:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008110c:	a90007e0 	stp	x0, x1, [sp]
@@ -1123,7 +1123,7 @@ ffffff8000081180:	94001168 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081184 <fiq_invalid_el1h>:
 fiq_invalid_el1h():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:159
+/home/dofingert/Source/OS/THYOS/lib/entry.S:159
 ffffff8000081184:	d50342df 	msr	daifset, #0x2
 ffffff8000081188:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008118c:	a90007e0 	stp	x0, x1, [sp]
@@ -1159,7 +1159,7 @@ ffffff8000081200:	94001148 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081204 <error_invalid_el1h>:
 error_invalid_el1h():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:162
+/home/dofingert/Source/OS/THYOS/lib/entry.S:162
 ffffff8000081204:	d50342df 	msr	daifset, #0x2
 ffffff8000081208:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008120c:	a90007e0 	stp	x0, x1, [sp]
@@ -1195,7 +1195,7 @@ ffffff8000081280:	94001128 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081284 <sync_invalid_el0_64>:
 sync_invalid_el0_64():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:165
+/home/dofingert/Source/OS/THYOS/lib/entry.S:165
 ffffff8000081284:	d50342df 	msr	daifset, #0x2
 ffffff8000081288:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008128c:	a90007e0 	stp	x0, x1, [sp]
@@ -1231,7 +1231,7 @@ ffffff8000081300:	94001108 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081304 <fiq_invalid_el0_64>:
 fiq_invalid_el0_64():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:169
+/home/dofingert/Source/OS/THYOS/lib/entry.S:169
 ffffff8000081304:	d50342df 	msr	daifset, #0x2
 ffffff8000081308:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008130c:	a90007e0 	stp	x0, x1, [sp]
@@ -1267,7 +1267,7 @@ ffffff8000081380:	940010e8 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081384 <error_invalid_el0_64>:
 error_invalid_el0_64():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:172
+/home/dofingert/Source/OS/THYOS/lib/entry.S:172
 ffffff8000081384:	d50342df 	msr	daifset, #0x2
 ffffff8000081388:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008138c:	a90007e0 	stp	x0, x1, [sp]
@@ -1303,7 +1303,7 @@ ffffff8000081400:	940010c8 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081404 <sync_invalid_el0_32>:
 sync_invalid_el0_32():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:175
+/home/dofingert/Source/OS/THYOS/lib/entry.S:175
 ffffff8000081404:	d50342df 	msr	daifset, #0x2
 ffffff8000081408:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008140c:	a90007e0 	stp	x0, x1, [sp]
@@ -1339,7 +1339,7 @@ ffffff8000081480:	940010a8 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081484 <irq_invalid_el0_32>:
 irq_invalid_el0_32():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:178
+/home/dofingert/Source/OS/THYOS/lib/entry.S:178
 ffffff8000081484:	d50342df 	msr	daifset, #0x2
 ffffff8000081488:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008148c:	a90007e0 	stp	x0, x1, [sp]
@@ -1375,7 +1375,7 @@ ffffff8000081500:	94001088 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081504 <fiq_invalid_el0_32>:
 fiq_invalid_el0_32():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:181
+/home/dofingert/Source/OS/THYOS/lib/entry.S:181
 ffffff8000081504:	d50342df 	msr	daifset, #0x2
 ffffff8000081508:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008150c:	a90007e0 	stp	x0, x1, [sp]
@@ -1411,7 +1411,7 @@ ffffff8000081580:	94001068 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081584 <error_invalid_el0_32>:
 error_invalid_el0_32():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:184
+/home/dofingert/Source/OS/THYOS/lib/entry.S:184
 ffffff8000081584:	d50342df 	msr	daifset, #0x2
 ffffff8000081588:	d10483ff 	sub	sp, sp, #0x120
 ffffff800008158c:	a90007e0 	stp	x0, x1, [sp]
@@ -1447,11 +1447,11 @@ ffffff8000081600:	94001048 	bl	ffffff8000085720 <unimplement_handler>
 
 ffffff8000081604 <el0_irq>:
 el0_irq():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:191
+/home/dofingert/Source/OS/THYOS/lib/entry.S:191
 ffffff8000081604:	58000e70 	ldr	x16, ffffff80000817d0 <irq_vector_init+0x10>
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:192
+/home/dofingert/Source/OS/THYOS/lib/entry.S:192
 ffffff8000081608:	9100021f 	mov	sp, x16
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:193
+/home/dofingert/Source/OS/THYOS/lib/entry.S:193
 ffffff800008160c:	d10483ff 	sub	sp, sp, #0x120
 ffffff8000081610:	a90007e0 	stp	x0, x1, [sp]
 ffffff8000081614:	a9010fe2 	stp	x2, x3, [sp, #16]
@@ -1479,9 +1479,9 @@ ffffff8000081668:	d5386010 	mrs	x16, far_el1
 ffffff800008166c:	f9008bf0 	str	x16, [sp, #272]
 ffffff8000081670:	d5385210 	mrs	x16, esr_el1
 ffffff8000081674:	f9008ff0 	str	x16, [sp, #280]
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:195
+/home/dofingert/Source/OS/THYOS/lib/entry.S:195
 ffffff8000081678:	94000a53 	bl	ffffff8000083fc4 <handle_irq>
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:197
+/home/dofingert/Source/OS/THYOS/lib/entry.S:197
 ffffff800008167c:	a94007e0 	ldp	x0, x1, [sp]
 ffffff8000081680:	a9410fe2 	ldp	x2, x3, [sp, #16]
 ffffff8000081684:	a94217e4 	ldp	x4, x5, [sp, #32]
@@ -1505,16 +1505,16 @@ ffffff80000816c8:	d5184030 	msr	elr_el1, x16
 ffffff80000816cc:	f94087f0 	ldr	x16, [sp, #264]
 ffffff80000816d0:	d5184010 	msr	spsr_el1, x16
 ffffff80000816d4:	910483ff 	add	sp, sp, #0x120
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:198
+/home/dofingert/Source/OS/THYOS/lib/entry.S:198
 ffffff80000816d8:	d69f03e0 	eret
 
 ffffff80000816dc <el0_sync>:
 el0_sync():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:204
+/home/dofingert/Source/OS/THYOS/lib/entry.S:204
 ffffff80000816dc:	580007f0 	ldr	x16, ffffff80000817d8 <irq_vector_init+0x18>
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:205
+/home/dofingert/Source/OS/THYOS/lib/entry.S:205
 ffffff80000816e0:	9100021f 	mov	sp, x16
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:206
+/home/dofingert/Source/OS/THYOS/lib/entry.S:206
 ffffff80000816e4:	d10483ff 	sub	sp, sp, #0x120
 ffffff80000816e8:	a90007e0 	stp	x0, x1, [sp]
 ffffff80000816ec:	a9010fe2 	stp	x2, x3, [sp, #16]
@@ -1542,15 +1542,15 @@ ffffff8000081740:	d5386010 	mrs	x16, far_el1
 ffffff8000081744:	f9008bf0 	str	x16, [sp, #272]
 ffffff8000081748:	d5385210 	mrs	x16, esr_el1
 ffffff800008174c:	f9008ff0 	str	x16, [sp, #280]
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:209
+/home/dofingert/Source/OS/THYOS/lib/entry.S:209
 ffffff8000081750:	910003e0 	mov	x0, sp
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:210
+/home/dofingert/Source/OS/THYOS/lib/entry.S:210
 ffffff8000081754:	d5382001 	mrs	x1, ttbr0_el1
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:211
+/home/dofingert/Source/OS/THYOS/lib/entry.S:211
 ffffff8000081758:	d5382022 	mrs	x2, ttbr1_el1
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:212
+/home/dofingert/Source/OS/THYOS/lib/entry.S:212
 ffffff800008175c:	94000bbd 	bl	ffffff8000084650 <handle_sync>
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:214
+/home/dofingert/Source/OS/THYOS/lib/entry.S:214
 ffffff8000081760:	a94007e0 	ldp	x0, x1, [sp]
 ffffff8000081764:	a9410fe2 	ldp	x2, x3, [sp, #16]
 ffffff8000081768:	a94217e4 	ldp	x4, x5, [sp, #32]
@@ -1574,16 +1574,16 @@ ffffff80000817ac:	d5184030 	msr	elr_el1, x16
 ffffff80000817b0:	f94087f0 	ldr	x16, [sp, #264]
 ffffff80000817b4:	d5184010 	msr	spsr_el1, x16
 ffffff80000817b8:	910483ff 	add	sp, sp, #0x120
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:215
+/home/dofingert/Source/OS/THYOS/lib/entry.S:215
 ffffff80000817bc:	d69f03e0 	eret
 
 ffffff80000817c0 <irq_vector_init>:
 irq_vector_init():
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:221
+/home/dofingert/Source/OS/THYOS/lib/entry.S:221
 ffffff80000817c0:	58000100 	ldr	x0, ffffff80000817e0 <irq_vector_init+0x20>
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:222
+/home/dofingert/Source/OS/THYOS/lib/entry.S:222
 ffffff80000817c4:	d518c000 	msr	vbar_el1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/entry.S:223
+/home/dofingert/Source/OS/THYOS/lib/entry.S:223
 ffffff80000817c8:	d65f03c0 	ret
 ffffff80000817cc:	00000000 	.inst	0x00000000 ; undefined
 ffffff80000817d0:	02000000 	.inst	0x02000000 ; undefined
@@ -1595,86 +1595,86 @@ ffffff80000817e4:	ffffff80 	.inst	0xffffff80 ; undefined
 
 ffffff80000817e8 <env_pop_tf>:
 env_pop_tf():
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:11
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:11
 ffffff80000817e8:	aa0003f0 	mov	x16, x0
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:13
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:13
 ffffff80000817ec:	a9400600 	ldp	x0, x1, [x16]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:14
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:14
 ffffff80000817f0:	a9410e02 	ldp	x2, x3, [x16, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:15
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:15
 ffffff80000817f4:	a9421604 	ldp	x4, x5, [x16, #32]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:16
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:16
 ffffff80000817f8:	a9431e06 	ldp	x6, x7, [x16, #48]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:17
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:17
 ffffff80000817fc:	a9442608 	ldp	x8, x9, [x16, #64]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:18
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:18
 ffffff8000081800:	a9452e0a 	ldp	x10, x11, [x16, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:19
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:19
 ffffff8000081804:	a946360c 	ldp	x12, x13, [x16, #96]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:20
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:20
 ffffff8000081808:	a9473e0e 	ldp	x14, x15, [x16, #112]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:21
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:21
 ffffff800008180c:	a9494e12 	ldp	x18, x19, [x16, #144]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:22
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:22
 ffffff8000081810:	a94a5614 	ldp	x20, x21, [x16, #160]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:23
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:23
 ffffff8000081814:	a94b5e16 	ldp	x22, x23, [x16, #176]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:24
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:24
 ffffff8000081818:	a94c6618 	ldp	x24, x25, [x16, #192]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:25
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:25
 ffffff800008181c:	a94d6e1a 	ldp	x26, x27, [x16, #208]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:26
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:26
 ffffff8000081820:	a94e761c 	ldp	x28, x29, [x16, #224]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:27
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:27
 ffffff8000081824:	f9407a1e 	ldr	x30, [x16, #240]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:29
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:29
 ffffff8000081828:	f9407e11 	ldr	x17, [x16, #248]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:30
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:30
 ffffff800008182c:	d5184111 	msr	sp_el0, x17
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:32
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:32
 ffffff8000081830:	f9408211 	ldr	x17, [x16, #256]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:33
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:33
 ffffff8000081834:	d5184031 	msr	elr_el1, x17
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:35
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:35
 ffffff8000081838:	f9408611 	ldr	x17, [x16, #264]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:36
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:36
 ffffff800008183c:	d5184011 	msr	spsr_el1, x17
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:37
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:37
 ffffff8000081840:	f9408211 	ldr	x17, [x16, #256]
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:40
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:40
 ffffff8000081844:	d69f03e0 	eret
 
 ffffff8000081848 <set_ttbr0>:
 set_ttbr0():
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:45
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:45
 ffffff8000081848:	d5182000 	msr	ttbr0_el1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:47
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:47
 ffffff800008184c:	d508831f 	tlbi	vmalle1is
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:49
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:49
 ffffff8000081850:	d5033f9f 	dsb	sy
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:50
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:50
 ffffff8000081854:	d5033fdf 	isb
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:51
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:51
 ffffff8000081858:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:52
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:52
 ffffff800008185c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:53
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:53
 ffffff8000081860:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:54
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:54
 ffffff8000081864:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:55
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:55
 ffffff8000081868:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:56
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:56
 ffffff800008186c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env_asm.S:57
+/home/dofingert/Source/OS/THYOS/lib/env_asm.S:57
 ffffff8000081870:	d65f03c0 	ret
 
 ffffff8000081874 <page2ppn>:
 page2ppn():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:22
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:22
 ffffff8000081874:	d10043ff 	sub	sp, sp, #0x10
 ffffff8000081878:	f90007e0 	str	x0, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:23
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:23
 ffffff800008187c:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081880:	913d2000 	add	x0, x0, #0xf48
 ffffff8000081884:	f9400000 	ldr	x0, [x0]
@@ -1684,31 +1684,31 @@ ffffff8000081890:	9343fc01 	asr	x1, x0, #3
 ffffff8000081894:	b201f3e0 	mov	x0, #0xaaaaaaaaaaaaaaaa    	// #-6148914691236517206
 ffffff8000081898:	f2955560 	movk	x0, #0xaaab
 ffffff800008189c:	9b007c20 	mul	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:24
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:24
 ffffff80000818a0:	910043ff 	add	sp, sp, #0x10
 ffffff80000818a4:	d65f03c0 	ret
 
 ffffff80000818a8 <page2pa>:
 page2pa():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:27
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:27
 ffffff80000818a8:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000818ac:	910003fd 	mov	x29, sp
 ffffff80000818b0:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:28
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:28
 ffffff80000818b4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000818b8:	97ffffef 	bl	ffffff8000081874 <page2ppn>
 ffffff80000818bc:	d374cc00 	lsl	x0, x0, #12
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:29
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:29
 ffffff80000818c0:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff80000818c4:	d65f03c0 	ret
 
 ffffff80000818c8 <pa2page>:
 pa2page():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:32
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:32
 ffffff80000818c8:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000818cc:	910003fd 	mov	x29, sp
 ffffff80000818d0:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:33
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:33
 ffffff80000818d4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000818d8:	d34cfc01 	lsr	x1, x0, #12
 ffffff80000818dc:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
@@ -1716,7 +1716,7 @@ ffffff80000818e0:	913ca000 	add	x0, x0, #0xf28
 ffffff80000818e4:	f9400000 	ldr	x0, [x0]
 ffffff80000818e8:	eb00003f 	cmp	x1, x0
 ffffff80000818ec:	54000103 	b.cc	ffffff800008190c <pa2page+0x44>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:34
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:34
 ffffff80000818f0:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff80000818f4:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000818f8:	910b0002 	add	x2, x0, #0x2c0
@@ -1724,7 +1724,7 @@ ffffff80000818fc:	52800441 	mov	w1, #0x22                  	// #34
 ffffff8000081900:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081904:	910ba000 	add	x0, x0, #0x2e8
 ffffff8000081908:	9400050c 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:35
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:35
 ffffff800008190c:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081910:	913d2000 	add	x0, x0, #0xf48
 ffffff8000081914:	f9400002 	ldr	x2, [x0]
@@ -1735,17 +1735,17 @@ ffffff8000081924:	d37ff800 	lsl	x0, x0, #1
 ffffff8000081928:	8b010000 	add	x0, x0, x1
 ffffff800008192c:	d37df000 	lsl	x0, x0, #3
 ffffff8000081930:	8b000040 	add	x0, x2, x0
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:36
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:36
 ffffff8000081934:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000081938:	d65f03c0 	ret
 
 ffffff800008193c <page2kva>:
 page2kva():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:39
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:39
 ffffff800008193c:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000081940:	910003fd 	mov	x29, sp
 ffffff8000081944:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40
 ffffff8000081948:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008194c:	97ffffd7 	bl	ffffff80000818a8 <page2pa>
 ffffff8000081950:	d34cfc00 	lsr	x0, x0, #12
@@ -1759,7 +1759,7 @@ ffffff800008196c:	f9400000 	ldr	x0, [x0]
 ffffff8000081970:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000081974:	eb00003f 	cmp	x1, x0
 ffffff8000081978:	54000143 	b.cc	ffffff80000819a0 <page2kva+0x64>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 1)
 ffffff800008197c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081980:	97ffffca 	bl	ffffff80000818a8 <page2pa>
 ffffff8000081984:	aa0003e3 	mov	x3, x0
@@ -1769,31 +1769,31 @@ ffffff8000081990:	52800501 	mov	w1, #0x28                  	// #40
 ffffff8000081994:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081998:	910ba000 	add	x0, x0, #0x2e8
 ffffff800008199c:	940004e7 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
 ffffff80000819a0:	f94013e1 	ldr	x1, [sp, #32]
 ffffff80000819a4:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff80000819a8:	8b000020 	add	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:41 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:41 (discriminator 2)
 ffffff80000819ac:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff80000819b0:	d65f03c0 	ret
 
 ffffff80000819b4 <asid_alloc>:
 asid_alloc():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:44
+/home/dofingert/Source/OS/THYOS/lib/env.c:44
 ffffff80000819b4:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000819b8:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:47
+/home/dofingert/Source/OS/THYOS/lib/env.c:47
 ffffff80000819bc:	b9001fff 	str	wzr, [sp, #28]
 ffffff80000819c0:	14000022 	b	ffffff8000081a48 <asid_alloc+0x94>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:50
+/home/dofingert/Source/OS/THYOS/lib/env.c:50
 ffffff80000819c4:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff80000819c8:	13057c00 	asr	w0, w0, #5
 ffffff80000819cc:	b9001be0 	str	w0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:52
+/home/dofingert/Source/OS/THYOS/lib/env.c:52
 ffffff80000819d0:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff80000819d4:	12001000 	and	w0, w0, #0x1f
 ffffff80000819d8:	b90017e0 	str	w0, [sp, #20]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:53
+/home/dofingert/Source/OS/THYOS/lib/env.c:53
 ffffff80000819dc:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000819e0:	913b6000 	add	x0, x0, #0xed8
 ffffff80000819e4:	b9801be1 	ldrsw	x1, [sp, #24]
@@ -1804,7 +1804,7 @@ ffffff80000819f4:	1ac12041 	lsl	w1, w2, w1
 ffffff80000819f8:	0a010000 	and	w0, w0, w1
 ffffff80000819fc:	7100001f 	cmp	w0, #0x0
 ffffff8000081a00:	540001e1 	b.ne	ffffff8000081a3c <asid_alloc+0x88>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:55
+/home/dofingert/Source/OS/THYOS/lib/env.c:55
 ffffff8000081a04:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081a08:	913b6000 	add	x0, x0, #0xed8
 ffffff8000081a0c:	b9801be1 	ldrsw	x1, [sp, #24]
@@ -1817,42 +1817,42 @@ ffffff8000081a24:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_star
 ffffff8000081a28:	913b6000 	add	x0, x0, #0xed8
 ffffff8000081a2c:	b9801be1 	ldrsw	x1, [sp, #24]
 ffffff8000081a30:	b8217802 	str	w2, [x0, x1, lsl #2]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:56
+/home/dofingert/Source/OS/THYOS/lib/env.c:56
 ffffff8000081a34:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000081a38:	1400000d 	b	ffffff8000081a6c <asid_alloc+0xb8>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:47 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:47 (discriminator 2)
 ffffff8000081a3c:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000081a40:	11000400 	add	w0, w0, #0x1
 ffffff8000081a44:	b9001fe0 	str	w0, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:47 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:47 (discriminator 1)
 ffffff8000081a48:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000081a4c:	7100fc1f 	cmp	w0, #0x3f
 ffffff8000081a50:	54fffbad 	b.le	ffffff80000819c4 <asid_alloc+0x10>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:59
+/home/dofingert/Source/OS/THYOS/lib/env.c:59
 ffffff8000081a54:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081a58:	910ca002 	add	x2, x0, #0x328
 ffffff8000081a5c:	52800761 	mov	w1, #0x3b                  	// #59
 ffffff8000081a60:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081a64:	910d0000 	add	x0, x0, #0x340
 ffffff8000081a68:	940004b4 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:60 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:60 (discriminator 1)
 ffffff8000081a6c:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000081a70:	d65f03c0 	ret
 
 ffffff8000081a74 <asid_free>:
 asid_free():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:69
+/home/dofingert/Source/OS/THYOS/lib/env.c:69
 ffffff8000081a74:	d10083ff 	sub	sp, sp, #0x20
 ffffff8000081a78:	b9000fe0 	str	w0, [sp, #12]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:71
+/home/dofingert/Source/OS/THYOS/lib/env.c:71
 ffffff8000081a7c:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000081a80:	53057c00 	lsr	w0, w0, #5
 ffffff8000081a84:	b9001fe0 	str	w0, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:72
+/home/dofingert/Source/OS/THYOS/lib/env.c:72
 ffffff8000081a88:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000081a8c:	12001000 	and	w0, w0, #0x1f
 ffffff8000081a90:	b9001be0 	str	w0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:73
+/home/dofingert/Source/OS/THYOS/lib/env.c:73
 ffffff8000081a94:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081a98:	913b6000 	add	x0, x0, #0xed8
 ffffff8000081a9c:	b9801fe1 	ldrsw	x1, [sp, #28]
@@ -1866,18 +1866,18 @@ ffffff8000081ab8:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_star
 ffffff8000081abc:	913b6000 	add	x0, x0, #0xed8
 ffffff8000081ac0:	b9801fe1 	ldrsw	x1, [sp, #28]
 ffffff8000081ac4:	b8217802 	str	w2, [x0, x1, lsl #2]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:74
+/home/dofingert/Source/OS/THYOS/lib/env.c:74
 ffffff8000081ac8:	d503201f 	nop
 ffffff8000081acc:	910083ff 	add	sp, sp, #0x20
 ffffff8000081ad0:	d65f03c0 	ret
 
 ffffff8000081ad4 <mkenvid>:
 mkenvid():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:86
+/home/dofingert/Source/OS/THYOS/lib/env.c:86
 ffffff8000081ad4:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000081ad8:	910003fd 	mov	x29, sp
 ffffff8000081adc:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:87
+/home/dofingert/Source/OS/THYOS/lib/env.c:87
 ffffff8000081ae0:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081ae4:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081ae8:	f9400000 	ldr	x0, [x0]
@@ -1890,40 +1890,40 @@ ffffff8000081b00:	f2df5f40 	movk	x0, #0xfafa, lsl #32
 ffffff8000081b04:	f2ff5f40 	movk	x0, #0xfafa, lsl #48
 ffffff8000081b08:	9b007c20 	mul	x0, x1, x0
 ffffff8000081b0c:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:88
+/home/dofingert/Source/OS/THYOS/lib/env.c:88
 ffffff8000081b10:	97ffffa9 	bl	ffffff80000819b4 <asid_alloc>
 ffffff8000081b14:	b9002be0 	str	w0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:90
+/home/dofingert/Source/OS/THYOS/lib/env.c:90
 ffffff8000081b18:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000081b1c:	53155001 	lsl	w1, w0, #11
 ffffff8000081b20:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000081b24:	2a000020 	orr	w0, w1, w0
 ffffff8000081b28:	32160000 	orr	w0, w0, #0x400
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:91
+/home/dofingert/Source/OS/THYOS/lib/env.c:91
 ffffff8000081b2c:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000081b30:	d65f03c0 	ret
 
 ffffff8000081b34 <envid2env>:
 envid2env():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:108
+/home/dofingert/Source/OS/THYOS/lib/env.c:108
 ffffff8000081b34:	d10083ff 	sub	sp, sp, #0x20
 ffffff8000081b38:	b9000fe0 	str	w0, [sp, #12]
 ffffff8000081b3c:	f90003e1 	str	x1, [sp]
 ffffff8000081b40:	b9000be2 	str	w2, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:112
+/home/dofingert/Source/OS/THYOS/lib/env.c:112
 ffffff8000081b44:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000081b48:	7100001f 	cmp	w0, #0x0
 ffffff8000081b4c:	54000101 	b.ne	ffffff8000081b6c <envid2env+0x38>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:114
+/home/dofingert/Source/OS/THYOS/lib/env.c:114
 ffffff8000081b50:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081b54:	913b2000 	add	x0, x0, #0xec8
 ffffff8000081b58:	f9400001 	ldr	x1, [x0]
 ffffff8000081b5c:	f94003e0 	ldr	x0, [sp]
 ffffff8000081b60:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:115
+/home/dofingert/Source/OS/THYOS/lib/env.c:115
 ffffff8000081b64:	52800000 	mov	w0, #0x0                   	// #0
 ffffff8000081b68:	14000034 	b	ffffff8000081c38 <envid2env+0x104>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:118
+/home/dofingert/Source/OS/THYOS/lib/env.c:118
 ffffff8000081b6c:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081b70:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081b74:	f9400002 	ldr	x2, [x0]
@@ -1937,35 +1937,35 @@ ffffff8000081b90:	8b010000 	add	x0, x0, x1
 ffffff8000081b94:	d37df000 	lsl	x0, x0, #3
 ffffff8000081b98:	8b000040 	add	x0, x2, x0
 ffffff8000081b9c:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:120
+/home/dofingert/Source/OS/THYOS/lib/env.c:120
 ffffff8000081ba0:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081ba4:	b9413800 	ldr	w0, [x0, #312]
 ffffff8000081ba8:	7100001f 	cmp	w0, #0x0
 ffffff8000081bac:	540000c0 	b.eq	ffffff8000081bc4 <envid2env+0x90>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:120 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:120 (discriminator 1)
 ffffff8000081bb0:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081bb4:	b9413000 	ldr	w0, [x0, #304]
 ffffff8000081bb8:	b9400fe1 	ldr	w1, [sp, #12]
 ffffff8000081bbc:	6b00003f 	cmp	w1, w0
 ffffff8000081bc0:	540000a0 	b.eq	ffffff8000081bd4 <envid2env+0xa0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:122
+/home/dofingert/Source/OS/THYOS/lib/env.c:122
 ffffff8000081bc4:	f94003e0 	ldr	x0, [sp]
 ffffff8000081bc8:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:123
+/home/dofingert/Source/OS/THYOS/lib/env.c:123
 ffffff8000081bcc:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff8000081bd0:	1400001a 	b	ffffff8000081c38 <envid2env+0x104>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:132
+/home/dofingert/Source/OS/THYOS/lib/env.c:132
 ffffff8000081bd4:	b9400be0 	ldr	w0, [sp, #8]
 ffffff8000081bd8:	7100001f 	cmp	w0, #0x0
 ffffff8000081bdc:	54000260 	b.eq	ffffff8000081c28 <envid2env+0xf4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:134
+/home/dofingert/Source/OS/THYOS/lib/env.c:134
 ffffff8000081be0:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081be4:	913b2000 	add	x0, x0, #0xec8
 ffffff8000081be8:	f9400000 	ldr	x0, [x0]
 ffffff8000081bec:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000081bf0:	eb00003f 	cmp	x1, x0
 ffffff8000081bf4:	540001a0 	b.eq	ffffff8000081c28 <envid2env+0xf4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:134 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:134 (discriminator 1)
 ffffff8000081bf8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081bfc:	b9413401 	ldr	w1, [x0, #308]
 ffffff8000081c00:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
@@ -1974,44 +1974,44 @@ ffffff8000081c08:	f9400000 	ldr	x0, [x0]
 ffffff8000081c0c:	b9413000 	ldr	w0, [x0, #304]
 ffffff8000081c10:	6b00003f 	cmp	w1, w0
 ffffff8000081c14:	540000a0 	b.eq	ffffff8000081c28 <envid2env+0xf4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:136
+/home/dofingert/Source/OS/THYOS/lib/env.c:136
 ffffff8000081c18:	f94003e0 	ldr	x0, [sp]
 ffffff8000081c1c:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:137
+/home/dofingert/Source/OS/THYOS/lib/env.c:137
 ffffff8000081c20:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff8000081c24:	14000005 	b	ffffff8000081c38 <envid2env+0x104>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:141
+/home/dofingert/Source/OS/THYOS/lib/env.c:141
 ffffff8000081c28:	f94003e0 	ldr	x0, [sp]
 ffffff8000081c2c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000081c30:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:142
+/home/dofingert/Source/OS/THYOS/lib/env.c:142
 ffffff8000081c34:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:143
+/home/dofingert/Source/OS/THYOS/lib/env.c:143
 ffffff8000081c38:	910083ff 	add	sp, sp, #0x20
 ffffff8000081c3c:	d65f03c0 	ret
 
 ffffff8000081c40 <env_init>:
 env_init():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:154
+/home/dofingert/Source/OS/THYOS/lib/env.c:154
 ffffff8000081c40:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000081c44:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:157
+/home/dofingert/Source/OS/THYOS/lib/env.c:157
 ffffff8000081c48:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081c4c:	913b4000 	add	x0, x0, #0xed0
 ffffff8000081c50:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:159
+/home/dofingert/Source/OS/THYOS/lib/env.c:159
 ffffff8000081c54:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081c58:	913c0000 	add	x0, x0, #0xf00
 ffffff8000081c5c:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:160
+/home/dofingert/Source/OS/THYOS/lib/env.c:160
 ffffff8000081c60:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081c64:	913c0000 	add	x0, x0, #0xf00
 ffffff8000081c68:	f900041f 	str	xzr, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:169
+/home/dofingert/Source/OS/THYOS/lib/env.c:169
 ffffff8000081c6c:	52807fe0 	mov	w0, #0x3ff                 	// #1023
 ffffff8000081c70:	b9001fe0 	str	w0, [sp, #28]
 ffffff8000081c74:	1400004e 	b	ffffff8000081dac <env_init+0x16c>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:171
+/home/dofingert/Source/OS/THYOS/lib/env.c:171
 ffffff8000081c78:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081c7c:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081c80:	f9400002 	ldr	x2, [x0]
@@ -2024,7 +2024,7 @@ ffffff8000081c98:	8b010000 	add	x0, x0, x1
 ffffff8000081c9c:	d37df000 	lsl	x0, x0, #3
 ffffff8000081ca0:	8b000040 	add	x0, x2, x0
 ffffff8000081ca4:	b901381f 	str	wzr, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:172
+/home/dofingert/Source/OS/THYOS/lib/env.c:172
 ffffff8000081ca8:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081cac:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081cb0:	f9400002 	ldr	x2, [x0]
@@ -2043,7 +2043,7 @@ ffffff8000081ce0:	f9009001 	str	x1, [x0, #288]
 ffffff8000081ce4:	f9409000 	ldr	x0, [x0, #288]
 ffffff8000081ce8:	f100001f 	cmp	x0, #0x0
 ffffff8000081cec:	54000220 	b.eq	ffffff8000081d30 <env_init+0xf0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:172 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:172 (discriminator 1)
 ffffff8000081cf0:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081cf4:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081cf8:	f9400002 	ldr	x2, [x0]
@@ -2060,7 +2060,7 @@ ffffff8000081d20:	913b4000 	add	x0, x0, #0xed0
 ffffff8000081d24:	f9400000 	ldr	x0, [x0]
 ffffff8000081d28:	91048021 	add	x1, x1, #0x120
 ffffff8000081d2c:	f9009401 	str	x1, [x0, #296]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:172 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:172 (discriminator 3)
 ffffff8000081d30:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081d34:	913b0000 	add	x0, x0, #0xec0
 ffffff8000081d38:	f9400002 	ldr	x2, [x0]
@@ -2089,76 +2089,76 @@ ffffff8000081d90:	8b000040 	add	x0, x2, x0
 ffffff8000081d94:	f0000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081d98:	913b4021 	add	x1, x1, #0xed0
 ffffff8000081d9c:	f9009401 	str	x1, [x0, #296]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:169 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:169 (discriminator 3)
 ffffff8000081da0:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000081da4:	51000400 	sub	w0, w0, #0x1
 ffffff8000081da8:	b9001fe0 	str	w0, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:169 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:169 (discriminator 2)
 ffffff8000081dac:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000081db0:	7100001f 	cmp	w0, #0x0
 ffffff8000081db4:	54fff62a 	b.ge	ffffff8000081c78 <env_init+0x38>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:175
+/home/dofingert/Source/OS/THYOS/lib/env.c:175
 ffffff8000081db8:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081dbc:	910d2002 	add	x2, x0, #0x348
 ffffff8000081dc0:	528015e1 	mov	w1, #0xaf                  	// #175
 ffffff8000081dc4:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081dc8:	910d0000 	add	x0, x0, #0x340
 ffffff8000081dcc:	940003aa 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:176
+/home/dofingert/Source/OS/THYOS/lib/env.c:176
 ffffff8000081dd0:	d503201f 	nop
 ffffff8000081dd4:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000081dd8:	d65f03c0 	ret
 
 ffffff8000081ddc <env_setup_vm>:
 env_setup_vm():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:185
+/home/dofingert/Source/OS/THYOS/lib/env.c:185
 ffffff8000081ddc:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000081de0:	910003fd 	mov	x29, sp
 ffffff8000081de4:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:187
+/home/dofingert/Source/OS/THYOS/lib/env.c:187
 ffffff8000081de8:	f90013ff 	str	xzr, [sp, #32]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:197
+/home/dofingert/Source/OS/THYOS/lib/env.c:197
 ffffff8000081dec:	910083e0 	add	x0, sp, #0x20
 ffffff8000081df0:	940011fb 	bl	ffffff80000865dc <page_alloc>
 ffffff8000081df4:	b9003be0 	str	w0, [sp, #56]
 ffffff8000081df8:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000081dfc:	7100001f 	cmp	w0, #0x0
 ffffff8000081e00:	540000e0 	b.eq	ffffff8000081e1c <env_setup_vm+0x40>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:199
+/home/dofingert/Source/OS/THYOS/lib/env.c:199
 ffffff8000081e04:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081e08:	910dc002 	add	x2, x0, #0x370
 ffffff8000081e0c:	528018e1 	mov	w1, #0xc7                  	// #199
 ffffff8000081e10:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081e14:	910d0000 	add	x0, x0, #0x340
 ffffff8000081e18:	940003c8 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:203
+/home/dofingert/Source/OS/THYOS/lib/env.c:203
 ffffff8000081e1c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000081e20:	79402001 	ldrh	w1, [x0, #16]
 ffffff8000081e24:	11000421 	add	w1, w1, #0x1
 ffffff8000081e28:	12003c21 	and	w1, w1, #0xffff
 ffffff8000081e2c:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:204
+/home/dofingert/Source/OS/THYOS/lib/env.c:204
 ffffff8000081e30:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000081e34:	97fffec2 	bl	ffffff800008193c <page2kva>
 ffffff8000081e38:	f9001be0 	str	x0, [sp, #48]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:207
+/home/dofingert/Source/OS/THYOS/lib/env.c:207
 ffffff8000081e3c:	b9003fff 	str	wzr, [sp, #60]
 ffffff8000081e40:	14000009 	b	ffffff8000081e64 <env_setup_vm+0x88>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:209 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:209 (discriminator 3)
 ffffff8000081e44:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff8000081e48:	d37df000 	lsl	x0, x0, #3
 ffffff8000081e4c:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000081e50:	8b000020 	add	x0, x1, x0
 ffffff8000081e54:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:207 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:207 (discriminator 3)
 ffffff8000081e58:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000081e5c:	11000400 	add	w0, w0, #0x1
 ffffff8000081e60:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:207 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:207 (discriminator 1)
 ffffff8000081e64:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000081e68:	7107fc1f 	cmp	w0, #0x1ff
 ffffff8000081e6c:	54fffecd 	b.le	ffffff8000081e44 <env_setup_vm+0x68>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:211
+/home/dofingert/Source/OS/THYOS/lib/env.c:211
 ffffff8000081e70:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081e74:	913c8000 	add	x0, x0, #0xf20
 ffffff8000081e78:	f9400001 	ldr	x1, [x0]
@@ -2166,7 +2166,7 @@ ffffff8000081e7c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000081e80:	911fc000 	add	x0, x0, #0x7f0
 ffffff8000081e84:	f943f821 	ldr	x1, [x1, #2032]
 ffffff8000081e88:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:212
+/home/dofingert/Source/OS/THYOS/lib/env.c:212
 ffffff8000081e8c:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081e90:	913c8000 	add	x0, x0, #0xf20
 ffffff8000081e94:	f9400001 	ldr	x1, [x0]
@@ -2174,18 +2174,18 @@ ffffff8000081e98:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000081e9c:	911fe000 	add	x0, x0, #0x7f8
 ffffff8000081ea0:	f943fc21 	ldr	x1, [x1, #2040]
 ffffff8000081ea4:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:215
+/home/dofingert/Source/OS/THYOS/lib/env.c:215
 ffffff8000081ea8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081eac:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000081eb0:	f900a001 	str	x1, [x0, #320]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:216
+/home/dofingert/Source/OS/THYOS/lib/env.c:216
 ffffff8000081eb4:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000081eb8:	f90017e0 	str	x0, [sp, #40]
 ffffff8000081ebc:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000081ec0:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff8000081ec4:	eb00003f 	cmp	x1, x0
 ffffff8000081ec8:	54000108 	b.hi	ffffff8000081ee8 <env_setup_vm+0x10c>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:216 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:216 (discriminator 1)
 ffffff8000081ecc:	f94017e3 	ldr	x3, [sp, #40]
 ffffff8000081ed0:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081ed4:	910e6002 	add	x2, x0, #0x398
@@ -2193,13 +2193,13 @@ ffffff8000081ed8:	52801b01 	mov	w1, #0xd8                  	// #216
 ffffff8000081edc:	d0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000081ee0:	910d0000 	add	x0, x0, #0x340
 ffffff8000081ee4:	94000395 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:216 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:216 (discriminator 2)
 ffffff8000081ee8:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000081eec:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000081ef0:	8b000021 	add	x1, x1, x0
 ffffff8000081ef4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081ef8:	f900a401 	str	x1, [x0, #328]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:218 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:218 (discriminator 2)
 ffffff8000081efc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081f00:	f940a402 	ldr	x2, [x0, #328]
 ffffff8000081f04:	f9400fe0 	ldr	x0, [sp, #24]
@@ -2208,119 +2208,119 @@ ffffff8000081f0c:	91200000 	add	x0, x0, #0x800
 ffffff8000081f10:	d2806861 	mov	x1, #0x343                 	// #835
 ffffff8000081f14:	aa010041 	orr	x1, x2, x1
 ffffff8000081f18:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:220 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:220 (discriminator 2)
 ffffff8000081f1c:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:221 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:221 (discriminator 2)
 ffffff8000081f20:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000081f24:	d65f03c0 	ret
 
 ffffff8000081f28 <env_alloc>:
 env_alloc():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:243
+/home/dofingert/Source/OS/THYOS/lib/env.c:243
 ffffff8000081f28:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000081f2c:	910003fd 	mov	x29, sp
 ffffff8000081f30:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000081f34:	b90017e1 	str	w1, [sp, #20]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:247
+/home/dofingert/Source/OS/THYOS/lib/env.c:247
 ffffff8000081f38:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081f3c:	913b4000 	add	x0, x0, #0xed0
 ffffff8000081f40:	f9400000 	ldr	x0, [x0]
 ffffff8000081f44:	f100001f 	cmp	x0, #0x0
 ffffff8000081f48:	540000a1 	b.ne	ffffff8000081f5c <env_alloc+0x34>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:249
+/home/dofingert/Source/OS/THYOS/lib/env.c:249
 ffffff8000081f4c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081f50:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:250
+/home/dofingert/Source/OS/THYOS/lib/env.c:250
 ffffff8000081f54:	12800080 	mov	w0, #0xfffffffb            	// #-5
 ffffff8000081f58:	14000030 	b	ffffff8000082018 <env_alloc+0xf0>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:252
+/home/dofingert/Source/OS/THYOS/lib/env.c:252
 ffffff8000081f5c:	f0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000081f60:	913b4000 	add	x0, x0, #0xed0
 ffffff8000081f64:	f9400000 	ldr	x0, [x0]
 ffffff8000081f68:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:256
+/home/dofingert/Source/OS/THYOS/lib/env.c:256
 ffffff8000081f6c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081f70:	97ffff9b 	bl	ffffff8000081ddc <env_setup_vm>
 ffffff8000081f74:	3100101f 	cmn	w0, #0x4
 ffffff8000081f78:	540000a1 	b.ne	ffffff8000081f8c <env_alloc+0x64>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:258
+/home/dofingert/Source/OS/THYOS/lib/env.c:258
 ffffff8000081f7c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000081f80:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:259
+/home/dofingert/Source/OS/THYOS/lib/env.c:259
 ffffff8000081f84:	12800080 	mov	w0, #0xfffffffb            	// #-5
 ffffff8000081f88:	14000024 	b	ffffff8000082018 <env_alloc+0xf0>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:263
+/home/dofingert/Source/OS/THYOS/lib/env.c:263
 ffffff8000081f8c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081f90:	97fffed1 	bl	ffffff8000081ad4 <mkenvid>
 ffffff8000081f94:	2a0003e1 	mov	w1, w0
 ffffff8000081f98:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081f9c:	b9013001 	str	w1, [x0, #304]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:264
+/home/dofingert/Source/OS/THYOS/lib/env.c:264
 ffffff8000081fa0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fa4:	52800021 	mov	w1, #0x1                   	// #1
 ffffff8000081fa8:	b9013801 	str	w1, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:265
+/home/dofingert/Source/OS/THYOS/lib/env.c:265
 ffffff8000081fac:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fb0:	b94017e1 	ldr	w1, [sp, #20]
 ffffff8000081fb4:	b9013401 	str	w1, [x0, #308]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:266
+/home/dofingert/Source/OS/THYOS/lib/env.c:266
 ffffff8000081fb8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fbc:	b901901f 	str	wzr, [x0, #400]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:271
+/home/dofingert/Source/OS/THYOS/lib/env.c:271
 ffffff8000081fc0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fc4:	b27347e1 	mov	x1, #0x7fffe000            	// #2147475456
 ffffff8000081fc8:	f2c007e1 	movk	x1, #0x3f, lsl #32
 ffffff8000081fcc:	f9007c01 	str	x1, [x0, #248]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:274
+/home/dofingert/Source/OS/THYOS/lib/env.c:274
 ffffff8000081fd0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fd4:	f9409000 	ldr	x0, [x0, #288]
 ffffff8000081fd8:	f100001f 	cmp	x0, #0x0
 ffffff8000081fdc:	540000c0 	b.eq	ffffff8000081ff4 <env_alloc+0xcc>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:274 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:274 (discriminator 1)
 ffffff8000081fe0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081fe4:	f9409000 	ldr	x0, [x0, #288]
 ffffff8000081fe8:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000081fec:	f9409421 	ldr	x1, [x1, #296]
 ffffff8000081ff0:	f9009401 	str	x1, [x0, #296]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:274 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:274 (discriminator 3)
 ffffff8000081ff4:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000081ff8:	f9409400 	ldr	x0, [x0, #296]
 ffffff8000081ffc:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000082000:	f9409021 	ldr	x1, [x1, #288]
 ffffff8000082004:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:275 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:275 (discriminator 3)
 ffffff8000082008:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008200c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000082010:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:276 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:276 (discriminator 3)
 ffffff8000082014:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:277
+/home/dofingert/Source/OS/THYOS/lib/env.c:277
 ffffff8000082018:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff800008201c:	d65f03c0 	ret
 
 ffffff8000082020 <env_create_priority>:
 env_create_priority():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:289
+/home/dofingert/Source/OS/THYOS/lib/env.c:289
 ffffff8000082020:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000082024:	910003fd 	mov	x29, sp
 ffffff8000082028:	f9000fe0 	str	x0, [sp, #24]
 ffffff800008202c:	b90017e1 	str	w1, [sp, #20]
 ffffff8000082030:	b90013e2 	str	w2, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:292
+/home/dofingert/Source/OS/THYOS/lib/env.c:292
 ffffff8000082034:	9100a3e0 	add	x0, sp, #0x28
 ffffff8000082038:	52800001 	mov	w1, #0x0                   	// #0
 ffffff800008203c:	97ffffbb 	bl	ffffff8000081f28 <env_alloc>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:294
+/home/dofingert/Source/OS/THYOS/lib/env.c:294
 ffffff8000082040:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082044:	b94013e1 	ldr	w1, [sp, #16]
 ffffff8000082048:	b9016001 	str	w1, [x0, #352]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:297
+/home/dofingert/Source/OS/THYOS/lib/env.c:297
 ffffff800008204c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082050:	b98017e1 	ldrsw	x1, [sp, #20]
 ffffff8000082054:	aa0103e2 	mov	x2, x1
 ffffff8000082058:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff800008205c:	9400028c 	bl	ffffff8000082a8c <load_icode>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:299
+/home/dofingert/Source/OS/THYOS/lib/env.c:299
 ffffff8000082060:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082064:	d0000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082068:	913c0021 	add	x1, x1, #0xf00
@@ -2329,14 +2329,14 @@ ffffff8000082070:	f900a801 	str	x1, [x0, #336]
 ffffff8000082074:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000082078:	f100001f 	cmp	x0, #0x0
 ffffff800008207c:	540000e0 	b.eq	ffffff8000082098 <env_create_priority+0x78>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:299 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:299 (discriminator 1)
 ffffff8000082080:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000082084:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082088:	913c0000 	add	x0, x0, #0xf00
 ffffff800008208c:	f9400000 	ldr	x0, [x0]
 ffffff8000082090:	91054021 	add	x1, x1, #0x150
 ffffff8000082094:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:299 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:299 (discriminator 3)
 ffffff8000082098:	f94017e1 	ldr	x1, [sp, #40]
 ffffff800008209c:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000820a0:	913c0000 	add	x0, x0, #0xf00
@@ -2345,49 +2345,49 @@ ffffff80000820a8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000820ac:	d0000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000820b0:	913c0021 	add	x1, x1, #0xf00
 ffffff80000820b4:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:300 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:300 (discriminator 3)
 ffffff80000820b8:	d503201f 	nop
 ffffff80000820bc:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff80000820c0:	d65f03c0 	ret
 
 ffffff80000820c4 <env_create>:
 env_create():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:308
+/home/dofingert/Source/OS/THYOS/lib/env.c:308
 ffffff80000820c4:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000820c8:	910003fd 	mov	x29, sp
 ffffff80000820cc:	f9000fe0 	str	x0, [sp, #24]
 ffffff80000820d0:	b90017e1 	str	w1, [sp, #20]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:310
+/home/dofingert/Source/OS/THYOS/lib/env.c:310
 ffffff80000820d4:	52800022 	mov	w2, #0x1                   	// #1
 ffffff80000820d8:	b94017e1 	ldr	w1, [sp, #20]
 ffffff80000820dc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000820e0:	97ffffd0 	bl	ffffff8000082020 <env_create_priority>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:311
+/home/dofingert/Source/OS/THYOS/lib/env.c:311
 ffffff80000820e4:	d503201f 	nop
 ffffff80000820e8:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff80000820ec:	d65f03c0 	ret
 
 ffffff80000820f0 <env_free>:
 env_free():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:317
+/home/dofingert/Source/OS/THYOS/lib/env.c:317
 ffffff80000820f0:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
 ffffff80000820f4:	910003fd 	mov	x29, sp
 ffffff80000820f8:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:320
+/home/dofingert/Source/OS/THYOS/lib/env.c:320
 ffffff80000820fc:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082100:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082104:	f9400000 	ldr	x0, [x0]
 ffffff8000082108:	f100001f 	cmp	x0, #0x0
 ffffff800008210c:	540000c0 	b.eq	ffffff8000082124 <env_free+0x34>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:320 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:320 (discriminator 1)
 ffffff8000082110:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082114:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082118:	f9400000 	ldr	x0, [x0]
 ffffff800008211c:	b9413000 	ldr	w0, [x0, #304]
 ffffff8000082120:	14000002 	b	ffffff8000082128 <env_free+0x38>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:320 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:320 (discriminator 2)
 ffffff8000082124:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:320 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/env.c:320 (discriminator 4)
 ffffff8000082128:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff800008212c:	b9413021 	ldr	w1, [x1, #304]
 ffffff8000082130:	2a0103e4 	mov	w4, w1
@@ -2398,10 +2398,10 @@ ffffff8000082140:	52802801 	mov	w1, #0x140                 	// #320
 ffffff8000082144:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082148:	910d0000 	add	x0, x0, #0x340
 ffffff800008214c:	940002ca 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:322 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/env.c:322 (discriminator 4)
 ffffff8000082150:	f90037ff 	str	xzr, [sp, #104]
 ffffff8000082154:	14000095 	b	ffffff80000823a8 <env_free+0x2b8>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:324
+/home/dofingert/Source/OS/THYOS/lib/env.c:324
 ffffff8000082158:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008215c:	f940a001 	ldr	x1, [x0, #320]
 ffffff8000082160:	f94037e0 	ldr	x0, [sp, #104]
@@ -2411,7 +2411,7 @@ ffffff800008216c:	f9400000 	ldr	x0, [x0]
 ffffff8000082170:	92400000 	and	x0, x0, #0x1
 ffffff8000082174:	f100001f 	cmp	x0, #0x0
 ffffff8000082178:	54001100 	b.eq	ffffff8000082398 <env_free+0x2a8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:329
+/home/dofingert/Source/OS/THYOS/lib/env.c:329
 ffffff800008217c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082180:	f940a001 	ldr	x1, [x0, #320]
 ffffff8000082184:	f94037e0 	ldr	x0, [sp, #104]
@@ -2435,7 +2435,7 @@ ffffff80000821c8:	f9400000 	ldr	x0, [x0]
 ffffff80000821cc:	f94027e1 	ldr	x1, [sp, #72]
 ffffff80000821d0:	eb00003f 	cmp	x1, x0
 ffffff80000821d4:	540001e3 	b.cc	ffffff8000082210 <env_free+0x120>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:329 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:329 (discriminator 1)
 ffffff80000821d8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000821dc:	f940a001 	ldr	x1, [x0, #320]
 ffffff80000821e0:	f94037e0 	ldr	x0, [sp, #104]
@@ -2450,15 +2450,15 @@ ffffff8000082200:	52802921 	mov	w1, #0x149                 	// #329
 ffffff8000082204:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082208:	910d0000 	add	x0, x0, #0x340
 ffffff800008220c:	940002cb 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:329 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:329 (discriminator 2)
 ffffff8000082210:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000082214:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000082218:	8b000020 	add	x0, x1, x0
 ffffff800008221c:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:330 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:330 (discriminator 2)
 ffffff8000082220:	f90033ff 	str	xzr, [sp, #96]
 ffffff8000082224:	14000055 	b	ffffff8000082378 <env_free+0x288>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:332
+/home/dofingert/Source/OS/THYOS/lib/env.c:332
 ffffff8000082228:	f94033e0 	ldr	x0, [sp, #96]
 ffffff800008222c:	d37df000 	lsl	x0, x0, #3
 ffffff8000082230:	f9401fe1 	ldr	x1, [sp, #56]
@@ -2467,7 +2467,7 @@ ffffff8000082238:	f9400000 	ldr	x0, [x0]
 ffffff800008223c:	92400000 	and	x0, x0, #0x1
 ffffff8000082240:	f100001f 	cmp	x0, #0x0
 ffffff8000082244:	54000920 	b.eq	ffffff8000082368 <env_free+0x278>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:337
+/home/dofingert/Source/OS/THYOS/lib/env.c:337
 ffffff8000082248:	f94033e0 	ldr	x0, [sp, #96]
 ffffff800008224c:	d37df000 	lsl	x0, x0, #3
 ffffff8000082250:	f9401fe1 	ldr	x1, [sp, #56]
@@ -2489,7 +2489,7 @@ ffffff800008228c:	f9400000 	ldr	x0, [x0]
 ffffff8000082290:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000082294:	eb00003f 	cmp	x1, x0
 ffffff8000082298:	540001c3 	b.cc	ffffff80000822d0 <env_free+0x1e0>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:337 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:337 (discriminator 1)
 ffffff800008229c:	f94033e0 	ldr	x0, [sp, #96]
 ffffff80000822a0:	d37df000 	lsl	x0, x0, #3
 ffffff80000822a4:	f9401fe1 	ldr	x1, [sp, #56]
@@ -2503,15 +2503,15 @@ ffffff80000822c0:	52802a21 	mov	w1, #0x151                 	// #337
 ffffff80000822c4:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000822c8:	910d0000 	add	x0, x0, #0x340
 ffffff80000822cc:	9400029b 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:337 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:337 (discriminator 2)
 ffffff80000822d0:	f94017e1 	ldr	x1, [sp, #40]
 ffffff80000822d4:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff80000822d8:	8b000020 	add	x0, x1, x0
 ffffff80000822dc:	f90013e0 	str	x0, [sp, #32]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:338 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:338 (discriminator 2)
 ffffff80000822e0:	f9002fff 	str	xzr, [sp, #88]
 ffffff80000822e4:	14000019 	b	ffffff8000082348 <env_free+0x258>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:340
+/home/dofingert/Source/OS/THYOS/lib/env.c:340
 ffffff80000822e8:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000822ec:	d37df000 	lsl	x0, x0, #3
 ffffff80000822f0:	f94013e1 	ldr	x1, [sp, #32]
@@ -2520,7 +2520,7 @@ ffffff80000822f8:	f9400000 	ldr	x0, [x0]
 ffffff80000822fc:	92400000 	and	x0, x0, #0x1
 ffffff8000082300:	f100001f 	cmp	x0, #0x0
 ffffff8000082304:	540001c1 	b.ne	ffffff800008233c <env_free+0x24c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:342
+/home/dofingert/Source/OS/THYOS/lib/env.c:342
 ffffff8000082308:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008230c:	f940a002 	ldr	x2, [x0, #320]
 ffffff8000082310:	f94037e0 	ldr	x0, [sp, #104]
@@ -2534,64 +2534,64 @@ ffffff800008232c:	8b000020 	add	x0, x1, x0
 ffffff8000082330:	aa0003e1 	mov	x1, x0
 ffffff8000082334:	aa0203e0 	mov	x0, x2
 ffffff8000082338:	9400121c 	bl	ffffff8000086ba8 <page_remove>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:338 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:338 (discriminator 2)
 ffffff800008233c:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000082340:	91000400 	add	x0, x0, #0x1
 ffffff8000082344:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:338 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:338 (discriminator 1)
 ffffff8000082348:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff800008234c:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000082350:	54fffcc9 	b.ls	ffffff80000822e8 <env_free+0x1f8>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:345
+/home/dofingert/Source/OS/THYOS/lib/env.c:345
 ffffff8000082354:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082358:	f940a000 	ldr	x0, [x0, #320]
 ffffff800008235c:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000082360:	94001212 	bl	ffffff8000086ba8 <page_remove>
 ffffff8000082364:	14000002 	b	ffffff800008236c <env_free+0x27c>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:334
+/home/dofingert/Source/OS/THYOS/lib/env.c:334
 ffffff8000082368:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:330 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:330 (discriminator 2)
 ffffff800008236c:	f94033e0 	ldr	x0, [sp, #96]
 ffffff8000082370:	91000400 	add	x0, x0, #0x1
 ffffff8000082374:	f90033e0 	str	x0, [sp, #96]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:330 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:330 (discriminator 1)
 ffffff8000082378:	f94033e0 	ldr	x0, [sp, #96]
 ffffff800008237c:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000082380:	54fff549 	b.ls	ffffff8000082228 <env_free+0x138>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:347
+/home/dofingert/Source/OS/THYOS/lib/env.c:347
 ffffff8000082384:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082388:	f940a000 	ldr	x0, [x0, #320]
 ffffff800008238c:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff8000082390:	94001206 	bl	ffffff8000086ba8 <page_remove>
 ffffff8000082394:	14000002 	b	ffffff800008239c <env_free+0x2ac>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:326
+/home/dofingert/Source/OS/THYOS/lib/env.c:326
 ffffff8000082398:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:322 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/env.c:322 (discriminator 2)
 ffffff800008239c:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000823a0:	91000400 	add	x0, x0, #0x1
 ffffff80000823a4:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:322 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:322 (discriminator 1)
 ffffff80000823a8:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000823ac:	f103f41f 	cmp	x0, #0xfd
 ffffff80000823b0:	54ffed49 	b.ls	ffffff8000082158 <env_free+0x68>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:349
+/home/dofingert/Source/OS/THYOS/lib/env.c:349
 ffffff80000823b4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000823b8:	f940a400 	ldr	x0, [x0, #328]
 ffffff80000823bc:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:350
+/home/dofingert/Source/OS/THYOS/lib/env.c:350
 ffffff80000823c0:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000823c4:	f900a01f 	str	xzr, [x0, #320]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:351
+/home/dofingert/Source/OS/THYOS/lib/env.c:351
 ffffff80000823c8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000823cc:	f900a41f 	str	xzr, [x0, #328]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:352
+/home/dofingert/Source/OS/THYOS/lib/env.c:352
 ffffff80000823d0:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000823d4:	97fffd3d 	bl	ffffff80000818c8 <pa2page>
 ffffff80000823d8:	940011e2 	bl	ffffff8000086b60 <page_decref>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:353
+/home/dofingert/Source/OS/THYOS/lib/env.c:353
 ffffff80000823dc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000823e0:	b901381f 	str	wzr, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:354
+/home/dofingert/Source/OS/THYOS/lib/env.c:354
 ffffff80000823e4:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000823e8:	913b4000 	add	x0, x0, #0xed0
 ffffff80000823ec:	f9400001 	ldr	x1, [x0]
@@ -2601,14 +2601,14 @@ ffffff80000823f8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000823fc:	f9409000 	ldr	x0, [x0, #288]
 ffffff8000082400:	f100001f 	cmp	x0, #0x0
 ffffff8000082404:	540000e0 	b.eq	ffffff8000082420 <env_free+0x330>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:354 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:354 (discriminator 1)
 ffffff8000082408:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008240c:	913b4000 	add	x0, x0, #0xed0
 ffffff8000082410:	f9400000 	ldr	x0, [x0]
 ffffff8000082414:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000082418:	91048021 	add	x1, x1, #0x120
 ffffff800008241c:	f9009401 	str	x1, [x0, #296]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:354 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:354 (discriminator 3)
 ffffff8000082420:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082424:	913b4000 	add	x0, x0, #0xed0
 ffffff8000082428:	f9400fe1 	ldr	x1, [sp, #24]
@@ -2617,93 +2617,93 @@ ffffff8000082430:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082434:	d0000061 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082438:	913b4021 	add	x1, x1, #0xed0
 ffffff800008243c:	f9009401 	str	x1, [x0, #296]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:355 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:355 (discriminator 3)
 ffffff8000082440:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082444:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000082448:	f100001f 	cmp	x0, #0x0
 ffffff800008244c:	540000c0 	b.eq	ffffff8000082464 <env_free+0x374>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:355 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/env.c:355 (discriminator 1)
 ffffff8000082450:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082454:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000082458:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff800008245c:	f940ac21 	ldr	x1, [x1, #344]
 ffffff8000082460:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:355 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:355 (discriminator 3)
 ffffff8000082464:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082468:	f940ac00 	ldr	x0, [x0, #344]
 ffffff800008246c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000082470:	f940a821 	ldr	x1, [x1, #336]
 ffffff8000082474:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:356 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:356 (discriminator 3)
 ffffff8000082478:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008247c:	b9413000 	ldr	w0, [x0, #304]
 ffffff8000082480:	530b7c00 	lsr	w0, w0, #11
 ffffff8000082484:	97fffd7c 	bl	ffffff8000081a74 <asid_free>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:357 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:357 (discriminator 3)
 ffffff8000082488:	94001359 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:358 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/env.c:358 (discriminator 3)
 ffffff800008248c:	d503201f 	nop
 ffffff8000082490:	a8c77bfd 	ldp	x29, x30, [sp], #112
 ffffff8000082494:	d65f03c0 	ret
 
 ffffff8000082498 <env_destroy>:
 env_destroy():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:364
+/home/dofingert/Source/OS/THYOS/lib/env.c:364
 ffffff8000082498:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff800008249c:	910003fd 	mov	x29, sp
 ffffff80000824a0:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:366
+/home/dofingert/Source/OS/THYOS/lib/env.c:366
 ffffff80000824a4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000824a8:	b9413000 	ldr	w0, [x0, #304]
 ffffff80000824ac:	2a0003e1 	mov	w1, w0
 ffffff80000824b0:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000824b4:	910f6000 	add	x0, x0, #0x3d8
 ffffff80000824b8:	940001c3 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:367
+/home/dofingert/Source/OS/THYOS/lib/env.c:367
 ffffff80000824bc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000824c0:	97ffff0c 	bl	ffffff80000820f0 <env_free>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:370
+/home/dofingert/Source/OS/THYOS/lib/env.c:370
 ffffff80000824c4:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000824c8:	913b2000 	add	x0, x0, #0xec8
 ffffff80000824cc:	f9400000 	ldr	x0, [x0]
 ffffff80000824d0:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000824d4:	eb00003f 	cmp	x1, x0
 ffffff80000824d8:	54000161 	b.ne	ffffff8000082504 <env_destroy+0x6c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:372
+/home/dofingert/Source/OS/THYOS/lib/env.c:372
 ffffff80000824dc:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000824e0:	913b2000 	add	x0, x0, #0xec8
 ffffff80000824e4:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:374
+/home/dofingert/Source/OS/THYOS/lib/env.c:374
 ffffff80000824e8:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff80000824ec:	b259c7e1 	mov	x1, #0xffffff8001ffffff    	// #-549722259457
 ffffff80000824f0:	f29fdc01 	movk	x1, #0xfee0
 ffffff80000824f4:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff80000824f8:	f299dc00 	movk	x0, #0xcee0
 ffffff80000824fc:	94000c3f 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:377
+/home/dofingert/Source/OS/THYOS/lib/env.c:377
 ffffff8000082500:	940006bb 	bl	ffffff8000083fec <sched_yield>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:379
+/home/dofingert/Source/OS/THYOS/lib/env.c:379
 ffffff8000082504:	d503201f 	nop
 ffffff8000082508:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff800008250c:	d65f03c0 	ret
 
 ffffff8000082510 <env_run>:
 env_run():
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:393
+/home/dofingert/Source/OS/THYOS/lib/env.c:393
 ffffff8000082510:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000082514:	910003fd 	mov	x29, sp
 ffffff8000082518:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:398
+/home/dofingert/Source/OS/THYOS/lib/env.c:398
 ffffff800008251c:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082520:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082524:	f9400000 	ldr	x0, [x0]
 ffffff8000082528:	f100001f 	cmp	x0, #0x0
 ffffff800008252c:	54000160 	b.eq	ffffff8000082558 <env_run+0x48>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:400
+/home/dofingert/Source/OS/THYOS/lib/env.c:400
 ffffff8000082530:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff8000082534:	f29fdc00 	movk	x0, #0xfee0
 ffffff8000082538:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:401
+/home/dofingert/Source/OS/THYOS/lib/env.c:401
 ffffff800008253c:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082540:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082544:	f9400000 	ldr	x0, [x0]
@@ -2711,35 +2711,35 @@ ffffff8000082548:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff800008254c:	aa0003e1 	mov	x1, x0
 ffffff8000082550:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082554:	94000c29 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:406
+/home/dofingert/Source/OS/THYOS/lib/env.c:406
 ffffff8000082558:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008255c:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082560:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000082564:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:407
+/home/dofingert/Source/OS/THYOS/lib/env.c:407
 ffffff8000082568:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008256c:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082570:	f9400000 	ldr	x0, [x0]
 ffffff8000082574:	f940a400 	ldr	x0, [x0, #328]
 ffffff8000082578:	97fffcb4 	bl	ffffff8000081848 <set_ttbr0>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:408
+/home/dofingert/Source/OS/THYOS/lib/env.c:408
 ffffff800008257c:	9400131c 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:409
+/home/dofingert/Source/OS/THYOS/lib/env.c:409
 ffffff8000082580:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000082584:	913b2000 	add	x0, x0, #0xec8
 ffffff8000082588:	f9400000 	ldr	x0, [x0]
 ffffff800008258c:	97fffc97 	bl	ffffff80000817e8 <env_pop_tf>
-/home/thysrael/OS/PIOS/THYOS/lib/env.c:410
+/home/dofingert/Source/OS/THYOS/lib/env.c:410
 ffffff8000082590:	d503201f 	nop
 ffffff8000082594:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000082598:	d65f03c0 	ret
 
 ffffff800008259c <page2ppn>:
 page2ppn():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:22
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:22
 ffffff800008259c:	d10043ff 	sub	sp, sp, #0x10
 ffffff80000825a0:	f90007e0 	str	x0, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:23
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:23
 ffffff80000825a4:	d0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000825a8:	913d2000 	add	x0, x0, #0xf48
 ffffff80000825ac:	f9400000 	ldr	x0, [x0]
@@ -2749,31 +2749,31 @@ ffffff80000825b8:	9343fc01 	asr	x1, x0, #3
 ffffff80000825bc:	b201f3e0 	mov	x0, #0xaaaaaaaaaaaaaaaa    	// #-6148914691236517206
 ffffff80000825c0:	f2955560 	movk	x0, #0xaaab
 ffffff80000825c4:	9b007c20 	mul	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:24
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:24
 ffffff80000825c8:	910043ff 	add	sp, sp, #0x10
 ffffff80000825cc:	d65f03c0 	ret
 
 ffffff80000825d0 <page2pa>:
 page2pa():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:27
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:27
 ffffff80000825d0:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000825d4:	910003fd 	mov	x29, sp
 ffffff80000825d8:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:28
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:28
 ffffff80000825dc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000825e0:	97ffffef 	bl	ffffff800008259c <page2ppn>
 ffffff80000825e4:	d374cc00 	lsl	x0, x0, #12
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:29
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:29
 ffffff80000825e8:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff80000825ec:	d65f03c0 	ret
 
 ffffff80000825f0 <page2kva>:
 page2kva():
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:39
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:39
 ffffff80000825f0:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff80000825f4:	910003fd 	mov	x29, sp
 ffffff80000825f8:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40
 ffffff80000825fc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082600:	97fffff4 	bl	ffffff80000825d0 <page2pa>
 ffffff8000082604:	d34cfc00 	lsr	x0, x0, #12
@@ -2787,7 +2787,7 @@ ffffff8000082620:	f9400000 	ldr	x0, [x0]
 ffffff8000082624:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000082628:	eb00003f 	cmp	x1, x0
 ffffff800008262c:	54000143 	b.cc	ffffff8000082654 <page2kva+0x64>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 1)
 ffffff8000082630:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082634:	97ffffe7 	bl	ffffff80000825d0 <page2pa>
 ffffff8000082638:	aa0003e3 	mov	x3, x0
@@ -2797,62 +2797,62 @@ ffffff8000082644:	52800501 	mov	w1, #0x28                  	// #40
 ffffff8000082648:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008264c:	91108000 	add	x0, x0, #0x420
 ffffff8000082650:	940001ba 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:40 (discriminator 2)
 ffffff8000082654:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000082658:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff800008265c:	8b000020 	add	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/../include/pmap.h:41 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/../include/pmap.h:41 (discriminator 2)
 ffffff8000082660:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000082664:	d65f03c0 	ret
 
 ffffff8000082668 <is_elf_format>:
 is_elf_format():
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:27
+/home/dofingert/Source/OS/THYOS/lib/load.c:27
 ffffff8000082668:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff800008266c:	910003fd 	mov	x29, sp
 ffffff8000082670:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:28
+/home/dofingert/Source/OS/THYOS/lib/load.c:28
 ffffff8000082674:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082678:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:30
+/home/dofingert/Source/OS/THYOS/lib/load.c:30
 ffffff800008267c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082680:	39400000 	ldrb	w0, [x0]
 ffffff8000082684:	7100001f 	cmp	w0, #0x0
 ffffff8000082688:	54000261 	b.ne	ffffff80000826d4 <is_elf_format+0x6c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:31 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/load.c:31 (discriminator 1)
 ffffff800008268c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082690:	39400400 	ldrb	w0, [x0, #1]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:30 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/load.c:30 (discriminator 1)
 ffffff8000082694:	7100041f 	cmp	w0, #0x1
 ffffff8000082698:	540001e1 	b.ne	ffffff80000826d4 <is_elf_format+0x6c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:32
+/home/dofingert/Source/OS/THYOS/lib/load.c:32
 ffffff800008269c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000826a0:	39400800 	ldrb	w0, [x0, #2]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:31
+/home/dofingert/Source/OS/THYOS/lib/load.c:31
 ffffff80000826a4:	7100081f 	cmp	w0, #0x2
 ffffff80000826a8:	54000161 	b.ne	ffffff80000826d4 <is_elf_format+0x6c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:33
+/home/dofingert/Source/OS/THYOS/lib/load.c:33
 ffffff80000826ac:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000826b0:	39400c00 	ldrb	w0, [x0, #3]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:32
+/home/dofingert/Source/OS/THYOS/lib/load.c:32
 ffffff80000826b4:	71000c1f 	cmp	w0, #0x3
 ffffff80000826b8:	540000e1 	b.ne	ffffff80000826d4 <is_elf_format+0x6c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:35
+/home/dofingert/Source/OS/THYOS/lib/load.c:35
 ffffff80000826bc:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000826c0:	9110e002 	add	x2, x0, #0x438
 ffffff80000826c4:	52800461 	mov	w1, #0x23                  	// #35
 ffffff80000826c8:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000826cc:	91116000 	add	x0, x0, #0x458
 ffffff80000826d0:	9400019a 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:39
+/home/dofingert/Source/OS/THYOS/lib/load.c:39
 ffffff80000826d4:	52800020 	mov	w0, #0x1                   	// #1
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:40
+/home/dofingert/Source/OS/THYOS/lib/load.c:40
 ffffff80000826d8:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff80000826dc:	d65f03c0 	ret
 
 ffffff80000826e0 <load_icode_mapper>:
 load_icode_mapper():
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:44
+/home/dofingert/Source/OS/THYOS/lib/load.c:44
 ffffff80000826e0:	a9b57bfd 	stp	x29, x30, [sp, #-176]!
 ffffff80000826e4:	910003fd 	mov	x29, sp
 ffffff80000826e8:	f9000bf3 	str	x19, [sp, #16]
@@ -2861,30 +2861,30 @@ ffffff80000826f0:	f90023e1 	str	x1, [sp, #64]
 ffffff80000826f4:	f9001fe2 	str	x2, [sp, #56]
 ffffff80000826f8:	f9001be3 	str	x3, [sp, #48]
 ffffff80000826fc:	f90017e4 	str	x4, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:45
+/home/dofingert/Source/OS/THYOS/lib/load.c:45
 ffffff8000082700:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082704:	f90053e0 	str	x0, [sp, #160]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:46
+/home/dofingert/Source/OS/THYOS/lib/load.c:46
 ffffff8000082708:	f9002fff 	str	xzr, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:49
+/home/dofingert/Source/OS/THYOS/lib/load.c:49
 ffffff800008270c:	f94027e0 	ldr	x0, [sp, #72]
 ffffff8000082710:	92402c00 	and	x0, x0, #0xfff
 ffffff8000082714:	f9004fe0 	str	x0, [sp, #152]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:51
+/home/dofingert/Source/OS/THYOS/lib/load.c:51
 ffffff8000082718:	f9404fe0 	ldr	x0, [sp, #152]
 ffffff800008271c:	f100001f 	cmp	x0, #0x0
 ffffff8000082720:	54000480 	b.eq	ffffff80000827b0 <load_icode_mapper+0xd0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:53
+/home/dofingert/Source/OS/THYOS/lib/load.c:53
 ffffff8000082724:	910163e0 	add	x0, sp, #0x58
 ffffff8000082728:	94000fad 	bl	ffffff80000865dc <page_alloc>
 ffffff800008272c:	b90097e0 	str	w0, [sp, #148]
 ffffff8000082730:	b94097e0 	ldr	w0, [sp, #148]
 ffffff8000082734:	7100001f 	cmp	w0, #0x0
 ffffff8000082738:	54000060 	b.eq	ffffff8000082744 <load_icode_mapper+0x64>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:54
+/home/dofingert/Source/OS/THYOS/lib/load.c:54
 ffffff800008273c:	b94097e0 	ldr	w0, [sp, #148]
 ffffff8000082740:	14000079 	b	ffffff8000082924 <load_icode_mapper+0x244>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:55
+/home/dofingert/Source/OS/THYOS/lib/load.c:55
 ffffff8000082744:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000082748:	97ffffaa 	bl	ffffff80000825f0 <page2kva>
 ffffff800008274c:	aa0003e1 	mov	x1, x0
@@ -2906,18 +2906,18 @@ ffffff8000082788:	aa0003e2 	mov	x2, x0
 ffffff800008278c:	aa0303e1 	mov	x1, x3
 ffffff8000082790:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000082794:	94000b99 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:56
+/home/dofingert/Source/OS/THYOS/lib/load.c:56
 ffffff8000082798:	f94053e0 	ldr	x0, [sp, #160]
 ffffff800008279c:	f940a000 	ldr	x0, [x0, #320]
 ffffff80000827a0:	f9402fe1 	ldr	x1, [sp, #88]
 ffffff80000827a4:	d2800003 	mov	x3, #0x0                   	// #0
 ffffff80000827a8:	f94027e2 	ldr	x2, [sp, #72]
 ffffff80000827ac:	94001076 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59
+/home/dofingert/Source/OS/THYOS/lib/load.c:59
 ffffff80000827b0:	f9404fe0 	ldr	x0, [sp, #152]
 ffffff80000827b4:	f100001f 	cmp	x0, #0x0
 ffffff80000827b8:	540001a0 	b.eq	ffffff80000827ec <load_icode_mapper+0x10c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/load.c:59 (discriminator 1)
 ffffff80000827bc:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000827c0:	f9003fe0 	str	x0, [sp, #120]
 ffffff80000827c4:	d2820001 	mov	x1, #0x1000                	// #4096
@@ -2930,22 +2930,22 @@ ffffff80000827dc:	f9403fe1 	ldr	x1, [sp, #120]
 ffffff80000827e0:	eb00005f 	cmp	x2, x0
 ffffff80000827e4:	9a809020 	csel	x0, x1, x0, ls  // ls = plast
 ffffff80000827e8:	14000002 	b	ffffff80000827f0 <load_icode_mapper+0x110>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/load.c:59 (discriminator 2)
 ffffff80000827ec:	d2800000 	mov	x0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/load.c:59 (discriminator 4)
 ffffff80000827f0:	f90057e0 	str	x0, [sp, #168]
 ffffff80000827f4:	1400002c 	b	ffffff80000828a4 <load_icode_mapper+0x1c4>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:62
+/home/dofingert/Source/OS/THYOS/lib/load.c:62
 ffffff80000827f8:	910163e0 	add	x0, sp, #0x58
 ffffff80000827fc:	94000f78 	bl	ffffff80000865dc <page_alloc>
 ffffff8000082800:	b90097e0 	str	w0, [sp, #148]
 ffffff8000082804:	b94097e0 	ldr	w0, [sp, #148]
 ffffff8000082808:	7100001f 	cmp	w0, #0x0
 ffffff800008280c:	54000060 	b.eq	ffffff8000082818 <load_icode_mapper+0x138>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:63
+/home/dofingert/Source/OS/THYOS/lib/load.c:63
 ffffff8000082810:	b94097e0 	ldr	w0, [sp, #148]
 ffffff8000082814:	14000044 	b	ffffff8000082924 <load_icode_mapper+0x244>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:64 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/load.c:64 (discriminator 6)
 ffffff8000082818:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff800008281c:	f94057e0 	ldr	x0, [sp, #168]
 ffffff8000082820:	8b000033 	add	x19, x1, x0
@@ -2967,7 +2967,7 @@ ffffff800008285c:	aa0003e2 	mov	x2, x0
 ffffff8000082860:	aa0303e1 	mov	x1, x3
 ffffff8000082864:	aa1303e0 	mov	x0, x19
 ffffff8000082868:	94000b64 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:65 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/load.c:65 (discriminator 6)
 ffffff800008286c:	f94053e0 	ldr	x0, [sp, #160]
 ffffff8000082870:	f940a004 	ldr	x4, [x0, #320]
 ffffff8000082874:	f9402fe5 	ldr	x5, [sp, #88]
@@ -2979,28 +2979,28 @@ ffffff8000082888:	aa0003e2 	mov	x2, x0
 ffffff800008288c:	aa0503e1 	mov	x1, x5
 ffffff8000082890:	aa0403e0 	mov	x0, x4
 ffffff8000082894:	9400103c 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/load.c:59 (discriminator 6)
 ffffff8000082898:	f94057e0 	ldr	x0, [sp, #168]
 ffffff800008289c:	91400400 	add	x0, x0, #0x1, lsl #12
 ffffff80000828a0:	f90057e0 	str	x0, [sp, #168]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:59 (discriminator 5)
+/home/dofingert/Source/OS/THYOS/lib/load.c:59 (discriminator 5)
 ffffff80000828a4:	f94057e1 	ldr	x1, [sp, #168]
 ffffff80000828a8:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000828ac:	eb00003f 	cmp	x1, x0
 ffffff80000828b0:	54fffa43 	b.cc	ffffff80000827f8 <load_icode_mapper+0x118>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:69
+/home/dofingert/Source/OS/THYOS/lib/load.c:69
 ffffff80000828b4:	14000017 	b	ffffff8000082910 <load_icode_mapper+0x230>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:71
+/home/dofingert/Source/OS/THYOS/lib/load.c:71
 ffffff80000828b8:	910163e0 	add	x0, sp, #0x58
 ffffff80000828bc:	94000f48 	bl	ffffff80000865dc <page_alloc>
 ffffff80000828c0:	b90097e0 	str	w0, [sp, #148]
 ffffff80000828c4:	b94097e0 	ldr	w0, [sp, #148]
 ffffff80000828c8:	7100001f 	cmp	w0, #0x0
 ffffff80000828cc:	54000060 	b.eq	ffffff80000828d8 <load_icode_mapper+0x1f8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:72
+/home/dofingert/Source/OS/THYOS/lib/load.c:72
 ffffff80000828d0:	b94097e0 	ldr	w0, [sp, #148]
 ffffff80000828d4:	14000014 	b	ffffff8000082924 <load_icode_mapper+0x244>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:73
+/home/dofingert/Source/OS/THYOS/lib/load.c:73
 ffffff80000828d8:	f94053e0 	ldr	x0, [sp, #160]
 ffffff80000828dc:	f940a004 	ldr	x4, [x0, #320]
 ffffff80000828e0:	f9402fe5 	ldr	x5, [sp, #88]
@@ -3012,25 +3012,25 @@ ffffff80000828f4:	aa0003e2 	mov	x2, x0
 ffffff80000828f8:	aa0503e1 	mov	x1, x5
 ffffff80000828fc:	aa0403e0 	mov	x0, x4
 ffffff8000082900:	94001021 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:74
+/home/dofingert/Source/OS/THYOS/lib/load.c:74
 ffffff8000082904:	f94057e0 	ldr	x0, [sp, #168]
 ffffff8000082908:	91400400 	add	x0, x0, #0x1, lsl #12
 ffffff800008290c:	f90057e0 	str	x0, [sp, #168]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:69
+/home/dofingert/Source/OS/THYOS/lib/load.c:69
 ffffff8000082910:	f94057e1 	ldr	x1, [sp, #168]
 ffffff8000082914:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000082918:	eb00003f 	cmp	x1, x0
 ffffff800008291c:	54fffce3 	b.cc	ffffff80000828b8 <load_icode_mapper+0x1d8>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:76
+/home/dofingert/Source/OS/THYOS/lib/load.c:76
 ffffff8000082920:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:77 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/load.c:77 (discriminator 1)
 ffffff8000082924:	f9400bf3 	ldr	x19, [sp, #16]
 ffffff8000082928:	a8cb7bfd 	ldp	x29, x30, [sp], #176
 ffffff800008292c:	d65f03c0 	ret
 
 ffffff8000082930 <load_elf>:
 load_elf():
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:82
+/home/dofingert/Source/OS/THYOS/lib/load.c:82
 ffffff8000082930:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
 ffffff8000082934:	910003fd 	mov	x29, sp
 ffffff8000082938:	f9001fe0 	str	x0, [sp, #56]
@@ -3038,58 +3038,58 @@ ffffff800008293c:	b90037e1 	str	w1, [sp, #52]
 ffffff8000082940:	f90017e2 	str	x2, [sp, #40]
 ffffff8000082944:	f90013e3 	str	x3, [sp, #32]
 ffffff8000082948:	f9000fe4 	str	x4, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:83
+/home/dofingert/Source/OS/THYOS/lib/load.c:83
 ffffff800008294c:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000082950:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:84
+/home/dofingert/Source/OS/THYOS/lib/load.c:84
 ffffff8000082954:	f9002bff 	str	xzr, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:89
+/home/dofingert/Source/OS/THYOS/lib/load.c:89
 ffffff8000082958:	f90037ff 	str	xzr, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:95
+/home/dofingert/Source/OS/THYOS/lib/load.c:95
 ffffff800008295c:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000082960:	71000c1f 	cmp	w0, #0x3
 ffffff8000082964:	540000ad 	b.le	ffffff8000082978 <load_elf+0x48>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:95 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/load.c:95 (discriminator 1)
 ffffff8000082968:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff800008296c:	97ffff3f 	bl	ffffff8000082668 <is_elf_format>
 ffffff8000082970:	7100001f 	cmp	w0, #0x0
 ffffff8000082974:	54000061 	b.ne	ffffff8000082980 <load_elf+0x50>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:97
+/home/dofingert/Source/OS/THYOS/lib/load.c:97
 ffffff8000082978:	12800000 	mov	w0, #0xffffffff            	// #-1
 ffffff800008297c:	14000042 	b	ffffff8000082a84 <load_elf+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:100
+/home/dofingert/Source/OS/THYOS/lib/load.c:100
 ffffff8000082980:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000082984:	f9401000 	ldr	x0, [x0, #32]
 ffffff8000082988:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff800008298c:	8b000020 	add	x0, x1, x0
 ffffff8000082990:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:101
+/home/dofingert/Source/OS/THYOS/lib/load.c:101
 ffffff8000082994:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000082998:	79407000 	ldrh	w0, [x0, #56]
 ffffff800008299c:	7900cfe0 	strh	w0, [sp, #102]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:102
+/home/dofingert/Source/OS/THYOS/lib/load.c:102
 ffffff80000829a0:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000829a4:	79406c00 	ldrh	w0, [x0, #54]
 ffffff80000829a8:	79009fe0 	strh	w0, [sp, #78]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:104
+/home/dofingert/Source/OS/THYOS/lib/load.c:104
 ffffff80000829ac:	1400002c 	b	ffffff8000082a5c <load_elf+0x12c>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:106
+/home/dofingert/Source/OS/THYOS/lib/load.c:106
 ffffff80000829b0:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000829b4:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:108
+/home/dofingert/Source/OS/THYOS/lib/load.c:108
 ffffff80000829b8:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000829bc:	b9400000 	ldr	w0, [x0]
 ffffff80000829c0:	7100041f 	cmp	w0, #0x1
 ffffff80000829c4:	54000441 	b.ne	ffffff8000082a4c <load_elf+0x11c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:112
+/home/dofingert/Source/OS/THYOS/lib/load.c:112
 ffffff80000829c8:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000829cc:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:114
+/home/dofingert/Source/OS/THYOS/lib/load.c:114
 ffffff80000829d0:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000829d4:	b9400000 	ldr	w0, [x0]
 ffffff80000829d8:	7100041f 	cmp	w0, #0x1
 ffffff80000829dc:	54000301 	b.ne	ffffff8000082a3c <load_elf+0x10c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:118
+/home/dofingert/Source/OS/THYOS/lib/load.c:118
 ffffff80000829e0:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000829e4:	f9400806 	ldr	x6, [x0, #16]
 ffffff80000829e8:	f9402be0 	ldr	x0, [sp, #80]
@@ -3108,58 +3108,58 @@ ffffff8000082a18:	aa0703e1 	mov	x1, x7
 ffffff8000082a1c:	aa0603e0 	mov	x0, x6
 ffffff8000082a20:	d63f00a0 	blr	x5
 ffffff8000082a24:	b9004be0 	str	w0, [sp, #72]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:119
+/home/dofingert/Source/OS/THYOS/lib/load.c:119
 ffffff8000082a28:	b9404be0 	ldr	w0, [sp, #72]
 ffffff8000082a2c:	7100001f 	cmp	w0, #0x0
 ffffff8000082a30:	54000060 	b.eq	ffffff8000082a3c <load_elf+0x10c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:120
+/home/dofingert/Source/OS/THYOS/lib/load.c:120
 ffffff8000082a34:	b9404be0 	ldr	w0, [sp, #72]
 ffffff8000082a38:	14000013 	b	ffffff8000082a84 <load_elf+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:123
+/home/dofingert/Source/OS/THYOS/lib/load.c:123
 ffffff8000082a3c:	79409fe0 	ldrh	w0, [sp, #78]
 ffffff8000082a40:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000082a44:	8b000020 	add	x0, x1, x0
 ffffff8000082a48:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:126
+/home/dofingert/Source/OS/THYOS/lib/load.c:126
 ffffff8000082a4c:	79409fe0 	ldrh	w0, [sp, #78]
 ffffff8000082a50:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000082a54:	8b000020 	add	x0, x1, x0
 ffffff8000082a58:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:104
+/home/dofingert/Source/OS/THYOS/lib/load.c:104
 ffffff8000082a5c:	7940cfe0 	ldrh	w0, [sp, #102]
 ffffff8000082a60:	51000401 	sub	w1, w0, #0x1
 ffffff8000082a64:	7900cfe1 	strh	w1, [sp, #102]
 ffffff8000082a68:	7100001f 	cmp	w0, #0x0
 ffffff8000082a6c:	54fffa21 	b.ne	ffffff80000829b0 <load_elf+0x80>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:129
+/home/dofingert/Source/OS/THYOS/lib/load.c:129
 ffffff8000082a70:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000082a74:	f9400c01 	ldr	x1, [x0, #24]
 ffffff8000082a78:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082a7c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:130
+/home/dofingert/Source/OS/THYOS/lib/load.c:130
 ffffff8000082a80:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:131
+/home/dofingert/Source/OS/THYOS/lib/load.c:131
 ffffff8000082a84:	a8c77bfd 	ldp	x29, x30, [sp], #112
 ffffff8000082a88:	d65f03c0 	ret
 
 ffffff8000082a8c <load_icode>:
 load_icode():
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:135
+/home/dofingert/Source/OS/THYOS/lib/load.c:135
 ffffff8000082a8c:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff8000082a90:	910003fd 	mov	x29, sp
 ffffff8000082a94:	f90017e0 	str	x0, [sp, #40]
 ffffff8000082a98:	f90013e1 	str	x1, [sp, #32]
 ffffff8000082a9c:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:142
+/home/dofingert/Source/OS/THYOS/lib/load.c:142
 ffffff8000082aa0:	f9001fff 	str	xzr, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:148
+/home/dofingert/Source/OS/THYOS/lib/load.c:148
 ffffff8000082aa4:	9100e3e0 	add	x0, sp, #0x38
 ffffff8000082aa8:	94000ecd 	bl	ffffff80000865dc <page_alloc>
 ffffff8000082aac:	3100101f 	cmn	w0, #0x4
 ffffff8000082ab0:	54000400 	b.eq	ffffff8000082b30 <load_icode+0xa4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:156
+/home/dofingert/Source/OS/THYOS/lib/load.c:156
 ffffff8000082ab4:	f90027ff 	str	xzr, [sp, #72]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:157
+/home/dofingert/Source/OS/THYOS/lib/load.c:157
 ffffff8000082ab8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082abc:	f940a000 	ldr	x0, [x0, #320]
 ffffff8000082ac0:	f9401fe1 	ldr	x1, [sp, #56]
@@ -3169,11 +3169,11 @@ ffffff8000082acc:	f2afffe2 	movk	x2, #0x7fff, lsl #16
 ffffff8000082ad0:	f2c007e2 	movk	x2, #0x3f, lsl #32
 ffffff8000082ad4:	94000fac 	bl	ffffff8000086984 <page_insert>
 ffffff8000082ad8:	b90047e0 	str	w0, [sp, #68]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:158
+/home/dofingert/Source/OS/THYOS/lib/load.c:158
 ffffff8000082adc:	b94047e0 	ldr	w0, [sp, #68]
 ffffff8000082ae0:	3100101f 	cmn	w0, #0x4
 ffffff8000082ae4:	540002a0 	b.eq	ffffff8000082b38 <load_icode+0xac>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:162
+/home/dofingert/Source/OS/THYOS/lib/load.c:162
 ffffff8000082ae8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000082aec:	2a0003e5 	mov	w5, w0
 ffffff8000082af0:	9100c3e1 	add	x1, sp, #0x30
@@ -3185,72 +3185,72 @@ ffffff8000082b04:	2a0503e1 	mov	w1, w5
 ffffff8000082b08:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000082b0c:	97ffff89 	bl	ffffff8000082930 <load_elf>
 ffffff8000082b10:	b90047e0 	str	w0, [sp, #68]
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:164
+/home/dofingert/Source/OS/THYOS/lib/load.c:164
 ffffff8000082b14:	b94047e0 	ldr	w0, [sp, #68]
 ffffff8000082b18:	7100001f 	cmp	w0, #0x0
 ffffff8000082b1c:	5400012b 	b.lt	ffffff8000082b40 <load_icode+0xb4>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:168
+/home/dofingert/Source/OS/THYOS/lib/load.c:168
 ffffff8000082b20:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000082b24:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082b28:	f9008001 	str	x1, [x0, #256]
 ffffff8000082b2c:	14000006 	b	ffffff8000082b44 <load_icode+0xb8>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:150
+/home/dofingert/Source/OS/THYOS/lib/load.c:150
 ffffff8000082b30:	d503201f 	nop
 ffffff8000082b34:	14000004 	b	ffffff8000082b44 <load_icode+0xb8>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:159
+/home/dofingert/Source/OS/THYOS/lib/load.c:159
 ffffff8000082b38:	d503201f 	nop
 ffffff8000082b3c:	14000002 	b	ffffff8000082b44 <load_icode+0xb8>
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:165
+/home/dofingert/Source/OS/THYOS/lib/load.c:165
 ffffff8000082b40:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/load.c:169
+/home/dofingert/Source/OS/THYOS/lib/load.c:169
 ffffff8000082b44:	a8c57bfd 	ldp	x29, x30, [sp], #80
 ffffff8000082b48:	d65f03c0 	ret
 
 ffffff8000082b4c <myoutput>:
 myoutput():
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:8
+/home/dofingert/Source/OS/THYOS/lib/printf.c:8
 ffffff8000082b4c:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000082b50:	910003fd 	mov	x29, sp
 ffffff8000082b54:	f90017e0 	str	x0, [sp, #40]
 ffffff8000082b58:	f90013e1 	str	x1, [sp, #32]
 ffffff8000082b5c:	b9001fe2 	str	w2, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:12
+/home/dofingert/Source/OS/THYOS/lib/printf.c:12
 ffffff8000082b60:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000082b64:	7100041f 	cmp	w0, #0x1
 ffffff8000082b68:	540000a1 	b.ne	ffffff8000082b7c <myoutput+0x30>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:12 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/printf.c:12 (discriminator 1)
 ffffff8000082b6c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000082b70:	39400000 	ldrb	w0, [x0]
 ffffff8000082b74:	7100001f 	cmp	w0, #0x0
 ffffff8000082b78:	54000200 	b.eq	ffffff8000082bb8 <myoutput+0x6c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:17
+/home/dofingert/Source/OS/THYOS/lib/printf.c:17
 ffffff8000082b7c:	b9003fff 	str	wzr, [sp, #60]
 ffffff8000082b80:	14000009 	b	ffffff8000082ba4 <myoutput+0x58>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:19 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/printf.c:19 (discriminator 3)
 ffffff8000082b84:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff8000082b88:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000082b8c:	8b000020 	add	x0, x1, x0
 ffffff8000082b90:	39400000 	ldrb	w0, [x0]
 ffffff8000082b94:	97fff5b1 	bl	ffffff8000080258 <uart_send>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:17 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/printf.c:17 (discriminator 3)
 ffffff8000082b98:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000082b9c:	11000400 	add	w0, w0, #0x1
 ffffff8000082ba0:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:17 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/printf.c:17 (discriminator 1)
 ffffff8000082ba4:	b9403fe1 	ldr	w1, [sp, #60]
 ffffff8000082ba8:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000082bac:	6b00003f 	cmp	w1, w0
 ffffff8000082bb0:	54fffeab 	b.lt	ffffff8000082b84 <myoutput+0x38>  // b.tstop
 ffffff8000082bb4:	14000002 	b	ffffff8000082bbc <myoutput+0x70>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:14
+/home/dofingert/Source/OS/THYOS/lib/printf.c:14
 ffffff8000082bb8:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:21
+/home/dofingert/Source/OS/THYOS/lib/printf.c:21
 ffffff8000082bbc:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000082bc0:	d65f03c0 	ret
 
 ffffff8000082bc4 <printf>:
 printf():
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:24
+/home/dofingert/Source/OS/THYOS/lib/printf.c:24
 ffffff8000082bc4:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
 ffffff8000082bc8:	910003fd 	mov	x29, sp
 ffffff8000082bcc:	f9001fe0 	str	x0, [sp, #56]
@@ -3269,7 +3269,7 @@ ffffff8000082bfc:	3d802be4 	str	q4, [sp, #160]
 ffffff8000082c00:	3d802fe5 	str	q5, [sp, #176]
 ffffff8000082c04:	3d8033e6 	str	q6, [sp, #192]
 ffffff8000082c08:	3d8037e7 	str	q7, [sp, #208]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:26
+/home/dofingert/Source/OS/THYOS/lib/printf.c:26
 ffffff8000082c0c:	910483e0 	add	x0, sp, #0x120
 ffffff8000082c10:	f90023e0 	str	x0, [sp, #64]
 ffffff8000082c14:	910483e0 	add	x0, sp, #0x120
@@ -3280,7 +3280,7 @@ ffffff8000082c24:	128006e0 	mov	w0, #0xffffffc8            	// #-56
 ffffff8000082c28:	b9005be0 	str	w0, [sp, #88]
 ffffff8000082c2c:	12800fe0 	mov	w0, #0xffffff80            	// #-128
 ffffff8000082c30:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:27
+/home/dofingert/Source/OS/THYOS/lib/printf.c:27
 ffffff8000082c34:	910043e2 	add	x2, sp, #0x10
 ffffff8000082c38:	910103e3 	add	x3, sp, #0x40
 ffffff8000082c3c:	a9400460 	ldp	x0, x1, [x3]
@@ -3294,14 +3294,14 @@ ffffff8000082c58:	d2800001 	mov	x1, #0x0                   	// #0
 ffffff8000082c5c:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xd8>
 ffffff8000082c60:	912d3000 	add	x0, x0, #0xb4c
 ffffff8000082c64:	94000067 	bl	ffffff8000082e00 <lp_Print>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:29
+/home/dofingert/Source/OS/THYOS/lib/printf.c:29
 ffffff8000082c68:	d503201f 	nop
 ffffff8000082c6c:	a8d27bfd 	ldp	x29, x30, [sp], #288
 ffffff8000082c70:	d65f03c0 	ret
 
 ffffff8000082c74 <debug_printf>:
 debug_printf():
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:32
+/home/dofingert/Source/OS/THYOS/lib/printf.c:32
 ffffff8000082c74:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
 ffffff8000082c78:	910003fd 	mov	x29, sp
 ffffff8000082c7c:	f90027e0 	str	x0, [sp, #72]
@@ -3320,13 +3320,13 @@ ffffff8000082cac:	3d802fe4 	str	q4, [sp, #176]
 ffffff8000082cb0:	3d8033e5 	str	q5, [sp, #192]
 ffffff8000082cb4:	3d8037e6 	str	q6, [sp, #208]
 ffffff8000082cb8:	3d803be7 	str	q7, [sp, #224]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:35
+/home/dofingert/Source/OS/THYOS/lib/printf.c:35
 ffffff8000082cbc:	b94047e2 	ldr	w2, [sp, #68]
 ffffff8000082cc0:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000082cc4:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082cc8:	91118000 	add	x0, x0, #0x460
 ffffff8000082ccc:	97ffffbe 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:37
+/home/dofingert/Source/OS/THYOS/lib/printf.c:37
 ffffff8000082cd0:	910483e0 	add	x0, sp, #0x120
 ffffff8000082cd4:	f9002be0 	str	x0, [sp, #80]
 ffffff8000082cd8:	910483e0 	add	x0, sp, #0x120
@@ -3337,7 +3337,7 @@ ffffff8000082ce8:	128004e0 	mov	w0, #0xffffffd8            	// #-40
 ffffff8000082cec:	b9006be0 	str	w0, [sp, #104]
 ffffff8000082cf0:	12800fe0 	mov	w0, #0xffffff80            	// #-128
 ffffff8000082cf4:	b9006fe0 	str	w0, [sp, #108]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:38
+/home/dofingert/Source/OS/THYOS/lib/printf.c:38
 ffffff8000082cf8:	910043e2 	add	x2, sp, #0x10
 ffffff8000082cfc:	910143e3 	add	x3, sp, #0x50
 ffffff8000082d00:	a9400460 	ldp	x0, x1, [x3]
@@ -3351,14 +3351,14 @@ ffffff8000082d1c:	d2800001 	mov	x1, #0x0                   	// #0
 ffffff8000082d20:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xd8>
 ffffff8000082d24:	912d3000 	add	x0, x0, #0xb4c
 ffffff8000082d28:	94000036 	bl	ffffff8000082e00 <lp_Print>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:41
+/home/dofingert/Source/OS/THYOS/lib/printf.c:41
 ffffff8000082d2c:	d503201f 	nop
 ffffff8000082d30:	a8d27bfd 	ldp	x29, x30, [sp], #288
 ffffff8000082d34:	d65f03c0 	ret
 
 ffffff8000082d38 <_panic>:
 _panic():
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:44
+/home/dofingert/Source/OS/THYOS/lib/printf.c:44
 ffffff8000082d38:	a9ae7bfd 	stp	x29, x30, [sp, #-288]!
 ffffff8000082d3c:	910003fd 	mov	x29, sp
 ffffff8000082d40:	f90027e0 	str	x0, [sp, #72]
@@ -3377,7 +3377,7 @@ ffffff8000082d70:	3d802fe4 	str	q4, [sp, #176]
 ffffff8000082d74:	3d8033e5 	str	q5, [sp, #192]
 ffffff8000082d78:	3d8037e6 	str	q6, [sp, #208]
 ffffff8000082d7c:	3d803be7 	str	q7, [sp, #224]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:47
+/home/dofingert/Source/OS/THYOS/lib/printf.c:47
 ffffff8000082d80:	910483e0 	add	x0, sp, #0x120
 ffffff8000082d84:	f9002be0 	str	x0, [sp, #80]
 ffffff8000082d88:	910483e0 	add	x0, sp, #0x120
@@ -3388,13 +3388,13 @@ ffffff8000082d98:	128004e0 	mov	w0, #0xffffffd8            	// #-40
 ffffff8000082d9c:	b9006be0 	str	w0, [sp, #104]
 ffffff8000082da0:	12800fe0 	mov	w0, #0xffffff80            	// #-128
 ffffff8000082da4:	b9006fe0 	str	w0, [sp, #108]
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:48
+/home/dofingert/Source/OS/THYOS/lib/printf.c:48
 ffffff8000082da8:	b94047e2 	ldr	w2, [sp, #68]
 ffffff8000082dac:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000082db0:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082db4:	9111e000 	add	x0, x0, #0x478
 ffffff8000082db8:	97ffff83 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:49
+/home/dofingert/Source/OS/THYOS/lib/printf.c:49
 ffffff8000082dbc:	910043e2 	add	x2, sp, #0x10
 ffffff8000082dc0:	910143e3 	add	x3, sp, #0x50
 ffffff8000082dc4:	a9400460 	ldp	x0, x1, [x3]
@@ -3408,16 +3408,16 @@ ffffff8000082de0:	d2800001 	mov	x1, #0x0                   	// #0
 ffffff8000082de4:	90000000 	adrp	x0, ffffff8000082000 <env_alloc+0xd8>
 ffffff8000082de8:	912d3000 	add	x0, x0, #0xb4c
 ffffff8000082dec:	94000005 	bl	ffffff8000082e00 <lp_Print>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:50
+/home/dofingert/Source/OS/THYOS/lib/printf.c:50
 ffffff8000082df0:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082df4:	91124000 	add	x0, x0, #0x490
 ffffff8000082df8:	97ffff73 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/printf.c:53 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/printf.c:53 (discriminator 1)
 ffffff8000082dfc:	14000000 	b	ffffff8000082dfc <_panic+0xc4>
 
 ffffff8000082e00 <lp_Print>:
 lp_Print():
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:19
+/home/dofingert/Source/OS/THYOS/lib/print.c:19
 ffffff8000082e00:	d111c3ff 	sub	sp, sp, #0x470
 ffffff8000082e04:	a9007bfd 	stp	x29, x30, [sp]
 ffffff8000082e08:	910003fd 	mov	x29, sp
@@ -3426,52 +3426,52 @@ ffffff8000082e10:	f9001fe0 	str	x0, [sp, #56]
 ffffff8000082e14:	f9001be1 	str	x1, [sp, #48]
 ffffff8000082e18:	f90017e2 	str	x2, [sp, #40]
 ffffff8000082e1c:	aa0303f3 	mov	x19, x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:53
+/home/dofingert/Source/OS/THYOS/lib/print.c:53
 ffffff8000082e20:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082e24:	f90227e0 	str	x0, [sp, #1096]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:56
+/home/dofingert/Source/OS/THYOS/lib/print.c:56
 ffffff8000082e28:	f94227e0 	ldr	x0, [sp, #1096]
 ffffff8000082e2c:	39400000 	ldrb	w0, [x0]
 ffffff8000082e30:	7100001f 	cmp	w0, #0x0
 ffffff8000082e34:	54000120 	b.eq	ffffff8000082e58 <lp_Print+0x58>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:60
+/home/dofingert/Source/OS/THYOS/lib/print.c:60
 ffffff8000082e38:	f94227e0 	ldr	x0, [sp, #1096]
 ffffff8000082e3c:	39400000 	ldrb	w0, [x0]
 ffffff8000082e40:	7100941f 	cmp	w0, #0x25
 ffffff8000082e44:	540000e0 	b.eq	ffffff8000082e60 <lp_Print+0x60>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:64
+/home/dofingert/Source/OS/THYOS/lib/print.c:64
 ffffff8000082e48:	f94227e0 	ldr	x0, [sp, #1096]
 ffffff8000082e4c:	91000400 	add	x0, x0, #0x1
 ffffff8000082e50:	f90227e0 	str	x0, [sp, #1096]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:56
+/home/dofingert/Source/OS/THYOS/lib/print.c:56
 ffffff8000082e54:	17fffff5 	b	ffffff8000082e28 <lp_Print+0x28>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:58
+/home/dofingert/Source/OS/THYOS/lib/print.c:58
 ffffff8000082e58:	d503201f 	nop
 ffffff8000082e5c:	14000002 	b	ffffff8000082e64 <lp_Print+0x64>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:62
+/home/dofingert/Source/OS/THYOS/lib/print.c:62
 ffffff8000082e60:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:67
+/home/dofingert/Source/OS/THYOS/lib/print.c:67
 ffffff8000082e64:	f94227e1 	ldr	x1, [sp, #1096]
 ffffff8000082e68:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082e6c:	cb000020 	sub	x0, x1, x0
 ffffff8000082e70:	f100001f 	cmp	x0, #0x0
 ffffff8000082e74:	540000cb 	b.lt	ffffff8000082e8c <lp_Print+0x8c>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:67 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 2)
 ffffff8000082e78:	f94227e1 	ldr	x1, [sp, #1096]
 ffffff8000082e7c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082e80:	cb000020 	sub	x0, x1, x0
 ffffff8000082e84:	f10fa01f 	cmp	x0, #0x3e8
 ffffff8000082e88:	5400010d 	b.le	ffffff8000082ea8 <lp_Print+0xa8>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:67 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 3)
 ffffff8000082e8c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000082e90:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000082e94:	b0000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000082e98:	91126001 	add	x1, x0, #0x498
 ffffff8000082e9c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000082ea0:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:67 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 1)
 ffffff8000082ea4:	14000000 	b	ffffff8000082ea4 <lp_Print+0xa4>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:67 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:67 (discriminator 4)
 ffffff8000082ea8:	f94227e1 	ldr	x1, [sp, #1096]
 ffffff8000082eac:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082eb0:	cb000020 	sub	x0, x1, x0
@@ -3480,61 +3480,61 @@ ffffff8000082eb8:	2a0003e2 	mov	w2, w0
 ffffff8000082ebc:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000082ec0:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000082ec4:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:68 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:68 (discriminator 4)
 ffffff8000082ec8:	f94227e0 	ldr	x0, [sp, #1096]
 ffffff8000082ecc:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:71 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:71 (discriminator 4)
 ffffff8000082ed0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082ed4:	39400000 	ldrb	w0, [x0]
 ffffff8000082ed8:	7100001f 	cmp	w0, #0x0
 ffffff8000082edc:	54005c60 	b.eq	ffffff8000083a68 <lp_Print+0xc68>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:78
+/home/dofingert/Source/OS/THYOS/lib/print.c:78
 ffffff8000082ee0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082ee4:	91000400 	add	x0, x0, #0x1
 ffffff8000082ee8:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:83
+/home/dofingert/Source/OS/THYOS/lib/print.c:83
 ffffff8000082eec:	52800400 	mov	w0, #0x20                  	// #32
 ffffff8000082ef0:	39114fe0 	strb	w0, [sp, #1107]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:84
+/home/dofingert/Source/OS/THYOS/lib/print.c:84
 ffffff8000082ef4:	b90457ff 	str	wzr, [sp, #1108]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:85
+/home/dofingert/Source/OS/THYOS/lib/print.c:85
 ffffff8000082ef8:	14000011 	b	ffffff8000082f3c <lp_Print+0x13c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:87
+/home/dofingert/Source/OS/THYOS/lib/print.c:87
 ffffff8000082efc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f00:	39400000 	ldrb	w0, [x0]
 ffffff8000082f04:	7100b41f 	cmp	w0, #0x2d
 ffffff8000082f08:	54000081 	b.ne	ffffff8000082f18 <lp_Print+0x118>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:89
+/home/dofingert/Source/OS/THYOS/lib/print.c:89
 ffffff8000082f0c:	52800020 	mov	w0, #0x1                   	// #1
 ffffff8000082f10:	b90457e0 	str	w0, [sp, #1108]
 ffffff8000082f14:	14000007 	b	ffffff8000082f30 <lp_Print+0x130>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:91
+/home/dofingert/Source/OS/THYOS/lib/print.c:91
 ffffff8000082f18:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f1c:	39400000 	ldrb	w0, [x0]
 ffffff8000082f20:	7100c01f 	cmp	w0, #0x30
 ffffff8000082f24:	54000061 	b.ne	ffffff8000082f30 <lp_Print+0x130>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:93
+/home/dofingert/Source/OS/THYOS/lib/print.c:93
 ffffff8000082f28:	52800600 	mov	w0, #0x30                  	// #48
 ffffff8000082f2c:	39114fe0 	strb	w0, [sp, #1107]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:96
+/home/dofingert/Source/OS/THYOS/lib/print.c:96
 ffffff8000082f30:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f34:	91000400 	add	x0, x0, #0x1
 ffffff8000082f38:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:85
+/home/dofingert/Source/OS/THYOS/lib/print.c:85
 ffffff8000082f3c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f40:	39400000 	ldrb	w0, [x0]
 ffffff8000082f44:	7100b41f 	cmp	w0, #0x2d
 ffffff8000082f48:	54fffda0 	b.eq	ffffff8000082efc <lp_Print+0xfc>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:85 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:85 (discriminator 1)
 ffffff8000082f4c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f50:	39400000 	ldrb	w0, [x0]
 ffffff8000082f54:	7100c01f 	cmp	w0, #0x30
 ffffff8000082f58:	54fffd20 	b.eq	ffffff8000082efc <lp_Print+0xfc>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:100
+/home/dofingert/Source/OS/THYOS/lib/print.c:100
 ffffff8000082f5c:	b9045fff 	str	wzr, [sp, #1116]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:101
+/home/dofingert/Source/OS/THYOS/lib/print.c:101
 ffffff8000082f60:	1400000f 	b	ffffff8000082f9c <lp_Print+0x19c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:103
+/home/dofingert/Source/OS/THYOS/lib/print.c:103
 ffffff8000082f64:	b9445fe1 	ldr	w1, [sp, #1116]
 ffffff8000082f68:	2a0103e0 	mov	w0, w1
 ffffff8000082f6c:	531e7400 	lsl	w0, w0, #2
@@ -3546,34 +3546,34 @@ ffffff8000082f80:	39400000 	ldrb	w0, [x0]
 ffffff8000082f84:	5100c000 	sub	w0, w0, #0x30
 ffffff8000082f88:	0b000020 	add	w0, w1, w0
 ffffff8000082f8c:	b9045fe0 	str	w0, [sp, #1116]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:104
+/home/dofingert/Source/OS/THYOS/lib/print.c:104
 ffffff8000082f90:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082f94:	91000400 	add	x0, x0, #0x1
 ffffff8000082f98:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:101
+/home/dofingert/Source/OS/THYOS/lib/print.c:101
 ffffff8000082f9c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082fa0:	39400000 	ldrb	w0, [x0]
 ffffff8000082fa4:	7100bc1f 	cmp	w0, #0x2f
 ffffff8000082fa8:	540000a9 	b.ls	ffffff8000082fbc <lp_Print+0x1bc>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:101 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:101 (discriminator 1)
 ffffff8000082fac:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082fb0:	39400000 	ldrb	w0, [x0]
 ffffff8000082fb4:	7100e41f 	cmp	w0, #0x39
 ffffff8000082fb8:	54fffd69 	b.ls	ffffff8000082f64 <lp_Print+0x164>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:108
+/home/dofingert/Source/OS/THYOS/lib/print.c:108
 ffffff8000082fbc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082fc0:	39400000 	ldrb	w0, [x0]
 ffffff8000082fc4:	7100b81f 	cmp	w0, #0x2e
 ffffff8000082fc8:	540003a1 	b.ne	ffffff800008303c <lp_Print+0x23c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:110
+/home/dofingert/Source/OS/THYOS/lib/print.c:110
 ffffff8000082fcc:	b9045bff 	str	wzr, [sp, #1112]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:111
+/home/dofingert/Source/OS/THYOS/lib/print.c:111
 ffffff8000082fd0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000082fd4:	91000400 	add	x0, x0, #0x1
 ffffff8000082fd8:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:112
+/home/dofingert/Source/OS/THYOS/lib/print.c:112
 ffffff8000082fdc:	1400000f 	b	ffffff8000083018 <lp_Print+0x218>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:114
+/home/dofingert/Source/OS/THYOS/lib/print.c:114
 ffffff8000082fe0:	b9445be1 	ldr	w1, [sp, #1112]
 ffffff8000082fe4:	2a0103e0 	mov	w0, w1
 ffffff8000082fe8:	531e7400 	lsl	w0, w0, #2
@@ -3585,41 +3585,41 @@ ffffff8000082ffc:	39400000 	ldrb	w0, [x0]
 ffffff8000083000:	5100c000 	sub	w0, w0, #0x30
 ffffff8000083004:	0b000020 	add	w0, w1, w0
 ffffff8000083008:	b9045be0 	str	w0, [sp, #1112]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:115
+/home/dofingert/Source/OS/THYOS/lib/print.c:115
 ffffff800008300c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083010:	91000400 	add	x0, x0, #0x1
 ffffff8000083014:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:112
+/home/dofingert/Source/OS/THYOS/lib/print.c:112
 ffffff8000083018:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008301c:	39400000 	ldrb	w0, [x0]
 ffffff8000083020:	7100bc1f 	cmp	w0, #0x2f
 ffffff8000083024:	54000109 	b.ls	ffffff8000083044 <lp_Print+0x244>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:112 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:112 (discriminator 1)
 ffffff8000083028:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008302c:	39400000 	ldrb	w0, [x0]
 ffffff8000083030:	7100e41f 	cmp	w0, #0x39
 ffffff8000083034:	54fffd69 	b.ls	ffffff8000082fe0 <lp_Print+0x1e0>  // b.plast
 ffffff8000083038:	14000003 	b	ffffff8000083044 <lp_Print+0x244>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:121
+/home/dofingert/Source/OS/THYOS/lib/print.c:121
 ffffff800008303c:	528000c0 	mov	w0, #0x6                   	// #6
 ffffff8000083040:	b9045be0 	str	w0, [sp, #1112]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:125
+/home/dofingert/Source/OS/THYOS/lib/print.c:125
 ffffff8000083044:	b90467ff 	str	wzr, [sp, #1124]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:126
+/home/dofingert/Source/OS/THYOS/lib/print.c:126
 ffffff8000083048:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008304c:	39400000 	ldrb	w0, [x0]
 ffffff8000083050:	7101b01f 	cmp	w0, #0x6c
 ffffff8000083054:	540000c1 	b.ne	ffffff800008306c <lp_Print+0x26c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:128
+/home/dofingert/Source/OS/THYOS/lib/print.c:128
 ffffff8000083058:	52800020 	mov	w0, #0x1                   	// #1
 ffffff800008305c:	b90467e0 	str	w0, [sp, #1124]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:129
+/home/dofingert/Source/OS/THYOS/lib/print.c:129
 ffffff8000083060:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083064:	91000400 	add	x0, x0, #0x1
 ffffff8000083068:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:132
+/home/dofingert/Source/OS/THYOS/lib/print.c:132
 ffffff800008306c:	b90463ff 	str	wzr, [sp, #1120]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:133
+/home/dofingert/Source/OS/THYOS/lib/print.c:133
 ffffff8000083070:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083074:	39400000 	ldrb	w0, [x0]
 ffffff8000083078:	7101e01f 	cmp	w0, #0x78
@@ -3667,11 +3667,11 @@ ffffff800008311c:	540048c0 	b.eq	ffffff8000083a34 <lp_Print+0xc34>  // b.none
 ffffff8000083120:	7101101f 	cmp	w0, #0x44
 ffffff8000083124:	54000a20 	b.eq	ffffff8000083268 <lp_Print+0x468>  // b.none
 ffffff8000083128:	14000247 	b	ffffff8000083a44 <lp_Print+0xc44>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:136
+/home/dofingert/Source/OS/THYOS/lib/print.c:136
 ffffff800008312c:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff8000083130:	7100001f 	cmp	w0, #0x0
 ffffff8000083134:	54000300 	b.eq	ffffff8000083194 <lp_Print+0x394>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:138
+/home/dofingert/Source/OS/THYOS/lib/print.c:138
 ffffff8000083138:	b9401a61 	ldr	w1, [x19, #24]
 ffffff800008313c:	f9400260 	ldr	x0, [x19]
 ffffff8000083140:	7100003f 	cmp	w1, #0x0
@@ -3695,7 +3695,7 @@ ffffff8000083184:	8b000040 	add	x0, x2, x0
 ffffff8000083188:	f9400000 	ldr	x0, [x0]
 ffffff800008318c:	f90237e0 	str	x0, [sp, #1128]
 ffffff8000083190:	14000018 	b	ffffff80000831f0 <lp_Print+0x3f0>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:142
+/home/dofingert/Source/OS/THYOS/lib/print.c:142
 ffffff8000083194:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083198:	f9400260 	ldr	x0, [x19]
 ffffff800008319c:	7100003f 	cmp	w1, #0x0
@@ -3719,7 +3719,7 @@ ffffff80000831e0:	8b000040 	add	x0, x2, x0
 ffffff80000831e4:	b9400000 	ldr	w0, [x0]
 ffffff80000831e8:	93407c00 	sxtw	x0, w0
 ffffff80000831ec:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:144
+/home/dofingert/Source/OS/THYOS/lib/print.c:144
 ffffff80000831f0:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff80000831f4:	910123e0 	add	x0, sp, #0x48
 ffffff80000831f8:	52800007 	mov	w7, #0x0                   	// #0
@@ -3730,37 +3730,37 @@ ffffff8000083208:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff800008320c:	52800042 	mov	w2, #0x2                   	// #2
 ffffff8000083210:	940002c2 	bl	ffffff8000083d18 <PrintNum>
 ffffff8000083214:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:146
+/home/dofingert/Source/OS/THYOS/lib/print.c:146
 ffffff8000083218:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff800008321c:	7100001f 	cmp	w0, #0x0
 ffffff8000083220:	5400008b 	b.lt	ffffff8000083230 <lp_Print+0x430>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:146 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 2)
 ffffff8000083224:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083228:	710fa01f 	cmp	w0, #0x3e8
 ffffff800008322c:	5400010d 	b.le	ffffff800008324c <lp_Print+0x44c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:146 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 3)
 ffffff8000083230:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083234:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083238:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008323c:	91126001 	add	x1, x0, #0x498
 ffffff8000083240:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083244:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:146 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 2)
 ffffff8000083248:	14000000 	b	ffffff8000083248 <lp_Print+0x448>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:146 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:146 (discriminator 4)
 ffffff800008324c:	910123e0 	add	x0, sp, #0x48
 ffffff8000083250:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083254:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff8000083258:	aa0003e1 	mov	x1, x0
 ffffff800008325c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083260:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:147 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:147 (discriminator 4)
 ffffff8000083264:	140001fd 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:151
+/home/dofingert/Source/OS/THYOS/lib/print.c:151
 ffffff8000083268:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff800008326c:	7100001f 	cmp	w0, #0x0
 ffffff8000083270:	54000300 	b.eq	ffffff80000832d0 <lp_Print+0x4d0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:153
+/home/dofingert/Source/OS/THYOS/lib/print.c:153
 ffffff8000083274:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083278:	f9400260 	ldr	x0, [x19]
 ffffff800008327c:	7100003f 	cmp	w1, #0x0
@@ -3784,7 +3784,7 @@ ffffff80000832c0:	8b000040 	add	x0, x2, x0
 ffffff80000832c4:	f9400000 	ldr	x0, [x0]
 ffffff80000832c8:	f90237e0 	str	x0, [sp, #1128]
 ffffff80000832cc:	14000018 	b	ffffff800008332c <lp_Print+0x52c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:157
+/home/dofingert/Source/OS/THYOS/lib/print.c:157
 ffffff80000832d0:	b9401a61 	ldr	w1, [x19, #24]
 ffffff80000832d4:	f9400260 	ldr	x0, [x19]
 ffffff80000832d8:	7100003f 	cmp	w1, #0x0
@@ -3808,18 +3808,18 @@ ffffff800008331c:	8b000040 	add	x0, x2, x0
 ffffff8000083320:	b9400000 	ldr	w0, [x0]
 ffffff8000083324:	93407c00 	sxtw	x0, w0
 ffffff8000083328:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:160
+/home/dofingert/Source/OS/THYOS/lib/print.c:160
 ffffff800008332c:	f94237e0 	ldr	x0, [sp, #1128]
 ffffff8000083330:	f100001f 	cmp	x0, #0x0
 ffffff8000083334:	540000ca 	b.ge	ffffff800008334c <lp_Print+0x54c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:162
+/home/dofingert/Source/OS/THYOS/lib/print.c:162
 ffffff8000083338:	52800020 	mov	w0, #0x1                   	// #1
 ffffff800008333c:	b90463e0 	str	w0, [sp, #1120]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:163
+/home/dofingert/Source/OS/THYOS/lib/print.c:163
 ffffff8000083340:	f94237e0 	ldr	x0, [sp, #1128]
 ffffff8000083344:	cb0003e0 	neg	x0, x0
 ffffff8000083348:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:165
+/home/dofingert/Source/OS/THYOS/lib/print.c:165
 ffffff800008334c:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff8000083350:	910123e0 	add	x0, sp, #0x48
 ffffff8000083354:	52800007 	mov	w7, #0x0                   	// #0
@@ -3830,15 +3830,15 @@ ffffff8000083364:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff8000083368:	52800142 	mov	w2, #0xa                   	// #10
 ffffff800008336c:	9400026b 	bl	ffffff8000083d18 <PrintNum>
 ffffff8000083370:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:166
+/home/dofingert/Source/OS/THYOS/lib/print.c:166
 ffffff8000083374:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083378:	7100001f 	cmp	w0, #0x0
 ffffff800008337c:	5400008b 	b.lt	ffffff800008338c <lp_Print+0x58c>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:166 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 2)
 ffffff8000083380:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083384:	710fa01f 	cmp	w0, #0x3e8
 ffffff8000083388:	5400010d 	b.le	ffffff80000833a8 <lp_Print+0x5a8>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:166 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 3)
 ffffff800008338c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083390:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083394:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
@@ -3846,20 +3846,20 @@ ffffff8000083398:	91126001 	add	x1, x0, #0x498
 ffffff800008339c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000833a0:	d63f0060 	blr	x3
 ffffff80000833a4:	14000000 	b	ffffff80000833a4 <lp_Print+0x5a4>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:166 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:166 (discriminator 4)
 ffffff80000833a8:	910123e0 	add	x0, sp, #0x48
 ffffff80000833ac:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff80000833b0:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff80000833b4:	aa0003e1 	mov	x1, x0
 ffffff80000833b8:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000833bc:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:167 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:167 (discriminator 4)
 ffffff80000833c0:	140001a6 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:171
+/home/dofingert/Source/OS/THYOS/lib/print.c:171
 ffffff80000833c4:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff80000833c8:	7100001f 	cmp	w0, #0x0
 ffffff80000833cc:	54000300 	b.eq	ffffff800008342c <lp_Print+0x62c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:173
+/home/dofingert/Source/OS/THYOS/lib/print.c:173
 ffffff80000833d0:	b9401a61 	ldr	w1, [x19, #24]
 ffffff80000833d4:	f9400260 	ldr	x0, [x19]
 ffffff80000833d8:	7100003f 	cmp	w1, #0x0
@@ -3883,7 +3883,7 @@ ffffff800008341c:	8b000040 	add	x0, x2, x0
 ffffff8000083420:	f9400000 	ldr	x0, [x0]
 ffffff8000083424:	f90237e0 	str	x0, [sp, #1128]
 ffffff8000083428:	14000018 	b	ffffff8000083488 <lp_Print+0x688>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:177
+/home/dofingert/Source/OS/THYOS/lib/print.c:177
 ffffff800008342c:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083430:	f9400260 	ldr	x0, [x19]
 ffffff8000083434:	7100003f 	cmp	w1, #0x0
@@ -3907,7 +3907,7 @@ ffffff8000083478:	8b000040 	add	x0, x2, x0
 ffffff800008347c:	b9400000 	ldr	w0, [x0]
 ffffff8000083480:	93407c00 	sxtw	x0, w0
 ffffff8000083484:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:179
+/home/dofingert/Source/OS/THYOS/lib/print.c:179
 ffffff8000083488:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff800008348c:	910123e0 	add	x0, sp, #0x48
 ffffff8000083490:	52800007 	mov	w7, #0x0                   	// #0
@@ -3918,22 +3918,22 @@ ffffff80000834a0:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff80000834a4:	52800102 	mov	w2, #0x8                   	// #8
 ffffff80000834a8:	9400021c 	bl	ffffff8000083d18 <PrintNum>
 ffffff80000834ac:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:180
+/home/dofingert/Source/OS/THYOS/lib/print.c:180
 ffffff80000834b0:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000834b4:	7100001f 	cmp	w0, #0x0
 ffffff80000834b8:	5400008b 	b.lt	ffffff80000834c8 <lp_Print+0x6c8>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:180 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 2)
 ffffff80000834bc:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000834c0:	710fa01f 	cmp	w0, #0x3e8
 ffffff80000834c4:	5400010d 	b.le	ffffff80000834e4 <lp_Print+0x6e4>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:180 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 3)
 ffffff80000834c8:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff80000834cc:	52800302 	mov	w2, #0x18                  	// #24
 ffffff80000834d0:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000834d4:	91126001 	add	x1, x0, #0x498
 ffffff80000834d8:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000834dc:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:180 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:180 (discriminator 4)
 ffffff80000834e0:	14000000 	b	ffffff80000834e0 <lp_Print+0x6e0>
 ffffff80000834e4:	910123e0 	add	x0, sp, #0x48
 ffffff80000834e8:	f9401fe3 	ldr	x3, [sp, #56]
@@ -3941,13 +3941,13 @@ ffffff80000834ec:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff80000834f0:	aa0003e1 	mov	x1, x0
 ffffff80000834f4:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000834f8:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:181 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:181 (discriminator 4)
 ffffff80000834fc:	14000157 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:185
+/home/dofingert/Source/OS/THYOS/lib/print.c:185
 ffffff8000083500:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff8000083504:	7100001f 	cmp	w0, #0x0
 ffffff8000083508:	54000300 	b.eq	ffffff8000083568 <lp_Print+0x768>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:187
+/home/dofingert/Source/OS/THYOS/lib/print.c:187
 ffffff800008350c:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083510:	f9400260 	ldr	x0, [x19]
 ffffff8000083514:	7100003f 	cmp	w1, #0x0
@@ -3971,7 +3971,7 @@ ffffff8000083558:	8b000040 	add	x0, x2, x0
 ffffff800008355c:	f9400000 	ldr	x0, [x0]
 ffffff8000083560:	f90237e0 	str	x0, [sp, #1128]
 ffffff8000083564:	14000018 	b	ffffff80000835c4 <lp_Print+0x7c4>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:191
+/home/dofingert/Source/OS/THYOS/lib/print.c:191
 ffffff8000083568:	b9401a61 	ldr	w1, [x19, #24]
 ffffff800008356c:	f9400260 	ldr	x0, [x19]
 ffffff8000083570:	7100003f 	cmp	w1, #0x0
@@ -3995,7 +3995,7 @@ ffffff80000835b4:	8b000040 	add	x0, x2, x0
 ffffff80000835b8:	b9400000 	ldr	w0, [x0]
 ffffff80000835bc:	93407c00 	sxtw	x0, w0
 ffffff80000835c0:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:193
+/home/dofingert/Source/OS/THYOS/lib/print.c:193
 ffffff80000835c4:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff80000835c8:	910123e0 	add	x0, sp, #0x48
 ffffff80000835cc:	52800007 	mov	w7, #0x0                   	// #0
@@ -4006,37 +4006,37 @@ ffffff80000835dc:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff80000835e0:	52800142 	mov	w2, #0xa                   	// #10
 ffffff80000835e4:	940001cd 	bl	ffffff8000083d18 <PrintNum>
 ffffff80000835e8:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:194
+/home/dofingert/Source/OS/THYOS/lib/print.c:194
 ffffff80000835ec:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000835f0:	7100001f 	cmp	w0, #0x0
 ffffff80000835f4:	5400008b 	b.lt	ffffff8000083604 <lp_Print+0x804>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:194 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 2)
 ffffff80000835f8:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000835fc:	710fa01f 	cmp	w0, #0x3e8
 ffffff8000083600:	5400010d 	b.le	ffffff8000083620 <lp_Print+0x820>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:194 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 3)
 ffffff8000083604:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083608:	52800302 	mov	w2, #0x18                  	// #24
 ffffff800008360c:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083610:	91126001 	add	x1, x0, #0x498
 ffffff8000083614:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083618:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:194 (discriminator 5)
+/home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 5)
 ffffff800008361c:	14000000 	b	ffffff800008361c <lp_Print+0x81c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:194 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:194 (discriminator 4)
 ffffff8000083620:	910123e0 	add	x0, sp, #0x48
 ffffff8000083624:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083628:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff800008362c:	aa0003e1 	mov	x1, x0
 ffffff8000083630:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083634:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:195 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:195 (discriminator 4)
 ffffff8000083638:	14000108 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:198
+/home/dofingert/Source/OS/THYOS/lib/print.c:198
 ffffff800008363c:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff8000083640:	7100001f 	cmp	w0, #0x0
 ffffff8000083644:	54000300 	b.eq	ffffff80000836a4 <lp_Print+0x8a4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:200
+/home/dofingert/Source/OS/THYOS/lib/print.c:200
 ffffff8000083648:	b9401a61 	ldr	w1, [x19, #24]
 ffffff800008364c:	f9400260 	ldr	x0, [x19]
 ffffff8000083650:	7100003f 	cmp	w1, #0x0
@@ -4060,7 +4060,7 @@ ffffff8000083694:	8b000040 	add	x0, x2, x0
 ffffff8000083698:	f9400000 	ldr	x0, [x0]
 ffffff800008369c:	f90237e0 	str	x0, [sp, #1128]
 ffffff80000836a0:	14000018 	b	ffffff8000083700 <lp_Print+0x900>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:204
+/home/dofingert/Source/OS/THYOS/lib/print.c:204
 ffffff80000836a4:	b9401a61 	ldr	w1, [x19, #24]
 ffffff80000836a8:	f9400260 	ldr	x0, [x19]
 ffffff80000836ac:	7100003f 	cmp	w1, #0x0
@@ -4084,7 +4084,7 @@ ffffff80000836f0:	8b000040 	add	x0, x2, x0
 ffffff80000836f4:	b9400000 	ldr	w0, [x0]
 ffffff80000836f8:	93407c00 	sxtw	x0, w0
 ffffff80000836fc:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:206
+/home/dofingert/Source/OS/THYOS/lib/print.c:206
 ffffff8000083700:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff8000083704:	910123e0 	add	x0, sp, #0x48
 ffffff8000083708:	52800007 	mov	w7, #0x0                   	// #0
@@ -4095,37 +4095,37 @@ ffffff8000083718:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff800008371c:	52800202 	mov	w2, #0x10                  	// #16
 ffffff8000083720:	9400017e 	bl	ffffff8000083d18 <PrintNum>
 ffffff8000083724:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:207
+/home/dofingert/Source/OS/THYOS/lib/print.c:207
 ffffff8000083728:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff800008372c:	7100001f 	cmp	w0, #0x0
 ffffff8000083730:	5400008b 	b.lt	ffffff8000083740 <lp_Print+0x940>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:207 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 2)
 ffffff8000083734:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083738:	710fa01f 	cmp	w0, #0x3e8
 ffffff800008373c:	5400010d 	b.le	ffffff800008375c <lp_Print+0x95c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:207 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 3)
 ffffff8000083740:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083744:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083748:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008374c:	91126001 	add	x1, x0, #0x498
 ffffff8000083750:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083754:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:207 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 6)
 ffffff8000083758:	14000000 	b	ffffff8000083758 <lp_Print+0x958>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:207 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:207 (discriminator 4)
 ffffff800008375c:	910123e0 	add	x0, sp, #0x48
 ffffff8000083760:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083764:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff8000083768:	aa0003e1 	mov	x1, x0
 ffffff800008376c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083770:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:208 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:208 (discriminator 4)
 ffffff8000083774:	140000b9 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:211
+/home/dofingert/Source/OS/THYOS/lib/print.c:211
 ffffff8000083778:	b94467e0 	ldr	w0, [sp, #1124]
 ffffff800008377c:	7100001f 	cmp	w0, #0x0
 ffffff8000083780:	54000300 	b.eq	ffffff80000837e0 <lp_Print+0x9e0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:213
+/home/dofingert/Source/OS/THYOS/lib/print.c:213
 ffffff8000083784:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083788:	f9400260 	ldr	x0, [x19]
 ffffff800008378c:	7100003f 	cmp	w1, #0x0
@@ -4149,7 +4149,7 @@ ffffff80000837d0:	8b000040 	add	x0, x2, x0
 ffffff80000837d4:	f9400000 	ldr	x0, [x0]
 ffffff80000837d8:	f90237e0 	str	x0, [sp, #1128]
 ffffff80000837dc:	14000018 	b	ffffff800008383c <lp_Print+0xa3c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:217
+/home/dofingert/Source/OS/THYOS/lib/print.c:217
 ffffff80000837e0:	b9401a61 	ldr	w1, [x19, #24]
 ffffff80000837e4:	f9400260 	ldr	x0, [x19]
 ffffff80000837e8:	7100003f 	cmp	w1, #0x0
@@ -4173,7 +4173,7 @@ ffffff800008382c:	8b000040 	add	x0, x2, x0
 ffffff8000083830:	b9400000 	ldr	w0, [x0]
 ffffff8000083834:	93407c00 	sxtw	x0, w0
 ffffff8000083838:	f90237e0 	str	x0, [sp, #1128]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:219
+/home/dofingert/Source/OS/THYOS/lib/print.c:219
 ffffff800008383c:	f94237e1 	ldr	x1, [sp, #1128]
 ffffff8000083840:	910123e0 	add	x0, sp, #0x48
 ffffff8000083844:	52800027 	mov	w7, #0x1                   	// #1
@@ -4184,33 +4184,33 @@ ffffff8000083854:	b94463e3 	ldr	w3, [sp, #1120]
 ffffff8000083858:	52800202 	mov	w2, #0x10                  	// #16
 ffffff800008385c:	9400012f 	bl	ffffff8000083d18 <PrintNum>
 ffffff8000083860:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:220
+/home/dofingert/Source/OS/THYOS/lib/print.c:220
 ffffff8000083864:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083868:	7100001f 	cmp	w0, #0x0
 ffffff800008386c:	5400008b 	b.lt	ffffff800008387c <lp_Print+0xa7c>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:220 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 2)
 ffffff8000083870:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083874:	710fa01f 	cmp	w0, #0x3e8
 ffffff8000083878:	5400010d 	b.le	ffffff8000083898 <lp_Print+0xa98>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:220 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 3)
 ffffff800008387c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083880:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083884:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083888:	91126001 	add	x1, x0, #0x498
 ffffff800008388c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083890:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:220 (discriminator 7)
+/home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 7)
 ffffff8000083894:	14000000 	b	ffffff8000083894 <lp_Print+0xa94>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:220 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:220 (discriminator 4)
 ffffff8000083898:	910123e0 	add	x0, sp, #0x48
 ffffff800008389c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff80000838a0:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff80000838a4:	aa0003e1 	mov	x1, x0
 ffffff80000838a8:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000838ac:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:221 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:221 (discriminator 4)
 ffffff80000838b0:	1400006a 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:224
+/home/dofingert/Source/OS/THYOS/lib/print.c:224
 ffffff80000838b4:	b9401a61 	ldr	w1, [x19, #24]
 ffffff80000838b8:	f9400260 	ldr	x0, [x19]
 ffffff80000838bc:	7100003f 	cmp	w1, #0x0
@@ -4233,40 +4233,40 @@ ffffff80000838fc:	93407c20 	sxtw	x0, w1
 ffffff8000083900:	8b000040 	add	x0, x2, x0
 ffffff8000083904:	b9400000 	ldr	w0, [x0]
 ffffff8000083908:	3910dfe0 	strb	w0, [sp, #1079]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:225
+/home/dofingert/Source/OS/THYOS/lib/print.c:225
 ffffff800008390c:	910123e0 	add	x0, sp, #0x48
 ffffff8000083910:	b94457e3 	ldr	w3, [sp, #1108]
 ffffff8000083914:	b9445fe2 	ldr	w2, [sp, #1116]
 ffffff8000083918:	3950dfe1 	ldrb	w1, [sp, #1079]
 ffffff800008391c:	9400005f 	bl	ffffff8000083a98 <PrintChar>
 ffffff8000083920:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:226
+/home/dofingert/Source/OS/THYOS/lib/print.c:226
 ffffff8000083924:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083928:	7100001f 	cmp	w0, #0x0
 ffffff800008392c:	5400008b 	b.lt	ffffff800008393c <lp_Print+0xb3c>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:226 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 2)
 ffffff8000083930:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff8000083934:	710fa01f 	cmp	w0, #0x3e8
 ffffff8000083938:	5400010d 	b.le	ffffff8000083958 <lp_Print+0xb58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:226 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 3)
 ffffff800008393c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083940:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083944:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083948:	91126001 	add	x1, x0, #0x498
 ffffff800008394c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083950:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:226 (discriminator 8)
+/home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 8)
 ffffff8000083954:	14000000 	b	ffffff8000083954 <lp_Print+0xb54>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:226 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:226 (discriminator 4)
 ffffff8000083958:	910123e0 	add	x0, sp, #0x48
 ffffff800008395c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083960:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff8000083964:	aa0003e1 	mov	x1, x0
 ffffff8000083968:	f9401be0 	ldr	x0, [sp, #48]
 ffffff800008396c:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:227 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:227 (discriminator 4)
 ffffff8000083970:	1400003a 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:230
+/home/dofingert/Source/OS/THYOS/lib/print.c:230
 ffffff8000083974:	b9401a61 	ldr	w1, [x19, #24]
 ffffff8000083978:	f9400260 	ldr	x0, [x19]
 ffffff800008397c:	7100003f 	cmp	w1, #0x0
@@ -4289,67 +4289,67 @@ ffffff80000839bc:	93407c20 	sxtw	x0, w1
 ffffff80000839c0:	8b000040 	add	x0, x2, x0
 ffffff80000839c4:	f9400000 	ldr	x0, [x0]
 ffffff80000839c8:	f9021fe0 	str	x0, [sp, #1080]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:231
+/home/dofingert/Source/OS/THYOS/lib/print.c:231
 ffffff80000839cc:	910123e0 	add	x0, sp, #0x48
 ffffff80000839d0:	b94457e3 	ldr	w3, [sp, #1108]
 ffffff80000839d4:	b9445fe2 	ldr	w2, [sp, #1116]
 ffffff80000839d8:	f9421fe1 	ldr	x1, [sp, #1080]
 ffffff80000839dc:	94000067 	bl	ffffff8000083b78 <PrintString>
 ffffff80000839e0:	b90447e0 	str	w0, [sp, #1092]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:232
+/home/dofingert/Source/OS/THYOS/lib/print.c:232
 ffffff80000839e4:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000839e8:	7100001f 	cmp	w0, #0x0
 ffffff80000839ec:	5400008b 	b.lt	ffffff80000839fc <lp_Print+0xbfc>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:232 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 2)
 ffffff80000839f0:	b94447e0 	ldr	w0, [sp, #1092]
 ffffff80000839f4:	710fa01f 	cmp	w0, #0x3e8
 ffffff80000839f8:	5400010d 	b.le	ffffff8000083a18 <lp_Print+0xc18>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:232 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 3)
 ffffff80000839fc:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083a00:	52800302 	mov	w2, #0x18                  	// #24
 ffffff8000083a04:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083a08:	91126001 	add	x1, x0, #0x498
 ffffff8000083a0c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083a10:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:232 (discriminator 9)
+/home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 9)
 ffffff8000083a14:	14000000 	b	ffffff8000083a14 <lp_Print+0xc14>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:232 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:232 (discriminator 4)
 ffffff8000083a18:	910123e0 	add	x0, sp, #0x48
 ffffff8000083a1c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083a20:	b94447e2 	ldr	w2, [sp, #1092]
 ffffff8000083a24:	aa0003e1 	mov	x1, x0
 ffffff8000083a28:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083a2c:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:233 (discriminator 4)
+/home/dofingert/Source/OS/THYOS/lib/print.c:233 (discriminator 4)
 ffffff8000083a30:	1400000a 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:236
+/home/dofingert/Source/OS/THYOS/lib/print.c:236
 ffffff8000083a34:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083a38:	d1000400 	sub	x0, x0, #0x1
 ffffff8000083a3c:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:237
+/home/dofingert/Source/OS/THYOS/lib/print.c:237
 ffffff8000083a40:	14000006 	b	ffffff8000083a58 <lp_Print+0xc58>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:241 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:241 (discriminator 2)
 ffffff8000083a44:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083a48:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000083a4c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083a50:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083a54:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:244
+/home/dofingert/Source/OS/THYOS/lib/print.c:244
 ffffff8000083a58:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083a5c:	91000400 	add	x0, x0, #0x1
 ffffff8000083a60:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:50
+/home/dofingert/Source/OS/THYOS/lib/print.c:50
 ffffff8000083a64:	17fffcef 	b	ffffff8000082e20 <lp_Print+0x20>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:73
+/home/dofingert/Source/OS/THYOS/lib/print.c:73
 ffffff8000083a68:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:248
+/home/dofingert/Source/OS/THYOS/lib/print.c:248
 ffffff8000083a6c:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000083a70:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000083a74:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083a78:	9112e001 	add	x1, x0, #0x4b8
 ffffff8000083a7c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000083a80:	d63f0060 	blr	x3
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:249
+/home/dofingert/Source/OS/THYOS/lib/print.c:249
 ffffff8000083a84:	d503201f 	nop
 ffffff8000083a88:	f9400bf3 	ldr	x19, [sp, #16]
 ffffff8000083a8c:	a9407bfd 	ldp	x29, x30, [sp]
@@ -4358,121 +4358,121 @@ ffffff8000083a94:	d65f03c0 	ret
 
 ffffff8000083a98 <PrintChar>:
 PrintChar():
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:254
+/home/dofingert/Source/OS/THYOS/lib/print.c:254
 ffffff8000083a98:	d100c3ff 	sub	sp, sp, #0x30
 ffffff8000083a9c:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000083aa0:	39005fe1 	strb	w1, [sp, #23]
 ffffff8000083aa4:	b90013e2 	str	w2, [sp, #16]
 ffffff8000083aa8:	b9000fe3 	str	w3, [sp, #12]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:257
+/home/dofingert/Source/OS/THYOS/lib/print.c:257
 ffffff8000083aac:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083ab0:	7100001f 	cmp	w0, #0x0
 ffffff8000083ab4:	5400006c 	b.gt	ffffff8000083ac0 <PrintChar+0x28>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:258
+/home/dofingert/Source/OS/THYOS/lib/print.c:258
 ffffff8000083ab8:	52800020 	mov	w0, #0x1                   	// #1
 ffffff8000083abc:	b90013e0 	str	w0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:259
+/home/dofingert/Source/OS/THYOS/lib/print.c:259
 ffffff8000083ac0:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000083ac4:	7100001f 	cmp	w0, #0x0
 ffffff8000083ac8:	54000280 	b.eq	ffffff8000083b18 <PrintChar+0x80>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:261
+/home/dofingert/Source/OS/THYOS/lib/print.c:261
 ffffff8000083acc:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000083ad0:	39405fe1 	ldrb	w1, [sp, #23]
 ffffff8000083ad4:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:262
+/home/dofingert/Source/OS/THYOS/lib/print.c:262
 ffffff8000083ad8:	52800020 	mov	w0, #0x1                   	// #1
 ffffff8000083adc:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000083ae0:	14000009 	b	ffffff8000083b04 <PrintChar+0x6c>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:263 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:263 (discriminator 3)
 ffffff8000083ae4:	b9802fe0 	ldrsw	x0, [sp, #44]
 ffffff8000083ae8:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000083aec:	8b000020 	add	x0, x1, x0
 ffffff8000083af0:	52800401 	mov	w1, #0x20                  	// #32
 ffffff8000083af4:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:262 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:262 (discriminator 3)
 ffffff8000083af8:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083afc:	11000400 	add	w0, w0, #0x1
 ffffff8000083b00:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:262 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:262 (discriminator 1)
 ffffff8000083b04:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083b08:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083b0c:	6b00003f 	cmp	w1, w0
 ffffff8000083b10:	54fffeab 	b.lt	ffffff8000083ae4 <PrintChar+0x4c>  // b.tstop
 ffffff8000083b14:	14000016 	b	ffffff8000083b6c <PrintChar+0xd4>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:267
+/home/dofingert/Source/OS/THYOS/lib/print.c:267
 ffffff8000083b18:	b9002fff 	str	wzr, [sp, #44]
 ffffff8000083b1c:	14000009 	b	ffffff8000083b40 <PrintChar+0xa8>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:268 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:268 (discriminator 3)
 ffffff8000083b20:	b9802fe0 	ldrsw	x0, [sp, #44]
 ffffff8000083b24:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000083b28:	8b000020 	add	x0, x1, x0
 ffffff8000083b2c:	52800401 	mov	w1, #0x20                  	// #32
 ffffff8000083b30:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:267 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:267 (discriminator 3)
 ffffff8000083b34:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083b38:	11000400 	add	w0, w0, #0x1
 ffffff8000083b3c:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:267 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:267 (discriminator 1)
 ffffff8000083b40:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083b44:	51000400 	sub	w0, w0, #0x1
 ffffff8000083b48:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083b4c:	6b00003f 	cmp	w1, w0
 ffffff8000083b50:	54fffe8b 	b.lt	ffffff8000083b20 <PrintChar+0x88>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:269
+/home/dofingert/Source/OS/THYOS/lib/print.c:269
 ffffff8000083b54:	b98013e0 	ldrsw	x0, [sp, #16]
 ffffff8000083b58:	d1000400 	sub	x0, x0, #0x1
 ffffff8000083b5c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000083b60:	8b000020 	add	x0, x1, x0
 ffffff8000083b64:	39405fe1 	ldrb	w1, [sp, #23]
 ffffff8000083b68:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:271
+/home/dofingert/Source/OS/THYOS/lib/print.c:271
 ffffff8000083b6c:	b94013e0 	ldr	w0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:272
+/home/dofingert/Source/OS/THYOS/lib/print.c:272
 ffffff8000083b70:	9100c3ff 	add	sp, sp, #0x30
 ffffff8000083b74:	d65f03c0 	ret
 
 ffffff8000083b78 <PrintString>:
 PrintString():
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:275
+/home/dofingert/Source/OS/THYOS/lib/print.c:275
 ffffff8000083b78:	d100c3ff 	sub	sp, sp, #0x30
 ffffff8000083b7c:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000083b80:	f9000be1 	str	x1, [sp, #16]
 ffffff8000083b84:	b9000fe2 	str	w2, [sp, #12]
 ffffff8000083b88:	b9000be3 	str	w3, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:277
+/home/dofingert/Source/OS/THYOS/lib/print.c:277
 ffffff8000083b8c:	b9002bff 	str	wzr, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:279
+/home/dofingert/Source/OS/THYOS/lib/print.c:279
 ffffff8000083b90:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000083b94:	f90013e0 	str	x0, [sp, #32]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:280
+/home/dofingert/Source/OS/THYOS/lib/print.c:280
 ffffff8000083b98:	14000004 	b	ffffff8000083ba8 <PrintString+0x30>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:281
+/home/dofingert/Source/OS/THYOS/lib/print.c:281
 ffffff8000083b9c:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083ba0:	11000400 	add	w0, w0, #0x1
 ffffff8000083ba4:	b9002be0 	str	w0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:280
+/home/dofingert/Source/OS/THYOS/lib/print.c:280
 ffffff8000083ba8:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000083bac:	91000401 	add	x1, x0, #0x1
 ffffff8000083bb0:	f90013e1 	str	x1, [sp, #32]
 ffffff8000083bb4:	39400000 	ldrb	w0, [x0]
 ffffff8000083bb8:	7100001f 	cmp	w0, #0x0
 ffffff8000083bbc:	54ffff01 	b.ne	ffffff8000083b9c <PrintString+0x24>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:283
+/home/dofingert/Source/OS/THYOS/lib/print.c:283
 ffffff8000083bc0:	b9400fe1 	ldr	w1, [sp, #12]
 ffffff8000083bc4:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083bc8:	6b00003f 	cmp	w1, w0
 ffffff8000083bcc:	5400006a 	b.ge	ffffff8000083bd8 <PrintString+0x60>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:284
+/home/dofingert/Source/OS/THYOS/lib/print.c:284
 ffffff8000083bd0:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083bd4:	b9000fe0 	str	w0, [sp, #12]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:286
+/home/dofingert/Source/OS/THYOS/lib/print.c:286
 ffffff8000083bd8:	b9400be0 	ldr	w0, [sp, #8]
 ffffff8000083bdc:	7100001f 	cmp	w0, #0x0
 ffffff8000083be0:	54000440 	b.eq	ffffff8000083c68 <PrintString+0xf0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:288
+/home/dofingert/Source/OS/THYOS/lib/print.c:288
 ffffff8000083be4:	b9002fff 	str	wzr, [sp, #44]
 ffffff8000083be8:	1400000c 	b	ffffff8000083c18 <PrintString+0xa0>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:289 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:289 (discriminator 3)
 ffffff8000083bec:	b9802fe0 	ldrsw	x0, [sp, #44]
 ffffff8000083bf0:	f9400be1 	ldr	x1, [sp, #16]
 ffffff8000083bf4:	8b000021 	add	x1, x1, x0
@@ -4481,62 +4481,62 @@ ffffff8000083bfc:	f9400fe2 	ldr	x2, [sp, #24]
 ffffff8000083c00:	8b000040 	add	x0, x2, x0
 ffffff8000083c04:	39400021 	ldrb	w1, [x1]
 ffffff8000083c08:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:288 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:288 (discriminator 3)
 ffffff8000083c0c:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083c10:	11000400 	add	w0, w0, #0x1
 ffffff8000083c14:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:288 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:288 (discriminator 1)
 ffffff8000083c18:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083c1c:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083c20:	6b00003f 	cmp	w1, w0
 ffffff8000083c24:	54fffe4b 	b.lt	ffffff8000083bec <PrintString+0x74>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:290
+/home/dofingert/Source/OS/THYOS/lib/print.c:290
 ffffff8000083c28:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083c2c:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000083c30:	14000009 	b	ffffff8000083c54 <PrintString+0xdc>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:291 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:291 (discriminator 3)
 ffffff8000083c34:	b9802fe0 	ldrsw	x0, [sp, #44]
 ffffff8000083c38:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000083c3c:	8b000020 	add	x0, x1, x0
 ffffff8000083c40:	52800401 	mov	w1, #0x20                  	// #32
 ffffff8000083c44:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:290 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:290 (discriminator 3)
 ffffff8000083c48:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083c4c:	11000400 	add	w0, w0, #0x1
 ffffff8000083c50:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:290 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:290 (discriminator 1)
 ffffff8000083c54:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083c58:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000083c5c:	6b00003f 	cmp	w1, w0
 ffffff8000083c60:	54fffeab 	b.lt	ffffff8000083c34 <PrintString+0xbc>  // b.tstop
 ffffff8000083c64:	1400002a 	b	ffffff8000083d0c <PrintString+0x194>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:295
+/home/dofingert/Source/OS/THYOS/lib/print.c:295
 ffffff8000083c68:	b9002fff 	str	wzr, [sp, #44]
 ffffff8000083c6c:	14000009 	b	ffffff8000083c90 <PrintString+0x118>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:296 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:296 (discriminator 3)
 ffffff8000083c70:	b9802fe0 	ldrsw	x0, [sp, #44]
 ffffff8000083c74:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000083c78:	8b000020 	add	x0, x1, x0
 ffffff8000083c7c:	52800401 	mov	w1, #0x20                  	// #32
 ffffff8000083c80:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:295 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:295 (discriminator 3)
 ffffff8000083c84:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083c88:	11000400 	add	w0, w0, #0x1
 ffffff8000083c8c:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:295 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:295 (discriminator 1)
 ffffff8000083c90:	b9400fe1 	ldr	w1, [sp, #12]
 ffffff8000083c94:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083c98:	4b000020 	sub	w0, w1, w0
 ffffff8000083c9c:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083ca0:	6b00003f 	cmp	w1, w0
 ffffff8000083ca4:	54fffe6b 	b.lt	ffffff8000083c70 <PrintString+0xf8>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:297
+/home/dofingert/Source/OS/THYOS/lib/print.c:297
 ffffff8000083ca8:	b9400fe1 	ldr	w1, [sp, #12]
 ffffff8000083cac:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000083cb0:	4b000020 	sub	w0, w1, w0
 ffffff8000083cb4:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000083cb8:	14000011 	b	ffffff8000083cfc <PrintString+0x184>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:298 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:298 (discriminator 3)
 ffffff8000083cbc:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083cc0:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000083cc4:	4b000021 	sub	w1, w1, w0
@@ -4550,24 +4550,24 @@ ffffff8000083ce0:	f9400fe2 	ldr	x2, [sp, #24]
 ffffff8000083ce4:	8b000040 	add	x0, x2, x0
 ffffff8000083ce8:	39400021 	ldrb	w1, [x1]
 ffffff8000083cec:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:297 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:297 (discriminator 3)
 ffffff8000083cf0:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000083cf4:	11000400 	add	w0, w0, #0x1
 ffffff8000083cf8:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:297 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:297 (discriminator 1)
 ffffff8000083cfc:	b9402fe1 	ldr	w1, [sp, #44]
 ffffff8000083d00:	b9400fe0 	ldr	w0, [sp, #12]
 ffffff8000083d04:	6b00003f 	cmp	w1, w0
 ffffff8000083d08:	54fffdab 	b.lt	ffffff8000083cbc <PrintString+0x144>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:300
+/home/dofingert/Source/OS/THYOS/lib/print.c:300
 ffffff8000083d0c:	b9400fe0 	ldr	w0, [sp, #12]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:301
+/home/dofingert/Source/OS/THYOS/lib/print.c:301
 ffffff8000083d10:	9100c3ff 	add	sp, sp, #0x30
 ffffff8000083d14:	d65f03c0 	ret
 
 ffffff8000083d18 <PrintNum>:
 PrintNum():
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:307
+/home/dofingert/Source/OS/THYOS/lib/print.c:307
 ffffff8000083d18:	d10143ff 	sub	sp, sp, #0x50
 ffffff8000083d1c:	f90017e0 	str	x0, [sp, #40]
 ffffff8000083d20:	f90013e1 	str	x1, [sp, #32]
@@ -4577,23 +4577,23 @@ ffffff8000083d2c:	b90017e4 	str	w4, [sp, #20]
 ffffff8000083d30:	b90013e5 	str	w5, [sp, #16]
 ffffff8000083d34:	39003fe6 	strb	w6, [sp, #15]
 ffffff8000083d38:	b9000be7 	str	w7, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:318
+/home/dofingert/Source/OS/THYOS/lib/print.c:318
 ffffff8000083d3c:	b9003bff 	str	wzr, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:319
+/home/dofingert/Source/OS/THYOS/lib/print.c:319
 ffffff8000083d40:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083d44:	f90027e0 	str	x0, [sp, #72]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:324
+/home/dofingert/Source/OS/THYOS/lib/print.c:324
 ffffff8000083d48:	b9801fe1 	ldrsw	x1, [sp, #28]
 ffffff8000083d4c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000083d50:	9ac10802 	udiv	x2, x0, x1
 ffffff8000083d54:	9b017c41 	mul	x1, x2, x1
 ffffff8000083d58:	cb010000 	sub	x0, x0, x1
 ffffff8000083d5c:	b90037e0 	str	w0, [sp, #52]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:325
+/home/dofingert/Source/OS/THYOS/lib/print.c:325
 ffffff8000083d60:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000083d64:	7100241f 	cmp	w0, #0x9
 ffffff8000083d68:	5400014c 	b.gt	ffffff8000083d90 <PrintNum+0x78>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:327
+/home/dofingert/Source/OS/THYOS/lib/print.c:327
 ffffff8000083d6c:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000083d70:	12001c01 	and	w1, w0, #0xff
 ffffff8000083d74:	f94027e0 	ldr	x0, [sp, #72]
@@ -4603,11 +4603,11 @@ ffffff8000083d80:	1100c021 	add	w1, w1, #0x30
 ffffff8000083d84:	12001c21 	and	w1, w1, #0xff
 ffffff8000083d88:	39000001 	strb	w1, [x0]
 ffffff8000083d8c:	14000015 	b	ffffff8000083de0 <PrintNum+0xc8>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:329
+/home/dofingert/Source/OS/THYOS/lib/print.c:329
 ffffff8000083d90:	b9400be0 	ldr	w0, [sp, #8]
 ffffff8000083d94:	7100001f 	cmp	w0, #0x0
 ffffff8000083d98:	54000140 	b.eq	ffffff8000083dc0 <PrintNum+0xa8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:331
+/home/dofingert/Source/OS/THYOS/lib/print.c:331
 ffffff8000083d9c:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000083da0:	12001c01 	and	w1, w0, #0xff
 ffffff8000083da4:	f94027e0 	ldr	x0, [sp, #72]
@@ -4617,7 +4617,7 @@ ffffff8000083db0:	1100dc21 	add	w1, w1, #0x37
 ffffff8000083db4:	12001c21 	and	w1, w1, #0xff
 ffffff8000083db8:	39000001 	strb	w1, [x0]
 ffffff8000083dbc:	14000009 	b	ffffff8000083de0 <PrintNum+0xc8>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:335
+/home/dofingert/Source/OS/THYOS/lib/print.c:335
 ffffff8000083dc0:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000083dc4:	12001c01 	and	w1, w0, #0xff
 ffffff8000083dc8:	f94027e0 	ldr	x0, [sp, #72]
@@ -4626,79 +4626,79 @@ ffffff8000083dd0:	f90027e2 	str	x2, [sp, #72]
 ffffff8000083dd4:	11015c21 	add	w1, w1, #0x57
 ffffff8000083dd8:	12001c21 	and	w1, w1, #0xff
 ffffff8000083ddc:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:337
+/home/dofingert/Source/OS/THYOS/lib/print.c:337
 ffffff8000083de0:	b9801fe0 	ldrsw	x0, [sp, #28]
 ffffff8000083de4:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000083de8:	9ac00820 	udiv	x0, x1, x0
 ffffff8000083dec:	f90013e0 	str	x0, [sp, #32]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:338
+/home/dofingert/Source/OS/THYOS/lib/print.c:338
 ffffff8000083df0:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000083df4:	f100001f 	cmp	x0, #0x0
 ffffff8000083df8:	54fffa81 	b.ne	ffffff8000083d48 <PrintNum+0x30>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:340
+/home/dofingert/Source/OS/THYOS/lib/print.c:340
 ffffff8000083dfc:	b9401be0 	ldr	w0, [sp, #24]
 ffffff8000083e00:	7100001f 	cmp	w0, #0x0
 ffffff8000083e04:	540000c0 	b.eq	ffffff8000083e1c <PrintNum+0x104>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:342
+/home/dofingert/Source/OS/THYOS/lib/print.c:342
 ffffff8000083e08:	f94027e0 	ldr	x0, [sp, #72]
 ffffff8000083e0c:	91000401 	add	x1, x0, #0x1
 ffffff8000083e10:	f90027e1 	str	x1, [sp, #72]
 ffffff8000083e14:	528005a1 	mov	w1, #0x2d                  	// #45
 ffffff8000083e18:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:346
+/home/dofingert/Source/OS/THYOS/lib/print.c:346
 ffffff8000083e1c:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000083e20:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000083e24:	cb000020 	sub	x0, x1, x0
 ffffff8000083e28:	b9003be0 	str	w0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:347
+/home/dofingert/Source/OS/THYOS/lib/print.c:347
 ffffff8000083e2c:	b94017e1 	ldr	w1, [sp, #20]
 ffffff8000083e30:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000083e34:	6b00003f 	cmp	w1, w0
 ffffff8000083e38:	5400006a 	b.ge	ffffff8000083e44 <PrintNum+0x12c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:348
+/home/dofingert/Source/OS/THYOS/lib/print.c:348
 ffffff8000083e3c:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000083e40:	b90017e0 	str	w0, [sp, #20]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:351
+/home/dofingert/Source/OS/THYOS/lib/print.c:351
 ffffff8000083e44:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083e48:	7100001f 	cmp	w0, #0x0
 ffffff8000083e4c:	54000060 	b.eq	ffffff8000083e58 <PrintNum+0x140>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:353
+/home/dofingert/Source/OS/THYOS/lib/print.c:353
 ffffff8000083e50:	52800400 	mov	w0, #0x20                  	// #32
 ffffff8000083e54:	39003fe0 	strb	w0, [sp, #15]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:356
+/home/dofingert/Source/OS/THYOS/lib/print.c:356
 ffffff8000083e58:	b9401be0 	ldr	w0, [sp, #24]
 ffffff8000083e5c:	7100001f 	cmp	w0, #0x0
 ffffff8000083e60:	540003e0 	b.eq	ffffff8000083edc <PrintNum+0x1c4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:356 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:356 (discriminator 1)
 ffffff8000083e64:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083e68:	7100001f 	cmp	w0, #0x0
 ffffff8000083e6c:	54000381 	b.ne	ffffff8000083edc <PrintNum+0x1c4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:356 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/print.c:356 (discriminator 2)
 ffffff8000083e70:	39403fe0 	ldrb	w0, [sp, #15]
 ffffff8000083e74:	7100c01f 	cmp	w0, #0x30
 ffffff8000083e78:	54000321 	b.ne	ffffff8000083edc <PrintNum+0x1c4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:358
+/home/dofingert/Source/OS/THYOS/lib/print.c:358
 ffffff8000083e7c:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000083e80:	51000400 	sub	w0, w0, #0x1
 ffffff8000083e84:	b90047e0 	str	w0, [sp, #68]
 ffffff8000083e88:	14000009 	b	ffffff8000083eac <PrintNum+0x194>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:359 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:359 (discriminator 3)
 ffffff8000083e8c:	b98047e0 	ldrsw	x0, [sp, #68]
 ffffff8000083e90:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083e94:	8b000020 	add	x0, x1, x0
 ffffff8000083e98:	39403fe1 	ldrb	w1, [sp, #15]
 ffffff8000083e9c:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:358 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:358 (discriminator 3)
 ffffff8000083ea0:	b94047e0 	ldr	w0, [sp, #68]
 ffffff8000083ea4:	11000400 	add	w0, w0, #0x1
 ffffff8000083ea8:	b90047e0 	str	w0, [sp, #68]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:358 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:358 (discriminator 1)
 ffffff8000083eac:	b94017e0 	ldr	w0, [sp, #20]
 ffffff8000083eb0:	51000400 	sub	w0, w0, #0x1
 ffffff8000083eb4:	b94047e1 	ldr	w1, [sp, #68]
 ffffff8000083eb8:	6b00003f 	cmp	w1, w0
 ffffff8000083ebc:	54fffe8b 	b.lt	ffffff8000083e8c <PrintNum+0x174>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:361
+/home/dofingert/Source/OS/THYOS/lib/print.c:361
 ffffff8000083ec0:	b98017e0 	ldrsw	x0, [sp, #20]
 ffffff8000083ec4:	d1000400 	sub	x0, x0, #0x1
 ffffff8000083ec8:	f94017e1 	ldr	x1, [sp, #40]
@@ -4706,49 +4706,49 @@ ffffff8000083ecc:	8b000020 	add	x0, x1, x0
 ffffff8000083ed0:	528005a1 	mov	w1, #0x2d                  	// #45
 ffffff8000083ed4:	39000001 	strb	w1, [x0]
 ffffff8000083ed8:	14000010 	b	ffffff8000083f18 <PrintNum+0x200>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:365
+/home/dofingert/Source/OS/THYOS/lib/print.c:365
 ffffff8000083edc:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000083ee0:	b90047e0 	str	w0, [sp, #68]
 ffffff8000083ee4:	14000009 	b	ffffff8000083f08 <PrintNum+0x1f0>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:366 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:366 (discriminator 3)
 ffffff8000083ee8:	b98047e0 	ldrsw	x0, [sp, #68]
 ffffff8000083eec:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083ef0:	8b000020 	add	x0, x1, x0
 ffffff8000083ef4:	39403fe1 	ldrb	w1, [sp, #15]
 ffffff8000083ef8:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:365 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/print.c:365 (discriminator 3)
 ffffff8000083efc:	b94047e0 	ldr	w0, [sp, #68]
 ffffff8000083f00:	11000400 	add	w0, w0, #0x1
 ffffff8000083f04:	b90047e0 	str	w0, [sp, #68]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:365 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/print.c:365 (discriminator 1)
 ffffff8000083f08:	b94047e1 	ldr	w1, [sp, #68]
 ffffff8000083f0c:	b94017e0 	ldr	w0, [sp, #20]
 ffffff8000083f10:	6b00003f 	cmp	w1, w0
 ffffff8000083f14:	54fffeab 	b.lt	ffffff8000083ee8 <PrintNum+0x1d0>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:370
+/home/dofingert/Source/OS/THYOS/lib/print.c:370
 ffffff8000083f18:	b90043ff 	str	wzr, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:372
+/home/dofingert/Source/OS/THYOS/lib/print.c:372
 ffffff8000083f1c:	b94013e0 	ldr	w0, [sp, #16]
 ffffff8000083f20:	7100001f 	cmp	w0, #0x0
 ffffff8000083f24:	540000a0 	b.eq	ffffff8000083f38 <PrintNum+0x220>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:374
+/home/dofingert/Source/OS/THYOS/lib/print.c:374
 ffffff8000083f28:	b9403be0 	ldr	w0, [sp, #56]
 ffffff8000083f2c:	51000400 	sub	w0, w0, #0x1
 ffffff8000083f30:	b9003fe0 	str	w0, [sp, #60]
 ffffff8000083f34:	1400001d 	b	ffffff8000083fa8 <PrintNum+0x290>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:378
+/home/dofingert/Source/OS/THYOS/lib/print.c:378
 ffffff8000083f38:	b94017e0 	ldr	w0, [sp, #20]
 ffffff8000083f3c:	51000400 	sub	w0, w0, #0x1
 ffffff8000083f40:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:381
+/home/dofingert/Source/OS/THYOS/lib/print.c:381
 ffffff8000083f44:	14000019 	b	ffffff8000083fa8 <PrintNum+0x290>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:383
+/home/dofingert/Source/OS/THYOS/lib/print.c:383
 ffffff8000083f48:	b98043e0 	ldrsw	x0, [sp, #64]
 ffffff8000083f4c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083f50:	8b000020 	add	x0, x1, x0
 ffffff8000083f54:	39400000 	ldrb	w0, [x0]
 ffffff8000083f58:	3900cfe0 	strb	w0, [sp, #51]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:384
+/home/dofingert/Source/OS/THYOS/lib/print.c:384
 ffffff8000083f5c:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff8000083f60:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083f64:	8b000021 	add	x1, x1, x0
@@ -4757,87 +4757,87 @@ ffffff8000083f6c:	f94017e2 	ldr	x2, [sp, #40]
 ffffff8000083f70:	8b000040 	add	x0, x2, x0
 ffffff8000083f74:	39400021 	ldrb	w1, [x1]
 ffffff8000083f78:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:385
+/home/dofingert/Source/OS/THYOS/lib/print.c:385
 ffffff8000083f7c:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff8000083f80:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000083f84:	8b000020 	add	x0, x1, x0
 ffffff8000083f88:	3940cfe1 	ldrb	w1, [sp, #51]
 ffffff8000083f8c:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:386
+/home/dofingert/Source/OS/THYOS/lib/print.c:386
 ffffff8000083f90:	b94043e0 	ldr	w0, [sp, #64]
 ffffff8000083f94:	11000400 	add	w0, w0, #0x1
 ffffff8000083f98:	b90043e0 	str	w0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:387
+/home/dofingert/Source/OS/THYOS/lib/print.c:387
 ffffff8000083f9c:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000083fa0:	51000400 	sub	w0, w0, #0x1
 ffffff8000083fa4:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:381
+/home/dofingert/Source/OS/THYOS/lib/print.c:381
 ffffff8000083fa8:	b9403fe1 	ldr	w1, [sp, #60]
 ffffff8000083fac:	b94043e0 	ldr	w0, [sp, #64]
 ffffff8000083fb0:	6b00003f 	cmp	w1, w0
 ffffff8000083fb4:	54fffcac 	b.gt	ffffff8000083f48 <PrintNum+0x230>
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:391
+/home/dofingert/Source/OS/THYOS/lib/print.c:391
 ffffff8000083fb8:	b94017e0 	ldr	w0, [sp, #20]
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:392
+/home/dofingert/Source/OS/THYOS/lib/print.c:392
 ffffff8000083fbc:	910143ff 	add	sp, sp, #0x50
 ffffff8000083fc0:	d65f03c0 	ret
 
 ffffff8000083fc4 <handle_irq>:
 handle_irq():
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:16
+/home/dofingert/Source/OS/THYOS/lib/sched.c:16
 ffffff8000083fc4:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff8000083fc8:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:17
+/home/dofingert/Source/OS/THYOS/lib/sched.c:17
 ffffff8000083fcc:	90000020 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000083fd0:	91130000 	add	x0, x0, #0x4c0
 ffffff8000083fd4:	97fffafc 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:18
+/home/dofingert/Source/OS/THYOS/lib/sched.c:18
 ffffff8000083fd8:	94000562 	bl	ffffff8000085560 <reset_timer>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:19
+/home/dofingert/Source/OS/THYOS/lib/sched.c:19
 ffffff8000083fdc:	94000004 	bl	ffffff8000083fec <sched_yield>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:20
+/home/dofingert/Source/OS/THYOS/lib/sched.c:20
 ffffff8000083fe0:	d503201f 	nop
 ffffff8000083fe4:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff8000083fe8:	d65f03c0 	ret
 
 ffffff8000083fec <sched_yield>:
 sched_yield():
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:23
+/home/dofingert/Source/OS/THYOS/lib/sched.c:23
 ffffff8000083fec:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff8000083ff0:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:28
+/home/dofingert/Source/OS/THYOS/lib/sched.c:28
 ffffff8000083ff4:	b0000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000083ff8:	913b8000 	add	x0, x0, #0xee0
 ffffff8000083ffc:	b9400000 	ldr	w0, [x0]
 ffffff8000084000:	7100001f 	cmp	w0, #0x0
 ffffff8000084004:	54000180 	b.eq	ffffff8000084034 <sched_yield+0x48>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:28 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:28 (discriminator 1)
 ffffff8000084008:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008400c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084010:	f9400000 	ldr	x0, [x0]
 ffffff8000084014:	f100001f 	cmp	x0, #0x0
 ffffff8000084018:	540000e0 	b.eq	ffffff8000084034 <sched_yield+0x48>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:28 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:28 (discriminator 2)
 ffffff800008401c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084020:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084024:	f9400000 	ldr	x0, [x0]
 ffffff8000084028:	b9413800 	ldr	w0, [x0, #312]
 ffffff800008402c:	7100041f 	cmp	w0, #0x1
 ffffff8000084030:	54002e80 	b.eq	ffffff8000084600 <sched_yield+0x614>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:30
+/home/dofingert/Source/OS/THYOS/lib/sched.c:30
 ffffff8000084034:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084038:	913ba000 	add	x0, x0, #0xee8
 ffffff800008403c:	f9400000 	ldr	x0, [x0]
 ffffff8000084040:	f100001f 	cmp	x0, #0x0
 ffffff8000084044:	540013e0 	b.eq	ffffff80000842c0 <sched_yield+0x2d4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:32
+/home/dofingert/Source/OS/THYOS/lib/sched.c:32
 ffffff8000084048:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008404c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084050:	f9400000 	ldr	x0, [x0]
 ffffff8000084054:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084058:	f100001f 	cmp	x0, #0x0
 ffffff800008405c:	54000140 	b.eq	ffffff8000084084 <sched_yield+0x98>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:32 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:32 (discriminator 1)
 ffffff8000084060:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084064:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084068:	f9400001 	ldr	x1, [x0]
@@ -4847,7 +4847,7 @@ ffffff8000084074:	f9400000 	ldr	x0, [x0]
 ffffff8000084078:	f940a800 	ldr	x0, [x0, #336]
 ffffff800008407c:	f940ac21 	ldr	x1, [x1, #344]
 ffffff8000084080:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:32 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:32 (discriminator 3)
 ffffff8000084084:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084088:	913ba000 	add	x0, x0, #0xee8
 ffffff800008408c:	f9400001 	ldr	x1, [x0]
@@ -4857,14 +4857,14 @@ ffffff8000084098:	f9400000 	ldr	x0, [x0]
 ffffff800008409c:	f940ac00 	ldr	x0, [x0, #344]
 ffffff80000840a0:	f940a821 	ldr	x1, [x1, #336]
 ffffff80000840a4:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:33 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:33 (discriminator 3)
 ffffff80000840a8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000840ac:	913ba000 	add	x0, x0, #0xee8
 ffffff80000840b0:	f9400000 	ldr	x0, [x0]
 ffffff80000840b4:	b9413800 	ldr	w0, [x0, #312]
 ffffff80000840b8:	7100001f 	cmp	w0, #0x0
 ffffff80000840bc:	54001020 	b.eq	ffffff80000842c0 <sched_yield+0x2d4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35
 ffffff80000840c0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000840c4:	913bc000 	add	x0, x0, #0xef0
 ffffff80000840c8:	b9400000 	ldr	w0, [x0]
@@ -4876,7 +4876,7 @@ ffffff80000840dc:	93407c21 	sxtw	x1, w1
 ffffff80000840e0:	f8617800 	ldr	x0, [x0, x1, lsl #3]
 ffffff80000840e4:	f100001f 	cmp	x0, #0x0
 ffffff80000840e8:	54000741 	b.ne	ffffff80000841d0 <sched_yield+0x1e4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 1)
 ffffff80000840ec:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000840f0:	913bc000 	add	x0, x0, #0xef0
 ffffff80000840f4:	b9400000 	ldr	w0, [x0]
@@ -4893,7 +4893,7 @@ ffffff800008411c:	f900a801 	str	x1, [x0, #336]
 ffffff8000084120:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084124:	f100001f 	cmp	x0, #0x0
 ffffff8000084128:	540001e0 	b.eq	ffffff8000084164 <sched_yield+0x178>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 3)
 ffffff800008412c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084130:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084134:	f9400001 	ldr	x1, [x0]
@@ -4908,7 +4908,7 @@ ffffff8000084154:	93407c42 	sxtw	x2, w2
 ffffff8000084158:	f8627800 	ldr	x0, [x0, x2, lsl #3]
 ffffff800008415c:	91054021 	add	x1, x1, #0x150
 ffffff8000084160:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 5)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 5)
 ffffff8000084164:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084168:	913bc000 	add	x0, x0, #0xef0
 ffffff800008416c:	b9400000 	ldr	w0, [x0]
@@ -4936,7 +4936,7 @@ ffffff80000841c0:	913c0021 	add	x1, x1, #0xf00
 ffffff80000841c4:	8b010041 	add	x1, x2, x1
 ffffff80000841c8:	f900ac01 	str	x1, [x0, #344]
 ffffff80000841cc:	1400003d 	b	ffffff80000842c0 <sched_yield+0x2d4>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 2)
 ffffff80000841d0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000841d4:	913bc000 	add	x0, x0, #0xef0
 ffffff80000841d8:	b9400000 	ldr	w0, [x0]
@@ -4951,7 +4951,7 @@ ffffff80000841f8:	93407c42 	sxtw	x2, w2
 ffffff80000841fc:	f8627821 	ldr	x1, [x1, x2, lsl #3]
 ffffff8000084200:	f900a801 	str	x1, [x0, #336]
 ffffff8000084204:	1400000a 	b	ffffff800008422c <sched_yield+0x240>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 8)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 8)
 ffffff8000084208:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008420c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084210:	f9400000 	ldr	x0, [x0]
@@ -4961,7 +4961,7 @@ ffffff800008421c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084220:	f9400000 	ldr	x0, [x0]
 ffffff8000084224:	f940a821 	ldr	x1, [x1, #336]
 ffffff8000084228:	f900a801 	str	x1, [x0, #336]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 6)
 ffffff800008422c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084230:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084234:	f9400000 	ldr	x0, [x0]
@@ -4969,7 +4969,7 @@ ffffff8000084238:	f940a800 	ldr	x0, [x0, #336]
 ffffff800008423c:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084240:	f100001f 	cmp	x0, #0x0
 ffffff8000084244:	54fffe21 	b.ne	ffffff8000084208 <sched_yield+0x21c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:35 (discriminator 9)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:35 (discriminator 9)
 ffffff8000084248:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008424c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084250:	f9400000 	ldr	x0, [x0]
@@ -4991,9 +4991,9 @@ ffffff800008428c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_star
 ffffff8000084290:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084294:	f9400000 	ldr	x0, [x0]
 ffffff8000084298:	f900a81f 	str	xzr, [x0, #336]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:40 (discriminator 9)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:40 (discriminator 9)
 ffffff800008429c:	14000009 	b	ffffff80000842c0 <sched_yield+0x2d4>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:42
+/home/dofingert/Source/OS/THYOS/lib/sched.c:42
 ffffff80000842a0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000842a4:	913bc000 	add	x0, x0, #0xef0
 ffffff80000842a8:	b9400000 	ldr	w0, [x0]
@@ -5002,7 +5002,7 @@ ffffff80000842b0:	4b000021 	sub	w1, w1, w0
 ffffff80000842b4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000842b8:	913bc000 	add	x0, x0, #0xef0
 ffffff80000842bc:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:40
+/home/dofingert/Source/OS/THYOS/lib/sched.c:40
 ffffff80000842c0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000842c4:	913bc000 	add	x0, x0, #0xef0
 ffffff80000842c8:	b9400001 	ldr	w1, [x0]
@@ -5012,7 +5012,7 @@ ffffff80000842d4:	93407c21 	sxtw	x1, w1
 ffffff80000842d8:	f8617800 	ldr	x0, [x0, x1, lsl #3]
 ffffff80000842dc:	f100001f 	cmp	x0, #0x0
 ffffff80000842e0:	54fffe00 	b.eq	ffffff80000842a0 <sched_yield+0x2b4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:44
+/home/dofingert/Source/OS/THYOS/lib/sched.c:44
 ffffff80000842e4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000842e8:	913bc000 	add	x0, x0, #0xef0
 ffffff80000842ec:	b9400001 	ldr	w1, [x0]
@@ -5023,21 +5023,21 @@ ffffff80000842fc:	f8617801 	ldr	x1, [x0, x1, lsl #3]
 ffffff8000084300:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084304:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084308:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:45
+/home/dofingert/Source/OS/THYOS/lib/sched.c:45
 ffffff800008430c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084310:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084314:	f9400000 	ldr	x0, [x0]
 ffffff8000084318:	b9413800 	ldr	w0, [x0, #312]
 ffffff800008431c:	7100001f 	cmp	w0, #0x0
 ffffff8000084320:	54000341 	b.ne	ffffff8000084388 <sched_yield+0x39c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:46
+/home/dofingert/Source/OS/THYOS/lib/sched.c:46
 ffffff8000084324:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084328:	913ba000 	add	x0, x0, #0xee8
 ffffff800008432c:	f9400000 	ldr	x0, [x0]
 ffffff8000084330:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084334:	f100001f 	cmp	x0, #0x0
 ffffff8000084338:	54000140 	b.eq	ffffff8000084360 <sched_yield+0x374>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:46 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:46 (discriminator 1)
 ffffff800008433c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084340:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084344:	f9400001 	ldr	x1, [x0]
@@ -5047,7 +5047,7 @@ ffffff8000084350:	f9400000 	ldr	x0, [x0]
 ffffff8000084354:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084358:	f940ac21 	ldr	x1, [x1, #344]
 ffffff800008435c:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:46 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:46 (discriminator 3)
 ffffff8000084360:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084364:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084368:	f9400001 	ldr	x1, [x0]
@@ -5058,21 +5058,21 @@ ffffff8000084378:	f940ac00 	ldr	x0, [x0, #344]
 ffffff800008437c:	f940a821 	ldr	x1, [x1, #336]
 ffffff8000084380:	f9000001 	str	x1, [x0]
 ffffff8000084384:	17ffffcf 	b	ffffff80000842c0 <sched_yield+0x2d4>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:47
+/home/dofingert/Source/OS/THYOS/lib/sched.c:47
 ffffff8000084388:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008438c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084390:	f9400000 	ldr	x0, [x0]
 ffffff8000084394:	b9413800 	ldr	w0, [x0, #312]
 ffffff8000084398:	7100081f 	cmp	w0, #0x2
 ffffff800008439c:	54001221 	b.ne	ffffff80000845e0 <sched_yield+0x5f4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:49
+/home/dofingert/Source/OS/THYOS/lib/sched.c:49
 ffffff80000843a0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000843a4:	913ba000 	add	x0, x0, #0xee8
 ffffff80000843a8:	f9400000 	ldr	x0, [x0]
 ffffff80000843ac:	f940a800 	ldr	x0, [x0, #336]
 ffffff80000843b0:	f100001f 	cmp	x0, #0x0
 ffffff80000843b4:	54000140 	b.eq	ffffff80000843dc <sched_yield+0x3f0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:49 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:49 (discriminator 1)
 ffffff80000843b8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000843bc:	913ba000 	add	x0, x0, #0xee8
 ffffff80000843c0:	f9400001 	ldr	x1, [x0]
@@ -5082,7 +5082,7 @@ ffffff80000843cc:	f9400000 	ldr	x0, [x0]
 ffffff80000843d0:	f940a800 	ldr	x0, [x0, #336]
 ffffff80000843d4:	f940ac21 	ldr	x1, [x1, #344]
 ffffff80000843d8:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:49 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:49 (discriminator 3)
 ffffff80000843dc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000843e0:	913ba000 	add	x0, x0, #0xee8
 ffffff80000843e4:	f9400001 	ldr	x1, [x0]
@@ -5092,7 +5092,7 @@ ffffff80000843f0:	f9400000 	ldr	x0, [x0]
 ffffff80000843f4:	f940ac00 	ldr	x0, [x0, #344]
 ffffff80000843f8:	f940a821 	ldr	x1, [x1, #336]
 ffffff80000843fc:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 3)
 ffffff8000084400:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084404:	913bc000 	add	x0, x0, #0xef0
 ffffff8000084408:	b9400000 	ldr	w0, [x0]
@@ -5104,7 +5104,7 @@ ffffff800008441c:	93407c21 	sxtw	x1, w1
 ffffff8000084420:	f8617800 	ldr	x0, [x0, x1, lsl #3]
 ffffff8000084424:	f100001f 	cmp	x0, #0x0
 ffffff8000084428:	54000741 	b.ne	ffffff8000084510 <sched_yield+0x524>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 1)
 ffffff800008442c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084430:	913bc000 	add	x0, x0, #0xef0
 ffffff8000084434:	b9400000 	ldr	w0, [x0]
@@ -5121,7 +5121,7 @@ ffffff800008445c:	f900a801 	str	x1, [x0, #336]
 ffffff8000084460:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084464:	f100001f 	cmp	x0, #0x0
 ffffff8000084468:	540001e0 	b.eq	ffffff80000844a4 <sched_yield+0x4b8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 3)
 ffffff800008446c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084470:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084474:	f9400001 	ldr	x1, [x0]
@@ -5136,7 +5136,7 @@ ffffff8000084494:	93407c42 	sxtw	x2, w2
 ffffff8000084498:	f8627800 	ldr	x0, [x0, x2, lsl #3]
 ffffff800008449c:	91054021 	add	x1, x1, #0x150
 ffffff80000844a0:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 5)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 5)
 ffffff80000844a4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000844a8:	913bc000 	add	x0, x0, #0xef0
 ffffff80000844ac:	b9400000 	ldr	w0, [x0]
@@ -5164,7 +5164,7 @@ ffffff8000084500:	913c0021 	add	x1, x1, #0xf00
 ffffff8000084504:	8b010041 	add	x1, x2, x1
 ffffff8000084508:	f900ac01 	str	x1, [x0, #344]
 ffffff800008450c:	17ffff6d 	b	ffffff80000842c0 <sched_yield+0x2d4>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 2)
 ffffff8000084510:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084514:	913bc000 	add	x0, x0, #0xef0
 ffffff8000084518:	b9400000 	ldr	w0, [x0]
@@ -5179,7 +5179,7 @@ ffffff8000084538:	93407c42 	sxtw	x2, w2
 ffffff800008453c:	f8627821 	ldr	x1, [x1, x2, lsl #3]
 ffffff8000084540:	f900a801 	str	x1, [x0, #336]
 ffffff8000084544:	1400000a 	b	ffffff800008456c <sched_yield+0x580>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 8)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 8)
 ffffff8000084548:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008454c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084550:	f9400000 	ldr	x0, [x0]
@@ -5189,7 +5189,7 @@ ffffff800008455c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084560:	f9400000 	ldr	x0, [x0]
 ffffff8000084564:	f940a821 	ldr	x1, [x1, #336]
 ffffff8000084568:	f900a801 	str	x1, [x0, #336]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 6)
 ffffff800008456c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084570:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084574:	f9400000 	ldr	x0, [x0]
@@ -5197,7 +5197,7 @@ ffffff8000084578:	f940a800 	ldr	x0, [x0, #336]
 ffffff800008457c:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000084580:	f100001f 	cmp	x0, #0x0
 ffffff8000084584:	54fffe21 	b.ne	ffffff8000084548 <sched_yield+0x55c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:50 (discriminator 9)
+/home/dofingert/Source/OS/THYOS/lib/sched.c:50 (discriminator 9)
 ffffff8000084588:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008458c:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084590:	f9400000 	ldr	x0, [x0]
@@ -5220,7 +5220,7 @@ ffffff80000845d0:	913ba000 	add	x0, x0, #0xee8
 ffffff80000845d4:	f9400000 	ldr	x0, [x0]
 ffffff80000845d8:	f900a81f 	str	xzr, [x0, #336]
 ffffff80000845dc:	17ffff39 	b	ffffff80000842c0 <sched_yield+0x2d4>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:54
+/home/dofingert/Source/OS/THYOS/lib/sched.c:54
 ffffff80000845e0:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000845e4:	913ba000 	add	x0, x0, #0xee8
 ffffff80000845e8:	f9400000 	ldr	x0, [x0]
@@ -5229,7 +5229,7 @@ ffffff80000845f0:	2a0003e1 	mov	w1, w0
 ffffff80000845f4:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000845f8:	913b8000 	add	x0, x0, #0xee0
 ffffff80000845fc:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:59
+/home/dofingert/Source/OS/THYOS/lib/sched.c:59
 ffffff8000084600:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084604:	913b8000 	add	x0, x0, #0xee0
 ffffff8000084608:	b9400000 	ldr	w0, [x0]
@@ -5237,51 +5237,51 @@ ffffff800008460c:	51000401 	sub	w1, w0, #0x1
 ffffff8000084610:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084614:	913b8000 	add	x0, x0, #0xee0
 ffffff8000084618:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:60
+/home/dofingert/Source/OS/THYOS/lib/sched.c:60
 ffffff800008461c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084620:	913ba000 	add	x0, x0, #0xee8
 ffffff8000084624:	f9400000 	ldr	x0, [x0]
 ffffff8000084628:	b9419001 	ldr	w1, [x0, #400]
 ffffff800008462c:	11000421 	add	w1, w1, #0x1
 ffffff8000084630:	b9019001 	str	w1, [x0, #400]
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:61
+/home/dofingert/Source/OS/THYOS/lib/sched.c:61
 ffffff8000084634:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084638:	913ba000 	add	x0, x0, #0xee8
 ffffff800008463c:	f9400000 	ldr	x0, [x0]
 ffffff8000084640:	97fff7b4 	bl	ffffff8000082510 <env_run>
-/home/thysrael/OS/PIOS/THYOS/lib/sched.c:62
+/home/dofingert/Source/OS/THYOS/lib/sched.c:62
 ffffff8000084644:	d503201f 	nop
 ffffff8000084648:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff800008464c:	d65f03c0 	ret
 
 ffffff8000084650 <handle_sync>:
 handle_sync():
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:25
+/home/dofingert/Source/OS/THYOS/lib/sync.c:25
 ffffff8000084650:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
 ffffff8000084654:	910003fd 	mov	x29, sp
 ffffff8000084658:	f90017e0 	str	x0, [sp, #40]
 ffffff800008465c:	f90013e1 	str	x1, [sp, #32]
 ffffff8000084660:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:26
+/home/dofingert/Source/OS/THYOS/lib/sync.c:26
 ffffff8000084664:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084668:	91138002 	add	x2, x0, #0x4e0
 ffffff800008466c:	52800341 	mov	w1, #0x1a                  	// #26
 ffffff8000084670:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084674:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084678:	97fff97f 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:27
+/home/dofingert/Source/OS/THYOS/lib/sync.c:27
 ffffff800008467c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084680:	f9408800 	ldr	x0, [x0, #272]
 ffffff8000084684:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:28
+/home/dofingert/Source/OS/THYOS/lib/sync.c:28
 ffffff8000084688:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008468c:	f9408c00 	ldr	x0, [x0, #280]
 ffffff8000084690:	f90027e0 	str	x0, [sp, #72]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:29
+/home/dofingert/Source/OS/THYOS/lib/sync.c:29
 ffffff8000084694:	f94027e0 	ldr	x0, [sp, #72]
 ffffff8000084698:	d35afc00 	lsr	x0, x0, #26
 ffffff800008469c:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:30
+/home/dofingert/Source/OS/THYOS/lib/sync.c:30
 ffffff80000846a0:	f9402be3 	ldr	x3, [sp, #80]
 ffffff80000846a4:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846a8:	91140002 	add	x2, x0, #0x500
@@ -5289,7 +5289,7 @@ ffffff80000846ac:	528003c1 	mov	w1, #0x1e                  	// #30
 ffffff80000846b0:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846b4:	9113e000 	add	x0, x0, #0x4f8
 ffffff80000846b8:	97fff96f 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:31
+/home/dofingert/Source/OS/THYOS/lib/sync.c:31
 ffffff80000846bc:	f94027e3 	ldr	x3, [sp, #72]
 ffffff80000846c0:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846c4:	91144002 	add	x2, x0, #0x510
@@ -5297,7 +5297,7 @@ ffffff80000846c8:	528003e1 	mov	w1, #0x1f                  	// #31
 ffffff80000846cc:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846d0:	9113e000 	add	x0, x0, #0x4f8
 ffffff80000846d4:	97fff968 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:32
+/home/dofingert/Source/OS/THYOS/lib/sync.c:32
 ffffff80000846d8:	f94023e3 	ldr	x3, [sp, #64]
 ffffff80000846dc:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846e0:	91148002 	add	x2, x0, #0x520
@@ -5305,15 +5305,15 @@ ffffff80000846e4:	52800401 	mov	w1, #0x20                  	// #32
 ffffff80000846e8:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000846ec:	9113e000 	add	x0, x0, #0x4f8
 ffffff80000846f0:	97fff961 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:35
+/home/dofingert/Source/OS/THYOS/lib/sync.c:35
 ffffff80000846f4:	f94023e0 	ldr	x0, [sp, #64]
 ffffff80000846f8:	f100541f 	cmp	x0, #0x15
 ffffff80000846fc:	54001f61 	b.ne	ffffff8000084ae8 <handle_sync+0x498>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:37
+/home/dofingert/Source/OS/THYOS/lib/sync.c:37
 ffffff8000084700:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084704:	f9400000 	ldr	x0, [x0]
 ffffff8000084708:	f9001be0 	str	x0, [sp, #48]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:38
+/home/dofingert/Source/OS/THYOS/lib/sync.c:38
 ffffff800008470c:	f9401be3 	ldr	x3, [sp, #48]
 ffffff8000084710:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084714:	9114c002 	add	x2, x0, #0x530
@@ -5321,9 +5321,9 @@ ffffff8000084718:	528004c1 	mov	w1, #0x26                  	// #38
 ffffff800008471c:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084720:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084724:	97fff954 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:41
+/home/dofingert/Source/OS/THYOS/lib/sync.c:41
 ffffff8000084728:	b9005fff 	str	wzr, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:42
+/home/dofingert/Source/OS/THYOS/lib/sync.c:42
 ffffff800008472c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000084730:	f100441f 	cmp	x0, #0x11
 ffffff8000084734:	54001b20 	b.eq	ffffff8000084a98 <handle_sync+0x448>  // b.none
@@ -5415,29 +5415,29 @@ ffffff8000084888:	f9401be0 	ldr	x0, [sp, #48]
 ffffff800008488c:	f100081f 	cmp	x0, #0x2
 ffffff8000084890:	540000c0 	b.eq	ffffff80000848a8 <handle_sync+0x258>  // b.none
 ffffff8000084894:	1400008c 	b	ffffff8000084ac4 <handle_sync+0x474>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:45
+/home/dofingert/Source/OS/THYOS/lib/sync.c:45
 ffffff8000084898:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008489c:	f9400400 	ldr	x0, [x0, #8]
 ffffff80000848a0:	94000118 	bl	ffffff8000084d00 <sys_putchar>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:46
+/home/dofingert/Source/OS/THYOS/lib/sync.c:46
 ffffff80000848a4:	1400008d 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:48
+/home/dofingert/Source/OS/THYOS/lib/sync.c:48
 ffffff80000848a8:	9400011e 	bl	ffffff8000084d20 <sys_getenvid>
 ffffff80000848ac:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:49
+/home/dofingert/Source/OS/THYOS/lib/sync.c:49
 ffffff80000848b0:	1400008a 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:51
+/home/dofingert/Source/OS/THYOS/lib/sync.c:51
 ffffff80000848b4:	94000120 	bl	ffffff8000084d34 <sys_yield>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:52
+/home/dofingert/Source/OS/THYOS/lib/sync.c:52
 ffffff80000848b8:	14000088 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:54
+/home/dofingert/Source/OS/THYOS/lib/sync.c:54
 ffffff80000848bc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000848c0:	f9400400 	ldr	x0, [x0, #8]
 ffffff80000848c4:	9400012c 	bl	ffffff8000084d74 <sys_env_destroy>
 ffffff80000848c8:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:55
+/home/dofingert/Source/OS/THYOS/lib/sync.c:55
 ffffff80000848cc:	14000083 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:57
+/home/dofingert/Source/OS/THYOS/lib/sync.c:57
 ffffff80000848d0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000848d4:	f9400400 	ldr	x0, [x0, #8]
 ffffff80000848d8:	2a0003e3 	mov	w3, w0
@@ -5449,9 +5449,9 @@ ffffff80000848ec:	aa0003e2 	mov	x2, x0
 ffffff80000848f0:	2a0303e0 	mov	w0, w3
 ffffff80000848f4:	94000133 	bl	ffffff8000084dc0 <sys_set_pgfault_handler>
 ffffff80000848f8:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:58
+/home/dofingert/Source/OS/THYOS/lib/sync.c:58
 ffffff80000848fc:	14000077 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:60
+/home/dofingert/Source/OS/THYOS/lib/sync.c:60
 ffffff8000084900:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084904:	f9400400 	ldr	x0, [x0, #8]
 ffffff8000084908:	2a0003e3 	mov	w3, w0
@@ -5464,9 +5464,9 @@ ffffff8000084920:	aa0003e2 	mov	x2, x0
 ffffff8000084924:	2a0303e0 	mov	w0, w3
 ffffff8000084928:	9400013f 	bl	ffffff8000084e24 <sys_mem_alloc>
 ffffff800008492c:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:61
+/home/dofingert/Source/OS/THYOS/lib/sync.c:61
 ffffff8000084930:	1400006a 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:63
+/home/dofingert/Source/OS/THYOS/lib/sync.c:63
 ffffff8000084934:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084938:	f9400400 	ldr	x0, [x0, #8]
 ffffff800008493c:	2a0003e5 	mov	w5, w0
@@ -5486,9 +5486,9 @@ ffffff8000084970:	2a0603e2 	mov	w2, w6
 ffffff8000084974:	2a0503e0 	mov	w0, w5
 ffffff8000084978:	94000165 	bl	ffffff8000084f0c <sys_mem_map>
 ffffff800008497c:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:64
+/home/dofingert/Source/OS/THYOS/lib/sync.c:64
 ffffff8000084980:	14000056 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:66
+/home/dofingert/Source/OS/THYOS/lib/sync.c:66
 ffffff8000084984:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084988:	f9400400 	ldr	x0, [x0, #8]
 ffffff800008498c:	2a0003e2 	mov	w2, w0
@@ -5498,14 +5498,14 @@ ffffff8000084998:	aa0003e1 	mov	x1, x0
 ffffff800008499c:	2a0203e0 	mov	w0, w2
 ffffff80000849a0:	940001b9 	bl	ffffff8000085084 <sys_mem_unmap>
 ffffff80000849a4:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:67
+/home/dofingert/Source/OS/THYOS/lib/sync.c:67
 ffffff80000849a8:	1400004c 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:69
+/home/dofingert/Source/OS/THYOS/lib/sync.c:69
 ffffff80000849ac:	940001d0 	bl	ffffff80000850ec <sys_env_alloc>
 ffffff80000849b0:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:70
+/home/dofingert/Source/OS/THYOS/lib/sync.c:70
 ffffff80000849b4:	14000049 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:72
+/home/dofingert/Source/OS/THYOS/lib/sync.c:72
 ffffff80000849b8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000849bc:	f9400400 	ldr	x0, [x0, #8]
 ffffff80000849c0:	2a0003e2 	mov	w2, w0
@@ -5515,9 +5515,9 @@ ffffff80000849cc:	2a0003e1 	mov	w1, w0
 ffffff80000849d0:	2a0203e0 	mov	w0, w2
 ffffff80000849d4:	940001e9 	bl	ffffff8000085178 <sys_set_env_status>
 ffffff80000849d8:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:73
+/home/dofingert/Source/OS/THYOS/lib/sync.c:73
 ffffff80000849dc:	1400003f 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:75
+/home/dofingert/Source/OS/THYOS/lib/sync.c:75
 ffffff80000849e0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000849e4:	f9400400 	ldr	x0, [x0, #8]
 ffffff80000849e8:	2a0003e2 	mov	w2, w0
@@ -5527,21 +5527,21 @@ ffffff80000849f4:	aa0003e1 	mov	x1, x0
 ffffff80000849f8:	2a0203e0 	mov	w0, w2
 ffffff80000849fc:	9400023d 	bl	ffffff80000852f0 <sys_set_trapframe>
 ffffff8000084a00:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:76
+/home/dofingert/Source/OS/THYOS/lib/sync.c:76
 ffffff8000084a04:	14000035 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:78
+/home/dofingert/Source/OS/THYOS/lib/sync.c:78
 ffffff8000084a08:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084a0c:	f9400400 	ldr	x0, [x0, #8]
 ffffff8000084a10:	94000242 	bl	ffffff8000085318 <sys_panic>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:79
+/home/dofingert/Source/OS/THYOS/lib/sync.c:79
 ffffff8000084a14:	14000031 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:81
+/home/dofingert/Source/OS/THYOS/lib/sync.c:81
 ffffff8000084a18:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084a1c:	f9400400 	ldr	x0, [x0, #8]
 ffffff8000084a20:	94000248 	bl	ffffff8000085340 <sys_ipc_recv>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:82
+/home/dofingert/Source/OS/THYOS/lib/sync.c:82
 ffffff8000084a24:	1400002d 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:84
+/home/dofingert/Source/OS/THYOS/lib/sync.c:84
 ffffff8000084a28:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084a2c:	f9400404 	ldr	x4, [x0, #8]
 ffffff8000084a30:	f94017e0 	ldr	x0, [sp, #40]
@@ -5558,9 +5558,9 @@ ffffff8000084a58:	2a0503e1 	mov	w1, w5
 ffffff8000084a5c:	aa0403e0 	mov	x0, x4
 ffffff8000084a60:	94000253 	bl	ffffff80000853ac <sys_ipc_can_send>
 ffffff8000084a64:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:85
+/home/dofingert/Source/OS/THYOS/lib/sync.c:85
 ffffff8000084a68:	1400001c 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:87
+/home/dofingert/Source/OS/THYOS/lib/sync.c:87
 ffffff8000084a6c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084a70:	f9400403 	ldr	x3, [x0, #8]
 ffffff8000084a74:	f94017e0 	ldr	x0, [sp, #40]
@@ -5571,9 +5571,9 @@ ffffff8000084a84:	2a0003e2 	mov	w2, w0
 ffffff8000084a88:	aa0303e0 	mov	x0, x3
 ffffff8000084a8c:	9400029f 	bl	ffffff8000085508 <sys_write_dev>
 ffffff8000084a90:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:88
+/home/dofingert/Source/OS/THYOS/lib/sync.c:88
 ffffff8000084a94:	14000011 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:90
+/home/dofingert/Source/OS/THYOS/lib/sync.c:90
 ffffff8000084a98:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084a9c:	f9400403 	ldr	x3, [x0, #8]
 ffffff8000084aa0:	f94017e0 	ldr	x0, [sp, #40]
@@ -5584,42 +5584,42 @@ ffffff8000084ab0:	2a0003e2 	mov	w2, w0
 ffffff8000084ab4:	aa0303e0 	mov	x0, x3
 ffffff8000084ab8:	9400029f 	bl	ffffff8000085534 <sys_read_dev>
 ffffff8000084abc:	b9005fe0 	str	w0, [sp, #92]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:91
+/home/dofingert/Source/OS/THYOS/lib/sync.c:91
 ffffff8000084ac0:	14000006 	b	ffffff8000084ad8 <handle_sync+0x488>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:94
+/home/dofingert/Source/OS/THYOS/lib/sync.c:94
 ffffff8000084ac4:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000084ac8:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084acc:	91158000 	add	x0, x0, #0x560
 ffffff8000084ad0:	97fff83d 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:95
+/home/dofingert/Source/OS/THYOS/lib/sync.c:95
 ffffff8000084ad4:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:98
+/home/dofingert/Source/OS/THYOS/lib/sync.c:98
 ffffff8000084ad8:	b9805fe1 	ldrsw	x1, [sp, #92]
 ffffff8000084adc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084ae0:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:128
+/home/dofingert/Source/OS/THYOS/lib/sync.c:128
 ffffff8000084ae4:	14000045 	b	ffffff8000084bf8 <handle_sync+0x5a8>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:100
+/home/dofingert/Source/OS/THYOS/lib/sync.c:100
 ffffff8000084ae8:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000084aec:	f100801f 	cmp	x0, #0x20
 ffffff8000084af0:	54000140 	b.eq	ffffff8000084b18 <handle_sync+0x4c8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:100 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:100 (discriminator 1)
 ffffff8000084af4:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000084af8:	f100841f 	cmp	x0, #0x21
 ffffff8000084afc:	540000e0 	b.eq	ffffff8000084b18 <handle_sync+0x4c8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:100 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:100 (discriminator 2)
 ffffff8000084b00:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000084b04:	f100901f 	cmp	x0, #0x24
 ffffff8000084b08:	54000080 	b.eq	ffffff8000084b18 <handle_sync+0x4c8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:100 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:100 (discriminator 3)
 ffffff8000084b0c:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000084b10:	f100941f 	cmp	x0, #0x25
 ffffff8000084b14:	54000721 	b.ne	ffffff8000084bf8 <handle_sync+0x5a8>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:102
+/home/dofingert/Source/OS/THYOS/lib/sync.c:102
 ffffff8000084b18:	f94027e0 	ldr	x0, [sp, #72]
 ffffff8000084b1c:	92401400 	and	x0, x0, #0x3f
 ffffff8000084b20:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:103
+/home/dofingert/Source/OS/THYOS/lib/sync.c:103
 ffffff8000084b24:	f9401fe3 	ldr	x3, [sp, #56]
 ffffff8000084b28:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084b2c:	9115e002 	add	x2, x0, #0x578
@@ -5627,65 +5627,65 @@ ffffff8000084b30:	52800ce1 	mov	w1, #0x67                  	// #103
 ffffff8000084b34:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084b38:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084b3c:	97fff84e 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:105
+/home/dofingert/Source/OS/THYOS/lib/sync.c:105
 ffffff8000084b40:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000084b44:	f1000c1f 	cmp	x0, #0x3
 ffffff8000084b48:	540002c9 	b.ls	ffffff8000084ba0 <handle_sync+0x550>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:105 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:105 (discriminator 1)
 ffffff8000084b4c:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000084b50:	f1001c1f 	cmp	x0, #0x7
 ffffff8000084b54:	54000268 	b.hi	ffffff8000084ba0 <handle_sync+0x550>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:107
+/home/dofingert/Source/OS/THYOS/lib/sync.c:107
 ffffff8000084b58:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084b5c:	91162002 	add	x2, x0, #0x588
 ffffff8000084b60:	52800d61 	mov	w1, #0x6b                  	// #107
 ffffff8000084b64:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084b68:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084b6c:	97fff842 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:108
+/home/dofingert/Source/OS/THYOS/lib/sync.c:108
 ffffff8000084b70:	f9402be1 	ldr	x1, [sp, #80]
 ffffff8000084b74:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000084b78:	eb00003f 	cmp	x1, x0
 ffffff8000084b7c:	540000a9 	b.ls	ffffff8000084b90 <handle_sync+0x540>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:110
+/home/dofingert/Source/OS/THYOS/lib/sync.c:110
 ffffff8000084b80:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000084b84:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000084b88:	94000828 	bl	ffffff8000086c28 <pageout>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:108
+/home/dofingert/Source/OS/THYOS/lib/sync.c:108
 ffffff8000084b8c:	1400001b 	b	ffffff8000084bf8 <handle_sync+0x5a8>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:114
+/home/dofingert/Source/OS/THYOS/lib/sync.c:114
 ffffff8000084b90:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000084b94:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000084b98:	94000824 	bl	ffffff8000086c28 <pageout>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:108
+/home/dofingert/Source/OS/THYOS/lib/sync.c:108
 ffffff8000084b9c:	14000017 	b	ffffff8000084bf8 <handle_sync+0x5a8>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:118
+/home/dofingert/Source/OS/THYOS/lib/sync.c:118
 ffffff8000084ba0:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000084ba4:	f100301f 	cmp	x0, #0xc
 ffffff8000084ba8:	540001a9 	b.ls	ffffff8000084bdc <handle_sync+0x58c>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:118 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:118 (discriminator 1)
 ffffff8000084bac:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000084bb0:	f1003c1f 	cmp	x0, #0xf
 ffffff8000084bb4:	54000148 	b.hi	ffffff8000084bdc <handle_sync+0x58c>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:120
+/home/dofingert/Source/OS/THYOS/lib/sync.c:120
 ffffff8000084bb8:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084bbc:	9116a002 	add	x2, x0, #0x5a8
 ffffff8000084bc0:	52800f01 	mov	w1, #0x78                  	// #120
 ffffff8000084bc4:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084bc8:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084bcc:	97fff82a 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:121
+/home/dofingert/Source/OS/THYOS/lib/sync.c:121
 ffffff8000084bd0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000084bd4:	9400000c 	bl	ffffff8000084c04 <page_fault_handler>
 ffffff8000084bd8:	14000008 	b	ffffff8000084bf8 <handle_sync+0x5a8>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:125
+/home/dofingert/Source/OS/THYOS/lib/sync.c:125
 ffffff8000084bdc:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084be0:	91172002 	add	x2, x0, #0x5c8
 ffffff8000084be4:	52800fa1 	mov	w1, #0x7d                  	// #125
 ffffff8000084be8:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084bec:	9113e000 	add	x0, x0, #0x4f8
 ffffff8000084bf0:	97fff821 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:128
+/home/dofingert/Source/OS/THYOS/lib/sync.c:128
 ffffff8000084bf4:	14000001 	b	ffffff8000084bf8 <handle_sync+0x5a8>
 ffffff8000084bf8:	d503201f 	nop
 ffffff8000084bfc:	a8c67bfd 	ldp	x29, x30, [sp], #96
@@ -5693,17 +5693,17 @@ ffffff8000084c00:	d65f03c0 	ret
 
 ffffff8000084c04 <page_fault_handler>:
 page_fault_handler():
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:131
+/home/dofingert/Source/OS/THYOS/lib/sync.c:131
 ffffff8000084c04:	a9ac7bfd 	stp	x29, x30, [sp, #-320]!
 ffffff8000084c08:	910003fd 	mov	x29, sp
 ffffff8000084c0c:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:135
+/home/dofingert/Source/OS/THYOS/lib/sync.c:135
 ffffff8000084c10:	910083e0 	add	x0, sp, #0x20
 ffffff8000084c14:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff8000084c18:	aa0003e1 	mov	x1, x0
 ffffff8000084c1c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c20:	94000276 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:137
+/home/dofingert/Source/OS/THYOS/lib/sync.c:137
 ffffff8000084c24:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c28:	f9407c01 	ldr	x1, [x0, #248]
 ffffff8000084c2c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
@@ -5713,7 +5713,7 @@ ffffff8000084c38:	f940c400 	ldr	x0, [x0, #392]
 ffffff8000084c3c:	d1400400 	sub	x0, x0, #0x1, lsl #12
 ffffff8000084c40:	eb00003f 	cmp	x1, x0
 ffffff8000084c44:	540002c3 	b.cc	ffffff8000084c9c <page_fault_handler+0x98>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:138 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:138 (discriminator 1)
 ffffff8000084c48:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c4c:	f9407c01 	ldr	x1, [x0, #248]
 ffffff8000084c50:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
@@ -5721,16 +5721,16 @@ ffffff8000084c54:	913b2000 	add	x0, x0, #0xec8
 ffffff8000084c58:	f9400000 	ldr	x0, [x0]
 ffffff8000084c5c:	f940c400 	ldr	x0, [x0, #392]
 ffffff8000084c60:	d1000400 	sub	x0, x0, #0x1
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:137 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/sync.c:137 (discriminator 1)
 ffffff8000084c64:	eb00003f 	cmp	x1, x0
 ffffff8000084c68:	540001a8 	b.hi	ffffff8000084c9c <page_fault_handler+0x98>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:140
+/home/dofingert/Source/OS/THYOS/lib/sync.c:140
 ffffff8000084c6c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c70:	f9407c00 	ldr	x0, [x0, #248]
 ffffff8000084c74:	d1048001 	sub	x1, x0, #0x120
 ffffff8000084c78:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c7c:	f9007c01 	str	x1, [x0, #248]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:141
+/home/dofingert/Source/OS/THYOS/lib/sync.c:141
 ffffff8000084c80:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084c84:	f9407c00 	ldr	x0, [x0, #248]
 ffffff8000084c88:	aa0003e1 	mov	x1, x0
@@ -5738,7 +5738,7 @@ ffffff8000084c8c:	910083e0 	add	x0, sp, #0x20
 ffffff8000084c90:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff8000084c94:	94000259 	bl	ffffff80000855f8 <bcopy>
 ffffff8000084c98:	14000011 	b	ffffff8000084cdc <page_fault_handler+0xd8>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:145
+/home/dofingert/Source/OS/THYOS/lib/sync.c:145
 ffffff8000084c9c:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084ca0:	913b2000 	add	x0, x0, #0xec8
 ffffff8000084ca4:	f9400000 	ldr	x0, [x0]
@@ -5746,7 +5746,7 @@ ffffff8000084ca8:	f940c400 	ldr	x0, [x0, #392]
 ffffff8000084cac:	d1048001 	sub	x1, x0, #0x120
 ffffff8000084cb0:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084cb4:	f9007c01 	str	x1, [x0, #248]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:146
+/home/dofingert/Source/OS/THYOS/lib/sync.c:146
 ffffff8000084cb8:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084cbc:	913b2000 	add	x0, x0, #0xec8
 ffffff8000084cc0:	f9400000 	ldr	x0, [x0]
@@ -5756,76 +5756,76 @@ ffffff8000084ccc:	aa0003e1 	mov	x1, x0
 ffffff8000084cd0:	910083e0 	add	x0, sp, #0x20
 ffffff8000084cd4:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff8000084cd8:	94000248 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:149
+/home/dofingert/Source/OS/THYOS/lib/sync.c:149
 ffffff8000084cdc:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084ce0:	913b2000 	add	x0, x0, #0xec8
 ffffff8000084ce4:	f9400000 	ldr	x0, [x0]
 ffffff8000084ce8:	f940c001 	ldr	x1, [x0, #384]
 ffffff8000084cec:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084cf0:	f9008001 	str	x1, [x0, #256]
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:151
+/home/dofingert/Source/OS/THYOS/lib/sync.c:151
 ffffff8000084cf4:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/sync.c:152
+/home/dofingert/Source/OS/THYOS/lib/sync.c:152
 ffffff8000084cf8:	a8d47bfd 	ldp	x29, x30, [sp], #320
 ffffff8000084cfc:	d65f03c0 	ret
 
 ffffff8000084d00 <sys_putchar>:
 sys_putchar():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:22
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:22
 ffffff8000084d00:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000084d04:	910003fd 	mov	x29, sp
 ffffff8000084d08:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:23
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:23
 ffffff8000084d0c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084d10:	97ffed52 	bl	ffffff8000080258 <uart_send>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:24
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:24
 ffffff8000084d14:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:25
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:25
 ffffff8000084d18:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000084d1c:	d65f03c0 	ret
 
 ffffff8000084d20 <sys_getenvid>:
 sys_getenvid():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:29
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:29
 ffffff8000084d20:	90000060 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000084d24:	913b2000 	add	x0, x0, #0xec8
 ffffff8000084d28:	f9400000 	ldr	x0, [x0]
 ffffff8000084d2c:	b9413000 	ldr	w0, [x0, #304]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:30
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:30
 ffffff8000084d30:	d65f03c0 	ret
 
 ffffff8000084d34 <sys_yield>:
 sys_yield():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:33
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:33
 ffffff8000084d34:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000084d38:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:34
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:34
 ffffff8000084d3c:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff8000084d40:	f299dc00 	movk	x0, #0xcee0
 ffffff8000084d44:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:35
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:35
 ffffff8000084d48:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff8000084d4c:	f29fdc00 	movk	x0, #0xfee0
 ffffff8000084d50:	f9000be0 	str	x0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:36
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:36
 ffffff8000084d54:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff8000084d58:	f9400be1 	ldr	x1, [sp, #16]
 ffffff8000084d5c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084d60:	94000226 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:37
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:37
 ffffff8000084d64:	97fffca2 	bl	ffffff8000083fec <sched_yield>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:38
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:38
 ffffff8000084d68:	d503201f 	nop
 ffffff8000084d6c:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000084d70:	d65f03c0 	ret
 
 ffffff8000084d74 <sys_env_destroy>:
 sys_env_destroy():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:41
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:41
 ffffff8000084d74:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000084d78:	910003fd 	mov	x29, sp
 ffffff8000084d7c:	b9001fe0 	str	w0, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:45
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:45
 ffffff8000084d80:	910083e0 	add	x0, sp, #0x20
 ffffff8000084d84:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000084d88:	aa0003e1 	mov	x1, x0
@@ -5835,110 +5835,110 @@ ffffff8000084d94:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000084d98:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000084d9c:	7100001f 	cmp	w0, #0x0
 ffffff8000084da0:	5400006a 	b.ge	ffffff8000084dac <sys_env_destroy+0x38>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:47
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:47
 ffffff8000084da4:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000084da8:	14000004 	b	ffffff8000084db8 <sys_env_destroy+0x44>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:50
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:50
 ffffff8000084dac:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000084db0:	97fff5ba 	bl	ffffff8000082498 <env_destroy>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:51
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:51
 ffffff8000084db4:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:52 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:52 (discriminator 1)
 ffffff8000084db8:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000084dbc:	d65f03c0 	ret
 
 ffffff8000084dc0 <sys_set_pgfault_handler>:
 sys_set_pgfault_handler():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:55
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:55
 ffffff8000084dc0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000084dc4:	910003fd 	mov	x29, sp
 ffffff8000084dc8:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000084dcc:	f90013e1 	str	x1, [sp, #32]
 ffffff8000084dd0:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:60
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:60
 ffffff8000084dd4:	9100c3e0 	add	x0, sp, #0x30
 ffffff8000084dd8:	52800002 	mov	w2, #0x0                   	// #0
 ffffff8000084ddc:	aa0003e1 	mov	x1, x0
 ffffff8000084de0:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000084de4:	97fff354 	bl	ffffff8000081b34 <envid2env>
 ffffff8000084de8:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:61
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:61
 ffffff8000084dec:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000084df0:	7100001f 	cmp	w0, #0x0
 ffffff8000084df4:	54000060 	b.eq	ffffff8000084e00 <sys_set_pgfault_handler+0x40>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:63
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:63
 ffffff8000084df8:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000084dfc:	14000008 	b	ffffff8000084e1c <sys_set_pgfault_handler+0x5c>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:67
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:67
 ffffff8000084e00:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000084e04:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000084e08:	f900c001 	str	x1, [x0, #384]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:68
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:68
 ffffff8000084e0c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000084e10:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000084e14:	f900c401 	str	x1, [x0, #392]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:69
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:69
 ffffff8000084e18:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:70 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:70 (discriminator 1)
 ffffff8000084e1c:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000084e20:	d65f03c0 	ret
 
 ffffff8000084e24 <sys_mem_alloc>:
 sys_mem_alloc():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:73
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:73
 ffffff8000084e24:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff8000084e28:	910003fd 	mov	x29, sp
 ffffff8000084e2c:	b9002fe0 	str	w0, [sp, #44]
 ffffff8000084e30:	f90013e1 	str	x1, [sp, #32]
 ffffff8000084e34:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:77
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:77
 ffffff8000084e38:	b9004fff 	str	wzr, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:79
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:79
 ffffff8000084e3c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084e40:	92400000 	and	x0, x0, #0x1
 ffffff8000084e44:	f100001f 	cmp	x0, #0x0
 ffffff8000084e48:	540000c1 	b.ne	ffffff8000084e60 <sys_mem_alloc+0x3c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:81
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:81
 ffffff8000084e4c:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084e50:	91178000 	add	x0, x0, #0x5e0
 ffffff8000084e54:	97fff75c 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:82
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:82
 ffffff8000084e58:	12800040 	mov	w0, #0xfffffffd            	// #-3
 ffffff8000084e5c:	1400002a 	b	ffffff8000084f04 <sys_mem_alloc+0xe0>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:86
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:86
 ffffff8000084e60:	9100e3e0 	add	x0, sp, #0x38
 ffffff8000084e64:	940005de 	bl	ffffff80000865dc <page_alloc>
 ffffff8000084e68:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:87
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:87
 ffffff8000084e6c:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000084e70:	7100001f 	cmp	w0, #0x0
 ffffff8000084e74:	540000ca 	b.ge	ffffff8000084e8c <sys_mem_alloc+0x68>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:89
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:89
 ffffff8000084e78:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084e7c:	91182000 	add	x0, x0, #0x608
 ffffff8000084e80:	97fff751 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:90
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:90
 ffffff8000084e84:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000084e88:	1400001f 	b	ffffff8000084f04 <sys_mem_alloc+0xe0>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:93
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:93
 ffffff8000084e8c:	910103e0 	add	x0, sp, #0x40
 ffffff8000084e90:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000084e94:	aa0003e1 	mov	x1, x0
 ffffff8000084e98:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000084e9c:	97fff326 	bl	ffffff8000081b34 <envid2env>
 ffffff8000084ea0:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:94
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:94
 ffffff8000084ea4:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000084ea8:	7100001f 	cmp	w0, #0x0
 ffffff8000084eac:	540000ca 	b.ge	ffffff8000084ec4 <sys_mem_alloc+0xa0>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:96
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:96
 ffffff8000084eb0:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084eb4:	9118c000 	add	x0, x0, #0x630
 ffffff8000084eb8:	97fff743 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:97
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:97
 ffffff8000084ebc:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff8000084ec0:	14000011 	b	ffffff8000084f04 <sys_mem_alloc+0xe0>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:100
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:100
 ffffff8000084ec4:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000084ec8:	f940a000 	ldr	x0, [x0, #320]
 ffffff8000084ecc:	f9401fe1 	ldr	x1, [sp, #56]
@@ -5946,26 +5946,26 @@ ffffff8000084ed0:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff8000084ed4:	f94013e2 	ldr	x2, [sp, #32]
 ffffff8000084ed8:	940006ab 	bl	ffffff8000086984 <page_insert>
 ffffff8000084edc:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:101
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:101
 ffffff8000084ee0:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000084ee4:	7100001f 	cmp	w0, #0x0
 ffffff8000084ee8:	540000ca 	b.ge	ffffff8000084f00 <sys_mem_alloc+0xdc>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:103
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:103
 ffffff8000084eec:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084ef0:	91198000 	add	x0, x0, #0x660
 ffffff8000084ef4:	97fff734 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:104
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:104
 ffffff8000084ef8:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000084efc:	14000002 	b	ffffff8000084f04 <sys_mem_alloc+0xe0>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:106
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:106
 ffffff8000084f00:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:107 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:107 (discriminator 1)
 ffffff8000084f04:	a8c57bfd 	ldp	x29, x30, [sp], #80
 ffffff8000084f08:	d65f03c0 	ret
 
 ffffff8000084f0c <sys_mem_map>:
 sys_mem_map():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:110
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:110
 ffffff8000084f0c:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
 ffffff8000084f10:	910003fd 	mov	x29, sp
 ffffff8000084f14:	b9002fe0 	str	w0, [sp, #44]
@@ -5973,19 +5973,19 @@ ffffff8000084f18:	f90013e1 	str	x1, [sp, #32]
 ffffff8000084f1c:	b9002be2 	str	w2, [sp, #40]
 ffffff8000084f20:	f9000fe3 	str	x3, [sp, #24]
 ffffff8000084f24:	f9000be4 	str	x4, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:118
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:118
 ffffff8000084f28:	f90037ff 	str	xzr, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:119
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:119
 ffffff8000084f2c:	b90067ff 	str	wzr, [sp, #100]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:120
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:120
 ffffff8000084f30:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000084f34:	9274cc00 	and	x0, x0, #0xfffffffffffff000
 ffffff8000084f38:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:121
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:121
 ffffff8000084f3c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000084f40:	9274cc00 	and	x0, x0, #0xfffffffffffff000
 ffffff8000084f44:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:124
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:124
 ffffff8000084f48:	910123e0 	add	x0, sp, #0x48
 ffffff8000084f4c:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000084f50:	aa0003e1 	mov	x1, x0
@@ -5993,14 +5993,14 @@ ffffff8000084f54:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff8000084f58:	97fff2f7 	bl	ffffff8000081b34 <envid2env>
 ffffff8000084f5c:	7100001f 	cmp	w0, #0x0
 ffffff8000084f60:	540000ca 	b.ge	ffffff8000084f78 <sys_mem_map+0x6c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:126
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:126
 ffffff8000084f64:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084f68:	911a2000 	add	x0, x0, #0x688
 ffffff8000084f6c:	97fff716 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:127
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:127
 ffffff8000084f70:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff8000084f74:	14000042 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:129
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:129
 ffffff8000084f78:	910103e0 	add	x0, sp, #0x40
 ffffff8000084f7c:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000084f80:	aa0003e1 	mov	x1, x0
@@ -6008,43 +6008,43 @@ ffffff8000084f84:	b9402be0 	ldr	w0, [sp, #40]
 ffffff8000084f88:	97fff2eb 	bl	ffffff8000081b34 <envid2env>
 ffffff8000084f8c:	7100001f 	cmp	w0, #0x0
 ffffff8000084f90:	540000ca 	b.ge	ffffff8000084fa8 <sys_mem_map+0x9c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:131
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:131
 ffffff8000084f94:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084f98:	911ac000 	add	x0, x0, #0x6b0
 ffffff8000084f9c:	97fff70a 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:132
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:132
 ffffff8000084fa0:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff8000084fa4:	14000036 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:136
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:136
 ffffff8000084fa8:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000084fac:	92400000 	and	x0, x0, #0x1
 ffffff8000084fb0:	f100001f 	cmp	x0, #0x0
 ffffff8000084fb4:	540000c1 	b.ne	ffffff8000084fcc <sys_mem_map+0xc0>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:138
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:138
 ffffff8000084fb8:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084fbc:	911b6000 	add	x0, x0, #0x6d8
 ffffff8000084fc0:	97fff701 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:139
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:139
 ffffff8000084fc4:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000084fc8:	1400002d 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:142
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:142
 ffffff8000084fcc:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000084fd0:	b2611be0 	mov	x0, #0x3f80000000          	// #272730423296
 ffffff8000084fd4:	eb00003f 	cmp	x1, x0
 ffffff8000084fd8:	540000a2 	b.cs	ffffff8000084fec <sys_mem_map+0xe0>  // b.hs, b.nlast
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:142 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:142 (discriminator 1)
 ffffff8000084fdc:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000084fe0:	b2611be0 	mov	x0, #0x3f80000000          	// #272730423296
 ffffff8000084fe4:	eb00003f 	cmp	x1, x0
 ffffff8000084fe8:	540000c3 	b.cc	ffffff8000085000 <sys_mem_map+0xf4>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:144
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:144
 ffffff8000084fec:	f0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000084ff0:	911be000 	add	x0, x0, #0x6f8
 ffffff8000084ff4:	97fff6f4 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:145
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:145
 ffffff8000084ff8:	12800040 	mov	w0, #0xfffffffd            	// #-3
 ffffff8000084ffc:	14000020 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:148
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:148
 ffffff8000085000:	f94027e0 	ldr	x0, [sp, #72]
 ffffff8000085004:	f940a000 	ldr	x0, [x0, #320]
 ffffff8000085008:	9100e3e1 	add	x1, sp, #0x38
@@ -6052,18 +6052,18 @@ ffffff800008500c:	aa0103e2 	mov	x2, x1
 ffffff8000085010:	f9402fe1 	ldr	x1, [sp, #88]
 ffffff8000085014:	940006af 	bl	ffffff8000086ad0 <page_lookup>
 ffffff8000085018:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:149
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:149
 ffffff800008501c:	f94037e0 	ldr	x0, [sp, #104]
 ffffff8000085020:	f100001f 	cmp	x0, #0x0
 ffffff8000085024:	540000c1 	b.ne	ffffff800008503c <sys_mem_map+0x130>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:151
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:151
 ffffff8000085028:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008502c:	911ca000 	add	x0, x0, #0x728
 ffffff8000085030:	97fff6e5 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:152
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:152
 ffffff8000085034:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000085038:	14000011 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:155
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:155
 ffffff800008503c:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000085040:	f940a000 	ldr	x0, [x0, #320]
 ffffff8000085044:	f9400be3 	ldr	x3, [sp, #16]
@@ -6071,67 +6071,67 @@ ffffff8000085048:	f9402be2 	ldr	x2, [sp, #80]
 ffffff800008504c:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000085050:	9400064d 	bl	ffffff8000086984 <page_insert>
 ffffff8000085054:	b90067e0 	str	w0, [sp, #100]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:156
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:156
 ffffff8000085058:	b94067e0 	ldr	w0, [sp, #100]
 ffffff800008505c:	7100001f 	cmp	w0, #0x0
 ffffff8000085060:	540000ca 	b.ge	ffffff8000085078 <sys_mem_map+0x16c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:158
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:158
 ffffff8000085064:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085068:	911d4000 	add	x0, x0, #0x750
 ffffff800008506c:	97fff6d6 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:159
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:159
 ffffff8000085070:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000085074:	14000002 	b	ffffff800008507c <sys_mem_map+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:161
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:161
 ffffff8000085078:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:162 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:162 (discriminator 1)
 ffffff800008507c:	a8c77bfd 	ldp	x29, x30, [sp], #112
 ffffff8000085080:	d65f03c0 	ret
 
 ffffff8000085084 <sys_mem_unmap>:
 sys_mem_unmap():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:165
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:165
 ffffff8000085084:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000085088:	910003fd 	mov	x29, sp
 ffffff800008508c:	b9001fe0 	str	w0, [sp, #28]
 ffffff8000085090:	f9000be1 	str	x1, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:166
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:166
 ffffff8000085094:	b9002fff 	str	wzr, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:169
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:169
 ffffff8000085098:	910083e0 	add	x0, sp, #0x20
 ffffff800008509c:	52800022 	mov	w2, #0x1                   	// #1
 ffffff80000850a0:	aa0003e1 	mov	x1, x0
 ffffff80000850a4:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff80000850a8:	97fff2a3 	bl	ffffff8000081b34 <envid2env>
 ffffff80000850ac:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:170
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:170
 ffffff80000850b0:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff80000850b4:	7100001f 	cmp	w0, #0x0
 ffffff80000850b8:	540000ca 	b.ge	ffffff80000850d0 <sys_mem_unmap+0x4c>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:172
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:172
 ffffff80000850bc:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000850c0:	9118c000 	add	x0, x0, #0x630
 ffffff80000850c4:	97fff6c0 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:173
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:173
 ffffff80000850c8:	12800020 	mov	w0, #0xfffffffe            	// #-2
 ffffff80000850cc:	14000006 	b	ffffff80000850e4 <sys_mem_unmap+0x60>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:175
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:175
 ffffff80000850d0:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000850d4:	f940a000 	ldr	x0, [x0, #320]
 ffffff80000850d8:	f9400be1 	ldr	x1, [sp, #16]
 ffffff80000850dc:	940006b3 	bl	ffffff8000086ba8 <page_remove>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:176
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:176
 ffffff80000850e0:	b9402fe0 	ldr	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:177 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:177 (discriminator 1)
 ffffff80000850e4:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff80000850e8:	d65f03c0 	ret
 
 ffffff80000850ec <sys_env_alloc>:
 sys_env_alloc():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:180
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:180
 ffffff80000850ec:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000850f0:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:185
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:185
 ffffff80000850f4:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000850f8:	913b2000 	add	x0, x0, #0xec8
 ffffff80000850fc:	f9400000 	ldr	x0, [x0]
@@ -6139,94 +6139,94 @@ ffffff8000085100:	b9413001 	ldr	w1, [x0, #304]
 ffffff8000085104:	910043e0 	add	x0, sp, #0x10
 ffffff8000085108:	97fff388 	bl	ffffff8000081f28 <env_alloc>
 ffffff800008510c:	b9001fe0 	str	w0, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:186
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:186
 ffffff8000085110:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085114:	7100001f 	cmp	w0, #0x0
 ffffff8000085118:	5400006a 	b.ge	ffffff8000085124 <sys_env_alloc+0x38>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:188
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:188
 ffffff800008511c:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085120:	14000014 	b	ffffff8000085170 <sys_env_alloc+0x84>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:191
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:191
 ffffff8000085124:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085128:	52800041 	mov	w1, #0x2                   	// #2
 ffffff800008512c:	b9013801 	str	w1, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:194
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:194
 ffffff8000085130:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085134:	913b2000 	add	x0, x0, #0xec8
 ffffff8000085138:	f9400001 	ldr	x1, [x0]
 ffffff800008513c:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085140:	b9416021 	ldr	w1, [x1, #352]
 ffffff8000085144:	b9016001 	str	w1, [x0, #352]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:196
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:196
 ffffff8000085148:	f9400be0 	ldr	x0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:195
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:195
 ffffff800008514c:	d2802402 	mov	x2, #0x120                 	// #288
 ffffff8000085150:	aa0003e1 	mov	x1, x0
 ffffff8000085154:	b259c7e0 	mov	x0, #0xffffff8001ffffff    	// #-549722259457
 ffffff8000085158:	f299dc00 	movk	x0, #0xcee0
 ffffff800008515c:	94000127 	bl	ffffff80000855f8 <bcopy>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:199
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:199
 ffffff8000085160:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085164:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:200
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:200
 ffffff8000085168:	f9400be0 	ldr	x0, [sp, #16]
 ffffff800008516c:	b9413000 	ldr	w0, [x0, #304]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:201 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:201 (discriminator 1)
 ffffff8000085170:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000085174:	d65f03c0 	ret
 
 ffffff8000085178 <sys_set_env_status>:
 sys_set_env_status():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:204
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:204
 ffffff8000085178:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff800008517c:	910003fd 	mov	x29, sp
 ffffff8000085180:	b9001fe0 	str	w0, [sp, #28]
 ffffff8000085184:	b9001be1 	str	w1, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:209
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:209
 ffffff8000085188:	b9401be0 	ldr	w0, [sp, #24]
 ffffff800008518c:	7100041f 	cmp	w0, #0x1
 ffffff8000085190:	54000120 	b.eq	ffffff80000851b4 <sys_set_env_status+0x3c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:209 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:209 (discriminator 1)
 ffffff8000085194:	b9401be0 	ldr	w0, [sp, #24]
 ffffff8000085198:	7100081f 	cmp	w0, #0x2
 ffffff800008519c:	540000c0 	b.eq	ffffff80000851b4 <sys_set_env_status+0x3c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:209 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:209 (discriminator 2)
 ffffff80000851a0:	b9401be0 	ldr	w0, [sp, #24]
 ffffff80000851a4:	7100001f 	cmp	w0, #0x0
 ffffff80000851a8:	54000060 	b.eq	ffffff80000851b4 <sys_set_env_status+0x3c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:211
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:211
 ffffff80000851ac:	12800040 	mov	w0, #0xfffffffd            	// #-3
 ffffff80000851b0:	1400004e 	b	ffffff80000852e8 <sys_set_env_status+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:215
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:215
 ffffff80000851b4:	910083e0 	add	x0, sp, #0x20
 ffffff80000851b8:	52800002 	mov	w2, #0x0                   	// #0
 ffffff80000851bc:	aa0003e1 	mov	x1, x0
 ffffff80000851c0:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff80000851c4:	97fff25c 	bl	ffffff8000081b34 <envid2env>
 ffffff80000851c8:	b9002fe0 	str	w0, [sp, #44]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:216
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:216
 ffffff80000851cc:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff80000851d0:	7100001f 	cmp	w0, #0x0
 ffffff80000851d4:	54000060 	b.eq	ffffff80000851e0 <sys_set_env_status+0x68>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:218
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:218
 ffffff80000851d8:	b9402fe0 	ldr	w0, [sp, #44]
 ffffff80000851dc:	14000043 	b	ffffff80000852e8 <sys_set_env_status+0x170>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:220
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:220
 ffffff80000851e0:	b9401be0 	ldr	w0, [sp, #24]
 ffffff80000851e4:	7100041f 	cmp	w0, #0x1
 ffffff80000851e8:	54000781 	b.ne	ffffff80000852d8 <sys_set_env_status+0x160>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:220 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:220 (discriminator 1)
 ffffff80000851ec:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000851f0:	b9413800 	ldr	w0, [x0, #312]
 ffffff80000851f4:	7100041f 	cmp	w0, #0x1
 ffffff80000851f8:	54000700 	b.eq	ffffff80000852d8 <sys_set_env_status+0x160>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222
 ffffff80000851fc:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085200:	913c0000 	add	x0, x0, #0xf00
 ffffff8000085204:	f9400000 	ldr	x0, [x0]
 ffffff8000085208:	f100001f 	cmp	x0, #0x0
 ffffff800008520c:	54000301 	b.ne	ffffff800008526c <sys_set_env_status+0xf4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 1)
 ffffff8000085210:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085214:	f0000041 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085218:	913c0021 	add	x1, x1, #0xf00
@@ -6235,14 +6235,14 @@ ffffff8000085220:	f900a801 	str	x1, [x0, #336]
 ffffff8000085224:	f940a800 	ldr	x0, [x0, #336]
 ffffff8000085228:	f100001f 	cmp	x0, #0x0
 ffffff800008522c:	540000e0 	b.eq	ffffff8000085248 <sys_set_env_status+0xd0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 3)
 ffffff8000085230:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000085234:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085238:	913c0000 	add	x0, x0, #0xf00
 ffffff800008523c:	f9400000 	ldr	x0, [x0]
 ffffff8000085240:	91054021 	add	x1, x1, #0x150
 ffffff8000085244:	f900ac01 	str	x1, [x0, #344]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 5)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 5)
 ffffff8000085248:	f94013e1 	ldr	x1, [sp, #32]
 ffffff800008524c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085250:	913c0000 	add	x0, x0, #0xf00
@@ -6252,26 +6252,26 @@ ffffff800008525c:	f0000041 	adrp	x1, ffffff8000090000 <binary_user_test_sys_star
 ffffff8000085260:	913c0021 	add	x1, x1, #0xf00
 ffffff8000085264:	f900ac01 	str	x1, [x0, #344]
 ffffff8000085268:	1400001c 	b	ffffff80000852d8 <sys_set_env_status+0x160>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 2)
 ffffff800008526c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085270:	f0000041 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085274:	913c0021 	add	x1, x1, #0xf00
 ffffff8000085278:	f9400021 	ldr	x1, [x1]
 ffffff800008527c:	f900a801 	str	x1, [x0, #336]
 ffffff8000085280:	14000006 	b	ffffff8000085298 <sys_set_env_status+0x120>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 8)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 8)
 ffffff8000085284:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085288:	f940a801 	ldr	x1, [x0, #336]
 ffffff800008528c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085290:	f940a821 	ldr	x1, [x1, #336]
 ffffff8000085294:	f900a801 	str	x1, [x0, #336]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 6)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 6)
 ffffff8000085298:	f94013e0 	ldr	x0, [sp, #32]
 ffffff800008529c:	f940a800 	ldr	x0, [x0, #336]
 ffffff80000852a0:	f940a800 	ldr	x0, [x0, #336]
 ffffff80000852a4:	f100001f 	cmp	x0, #0x0
 ffffff80000852a8:	54fffee1 	b.ne	ffffff8000085284 <sys_set_env_status+0x10c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:222 (discriminator 9)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:222 (discriminator 9)
 ffffff80000852ac:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000852b0:	f940a800 	ldr	x0, [x0, #336]
 ffffff80000852b4:	f94013e1 	ldr	x1, [sp, #32]
@@ -6283,24 +6283,24 @@ ffffff80000852c8:	91054021 	add	x1, x1, #0x150
 ffffff80000852cc:	f900ac01 	str	x1, [x0, #344]
 ffffff80000852d0:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000852d4:	f900a81f 	str	xzr, [x0, #336]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:224
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:224
 ffffff80000852d8:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000852dc:	b9401be1 	ldr	w1, [sp, #24]
 ffffff80000852e0:	b9013801 	str	w1, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:225
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:225
 ffffff80000852e4:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:226 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:226 (discriminator 1)
 ffffff80000852e8:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff80000852ec:	d65f03c0 	ret
 
 ffffff80000852f0 <sys_set_trapframe>:
 sys_set_trapframe():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:229
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:229
 ffffff80000852f0:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000852f4:	910003fd 	mov	x29, sp
 ffffff80000852f8:	b9001fe0 	str	w0, [sp, #28]
 ffffff80000852fc:	f9000be1 	str	x1, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:230
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:230
 ffffff8000085300:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085304:	911dc002 	add	x2, x0, #0x770
 ffffff8000085308:	52801cc1 	mov	w1, #0xe6                  	// #230
@@ -6310,11 +6310,11 @@ ffffff8000085314:	97fff689 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000085318 <sys_panic>:
 sys_panic():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:235
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:235
 ffffff8000085318:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff800008531c:	910003fd 	mov	x29, sp
 ffffff8000085320:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:236
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:236
 ffffff8000085324:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff8000085328:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008532c:	911ec002 	add	x2, x0, #0x7b0
@@ -6325,60 +6325,60 @@ ffffff800008533c:	97fff67f 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000085340 <sys_ipc_recv>:
 sys_ipc_recv():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:240
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:240
 ffffff8000085340:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000085344:	910003fd 	mov	x29, sp
 ffffff8000085348:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:242
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:242
 ffffff800008534c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085350:	b2611be0 	mov	x0, #0x3f80000000          	// #272730423296
 ffffff8000085354:	eb00003f 	cmp	x1, x0
 ffffff8000085358:	54000242 	b.cs	ffffff80000853a0 <sys_ipc_recv+0x60>  // b.hs, b.nlast
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:247
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:247
 ffffff800008535c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085360:	913b2000 	add	x0, x0, #0xec8
 ffffff8000085364:	f9400000 	ldr	x0, [x0]
 ffffff8000085368:	52800021 	mov	w1, #0x1                   	// #1
 ffffff800008536c:	b9016c01 	str	w1, [x0, #364]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:249
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:249
 ffffff8000085370:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085374:	913b2000 	add	x0, x0, #0xec8
 ffffff8000085378:	f9400000 	ldr	x0, [x0]
 ffffff800008537c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085380:	f900b801 	str	x1, [x0, #368]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:251
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:251
 ffffff8000085384:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085388:	913b2000 	add	x0, x0, #0xec8
 ffffff800008538c:	f9400000 	ldr	x0, [x0]
 ffffff8000085390:	52800041 	mov	w1, #0x2                   	// #2
 ffffff8000085394:	b9013801 	str	w1, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:253
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:253
 ffffff8000085398:	97fffe67 	bl	ffffff8000084d34 <sys_yield>
 ffffff800008539c:	14000002 	b	ffffff80000853a4 <sys_ipc_recv+0x64>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:244
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:244
 ffffff80000853a0:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:254
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:254
 ffffff80000853a4:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff80000853a8:	d65f03c0 	ret
 
 ffffff80000853ac <sys_ipc_can_send>:
 sys_ipc_can_send():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:257
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:257
 ffffff80000853ac:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff80000853b0:	910003fd 	mov	x29, sp
 ffffff80000853b4:	f90017e0 	str	x0, [sp, #40]
 ffffff80000853b8:	b90027e1 	str	w1, [sp, #36]
 ffffff80000853bc:	f9000fe2 	str	x2, [sp, #24]
 ffffff80000853c0:	f9000be3 	str	x3, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:264
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:264
 ffffff80000853c4:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000853c8:	b2611be0 	mov	x0, #0x3f80000000          	// #272730423296
 ffffff80000853cc:	eb00003f 	cmp	x1, x0
 ffffff80000853d0:	54000063 	b.cc	ffffff80000853dc <sys_ipc_can_send+0x30>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:266
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:266
 ffffff80000853d4:	12800040 	mov	w0, #0xfffffffd            	// #-3
 ffffff80000853d8:	1400004a 	b	ffffff8000085500 <sys_ipc_can_send+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:270
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:270
 ffffff80000853dc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000853e0:	2a0003e3 	mov	w3, w0
 ffffff80000853e4:	9100e3e0 	add	x0, sp, #0x38
@@ -6387,44 +6387,44 @@ ffffff80000853ec:	aa0003e1 	mov	x1, x0
 ffffff80000853f0:	2a0303e0 	mov	w0, w3
 ffffff80000853f4:	97fff1d0 	bl	ffffff8000081b34 <envid2env>
 ffffff80000853f8:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:271
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:271
 ffffff80000853fc:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000085400:	7100001f 	cmp	w0, #0x0
 ffffff8000085404:	5400006a 	b.ge	ffffff8000085410 <sys_ipc_can_send+0x64>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:273
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:273
 ffffff8000085408:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff800008540c:	1400003d 	b	ffffff8000085500 <sys_ipc_can_send+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:275
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:275
 ffffff8000085410:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000085414:	b9416c00 	ldr	w0, [x0, #364]
 ffffff8000085418:	7100001f 	cmp	w0, #0x0
 ffffff800008541c:	54000061 	b.ne	ffffff8000085428 <sys_ipc_can_send+0x7c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:277
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:277
 ffffff8000085420:	128000a0 	mov	w0, #0xfffffffa            	// #-6
 ffffff8000085424:	14000037 	b	ffffff8000085500 <sys_ipc_can_send+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:280
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:280
 ffffff8000085428:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff800008542c:	b94027e1 	ldr	w1, [sp, #36]
 ffffff8000085430:	b9016401 	str	w1, [x0, #356]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:281
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:281
 ffffff8000085434:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085438:	913b2000 	add	x0, x0, #0xec8
 ffffff800008543c:	f9400001 	ldr	x1, [x0]
 ffffff8000085440:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000085444:	b9413021 	ldr	w1, [x1, #304]
 ffffff8000085448:	b9016801 	str	w1, [x0, #360]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:282
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:282
 ffffff800008544c:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000085450:	f9400be1 	ldr	x1, [sp, #16]
 ffffff8000085454:	f900bc01 	str	x1, [x0, #376]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:283
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:283
 ffffff8000085458:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff800008545c:	b9016c1f 	str	wzr, [x0, #364]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:285
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:285
 ffffff8000085460:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085464:	f100001f 	cmp	x0, #0x0
 ffffff8000085468:	54000440 	b.eq	ffffff80000854f0 <sys_ipc_can_send+0x144>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:288
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:288
 ffffff800008546c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085470:	913b2000 	add	x0, x0, #0xec8
 ffffff8000085474:	f9400000 	ldr	x0, [x0]
@@ -6433,20 +6433,20 @@ ffffff800008547c:	d2800002 	mov	x2, #0x0                   	// #0
 ffffff8000085480:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085484:	94000593 	bl	ffffff8000086ad0 <page_lookup>
 ffffff8000085488:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:289
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:289
 ffffff800008548c:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000085490:	f100001f 	cmp	x0, #0x0
 ffffff8000085494:	540000c0 	b.eq	ffffff80000854ac <sys_ipc_can_send+0x100>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:289 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:289 (discriminator 1)
 ffffff8000085498:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff800008549c:	f940b801 	ldr	x1, [x0, #368]
 ffffff80000854a0:	b2611be0 	mov	x0, #0x3f80000000          	// #272730423296
 ffffff80000854a4:	eb00003f 	cmp	x1, x0
 ffffff80000854a8:	54000063 	b.cc	ffffff80000854b4 <sys_ipc_can_send+0x108>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:291
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:291
 ffffff80000854ac:	12800040 	mov	w0, #0xfffffffd            	// #-3
 ffffff80000854b0:	14000014 	b	ffffff8000085500 <sys_ipc_can_send+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:293
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:293
 ffffff80000854b4:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000854b8:	f940a004 	ldr	x4, [x0, #320]
 ffffff80000854bc:	f9401fe0 	ldr	x0, [sp, #56]
@@ -6457,32 +6457,32 @@ ffffff80000854cc:	f94023e1 	ldr	x1, [sp, #64]
 ffffff80000854d0:	aa0403e0 	mov	x0, x4
 ffffff80000854d4:	9400052c 	bl	ffffff8000086984 <page_insert>
 ffffff80000854d8:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:294
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:294
 ffffff80000854dc:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff80000854e0:	7100001f 	cmp	w0, #0x0
 ffffff80000854e4:	54000060 	b.eq	ffffff80000854f0 <sys_ipc_can_send+0x144>  // b.none
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:296
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:296
 ffffff80000854e8:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff80000854ec:	14000005 	b	ffffff8000085500 <sys_ipc_can_send+0x154>
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:300
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:300
 ffffff80000854f0:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000854f4:	52800021 	mov	w1, #0x1                   	// #1
 ffffff80000854f8:	b9013801 	str	w1, [x0, #312]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:301
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:301
 ffffff80000854fc:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:302 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:302 (discriminator 1)
 ffffff8000085500:	a8c57bfd 	ldp	x29, x30, [sp], #80
 ffffff8000085504:	d65f03c0 	ret
 
 ffffff8000085508 <sys_write_dev>:
 sys_write_dev():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:305
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:305
 ffffff8000085508:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff800008550c:	910003fd 	mov	x29, sp
 ffffff8000085510:	f90017e0 	str	x0, [sp, #40]
 ffffff8000085514:	f90013e1 	str	x1, [sp, #32]
 ffffff8000085518:	b9001fe2 	str	w2, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:306
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:306
 ffffff800008551c:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085520:	911ee002 	add	x2, x0, #0x7b8
 ffffff8000085524:	52802641 	mov	w1, #0x132                 	// #306
@@ -6492,13 +6492,13 @@ ffffff8000085530:	97fff602 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000085534 <sys_read_dev>:
 sys_read_dev():
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:311
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:311
 ffffff8000085534:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000085538:	910003fd 	mov	x29, sp
 ffffff800008553c:	f90017e0 	str	x0, [sp, #40]
 ffffff8000085540:	f90013e1 	str	x1, [sp, #32]
 ffffff8000085544:	b9001fe2 	str	w2, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/lib/syscall_all.c:312
+/home/dofingert/Source/OS/THYOS/lib/syscall_all.c:312
 ffffff8000085548:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008554c:	911f8002 	add	x2, x0, #0x7e0
 ffffff8000085550:	52802701 	mov	w1, #0x138                 	// #312
@@ -6508,19 +6508,19 @@ ffffff800008555c:	97fff5f7 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000085560 <reset_timer>:
 reset_timer():
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:9
+/home/dofingert/Source/OS/THYOS/lib/timer.S:9
 ffffff8000085560:	d2800060 	mov	x0, #0x3                   	// #3
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:10
+/home/dofingert/Source/OS/THYOS/lib/timer.S:10
 ffffff8000085564:	d518e100 	msr	cntkctl_el1, x0
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:11
+/home/dofingert/Source/OS/THYOS/lib/timer.S:11
 ffffff8000085568:	580000c0 	ldr	x0, ffffff8000085580 <reset_timer+0x20>
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:15
+/home/dofingert/Source/OS/THYOS/lib/timer.S:15
 ffffff800008556c:	d51be200 	msr	cntp_tval_el0, x0
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:16
+/home/dofingert/Source/OS/THYOS/lib/timer.S:16
 ffffff8000085570:	d2800020 	mov	x0, #0x1                   	// #1
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:17
+/home/dofingert/Source/OS/THYOS/lib/timer.S:17
 ffffff8000085574:	d51be220 	msr	cntp_ctl_el0, x0
-/home/thysrael/OS/PIOS/THYOS/lib/timer.S:18
+/home/dofingert/Source/OS/THYOS/lib/timer.S:18
 ffffff8000085578:	d65f03c0 	ret
 ffffff800008557c:	00000000 	.inst	0x00000000 ; undefined
 ffffff8000085580:	000ee6b2 	.inst	0x000ee6b2 ; undefined
@@ -6528,104 +6528,104 @@ ffffff8000085584:	00000000 	.inst	0x00000000 ; undefined
 
 ffffff8000085588 <alouha>:
 alouha():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:35
+/home/dofingert/Source/OS/THYOS/lib/tool.c:35
 ffffff8000085588:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff800008558c:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:36
+/home/dofingert/Source/OS/THYOS/lib/tool.c:36
 ffffff8000085590:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085594:	91262000 	add	x0, x0, #0x988
 ffffff8000085598:	97fff58b 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:37
+/home/dofingert/Source/OS/THYOS/lib/tool.c:37
 ffffff800008559c:	d503201f 	nop
 ffffff80000855a0:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff80000855a4:	d65f03c0 	ret
 
 ffffff80000855a8 <print_stack>:
 print_stack():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:40
+/home/dofingert/Source/OS/THYOS/lib/tool.c:40
 ffffff80000855a8:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff80000855ac:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:42
+/home/dofingert/Source/OS/THYOS/lib/tool.c:42
 ffffff80000855b0:	910073e0 	add	x0, sp, #0x1c
 ffffff80000855b4:	aa0003e1 	mov	x1, x0
 ffffff80000855b8:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000855bc:	91266000 	add	x0, x0, #0x998
 ffffff80000855c0:	97fff581 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:43
+/home/dofingert/Source/OS/THYOS/lib/tool.c:43
 ffffff80000855c4:	d503201f 	nop
 ffffff80000855c8:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff80000855cc:	d65f03c0 	ret
 
 ffffff80000855d0 <print_exception_level>:
 print_exception_level():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:46
+/home/dofingert/Source/OS/THYOS/lib/tool.c:46
 ffffff80000855d0:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff80000855d4:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:47
+/home/dofingert/Source/OS/THYOS/lib/tool.c:47
 ffffff80000855d8:	97ffeb9e 	bl	ffffff8000080450 <get_EL>
 ffffff80000855dc:	aa0003e1 	mov	x1, x0
 ffffff80000855e0:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000855e4:	9126e000 	add	x0, x0, #0x9b8
 ffffff80000855e8:	97fff577 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:48
+/home/dofingert/Source/OS/THYOS/lib/tool.c:48
 ffffff80000855ec:	d503201f 	nop
 ffffff80000855f0:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff80000855f4:	d65f03c0 	ret
 
 ffffff80000855f8 <bcopy>:
 bcopy():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:51
+/home/dofingert/Source/OS/THYOS/lib/tool.c:51
 ffffff80000855f8:	d100c3ff 	sub	sp, sp, #0x30
 ffffff80000855fc:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000085600:	f9000be1 	str	x1, [sp, #16]
 ffffff8000085604:	f90007e2 	str	x2, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:53
+/home/dofingert/Source/OS/THYOS/lib/tool.c:53
 ffffff8000085608:	f9400be1 	ldr	x1, [sp, #16]
 ffffff800008560c:	f94007e0 	ldr	x0, [sp, #8]
 ffffff8000085610:	8b000020 	add	x0, x1, x0
 ffffff8000085614:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:55
+/home/dofingert/Source/OS/THYOS/lib/tool.c:55
 ffffff8000085618:	1400000b 	b	ffffff8000085644 <bcopy+0x4c>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:57
+/home/dofingert/Source/OS/THYOS/lib/tool.c:57
 ffffff800008561c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085620:	b9400001 	ldr	w1, [x0]
 ffffff8000085624:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085628:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:58
+/home/dofingert/Source/OS/THYOS/lib/tool.c:58
 ffffff800008562c:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085630:	91001000 	add	x0, x0, #0x4
 ffffff8000085634:	f9000be0 	str	x0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:59
+/home/dofingert/Source/OS/THYOS/lib/tool.c:59
 ffffff8000085638:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008563c:	91001000 	add	x0, x0, #0x4
 ffffff8000085640:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:55
+/home/dofingert/Source/OS/THYOS/lib/tool.c:55
 ffffff8000085644:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085648:	91000c00 	add	x0, x0, #0x3
 ffffff800008564c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000085650:	eb00003f 	cmp	x1, x0
 ffffff8000085654:	54fffe48 	b.hi	ffffff800008561c <bcopy+0x24>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:62
+/home/dofingert/Source/OS/THYOS/lib/tool.c:62
 ffffff8000085658:	1400000b 	b	ffffff8000085684 <bcopy+0x8c>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:64
+/home/dofingert/Source/OS/THYOS/lib/tool.c:64
 ffffff800008565c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085660:	39400001 	ldrb	w1, [x0]
 ffffff8000085664:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085668:	39000001 	strb	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:65
+/home/dofingert/Source/OS/THYOS/lib/tool.c:65
 ffffff800008566c:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000085670:	91000400 	add	x0, x0, #0x1
 ffffff8000085674:	f9000be0 	str	x0, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:66
+/home/dofingert/Source/OS/THYOS/lib/tool.c:66
 ffffff8000085678:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff800008567c:	91000400 	add	x0, x0, #0x1
 ffffff8000085680:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:62
+/home/dofingert/Source/OS/THYOS/lib/tool.c:62
 ffffff8000085684:	f9400be1 	ldr	x1, [sp, #16]
 ffffff8000085688:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008568c:	eb00003f 	cmp	x1, x0
 ffffff8000085690:	54fffe63 	b.cc	ffffff800008565c <bcopy+0x64>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:68
+/home/dofingert/Source/OS/THYOS/lib/tool.c:68
 ffffff8000085694:	d503201f 	nop
 ffffff8000085698:	d503201f 	nop
 ffffff800008569c:	9100c3ff 	add	sp, sp, #0x30
@@ -6633,43 +6633,43 @@ ffffff80000856a0:	d65f03c0 	ret
 
 ffffff80000856a4 <bzero>:
 bzero():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:71
+/home/dofingert/Source/OS/THYOS/lib/tool.c:71
 ffffff80000856a4:	d10083ff 	sub	sp, sp, #0x20
 ffffff80000856a8:	f90007e0 	str	x0, [sp, #8]
 ffffff80000856ac:	f90003e1 	str	x1, [sp]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:74
+/home/dofingert/Source/OS/THYOS/lib/tool.c:74
 ffffff80000856b0:	f94007e1 	ldr	x1, [sp, #8]
 ffffff80000856b4:	f94003e0 	ldr	x0, [sp]
 ffffff80000856b8:	8b000020 	add	x0, x1, x0
 ffffff80000856bc:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:76
+/home/dofingert/Source/OS/THYOS/lib/tool.c:76
 ffffff80000856c0:	14000006 	b	ffffff80000856d8 <bzero+0x34>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:78
+/home/dofingert/Source/OS/THYOS/lib/tool.c:78
 ffffff80000856c4:	f94007e0 	ldr	x0, [sp, #8]
 ffffff80000856c8:	b900001f 	str	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:79
+/home/dofingert/Source/OS/THYOS/lib/tool.c:79
 ffffff80000856cc:	f94007e0 	ldr	x0, [sp, #8]
 ffffff80000856d0:	91001000 	add	x0, x0, #0x4
 ffffff80000856d4:	f90007e0 	str	x0, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:76
+/home/dofingert/Source/OS/THYOS/lib/tool.c:76
 ffffff80000856d8:	f94007e0 	ldr	x0, [sp, #8]
 ffffff80000856dc:	91000c00 	add	x0, x0, #0x3
 ffffff80000856e0:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000856e4:	eb00003f 	cmp	x1, x0
 ffffff80000856e8:	54fffee8 	b.hi	ffffff80000856c4 <bzero+0x20>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:82
+/home/dofingert/Source/OS/THYOS/lib/tool.c:82
 ffffff80000856ec:	14000005 	b	ffffff8000085700 <bzero+0x5c>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:84
+/home/dofingert/Source/OS/THYOS/lib/tool.c:84
 ffffff80000856f0:	f94007e0 	ldr	x0, [sp, #8]
 ffffff80000856f4:	91000401 	add	x1, x0, #0x1
 ffffff80000856f8:	f90007e1 	str	x1, [sp, #8]
 ffffff80000856fc:	3900001f 	strb	wzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:82
+/home/dofingert/Source/OS/THYOS/lib/tool.c:82
 ffffff8000085700:	f94007e1 	ldr	x1, [sp, #8]
 ffffff8000085704:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085708:	eb00003f 	cmp	x1, x0
 ffffff800008570c:	54ffff23 	b.cc	ffffff80000856f0 <bzero+0x4c>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:86
+/home/dofingert/Source/OS/THYOS/lib/tool.c:86
 ffffff8000085710:	d503201f 	nop
 ffffff8000085714:	d503201f 	nop
 ffffff8000085718:	910083ff 	add	sp, sp, #0x20
@@ -6677,22 +6677,22 @@ ffffff800008571c:	d65f03c0 	ret
 
 ffffff8000085720 <unimplement_handler>:
 unimplement_handler():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:89
+/home/dofingert/Source/OS/THYOS/lib/tool.c:89
 ffffff8000085720:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000085724:	910003fd 	mov	x29, sp
 ffffff8000085728:	b9002fe0 	str	w0, [sp, #44]
 ffffff800008572c:	f90013e1 	str	x1, [sp, #32]
 ffffff8000085730:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:90
+/home/dofingert/Source/OS/THYOS/lib/tool.c:90
 ffffff8000085734:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085738:	d35afc00 	lsr	x0, x0, #26
 ffffff800008573c:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:91
+/home/dofingert/Source/OS/THYOS/lib/tool.c:91
 ffffff8000085740:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff8000085744:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085748:	9127a000 	add	x0, x0, #0x9e8
 ffffff800008574c:	97fff51e 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:92
+/home/dofingert/Source/OS/THYOS/lib/tool.c:92
 ffffff8000085750:	f0000000 	adrp	x0, ffffff8000088000 <entry_error_messages>
 ffffff8000085754:	91000000 	add	x0, x0, #0x0
 ffffff8000085758:	b9802fe1 	ldrsw	x1, [sp, #44]
@@ -6703,7 +6703,7 @@ ffffff8000085768:	aa0003e1 	mov	x1, x0
 ffffff800008576c:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085770:	9127e000 	add	x0, x0, #0x9f8
 ffffff8000085774:	97fff514 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:93
+/home/dofingert/Source/OS/THYOS/lib/tool.c:93
 ffffff8000085778:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008577c:	91286002 	add	x2, x0, #0xa18
 ffffff8000085780:	52800ba1 	mov	w1, #0x5d                  	// #93
@@ -6713,56 +6713,56 @@ ffffff800008578c:	97fff56b 	bl	ffffff8000082d38 <_panic>
 
 ffffff8000085790 <enable_interrupt_controller>:
 enable_interrupt_controller():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:97
+/home/dofingert/Source/OS/THYOS/lib/tool.c:97
 ffffff8000085790:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff8000085794:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:100
+/home/dofingert/Source/OS/THYOS/lib/tool.c:100
 ffffff8000085798:	d28001e1 	mov	x1, #0xf                   	// #15
 ffffff800008579c:	929ff7e0 	mov	x0, #0xffffffffffff0040    	// #-65472
 ffffff80000857a0:	f2a80000 	movk	x0, #0x4000, lsl #16
 ffffff80000857a4:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000857a8:	97ffeb2d 	bl	ffffff800008045c <put32>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:101
+/home/dofingert/Source/OS/THYOS/lib/tool.c:101
 ffffff80000857ac:	d28001e1 	mov	x1, #0xf                   	// #15
 ffffff80000857b0:	929ff760 	mov	x0, #0xffffffffffff0044    	// #-65468
 ffffff80000857b4:	f2a80000 	movk	x0, #0x4000, lsl #16
 ffffff80000857b8:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000857bc:	97ffeb28 	bl	ffffff800008045c <put32>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:102
+/home/dofingert/Source/OS/THYOS/lib/tool.c:102
 ffffff80000857c0:	d28001e1 	mov	x1, #0xf                   	// #15
 ffffff80000857c4:	929ff6e0 	mov	x0, #0xffffffffffff0048    	// #-65464
 ffffff80000857c8:	f2a80000 	movk	x0, #0x4000, lsl #16
 ffffff80000857cc:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000857d0:	97ffeb23 	bl	ffffff800008045c <put32>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:103
+/home/dofingert/Source/OS/THYOS/lib/tool.c:103
 ffffff80000857d4:	d28001e1 	mov	x1, #0xf                   	// #15
 ffffff80000857d8:	929ff660 	mov	x0, #0xffffffffffff004c    	// #-65460
 ffffff80000857dc:	f2a80000 	movk	x0, #0x4000, lsl #16
 ffffff80000857e0:	f2dff000 	movk	x0, #0xff80, lsl #32
 ffffff80000857e4:	97ffeb1e 	bl	ffffff800008045c <put32>
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:104
+/home/dofingert/Source/OS/THYOS/lib/tool.c:104
 ffffff80000857e8:	d503201f 	nop
 ffffff80000857ec:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff80000857f0:	d65f03c0 	ret
 
 ffffff80000857f4 <init_page_table>:
 init_page_table():
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:17
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:17
 ffffff80000857f4:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
 ffffff80000857f8:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:21
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:21
 ffffff80000857fc:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085800:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085804:	f9400000 	ldr	x0, [x0]
 ffffff8000085808:	f100001f 	cmp	x0, #0x0
 ffffff800008580c:	540001c1 	b.ne	ffffff8000085844 <init_page_table+0x50>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:23
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:23
 ffffff8000085810:	90000060 	adrp	x0, ffffff8000091000 <_end>
 ffffff8000085814:	91000001 	add	x1, x0, #0x0
 ffffff8000085818:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008581c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085820:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:24
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:24
 ffffff8000085824:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085828:	913c6000 	add	x0, x0, #0xf18
 ffffff800008582c:	f9400000 	ldr	x0, [x0]
@@ -6771,12 +6771,12 @@ ffffff8000085834:	9274cc01 	and	x1, x0, #0xfffffffffffff000
 ffffff8000085838:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008583c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085840:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:27
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:27
 ffffff8000085844:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085848:	913c6000 	add	x0, x0, #0xf18
 ffffff800008584c:	f9400000 	ldr	x0, [x0]
 ffffff8000085850:	f90027e0 	str	x0, [sp, #72]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:28
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:28
 ffffff8000085854:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085858:	913c6000 	add	x0, x0, #0xf18
 ffffff800008585c:	f9400000 	ldr	x0, [x0]
@@ -6784,7 +6784,7 @@ ffffff8000085860:	91400401 	add	x1, x0, #0x1, lsl #12
 ffffff8000085864:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085868:	913c6000 	add	x0, x0, #0xf18
 ffffff800008586c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:30
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:30
 ffffff8000085870:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085874:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085878:	f9400002 	ldr	x2, [x0]
@@ -6797,12 +6797,12 @@ ffffff8000085890:	8b000020 	add	x0, x1, x0
 ffffff8000085894:	d280e861 	mov	x1, #0x743                 	// #1859
 ffffff8000085898:	aa010041 	orr	x1, x2, x1
 ffffff800008589c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:32
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:32
 ffffff80000858a0:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000858a4:	913c6000 	add	x0, x0, #0xf18
 ffffff80000858a8:	f9400000 	ldr	x0, [x0]
 ffffff80000858ac:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:33
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:33
 ffffff80000858b0:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000858b4:	913c6000 	add	x0, x0, #0xf18
 ffffff80000858b8:	f9400000 	ldr	x0, [x0]
@@ -6810,19 +6810,19 @@ ffffff80000858bc:	91400401 	add	x1, x0, #0x1, lsl #12
 ffffff80000858c0:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000858c4:	913c6000 	add	x0, x0, #0xf18
 ffffff80000858c8:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:36
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:36
 ffffff80000858cc:	52803f00 	mov	w0, #0x1f8                 	// #504
 ffffff80000858d0:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:37
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:37
 ffffff80000858d4:	f9002fff 	str	xzr, [sp, #88]
 ffffff80000858d8:	14000042 	b	ffffff80000859e0 <init_page_table+0x1ec>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:40
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:40
 ffffff80000858dc:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000858e0:	d37df000 	lsl	x0, x0, #3
 ffffff80000858e4:	f94023e1 	ldr	x1, [sp, #64]
 ffffff80000858e8:	8b000020 	add	x0, x1, x0
 ffffff80000858ec:	f9001be0 	str	x0, [sp, #48]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:42
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:42
 ffffff80000858f0:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000858f4:	913c6000 	add	x0, x0, #0xf18
 ffffff80000858f8:	f9400001 	ldr	x1, [x0]
@@ -6830,12 +6830,12 @@ ffffff80000858fc:	d280e860 	mov	x0, #0x743                 	// #1859
 ffffff8000085900:	aa000021 	orr	x1, x1, x0
 ffffff8000085904:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000085908:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:45
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:45
 ffffff800008590c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085910:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085914:	f9400000 	ldr	x0, [x0]
 ffffff8000085918:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:46
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:46
 ffffff800008591c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085920:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085924:	f9400000 	ldr	x0, [x0]
@@ -6843,68 +6843,68 @@ ffffff8000085928:	91400401 	add	x1, x0, #0x1, lsl #12
 ffffff800008592c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085930:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085934:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:47
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:47
 ffffff8000085938:	f9002bff 	str	xzr, [sp, #80]
 ffffff800008593c:	14000023 	b	ffffff80000859c8 <init_page_table+0x1d4>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:49
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:49
 ffffff8000085940:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000085944:	d37df000 	lsl	x0, x0, #3
 ffffff8000085948:	f94017e1 	ldr	x1, [sp, #40]
 ffffff800008594c:	8b000020 	add	x0, x1, x0
 ffffff8000085950:	f90013e0 	str	x0, [sp, #32]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:51
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:51
 ffffff8000085954:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085958:	d36ba801 	lsl	x1, x0, #21
 ffffff800008595c:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000085960:	d374cc00 	lsl	x0, x0, #12
 ffffff8000085964:	8b000020 	add	x0, x1, x0
 ffffff8000085968:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:54
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:54
 ffffff800008596c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085970:	b2404be0 	mov	x0, #0x7ffff               	// #524287
 ffffff8000085974:	eb00003f 	cmp	x1, x0
 ffffff8000085978:	54000189 	b.ls	ffffff80000859a8 <init_page_table+0x1b4>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:54 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:54 (discriminator 1)
 ffffff800008597c:	f0000000 	adrp	x0, ffffff8000088000 <entry_error_messages>
 ffffff8000085980:	91000000 	add	x0, x0, #0x0
 ffffff8000085984:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085988:	eb00003f 	cmp	x1, x0
 ffffff800008598c:	540000e2 	b.cs	ffffff80000859a8 <init_page_table+0x1b4>  // b.hs, b.nlast
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:56
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:56
 ffffff8000085990:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000085994:	d2809860 	mov	x0, #0x4c3                 	// #1219
 ffffff8000085998:	aa000021 	orr	x1, x1, x0
 ffffff800008599c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000859a0:	f9000001 	str	x1, [x0]
 ffffff80000859a4:	14000006 	b	ffffff80000859bc <init_page_table+0x1c8>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:60
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:60
 ffffff80000859a8:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000859ac:	d2808860 	mov	x0, #0x443                 	// #1091
 ffffff80000859b0:	aa000021 	orr	x1, x1, x0
 ffffff80000859b4:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000859b8:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:47 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:47 (discriminator 2)
 ffffff80000859bc:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000859c0:	91000400 	add	x0, x0, #0x1
 ffffff80000859c4:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:47 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:47 (discriminator 1)
 ffffff80000859c8:	f9402be0 	ldr	x0, [sp, #80]
 ffffff80000859cc:	f107fc1f 	cmp	x0, #0x1ff
 ffffff80000859d0:	54fffb89 	b.ls	ffffff8000085940 <init_page_table+0x14c>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:37 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:37 (discriminator 2)
 ffffff80000859d4:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000859d8:	91000400 	add	x0, x0, #0x1
 ffffff80000859dc:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:37 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:37 (discriminator 1)
 ffffff80000859e0:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff80000859e4:	f9402fe1 	ldr	x1, [sp, #88]
 ffffff80000859e8:	eb00003f 	cmp	x1, x0
 ffffff80000859ec:	54fff783 	b.cc	ffffff80000858dc <init_page_table+0xe8>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:66
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:66
 ffffff80000859f0:	b9803fe0 	ldrsw	x0, [sp, #60]
 ffffff80000859f4:	f9002fe0 	str	x0, [sp, #88]
 ffffff80000859f8:	1400000d 	b	ffffff8000085a2c <init_page_table+0x238>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:68 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:68 (discriminator 3)
 ffffff80000859fc:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085a00:	d36ba802 	lsl	x2, x0, #21
 ffffff8000085a04:	f9402fe0 	ldr	x0, [sp, #88]
@@ -6914,15 +6914,15 @@ ffffff8000085a10:	8b000020 	add	x0, x1, x0
 ffffff8000085a14:	d2808821 	mov	x1, #0x441                 	// #1089
 ffffff8000085a18:	aa010041 	orr	x1, x2, x1
 ffffff8000085a1c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:66 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:66 (discriminator 3)
 ffffff8000085a20:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085a24:	91000400 	add	x0, x0, #0x1
 ffffff8000085a28:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:66 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:66 (discriminator 1)
 ffffff8000085a2c:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085a30:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000085a34:	54fffe49 	b.ls	ffffff80000859fc <init_page_table+0x208>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:72
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:72
 ffffff8000085a38:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085a3c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085a40:	f9400002 	ldr	x2, [x0]
@@ -6931,12 +6931,12 @@ ffffff8000085a48:	91002000 	add	x0, x0, #0x8
 ffffff8000085a4c:	d280e861 	mov	x1, #0x743                 	// #1859
 ffffff8000085a50:	aa010041 	orr	x1, x2, x1
 ffffff8000085a54:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:74
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:74
 ffffff8000085a58:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085a5c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085a60:	f9400000 	ldr	x0, [x0]
 ffffff8000085a64:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:75
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:75
 ffffff8000085a68:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085a6c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085a70:	f9400000 	ldr	x0, [x0]
@@ -6944,43 +6944,43 @@ ffffff8000085a74:	91400401 	add	x1, x0, #0x1, lsl #12
 ffffff8000085a78:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085a7c:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085a80:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:76
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:76
 ffffff8000085a84:	f94023e0 	ldr	x0, [sp, #64]
 ffffff8000085a88:	d28088a1 	mov	x1, #0x445                 	// #1093
 ffffff8000085a8c:	f2a80001 	movk	x1, #0x4000, lsl #16
 ffffff8000085a90:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:77
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:77
 ffffff8000085a94:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085a98:	913c8000 	add	x0, x0, #0xf20
 ffffff8000085a9c:	f9400000 	ldr	x0, [x0]
 ffffff8000085aa0:	f100001f 	cmp	x0, #0x0
 ffffff8000085aa4:	540000e1 	b.ne	ffffff8000085ac0 <init_page_table+0x2cc>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:79
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:79
 ffffff8000085aa8:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085aac:	913c8000 	add	x0, x0, #0xf20
 ffffff8000085ab0:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000085ab4:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:80
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:80
 ffffff8000085ab8:	97ffff4f 	bl	ffffff80000857f4 <init_page_table>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:86
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:86
 ffffff8000085abc:	14000006 	b	ffffff8000085ad4 <init_page_table+0x2e0>
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:84
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:84
 ffffff8000085ac0:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085ac4:	913c4000 	add	x0, x0, #0xf10
 ffffff8000085ac8:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000085acc:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:86
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:86
 ffffff8000085ad0:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/mmu/mmu.c:87
+/home/dofingert/Source/OS/THYOS/mmu/mmu.c:87
 ffffff8000085ad4:	a8c67bfd 	ldp	x29, x30, [sp], #96
 ffffff8000085ad8:	d65f03c0 	ret
 
 ffffff8000085adc <page2ppn>:
 page2ppn():
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:22
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:22
 ffffff8000085adc:	d10043ff 	sub	sp, sp, #0x10
 ffffff8000085ae0:	f90007e0 	str	x0, [sp, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:23
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:23
 ffffff8000085ae4:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085ae8:	913d2000 	add	x0, x0, #0xf48
 ffffff8000085aec:	f9400000 	ldr	x0, [x0]
@@ -6990,31 +6990,31 @@ ffffff8000085af8:	9343fc01 	asr	x1, x0, #3
 ffffff8000085afc:	b201f3e0 	mov	x0, #0xaaaaaaaaaaaaaaaa    	// #-6148914691236517206
 ffffff8000085b00:	f2955560 	movk	x0, #0xaaab
 ffffff8000085b04:	9b007c20 	mul	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:24
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:24
 ffffff8000085b08:	910043ff 	add	sp, sp, #0x10
 ffffff8000085b0c:	d65f03c0 	ret
 
 ffffff8000085b10 <page2pa>:
 page2pa():
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:27
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:27
 ffffff8000085b10:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000085b14:	910003fd 	mov	x29, sp
 ffffff8000085b18:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:28
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:28
 ffffff8000085b1c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085b20:	97ffffef 	bl	ffffff8000085adc <page2ppn>
 ffffff8000085b24:	d374cc00 	lsl	x0, x0, #12
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:29
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:29
 ffffff8000085b28:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000085b2c:	d65f03c0 	ret
 
 ffffff8000085b30 <pa2page>:
 pa2page():
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:32
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:32
 ffffff8000085b30:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000085b34:	910003fd 	mov	x29, sp
 ffffff8000085b38:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:33
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:33
 ffffff8000085b3c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085b40:	d34cfc01 	lsr	x1, x0, #12
 ffffff8000085b44:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
@@ -7022,7 +7022,7 @@ ffffff8000085b48:	913ca000 	add	x0, x0, #0xf28
 ffffff8000085b4c:	f9400000 	ldr	x0, [x0]
 ffffff8000085b50:	eb00003f 	cmp	x1, x0
 ffffff8000085b54:	54000103 	b.cc	ffffff8000085b74 <pa2page+0x44>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:34
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:34
 ffffff8000085b58:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff8000085b5c:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085b60:	91290002 	add	x2, x0, #0xa40
@@ -7030,7 +7030,7 @@ ffffff8000085b64:	52800441 	mov	w1, #0x22                  	// #34
 ffffff8000085b68:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085b6c:	9129a000 	add	x0, x0, #0xa68
 ffffff8000085b70:	97fff472 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:35
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:35
 ffffff8000085b74:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085b78:	913d2000 	add	x0, x0, #0xf48
 ffffff8000085b7c:	f9400002 	ldr	x2, [x0]
@@ -7041,17 +7041,17 @@ ffffff8000085b8c:	d37ff800 	lsl	x0, x0, #1
 ffffff8000085b90:	8b010000 	add	x0, x0, x1
 ffffff8000085b94:	d37df000 	lsl	x0, x0, #3
 ffffff8000085b98:	8b000040 	add	x0, x2, x0
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:36
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:36
 ffffff8000085b9c:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000085ba0:	d65f03c0 	ret
 
 ffffff8000085ba4 <page2kva>:
 page2kva():
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:39
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:39
 ffffff8000085ba4:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000085ba8:	910003fd 	mov	x29, sp
 ffffff8000085bac:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:40
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:40
 ffffff8000085bb0:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085bb4:	97ffffd7 	bl	ffffff8000085b10 <page2pa>
 ffffff8000085bb8:	d34cfc00 	lsr	x0, x0, #12
@@ -7065,7 +7065,7 @@ ffffff8000085bd4:	f9400000 	ldr	x0, [x0]
 ffffff8000085bd8:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000085bdc:	eb00003f 	cmp	x1, x0
 ffffff8000085be0:	54000143 	b.cc	ffffff8000085c08 <page2kva+0x64>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:40 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:40 (discriminator 1)
 ffffff8000085be4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000085be8:	97ffffca 	bl	ffffff8000085b10 <page2pa>
 ffffff8000085bec:	aa0003e3 	mov	x3, x0
@@ -7075,30 +7075,30 @@ ffffff8000085bf8:	52800501 	mov	w1, #0x28                  	// #40
 ffffff8000085bfc:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085c00:	9129a000 	add	x0, x0, #0xa68
 ffffff8000085c04:	97fff44d 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:40 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:40 (discriminator 2)
 ffffff8000085c08:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000085c0c:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000085c10:	8b000020 	add	x0, x1, x0
-/home/thysrael/OS/PIOS/THYOS/mmu/../include/pmap.h:41 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/../include/pmap.h:41 (discriminator 2)
 ffffff8000085c14:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000085c18:	d65f03c0 	ret
 
 ffffff8000085c1c <mips_detect_memory>:
 mips_detect_memory():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:29
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:29
 ffffff8000085c1c:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
 ffffff8000085c20:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:30
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:30
 ffffff8000085c24:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c28:	913cc000 	add	x0, x0, #0xf30
 ffffff8000085c2c:	d2a7e001 	mov	x1, #0x3f000000            	// #1056964608
 ffffff8000085c30:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:31
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:31
 ffffff8000085c34:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c38:	913ce000 	add	x0, x0, #0xf38
 ffffff8000085c3c:	d2a7e001 	mov	x1, #0x3f000000            	// #1056964608
 ffffff8000085c40:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:32
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:32
 ffffff8000085c44:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c48:	913ce000 	add	x0, x0, #0xf38
 ffffff8000085c4c:	f9400000 	ldr	x0, [x0]
@@ -7106,11 +7106,11 @@ ffffff8000085c50:	d34cfc01 	lsr	x1, x0, #12
 ffffff8000085c54:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c58:	913ca000 	add	x0, x0, #0xf28
 ffffff8000085c5c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:33
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:33
 ffffff8000085c60:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c64:	913d0000 	add	x0, x0, #0xf40
 ffffff8000085c68:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:34
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:34
 ffffff8000085c6c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c70:	913cc000 	add	x0, x0, #0xf30
 ffffff8000085c74:	f9400000 	ldr	x0, [x0]
@@ -7119,7 +7119,7 @@ ffffff8000085c7c:	aa0003e1 	mov	x1, x0
 ffffff8000085c80:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085c84:	912aa000 	add	x0, x0, #0xaa8
 ffffff8000085c88:	97fff3cf 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:35
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:35
 ffffff8000085c8c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085c90:	913ce000 	add	x0, x0, #0xf38
 ffffff8000085c94:	f9400000 	ldr	x0, [x0]
@@ -7132,20 +7132,20 @@ ffffff8000085cac:	aa0003e2 	mov	x2, x0
 ffffff8000085cb0:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085cb4:	912b6000 	add	x0, x0, #0xad8
 ffffff8000085cb8:	97fff3c3 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:36
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:36
 ffffff8000085cbc:	d503201f 	nop
 ffffff8000085cc0:	a8c17bfd 	ldp	x29, x30, [sp], #16
 ffffff8000085cc4:	d65f03c0 	ret
 
 ffffff8000085cc8 <alloc>:
 alloc():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:39
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:39
 ffffff8000085cc8:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000085ccc:	910003fd 	mov	x29, sp
 ffffff8000085cd0:	f90017e0 	str	x0, [sp, #40]
 ffffff8000085cd4:	f90013e1 	str	x1, [sp, #32]
 ffffff8000085cd8:	b9001fe2 	str	w2, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:42
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:42
 ffffff8000085cdc:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085ce0:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085ce4:	f9400001 	ldr	x1, [x0]
@@ -7153,13 +7153,13 @@ ffffff8000085ce8:	90000060 	adrp	x0, ffffff8000091000 <_end>
 ffffff8000085cec:	91000000 	add	x0, x0, #0x0
 ffffff8000085cf0:	eb00003f 	cmp	x1, x0
 ffffff8000085cf4:	540000c2 	b.cs	ffffff8000085d0c <alloc+0x44>  // b.hs, b.nlast
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:44
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:44
 ffffff8000085cf8:	f0003bc0 	adrp	x0, ffffff8000800000 <init_sp>
 ffffff8000085cfc:	91000001 	add	x1, x0, #0x0
 ffffff8000085d00:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d04:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d08:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:47
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:47
 ffffff8000085d0c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d10:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d14:	f9400001 	ldr	x1, [x0]
@@ -7172,12 +7172,12 @@ ffffff8000085d2c:	8a000021 	and	x1, x1, x0
 ffffff8000085d30:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d34:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d38:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:49
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:49
 ffffff8000085d3c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d40:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d44:	f9400000 	ldr	x0, [x0]
 ffffff8000085d48:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:52
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:52
 ffffff8000085d4c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d50:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d54:	f9400001 	ldr	x1, [x0]
@@ -7186,7 +7186,7 @@ ffffff8000085d5c:	8b000021 	add	x1, x1, x0
 ffffff8000085d60:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d64:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d68:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:54
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:54
 ffffff8000085d6c:	f0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000085d70:	913c6000 	add	x0, x0, #0xf18
 ffffff8000085d74:	f9400000 	ldr	x0, [x0]
@@ -7195,7 +7195,7 @@ ffffff8000085d7c:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000085d80:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff8000085d84:	eb00003f 	cmp	x1, x0
 ffffff8000085d88:	54000108 	b.hi	ffffff8000085da8 <alloc+0xe0>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:54 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:54 (discriminator 1)
 ffffff8000085d8c:	f9401be3 	ldr	x3, [sp, #48]
 ffffff8000085d90:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085d94:	912c2002 	add	x2, x0, #0xb08
@@ -7203,7 +7203,7 @@ ffffff8000085d98:	528006c1 	mov	w1, #0x36                  	// #54
 ffffff8000085d9c:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085da0:	912cc000 	add	x0, x0, #0xb30
 ffffff8000085da4:	97fff3e5 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:54 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:54 (discriminator 2)
 ffffff8000085da8:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000085dac:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000085db0:	8b000021 	add	x1, x1, x0
@@ -7212,36 +7212,36 @@ ffffff8000085db8:	913cc000 	add	x0, x0, #0xf30
 ffffff8000085dbc:	f9400000 	ldr	x0, [x0]
 ffffff8000085dc0:	eb00003f 	cmp	x1, x0
 ffffff8000085dc4:	540000e3 	b.cc	ffffff8000085de0 <alloc+0x118>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:56
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:56
 ffffff8000085dc8:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085dcc:	912ce002 	add	x2, x0, #0xb38
 ffffff8000085dd0:	52800701 	mov	w1, #0x38                  	// #56
 ffffff8000085dd4:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085dd8:	912cc000 	add	x0, x0, #0xb30
 ffffff8000085ddc:	97fff3d7 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:61
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:61
 ffffff8000085de0:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085de4:	7100001f 	cmp	w0, #0x0
 ffffff8000085de8:	54000080 	b.eq	ffffff8000085df8 <alloc+0x130>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:63
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:63
 ffffff8000085dec:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000085df0:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000085df4:	97fffe2c 	bl	ffffff80000856a4 <bzero>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:68
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:68
 ffffff8000085df8:	f9401fe0 	ldr	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:69
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:69
 ffffff8000085dfc:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000085e00:	d65f03c0 	ret
 
 ffffff8000085e04 <boot_pgdir_walk>:
 boot_pgdir_walk():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:72
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:72
 ffffff8000085e04:	a9b77bfd 	stp	x29, x30, [sp, #-144]!
 ffffff8000085e08:	910003fd 	mov	x29, sp
 ffffff8000085e0c:	f90017e0 	str	x0, [sp, #40]
 ffffff8000085e10:	f90013e1 	str	x1, [sp, #32]
 ffffff8000085e14:	b9001fe2 	str	w2, [sp, #28]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:77
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:77
 ffffff8000085e18:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085e1c:	d35efc00 	lsr	x0, x0, #30
 ffffff8000085e20:	92402000 	and	x0, x0, #0x1ff
@@ -7249,7 +7249,7 @@ ffffff8000085e24:	d37df000 	lsl	x0, x0, #3
 ffffff8000085e28:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000085e2c:	8b000020 	add	x0, x1, x0
 ffffff8000085e30:	f9003fe0 	str	x0, [sp, #120]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:78
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:78
 ffffff8000085e34:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000085e38:	f9400000 	ldr	x0, [x0]
 ffffff8000085e3c:	d34cfc00 	lsr	x0, x0, #12
@@ -7265,7 +7265,7 @@ ffffff8000085e60:	f9400000 	ldr	x0, [x0]
 ffffff8000085e64:	f9403be1 	ldr	x1, [sp, #112]
 ffffff8000085e68:	eb00003f 	cmp	x1, x0
 ffffff8000085e6c:	54000163 	b.cc	ffffff8000085e98 <boot_pgdir_walk+0x94>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:78 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:78 (discriminator 1)
 ffffff8000085e70:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000085e74:	f9400000 	ldr	x0, [x0]
 ffffff8000085e78:	92746800 	and	x0, x0, #0x7ffffff000
@@ -7276,35 +7276,35 @@ ffffff8000085e88:	528009c1 	mov	w1, #0x4e                  	// #78
 ffffff8000085e8c:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085e90:	912cc000 	add	x0, x0, #0xb30
 ffffff8000085e94:	97fff3a9 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:78 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:78 (discriminator 2)
 ffffff8000085e98:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000085e9c:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000085ea0:	8b000020 	add	x0, x1, x0
 ffffff8000085ea4:	f90047e0 	str	x0, [sp, #136]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:79 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:79 (discriminator 2)
 ffffff8000085ea8:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000085eac:	f9400000 	ldr	x0, [x0]
 ffffff8000085eb0:	92400000 	and	x0, x0, #0x1
 ffffff8000085eb4:	f100001f 	cmp	x0, #0x0
 ffffff8000085eb8:	540003a1 	b.ne	ffffff8000085f2c <boot_pgdir_walk+0x128>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:81
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:81
 ffffff8000085ebc:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085ec0:	7100001f 	cmp	w0, #0x0
 ffffff8000085ec4:	54000340 	b.eq	ffffff8000085f2c <boot_pgdir_walk+0x128>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:83
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:83
 ffffff8000085ec8:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000085ecc:	d2820001 	mov	x1, #0x1000                	// #4096
 ffffff8000085ed0:	d2820000 	mov	x0, #0x1000                	// #4096
 ffffff8000085ed4:	97ffff7d 	bl	ffffff8000085cc8 <alloc>
 ffffff8000085ed8:	f90047e0 	str	x0, [sp, #136]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:84
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:84
 ffffff8000085edc:	f94047e0 	ldr	x0, [sp, #136]
 ffffff8000085ee0:	f90033e0 	str	x0, [sp, #96]
 ffffff8000085ee4:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000085ee8:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff8000085eec:	eb00003f 	cmp	x1, x0
 ffffff8000085ef0:	54000108 	b.hi	ffffff8000085f10 <boot_pgdir_walk+0x10c>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:84 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:84 (discriminator 1)
 ffffff8000085ef4:	f94033e3 	ldr	x3, [sp, #96]
 ffffff8000085ef8:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085efc:	912c2002 	add	x2, x0, #0xb08
@@ -7312,7 +7312,7 @@ ffffff8000085f00:	52800a81 	mov	w1, #0x54                  	// #84
 ffffff8000085f04:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085f08:	912cc000 	add	x0, x0, #0xb30
 ffffff8000085f0c:	97fff38b 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:84 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:84 (discriminator 2)
 ffffff8000085f10:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000085f14:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000085f18:	8b000021 	add	x1, x1, x0
@@ -7320,7 +7320,7 @@ ffffff8000085f1c:	d280e860 	mov	x0, #0x743                 	// #1859
 ffffff8000085f20:	aa000021 	orr	x1, x1, x0
 ffffff8000085f24:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000085f28:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:88
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:88
 ffffff8000085f2c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000085f30:	d355fc00 	lsr	x0, x0, #21
 ffffff8000085f34:	92402000 	and	x0, x0, #0x1ff
@@ -7328,7 +7328,7 @@ ffffff8000085f38:	d37df000 	lsl	x0, x0, #3
 ffffff8000085f3c:	f94047e1 	ldr	x1, [sp, #136]
 ffffff8000085f40:	8b000020 	add	x0, x1, x0
 ffffff8000085f44:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:89
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:89
 ffffff8000085f48:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085f4c:	f9400000 	ldr	x0, [x0]
 ffffff8000085f50:	d34cfc00 	lsr	x0, x0, #12
@@ -7344,7 +7344,7 @@ ffffff8000085f74:	f9400000 	ldr	x0, [x0]
 ffffff8000085f78:	f9402be1 	ldr	x1, [sp, #80]
 ffffff8000085f7c:	eb00003f 	cmp	x1, x0
 ffffff8000085f80:	54000163 	b.cc	ffffff8000085fac <boot_pgdir_walk+0x1a8>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:89 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:89 (discriminator 1)
 ffffff8000085f84:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085f88:	f9400000 	ldr	x0, [x0]
 ffffff8000085f8c:	92746800 	and	x0, x0, #0x7ffffff000
@@ -7355,35 +7355,35 @@ ffffff8000085f9c:	52800b21 	mov	w1, #0x59                  	// #89
 ffffff8000085fa0:	d0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000085fa4:	912cc000 	add	x0, x0, #0xb30
 ffffff8000085fa8:	97fff364 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:89 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:89 (discriminator 2)
 ffffff8000085fac:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000085fb0:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000085fb4:	8b000020 	add	x0, x1, x0
 ffffff8000085fb8:	f90043e0 	str	x0, [sp, #128]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:90 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:90 (discriminator 2)
 ffffff8000085fbc:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000085fc0:	f9400000 	ldr	x0, [x0]
 ffffff8000085fc4:	92400000 	and	x0, x0, #0x1
 ffffff8000085fc8:	f100001f 	cmp	x0, #0x0
 ffffff8000085fcc:	540003a1 	b.ne	ffffff8000086040 <boot_pgdir_walk+0x23c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:92
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:92
 ffffff8000085fd0:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000085fd4:	7100001f 	cmp	w0, #0x0
 ffffff8000085fd8:	54000340 	b.eq	ffffff8000086040 <boot_pgdir_walk+0x23c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:94
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:94
 ffffff8000085fdc:	52800022 	mov	w2, #0x1                   	// #1
 ffffff8000085fe0:	d2820001 	mov	x1, #0x1000                	// #4096
 ffffff8000085fe4:	d2820000 	mov	x0, #0x1000                	// #4096
 ffffff8000085fe8:	97ffff38 	bl	ffffff8000085cc8 <alloc>
 ffffff8000085fec:	f90043e0 	str	x0, [sp, #128]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:95
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:95
 ffffff8000085ff0:	f94043e0 	ldr	x0, [sp, #128]
 ffffff8000085ff4:	f90023e0 	str	x0, [sp, #64]
 ffffff8000085ff8:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000085ffc:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff8000086000:	eb00003f 	cmp	x1, x0
 ffffff8000086004:	54000108 	b.hi	ffffff8000086024 <boot_pgdir_walk+0x220>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:95 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:95 (discriminator 1)
 ffffff8000086008:	f94023e3 	ldr	x3, [sp, #64]
 ffffff800008600c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086010:	912c2002 	add	x2, x0, #0xb08
@@ -7391,7 +7391,7 @@ ffffff8000086014:	52800be1 	mov	w1, #0x5f                  	// #95
 ffffff8000086018:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008601c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086020:	97fff346 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:95 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:95 (discriminator 2)
 ffffff8000086024:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000086028:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff800008602c:	8b000021 	add	x1, x1, x0
@@ -7399,7 +7399,7 @@ ffffff8000086030:	d280e860 	mov	x0, #0x743                 	// #1859
 ffffff8000086034:	aa000021 	orr	x1, x1, x0
 ffffff8000086038:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff800008603c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:99
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:99
 ffffff8000086040:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086044:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086048:	92402000 	and	x0, x0, #0x1ff
@@ -7407,15 +7407,15 @@ ffffff800008604c:	d37df000 	lsl	x0, x0, #3
 ffffff8000086050:	f94043e1 	ldr	x1, [sp, #128]
 ffffff8000086054:	8b000020 	add	x0, x1, x0
 ffffff8000086058:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:100
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:100
 ffffff800008605c:	f9401fe0 	ldr	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:101
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:101
 ffffff8000086060:	a8c97bfd 	ldp	x29, x30, [sp], #144
 ffffff8000086064:	d65f03c0 	ret
 
 ffffff8000086068 <boot_map_segment>:
 boot_map_segment():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:104
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:104
 ffffff8000086068:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff800008606c:	910003fd 	mov	x29, sp
 ffffff8000086070:	f9001fe0 	str	x0, [sp, #56]
@@ -7423,15 +7423,15 @@ ffffff8000086074:	f9001be1 	str	x1, [sp, #48]
 ffffff8000086078:	f90017e2 	str	x2, [sp, #40]
 ffffff800008607c:	f90013e3 	str	x3, [sp, #32]
 ffffff8000086080:	f9000fe4 	str	x4, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:109
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:109
 ffffff8000086084:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086088:	913ffc00 	add	x0, x0, #0xfff
 ffffff800008608c:	9274cc00 	and	x0, x0, #0xfffffffffffff000
 ffffff8000086090:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:113
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:113
 ffffff8000086094:	b9004fff 	str	wzr, [sp, #76]
 ffffff8000086098:	14000016 	b	ffffff80000860f0 <boot_map_segment+0x88>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:115 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:115 (discriminator 3)
 ffffff800008609c:	b9804fe1 	ldrsw	x1, [sp, #76]
 ffffff80000860a0:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000860a4:	8b000020 	add	x0, x1, x0
@@ -7440,7 +7440,7 @@ ffffff80000860ac:	aa0003e1 	mov	x1, x0
 ffffff80000860b0:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000860b4:	97ffff54 	bl	ffffff8000085e04 <boot_pgdir_walk>
 ffffff80000860b8:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:116 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:116 (discriminator 3)
 ffffff80000860bc:	b9804fe1 	ldrsw	x1, [sp, #76]
 ffffff80000860c0:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000860c4:	8b000020 	add	x0, x1, x0
@@ -7451,16 +7451,16 @@ ffffff80000860d4:	d280e860 	mov	x0, #0x743                 	// #1859
 ffffff80000860d8:	aa000021 	orr	x1, x1, x0
 ffffff80000860dc:	f94023e0 	ldr	x0, [sp, #64]
 ffffff80000860e0:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:113 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:113 (discriminator 3)
 ffffff80000860e4:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff80000860e8:	11400400 	add	w0, w0, #0x1, lsl #12
 ffffff80000860ec:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:113 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:113 (discriminator 1)
 ffffff80000860f0:	b9804fe0 	ldrsw	x0, [sp, #76]
 ffffff80000860f4:	f94017e1 	ldr	x1, [sp, #40]
 ffffff80000860f8:	eb00003f 	cmp	x1, x0
 ffffff80000860fc:	54fffd08 	b.hi	ffffff800008609c <boot_map_segment+0x34>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:118
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:118
 ffffff8000086100:	d503201f 	nop
 ffffff8000086104:	d503201f 	nop
 ffffff8000086108:	a8c57bfd 	ldp	x29, x30, [sp], #80
@@ -7468,10 +7468,10 @@ ffffff800008610c:	d65f03c0 	ret
 
 ffffff8000086110 <arch_basic_init>:
 arch_basic_init():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:121
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:121
 ffffff8000086110:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000086114:	910003fd 	mov	x29, sp
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:127
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:127
 ffffff8000086118:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008611c:	913ca000 	add	x0, x0, #0xf28
 ffffff8000086120:	f9400001 	ldr	x1, [x0]
@@ -7486,7 +7486,7 @@ ffffff8000086140:	aa0003e1 	mov	x1, x0
 ffffff8000086144:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086148:	913d2000 	add	x0, x0, #0xf48
 ffffff800008614c:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:128
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:128
 ffffff8000086150:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086154:	913ca000 	add	x0, x0, #0xf28
 ffffff8000086158:	f9400001 	ldr	x1, [x0]
@@ -7497,7 +7497,7 @@ ffffff8000086168:	d37df000 	lsl	x0, x0, #3
 ffffff800008616c:	913ffc00 	add	x0, x0, #0xfff
 ffffff8000086170:	9274cc00 	and	x0, x0, #0xfffffffffffff000
 ffffff8000086174:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:130
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:130
 ffffff8000086178:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008617c:	913c8000 	add	x0, x0, #0xf20
 ffffff8000086180:	f9400005 	ldr	x5, [x0]
@@ -7510,7 +7510,7 @@ ffffff8000086198:	f94013e1 	ldr	x1, [sp, #32]
 ffffff800008619c:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff80000861a0:	eb00003f 	cmp	x1, x0
 ffffff80000861a4:	54000108 	b.hi	ffffff80000861c4 <arch_basic_init+0xb4>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:130 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:130 (discriminator 1)
 ffffff80000861a8:	f94013e3 	ldr	x3, [sp, #32]
 ffffff80000861ac:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000861b0:	912c2002 	add	x2, x0, #0xb08
@@ -7518,7 +7518,7 @@ ffffff80000861b4:	52801041 	mov	w1, #0x82                  	// #130
 ffffff80000861b8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000861bc:	912cc000 	add	x0, x0, #0xb30
 ffffff80000861c0:	97fff2de 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:130 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:130 (discriminator 2)
 ffffff80000861c4:	f94013e1 	ldr	x1, [sp, #32]
 ffffff80000861c8:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff80000861cc:	8b000020 	add	x0, x1, x0
@@ -7527,7 +7527,7 @@ ffffff80000861d4:	aa0003e3 	mov	x3, x0
 ffffff80000861d8:	b2621fe1 	mov	x1, #0x3fc0000000          	// #273804165120
 ffffff80000861dc:	aa0503e0 	mov	x0, x5
 ffffff80000861e0:	97ffffa2 	bl	ffffff8000086068 <boot_map_segment>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:134 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:134 (discriminator 2)
 ffffff80000861e4:	52800022 	mov	w2, #0x1                   	// #1
 ffffff80000861e8:	d2820001 	mov	x1, #0x1000                	// #4096
 ffffff80000861ec:	d28c0000 	mov	x0, #0x6000                	// #24576
@@ -7537,11 +7537,11 @@ ffffff80000861f8:	aa0003e1 	mov	x1, x0
 ffffff80000861fc:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086200:	913b0000 	add	x0, x0, #0xec0
 ffffff8000086204:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:135 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:135 (discriminator 2)
 ffffff8000086208:	d28c0000 	mov	x0, #0x6000                	// #24576
 ffffff800008620c:	f2a000c0 	movk	x0, #0x6, lsl #16
 ffffff8000086210:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:136 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:136 (discriminator 2)
 ffffff8000086214:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086218:	913c8000 	add	x0, x0, #0xf20
 ffffff800008621c:	f9400005 	ldr	x5, [x0]
@@ -7554,7 +7554,7 @@ ffffff8000086234:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000086238:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff800008623c:	eb00003f 	cmp	x1, x0
 ffffff8000086240:	54000108 	b.hi	ffffff8000086260 <arch_basic_init+0x150>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:136 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:136 (discriminator 1)
 ffffff8000086244:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff8000086248:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008624c:	912c2002 	add	x2, x0, #0xb08
@@ -7562,7 +7562,7 @@ ffffff8000086250:	52801101 	mov	w1, #0x88                  	// #136
 ffffff8000086254:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086258:	912cc000 	add	x0, x0, #0xb30
 ffffff800008625c:	97fff2b7 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:136 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:136 (discriminator 2)
 ffffff8000086260:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000086264:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000086268:	8b000020 	add	x0, x1, x0
@@ -7571,24 +7571,24 @@ ffffff8000086270:	aa0003e3 	mov	x3, x0
 ffffff8000086274:	b2611be1 	mov	x1, #0x3f80000000          	// #272730423296
 ffffff8000086278:	aa0503e0 	mov	x0, x5
 ffffff800008627c:	97ffff7b 	bl	ffffff8000086068 <boot_map_segment>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:138 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:138 (discriminator 2)
 ffffff8000086280:	94000004 	bl	ffffff8000086290 <page_init>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:139 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:139 (discriminator 2)
 ffffff8000086284:	d503201f 	nop
 ffffff8000086288:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff800008628c:	d65f03c0 	ret
 
 ffffff8000086290 <page_init>:
 page_init():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:142
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:142
 ffffff8000086290:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff8000086294:	910003fd 	mov	x29, sp
 ffffff8000086298:	f9000bf3 	str	x19, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:145
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:145
 ffffff800008629c:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000862a0:	913be000 	add	x0, x0, #0xef8
 ffffff80000862a4:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:148
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:148
 ffffff80000862a8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000862ac:	913c6000 	add	x0, x0, #0xf18
 ffffff80000862b0:	f9400000 	ldr	x0, [x0]
@@ -7597,7 +7597,7 @@ ffffff80000862b8:	9274cc01 	and	x1, x0, #0xfffffffffffff000
 ffffff80000862bc:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000862c0:	913c6000 	add	x0, x0, #0xf18
 ffffff80000862c4:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:152
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:152
 ffffff80000862c8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000862cc:	913c6000 	add	x0, x0, #0xf18
 ffffff80000862d0:	f9400000 	ldr	x0, [x0]
@@ -7606,7 +7606,7 @@ ffffff80000862d8:	f94023e1 	ldr	x1, [sp, #64]
 ffffff80000862dc:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff80000862e0:	eb00003f 	cmp	x1, x0
 ffffff80000862e4:	54000108 	b.hi	ffffff8000086304 <page_init+0x74>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:152 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:152 (discriminator 1)
 ffffff80000862e8:	f94023e3 	ldr	x3, [sp, #64]
 ffffff80000862ec:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000862f0:	912c2002 	add	x2, x0, #0xb08
@@ -7614,16 +7614,16 @@ ffffff80000862f4:	52801301 	mov	w1, #0x98                  	// #152
 ffffff80000862f8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000862fc:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086300:	97fff28e 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:152 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:152 (discriminator 2)
 ffffff8000086304:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000086308:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff800008630c:	8b000020 	add	x0, x1, x0
 ffffff8000086310:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086314:	b9003fe0 	str	w0, [sp, #60]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:154 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:154 (discriminator 2)
 ffffff8000086318:	b9004fff 	str	wzr, [sp, #76]
 ffffff800008631c:	1400000f 	b	ffffff8000086358 <page_init+0xc8>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:156 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:156 (discriminator 3)
 ffffff8000086320:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086324:	913d2000 	add	x0, x0, #0xf48
 ffffff8000086328:	f9400002 	ldr	x2, [x0]
@@ -7635,28 +7635,28 @@ ffffff800008633c:	d37df000 	lsl	x0, x0, #3
 ffffff8000086340:	8b000040 	add	x0, x2, x0
 ffffff8000086344:	52800021 	mov	w1, #0x1                   	// #1
 ffffff8000086348:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:154 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:154 (discriminator 3)
 ffffff800008634c:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000086350:	11000400 	add	w0, w0, #0x1
 ffffff8000086354:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:154 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:154 (discriminator 1)
 ffffff8000086358:	b9404fe1 	ldr	w1, [sp, #76]
 ffffff800008635c:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff8000086360:	6b00003f 	cmp	w1, w0
 ffffff8000086364:	54fffdeb 	b.lt	ffffff8000086320 <page_init+0x90>  // b.tstop
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:158
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:158
 ffffff8000086368:	b9403fe1 	ldr	w1, [sp, #60]
 ffffff800008636c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086370:	912d2000 	add	x0, x0, #0xb48
 ffffff8000086374:	97fff214 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:160
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:160
 ffffff8000086378:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008637c:	913ca000 	add	x0, x0, #0xf28
 ffffff8000086380:	f9400000 	ldr	x0, [x0]
 ffffff8000086384:	51000400 	sub	w0, w0, #0x1
 ffffff8000086388:	b9004fe0 	str	w0, [sp, #76]
 ffffff800008638c:	14000043 	b	ffffff8000086498 <page_init+0x208>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:162
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:162
 ffffff8000086390:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086394:	913d2000 	add	x0, x0, #0xf48
 ffffff8000086398:	f9400002 	ldr	x2, [x0]
@@ -7667,7 +7667,7 @@ ffffff80000863a8:	8b010000 	add	x0, x0, x1
 ffffff80000863ac:	d37df000 	lsl	x0, x0, #3
 ffffff80000863b0:	8b000040 	add	x0, x2, x0
 ffffff80000863b4:	7900201f 	strh	wzr, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:163
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:163
 ffffff80000863b8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000863bc:	913d2000 	add	x0, x0, #0xf48
 ffffff80000863c0:	f9400002 	ldr	x2, [x0]
@@ -7684,7 +7684,7 @@ ffffff80000863e8:	f9000001 	str	x1, [x0]
 ffffff80000863ec:	f9400000 	ldr	x0, [x0]
 ffffff80000863f0:	f100001f 	cmp	x0, #0x0
 ffffff80000863f4:	540001c0 	b.eq	ffffff800008642c <page_init+0x19c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:163 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:163 (discriminator 1)
 ffffff80000863f8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000863fc:	913d2000 	add	x0, x0, #0xf48
 ffffff8000086400:	f9400002 	ldr	x2, [x0]
@@ -7698,7 +7698,7 @@ ffffff800008641c:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_star
 ffffff8000086420:	913be000 	add	x0, x0, #0xef8
 ffffff8000086424:	f9400000 	ldr	x0, [x0]
 ffffff8000086428:	f9000401 	str	x1, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:163 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:163 (discriminator 3)
 ffffff800008642c:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086430:	913d2000 	add	x0, x0, #0xf48
 ffffff8000086434:	f9400002 	ldr	x2, [x0]
@@ -7723,16 +7723,16 @@ ffffff800008647c:	8b000040 	add	x0, x2, x0
 ffffff8000086480:	d0000041 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086484:	913be021 	add	x1, x1, #0xef8
 ffffff8000086488:	f9000401 	str	x1, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:160 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:160 (discriminator 3)
 ffffff800008648c:	b9404fe0 	ldr	w0, [sp, #76]
 ffffff8000086490:	51000400 	sub	w0, w0, #0x1
 ffffff8000086494:	b9004fe0 	str	w0, [sp, #76]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:160 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:160 (discriminator 2)
 ffffff8000086498:	b9404fe1 	ldr	w1, [sp, #76]
 ffffff800008649c:	b9403fe0 	ldr	w0, [sp, #60]
 ffffff80000864a0:	6b00003f 	cmp	w1, w0
 ffffff80000864a4:	54fff76a 	b.ge	ffffff8000086390 <page_init+0x100>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:165
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:165
 ffffff80000864a8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000864ac:	913ca000 	add	x0, x0, #0xf28
 ffffff80000864b0:	f9400001 	ldr	x1, [x0]
@@ -7742,7 +7742,7 @@ ffffff80000864bc:	aa0003e1 	mov	x1, x0
 ffffff80000864c0:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000864c4:	912e0000 	add	x0, x0, #0xb80
 ffffff80000864c8:	97fff1bf 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:169
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:169
 ffffff80000864cc:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000864d0:	913c8000 	add	x0, x0, #0xf20
 ffffff80000864d4:	f9400013 	ldr	x19, [x0]
@@ -7753,7 +7753,7 @@ ffffff80000864e4:	f9401be1 	ldr	x1, [sp, #48]
 ffffff80000864e8:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff80000864ec:	eb00003f 	cmp	x1, x0
 ffffff80000864f0:	54000108 	b.hi	ffffff8000086510 <page_init+0x280>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:169 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:169 (discriminator 1)
 ffffff80000864f4:	f9401be3 	ldr	x3, [sp, #48]
 ffffff80000864f8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000864fc:	912c2002 	add	x2, x0, #0xb08
@@ -7761,7 +7761,7 @@ ffffff8000086500:	52801521 	mov	w1, #0xa9                  	// #169
 ffffff8000086504:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086508:	912cc000 	add	x0, x0, #0xb30
 ffffff800008650c:	97fff20b 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:169 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:169 (discriminator 2)
 ffffff8000086510:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000086514:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000086518:	8b000020 	add	x0, x1, x0
@@ -7772,7 +7772,7 @@ ffffff8000086528:	f29e0002 	movk	x2, #0xf000
 ffffff800008652c:	aa0003e1 	mov	x1, x0
 ffffff8000086530:	aa1303e0 	mov	x0, x19
 ffffff8000086534:	94000114 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:171 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:171 (discriminator 2)
 ffffff8000086538:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008653c:	913c8000 	add	x0, x0, #0xf20
 ffffff8000086540:	f9400013 	ldr	x19, [x0]
@@ -7783,7 +7783,7 @@ ffffff8000086550:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086554:	92c01000 	mov	x0, #0xffffff7fffffffff    	// #-549755813889
 ffffff8000086558:	eb00003f 	cmp	x1, x0
 ffffff800008655c:	54000108 	b.hi	ffffff800008657c <page_init+0x2ec>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:171 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:171 (discriminator 1)
 ffffff8000086560:	f94017e3 	ldr	x3, [sp, #40]
 ffffff8000086564:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086568:	912c2002 	add	x2, x0, #0xb08
@@ -7791,7 +7791,7 @@ ffffff800008656c:	52801561 	mov	w1, #0xab                  	// #171
 ffffff8000086570:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086574:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086578:	97fff1f0 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:171 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:171 (discriminator 2)
 ffffff800008657c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086580:	d2c01000 	mov	x0, #0x8000000000          	// #549755813888
 ffffff8000086584:	8b000020 	add	x0, x1, x0
@@ -7802,19 +7802,19 @@ ffffff8000086594:	f2980002 	movk	x2, #0xc000
 ffffff8000086598:	aa0003e1 	mov	x1, x0
 ffffff800008659c:	aa1303e0 	mov	x0, x19
 ffffff80000865a0:	940000f9 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:172 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:172 (discriminator 2)
 ffffff80000865a4:	b25963e1 	mov	x1, #0xffffff8000000000    	// #-549755813888
 ffffff80000865a8:	f2a04001 	movk	x1, #0x200, lsl #16
 ffffff80000865ac:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000865b0:	912e8000 	add	x0, x0, #0xba0
 ffffff80000865b4:	97fff184 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:173 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:173 (discriminator 2)
 ffffff80000865b8:	b259c7e1 	mov	x1, #0xffffff8001ffffff    	// #-549722259457
 ffffff80000865bc:	f29a0001 	movk	x1, #0xd000
 ffffff80000865c0:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000865c4:	912f4000 	add	x0, x0, #0xbd0
 ffffff80000865c8:	97fff17f 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:174 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:174 (discriminator 2)
 ffffff80000865cc:	d503201f 	nop
 ffffff80000865d0:	f9400bf3 	ldr	x19, [sp, #16]
 ffffff80000865d4:	a8c57bfd 	ldp	x29, x30, [sp], #80
@@ -7822,73 +7822,73 @@ ffffff80000865d8:	d65f03c0 	ret
 
 ffffff80000865dc <page_alloc>:
 page_alloc():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:177
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:177
 ffffff80000865dc:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff80000865e0:	910003fd 	mov	x29, sp
 ffffff80000865e4:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:181
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:181
 ffffff80000865e8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000865ec:	913be000 	add	x0, x0, #0xef8
 ffffff80000865f0:	f9400000 	ldr	x0, [x0]
 ffffff80000865f4:	f100001f 	cmp	x0, #0x0
 ffffff80000865f8:	54000061 	b.ne	ffffff8000086604 <page_alloc+0x28>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:183
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:183
 ffffff80000865fc:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000086600:	1400001b 	b	ffffff800008666c <page_alloc+0x90>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:185
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:185
 ffffff8000086604:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000086608:	913be000 	add	x0, x0, #0xef8
 ffffff800008660c:	f9400000 	ldr	x0, [x0]
 ffffff8000086610:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:186
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:186
 ffffff8000086614:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086618:	f9400000 	ldr	x0, [x0]
 ffffff800008661c:	f100001f 	cmp	x0, #0x0
 ffffff8000086620:	540000c0 	b.eq	ffffff8000086638 <page_alloc+0x5c>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:186 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:186 (discriminator 1)
 ffffff8000086624:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086628:	f9400000 	ldr	x0, [x0]
 ffffff800008662c:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086630:	f9400421 	ldr	x1, [x1, #8]
 ffffff8000086634:	f9000401 	str	x1, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:186 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:186 (discriminator 3)
 ffffff8000086638:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008663c:	f9400400 	ldr	x0, [x0, #8]
 ffffff8000086640:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086644:	f9400021 	ldr	x1, [x1]
 ffffff8000086648:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:189 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:189 (discriminator 3)
 ffffff800008664c:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086650:	97fffd55 	bl	ffffff8000085ba4 <page2kva>
 ffffff8000086654:	d2820001 	mov	x1, #0x1000                	// #4096
 ffffff8000086658:	97fffc13 	bl	ffffff80000856a4 <bzero>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:190 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:190 (discriminator 3)
 ffffff800008665c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086660:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086664:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:191 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:191 (discriminator 3)
 ffffff8000086668:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:192
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:192
 ffffff800008666c:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000086670:	d65f03c0 	ret
 
 ffffff8000086674 <page_free>:
 page_free():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:195
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:195
 ffffff8000086674:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000086678:	910003fd 	mov	x29, sp
 ffffff800008667c:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:197
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:197
 ffffff8000086680:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086684:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086688:	7100001f 	cmp	w0, #0x0
 ffffff800008668c:	54000441 	b.ne	ffffff8000086714 <page_free+0xa0>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:203
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:203
 ffffff8000086690:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086694:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086698:	7100001f 	cmp	w0, #0x0
 ffffff800008669c:	54000301 	b.ne	ffffff80000866fc <page_free+0x88>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:205
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:205
 ffffff80000866a0:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000866a4:	913be000 	add	x0, x0, #0xef8
 ffffff80000866a8:	f9400001 	ldr	x1, [x0]
@@ -7898,13 +7898,13 @@ ffffff80000866b4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000866b8:	f9400000 	ldr	x0, [x0]
 ffffff80000866bc:	f100001f 	cmp	x0, #0x0
 ffffff80000866c0:	540000c0 	b.eq	ffffff80000866d8 <page_free+0x64>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:205 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:205 (discriminator 1)
 ffffff80000866c4:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000866c8:	913be000 	add	x0, x0, #0xef8
 ffffff80000866cc:	f9400000 	ldr	x0, [x0]
 ffffff80000866d0:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000866d4:	f9000401 	str	x1, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:205 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:205 (discriminator 3)
 ffffff80000866d8:	d0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000866dc:	913be000 	add	x0, x0, #0xef8
 ffffff80000866e0:	f9400fe1 	ldr	x1, [sp, #24]
@@ -7913,34 +7913,34 @@ ffffff80000866e8:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff80000866ec:	d0000041 	adrp	x1, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000866f0:	913be021 	add	x1, x1, #0xef8
 ffffff80000866f4:	f9000401 	str	x1, [x0, #8]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:206 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:206 (discriminator 3)
 ffffff80000866f8:	14000008 	b	ffffff8000086718 <page_free+0xa4>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:211
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:211
 ffffff80000866fc:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086700:	91302002 	add	x2, x0, #0xc08
 ffffff8000086704:	52801a61 	mov	w1, #0xd3                  	// #211
 ffffff8000086708:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008670c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086710:	97fff18a 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:199
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:199
 ffffff8000086714:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:212
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:212
 ffffff8000086718:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff800008671c:	d65f03c0 	ret
 
 ffffff8000086720 <pgdir_walk>:
 pgdir_walk():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:215
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:215
 ffffff8000086720:	a9b87bfd 	stp	x29, x30, [sp, #-128]!
 ffffff8000086724:	910003fd 	mov	x29, sp
 ffffff8000086728:	f90017e0 	str	x0, [sp, #40]
 ffffff800008672c:	f90013e1 	str	x1, [sp, #32]
 ffffff8000086730:	b9001fe2 	str	w2, [sp, #28]
 ffffff8000086734:	f9000be3 	str	x3, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:220
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:220
 ffffff8000086738:	f9400be0 	ldr	x0, [sp, #16]
 ffffff800008673c:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:223
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:223
 ffffff8000086740:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086744:	d35efc00 	lsr	x0, x0, #30
 ffffff8000086748:	92402000 	and	x0, x0, #0x1ff
@@ -7948,32 +7948,32 @@ ffffff800008674c:	d37df000 	lsl	x0, x0, #3
 ffffff8000086750:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086754:	8b000020 	add	x0, x1, x0
 ffffff8000086758:	f9003fe0 	str	x0, [sp, #120]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:225
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:225
 ffffff800008675c:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000086760:	f9400000 	ldr	x0, [x0]
 ffffff8000086764:	92400000 	and	x0, x0, #0x1
 ffffff8000086768:	f100001f 	cmp	x0, #0x0
 ffffff800008676c:	54000361 	b.ne	ffffff80000867d8 <pgdir_walk+0xb8>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:227
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:227
 ffffff8000086770:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000086774:	7100001f 	cmp	w0, #0x0
 ffffff8000086778:	54000280 	b.eq	ffffff80000867c8 <pgdir_walk+0xa8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:229
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:229
 ffffff800008677c:	9100e3e0 	add	x0, sp, #0x38
 ffffff8000086780:	97ffff97 	bl	ffffff80000865dc <page_alloc>
 ffffff8000086784:	3100101f 	cmn	w0, #0x4
 ffffff8000086788:	540000a1 	b.ne	ffffff800008679c <pgdir_walk+0x7c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:231
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:231
 ffffff800008678c:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000086790:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:232
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:232
 ffffff8000086794:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000086798:	14000079 	b	ffffff800008697c <pgdir_walk+0x25c>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:236
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:236
 ffffff800008679c:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000867a0:	52800021 	mov	w1, #0x1                   	// #1
 ffffff80000867a4:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:237
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:237
 ffffff80000867a8:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000867ac:	97fffcd9 	bl	ffffff8000085b10 <page2pa>
 ffffff80000867b0:	aa0003e1 	mov	x1, x0
@@ -7982,13 +7982,13 @@ ffffff80000867b8:	aa000021 	orr	x1, x1, x0
 ffffff80000867bc:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff80000867c0:	f9000001 	str	x1, [x0]
 ffffff80000867c4:	14000005 	b	ffffff80000867d8 <pgdir_walk+0xb8>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:242
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:242
 ffffff80000867c8:	f9400be0 	ldr	x0, [sp, #16]
 ffffff80000867cc:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:243
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:243
 ffffff80000867d0:	52800000 	mov	w0, #0x0                   	// #0
 ffffff80000867d4:	1400006a 	b	ffffff800008697c <pgdir_walk+0x25c>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:248
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:248
 ffffff80000867d8:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff80000867dc:	f9400000 	ldr	x0, [x0]
 ffffff80000867e0:	d34cfc00 	lsr	x0, x0, #12
@@ -8004,7 +8004,7 @@ ffffff8000086804:	f9400000 	ldr	x0, [x0]
 ffffff8000086808:	f9403be1 	ldr	x1, [sp, #112]
 ffffff800008680c:	eb00003f 	cmp	x1, x0
 ffffff8000086810:	54000163 	b.cc	ffffff800008683c <pgdir_walk+0x11c>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:248 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:248 (discriminator 1)
 ffffff8000086814:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000086818:	f9400000 	ldr	x0, [x0]
 ffffff800008681c:	92746800 	and	x0, x0, #0x7ffffff000
@@ -8015,12 +8015,12 @@ ffffff800008682c:	52801f01 	mov	w1, #0xf8                  	// #248
 ffffff8000086830:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086834:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086838:	97fff140 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:248 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:248 (discriminator 2)
 ffffff800008683c:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000086840:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000086844:	8b000020 	add	x0, x1, x0
 ffffff8000086848:	f90033e0 	str	x0, [sp, #96]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:249 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:249 (discriminator 2)
 ffffff800008684c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086850:	d355fc00 	lsr	x0, x0, #21
 ffffff8000086854:	92402000 	and	x0, x0, #0x1ff
@@ -8028,32 +8028,32 @@ ffffff8000086858:	d37df000 	lsl	x0, x0, #3
 ffffff800008685c:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000086860:	8b000020 	add	x0, x1, x0
 ffffff8000086864:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:251 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:251 (discriminator 2)
 ffffff8000086868:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff800008686c:	f9400000 	ldr	x0, [x0]
 ffffff8000086870:	92400000 	and	x0, x0, #0x1
 ffffff8000086874:	f100001f 	cmp	x0, #0x0
 ffffff8000086878:	54000361 	b.ne	ffffff80000868e4 <pgdir_walk+0x1c4>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:253
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:253
 ffffff800008687c:	b9401fe0 	ldr	w0, [sp, #28]
 ffffff8000086880:	7100001f 	cmp	w0, #0x0
 ffffff8000086884:	54000280 	b.eq	ffffff80000868d4 <pgdir_walk+0x1b4>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:255
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:255
 ffffff8000086888:	9100e3e0 	add	x0, sp, #0x38
 ffffff800008688c:	97ffff54 	bl	ffffff80000865dc <page_alloc>
 ffffff8000086890:	3100101f 	cmn	w0, #0x4
 ffffff8000086894:	540000a1 	b.ne	ffffff80000868a8 <pgdir_walk+0x188>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:257
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:257
 ffffff8000086898:	f9400be0 	ldr	x0, [sp, #16]
 ffffff800008689c:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:258
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:258
 ffffff80000868a0:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff80000868a4:	14000036 	b	ffffff800008697c <pgdir_walk+0x25c>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:262
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:262
 ffffff80000868a8:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000868ac:	52800021 	mov	w1, #0x1                   	// #1
 ffffff80000868b0:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:263
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:263
 ffffff80000868b4:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff80000868b8:	97fffc96 	bl	ffffff8000085b10 <page2pa>
 ffffff80000868bc:	aa0003e1 	mov	x1, x0
@@ -8062,13 +8062,13 @@ ffffff80000868c4:	aa000021 	orr	x1, x1, x0
 ffffff80000868c8:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000868cc:	f9000001 	str	x1, [x0]
 ffffff80000868d0:	14000005 	b	ffffff80000868e4 <pgdir_walk+0x1c4>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:268
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:268
 ffffff80000868d4:	f9400be0 	ldr	x0, [sp, #16]
 ffffff80000868d8:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:269
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:269
 ffffff80000868dc:	52800000 	mov	w0, #0x0                   	// #0
 ffffff80000868e0:	14000027 	b	ffffff800008697c <pgdir_walk+0x25c>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:274
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:274
 ffffff80000868e4:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff80000868e8:	f9400000 	ldr	x0, [x0]
 ffffff80000868ec:	d34cfc00 	lsr	x0, x0, #12
@@ -8084,7 +8084,7 @@ ffffff8000086910:	f9400000 	ldr	x0, [x0]
 ffffff8000086914:	f9402be1 	ldr	x1, [sp, #80]
 ffffff8000086918:	eb00003f 	cmp	x1, x0
 ffffff800008691c:	54000163 	b.cc	ffffff8000086948 <pgdir_walk+0x228>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:274 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:274 (discriminator 1)
 ffffff8000086920:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000086924:	f9400000 	ldr	x0, [x0]
 ffffff8000086928:	92746800 	and	x0, x0, #0x7ffffff000
@@ -8095,12 +8095,12 @@ ffffff8000086938:	52802241 	mov	w1, #0x112                 	// #274
 ffffff800008693c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086940:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086944:	97fff0fd 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:274 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:274 (discriminator 2)
 ffffff8000086948:	f94027e1 	ldr	x1, [sp, #72]
 ffffff800008694c:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000086950:	8b000020 	add	x0, x1, x0
 ffffff8000086954:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:275 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:275 (discriminator 2)
 ffffff8000086958:	f94013e0 	ldr	x0, [sp, #32]
 ffffff800008695c:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086960:	92402000 	and	x0, x0, #0x1ff
@@ -8109,22 +8109,22 @@ ffffff8000086968:	f94023e1 	ldr	x1, [sp, #64]
 ffffff800008696c:	8b000021 	add	x1, x1, x0
 ffffff8000086970:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000086974:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:277 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:277 (discriminator 2)
 ffffff8000086978:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:278 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:278 (discriminator 1)
 ffffff800008697c:	a8c87bfd 	ldp	x29, x30, [sp], #128
 ffffff8000086980:	d65f03c0 	ret
 
 ffffff8000086984 <page_insert>:
 page_insert():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:281
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:281
 ffffff8000086984:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000086988:	910003fd 	mov	x29, sp
 ffffff800008698c:	f90017e0 	str	x0, [sp, #40]
 ffffff8000086990:	f90013e1 	str	x1, [sp, #32]
 ffffff8000086994:	f9000fe2 	str	x2, [sp, #24]
 ffffff8000086998:	f9000be3 	str	x3, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:282
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:282
 ffffff800008699c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff80000869a0:	97fffc5c 	bl	ffffff8000085b10 <page2pa>
 ffffff80000869a4:	f9400fe4 	ldr	x4, [sp, #24]
@@ -8135,31 +8135,31 @@ ffffff80000869b4:	52802341 	mov	w1, #0x11a                 	// #282
 ffffff80000869b8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000869bc:	912cc000 	add	x0, x0, #0xb30
 ffffff80000869c0:	97fff0ad 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:284
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:284
 ffffff80000869c4:	f9001bff 	str	xzr, [sp, #48]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:287
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:287
 ffffff80000869c8:	f9400be1 	ldr	x1, [sp, #16]
 ffffff80000869cc:	d280e860 	mov	x0, #0x743                 	// #1859
 ffffff80000869d0:	aa000020 	orr	x0, x1, x0
 ffffff80000869d4:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:290
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:290
 ffffff80000869d8:	9100c3e0 	add	x0, sp, #0x30
 ffffff80000869dc:	aa0003e3 	mov	x3, x0
 ffffff80000869e0:	52800002 	mov	w2, #0x0                   	// #0
 ffffff80000869e4:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff80000869e8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff80000869ec:	97ffff4d 	bl	ffffff8000086720 <pgdir_walk>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:293
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:293
 ffffff80000869f0:	f9401be0 	ldr	x0, [sp, #48]
 ffffff80000869f4:	f100001f 	cmp	x0, #0x0
 ffffff80000869f8:	54000360 	b.eq	ffffff8000086a64 <page_insert+0xe0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:293 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:293 (discriminator 1)
 ffffff80000869fc:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086a00:	f9400000 	ldr	x0, [x0]
 ffffff8000086a04:	92400000 	and	x0, x0, #0x1
 ffffff8000086a08:	f100001f 	cmp	x0, #0x0
 ffffff8000086a0c:	540002c0 	b.eq	ffffff8000086a64 <page_insert+0xe0>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:296
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:296
 ffffff8000086a10:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086a14:	f9400000 	ldr	x0, [x0]
 ffffff8000086a18:	97fffc46 	bl	ffffff8000085b30 <pa2page>
@@ -8167,14 +8167,14 @@ ffffff8000086a1c:	aa0003e1 	mov	x1, x0
 ffffff8000086a20:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086a24:	eb01001f 	cmp	x0, x1
 ffffff8000086a28:	540000a0 	b.eq	ffffff8000086a3c <page_insert+0xb8>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:298
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:298
 ffffff8000086a2c:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000086a30:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086a34:	9400005d 	bl	ffffff8000086ba8 <page_remove>
 ffffff8000086a38:	1400000b 	b	ffffff8000086a64 <page_insert+0xe0>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:302
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:302
 ffffff8000086a3c:	940001ec 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:303
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:303
 ffffff8000086a40:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086a44:	97fffc33 	bl	ffffff8000085b10 <page2pa>
 ffffff8000086a48:	aa0003e2 	mov	x2, x0
@@ -8182,10 +8182,10 @@ ffffff8000086a4c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086a50:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff8000086a54:	aa010041 	orr	x1, x2, x1
 ffffff8000086a58:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:304
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:304
 ffffff8000086a5c:	52800000 	mov	w0, #0x0                   	// #0
 ffffff8000086a60:	1400001a 	b	ffffff8000086ac8 <page_insert+0x144>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:313
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:313
 ffffff8000086a64:	9100c3e0 	add	x0, sp, #0x30
 ffffff8000086a68:	aa0003e3 	mov	x3, x0
 ffffff8000086a6c:	52800022 	mov	w2, #0x1                   	// #1
@@ -8194,10 +8194,10 @@ ffffff8000086a74:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086a78:	97ffff2a 	bl	ffffff8000086720 <pgdir_walk>
 ffffff8000086a7c:	7100001f 	cmp	w0, #0x0
 ffffff8000086a80:	54000060 	b.eq	ffffff8000086a8c <page_insert+0x108>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:315
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:315
 ffffff8000086a84:	12800060 	mov	w0, #0xfffffffc            	// #-4
 ffffff8000086a88:	14000010 	b	ffffff8000086ac8 <page_insert+0x144>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:317
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:317
 ffffff8000086a8c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086a90:	97fffc20 	bl	ffffff8000085b10 <page2pa>
 ffffff8000086a94:	aa0003e2 	mov	x2, x0
@@ -8205,78 +8205,78 @@ ffffff8000086a98:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086a9c:	f9401fe1 	ldr	x1, [sp, #56]
 ffffff8000086aa0:	aa010041 	orr	x1, x2, x1
 ffffff8000086aa4:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:319
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:319
 ffffff8000086aa8:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086aac:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086ab0:	11000400 	add	w0, w0, #0x1
 ffffff8000086ab4:	12003c01 	and	w1, w0, #0xffff
 ffffff8000086ab8:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086abc:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:320
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:320
 ffffff8000086ac0:	940001cb 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:322
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:322
 ffffff8000086ac4:	52800000 	mov	w0, #0x0                   	// #0
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:323 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:323 (discriminator 1)
 ffffff8000086ac8:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000086acc:	d65f03c0 	ret
 
 ffffff8000086ad0 <page_lookup>:
 page_lookup():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:326
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:326
 ffffff8000086ad0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
 ffffff8000086ad4:	910003fd 	mov	x29, sp
 ffffff8000086ad8:	f90017e0 	str	x0, [sp, #40]
 ffffff8000086adc:	f90013e1 	str	x1, [sp, #32]
 ffffff8000086ae0:	f9000fe2 	str	x2, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:331
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:331
 ffffff8000086ae4:	9100c3e0 	add	x0, sp, #0x30
 ffffff8000086ae8:	aa0003e3 	mov	x3, x0
 ffffff8000086aec:	52800002 	mov	w2, #0x0                   	// #0
 ffffff8000086af0:	f94013e1 	ldr	x1, [sp, #32]
 ffffff8000086af4:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086af8:	97ffff0a 	bl	ffffff8000086720 <pgdir_walk>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:334
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:334
 ffffff8000086afc:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086b00:	f100001f 	cmp	x0, #0x0
 ffffff8000086b04:	54000061 	b.ne	ffffff8000086b10 <page_lookup+0x40>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:336
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:336
 ffffff8000086b08:	d2800000 	mov	x0, #0x0                   	// #0
 ffffff8000086b0c:	14000013 	b	ffffff8000086b58 <page_lookup+0x88>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:338
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:338
 ffffff8000086b10:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086b14:	f9400000 	ldr	x0, [x0]
 ffffff8000086b18:	92400000 	and	x0, x0, #0x1
 ffffff8000086b1c:	f100001f 	cmp	x0, #0x0
 ffffff8000086b20:	54000061 	b.ne	ffffff8000086b2c <page_lookup+0x5c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:340
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:340
 ffffff8000086b24:	d2800000 	mov	x0, #0x0                   	// #0
 ffffff8000086b28:	1400000c 	b	ffffff8000086b58 <page_lookup+0x88>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:346
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:346
 ffffff8000086b2c:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086b30:	f9400000 	ldr	x0, [x0]
 ffffff8000086b34:	97fffbff 	bl	ffffff8000085b30 <pa2page>
 ffffff8000086b38:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:347
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:347
 ffffff8000086b3c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086b40:	f100001f 	cmp	x0, #0x0
 ffffff8000086b44:	54000080 	b.eq	ffffff8000086b54 <page_lookup+0x84>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:349
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:349
 ffffff8000086b48:	f9401be1 	ldr	x1, [sp, #48]
 ffffff8000086b4c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086b50:	f9000001 	str	x1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:352
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:352
 ffffff8000086b54:	f9401fe0 	ldr	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:353 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:353 (discriminator 1)
 ffffff8000086b58:	a8c47bfd 	ldp	x29, x30, [sp], #64
 ffffff8000086b5c:	d65f03c0 	ret
 
 ffffff8000086b60 <page_decref>:
 page_decref():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:356
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:356
 ffffff8000086b60:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
 ffffff8000086b64:	910003fd 	mov	x29, sp
 ffffff8000086b68:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:357
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:357
 ffffff8000086b6c:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086b70:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086b74:	51000400 	sub	w0, w0, #0x1
@@ -8287,70 +8287,70 @@ ffffff8000086b84:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086b88:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086b8c:	7100001f 	cmp	w0, #0x0
 ffffff8000086b90:	54000061 	b.ne	ffffff8000086b9c <page_decref+0x3c>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:359
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:359
 ffffff8000086b94:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086b98:	97fffeb7 	bl	ffffff8000086674 <page_free>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:361
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:361
 ffffff8000086b9c:	d503201f 	nop
 ffffff8000086ba0:	a8c27bfd 	ldp	x29, x30, [sp], #32
 ffffff8000086ba4:	d65f03c0 	ret
 
 ffffff8000086ba8 <page_remove>:
 page_remove():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:364
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:364
 ffffff8000086ba8:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
 ffffff8000086bac:	910003fd 	mov	x29, sp
 ffffff8000086bb0:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000086bb4:	f9000be1 	str	x1, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:369
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:369
 ffffff8000086bb8:	910083e0 	add	x0, sp, #0x20
 ffffff8000086bbc:	aa0003e2 	mov	x2, x0
 ffffff8000086bc0:	f9400be1 	ldr	x1, [sp, #16]
 ffffff8000086bc4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086bc8:	97ffffc2 	bl	ffffff8000086ad0 <page_lookup>
 ffffff8000086bcc:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:371
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:371
 ffffff8000086bd0:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086bd4:	f100001f 	cmp	x0, #0x0
 ffffff8000086bd8:	54000220 	b.eq	ffffff8000086c1c <page_remove+0x74>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:379
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:379
 ffffff8000086bdc:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086be0:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086be4:	51000400 	sub	w0, w0, #0x1
 ffffff8000086be8:	12003c01 	and	w1, w0, #0xffff
 ffffff8000086bec:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086bf0:	79002001 	strh	w1, [x0, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:380
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:380
 ffffff8000086bf4:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086bf8:	79402000 	ldrh	w0, [x0, #16]
 ffffff8000086bfc:	7100001f 	cmp	w0, #0x0
 ffffff8000086c00:	54000061 	b.ne	ffffff8000086c0c <page_remove+0x64>  // b.any
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:382
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:382
 ffffff8000086c04:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086c08:	97fffe9b 	bl	ffffff8000086674 <page_free>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:385
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:385
 ffffff8000086c0c:	f94013e0 	ldr	x0, [sp, #32]
 ffffff8000086c10:	f900001f 	str	xzr, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:386
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:386
 ffffff8000086c14:	94000176 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:387
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:387
 ffffff8000086c18:	14000002 	b	ffffff8000086c20 <page_remove+0x78>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:373
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:373
 ffffff8000086c1c:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:388
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:388
 ffffff8000086c20:	a8c37bfd 	ldp	x29, x30, [sp], #48
 ffffff8000086c24:	d65f03c0 	ret
 
 ffffff8000086c28 <pageout>:
 pageout():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:391
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:391
 ffffff8000086c28:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
 ffffff8000086c2c:	910003fd 	mov	x29, sp
 ffffff8000086c30:	f9000fe0 	str	x0, [sp, #24]
 ffffff8000086c34:	f9000be1 	str	x1, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:393
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:393
 ffffff8000086c38:	f90017ff 	str	xzr, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:395
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:395
 ffffff8000086c3c:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000086c40:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086c44:	f90027e0 	str	x0, [sp, #72]
@@ -8362,7 +8362,7 @@ ffffff8000086c58:	f9400000 	ldr	x0, [x0]
 ffffff8000086c5c:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000086c60:	eb00003f 	cmp	x1, x0
 ffffff8000086c64:	54000123 	b.cc	ffffff8000086c88 <pageout+0x60>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:395 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:395 (discriminator 1)
 ffffff8000086c68:	f9400be0 	ldr	x0, [sp, #16]
 ffffff8000086c6c:	aa0003e3 	mov	x3, x0
 ffffff8000086c70:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
@@ -8371,38 +8371,38 @@ ffffff8000086c78:	52803161 	mov	w1, #0x18b                 	// #395
 ffffff8000086c7c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086c80:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086c84:	97fff02d 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:395 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:395 (discriminator 2)
 ffffff8000086c88:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000086c8c:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000086c90:	8b000020 	add	x0, x1, x0
 ffffff8000086c94:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:397 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:397 (discriminator 2)
 ffffff8000086c98:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000086c9c:	d29fffe0 	mov	x0, #0xffff                	// #65535
 ffffff8000086ca0:	eb00003f 	cmp	x1, x0
 ffffff8000086ca4:	540000e8 	b.hi	ffffff8000086cc0 <pageout+0x98>  // b.pmore
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:399
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:399
 ffffff8000086ca8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086cac:	91316002 	add	x2, x0, #0xc58
 ffffff8000086cb0:	528031e1 	mov	w1, #0x18f                 	// #399
 ffffff8000086cb4:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086cb8:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086cbc:	97fff01f 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:402
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:402
 ffffff8000086cc0:	9100a3e0 	add	x0, sp, #0x28
 ffffff8000086cc4:	97fffe46 	bl	ffffff80000865dc <page_alloc>
 ffffff8000086cc8:	b90037e0 	str	w0, [sp, #52]
 ffffff8000086ccc:	b94037e0 	ldr	w0, [sp, #52]
 ffffff8000086cd0:	7100001f 	cmp	w0, #0x0
 ffffff8000086cd4:	540000ea 	b.ge	ffffff8000086cf0 <pageout+0xc8>  // b.tcont
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:404
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:404
 ffffff8000086cd8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086cdc:	9131c002 	add	x2, x0, #0xc70
 ffffff8000086ce0:	52803281 	mov	w1, #0x194                 	// #404
 ffffff8000086ce4:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086ce8:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086cec:	97fff013 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:407
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:407
 ffffff8000086cf0:	f94017e1 	ldr	x1, [sp, #40]
 ffffff8000086cf4:	f9400fe0 	ldr	x0, [sp, #24]
 ffffff8000086cf8:	9274cc00 	and	x0, x0, #0xfffffffffffff000
@@ -8410,18 +8410,18 @@ ffffff8000086cfc:	d2800003 	mov	x3, #0x0                   	// #0
 ffffff8000086d00:	aa0003e2 	mov	x2, x0
 ffffff8000086d04:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000086d08:	97ffff1f 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:408
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:408
 ffffff8000086d0c:	d503201f 	nop
 ffffff8000086d10:	a8c57bfd 	ldp	x29, x30, [sp], #80
 ffffff8000086d14:	d65f03c0 	ret
 
 ffffff8000086d18 <debug_print_pgdir>:
 debug_print_pgdir():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:411
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:411
 ffffff8000086d18:	a9b67bfd 	stp	x29, x30, [sp, #-160]!
 ffffff8000086d1c:	910003fd 	mov	x29, sp
 ffffff8000086d20:	f9000fe0 	str	x0, [sp, #24]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:412
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:412
 ffffff8000086d24:	f9400fe3 	ldr	x3, [sp, #24]
 ffffff8000086d28:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086d2c:	91322002 	add	x2, x0, #0xc88
@@ -8429,25 +8429,25 @@ ffffff8000086d30:	52803381 	mov	w1, #0x19c                 	// #412
 ffffff8000086d34:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086d38:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086d3c:	97ffefce 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:414
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:414
 ffffff8000086d40:	52810000 	mov	w0, #0x800                 	// #2048
 ffffff8000086d44:	b9009fe0 	str	w0, [sp, #156]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:415
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:415
 ffffff8000086d48:	f9004bff 	str	xzr, [sp, #144]
 ffffff8000086d4c:	14000094 	b	ffffff8000086f9c <debug_print_pgdir+0x284>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:418
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:418
 ffffff8000086d50:	f9404be0 	ldr	x0, [sp, #144]
 ffffff8000086d54:	d37df000 	lsl	x0, x0, #3
 ffffff8000086d58:	f9400fe1 	ldr	x1, [sp, #24]
 ffffff8000086d5c:	8b000020 	add	x0, x1, x0
 ffffff8000086d60:	f9400000 	ldr	x0, [x0]
 ffffff8000086d64:	f9003fe0 	str	x0, [sp, #120]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:419
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:419
 ffffff8000086d68:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000086d6c:	92400000 	and	x0, x0, #0x1
 ffffff8000086d70:	f100001f 	cmp	x0, #0x0
 ffffff8000086d74:	540010e0 	b.eq	ffffff8000086f90 <debug_print_pgdir+0x278>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:421
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:421
 ffffff8000086d78:	f9403fe3 	ldr	x3, [sp, #120]
 ffffff8000086d7c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086d80:	9132c002 	add	x2, x0, #0xcb0
@@ -8455,7 +8455,7 @@ ffffff8000086d84:	528034a1 	mov	w1, #0x1a5                 	// #421
 ffffff8000086d88:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086d8c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086d90:	97ffefb9 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:423
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:423
 ffffff8000086d94:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000086d98:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086d9c:	92406800 	and	x0, x0, #0x7ffffff
@@ -8469,7 +8469,7 @@ ffffff8000086db8:	f9400000 	ldr	x0, [x0]
 ffffff8000086dbc:	f9403be1 	ldr	x1, [sp, #112]
 ffffff8000086dc0:	eb00003f 	cmp	x1, x0
 ffffff8000086dc4:	54000143 	b.cc	ffffff8000086dec <debug_print_pgdir+0xd4>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:423 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:423 (discriminator 1)
 ffffff8000086dc8:	f9403fe0 	ldr	x0, [sp, #120]
 ffffff8000086dcc:	92746800 	and	x0, x0, #0x7ffffff000
 ffffff8000086dd0:	aa0003e3 	mov	x3, x0
@@ -8479,34 +8479,34 @@ ffffff8000086ddc:	528034e1 	mov	w1, #0x1a7                 	// #423
 ffffff8000086de0:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086de4:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086de8:	97ffefd4 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:423 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:423 (discriminator 2)
 ffffff8000086dec:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000086df0:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000086df4:	8b000020 	add	x0, x1, x0
 ffffff8000086df8:	f90033e0 	str	x0, [sp, #96]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:424 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:424 (discriminator 2)
 ffffff8000086dfc:	f90047ff 	str	xzr, [sp, #136]
 ffffff8000086e00:	14000061 	b	ffffff8000086f84 <debug_print_pgdir+0x26c>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:426
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:426
 ffffff8000086e04:	f94047e0 	ldr	x0, [sp, #136]
 ffffff8000086e08:	d37df000 	lsl	x0, x0, #3
 ffffff8000086e0c:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000086e10:	8b000020 	add	x0, x1, x0
 ffffff8000086e14:	f9400000 	ldr	x0, [x0]
 ffffff8000086e18:	f9002fe0 	str	x0, [sp, #88]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:427
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:427
 ffffff8000086e1c:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000086e20:	92400000 	and	x0, x0, #0x1
 ffffff8000086e24:	f100001f 	cmp	x0, #0x0
 ffffff8000086e28:	54000a80 	b.eq	ffffff8000086f78 <debug_print_pgdir+0x260>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:429
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:429
 ffffff8000086e2c:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086e30:	91332002 	add	x2, x0, #0xcc8
 ffffff8000086e34:	528035a1 	mov	w1, #0x1ad                 	// #429
 ffffff8000086e38:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086e3c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086e40:	97ffef8d 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:431
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:431
 ffffff8000086e44:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000086e48:	d34cfc00 	lsr	x0, x0, #12
 ffffff8000086e4c:	92406800 	and	x0, x0, #0x7ffffff
@@ -8520,7 +8520,7 @@ ffffff8000086e68:	f9400000 	ldr	x0, [x0]
 ffffff8000086e6c:	f9402be1 	ldr	x1, [sp, #80]
 ffffff8000086e70:	eb00003f 	cmp	x1, x0
 ffffff8000086e74:	54000143 	b.cc	ffffff8000086e9c <debug_print_pgdir+0x184>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:431 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:431 (discriminator 1)
 ffffff8000086e78:	f9402fe0 	ldr	x0, [sp, #88]
 ffffff8000086e7c:	92746800 	and	x0, x0, #0x7ffffff000
 ffffff8000086e80:	aa0003e3 	mov	x3, x0
@@ -8530,34 +8530,34 @@ ffffff8000086e8c:	528035e1 	mov	w1, #0x1af                 	// #431
 ffffff8000086e90:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086e94:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086e98:	97ffefa8 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:431 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:431 (discriminator 2)
 ffffff8000086e9c:	f94027e1 	ldr	x1, [sp, #72]
 ffffff8000086ea0:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff8000086ea4:	8b000020 	add	x0, x1, x0
 ffffff8000086ea8:	f90023e0 	str	x0, [sp, #64]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:432 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:432 (discriminator 2)
 ffffff8000086eac:	f90043ff 	str	xzr, [sp, #128]
 ffffff8000086eb0:	1400002f 	b	ffffff8000086f6c <debug_print_pgdir+0x254>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:434
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:434
 ffffff8000086eb4:	f94043e0 	ldr	x0, [sp, #128]
 ffffff8000086eb8:	d37df000 	lsl	x0, x0, #3
 ffffff8000086ebc:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000086ec0:	8b000020 	add	x0, x1, x0
 ffffff8000086ec4:	f9400000 	ldr	x0, [x0]
 ffffff8000086ec8:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:435
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:435
 ffffff8000086ecc:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000086ed0:	92400000 	and	x0, x0, #0x1
 ffffff8000086ed4:	f100001f 	cmp	x0, #0x0
 ffffff8000086ed8:	54000440 	b.eq	ffffff8000086f60 <debug_print_pgdir+0x248>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:437
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:437
 ffffff8000086edc:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086ee0:	91336002 	add	x2, x0, #0xcd8
 ffffff8000086ee4:	528036a1 	mov	w1, #0x1b5                 	// #437
 ffffff8000086ee8:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086eec:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086ef0:	97ffef61 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:439
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:439
 ffffff8000086ef4:	f9404be0 	ldr	x0, [sp, #144]
 ffffff8000086ef8:	d3628401 	lsl	x1, x0, #30
 ffffff8000086efc:	f94047e0 	ldr	x0, [sp, #136]
@@ -8567,16 +8567,16 @@ ffffff8000086f08:	f94043e0 	ldr	x0, [sp, #128]
 ffffff8000086f0c:	d374cc00 	lsl	x0, x0, #12
 ffffff8000086f10:	aa000020 	orr	x0, x1, x0
 ffffff8000086f14:	f9001be0 	str	x0, [sp, #48]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:440
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:440
 ffffff8000086f18:	f9401fe0 	ldr	x0, [sp, #56]
 ffffff8000086f1c:	f90017e0 	str	x0, [sp, #40]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:441
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:441
 ffffff8000086f20:	b9409fe0 	ldr	w0, [sp, #156]
 ffffff8000086f24:	51000401 	sub	w1, w0, #0x1
 ffffff8000086f28:	b9009fe1 	str	w1, [sp, #156]
 ffffff8000086f2c:	7100001f 	cmp	w0, #0x0
 ffffff8000086f30:	540003e0 	b.eq	ffffff8000086fac <debug_print_pgdir+0x294>  // b.none
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:442
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:442
 ffffff8000086f34:	f94043e7 	ldr	x7, [sp, #128]
 ffffff8000086f38:	f94047e6 	ldr	x6, [sp, #136]
 ffffff8000086f3c:	f9404be5 	ldr	x5, [sp, #144]
@@ -8588,84 +8588,84 @@ ffffff8000086f50:	52803741 	mov	w1, #0x1ba                 	// #442
 ffffff8000086f54:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086f58:	912cc000 	add	x0, x0, #0xb30
 ffffff8000086f5c:	97ffef46 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:432 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:432 (discriminator 2)
 ffffff8000086f60:	f94043e0 	ldr	x0, [sp, #128]
 ffffff8000086f64:	91000400 	add	x0, x0, #0x1
 ffffff8000086f68:	f90043e0 	str	x0, [sp, #128]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:432 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:432 (discriminator 1)
 ffffff8000086f6c:	f94043e0 	ldr	x0, [sp, #128]
 ffffff8000086f70:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000086f74:	54fffa09 	b.ls	ffffff8000086eb4 <debug_print_pgdir+0x19c>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:424 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:424 (discriminator 2)
 ffffff8000086f78:	f94047e0 	ldr	x0, [sp, #136]
 ffffff8000086f7c:	91000400 	add	x0, x0, #0x1
 ffffff8000086f80:	f90047e0 	str	x0, [sp, #136]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:424 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:424 (discriminator 1)
 ffffff8000086f84:	f94047e0 	ldr	x0, [sp, #136]
 ffffff8000086f88:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000086f8c:	54fff3c9 	b.ls	ffffff8000086e04 <debug_print_pgdir+0xec>  // b.plast
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:415 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:415 (discriminator 2)
 ffffff8000086f90:	f9404be0 	ldr	x0, [sp, #144]
 ffffff8000086f94:	91000400 	add	x0, x0, #0x1
 ffffff8000086f98:	f9004be0 	str	x0, [sp, #144]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:415 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:415 (discriminator 1)
 ffffff8000086f9c:	f9404be0 	ldr	x0, [sp, #144]
 ffffff8000086fa0:	f107fc1f 	cmp	x0, #0x1ff
 ffffff8000086fa4:	54ffed69 	b.ls	ffffff8000086d50 <debug_print_pgdir+0x38>  // b.plast
 ffffff8000086fa8:	14000002 	b	ffffff8000086fb0 <debug_print_pgdir+0x298>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:444
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:444
 ffffff8000086fac:	d503201f 	nop
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:451
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:451
 ffffff8000086fb0:	a8ca7bfd 	ldp	x29, x30, [sp], #160
 ffffff8000086fb4:	d65f03c0 	ret
 
 ffffff8000086fb8 <test_pgdir>:
 test_pgdir():
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:454
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:454
 ffffff8000086fb8:	a9b87bfd 	stp	x29, x30, [sp, #-128]!
 ffffff8000086fbc:	910003fd 	mov	x29, sp
 ffffff8000086fc0:	f9000bf3 	str	x19, [sp, #16]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:455
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:455
 ffffff8000086fc4:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086fc8:	91348000 	add	x0, x0, #0xd20
 ffffff8000086fcc:	97ffeefe 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:456
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:456
 ffffff8000086fd0:	b0000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000086fd4:	9134e000 	add	x0, x0, #0xd38
 ffffff8000086fd8:	97ffeefb 	bl	ffffff8000082bc4 <printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:460
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:460
 ffffff8000086fdc:	9100c3e0 	add	x0, sp, #0x30
 ffffff8000086fe0:	97fffd7f 	bl	ffffff80000865dc <page_alloc>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:461
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:461
 ffffff8000086fe4:	f9401be0 	ldr	x0, [sp, #48]
 ffffff8000086fe8:	97fffaef 	bl	ffffff8000085ba4 <page2kva>
 ffffff8000086fec:	f9003be0 	str	x0, [sp, #112]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:463
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:463
 ffffff8000086ff0:	9100a3e0 	add	x0, sp, #0x28
 ffffff8000086ff4:	97fffd7a 	bl	ffffff80000865dc <page_alloc>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:464
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:464
 ffffff8000086ff8:	f94017e0 	ldr	x0, [sp, #40]
 ffffff8000086ffc:	97fffaea 	bl	ffffff8000085ba4 <page2kva>
 ffffff8000087000:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:466
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:466
 ffffff8000087004:	b9007fff 	str	wzr, [sp, #124]
 ffffff8000087008:	1400000a 	b	ffffff8000087030 <test_pgdir+0x78>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:468 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:468 (discriminator 3)
 ffffff800008700c:	b9807fe0 	ldrsw	x0, [sp, #124]
 ffffff8000087010:	d37ef400 	lsl	x0, x0, #2
 ffffff8000087014:	f94037e1 	ldr	x1, [sp, #104]
 ffffff8000087018:	8b000020 	add	x0, x1, x0
 ffffff800008701c:	b9407fe1 	ldr	w1, [sp, #124]
 ffffff8000087020:	b9000001 	str	w1, [x0]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:466 (discriminator 3)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:466 (discriminator 3)
 ffffff8000087024:	b9407fe0 	ldr	w0, [sp, #124]
 ffffff8000087028:	11000400 	add	w0, w0, #0x1
 ffffff800008702c:	b9007fe0 	str	w0, [sp, #124]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:466 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:466 (discriminator 1)
 ffffff8000087030:	b9407fe0 	ldr	w0, [sp, #124]
 ffffff8000087034:	710ffc1f 	cmp	w0, #0x3ff
 ffffff8000087038:	54fffead 	b.le	ffffff800008700c <test_pgdir+0x54>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:474
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:474
 ffffff800008703c:	b0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff8000087040:	913c8000 	add	x0, x0, #0xf20
 ffffff8000087044:	f9400000 	ldr	x0, [x0]
@@ -8681,7 +8681,7 @@ ffffff8000087068:	f9400000 	ldr	x0, [x0]
 ffffff800008706c:	f94033e1 	ldr	x1, [sp, #96]
 ffffff8000087070:	eb00003f 	cmp	x1, x0
 ffffff8000087074:	54000163 	b.cc	ffffff80000870a0 <test_pgdir+0xe8>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:474 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:474 (discriminator 1)
 ffffff8000087078:	b0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff800008707c:	913c8000 	add	x0, x0, #0xf20
 ffffff8000087080:	f9400000 	ldr	x0, [x0]
@@ -8692,12 +8692,12 @@ ffffff8000087090:	52803b41 	mov	w1, #0x1da                 	// #474
 ffffff8000087094:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000087098:	912cc000 	add	x0, x0, #0xb30
 ffffff800008709c:	97ffef27 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:474 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:474 (discriminator 2)
 ffffff80000870a0:	f9402fe1 	ldr	x1, [sp, #88]
 ffffff80000870a4:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff80000870a8:	8b000020 	add	x0, x1, x0
 ffffff80000870ac:	f9002be0 	str	x0, [sp, #80]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:475 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:475 (discriminator 2)
 ffffff80000870b0:	b0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000870b4:	913c4000 	add	x0, x0, #0xf10
 ffffff80000870b8:	f9400000 	ldr	x0, [x0]
@@ -8713,7 +8713,7 @@ ffffff80000870dc:	f9400000 	ldr	x0, [x0]
 ffffff80000870e0:	f94027e1 	ldr	x1, [sp, #72]
 ffffff80000870e4:	eb00003f 	cmp	x1, x0
 ffffff80000870e8:	54000163 	b.cc	ffffff8000087114 <test_pgdir+0x15c>  // b.lo, b.ul, b.last
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:475 (discriminator 1)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:475 (discriminator 1)
 ffffff80000870ec:	b0000040 	adrp	x0, ffffff8000090000 <binary_user_test_sys_start+0x2100>
 ffffff80000870f0:	913c4000 	add	x0, x0, #0xf10
 ffffff80000870f4:	f9400000 	ldr	x0, [x0]
@@ -8724,12 +8724,12 @@ ffffff8000087104:	52803b61 	mov	w1, #0x1db                 	// #475
 ffffff8000087108:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008710c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000087110:	97ffef0a 	bl	ffffff8000082d38 <_panic>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:475 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:475 (discriminator 2)
 ffffff8000087114:	f94023e1 	ldr	x1, [sp, #64]
 ffffff8000087118:	b25963e0 	mov	x0, #0xffffff8000000000    	// #-549755813888
 ffffff800008711c:	8b000020 	add	x0, x1, x0
 ffffff8000087120:	f9001fe0 	str	x0, [sp, #56]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:476 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:476 (discriminator 2)
 ffffff8000087124:	f9401fe4 	ldr	x4, [sp, #56]
 ffffff8000087128:	f9402be3 	ldr	x3, [sp, #80]
 ffffff800008712c:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
@@ -8738,7 +8738,7 @@ ffffff8000087134:	52803b81 	mov	w1, #0x1dc                 	// #476
 ffffff8000087138:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff800008713c:	912cc000 	add	x0, x0, #0xb30
 ffffff8000087140:	97ffeecd 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:477 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:477 (discriminator 2)
 ffffff8000087144:	f9402be0 	ldr	x0, [sp, #80]
 ffffff8000087148:	f9400000 	ldr	x0, [x0]
 ffffff800008714c:	aa0003e3 	mov	x3, x0
@@ -8748,26 +8748,26 @@ ffffff8000087158:	52803ba1 	mov	w1, #0x1dd                 	// #477
 ffffff800008715c:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff8000087160:	912cc000 	add	x0, x0, #0xb30
 ffffff8000087164:	97ffeec4 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:478 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:478 (discriminator 2)
 ffffff8000087168:	f94017e0 	ldr	x0, [sp, #40]
 ffffff800008716c:	d2800003 	mov	x3, #0x0                   	// #0
 ffffff8000087170:	d2a00802 	mov	x2, #0x400000              	// #4194304
 ffffff8000087174:	aa0003e1 	mov	x1, x0
 ffffff8000087178:	f9403be0 	ldr	x0, [sp, #112]
 ffffff800008717c:	97fffe02 	bl	ffffff8000086984 <page_insert>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:481 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:481 (discriminator 2)
 ffffff8000087180:	f9403be0 	ldr	x0, [sp, #112]
 ffffff8000087184:	97fffee5 	bl	ffffff8000086d18 <debug_print_pgdir>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:482 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:482 (discriminator 2)
 ffffff8000087188:	f9401be0 	ldr	x0, [sp, #48]
 ffffff800008718c:	97fffa61 	bl	ffffff8000085b10 <page2pa>
 ffffff8000087190:	97ffe9ae 	bl	ffffff8000081848 <set_ttbr0>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:484 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:484 (discriminator 2)
 ffffff8000087194:	94000016 	bl	ffffff80000871ec <tlb_invalidate>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:485 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:485 (discriminator 2)
 ffffff8000087198:	d2a00800 	mov	x0, #0x400000              	// #4194304
 ffffff800008719c:	f90037e0 	str	x0, [sp, #104]
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:486 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:486 (discriminator 2)
 ffffff80000871a0:	f94037e0 	ldr	x0, [sp, #104]
 ffffff80000871a4:	91320000 	add	x0, x0, #0xc80
 ffffff80000871a8:	b9400013 	ldr	w19, [x0]
@@ -8783,7 +8783,7 @@ ffffff80000871cc:	52803cc1 	mov	w1, #0x1e6                 	// #486
 ffffff80000871d0:	90000000 	adrp	x0, ffffff8000087000 <test_pgdir+0x48>
 ffffff80000871d4:	912cc000 	add	x0, x0, #0xb30
 ffffff80000871d8:	97ffeea7 	bl	ffffff8000082c74 <debug_printf>
-/home/thysrael/OS/PIOS/THYOS/mmu/pmap.c:487 (discriminator 2)
+/home/dofingert/Source/OS/THYOS/mmu/pmap.c:487 (discriminator 2)
 ffffff80000871dc:	d503201f 	nop
 ffffff80000871e0:	f9400bf3 	ldr	x19, [sp, #16]
 ffffff80000871e4:	a8c87bfd 	ldp	x29, x30, [sp], #128
@@ -8966,7 +8966,7 @@ ffffff8000087490:	0000000a 	.inst	0x0000000a ; undefined
 ffffff8000087494:	00000000 	.inst	0x00000000 ; undefined
 
 ffffff8000087498 <theFatalMsg>:
-/home/thysrael/OS/PIOS/THYOS/lib/print.c:12
+/home/dofingert/Source/OS/THYOS/lib/print.c:12
 ffffff8000087498:	61746166 	.inst	0x61746166 ; undefined
 ffffff800008749c:	7265206c 	.inst	0x7265206c ; undefined
 ffffff80000874a0:	20726f72 	.inst	0x20726f72 ; undefined
@@ -9545,7 +9545,7 @@ Disassembly of section .data:
 
 ffffff8000088000 <entry_error_messages>:
 _data():
-/home/thysrael/OS/PIOS/THYOS/lib/tool.c:11
+/home/dofingert/Source/OS/THYOS/lib/tool.c:11
 ffffff8000088000:	00087808 	.inst	0x00087808 ; undefined
 ffffff8000088004:	ffffff80 	.inst	0xffffff80 ; undefined
 ffffff8000088008:	00087820 	.inst	0x00087820 ; undefined
@@ -9580,7 +9580,7 @@ ffffff8000088078:	00087970 	.inst	0x00087970 ; undefined
 ffffff800008807c:	ffffff80 	.inst	0xffffff80 ; undefined
 
 ffffff8000088080 <binary_user_test_fork_start>:
-/home/thysrael/OS/PIOS/THYOS/user/test_fork.b.c:1
+/home/dofingert/Source/OS/THYOS/user/test_fork.b.c:1
 ffffff8000088080:	464c457f 	.inst	0x464c457f ; undefined
 ffffff8000088084:	00010102 	.inst	0x00010102 ; undefined
 	...
@@ -12419,11 +12419,11 @@ ffffff800008af20:	00000001 	.inst	0x00000001 ; undefined
 	...
 
 ffffff800008af34 <binary_user_test_fork_size>:
-/home/thysrael/OS/PIOS/THYOS/user/test_fork.b.c:751
+/home/dofingert/Source/OS/THYOS/user/test_fork.b.c:751
 ffffff800008af34:	00002eb0 	.inst	0x00002eb0 ; undefined
 
 ffffff800008af38 <binary_user_test_ipc_start>:
-/home/thysrael/OS/PIOS/THYOS/user/test_ipc.b.c:1
+/home/dofingert/Source/OS/THYOS/user/test_ipc.b.c:1
 ffffff800008af38:	464c457f 	.inst	0x464c457f ; undefined
 ffffff800008af3c:	00010102 	.inst	0x00010102 ; undefined
 	...
@@ -15332,11 +15332,11 @@ ffffff800008dee8:	00000001 	.inst	0x00000001 ; undefined
 	...
 
 ffffff800008defc <binary_user_test_ipc_size>:
-/home/thysrael/OS/PIOS/THYOS/user/test_ipc.b.c:768
+/home/dofingert/Source/OS/THYOS/user/test_ipc.b.c:768
 ffffff800008defc:	00002fc0 	.inst	0x00002fc0 ; undefined
 
 ffffff800008df00 <binary_user_test_sys_start>:
-/home/thysrael/OS/PIOS/THYOS/user/test_sys.b.c:1
+/home/dofingert/Source/OS/THYOS/user/test_sys.b.c:1
 ffffff800008df00:	464c457f 	.inst	0x464c457f ; undefined
 ffffff800008df04:	00010102 	.inst	0x00010102 ; undefined
 	...
@@ -18242,7 +18242,7 @@ ffffff8000090ea8:	00000001 	.inst	0x00000001 ; undefined
 	...
 
 ffffff8000090ebc <binary_user_test_sys_size>:
-/home/thysrael/OS/PIOS/THYOS/user/test_sys.b.c:767
+/home/dofingert/Source/OS/THYOS/user/test_sys.b.c:767
 ffffff8000090ebc:	00002fb8 	.inst	0x00002fb8 ; undefined
 
 Disassembly of section .bss:
@@ -18304,14 +18304,14 @@ Disassembly of section .debug_info:
        0:	000000ed 	.inst	0x000000ed ; undefined
        4:	00000004 	.inst	0x00000004 ; undefined
        8:	01080000 	.inst	0x01080000 ; undefined
-       c:	00000025 	.inst	0x00000025 ; undefined
-      10:	00007d0c 	.inst	0x00007d0c ; undefined
-      14:	00000000 	.inst	0x00000000 ; undefined
+       c:	00000000 	.inst	0x00000000 ; undefined
+      10:	0000800c 	.inst	0x0000800c ; undefined
+      14:	00004400 	.inst	0x00004400 ; undefined
       18:	08010800 	stxrb	w1, w0, [x0]
       1c:	ffff8000 	.inst	0xffff8000 ; undefined
       20:	00024cff 	.inst	0x00024cff ; undefined
 	...
-      2c:	008e0200 	.inst	0x008e0200 ; undefined
+      2c:	00910200 	.inst	0x00910200 ; undefined
       30:	51010000 	sub	w0, w0, #0x40
       34:	0802f806 	stlxrb	w2, w6, [x0]
       38:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -18324,8 +18324,8 @@ Disassembly of section .debug_info:
       54:	78910200 	ldursh	x0, [x16, #-240]
       58:	5f080400 	.inst	0x5f080400 ; undefined
       5c:	05000000 	orr	z0.s, z0.s, #0x1
-      60:	01810801 	.inst	0x01810801 ; undefined
-      64:	69060000 	stgp	x0, x0, [x0, #192]
+      60:	01890801 	.inst	0x01890801 ; undefined
+      64:	6c060000 	stnp	d0, d0, [x0, #96]
       68:	01000000 	.inst	0x01000000 ; undefined
       6c:	005f0643 	.inst	0x005f0643 ; undefined
       70:	02a00000 	.inst	0x02a00000 ; undefined
@@ -18337,7 +18337,7 @@ Disassembly of section .debug_info:
       88:	01007207 	.inst	0x01007207 ; undefined
       8c:	005f0a45 	.inst	0x005f0a45 ; undefined
       90:	91020000 	add	x0, x0, #0x80
-      94:	8408007f 	ld1sb	{z31.s}, p0/z, [x3, z8.s, uxtw]
+      94:	8708007f 	.inst	0x8708007f ; undefined
       98:	01000000 	.inst	0x01000000 ; undefined
       9c:	02580638 	.inst	0x02580638 ; undefined
       a0:	ff800008 	.inst	0xff800008 ; undefined
@@ -18349,8 +18349,8 @@ Disassembly of section .debug_info:
       b8:	00c21d38 	.inst	0x00c21d38 ; undefined
       bc:	91020000 	add	x0, x0, #0x80
       c0:	0405007c 	.inst	0x0405007c ; undefined
-      c4:	00019c07 	.inst	0x00019c07 ; undefined
-      c8:	00730900 	.inst	0x00730900 ; undefined
+      c4:	0001a407 	.inst	0x0001a407 ; undefined
+      c8:	00760900 	.inst	0x00760900 ; undefined
       cc:	1a010000 	adc	w0, w0, w1
       d0:	08010806 	stxrb	w1, w6, [x0]
       d4:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -18368,9 +18368,9 @@ Disassembly of section .debug_info:
      104:	ffff8000 	.inst	0xffff8000 ; undefined
      108:	080398ff 	stlxrb	w3, wzr, [x7]
      10c:	ffff8000 	.inst	0xffff8000 ; undefined
-     110:	000098ff 	.inst	0x000098ff ; undefined
-     114:	0000a000 	.inst	0x0000a000 ; undefined
-     118:	0000c200 	.inst	0x0000c200 ; undefined
+     110:	00009bff 	.inst	0x00009bff ; undefined
+     114:	0000a300 	.inst	0x0000a300 ; undefined
+     118:	0000c800 	.inst	0x0000c800 ; undefined
      11c:	2a800100 	orr	w0, w8, w0, asr #0
      120:	02000000 	.inst	0x02000000 ; undefined
      124:	0000ca00 	.inst	0x0000ca00 ; undefined
@@ -18379,16 +18379,16 @@ Disassembly of section .debug_info:
      130:	80000800 	.inst	0x80000800 ; undefined
      134:	08ffffff 	casalb	wzr, wzr, [sp]
      138:	80000801 	.inst	0x80000801 ; undefined
-     13c:	d0ffffff 	adrp	xzr, ffffffffffffe000 <init_sp+0x7fff7fe000>
-     140:	a0000000 	.inst	0xa0000000 ; undefined
-     144:	c2000000 	.inst	0xc2000000 ; undefined
+     13c:	d6ffffff 	.inst	0xd6ffffff ; undefined
+     140:	a3000000 	.inst	0xa3000000 ; undefined
+     144:	c8000000 	stxr	w0, x0, [x0]
      148:	01000000 	.inst	0x01000000 ; undefined
      14c:	0003ae80 	.inst	0x0003ae80 ; undefined
      150:	de000400 	.inst	0xde000400 ; undefined
      154:	08000000 	stxrb	w0, w0, [x0]
-     158:	00002501 	.inst	0x00002501 ; undefined
-     15c:	026b0c00 	.inst	0x026b0c00 ; undefined
-     160:	01430000 	.inst	0x01430000 ; undefined
+     158:	00000001 	.inst	0x00000001 ; undefined
+     15c:	02730c00 	.inst	0x02730c00 ; undefined
+     160:	00e50000 	.inst	0x00e50000 ; undefined
      164:	03980000 	.inst	0x03980000 ; undefined
      168:	ff800008 	.inst	0xff800008 ; undefined
      16c:	0070ffff 	.inst	0x0070ffff ; undefined
@@ -18396,74 +18396,74 @@ Disassembly of section .debug_info:
      174:	01f10000 	.inst	0x01f10000 ; undefined
      178:	04020000 	.inst	0x04020000 ; undefined
      17c:	746e6905 	.inst	0x746e6905 ; undefined
-     180:	01b80300 	.inst	0x01b80300 ; undefined
+     180:	01c00300 	.inst	0x01c00300 ; undefined
      184:	09020000 	.inst	0x09020000 ; undefined
      188:	00004017 	.inst	0x00004017 ; undefined
      18c:	08010400 	stxrb	w1, w0, [x0]
-     190:	00000178 	.inst	0x00000178 ; undefined
-     194:	00012403 	.inst	0x00012403 ; undefined
+     190:	00000180 	.inst	0x00000180 ; undefined
+     194:	00013303 	.inst	0x00013303 ; undefined
      198:	180a0200 	ldr	w0, 141d8 <__bss_size+0x141c6>
      19c:	00000053 	.inst	0x00000053 ; undefined
-     1a0:	0a070204 	and	w4, w16, w7
+     1a0:	19070204 	stlurb	w4, [x16, #112]
      1a4:	03000001 	.inst	0x03000001 ; undefined
-     1a8:	00000299 	.inst	0x00000299 ; undefined
+     1a8:	000002bb 	.inst	0x000002bb ; undefined
      1ac:	66160b02 	.inst	0x66160b02 ; undefined
      1b0:	04000000 	add	z0.b, p0/m, z0.b, z0.b
-     1b4:	019c0704 	.inst	0x019c0704 ; undefined
-     1b8:	f0030000 	adrp	x0, 6003000 <__bss_size+0x6002fee>
+     1b4:	01a40704 	.inst	0x01a40704 ; undefined
+     1b8:	f8030000 	stur	x0, [x0, #48]
      1bc:	02000001 	.inst	0x02000001 ; undefined
      1c0:	0079170c 	.inst	0x0079170c ; undefined
      1c4:	08040000 	stxrb	w4, w0, [x0]
-     1c8:	00019707 	.inst	0x00019707 ; undefined
-     1cc:	02ef0300 	.inst	0x02ef0300 ; undefined
+     1c8:	00019f07 	.inst	0x00019f07 ; undefined
+     1cc:	02f60300 	.inst	0x02f60300 ; undefined
      1d0:	0d020000 	.inst	0x0d020000 ; undefined
      1d4:	00006d10 	.inst	0x00006d10 ; undefined
      1d8:	05080400 	.inst	0x05080400 ; undefined
-     1dc:	000002bd 	.inst	0x000002bd ; undefined
-     1e0:	8f050204 	.inst	0x8f050204 ; undefined
+     1dc:	000002df 	.inst	0x000002df ; undefined
+     1e0:	b1050204 	adds	x4, x16, #0x140
      1e4:	04000002 	add	z2.b, p0/m, z2.b, z0.b
-     1e8:	01810801 	.inst	0x01810801 ; undefined
+     1e8:	01890801 	.inst	0x01890801 ; undefined
      1ec:	9a050000 	adc	x0, x0, x5
      1f0:	ac000000 	stnp	q0, q0, [x0]
      1f4:	06000000 	.inst	0x06000000 ; undefined
-     1f8:	01e20700 	.inst	0x01e20700 ; undefined
+     1f8:	01ea0700 	.inst	0x01ea0700 ; undefined
      1fc:	36030000 	tbz	w0, #0, 61fc <__bss_size+0x61ea>
      200:	0000a10d 	.inst	0x0000a10d ; undefined
-     204:	04af0700 	sub	z0.s, z24.s, z15.s
+     204:	04b90700 	sub	z0.s, z24.s, z25.s
      208:	37030000 	tbnz	w0, #0, 6208 <__bss_size+0x61f6>
      20c:	0000a10d 	.inst	0x0000a10d ; undefined
-     210:	016d0700 	.inst	0x016d0700 ; undefined
+     210:	01750700 	.inst	0x01750700 ; undefined
      214:	4f030000 	.inst	0x4f030000 ; undefined
      218:	00008010 	.inst	0x00008010 ; undefined
-     21c:	012c0800 	.inst	0x012c0800 ; undefined
+     21c:	013b0800 	.inst	0x013b0800 ; undefined
      220:	04180000 	orr	z0.b, p0/m, z0.b, z0.b
      224:	00f8080c 	.inst	0x00f8080c ; undefined
-     228:	87090000 	.inst	0x87090000 ; undefined
+     228:	a9090000 	stp	x0, x0, [x0, #144]
      22c:	04000002 	add	z2.b, p0/m, z2.b, z0.b
      230:	0128170e 	.inst	0x0128170e ; undefined
      234:	09000000 	.inst	0x09000000 ; undefined
-     238:	0000023e 	.inst	0x0000023e ; undefined
+     238:	00000246 	.inst	0x00000246 ; undefined
      23c:	470d0f04 	.inst	0x470d0f04 ; undefined
      240:	10000000 	adr	x0, 240 <__bss_size+0x22e>
      244:	d0080a00 	adrp	x0, 10142000 <__bss_size+0x10141fee>
      248:	0b000000 	add	w0, w0, w0
      24c:	090a0410 	.inst	0x090a0410 ; undefined
      250:	00000122 	.inst	0x00000122 ; undefined
-     254:	0001cd09 	.inst	0x0001cd09 ; undefined
+     254:	0001d509 	.inst	0x0001d509 ; undefined
      258:	090a0400 	.inst	0x090a0400 ; undefined
      25c:	000000f8 	.inst	0x000000f8 ; undefined
-     260:	01650900 	.inst	0x01650900 ; undefined
+     260:	01520900 	.inst	0x01520900 ; undefined
      264:	0a040000 	and	w0, w0, w4
      268:	00012209 	.inst	0x00012209 ; undefined
      26c:	0a000800 	and	w0, w0, w0, lsl #2
      270:	0000f808 	.inst	0x0000f808 ; undefined
-     274:	01310300 	.inst	0x01310300 ; undefined
+     274:	01400300 	.inst	0x01400300 ; undefined
      278:	0a040000 	and	w0, w0, w4
      27c:	0000fe1a 	.inst	0x0000fe1a ; undefined
-     280:	02720700 	.inst	0x02720700 ; undefined
+     280:	027a0700 	.inst	0x027a0700 ; undefined
      284:	12040000 	and	w0, w0, #0x10000000
      288:	0000f815 	.inst	0x0000f815 ; undefined
-     28c:	02100c00 	.inst	0x02100c00 ; undefined
+     28c:	02180c00 	.inst	0x02180c00 ; undefined
      290:	01200000 	.inst	0x01200000 ; undefined
      294:	9e081305 	.inst	0x9e081305 ; undefined
      298:	0d000001 	st1	{v1.b}[0], [x0]
@@ -18476,7 +18476,7 @@ Disassembly of section .debug_info:
      2b4:	0500726c 	orr	z12.s, z12.s, #0xfffc003f
      2b8:	00800d17 	.inst	0x00800d17 ; undefined
      2bc:	01000000 	.inst	0x01000000 ; undefined
-     2c0:	0002a80f 	.inst	0x0002a80f ; undefined
+     2c0:	0002ca0f 	.inst	0x0002ca0f ; undefined
      2c4:	0d180500 	.inst	0x0d180500 ; undefined
      2c8:	00000080 	.inst	0x00000080 ; undefined
      2cc:	660e0108 	.inst	0x660e0108 ; undefined
@@ -18493,76 +18493,76 @@ Disassembly of section .debug_info:
      2f8:	0b001e00 	add	w0, w16, w0, lsl #7
      2fc:	05160610 	mov	z16.b, p6/z, #48
      300:	000001d2 	.inst	0x000001d2 ; undefined
-     304:	0001cd09 	.inst	0x0001cd09 ; undefined
+     304:	0001d509 	.inst	0x0001d509 ; undefined
      308:	05160600 	mov	z0.b, p6/z, #48
      30c:	000002dc 	.inst	0x000002dc ; undefined
-     310:	01650900 	.inst	0x01650900 ; undefined
+     310:	01520900 	.inst	0x01520900 ; undefined
      314:	16060000 	b	fffffffff8180314 <init_sp+0x7ff7980314>
      318:	0002e205 	.inst	0x0002e205 ; undefined
      31c:	11000800 	add	w0, w0, #0x2
      320:	00766e45 	.inst	0x00766e45 ; undefined
      324:	13060198 	sbfiz	w24, w12, #26, #1
      328:	0002dc08 	.inst	0x0002dc08 ; undefined
-     32c:	02780900 	.inst	0x02780900 ; undefined
+     32c:	029a0900 	.inst	0x029a0900 ; undefined
      330:	15060000 	b	4180330 <__bss_size+0x418031e>
      334:	00014016 	.inst	0x00014016 ; undefined
-     338:	9f0f0000 	.inst	0x9f0f0000 ; undefined
+     338:	c10f0000 	.inst	0xc10f0000 ; undefined
      33c:	06000002 	.inst	0x06000002 ; undefined
      340:	01ae1516 	.inst	0x01ae1516 ; undefined
      344:	01200000 	.inst	0x01200000 ; undefined
-     348:	0000d80f 	.inst	0x0000d80f ; undefined
+     348:	0000de0f 	.inst	0x0000de0f ; undefined
      34c:	0b170600 	add	w0, w16, w23, lsl #1
      350:	0000005a 	.inst	0x0000005a ; undefined
-     354:	af0f0130 	.inst	0xaf0f0130 ; undefined
+     354:	d10f0130 	sub	x16, x9, #0x3c0
      358:	06000002 	.inst	0x06000002 ; undefined
      35c:	005a0b18 	.inst	0x005a0b18 ; undefined
      360:	01340000 	.inst	0x01340000 ; undefined
-     364:	00078b0f 	.inst	0x00078b0f ; undefined
+     364:	0007950f 	.inst	0x0007950f ; undefined
      368:	0b190600 	add	w0, w16, w25, lsl #1
      36c:	0000005a 	.inst	0x0000005a ; undefined
-     370:	4d0f0138 	.inst	0x4d0f0138 ; undefined
+     370:	550f0138 	.inst	0x550f0138 ; undefined
      374:	06000002 	.inst	0x06000002 ; undefined
      378:	030c0e1a 	.inst	0x030c0e1a ; undefined
      37c:	01400000 	.inst	0x01400000 ; undefined
-     380:	0002450f 	.inst	0x0002450f ; undefined
+     380:	00024d0f 	.inst	0x00024d0f ; undefined
      384:	0d1b0600 	.inst	0x0d1b0600 ; undefined
      388:	00000080 	.inst	0x00000080 ; undefined
-     38c:	a90f0148 	stp	x8, x0, [x10, #240]
+     38c:	b10f0148 	adds	x8, x10, #0x3c0
      390:	06000001 	.inst	0x06000001 ; undefined
      394:	02e8151c 	.inst	0x02e8151c ; undefined
      398:	01500000 	.inst	0x01500000 ; undefined
-     39c:	00027f0f 	.inst	0x00027f0f ; undefined
+     39c:	0002a10f 	.inst	0x0002a10f ; undefined
      3a0:	0b1d0600 	add	w0, w16, w29, lsl #1
      3a4:	0000005a 	.inst	0x0000005a ; undefined
-     3a8:	e10f0160 	.inst	0xe10f0160 ; undefined
+     3a8:	e80f0160 	.inst	0xe80f0160 ; undefined
      3ac:	06000002 	.inst	0x06000002 ; undefined
      3b0:	005a0b20 	.inst	0x005a0b20 ; undefined
      3b4:	01640000 	.inst	0x01640000 ; undefined
-     3b8:	00021a0f 	.inst	0x00021a0f ; undefined
+     3b8:	0002220f 	.inst	0x0002220f ; undefined
      3bc:	0b210600 	add	w0, w16, w1, uxtb #1
      3c0:	0000005a 	.inst	0x0000005a ; undefined
-     3c4:	f70f0168 	.inst	0xf70f0168 ; undefined
+     3c4:	ff0f0168 	.inst	0xff0f0168 ; undefined
      3c8:	06000001 	.inst	0x06000001 ; undefined
      3cc:	005a0b22 	.inst	0x005a0b22 ; undefined
      3d0:	016c0000 	.inst	0x016c0000 ; undefined
-     3d4:	0002270f 	.inst	0x0002270f ; undefined
+     3d4:	00022f0f 	.inst	0x00022f0f ; undefined
      3d8:	0d230600 	.inst	0x0d230600 ; undefined
      3dc:	00000080 	.inst	0x00000080 ; undefined
-     3e0:	d50f0170 	sys	#7, C0, C1, #3, x16
+     3e0:	dd0f0170 	.inst	0xdd0f0170 ; undefined
      3e4:	06000001 	.inst	0x06000001 ; undefined
      3e8:	00800d24 	.inst	0x00800d24 ; undefined
      3ec:	01780000 	.inst	0x01780000 ; undefined
-     3f0:	0002570f 	.inst	0x0002570f ; undefined
+     3f0:	00025f0f 	.inst	0x00025f0f ; undefined
      3f4:	0d270600 	.inst	0x0d270600 ; undefined
      3f8:	00000080 	.inst	0x00000080 ; undefined
-     3fc:	bf0f0180 	.inst	0xbf0f0180 ; undefined
+     3fc:	c70f0180 	.inst	0xc70f0180 ; undefined
      400:	06000001 	.inst	0x06000001 ; undefined
      404:	00800d28 	.inst	0x00800d28 ; undefined
      408:	01880000 	.inst	0x01880000 ; undefined
-     40c:	0001860f 	.inst	0x0001860f ; undefined
+     40c:	00018e0f 	.inst	0x00018e0f ; undefined
      410:	0b2b0600 	add	w0, w16, w11, uxtb #1
      414:	0000005a 	.inst	0x0000005a ; undefined
-     418:	8f0f0190 	.inst	0x8f0f0190 ; undefined
+     418:	970f0190 	bl	fffffffffc3c0a58 <init_sp+0x7ffbbc0a58>
      41c:	06000001 	.inst	0x06000001 ; undefined
      420:	005a0b2c 	.inst	0x005a0b2c ; undefined
      424:	01940000 	.inst	0x01940000 ; undefined
@@ -18571,35 +18571,35 @@ Disassembly of section .debug_info:
      430:	0002dc08 	.inst	0x0002dc08 ; undefined
      434:	06100b00 	.inst	0x06100b00 ; undefined
      438:	030c051c 	.inst	0x030c051c ; undefined
-     43c:	cd090000 	.inst	0xcd090000 ; undefined
+     43c:	d5090000 	sys	#1, C0, C0, #0, x0
      440:	06000001 	.inst	0x06000001 ; undefined
      444:	02dc051c 	.inst	0x02dc051c ; undefined
      448:	09000000 	.inst	0x09000000 ; undefined
-     44c:	00000165 	.inst	0x00000165 ; undefined
+     44c:	00000152 	.inst	0x00000152 ; undefined
      450:	e2051c06 	.inst	0xe2051c06 ; undefined
      454:	08000002 	stxrb	w0, w2, [x0]
      458:	80080a00 	.inst	0x80080a00 ; undefined
      45c:	08000000 	stxrb	w0, w0, [x0]
-     460:	000001e7 	.inst	0x000001e7 ; undefined
+     460:	000001ef 	.inst	0x000001ef ; undefined
      464:	012f0608 	.inst	0x012f0608 ; undefined
      468:	0000032d 	.inst	0x0000032d ; undefined
-     46c:	00020709 	.inst	0x00020709 ; undefined
+     46c:	00020f09 	.inst	0x00020f09 ; undefined
      470:	012f0600 	.inst	0x012f0600 ; undefined
      474:	000002dc 	.inst	0x000002dc ; undefined
-     478:	73070000 	.inst	0x73070000 ; undefined
+     478:	7b070000 	.inst	0x7b070000 ; undefined
      47c:	06000001 	.inst	0x06000001 ; undefined
      480:	02dc1430 	.inst	0x02dc1430 ; undefined
-     484:	1d070000 	.inst	0x1d070000 ; undefined
+     484:	2c070000 	stnp	s0, s0, [x0, #56]
      488:	06000001 	.inst	0x06000001 ; undefined
      48c:	02dc1431 	.inst	0x02dc1431 ; undefined
      490:	12050000 	and	w0, w0, #0x8000000
      494:	55000003 	.inst	0x55000003 ; undefined
      498:	10000003 	adr	x3, 498 <__bss_size+0x486>
      49c:	00000079 	.inst	0x00000079 ; undefined
-     4a0:	fb070001 	.inst	0xfb070001 ; undefined
-     4a4:	06000000 	.inst	0x06000000 ; undefined
+     4a0:	0a070001 	and	w1, w0, w7
+     4a4:	06000001 	.inst	0x06000001 ; undefined
      4a8:	03451832 	.inst	0x03451832 ; undefined
-     4ac:	35120000 	cbnz	w0, 244ac <__bss_size+0x2449a>
+     4ac:	3d120000 	str	b0, [x0, #1152]
      4b0:	01000002 	.inst	0x01000002 ; undefined
      4b4:	03980610 	.inst	0x03980610 ; undefined
      4b8:	ff800008 	.inst	0xff800008 ; undefined
@@ -18611,10 +18611,10 @@ Disassembly of section .debug_info:
      4d0:	ffff8000 	.inst	0xffff8000 ; undefined
      4d4:	00001cff 	.inst	0x00001cff ; undefined
      4d8:	00000000 	.inst	0x00000000 ; undefined
-     4dc:	00df0700 	.inst	0x00df0700 ; undefined
+     4dc:	015a0700 	.inst	0x015a0700 ; undefined
      4e0:	1c010000 	ldr	s0, 24e0 <__bss_size+0x24ce>
      4e4:	0003aa05 	.inst	0x0003aa05 ; undefined
-     4e8:	02c60700 	.inst	0x02c60700 ; undefined
+     4e8:	02800700 	.inst	0x02800700 ; undefined
      4ec:	1c010000 	ldr	s0, 24ec <__bss_size+0x24da>
      4f0:	00005a05 	.inst	0x00005a05 ; undefined
      4f4:	14000000 	b	4f4 <__bss_size+0x4e2>
@@ -18622,10 +18622,10 @@ Disassembly of section .debug_info:
      4fc:	80000006 	.inst	0x80000006 ; undefined
      500:	04000000 	add	z0.b, p0/m, z0.b, z0.b
      504:	0001fa00 	.inst	0x0001fa00 ; undefined
-     508:	25010800 	cmpge	p0.b, p2/z, z0.b, #1
+     508:	00010800 	.inst	0x00010800 ; undefined
      50c:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-     510:	000002f7 	.inst	0x000002f7 ; undefined
-     514:	00000143 	.inst	0x00000143 ; undefined
+     510:	000002fe 	.inst	0x000002fe ; undefined
+     514:	000000e5 	.inst	0x000000e5 ; undefined
      518:	00080408 	.inst	0x00080408 ; undefined
      51c:	ffffff80 	.inst	0xffffff80 ; undefined
      520:	00000048 	.inst	0x00000048 ; undefined
@@ -18633,19 +18633,19 @@ Disassembly of section .debug_info:
      528:	0000027f 	.inst	0x0000027f ; undefined
      52c:	69050402 	stgp	x2, x1, [x0, #160]
      530:	0300746e 	.inst	0x0300746e ; undefined
-     534:	00000303 	.inst	0x00000303 ; undefined
+     534:	0000030a 	.inst	0x0000030a ; undefined
      538:	40160f01 	.inst	0x40160f01 ; undefined
      53c:	04000000 	add	z0.b, p0/m, z0.b, z0.b
-     540:	01970708 	.inst	0x01970708 ; undefined
+     540:	019f0708 	.inst	0x019f0708 ; undefined
      544:	52050000 	eor	w0, w0, #0x8000000
      548:	52000000 	eor	w0, w0, #0x1
      54c:	06000000 	.inst	0x06000000 ; undefined
      550:	08010400 	stxrb	w1, w0, [x0]
-     554:	00000181 	.inst	0x00000181 ; undefined
-     558:	0001e203 	.inst	0x0001e203 ; undefined
+     554:	00000189 	.inst	0x00000189 ; undefined
+     558:	0001ea03 	.inst	0x0001ea03 ; undefined
      55c:	0d100100 	.inst	0x0d100100 ; undefined
      560:	00000047 	.inst	0x00000047 ; undefined
-     564:	0002fe07 	.inst	0x0002fe07 ; undefined
+     564:	00030507 	.inst	0x00030507 ; undefined
      568:	05110100 	mov	z0.b, p1/z, #8
      56c:	0000002d 	.inst	0x0000002d ; undefined
      570:	00080408 	.inst	0x00080408 ; undefined
@@ -18660,9 +18660,9 @@ Disassembly of section .debug_info:
      594:	80000804 	.inst	0x80000804 ; undefined
      598:	6cffffff 	ldp	d31, d31, [sp], #-8
      59c:	80000804 	.inst	0x80000804 ; undefined
-     5a0:	0bffffff 	.inst	0x0bffffff ; undefined
-     5a4:	16000003 	b	fffffffff80005b0 <init_sp+0x7ff78005b0>
-     5a8:	c2000003 	.inst	0xc2000003 ; undefined
+     5a0:	12ffffff 	.inst	0x12ffffff ; undefined
+     5a4:	1d000003 	.inst	0x1d000003 ; undefined
+     5a8:	c8000003 	stxr	w0, x3, [x0]
      5ac:	01000000 	.inst	0x01000000 ; undefined
      5b0:	00002a80 	.inst	0x00002a80 ; undefined
      5b4:	73000200 	.inst	0x73000200 ; undefined
@@ -18672,9 +18672,9 @@ Disassembly of section .debug_info:
      5c4:	ffff8000 	.inst	0xffff8000 ; undefined
      5c8:	0817e8ff 	stlxrb	w23, wzr, [x7]
      5cc:	ffff8000 	.inst	0xffff8000 ; undefined
-     5d0:	000337ff 	.inst	0x000337ff ; undefined
-     5d4:	00031600 	.inst	0x00031600 ; undefined
-     5d8:	0000c200 	.inst	0x0000c200 ; undefined
+     5d0:	000341ff 	.inst	0x000341ff ; undefined
+     5d4:	00031d00 	.inst	0x00031d00 ; undefined
+     5d8:	0000c800 	.inst	0x0000c800 ; undefined
      5dc:	2a800100 	orr	w0, w8, w0, asr #0
      5e0:	02000000 	.inst	0x02000000 ; undefined
      5e4:	00028700 	.inst	0x00028700 ; undefined
@@ -18683,51 +18683,51 @@ Disassembly of section .debug_info:
      5f0:	80000817 	.inst	0x80000817 ; undefined
      5f4:	74ffffff 	.inst	0x74ffffff ; undefined
      5f8:	80000818 	.inst	0x80000818 ; undefined
-     5fc:	3fffffff 	.inst	0x3fffffff ; undefined
-     600:	16000003 	b	fffffffff800060c <init_sp+0x7ff780060c>
-     604:	c2000003 	.inst	0xc2000003 ; undefined
+     5fc:	49ffffff 	.inst	0x49ffffff ; undefined
+     600:	1d000003 	.inst	0x1d000003 ; undefined
+     604:	c8000003 	stxr	w0, x3, [x0]
      608:	01000000 	.inst	0x01000000 ; undefined
      60c:	00092d80 	.inst	0x00092d80 ; undefined
      610:	9b000400 	madd	x0, x0, x0, x1
      614:	08000002 	stxrb	w0, w2, [x0]
-     618:	00002501 	.inst	0x00002501 ; undefined
-     61c:	04360c00 	.inst	0x04360c00 ; undefined
-     620:	03160000 	.inst	0x03160000 ; undefined
+     618:	00000001 	.inst	0x00000001 ; undefined
+     61c:	04400c00 	add	z0.h, p3/m, z0.h, z0.h
+     620:	031d0000 	.inst	0x031d0000 ; undefined
      624:	18740000 	ldr	w0, e8624 <__bss_size+0xe8612>
      628:	ff800008 	.inst	0xff800008 ; undefined
      62c:	0d28ffff 	.inst	0x0d28ffff ; undefined
      630:	00000000 	.inst	0x00000000 ; undefined
      634:	03f50000 	.inst	0x03f50000 ; undefined
-     638:	b8020000 	stur	w0, [x0, #32]
+     638:	c0020000 	.inst	0xc0020000 ; undefined
      63c:	03000001 	.inst	0x03000001 ; undefined
      640:	00391709 	.inst	0x00391709 ; NYI
      644:	01030000 	.inst	0x01030000 ; undefined
-     648:	00017808 	.inst	0x00017808 ; undefined
-     64c:	01240200 	.inst	0x01240200 ; undefined
+     648:	00018008 	.inst	0x00018008 ; undefined
+     64c:	01330200 	.inst	0x01330200 ; undefined
      650:	0a030000 	and	w0, w0, w3
      654:	00004c18 	.inst	0x00004c18 ; undefined
      658:	07020300 	.inst	0x07020300 ; undefined
-     65c:	0000010a 	.inst	0x0000010a ; undefined
-     660:	00029902 	.inst	0x00029902 ; undefined
+     65c:	00000119 	.inst	0x00000119 ; undefined
+     660:	0002bb02 	.inst	0x0002bb02 ; undefined
      664:	160b0300 	b	fffffffff82c1264 <init_sp+0x7ff7ac1264>
      668:	0000005f 	.inst	0x0000005f ; undefined
-     66c:	9c070403 	ldr	q3, e6ec <__bss_size+0xe6da>
+     66c:	a4070403 	ld1rqb	{z3.b}, p1/z, [x0, x7]
      670:	02000001 	.inst	0x02000001 ; undefined
-     674:	000001f0 	.inst	0x000001f0 ; undefined
+     674:	000001f8 	.inst	0x000001f8 ; undefined
      678:	72170c03 	ands	w3, w0, #0x1e00
      67c:	03000000 	.inst	0x03000000 ; undefined
-     680:	01970708 	.inst	0x01970708 ; undefined
-     684:	ef020000 	.inst	0xef020000 ; undefined
+     680:	019f0708 	.inst	0x019f0708 ; undefined
+     684:	f6020000 	.inst	0xf6020000 ; undefined
      688:	03000002 	.inst	0x03000002 ; undefined
      68c:	0066100d 	.inst	0x0066100d ; undefined
      690:	08030000 	stxrb	w3, w0, [x0]
-     694:	0002bd05 	.inst	0x0002bd05 ; undefined
+     694:	0002df05 	.inst	0x0002df05 ; undefined
      698:	05040400 	.inst	0x05040400 ; undefined
      69c:	00746e69 	.inst	0x00746e69 ; undefined
-     6a0:	8f050203 	.inst	0x8f050203 ; undefined
+     6a0:	b1050203 	adds	x3, x16, #0x140
      6a4:	03000002 	.inst	0x03000002 ; undefined
-     6a8:	01810801 	.inst	0x01810801 ; undefined
-     6ac:	10050000 	adr	x0, a6ac <__bss_size+0xa69a>
+     6a8:	01890801 	.inst	0x01890801 ; undefined
+     6ac:	18050000 	ldr	w0, a6ac <__bss_size+0xa69a>
      6b0:	20000002 	.inst	0x20000002 ; undefined
      6b4:	08130401 	stxrb	w19, w1, [x0]
      6b8:	000000ff 	.inst	0x000000ff ; undefined
@@ -18740,7 +18740,7 @@ Disassembly of section .debug_info:
      6d4:	00726c65 	.inst	0x00726c65 ; undefined
      6d8:	790d1704 	strh	w4, [x24, #1674]
      6dc:	00000000 	.inst	0x00000000 ; undefined
-     6e0:	02a80801 	.inst	0x02a80801 ; undefined
+     6e0:	02ca0801 	.inst	0x02ca0801 ; undefined
      6e4:	18040000 	ldr	w0, 86e4 <__bss_size+0x86d2>
      6e8:	0000790d 	.inst	0x0000790d ; undefined
      6ec:	07010800 	.inst	0x07010800 ; undefined
@@ -18758,87 +18758,87 @@ Disassembly of section .debug_info:
      71c:	00009a09 	.inst	0x00009a09 ; undefined
      720:	00011a00 	.inst	0x00011a00 ; undefined
      724:	0c000b00 	st4	{v0.2s-v3.2s}, [x24]
-     728:	000001e2 	.inst	0x000001e2 ; undefined
+     728:	000001ea 	.inst	0x000001ea ; undefined
      72c:	0f0d3605 	srsra	v5.8b, v16.8b, #3
      730:	0c000001 	st4	{v1.8b-v4.8b}, [x0]
-     734:	000004af 	.inst	0x000004af ; undefined
+     734:	000004b9 	.inst	0x000004b9 ; undefined
      738:	0f0d3705 	srsra	v5.8b, v24.8b, #3
      73c:	0c000001 	st4	{v1.8b-v4.8b}, [x0]
-     740:	0000016d 	.inst	0x0000016d ; undefined
+     740:	00000175 	.inst	0x00000175 ; undefined
      744:	79104f05 	strh	w5, [x24, #2086]
      748:	0d000000 	st1	{v0.b}[0], [x0]
      74c:	05160610 	mov	z16.b, p6/z, #48
      750:	00000162 	.inst	0x00000162 ; undefined
-     754:	0001cd0e 	.inst	0x0001cd0e ; undefined
+     754:	0001d50e 	.inst	0x0001d50e ; undefined
      758:	05160600 	mov	z0.b, p6/z, #48
      75c:	0000026c 	.inst	0x0000026c ; undefined
-     760:	01650e00 	.inst	0x01650e00 ; undefined
+     760:	01520e00 	.inst	0x01520e00 ; undefined
      764:	16060000 	b	fffffffff8180764 <init_sp+0x7ff7980764>
      768:	00027205 	.inst	0x00027205 ; undefined
      76c:	0f000800 	.inst	0x0f000800 ; undefined
      770:	00766e45 	.inst	0x00766e45 ; undefined
      774:	13060198 	sbfiz	w24, w12, #26, #1
      778:	00026c08 	.inst	0x00026c08 ; undefined
-     77c:	02780e00 	.inst	0x02780e00 ; undefined
+     77c:	029a0e00 	.inst	0x029a0e00 ; undefined
      780:	15060000 	b	4180780 <__bss_size+0x418076e>
      784:	0000a116 	.inst	0x0000a116 ; undefined
-     788:	9f080000 	.inst	0x9f080000 ; undefined
+     788:	c1080000 	.inst	0xc1080000 ; undefined
      78c:	06000002 	.inst	0x06000002 ; undefined
      790:	013e1516 	.inst	0x013e1516 ; undefined
      794:	01200000 	.inst	0x01200000 ; undefined
-     798:	0000d808 	.inst	0x0000d808 ; undefined
+     798:	0000de08 	.inst	0x0000de08 ; undefined
      79c:	0b170600 	add	w0, w16, w23, lsl #1
      7a0:	00000053 	.inst	0x00000053 ; undefined
-     7a4:	af080130 	.inst	0xaf080130 ; undefined
+     7a4:	d1080130 	sub	x16, x9, #0x200
      7a8:	06000002 	.inst	0x06000002 ; undefined
      7ac:	00530b18 	.inst	0x00530b18 ; undefined
      7b0:	01340000 	.inst	0x01340000 ; undefined
-     7b4:	00078b08 	.inst	0x00078b08 ; undefined
+     7b4:	00079508 	.inst	0x00079508 ; undefined
      7b8:	0b190600 	add	w0, w16, w25, lsl #1
      7bc:	00000053 	.inst	0x00000053 ; undefined
-     7c0:	4d080138 	.inst	0x4d080138 ; undefined
+     7c0:	55080138 	.inst	0x55080138 ; undefined
      7c4:	06000002 	.inst	0x06000002 ; undefined
      7c8:	029c0e1a 	.inst	0x029c0e1a ; undefined
      7cc:	01400000 	.inst	0x01400000 ; undefined
-     7d0:	00024508 	.inst	0x00024508 ; undefined
+     7d0:	00024d08 	.inst	0x00024d08 ; undefined
      7d4:	0d1b0600 	.inst	0x0d1b0600 ; undefined
      7d8:	00000079 	.inst	0x00000079 ; undefined
-     7dc:	a9080148 	stp	x8, x0, [x10, #128]
+     7dc:	b1080148 	adds	x8, x10, #0x200
      7e0:	06000001 	.inst	0x06000001 ; undefined
      7e4:	0278151c 	.inst	0x0278151c ; undefined
      7e8:	01500000 	.inst	0x01500000 ; undefined
-     7ec:	00027f08 	.inst	0x00027f08 ; undefined
+     7ec:	0002a108 	.inst	0x0002a108 ; undefined
      7f0:	0b1d0600 	add	w0, w16, w29, lsl #1
      7f4:	00000053 	.inst	0x00000053 ; undefined
-     7f8:	e1080160 	.inst	0xe1080160 ; undefined
+     7f8:	e8080160 	.inst	0xe8080160 ; undefined
      7fc:	06000002 	.inst	0x06000002 ; undefined
      800:	00530b20 	.inst	0x00530b20 ; undefined
      804:	01640000 	.inst	0x01640000 ; undefined
-     808:	00021a08 	.inst	0x00021a08 ; undefined
+     808:	00022208 	.inst	0x00022208 ; undefined
      80c:	0b210600 	add	w0, w16, w1, uxtb #1
      810:	00000053 	.inst	0x00000053 ; undefined
-     814:	f7080168 	.inst	0xf7080168 ; undefined
+     814:	ff080168 	.inst	0xff080168 ; undefined
      818:	06000001 	.inst	0x06000001 ; undefined
      81c:	00530b22 	.inst	0x00530b22 ; undefined
      820:	016c0000 	.inst	0x016c0000 ; undefined
-     824:	00022708 	.inst	0x00022708 ; undefined
+     824:	00022f08 	.inst	0x00022f08 ; undefined
      828:	0d230600 	.inst	0x0d230600 ; undefined
      82c:	00000079 	.inst	0x00000079 ; undefined
-     830:	d5080170 	sys	#0, C0, C1, #3, x16
+     830:	dd080170 	.inst	0xdd080170 ; undefined
      834:	06000001 	.inst	0x06000001 ; undefined
      838:	00790d24 	.inst	0x00790d24 ; undefined
      83c:	01780000 	.inst	0x01780000 ; undefined
-     840:	00025708 	.inst	0x00025708 ; undefined
+     840:	00025f08 	.inst	0x00025f08 ; undefined
      844:	0d270600 	.inst	0x0d270600 ; undefined
      848:	00000079 	.inst	0x00000079 ; undefined
-     84c:	bf080180 	.inst	0xbf080180 ; undefined
+     84c:	c7080180 	.inst	0xc7080180 ; undefined
      850:	06000001 	.inst	0x06000001 ; undefined
      854:	00790d28 	.inst	0x00790d28 ; undefined
      858:	01880000 	.inst	0x01880000 ; undefined
-     85c:	00018608 	.inst	0x00018608 ; undefined
+     85c:	00018e08 	.inst	0x00018e08 ; undefined
      860:	0b2b0600 	add	w0, w16, w11, uxtb #1
      864:	00000053 	.inst	0x00000053 ; undefined
-     868:	8f080190 	.inst	0x8f080190 ; undefined
+     868:	97080190 	bl	fffffffffc200ea8 <init_sp+0x7ffba00ea8>
      86c:	06000001 	.inst	0x06000001 ; undefined
      870:	00530b2c 	.inst	0x00530b2c ; undefined
      874:	01940000 	.inst	0x01940000 ; undefined
@@ -18847,60 +18847,60 @@ Disassembly of section .debug_info:
      880:	00026c08 	.inst	0x00026c08 ; undefined
      884:	06100d00 	.inst	0x06100d00 ; undefined
      888:	029c051c 	.inst	0x029c051c ; undefined
-     88c:	cd0e0000 	.inst	0xcd0e0000 ; undefined
+     88c:	d50e0000 	sys	#6, C0, C0, #0, x0
      890:	06000001 	.inst	0x06000001 ; undefined
      894:	026c051c 	.inst	0x026c051c ; undefined
      898:	0e000000 	tbl	v0.8b, {v0.16b}, v0.8b
-     89c:	00000165 	.inst	0x00000165 ; undefined
+     89c:	00000152 	.inst	0x00000152 ; undefined
      8a0:	72051c06 	ands	w6, w0, #0xf8000007
      8a4:	08000002 	stxrb	w0, w2, [x0]
      8a8:	79081000 	strh	w0, [x0, #1032]
      8ac:	11000000 	add	w0, w0, #0x0
-     8b0:	000001e7 	.inst	0x000001e7 ; undefined
+     8b0:	000001ef 	.inst	0x000001ef ; undefined
      8b4:	012f0608 	.inst	0x012f0608 ; undefined
      8b8:	000002bd 	.inst	0x000002bd ; undefined
-     8bc:	0002070e 	.inst	0x0002070e ; undefined
+     8bc:	00020f0e 	.inst	0x00020f0e ; undefined
      8c0:	012f0600 	.inst	0x012f0600 ; undefined
      8c4:	0000026c 	.inst	0x0000026c ; undefined
-     8c8:	730c0000 	.inst	0x730c0000 ; undefined
+     8c8:	7b0c0000 	.inst	0x7b0c0000 ; undefined
      8cc:	06000001 	.inst	0x06000001 ; undefined
      8d0:	026c1430 	.inst	0x026c1430 ; undefined
-     8d4:	1d0c0000 	.inst	0x1d0c0000 ; undefined
+     8d4:	2c0c0000 	stnp	s0, s0, [x0, #96]
      8d8:	06000001 	.inst	0x06000001 ; undefined
      8dc:	026c1431 	.inst	0x026c1431 ; undefined
      8e0:	a2090000 	.inst	0xa2090000 ; undefined
      8e4:	e5000002 	.inst	0xe5000002 ; undefined
      8e8:	0a000002 	and	w2, w0, w0
      8ec:	00000072 	.inst	0x00000072 ; undefined
-     8f0:	fb0c0001 	.inst	0xfb0c0001 ; undefined
-     8f4:	06000000 	.inst	0x06000000 ; undefined
+     8f0:	0a0c0001 	and	w1, w0, w12
+     8f4:	06000001 	.inst	0x06000001 ; undefined
      8f8:	02d51832 	.inst	0x02d51832 ; undefined
-     8fc:	2c110000 	stnp	s0, s0, [x0, #136]
+     8fc:	3b110000 	.inst	0x3b110000 ; undefined
      900:	18000001 	ldr	w1, 900 <__bss_size+0x8ee>
      904:	19080c01 	.inst	0x19080c01 ; undefined
      908:	0e000003 	tbl	v3.8b, {v0.16b}, v0.8b
-     90c:	00000287 	.inst	0x00000287 ; undefined
+     90c:	000002a9 	.inst	0x000002a9 ; undefined
      910:	49170e01 	.inst	0x49170e01 ; undefined
      914:	00000003 	.inst	0x00000003 ; undefined
-     918:	00023e0e 	.inst	0x00023e0e ; undefined
+     918:	0002460e 	.inst	0x0002460e ; undefined
      91c:	0d0f0100 	.inst	0x0d0f0100 ; undefined
      920:	00000040 	.inst	0x00000040 ; undefined
      924:	08100010 	stxrb	w16, w16, [x0]
      928:	000002f1 	.inst	0x000002f1 ; undefined
      92c:	0a01100d 	and	w13, w0, w1, lsl #4
      930:	00034309 	.inst	0x00034309 ; undefined
-     934:	01cd0e00 	.inst	0x01cd0e00 ; undefined
+     934:	01d50e00 	.inst	0x01d50e00 ; undefined
      938:	0a010000 	and	w0, w0, w1
      93c:	00031909 	.inst	0x00031909 ; undefined
-     940:	650e0000 	.inst	0x650e0000 ; undefined
+     940:	520e0000 	eor	w0, w0, #0x40000
      944:	01000001 	.inst	0x01000001 ; undefined
      948:	0343090a 	.inst	0x0343090a ; undefined
      94c:	00080000 	.inst	0x00080000 ; undefined
      950:	03190810 	.inst	0x03190810 ; undefined
-     954:	31020000 	adds	w0, w0, #0x80
+     954:	40020000 	.inst	0x40020000 ; undefined
      958:	01000001 	.inst	0x01000001 ; undefined
      95c:	031f1a0a 	.inst	0x031f1a0a ; undefined
-     960:	720c0000 	ands	w0, w0, #0x100000
+     960:	7a0c0000 	sbcs	w0, w0, w12
      964:	01000002 	.inst	0x01000002 ; undefined
      968:	03191512 	.inst	0x03191512 ; undefined
      96c:	bd120000 	str	s0, [x0, #4608]
@@ -18912,7 +18912,7 @@ Disassembly of section .debug_info:
      984:	0d160200 	.inst	0x0d160200 ; undefined
      988:	0ec80309 	.inst	0x0ec80309 ; undefined
      98c:	ff800009 	.inst	0xff800009 ; undefined
-     990:	c813ffff 	stlxr	w19, xzr, [sp]
+     990:	d213ffff 	.inst	0xd213ffff ; undefined
      994:	02000003 	.inst	0x02000003 ; undefined
      998:	02a21818 	.inst	0x02a21818 ; undefined
      99c:	03090000 	.inst	0x03090000 ; undefined
@@ -18922,20 +18922,20 @@ Disassembly of section .debug_info:
      9ac:	11190200 	add	w0, w16, #0x640
      9b0:	0f000309 	.inst	0x0f000309 ; undefined
      9b4:	ff800009 	.inst	0xff800009 ; undefined
-     9b8:	b40cffff 	cbz	xzr, 1a9b4 <__bss_size+0x1a9a2>
+     9b8:	be0cffff 	.inst	0xbe0cffff ; undefined
      9bc:	02000003 	.inst	0x02000003 ; undefined
      9c0:	029c111b 	.inst	0x029c111b ; undefined
      9c4:	53090000 	ubfiz	w0, w0, #23, #1
      9c8:	c9000000 	.inst	0xc9000000 ; undefined
      9cc:	0a000003 	and	w3, w0, w0
      9d0:	00000072 	.inst	0x00000072 ; undefined
-     9d4:	58130001 	ldr	x1, 269d4 <__bss_size+0x269c2>
+     9d4:	62130001 	.inst	0x62130001 ; undefined
      9d8:	02000003 	.inst	0x02000003 ; undefined
      9dc:	03b90e1f 	.inst	0x03b90e1f ; undefined
      9e0:	03090000 	.inst	0x03090000 ; undefined
      9e4:	00090ed8 	.inst	0x00090ed8 ; undefined
      9e8:	ffffff80 	.inst	0xffffff80 ; undefined
-     9ec:	00038214 	.inst	0x00038214 ; undefined
+     9ec:	00038c14 	.inst	0x00038c14 ; undefined
      9f0:	01880200 	.inst	0x01880200 ; undefined
      9f4:	08251006 	.inst	0x08251006 ; undefined
      9f8:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -18956,7 +18956,7 @@ Disassembly of section .debug_info:
      a34:	02000004 	.inst	0x02000004 ; undefined
      a38:	00007891 	.inst	0x00007891 ; undefined
      a3c:	00a10810 	.inst	0x00a10810 ; undefined
-     a40:	e8140000 	.inst	0xe8140000 ; undefined
+     a40:	f2140000 	ands	x0, x0, #0x100000001000
      a44:	02000007 	.inst	0x02000007 ; undefined
      a48:	9806016b 	ldrsw	x11, ca74 <__bss_size+0xca62>
      a4c:	80000824 	.inst	0x80000824 ; undefined
@@ -18968,7 +18968,7 @@ Disassembly of section .debug_info:
      a64:	1e016b02 	.inst	0x1e016b02 ; undefined
      a68:	0000026c 	.inst	0x0000026c ; undefined
      a6c:	00789102 	.inst	0x00789102 ; undefined
-     a70:	0003bf14 	.inst	0x0003bf14 ; undefined
+     a70:	0003c914 	.inst	0x0003c914 ; undefined
      a74:	013c0200 	.inst	0x013c0200 ; undefined
      a78:	0820f006 	.inst	0x0820f006 ; undefined
      a7c:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -18979,15 +18979,15 @@ Disassembly of section .debug_info:
      a90:	3c020065 	stur	b5, [x3, #32]
      a94:	026c1b01 	.inst	0x026c1b01 ; undefined
      a98:	91030000 	add	x0, x0, #0xc0
-     a9c:	01187fa8 	.inst	0x01187fa8 ; undefined
+     a9c:	0b187fa8 	add	w8, w29, w24, lsl #31
      aa0:	02000004 	.inst	0x02000004 ; undefined
      aa4:	790d013e 	strh	w30, [x9, #1664]
      aa8:	02000000 	.inst	0x02000000 ; undefined
-     aac:	ed187891 	.inst	0xed187891 ; undefined
+     aac:	f7187891 	.inst	0xf7187891 ; undefined
      ab0:	02000003 	.inst	0x02000003 ; undefined
      ab4:	7914013e 	strh	w30, [x9, #2560]
      ab8:	02000000 	.inst	0x02000000 ; undefined
-     abc:	8a187091 	and	x17, x4, x24, lsl #28
+     abc:	94187091 	bl	61cd00 <__bss_size+0x61ccee>
      ac0:	02000003 	.inst	0x02000003 ; undefined
      ac4:	791b013e 	strh	w30, [x9, #3456]
      ac8:	02000000 	.inst	0x02000000 ; undefined
@@ -19030,24 +19030,24 @@ Disassembly of section .debug_info:
      b5c:	0000791d 	.inst	0x0000791d ; undefined
      b60:	b8910300 	ldursw	x0, [x24, #-240]
      b64:	1400007f 	b	d60 <__bss_size+0xd4e>
-     b68:	00000422 	.inst	0x00000422 ; undefined
+     b68:	0000042c 	.inst	0x0000042c ; undefined
      b6c:	06013302 	.inst	0x06013302 ; undefined
      b70:	000820c4 	.inst	0x000820c4 ; undefined
      b74:	ffffff80 	.inst	0xffffff80 ; undefined
      b78:	0000002c 	.inst	0x0000002c ; undefined
      b7c:	00000000 	.inst	0x00000000 ; undefined
      b80:	059a9c01 	.inst	0x059a9c01 ; undefined
-     b84:	ad1a0000 	stp	q0, q0, [x0, #832]
+     b84:	b71a0000 	tbnz	x0, #35, 4b84 <__bss_size+0x4b72>
      b88:	02000003 	.inst	0x02000003 ; undefined
      b8c:	9a190133 	adc	x19, x9, x25
      b90:	02000005 	.inst	0x02000005 ; undefined
-     b94:	621a7891 	.inst	0x621a7891 ; undefined
+     b94:	a91a7891 	stp	x17, x30, [x4, #416]
      b98:	0200000b 	.inst	0x0200000b ; undefined
      b9c:	8c250133 	.inst	0x8c250133 ; undefined
      ba0:	02000000 	.inst	0x02000000 ; undefined
      ba4:	10007491 	adr	x17, 1a34 <__bss_size+0x1a22>
      ba8:	00002d08 	.inst	0x00002d08 ; undefined
-     bac:	03641400 	.inst	0x03641400 ; undefined
+     bac:	036e1400 	.inst	0x036e1400 ; undefined
      bb0:	20020000 	.inst	0x20020000 ; undefined
      bb4:	20200601 	.inst	0x20200601 ; undefined
      bb8:	ff800008 	.inst	0xff800008 ; undefined
@@ -19055,15 +19055,15 @@ Disassembly of section .debug_info:
      bc0:	00000000 	.inst	0x00000000 ; undefined
      bc4:	9c010000 	ldr	q0, 2bc4 <__bss_size+0x2bb2>
      bc8:	000005fe 	.inst	0x000005fe ; undefined
-     bcc:	0003ad1a 	.inst	0x0003ad1a ; undefined
+     bcc:	0003b71a 	.inst	0x0003b71a ; undefined
      bd0:	01200200 	.inst	0x01200200 ; undefined
      bd4:	00059a22 	.inst	0x00059a22 ; undefined
      bd8:	68910200 	stgp	x0, x0, [x16], #544
-     bdc:	000b621a 	.inst	0x000b621a ; undefined
+     bdc:	000ba91a 	.inst	0x000ba91a ; undefined
      be0:	01200200 	.inst	0x01200200 ; undefined
      be4:	00008c2e 	.inst	0x00008c2e ; undefined
      be8:	64910200 	fcmla	z0.s, p0/m, z16.s, z17.s, #0
-     bec:	00036f1a 	.inst	0x00036f1a ; undefined
+     bec:	0003791a 	.inst	0x0003791a ; undefined
      bf0:	01200200 	.inst	0x01200200 ; undefined
      bf4:	00008c38 	.inst	0x00008c38 ; undefined
      bf8:	60910200 	.inst	0x60910200 ; undefined
@@ -19071,7 +19071,7 @@ Disassembly of section .debug_info:
      c00:	6c110122 	stnp	d2, d0, [x9, #272]
      c04:	02000002 	.inst	0x02000002 ; undefined
      c08:	1b007891 	madd	w17, w4, w0, w30
-     c0c:	00000835 	.inst	0x00000835 ; undefined
+     c0c:	0000083f 	.inst	0x0000083f ; undefined
      c10:	8c05f202 	.inst	0x8c05f202 ; undefined
      c14:	28000000 	stnp	w0, w0, [x0]
      c18:	8000081f 	.inst	0x8000081f ; undefined
@@ -19083,14 +19083,14 @@ Disassembly of section .debug_info:
      c30:	f2020077 	ands	x23, x3, #0x4000000040000000
      c34:	0002721c 	.inst	0x0002721c ; undefined
      c38:	68910200 	stgp	x0, x0, [x16], #544
-     c3c:	0002b31d 	.inst	0x0002b31d ; undefined
+     c3c:	0002d51d 	.inst	0x0002d51d ; undefined
      c40:	27f20200 	.inst	0x27f20200 ; undefined
      c44:	00000053 	.inst	0x00000053 ; undefined
      c48:	1e649102 	.inst	0x1e649102 ; undefined
      c4c:	f4020065 	.inst	0xf4020065 ; undefined
      c50:	00026c11 	.inst	0x00026c11 ; undefined
      c54:	78910200 	ldursh	x0, [x16, #-240]
-     c58:	03e01f00 	.inst	0x03e01f00 ; undefined
+     c58:	03ea1f00 	.inst	0x03ea1f00 ; undefined
      c5c:	b8020000 	stur	w0, [x0, #32]
      c60:	00008c0c 	.inst	0x00008c0c ; undefined
      c64:	081ddc00 	stlxrb	w29, w0, [x0]
@@ -19112,7 +19112,7 @@ Disassembly of section .debug_info:
      ca4:	12bb0200 	mov	w0, #0x27efffff            	// #670040063
      ca8:	00000319 	.inst	0x00000319 ; undefined
      cac:	13609102 	.inst	0x13609102 ; undefined
-     cb0:	00000965 	.inst	0x00000965 ; undefined
+     cb0:	00000972 	.inst	0x00000972 ; undefined
      cb4:	9c0ebc02 	ldr	q2, 1e434 <__bss_size+0x1e422>
      cb8:	02000002 	.inst	0x02000002 ; undefined
      cbc:	b4167091 	cbz	x17, 2dacc <__bss_size+0x2daba>
@@ -19123,7 +19123,7 @@ Disassembly of section .debug_info:
      cd0:	d8020061 	prfm	pldl1strm, 4cdc <__bss_size+0x4cca>
      cd4:	00007912 	.inst	0x00007912 ; undefined
      cd8:	68910200 	stgp	x0, x0, [x16], #544
-     cdc:	49200000 	.inst	0x49200000 ; undefined
+     cdc:	53200000 	.inst	0x53200000 ; undefined
      ce0:	02000003 	.inst	0x02000003 ; undefined
      ce4:	1c400699 	ldr	s25, 80db4 <__bss_size+0x80da2>
      ce8:	ff800008 	.inst	0xff800008 ; undefined
@@ -19134,7 +19134,7 @@ Disassembly of section .debug_info:
      cfc:	0200691e 	.inst	0x0200691e ; undefined
      d00:	008c099b 	.inst	0x008c099b ; undefined
      d04:	91020000 	add	x0, x0, #0x80
-     d08:	9021007c 	adrp	x28, 4200c000 <__bss_size+0x4200bfee>
+     d08:	9a21007c 	.inst	0x9a21007c ; undefined
      d0c:	02000003 	.inst	0x02000003 ; undefined
      d10:	008c056b 	.inst	0x008c056b ; undefined
      d14:	1b340000 	.inst	0x1b340000 ; undefined
@@ -19143,14 +19143,14 @@ Disassembly of section .debug_info:
      d20:	00000000 	.inst	0x00000000 ; undefined
      d24:	9c010000 	ldr	q0, 2d24 <__bss_size+0x2d12>
      d28:	0000075a 	.inst	0x0000075a ; undefined
-     d2c:	0003a71d 	.inst	0x0003a71d ; undefined
+     d2c:	0003b11d 	.inst	0x0003b11d ; undefined
      d30:	156b0200 	b	5ac1530 <__bss_size+0x5ac151e>
      d34:	00000053 	.inst	0x00000053 ; undefined
      d38:	1d6c9102 	.inst	0x1d6c9102 ; undefined
-     d3c:	000003f3 	.inst	0x000003f3 ; undefined
+     d3c:	000003fd 	.inst	0x000003fd ; undefined
      d40:	72296b02 	ands	w2, w24, #0xff83ffff
      d44:	02000002 	.inst	0x02000002 ; undefined
-     d48:	d61d6091 	.inst	0xd61d6091 ; undefined
+     d48:	e01d6091 	.inst	0xe01d6091 ; undefined
      d4c:	02000003 	.inst	0x02000003 ; undefined
      d50:	008c336b 	.inst	0x008c336b ; undefined
      d54:	91020000 	add	x0, x0, #0x80
@@ -19158,7 +19158,7 @@ Disassembly of section .debug_info:
      d5c:	6c116d02 	stnp	d2, d27, [x8, #272]
      d60:	02000002 	.inst	0x02000002 ; undefined
      d64:	1b007891 	madd	w17, w4, w0, w30
-     d68:	000003a5 	.inst	0x000003a5 ; undefined
+     d68:	000003af 	.inst	0x000003af ; undefined
      d6c:	53075502 	ubfx	w2, w8, #7, #15
      d70:	d4000000 	.inst	0xd4000000 ; undefined
      d74:	8000081a 	.inst	0x8000081a ; undefined
@@ -19173,11 +19173,11 @@ Disassembly of section .debug_info:
      d98:	02007864 	.inst	0x02007864 ; undefined
      d9c:	00530b57 	.inst	0x00530b57 ; undefined
      da0:	91020000 	add	x0, x0, #0x80
-     da4:	0417137c 	.inst	0x0417137c ; undefined
+     da4:	0421137c 	sqadd	z28.b, z27.b, z1.b
      da8:	58020000 	ldr	x0, 4da8 <__bss_size+0x4d96>
      dac:	0000530b 	.inst	0x0000530b ; undefined
      db0:	78910200 	ldursh	x0, [x16, #-240]
-     db4:	03782200 	.inst	0x03782200 ; undefined
+     db4:	03822200 	.inst	0x03822200 ; undefined
      db8:	44020000 	.inst	0x44020000 ; undefined
      dbc:	081a740d 	stxrb	w26, w13, [x0]
      dc0:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -19188,15 +19188,15 @@ Disassembly of section .debug_info:
      dd4:	44020069 	.inst	0x44020069 ; undefined
      dd8:	0000531d 	.inst	0x0000531d ; undefined
      ddc:	6c910200 	stp	d0, d0, [x16], #272
-     de0:	00041c13 	.inst	0x00041c13 ; undefined
+     de0:	00042613 	.inst	0x00042613 ; undefined
      de4:	09460200 	.inst	0x09460200 ; undefined
      de8:	0000008c 	.inst	0x0000008c ; undefined
      dec:	137c9102 	.inst	0x137c9102 ; undefined
-     df0:	00000352 	.inst	0x00000352 ; undefined
+     df0:	0000035c 	.inst	0x0000035c ; undefined
      df4:	8c104602 	.inst	0x8c104602 ; undefined
      df8:	02000000 	.inst	0x02000000 ; undefined
      dfc:	23007891 	.inst	0x23007891 ; undefined
-     e00:	0000039a 	.inst	0x0000039a ; undefined
+     e00:	000003a4 	.inst	0x000003a4 ; undefined
      e04:	530e2b02 	ubfiz	w2, w24, #18, #11
      e08:	b4000000 	cbz	x0, e08 <__bss_size+0xdf6>
      e0c:	80000819 	.inst	0x80000819 ; undefined
@@ -19207,15 +19207,15 @@ Disassembly of section .debug_info:
      e20:	00691e00 	.inst	0x00691e00 ; undefined
      e24:	8c092d02 	.inst	0x8c092d02 ; undefined
      e28:	02000000 	.inst	0x02000000 ; undefined
-     e2c:	1c137c91 	ldr	s17, 27dbc <__bss_size+0x27daa>
+     e2c:	26137c91 	.inst	0x26137c91 ; undefined
      e30:	02000004 	.inst	0x02000004 ; undefined
      e34:	008c0c2d 	.inst	0x008c0c2d ; undefined
      e38:	91020000 	add	x0, x0, #0x80
-     e3c:	03521378 	.inst	0x03521378 ; undefined
+     e3c:	035c1378 	.inst	0x035c1378 ; undefined
      e40:	2d020000 	stp	s0, s0, [x0, #16]
      e44:	00008c13 	.inst	0x00008c13 ; undefined
      e48:	74910200 	.inst	0x74910200 ; undefined
-     e4c:	042d1f00 	uqsub	z0.b, z24.b, z13.b
+     e4c:	04371f00 	uqsub	z0.b, z24.b, z23.b
      e50:	26010000 	.inst	0x26010000 ; undefined
      e54:	00006616 	.inst	0x00006616 ; undefined
      e58:	08193c00 	stxrb	w25, w0, [x0]
@@ -19239,7 +19239,7 @@ Disassembly of section .debug_info:
      ea0:	28010061 	stnp	w1, w0, [x3, #8]
      ea4:	0000790c 	.inst	0x0000790c ; undefined
      ea8:	70910200 	adr	x0, fffffffffff22eeb <init_sp+0x7fff722eeb>
-     eac:	071f0000 	.inst	0x071f0000 ; undefined
+     eac:	111f0000 	add	w0, w0, #0x7c0
      eb0:	01000004 	.inst	0x01000004 ; undefined
      eb4:	03191d1f 	.inst	0x03191d1f ; undefined
      eb8:	18c80000 	ldr	w0, fffffffffff90eb8 <init_sp+0x7fff790eb8>
@@ -19252,7 +19252,7 @@ Disassembly of section .debug_info:
      ed4:	662c1f01 	.inst	0x662c1f01 ; undefined
      ed8:	02000000 	.inst	0x02000000 ; undefined
      edc:	1f007891 	fmadd	s17, s4, s0, s30
-     ee0:	0000040f 	.inst	0x0000040f ; undefined
+     ee0:	00000419 	.inst	0x00000419 ; undefined
      ee4:	79171a01 	strh	w1, [x16, #2956]
      ee8:	a8000000 	stnp	x0, x0, [x0]
      eec:	80000818 	.inst	0x80000818 ; undefined
@@ -19264,7 +19264,7 @@ Disassembly of section .debug_info:
      f04:	2c1a0100 	stnp	s0, s0, [x8, #208]
      f08:	00000319 	.inst	0x00000319 ; undefined
      f0c:	00789102 	.inst	0x00789102 ; undefined
-     f10:	0003f824 	.inst	0x0003f824 ; undefined
+     f10:	00040224 	.inst	0x00040224 ; undefined
      f14:	17150100 	b	fffffffffc541314 <init_sp+0x7ffbd41314>
      f18:	00000079 	.inst	0x00000079 ; undefined
      f1c:	00081874 	.inst	0x00081874 ; undefined
@@ -19278,65 +19278,65 @@ Disassembly of section .debug_info:
      f3c:	08ce0000 	ldlarb	w0, [x0]
      f40:	00040000 	.inst	0x00040000 ; undefined
      f44:	00000516 	.inst	0x00000516 ; undefined
-     f48:	00250108 	.inst	0x00250108 ; NYI
-     f4c:	890c0000 	.inst	0x890c0000 ; undefined
-     f50:	16000004 	b	fffffffff8000f60 <init_sp+0x7ff7800f60>
+     f48:	00000108 	.inst	0x00000108 ; undefined
+     f4c:	930c0000 	.inst	0x930c0000 ; undefined
+     f50:	1d000004 	.inst	0x1d000004 ; undefined
      f54:	9c000003 	ldr	q3, f54 <__bss_size+0xf42>
      f58:	80000825 	.inst	0x80000825 ; undefined
      f5c:	b0ffffff 	adrp	xzr, ffffffffffffd000 <init_sp+0x7fff7fd000>
      f60:	00000005 	.inst	0x00000005 ; undefined
      f64:	26000000 	.inst	0x26000000 ; undefined
      f68:	02000008 	.inst	0x02000008 ; undefined
-     f6c:	000001b8 	.inst	0x000001b8 ; undefined
+     f6c:	000001c0 	.inst	0x000001c0 ; undefined
      f70:	39170903 	strb	w3, [x8, #1474]
      f74:	03000000 	.inst	0x03000000 ; undefined
-     f78:	01780801 	.inst	0x01780801 ; undefined
-     f7c:	24020000 	cmphs	p0.b, p0/z, z0.b, z2.b
+     f78:	01800801 	.inst	0x01800801 ; undefined
+     f7c:	33020000 	bfi	w0, w0, #30, #1
      f80:	03000001 	.inst	0x03000001 ; undefined
      f84:	004c180a 	.inst	0x004c180a ; undefined
      f88:	02030000 	.inst	0x02030000 ; undefined
-     f8c:	00010a07 	.inst	0x00010a07 ; undefined
-     f90:	02990200 	.inst	0x02990200 ; undefined
+     f8c:	00011907 	.inst	0x00011907 ; undefined
+     f90:	02bb0200 	.inst	0x02bb0200 ; undefined
      f94:	0b030000 	add	w0, w0, w3
      f98:	00005f16 	.inst	0x00005f16 ; undefined
      f9c:	07040300 	.inst	0x07040300 ; undefined
-     fa0:	0000019c 	.inst	0x0000019c ; undefined
-     fa4:	0001f002 	.inst	0x0001f002 ; undefined
+     fa0:	000001a4 	.inst	0x000001a4 ; undefined
+     fa4:	0001f802 	.inst	0x0001f802 ; undefined
      fa8:	170c0300 	b	fffffffffc301ba8 <init_sp+0x7ffbb01ba8>
      fac:	00000072 	.inst	0x00000072 ; undefined
-     fb0:	97070803 	bl	fffffffffc1c2fbc <init_sp+0x7ffb9c2fbc>
+     fb0:	9f070803 	.inst	0x9f070803 ; undefined
      fb4:	02000001 	.inst	0x02000001 ; undefined
-     fb8:	000002ef 	.inst	0x000002ef ; undefined
+     fb8:	000002f6 	.inst	0x000002f6 ; undefined
      fbc:	66100d03 	.inst	0x66100d03 ; undefined
      fc0:	02000000 	.inst	0x02000000 ; undefined
-     fc4:	00000579 	.inst	0x00000579 ; undefined
+     fc4:	00000583 	.inst	0x00000583 ; undefined
      fc8:	530f0e03 	ubfiz	w3, w16, #17, #4
      fcc:	02000000 	.inst	0x02000000 ; undefined
-     fd0:	00000472 	.inst	0x00000472 ; undefined
+     fd0:	0000047c 	.inst	0x0000047c ; undefined
      fd4:	40110f03 	.inst	0x40110f03 ; undefined
      fd8:	02000000 	.inst	0x02000000 ; undefined
-     fdc:	00000509 	.inst	0x00000509 ; undefined
+     fdc:	00000513 	.inst	0x00000513 ; undefined
      fe0:	2d101003 	stp	s3, s4, [x0, #128]
      fe4:	03000000 	.inst	0x03000000 ; undefined
-     fe8:	02bd0508 	.inst	0x02bd0508 ; undefined
+     fe8:	02df0508 	.inst	0x02df0508 ; undefined
      fec:	04040000 	.inst	0x04040000 ; undefined
      ff0:	746e6905 	.inst	0x746e6905 ; undefined
      ff4:	05020300 	orr	z0.d, z0.d, #0x1ffffff
-     ff8:	0000028f 	.inst	0x0000028f ; undefined
-     ffc:	81080103 	.inst	0x81080103 ; undefined
+     ff8:	000002b1 	.inst	0x000002b1 ; undefined
+     ffc:	89080103 	.inst	0x89080103 ; undefined
     1000:	05000001 	orr	z1.s, z1.s, #0x1
     1004:	000000be 	.inst	0x000000be ; undefined
     1008:	000000d0 	.inst	0x000000d0 ; undefined
-    100c:	e2070006 	.inst	0xe2070006 ; undefined
+    100c:	ea070006 	ands	x6, x0, x7
     1010:	04000001 	add	z1.b, p0/m, z1.b, z0.b
     1014:	00c50d36 	.inst	0x00c50d36 ; undefined
-    1018:	af070000 	.inst	0xaf070000 ; undefined
+    1018:	b9070000 	str	w0, [x0, #1792]
     101c:	04000004 	add	z4.b, p0/m, z4.b, z0.b
     1020:	00c50d37 	.inst	0x00c50d37 ; undefined
-    1024:	6d070000 	stp	d0, d0, [x0, #112]
+    1024:	75070000 	.inst	0x75070000 ; undefined
     1028:	04000001 	add	z1.b, p0/m, z1.b, z0.b
     102c:	0079104f 	.inst	0x0079104f ; undefined
-    1030:	10080000 	adr	x0, 11030 <__bss_size+0x1101e>
+    1030:	18080000 	ldr	w0, 11030 <__bss_size+0x1101e>
     1034:	20000002 	.inst	0x20000002 ; undefined
     1038:	08130501 	stxrb	w19, w1, [x8]
     103c:	00000152 	.inst	0x00000152 ; undefined
@@ -19349,7 +19349,7 @@ Disassembly of section .debug_info:
     1058:	00726c65 	.inst	0x00726c65 ; undefined
     105c:	790d1705 	strh	w5, [x24, #1674]
     1060:	00000000 	.inst	0x00000000 ; undefined
-    1064:	02a80b01 	.inst	0x02a80b01 ; undefined
+    1064:	02ca0b01 	.inst	0x02ca0b01 ; undefined
     1068:	18050000 	ldr	w0, b068 <__bss_size+0xb056>
     106c:	0000790d 	.inst	0x0000790d ; undefined
     1070:	0a010800 	and	w0, w0, w1, lsl #2
@@ -19366,77 +19366,77 @@ Disassembly of section .debug_info:
     109c:	001e0000 	.inst	0x001e0000 ; undefined
     10a0:	1606100d 	b	fffffffff81850d4 <init_sp+0x7ff79850d4>
     10a4:	00018605 	.inst	0x00018605 ; undefined
-    10a8:	01cd0e00 	.inst	0x01cd0e00 ; undefined
+    10a8:	01d50e00 	.inst	0x01d50e00 ; undefined
     10ac:	16060000 	b	fffffffff81810ac <init_sp+0x7ff79810ac>
     10b0:	00029005 	.inst	0x00029005 ; undefined
-    10b4:	650e0000 	.inst	0x650e0000 ; undefined
+    10b4:	520e0000 	eor	w0, w0, #0x40000
     10b8:	06000001 	.inst	0x06000001 ; undefined
     10bc:	02960516 	.inst	0x02960516 ; undefined
     10c0:	00080000 	.inst	0x00080000 ; undefined
     10c4:	766e450f 	.inst	0x766e450f ; undefined
     10c8:	06019800 	.inst	0x06019800 ; undefined
     10cc:	02900813 	.inst	0x02900813 ; undefined
-    10d0:	780e0000 	sturh	w0, [x0, #224]
+    10d0:	9a0e0000 	adc	x0, x0, x14
     10d4:	06000002 	.inst	0x06000002 ; undefined
     10d8:	00f41615 	.inst	0x00f41615 ; undefined
     10dc:	0b000000 	add	w0, w0, w0
-    10e0:	0000029f 	.inst	0x0000029f ; undefined
+    10e0:	000002c1 	.inst	0x000002c1 ; undefined
     10e4:	62151606 	.inst	0x62151606 ; undefined
     10e8:	20000001 	.inst	0x20000001 ; undefined
-    10ec:	00d80b01 	.inst	0x00d80b01 ; undefined
+    10ec:	00de0b01 	.inst	0x00de0b01 ; undefined
     10f0:	17060000 	b	fffffffffc1810f0 <init_sp+0x7ffb9810f0>
     10f4:	0000530b 	.inst	0x0000530b ; undefined
     10f8:	0b013000 	add	w0, w0, w1, lsl #12
-    10fc:	000002af 	.inst	0x000002af ; undefined
+    10fc:	000002d1 	.inst	0x000002d1 ; undefined
     1100:	530b1806 	ubfiz	w6, w0, #21, #7
     1104:	34000000 	cbz	w0, 1104 <__bss_size+0x10f2>
-    1108:	078b0b01 	.inst	0x078b0b01 ; undefined
+    1108:	07950b01 	.inst	0x07950b01 ; undefined
     110c:	19060000 	stlurb	w0, [x0, #96]
     1110:	0000530b 	.inst	0x0000530b ; undefined
     1114:	0b013800 	add	w0, w0, w1, lsl #14
-    1118:	0000024d 	.inst	0x0000024d ; undefined
+    1118:	00000255 	.inst	0x00000255 ; undefined
     111c:	c00e1a06 	.inst	0xc00e1a06 ; undefined
     1120:	40000002 	.inst	0x40000002 ; undefined
-    1124:	02450b01 	.inst	0x02450b01 ; undefined
+    1124:	024d0b01 	.inst	0x024d0b01 ; undefined
     1128:	1b060000 	madd	w0, w0, w6, w0
     112c:	0000790d 	.inst	0x0000790d ; undefined
     1130:	0b014800 	add	w0, w0, w1, lsl #18
-    1134:	000001a9 	.inst	0x000001a9 ; undefined
+    1134:	000001b1 	.inst	0x000001b1 ; undefined
     1138:	9c151c06 	ldr	q6, 2b4b8 <__bss_size+0x2b4a6>
     113c:	50000002 	adr	x2, 113e <__bss_size+0x112c>
-    1140:	027f0b01 	.inst	0x027f0b01 ; undefined
+    1140:	02a10b01 	.inst	0x02a10b01 ; undefined
     1144:	1d060000 	.inst	0x1d060000 ; undefined
     1148:	0000530b 	.inst	0x0000530b ; undefined
     114c:	0b016000 	add	w0, w0, w1, lsl #24
-    1150:	000002e1 	.inst	0x000002e1 ; undefined
+    1150:	000002e8 	.inst	0x000002e8 ; undefined
     1154:	530b2006 	ubfiz	w6, w0, #21, #9
     1158:	64000000 	.inst	0x64000000 ; undefined
-    115c:	021a0b01 	.inst	0x021a0b01 ; undefined
+    115c:	02220b01 	.inst	0x02220b01 ; undefined
     1160:	21060000 	.inst	0x21060000 ; undefined
     1164:	0000530b 	.inst	0x0000530b ; undefined
     1168:	0b016800 	add	w0, w0, w1, lsl #26
-    116c:	000001f7 	.inst	0x000001f7 ; undefined
+    116c:	000001ff 	.inst	0x000001ff ; undefined
     1170:	530b2206 	ubfiz	w6, w16, #21, #9
     1174:	6c000000 	stnp	d0, d0, [x0]
-    1178:	02270b01 	.inst	0x02270b01 ; undefined
+    1178:	022f0b01 	.inst	0x022f0b01 ; undefined
     117c:	23060000 	.inst	0x23060000 ; undefined
     1180:	0000790d 	.inst	0x0000790d ; undefined
     1184:	0b017000 	add	w0, w0, w1, lsl #28
-    1188:	000001d5 	.inst	0x000001d5 ; undefined
+    1188:	000001dd 	.inst	0x000001dd ; undefined
     118c:	790d2406 	strh	w6, [x0, #1682]
     1190:	78000000 	sturh	w0, [x0]
-    1194:	02570b01 	.inst	0x02570b01 ; undefined
+    1194:	025f0b01 	.inst	0x025f0b01 ; undefined
     1198:	27060000 	.inst	0x27060000 ; undefined
     119c:	0000790d 	.inst	0x0000790d ; undefined
     11a0:	0b018000 	.inst	0x0b018000 ; undefined
-    11a4:	000001bf 	.inst	0x000001bf ; undefined
+    11a4:	000001c7 	.inst	0x000001c7 ; undefined
     11a8:	790d2806 	strh	w6, [x0, #1684]
     11ac:	88000000 	stxr	w0, w0, [x0]
-    11b0:	01860b01 	.inst	0x01860b01 ; undefined
+    11b0:	018e0b01 	.inst	0x018e0b01 ; undefined
     11b4:	2b060000 	adds	w0, w0, w6
     11b8:	0000530b 	.inst	0x0000530b ; undefined
     11bc:	0b019000 	.inst	0x0b019000 ; undefined
-    11c0:	0000018f 	.inst	0x0000018f ; undefined
+    11c0:	00000197 	.inst	0x00000197 ; undefined
     11c4:	530b2c06 	ubfx	w6, w0, #11, #1
     11c8:	94000000 	bl	11c8 <__bss_size+0x11b6>
     11cc:	08100001 	stxrb	w16, w1, [x0]
@@ -19445,85 +19445,85 @@ Disassembly of section .debug_info:
     11d8:	100d0000 	adr	x0, 1b1d8 <__bss_size+0x1b1c6>
     11dc:	c0051c06 	.inst	0xc0051c06 ; undefined
     11e0:	0e000002 	tbl	v2.8b, {v0.16b}, v0.8b
-    11e4:	000001cd 	.inst	0x000001cd ; undefined
+    11e4:	000001d5 	.inst	0x000001d5 ; undefined
     11e8:	90051c06 	adrp	x6, a381000 <__bss_size+0xa380fee>
     11ec:	00000002 	.inst	0x00000002 ; undefined
-    11f0:	0001650e 	.inst	0x0001650e ; undefined
+    11f0:	0001520e 	.inst	0x0001520e ; undefined
     11f4:	051c0600 	mov	z0.b, p12/z, #48
     11f8:	00000296 	.inst	0x00000296 ; undefined
     11fc:	08100008 	stxrb	w16, w8, [x0]
     1200:	00000079 	.inst	0x00000079 ; undefined
-    1204:	0001e711 	.inst	0x0001e711 ; undefined
+    1204:	0001ef11 	.inst	0x0001ef11 ; undefined
     1208:	2f060800 	.inst	0x2f060800 ; undefined
     120c:	0002e101 	.inst	0x0002e101 ; undefined
-    1210:	02070e00 	.inst	0x02070e00 ; undefined
+    1210:	020f0e00 	.inst	0x020f0e00 ; undefined
     1214:	2f060000 	.inst	0x2f060000 ; undefined
     1218:	00029001 	.inst	0x00029001 ; undefined
     121c:	07000000 	.inst	0x07000000 ; undefined
-    1220:	00000173 	.inst	0x00000173 ; undefined
+    1220:	0000017b 	.inst	0x0000017b ; undefined
     1224:	90143006 	adrp	x6, 28601000 <__bss_size+0x28600fee>
     1228:	07000002 	.inst	0x07000002 ; undefined
-    122c:	0000011d 	.inst	0x0000011d ; undefined
+    122c:	0000012c 	.inst	0x0000012c ; undefined
     1230:	90143106 	adrp	x6, 28621000 <__bss_size+0x28620fee>
     1234:	05000002 	orr	z2.s, z2.s, #0x1
     1238:	000002c6 	.inst	0x000002c6 ; undefined
     123c:	00000309 	.inst	0x00000309 ; undefined
     1240:	0000720c 	.inst	0x0000720c ; undefined
     1244:	07000100 	.inst	0x07000100 ; undefined
-    1248:	000000fb 	.inst	0x000000fb ; undefined
+    1248:	0000010a 	.inst	0x0000010a ; undefined
     124c:	f9183206 	str	x6, [x16, #12384]
     1250:	02000002 	.inst	0x02000002 ; undefined
-    1254:	00000564 	.inst	0x00000564 ; undefined
+    1254:	0000056e 	.inst	0x0000056e ; undefined
     1258:	79110507 	strh	w7, [x8, #2178]
     125c:	02000000 	.inst	0x02000000 ; undefined
-    1260:	000004a1 	.inst	0x000004a1 ; undefined
+    1260:	000004ab 	.inst	0x000004ab ; undefined
     1264:	79110607 	strh	w7, [x16, #2178]
     1268:	0d000000 	st1	{v0.b}[0], [x0]
     126c:	09080740 	.inst	0x09080740 ; undefined
     1270:	000003ed 	.inst	0x000003ed ; undefined
-    1274:	0005100e 	.inst	0x0005100e ; undefined
+    1274:	00051a0e 	.inst	0x00051a0e ; undefined
     1278:	0c0a0700 	.inst	0x0c0a0700 ; undefined
     127c:	000003ed 	.inst	0x000003ed ; undefined
-    1280:	055d0e00 	mov	z0.h, p13/z, #112
+    1280:	05670e00 	ext	z0.b, {z16.b, z17.b}, #59
     1284:	0b070000 	add	w0, w0, w7
     1288:	0000910d 	.inst	0x0000910d ; undefined
-    128c:	6f0e1000 	.inst	0x6f0e1000 ; undefined
+    128c:	790e1000 	strh	w0, [x0, #1800]
     1290:	07000005 	.inst	0x07000005 ; undefined
     1294:	00910a0c 	.inst	0x00910a0c ; undefined
     1298:	0e120000 	tbl	v0.8b, {v0.16b}, v18.8b
-    129c:	000004dd 	.inst	0x000004dd ; undefined
+    129c:	000004e7 	.inst	0x000004e7 ; undefined
     12a0:	850a0d07 	.inst	0x850a0d07 ; undefined
     12a4:	14000000 	b	12a4 <__bss_size+0x1292>
-    12a8:	000a500e 	.inst	0x000a500e ; undefined
+    12a8:	000a5d0e 	.inst	0x000a5d0e ; undefined
     12ac:	0d0e0700 	.inst	0x0d0e0700 ; undefined
     12b0:	00000315 	.inst	0x00000315 ; undefined
-    12b4:	04d50e18 	udiv	z24.d, p3/m, z24.d, z16.d
+    12b4:	04df0e18 	.inst	0x04df0e18 ; undefined
     12b8:	0f070000 	.inst	0x0f070000 ; undefined
     12bc:	0003210c 	.inst	0x0003210c ; undefined
-    12c0:	810e2000 	.inst	0x810e2000 ; undefined
+    12c0:	8b0e2000 	add	x0, x0, x14, lsl #8
     12c4:	07000005 	.inst	0x07000005 ; undefined
     12c8:	03210c10 	.inst	0x03210c10 ; undefined
     12cc:	0e280000 	saddl	v0.8h, v0.8b, v8.8b
-    12d0:	000005b3 	.inst	0x000005b3 ; undefined
+    12d0:	000005bd 	.inst	0x000005bd ; undefined
     12d4:	850d1107 	.inst	0x850d1107 ; undefined
     12d8:	30000000 	adr	x0, 12d9 <__bss_size+0x12c7>
-    12dc:	0004b50e 	.inst	0x0004b50e ; undefined
+    12dc:	0004bf0e 	.inst	0x0004bf0e ; undefined
     12e0:	0d120700 	.inst	0x0d120700 ; undefined
     12e4:	00000091 	.inst	0x00000091 ; undefined
-    12e8:	04c90e34 	umax	z20.d, p3/m, z20.d, z17.d
+    12e8:	04d30e34 	umulh	z20.d, p3/m, z20.d, z17.d
     12ec:	13070000 	sbfiz	w0, w0, #25, #1
     12f0:	0000910d 	.inst	0x0000910d ; undefined
-    12f4:	ab0e3600 	adds	x0, x16, x14, lsl #13
+    12f4:	b50e3600 	cbnz	x0, 1d9b4 <__bss_size+0x1d9a2>
     12f8:	07000005 	.inst	0x07000005 ; undefined
     12fc:	00910d14 	.inst	0x00910d14 ; undefined
     1300:	0e380000 	saddl	v0.8h, v0.8b, v24.8b
-    1304:	00000495 	.inst	0x00000495 ; undefined
+    1304:	0000049f 	.inst	0x0000049f ; undefined
     1308:	910d1507 	add	x7, x8, #0x345
     130c:	3a000000 	adcs	w0, w0, w0
-    1310:	0005bb0e 	.inst	0x0005bb0e ; undefined
+    1310:	0005c50e 	.inst	0x0005c50e ; undefined
     1314:	0d160700 	.inst	0x0d160700 ; undefined
     1318:	00000091 	.inst	0x00000091 ; undefined
-    131c:	04be0e3c 	.inst	0x04be0e3c ; undefined
+    131c:	04c80e3c 	smax	z28.d, p3/m, z28.d, z17.d
     1320:	17070000 	b	fffffffffc1c1320 <init_sp+0x7ffb9c1320>
     1324:	0000910d 	.inst	0x0000910d ; undefined
     1328:	05003e00 	orr	z0.b, z0.b, #0x2
@@ -19531,70 +19531,70 @@ Disassembly of section .debug_info:
     1330:	000003fd 	.inst	0x000003fd ; undefined
     1334:	0000720c 	.inst	0x0000720c ; undefined
     1338:	02000f00 	.inst	0x02000f00 ; undefined
-    133c:	00000552 	.inst	0x00000552 ; undefined
+    133c:	0000055c 	.inst	0x0000055c ; undefined
     1340:	2d031807 	stp	s7, s6, [x0, #24]
     1344:	0d000003 	st1	{v3.b}[0], [x0]
     1348:	09310738 	.inst	0x09310738 ; undefined
     134c:	0000047b 	.inst	0x0000047b ; undefined
-    1350:	0004820e 	.inst	0x0004820e ; undefined
+    1350:	00048c0e 	.inst	0x00048c0e ; undefined
     1354:	0d330700 	.inst	0x0d330700 ; undefined
     1358:	00000085 	.inst	0x00000085 ; undefined
-    135c:	053e0e00 	ext	z0.b, z0.b, z16.b, #243
+    135c:	05480e00 	.inst	0x05480e00 ; undefined
     1360:	34070000 	cbz	w0, f360 <__bss_size+0xf34e>
     1364:	0000850a 	.inst	0x0000850a ; undefined
-    1368:	940e0400 	bl	382368 <__bss_size+0x382356>
+    1368:	9e0e0400 	.inst	0x9e0e0400 ; undefined
     136c:	07000005 	.inst	0x07000005 ; undefined
     1370:	03210f35 	.inst	0x03210f35 ; undefined
     1374:	0e080000 	tbl	v0.8b, {v0.16b}, v8.8b
-    1378:	0000047a 	.inst	0x0000047a ; undefined
+    1378:	00000484 	.inst	0x00000484 ; undefined
     137c:	150d3607 	b	434eb98 <__bss_size+0x434eb86>
     1380:	10000003 	adr	x3, 1380 <__bss_size+0x136e>
-    1384:	00045b0e 	.inst	0x00045b0e ; undefined
+    1384:	0004650e 	.inst	0x0004650e ; undefined
     1388:	10370700 	adr	x0, 6f468 <__bss_size+0x6f456>
     138c:	00000315 	.inst	0x00000315 ; undefined
-    1390:	05a20e18 	.inst	0x05a20e18 ; undefined
+    1390:	05ac0e18 	.inst	0x05ac0e18 ; undefined
     1394:	38070000 	sturb	w0, [x0, #112]
     1398:	0000790d 	.inst	0x0000790d ; undefined
-    139c:	530e2000 	ubfiz	w0, w0, #18, #9
+    139c:	5d0e2000 	.inst	0x5d0e2000 ; undefined
     13a0:	07000004 	.inst	0x07000004 ; undefined
     13a4:	00790d39 	.inst	0x00790d39 ; undefined
     13a8:	0e280000 	saddl	v0.8h, v0.8b, v8.8b
-    13ac:	000005c3 	.inst	0x000005c3 ; undefined
+    13ac:	000005cd 	.inst	0x000005cd ; undefined
     13b0:	790d3a07 	strh	w7, [x16, #1692]
     13b4:	30000000 	adr	x0, 13b5 <__bss_size+0x13a3>
-    13b8:	04f50200 	add	z0.d, z16.d, z21.d
+    13b8:	04ff0200 	add	z0.d, z16.d, z31.d
     13bc:	3b070000 	.inst	0x3b070000 ; undefined
     13c0:	00040903 	.inst	0x00040903 ; undefined
     13c4:	11081200 	add	w0, w16, #0x204
-    13c8:	0000012c 	.inst	0x0000012c ; undefined
+    13c8:	0000013b 	.inst	0x0000013b ; undefined
     13cc:	080c0118 	stxrb	w12, w24, [x8]
     13d0:	000004b1 	.inst	0x000004b1 ; undefined
-    13d4:	0002870e 	.inst	0x0002870e ; undefined
+    13d4:	0002a90e 	.inst	0x0002a90e ; undefined
     13d8:	170e0100 	b	fffffffffc3817d8 <init_sp+0x7ffbb817d8>
     13dc:	000004e1 	.inst	0x000004e1 ; undefined
-    13e0:	023e0e00 	.inst	0x023e0e00 ; undefined
+    13e0:	02460e00 	.inst	0x02460e00 ; undefined
     13e4:	0f010000 	.inst	0x0f010000 ; undefined
     13e8:	0000400d 	.inst	0x0000400d ; undefined
     13ec:	10001000 	adr	x0, 15ec <__bss_size+0x15da>
     13f0:	00048908 	.inst	0x00048908 ; undefined
     13f4:	01100d00 	.inst	0x01100d00 ; undefined
     13f8:	04db090a 	bic	z10.d, p2/m, z10.d, z8.d
-    13fc:	cd0e0000 	.inst	0xcd0e0000 ; undefined
+    13fc:	d50e0000 	sys	#6, C0, C0, #0, x0
     1400:	01000001 	.inst	0x01000001 ; undefined
     1404:	04b1090a 	.inst	0x04b1090a ; undefined
     1408:	0e000000 	tbl	v0.8b, {v0.16b}, v0.8b
-    140c:	00000165 	.inst	0x00000165 ; undefined
+    140c:	00000152 	.inst	0x00000152 ; undefined
     1410:	db090a01 	.inst	0xdb090a01 ; undefined
     1414:	08000004 	stxrb	w0, w4, [x0]
     1418:	b1081000 	adds	x0, x0, #0x204
     141c:	02000004 	.inst	0x02000004 ; undefined
-    1420:	00000131 	.inst	0x00000131 ; undefined
+    1420:	00000140 	.inst	0x00000140 ; undefined
     1424:	b71a0a01 	tbnz	x1, #35, 5564 <__bss_size+0x5552>
     1428:	07000004 	.inst	0x07000004 ; undefined
-    142c:	00000272 	.inst	0x00000272 ; undefined
+    142c:	0000027a 	.inst	0x0000027a ; undefined
     1430:	b1151201 	adds	x1, x16, #0x544
     1434:	13000004 	sbfx	w4, w0, #0, #1
-    1438:	00000589 	.inst	0x00000589 ; undefined
+    1438:	00000593 	.inst	0x00000593 ; undefined
     143c:	8c068602 	.inst	0x8c068602 ; undefined
     1440:	8000082a 	.inst	0x8000082a ; undefined
     1444:	c0ffffff 	.inst	0xc0ffffff ; undefined
@@ -19604,31 +19604,31 @@ Disassembly of section .debug_info:
     1454:	00651400 	.inst	0x00651400 ; undefined
     1458:	901d8602 	adrp	x2, 3b0c1000 <__bss_size+0x3b0c0fee>
     145c:	02000002 	.inst	0x02000002 ; undefined
-    1460:	ad155891 	stp	q17, q22, [x4, #672]
+    1460:	b7155891 	tbnz	x17, #34, ffffffffffffbf70 <init_sp+0x7fff7fbf70>
     1464:	02000003 	.inst	0x02000003 ; undefined
     1468:	057b2886 	tbl	z6.h, {z4.h, z5.h}, z27.h
     146c:	91020000 	add	x0, x0, #0x80
-    1470:	0b621550 	.inst	0x0b621550 ; undefined
+    1470:	0ba91550 	.inst	0x0ba91550 ; undefined
     1474:	86020000 	.inst	0x86020000 ; undefined
     1478:	00006637 	.inst	0x00006637 ; undefined
     147c:	48910200 	stllrh	w0, [x16]
     1480:	02007016 	.inst	0x02007016 ; undefined
     1484:	04b1128e 	sqadd	z14.s, z20.s, z17.s
     1488:	91020000 	add	x0, x0, #0x80
-    148c:	05461768 	.inst	0x05461768 ; undefined
+    148c:	05501768 	mov	z8.h, p0/z, #-69
     1490:	8f020000 	.inst	0x8f020000 ; undefined
     1494:	0000660c 	.inst	0x0000660c ; undefined
     1498:	60910200 	.inst	0x60910200 ; undefined
     149c:	02007216 	.inst	0x02007216 ; undefined
     14a0:	00b00990 	.inst	0x00b00990 ; undefined
     14a4:	91020000 	add	x0, x0, #0x80
-    14a8:	01dd1774 	.inst	0x01dd1774 ; undefined
+    14a8:	01e51774 	.inst	0x01e51774 ; undefined
     14ac:	91020000 	add	x0, x0, #0x80
     14b0:	0000660c 	.inst	0x0000660c ; undefined
     14b4:	78910200 	ldursh	x0, [x16, #-240]
     14b8:	2d081000 	stp	s0, s4, [x0, #64]
     14bc:	18000000 	ldr	w0, 14bc <__bss_size+0x14aa>
-    14c0:	0000044a 	.inst	0x0000044a ; undefined
+    14c0:	00000454 	.inst	0x00000454 ; undefined
     14c4:	b0055002 	adrp	x2, aa02000 <__bss_size+0xaa01fee>
     14c8:	30000000 	adr	x0, 14c9 <__bss_size+0x14b7>
     14cc:	80000829 	.inst	0x80000829 ; undefined
@@ -19636,19 +19636,19 @@ Disassembly of section .debug_info:
     14d4:	00000001 	.inst	0x00000001 ; undefined
     14d8:	01000000 	.inst	0x01000000 ; undefined
     14dc:	00064a9c 	.inst	0x00064a9c ; undefined
-    14e0:	03ad1500 	.inst	0x03ad1500 ; undefined
+    14e0:	03b71500 	.inst	0x03b71500 ; undefined
     14e4:	50020000 	adr	x0, 54e6 <__bss_size+0x54d4>
     14e8:	00057b16 	.inst	0x00057b16 ; undefined
     14ec:	48910200 	stllrh	w0, [x16]
-    14f0:	000b6215 	.inst	0x000b6215 ; undefined
+    14f0:	000ba915 	.inst	0x000ba915 ; undefined
     14f4:	22500200 	.inst	0x22500200 ; undefined
     14f8:	000000b0 	.inst	0x000000b0 ; undefined
     14fc:	15449102 	b	5125904 <__bss_size+0x51258f2>
-    1500:	00000546 	.inst	0x00000546 ; undefined
+    1500:	00000550 	.inst	0x00000550 ; undefined
     1504:	c0315002 	.inst	0xc0315002 ; undefined
     1508:	03000002 	.inst	0x03000002 ; undefined
     150c:	157fb891 	b	5fef750 <__bss_size+0x5fef73e>
-    1510:	000004ab 	.inst	0x000004ab ; undefined
+    1510:	000004b5 	.inst	0x000004b5 ; undefined
     1514:	87445002 	.inst	0x87445002 ; undefined
     1518:	03000004 	.inst	0x03000004 ; undefined
     151c:	147fb091 	b	1fed760 <__bss_size+0x1fed74e>
@@ -19656,22 +19656,22 @@ Disassembly of section .debug_info:
     1524:	6d145102 	stp	d2, d20, [x8, #320]
     1528:	03000006 	.inst	0x03000006 ; undefined
     152c:	177fa891 	b	fffffffffdfeb770 <init_sp+0x7ffd7eb770>
-    1530:	00000490 	.inst	0x00000490 ; undefined
+    1530:	0000049a 	.inst	0x0000049a ; undefined
     1534:	73115302 	.inst	0x73115302 ; undefined
     1538:	02000006 	.inst	0x02000006 ; undefined
-    153c:	9d176891 	.inst	0x9d176891 ; undefined
+    153c:	a7176891 	.inst	0xa7176891 ; undefined
     1540:	02000005 	.inst	0x02000005 ; undefined
     1544:	06791154 	.inst	0x06791154 ; undefined
     1548:	91020000 	add	x0, x0, #0x80
-    154c:	05181760 	mov	z0.b, p8/z, #-69
+    154c:	05221760 	ext	z0.b, z0.b, z27.b, #21
     1550:	59020000 	stlurh	w0, [x0, #32]
     1554:	00057b0d 	.inst	0x00057b0d ; undefined
     1558:	78910200 	ldursh	x0, [x16, #-240]
-    155c:	00046317 	.inst	0x00046317 ; undefined
+    155c:	00046d17 	.inst	0x00046d17 ; undefined
     1560:	0d5a0200 	.inst	0x0d5a0200 ; undefined
     1564:	00000091 	.inst	0x00000091 ; undefined
     1568:	17769102 	b	fffffffffdda5970 <init_sp+0x7ffd5a5970>
-    156c:	0000043c 	.inst	0x0000043c ; undefined
+    156c:	00000446 	.inst	0x00000446 ; undefined
     1570:	910d5b02 	add	x2, x24, #0x356
     1574:	02000000 	.inst	0x02000000 ; undefined
     1578:	72165e91 	ands	w17, w20, #0xfffffc03
@@ -19691,7 +19691,7 @@ Disassembly of section .debug_info:
     15b0:	fd081000 	str	d0, [x0, #4128]
     15b4:	10000003 	adr	x3, 15b4 <__bss_size+0x15a2>
     15b8:	00047b08 	.inst	0x00047b08 ; undefined
-    15bc:	052c1800 	ext	z0.b, z0.b, z0.b, #102
+    15bc:	05361800 	ext	z0.b, z0.b, z0.b, #182
     15c0:	2b020000 	adds	w0, w0, w2
     15c4:	0000b005 	.inst	0x0000b005 ; undefined
     15c8:	0826e000 	.inst	0x0826e000 ; undefined
@@ -19703,7 +19703,7 @@ Disassembly of section .debug_info:
     15e0:	02006176 	.inst	0x02006176 ; undefined
     15e4:	00661e2b 	.inst	0x00661e2b ; undefined
     15e8:	91030000 	add	x0, x0, #0xc0
-    15ec:	25157f98 	.inst	0x25157f98 ; undefined
+    15ec:	2f157f98 	.inst	0x2f157f98 ; undefined
     15f0:	02000005 	.inst	0x02000005 ; undefined
     15f4:	0066292b 	.inst	0x0066292b ; undefined
     15f8:	91030000 	add	x0, x0, #0xc0
@@ -19711,11 +19711,11 @@ Disassembly of section .debug_info:
     1600:	02006e69 	.inst	0x02006e69 ; undefined
     1604:	057b392b 	.inst	0x057b392b ; undefined
     1608:	91030000 	add	x0, x0, #0xc0
-    160c:	00157f88 	.inst	0x00157f88 ; undefined
+    160c:	0a157f88 	and	w8, w28, w21, lsl #31
     1610:	02000005 	.inst	0x02000005 ; undefined
     1614:	0066452b 	.inst	0x0066452b ; undefined
     1618:	91030000 	add	x0, x0, #0xc0
-    161c:	ab157f80 	adds	x0, x28, x21, lsl #31
+    161c:	b5157f80 	cbnz	x0, 2c60c <__bss_size+0x2c5fa>
     1620:	02000004 	.inst	0x02000004 ; undefined
     1624:	0487552b 	mla	z11.s, p5/m, z9.s, z7.s
     1628:	91030000 	add	x0, x0, #0xc0
@@ -19733,7 +19733,7 @@ Disassembly of section .debug_info:
     1658:	02007216 	.inst	0x02007216 ; undefined
     165c:	00b00930 	.inst	0x00b00930 ; undefined
     1660:	91020000 	add	x0, x0, #0x80
-    1664:	05961764 	mov	z4.s, p6/z, #-69
+    1664:	05a01764 	.inst	0x05a01764 ; undefined
     1668:	31020000 	adds	w0, w0, #0x80
     166c:	0000660c 	.inst	0x0000660c ; undefined
     1670:	68910200 	stgp	x0, x0, [x16], #544
@@ -19776,7 +19776,7 @@ Disassembly of section .debug_info:
     1704:	0000b02d 	.inst	0x0000b02d ; undefined
     1708:	b4910300 	cbz	x0, fffffffffff23768 <init_sp+0x7fff723768>
     170c:	1800007f 	ldr	wzr, 1718 <__bss_size+0x1706>
-    1710:	000004e7 	.inst	0x000004e7 ; undefined
+    1710:	000004f1 	.inst	0x000004f1 ; undefined
     1714:	b0051a02 	adrp	x2, a342000 <__bss_size+0xa341fee>
     1718:	68000000 	.inst	0x68000000 ; undefined
     171c:	80000826 	.inst	0x80000826 ; undefined
@@ -19784,15 +19784,15 @@ Disassembly of section .debug_info:
     1724:	00000000 	.inst	0x00000000 ; undefined
     1728:	01000000 	.inst	0x01000000 ; undefined
     172c:	0008129c 	.inst	0x0008129c ; undefined
-    1730:	03ad1500 	.inst	0x03ad1500 ; undefined
+    1730:	03b71500 	.inst	0x03b71500 ; undefined
     1734:	1a020000 	adc	w0, w0, w2
     1738:	00057b1b 	.inst	0x00057b1b ; undefined
     173c:	68910200 	stgp	x0, x0, [x16], #544
-    1740:	00049017 	.inst	0x00049017 ; undefined
+    1740:	00049a17 	.inst	0x00049a17 ; undefined
     1744:	111c0200 	add	w0, w16, #0x700
     1748:	00000673 	.inst	0x00000673 ; undefined
     174c:	00789102 	.inst	0x00789102 ; undefined
-    1750:	00042d1d 	.inst	0x00042d1d ; undefined
+    1750:	0004371d 	.inst	0x0004371d ; undefined
     1754:	16260100 	b	fffffffff8981b54 <init_sp+0x7ff8181b54>
     1758:	00000066 	.inst	0x00000066 ; undefined
     175c:	000825f0 	.inst	0x000825f0 ; undefined
@@ -19816,7 +19816,7 @@ Disassembly of section .debug_info:
     17a4:	0c280100 	.inst	0x0c280100 ; undefined
     17a8:	00000079 	.inst	0x00000079 ; undefined
     17ac:	00709102 	.inst	0x00709102 ; undefined
-    17b0:	040f1d00 	.inst	0x040f1d00 ; undefined
+    17b0:	04191d00 	eor	z0.b, p7/m, z0.b, z8.b
     17b4:	1a010000 	adc	w0, w0, w1
     17b8:	00007917 	.inst	0x00007917 ; undefined
     17bc:	0825d000 	.inst	0x0825d000 ; undefined
@@ -19828,8 +19828,8 @@ Disassembly of section .debug_info:
     17d4:	01007070 	.inst	0x01007070 ; undefined
     17d8:	04b12c1a 	.inst	0x04b12c1a ; undefined
     17dc:	91020000 	add	x0, x0, #0x80
-    17e0:	f81e0078 	stur	x24, [x3, #-32]
-    17e4:	01000003 	.inst	0x01000003 ; undefined
+    17e0:	021e0078 	.inst	0x021e0078 ; undefined
+    17e4:	01000004 	.inst	0x01000004 ; undefined
     17e8:	00791715 	.inst	0x00791715 ; undefined
     17ec:	259c0000 	cmpge	p0.s, p0/z, z0.s, #-4
     17f0:	ff800008 	.inst	0xff800008 ; undefined
@@ -19843,39 +19843,39 @@ Disassembly of section .debug_info:
     1810:	00000202 	.inst	0x00000202 ; undefined
     1814:	06e90004 	.inst	0x06e90004 ; undefined
     1818:	01080000 	.inst	0x01080000 ; undefined
-    181c:	00000025 	.inst	0x00000025 ; undefined
-    1820:	0005e50c 	.inst	0x0005e50c ; undefined
-    1824:	00031600 	.inst	0x00031600 ; undefined
+    181c:	00000000 	.inst	0x00000000 ; undefined
+    1820:	0005ef0c 	.inst	0x0005ef0c ; undefined
+    1824:	00031d00 	.inst	0x00031d00 ; undefined
     1828:	082b4c00 	.inst	0x082b4c00 ; undefined
     182c:	ffff8000 	.inst	0xffff8000 ; undefined
     1830:	0002b4ff 	.inst	0x0002b4ff ; undefined
     1834:	00000000 	.inst	0x00000000 ; undefined
     1838:	000a3700 	.inst	0x000a3700 ; undefined
-    183c:	06220200 	.inst	0x06220200 ; undefined
+    183c:	062c0200 	.inst	0x062c0200 ; undefined
     1840:	28020000 	stnp	w0, w0, [x0, #16]
     1844:	0000391b 	.inst	0x0000391b ; undefined
-    1848:	06010300 	.inst	0x06010300 ; undefined
+    1848:	060b0300 	.inst	0x060b0300 ; undefined
     184c:	03200000 	.inst	0x03200000 ; undefined
     1850:	00007800 	.inst	0x00007800 ; undefined
-    1854:	05dd0400 	mov	z0.d, p13/z, #32
+    1854:	05e70400 	.inst	0x05e70400 ; undefined
     1858:	00780000 	.inst	0x00780000 ; undefined
     185c:	04000000 	add	z0.b, p0/m, z0.b, z0.b
-    1860:	000005ee 	.inst	0x000005ee ; undefined
+    1860:	000005f8 	.inst	0x000005f8 ; undefined
     1864:	00000078 	.inst	0x00000078 ; undefined
-    1868:	06190408 	.inst	0x06190408 ; undefined
+    1868:	06230408 	.inst	0x06230408 ; undefined
     186c:	00780000 	.inst	0x00780000 ; undefined
     1870:	04100000 	mul	z0.b, p0/m, z0.b, z0.b
-    1874:	00000631 	.inst	0x00000631 ; undefined
+    1874:	0000063b 	.inst	0x0000063b ; undefined
     1878:	0000007a 	.inst	0x0000007a ; undefined
-    187c:	05f70418 	.inst	0x05f70418 ; undefined
+    187c:	06010418 	.inst	0x06010418 ; undefined
     1880:	007a0000 	.inst	0x007a0000 ; undefined
     1884:	001c0000 	.inst	0x001c0000 ; undefined
     1888:	04060805 	.inst	0x04060805 ; undefined
     188c:	746e6905 	.inst	0x746e6905 ; undefined
-    1890:	06030200 	.inst	0x06030200 ; undefined
+    1890:	060d0200 	.inst	0x060d0200 ; undefined
     1894:	63020000 	.inst	0x63020000 ; undefined
     1898:	00002d18 	.inst	0x00002d18 ; undefined
-    189c:	07f70700 	.inst	0x07f70700 ; undefined
+    189c:	08010700 	stxrb	w1, w0, [x24]
     18a0:	2b010000 	adds	w0, w0, w1
     18a4:	082d3806 	.inst	0x082d3806 ; undefined
     18a8:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -19883,11 +19883,11 @@ Disassembly of section .debug_info:
     18b0:	00000000 	.inst	0x00000000 ; undefined
     18b4:	ec9c0100 	.inst	0xec9c0100 ; undefined
     18b8:	08000000 	stxrb	w0, w0, [x0]
-    18bc:	0000060b 	.inst	0x0000060b ; undefined
+    18bc:	00000615 	.inst	0x00000615 ; undefined
     18c0:	ec192b01 	.inst	0xec192b01 ; undefined
     18c4:	03000000 	.inst	0x03000000 ; undefined
     18c8:	087ea891 	.inst	0x087ea891 ; undefined
-    18cc:	000005cb 	.inst	0x000005cb ; undefined
+    18cc:	000005d5 	.inst	0x000005d5 ; undefined
     18d0:	7a232b01 	.inst	0x7a232b01 ; undefined
     18d4:	03000000 	.inst	0x03000000 ; undefined
     18d8:	097ea491 	.inst	0x097ea491 ; undefined
@@ -19901,9 +19901,9 @@ Disassembly of section .debug_info:
     18f8:	007eb091 	.inst	0x007eb091 ; undefined
     18fc:	00f9080c 	.inst	0x00f9080c ; undefined
     1900:	010d0000 	.inst	0x010d0000 ; undefined
-    1904:	00018108 	.inst	0x00018108 ; undefined
+    1904:	00018908 	.inst	0x00018908 ; undefined
     1908:	00f20e00 	.inst	0x00f20e00 ; undefined
-    190c:	d00f0000 	adrp	x0, 1e003000 <__bss_size+0x1e002fee>
+    190c:	da0f0000 	sbc	x0, x0, x15
     1910:	01000005 	.inst	0x01000005 ; undefined
     1914:	2c74061f 	ldnp	s31, s1, [x16, #-96]
     1918:	ff800008 	.inst	0xff800008 ; undefined
@@ -19915,7 +19915,7 @@ Disassembly of section .debug_info:
     1930:	191f0100 	stlurb	w0, [x8, #-16]
     1934:	0000016f 	.inst	0x0000016f ; undefined
     1938:	7ea89103 	.inst	0x7ea89103 ; undefined
-    193c:	0005cb08 	.inst	0x0005cb08 ; undefined
+    193c:	0005d508 	.inst	0x0005d508 ; undefined
     1940:	221f0100 	.inst	0x221f0100 ; undefined
     1944:	0000007a 	.inst	0x0000007a ; undefined
     1948:	7ea49103 	.inst	0x7ea49103 ; undefined
@@ -19933,7 +19933,7 @@ Disassembly of section .debug_info:
     1978:	b0910300 	adrp	x0, ffffffff22062000 <init_sp+0x7f21862000>
     197c:	0c00007e 	st4	{v30.8b, v31.8b, v0.8b, v1.8b}, [x3]
     1980:	0000f208 	.inst	0x0000f208 ; undefined
-    1984:	05d60f00 	mov	z0.d, p6/z, #120
+    1984:	05e00f00 	.inst	0x05e00f00 ; undefined
     1988:	17010000 	b	fffffffffc041988 <init_sp+0x7ffb841988>
     198c:	082bc406 	.inst	0x082bc406 ; undefined
     1990:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -19949,7 +19949,7 @@ Disassembly of section .debug_info:
     19b8:	810d1901 	.inst	0x810d1901 ; undefined
     19bc:	03000000 	.inst	0x03000000 ; undefined
     19c0:	007ea091 	.inst	0x007ea091 ; undefined
-    19c4:	00061011 	.inst	0x00061011 ; undefined
+    19c4:	00061a11 	.inst	0x00061a11 ; undefined
     19c8:	0d070100 	.inst	0x0d070100 ; undefined
     19cc:	00082b4c 	.inst	0x00082b4c ; undefined
     19d0:	ffffff80 	.inst	0xffffff80 ; undefined
@@ -19972,37 +19972,37 @@ Disassembly of section .debug_info:
     1a14:	04470000 	.inst	0x04470000 ; undefined
     1a18:	00040000 	.inst	0x00040000 ; undefined
     1a1c:	000007e9 	.inst	0x000007e9 ; undefined
-    1a20:	00250108 	.inst	0x00250108 ; NYI
-    1a24:	4a0c0000 	eor	w0, w0, w12
-    1a28:	16000006 	b	fffffffff8001a40 <init_sp+0x7ff7801a40>
+    1a20:	00000108 	.inst	0x00000108 ; undefined
+    1a24:	540c0000 	b.eq	19a24 <__bss_size+0x19a12>  // b.none
+    1a28:	1d000006 	.inst	0x1d000006 ; undefined
     1a2c:	00000003 	.inst	0x00000003 ; undefined
     1a30:	8000082e 	.inst	0x8000082e ; undefined
     1a34:	c4ffffff 	ldff1h	{z31.d}, p7/z, [sp, z31.d, lsl #1]
     1a38:	00000011 	.inst	0x00000011 ; undefined
     1a3c:	14000000 	b	1a3c <__bss_size+0x1a2a>
     1a40:	0200000b 	.inst	0x0200000b ; undefined
-    1a44:	00000622 	.inst	0x00000622 ; undefined
+    1a44:	0000062c 	.inst	0x0000062c ; undefined
     1a48:	391b2802 	strb	w2, [x0, #1738]
     1a4c:	03000000 	.inst	0x03000000 ; undefined
-    1a50:	00000601 	.inst	0x00000601 ; undefined
+    1a50:	0000060b 	.inst	0x0000060b ; undefined
     1a54:	78000320 	sturh	w0, [x25]
     1a58:	04000000 	add	z0.b, p0/m, z0.b, z0.b
-    1a5c:	000005dd 	.inst	0x000005dd ; undefined
+    1a5c:	000005e7 	.inst	0x000005e7 ; undefined
     1a60:	00000078 	.inst	0x00000078 ; undefined
-    1a64:	05ee0400 	.inst	0x05ee0400 ; undefined
+    1a64:	05f80400 	.inst	0x05f80400 ; undefined
     1a68:	00780000 	.inst	0x00780000 ; undefined
     1a6c:	04080000 	smax	z0.b, p0/m, z0.b, z0.b
-    1a70:	00000619 	.inst	0x00000619 ; undefined
+    1a70:	00000623 	.inst	0x00000623 ; undefined
     1a74:	00000078 	.inst	0x00000078 ; undefined
-    1a78:	06310410 	.inst	0x06310410 ; undefined
+    1a78:	063b0410 	.inst	0x063b0410 ; undefined
     1a7c:	007a0000 	.inst	0x007a0000 ; undefined
     1a80:	04180000 	orr	z0.b, p0/m, z0.b, z0.b
-    1a84:	000005f7 	.inst	0x000005f7 ; undefined
+    1a84:	00000601 	.inst	0x00000601 ; undefined
     1a88:	0000007a 	.inst	0x0000007a ; undefined
     1a8c:	0805001c 	stxrb	w5, w28, [x0]
     1a90:	69050406 	stgp	x6, x1, [x0, #160]
     1a94:	0200746e 	.inst	0x0200746e ; undefined
-    1a98:	00000603 	.inst	0x00000603 ; undefined
+    1a98:	0000060d 	.inst	0x0000060d ; undefined
     1a9c:	2d186302 	stp	s2, s24, [x24, #192]
     1aa0:	07000000 	.inst	0x07000000 ; undefined
     1aa4:	000000b0 	.inst	0x000000b0 ; undefined
@@ -20010,17 +20010,17 @@ Disassembly of section .debug_info:
     1aac:	0000a208 	.inst	0x0000a208 ; undefined
     1ab0:	09001800 	.inst	0x09001800 ; undefined
     1ab4:	0000008d 	.inst	0x0000008d ; undefined
-    1ab8:	9707080a 	bl	fffffffffc1c3ae0 <init_sp+0x7ffb9c3ae0>
+    1ab8:	9f07080a 	.inst	0x9f07080a ; undefined
     1abc:	0a000001 	and	w1, w0, w0
-    1ac0:	01810801 	.inst	0x01810801 ; undefined
+    1ac0:	01890801 	.inst	0x01890801 ; undefined
     1ac4:	a9090000 	stp	x0, x0, [x0, #144]
     1ac8:	0b000000 	add	w0, w0, w0
-    1acc:	0000065a 	.inst	0x0000065a ; undefined
+    1acc:	00000664 	.inst	0x00000664 ; undefined
     1ad0:	9d130c01 	.inst	0x9d130c01 ; undefined
     1ad4:	09000000 	.inst	0x09000000 ; undefined
     1ad8:	08749803 	.inst	0x08749803 ; undefined
     1adc:	ffff8000 	.inst	0xffff8000 ; undefined
-    1ae0:	06840cff 	.inst	0x06840cff ; undefined
+    1ae0:	068e0cff 	.inst	0x068e0cff ; undefined
     1ae4:	31010000 	adds	w0, w0, #0x40
     1ae8:	007a0501 	.inst	0x007a0501 ; undefined
     1aec:	3d180000 	str	b0, [x0, #1536]
@@ -20036,32 +20036,32 @@ Disassembly of section .debug_info:
     1b14:	0100750d 	.inst	0x0100750d ; undefined
     1b18:	a2280131 	.inst	0xa2280131 ; undefined
     1b1c:	02000000 	.inst	0x02000000 ; undefined
-    1b20:	7f0e5091 	.inst	0x7f0e5091 ; undefined
+    1b20:	890e5091 	.inst	0x890e5091 ; undefined
     1b24:	01000006 	.inst	0x01000006 ; undefined
     1b28:	7a2f0131 	.inst	0x7a2f0131 ; undefined
     1b2c:	02000000 	.inst	0x02000000 ; undefined
-    1b30:	520e4c91 	eor	w17, w4, #0xfffc003f
+    1b30:	5c0e4c91 	ldr	d17, 1e4c0 <__bss_size+0x1e4ae>
     1b34:	01000006 	.inst	0x01000006 ; undefined
     1b38:	7a390131 	.inst	0x7a390131 ; undefined
     1b3c:	02000000 	.inst	0x02000000 ; undefined
-    1b40:	bf0e4891 	.inst	0xbf0e4891 ; undefined
+    1b40:	c90e4891 	.inst	0xc90e4891 ; undefined
     1b44:	01000006 	.inst	0x01000006 ; undefined
     1b48:	7a0e0132 	sbcs	w18, w9, w14
     1b4c:	02000000 	.inst	0x02000000 ; undefined
-    1b50:	6b0e4491 	subs	w17, w4, w14, lsl #17
+    1b50:	750e4491 	.inst	0x750e4491 ; undefined
     1b54:	01000006 	.inst	0x01000006 ; undefined
     1b58:	7a1a0132 	sbcs	w18, w9, w26
     1b5c:	02000000 	.inst	0x02000000 ; undefined
-    1b60:	660e4091 	.inst	0x660e4091 ; undefined
+    1b60:	700e4091 	adr	x17, 1e373 <__bss_size+0x1e361>
     1b64:	01000006 	.inst	0x01000006 ; undefined
     1b68:	a9280132 	stp	x18, x0, [x9, #-384]
     1b6c:	03000000 	.inst	0x03000000 ; undefined
     1b70:	0e7fbf91 	addp	v17.4h, v28.4h, v31.4h
-    1b74:	00000678 	.inst	0x00000678 ; undefined
+    1b74:	00000682 	.inst	0x00000682 ; undefined
     1b78:	32013201 	orr	w1, w16, #0x80000fff
     1b7c:	0000007a 	.inst	0x0000007a ; undefined
     1b80:	7fb89103 	fmulx	s3, s8, v24.s[1]
-    1b84:	00069f0f 	.inst	0x00069f0f ; undefined
+    1b84:	0006a90f 	.inst	0x0006a90f ; undefined
     1b88:	013e0100 	.inst	0x013e0100 ; undefined
     1b8c:	00007a09 	.inst	0x00007a09 ; undefined
     1b90:	68910200 	stgp	x0, x0, [x16], #544
@@ -20072,7 +20072,7 @@ Disassembly of section .debug_info:
     1ba4:	01400100 	.inst	0x01400100 ; undefined
     1ba8:	00007a09 	.inst	0x00007a09 ; undefined
     1bac:	74910200 	.inst	0x74910200 ; undefined
-    1bb0:	0006440f 	.inst	0x0006440f ; undefined
+    1bb0:	00064e0f 	.inst	0x00064e0f ; undefined
     1bb4:	01720100 	.inst	0x01720100 ; undefined
     1bb8:	00007a06 	.inst	0x00007a06 ; undefined
     1bbc:	70910200 	adr	x0, fffffffffff23bff <init_sp+0x7fff723bff>
@@ -20100,7 +20100,7 @@ Disassembly of section .debug_info:
     1c14:	00639102 	.inst	0x00639102 ; undefined
     1c18:	a9081300 	stp	x0, x4, [x24, #128]
     1c1c:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-    1c20:	00000693 	.inst	0x00000693 ; undefined
+    1c20:	0000069d 	.inst	0x0000069d ; undefined
     1c24:	05011201 	orr	z1.s, z1.s, #0xc0007fff
     1c28:	0000007a 	.inst	0x0000007a ; undefined
     1c2c:	00083b78 	.inst	0x00083b78 ; undefined
@@ -20116,11 +20116,11 @@ Disassembly of section .debug_info:
     1c54:	01120100 	.inst	0x01120100 ; undefined
     1c58:	00020323 	.inst	0x00020323 ; undefined
     1c5c:	60910200 	.inst	0x60910200 ; undefined
-    1c60:	0006bf0e 	.inst	0x0006bf0e ; undefined
+    1c60:	0006c90e 	.inst	0x0006c90e ; undefined
     1c64:	01120100 	.inst	0x01120100 ; undefined
     1c68:	00007a2a 	.inst	0x00007a2a ; undefined
     1c6c:	5c910200 	ldr	d0, fffffffffff23cac <init_sp+0x7fff723cac>
-    1c70:	00066b0e 	.inst	0x00066b0e ; undefined
+    1c70:	0006750e 	.inst	0x0006750e ; undefined
     1c74:	01120100 	.inst	0x01120100 ; undefined
     1c78:	00007a36 	.inst	0x00007a36 ; undefined
     1c7c:	58910200 	ldr	x0, fffffffffff23cbc <init_sp+0x7fff723cbc>
@@ -20136,7 +20136,7 @@ Disassembly of section .debug_info:
     1ca4:	030b0117 	.inst	0x030b0117 ; undefined
     1ca8:	02000002 	.inst	0x02000002 ; undefined
     1cac:	14007091 	b	1def0 <__bss_size+0x1dede>
-    1cb0:	000006b5 	.inst	0x000006b5 ; undefined
+    1cb0:	000006bf 	.inst	0x000006bf ; undefined
     1cb4:	7a05fd01 	.inst	0x7a05fd01 ; undefined
     1cb8:	98000000 	ldrsw	x0, 1cb8 <__bss_size+0x1ca6>
     1cbc:	8000083a 	.inst	0x8000083a ; undefined
@@ -20151,18 +20151,18 @@ Disassembly of section .debug_info:
     1ce0:	01006315 	.inst	0x01006315 ; undefined
     1ce4:	00a920fd 	.inst	0x00a920fd ; undefined
     1ce8:	91020000 	add	x0, x0, #0x80
-    1cec:	06bf1667 	.inst	0x06bf1667 ; undefined
+    1cec:	06c91667 	.inst	0x06c91667 ; undefined
     1cf0:	fd010000 	str	d0, [x0, #512]
     1cf4:	00007a27 	.inst	0x00007a27 ; undefined
     1cf8:	60910200 	.inst	0x60910200 ; undefined
-    1cfc:	00066b16 	.inst	0x00066b16 ; undefined
+    1cfc:	00067516 	.inst	0x00067516 ; undefined
     1d00:	33fd0100 	.inst	0x33fd0100 ; undefined
     1d04:	0000007a 	.inst	0x0000007a ; undefined
     1d08:	175c9102 	b	fffffffffd726110 <init_sp+0x7ffcf26110>
     1d0c:	ff010069 	.inst	0xff010069 ; undefined
     1d10:	00007a09 	.inst	0x00007a09 ; undefined
     1d14:	7c910200 	.inst	0x7c910200 ; undefined
-    1d18:	063b1800 	.inst	0x063b1800 ; undefined
+    1d18:	06451800 	.inst	0x06451800 ; undefined
     1d1c:	12010000 	and	w0, w0, #0x80000000
     1d20:	082e0006 	.inst	0x082e0006 ; undefined
     1d24:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -20170,7 +20170,7 @@ Disassembly of section .debug_info:
     1d2c:	00000000 	.inst	0x00000000 ; undefined
     1d30:	179c0100 	b	fffffffffe702130 <init_sp+0x7ffdf02130>
     1d34:	16000004 	b	fffffffff8001d44 <init_sp+0x7ff7801d44>
-    1d38:	00000612 	.inst	0x00000612 ; undefined
+    1d38:	0000061c 	.inst	0x0000061c ; undefined
     1d3c:	2c161201 	stnp	s1, s4, [x16, #176]
     1d40:	03000004 	.inst	0x03000004 ; undefined
     1d44:	1577c891 	b	5df3f88 <__bss_size+0x5df3f76>
@@ -20199,30 +20199,30 @@ Disassembly of section .debug_info:
     1da0:	006d756e 	.inst	0x006d756e ; undefined
     1da4:	430e2601 	.inst	0x430e2601 ; undefined
     1da8:	02000004 	.inst	0x02000004 ; undefined
-    1dac:	ac0b7891 	stnp	q17, q30, [x4, #352]
+    1dac:	b60b7891 	tbz	x17, #33, 8cbc <__bss_size+0x8caa>
     1db0:	01000006 	.inst	0x01000006 ; undefined
     1db4:	007a0928 	.inst	0x007a0928 ; undefined
     1db8:	91020000 	add	x0, x0, #0x80
-    1dbc:	06520b74 	.inst	0x06520b74 ; undefined
+    1dbc:	065c0b74 	.inst	0x065c0b74 ; undefined
     1dc0:	29010000 	stp	w0, w0, [x0, #8]
     1dc4:	00007a09 	.inst	0x00007a09 ; undefined
     1dc8:	70910200 	adr	x0, fffffffffff23e0b <init_sp+0x7fff723e0b>
-    1dcc:	00068d0b 	.inst	0x00068d0b ; undefined
+    1dcc:	0006970b 	.inst	0x0006970b ; undefined
     1dd0:	092a0100 	.inst	0x092a0100 ; undefined
     1dd4:	0000007a 	.inst	0x0000007a ; undefined
     1dd8:	0b6c9102 	.inst	0x0b6c9102 ; undefined
-    1ddc:	00000673 	.inst	0x00000673 ; undefined
+    1ddc:	0000067d 	.inst	0x0000067d ; undefined
     1de0:	7a092b01 	.inst	0x7a092b01 ; undefined
     1de4:	02000000 	.inst	0x02000000 ; undefined
-    1de8:	6b0b6891 	subs	w17, w4, w11, lsl #26
+    1de8:	750b6891 	.inst	0x750b6891 ; undefined
     1dec:	01000006 	.inst	0x01000006 ; undefined
     1df0:	007a092c 	.inst	0x007a092c ; undefined
     1df4:	91020000 	add	x0, x0, #0x80
-    1df8:	06660b64 	.inst	0x06660b64 ; undefined
+    1df8:	06700b64 	.inst	0x06700b64 ; undefined
     1dfc:	2d010000 	stp	s0, s0, [x0, #8]
     1e00:	0000a90a 	.inst	0x0000a90a ; undefined
     1e04:	63910200 	.inst	0x63910200 ; undefined
-    1e08:	0006bf0b 	.inst	0x0006bf0b ; undefined
+    1e08:	0006c90b 	.inst	0x0006c90b ; undefined
     1e0c:	092f0100 	.inst	0x092f0100 ; undefined
     1e10:	0000007a 	.inst	0x0000007a ; undefined
     1e14:	19549102 	ldapurb	w2, [x8, #-183]
@@ -20243,42 +20243,42 @@ Disassembly of section .debug_info:
     1e50:	00a21c00 	.inst	0x00a21c00 ; undefined
     1e54:	03e70000 	.inst	0x03e70000 ; undefined
     1e58:	05080a00 	.inst	0x05080a00 ; undefined
-    1e5c:	000002bd 	.inst	0x000002bd ; undefined
+    1e5c:	000002df 	.inst	0x000002df ; undefined
     1e60:	00034f00 	.inst	0x00034f00 ; undefined
     1e64:	77000400 	.inst	0x77000400 ; undefined
     1e68:	08000009 	stxrb	w0, w9, [x0]
-    1e6c:	00002501 	.inst	0x00002501 ; undefined
-    1e70:	06c60c00 	.inst	0x06c60c00 ; undefined
-    1e74:	03160000 	.inst	0x03160000 ; undefined
+    1e6c:	00000001 	.inst	0x00000001 ; undefined
+    1e70:	06d00c00 	.inst	0x06d00c00 ; undefined
+    1e74:	031d0000 	.inst	0x031d0000 ; undefined
     1e78:	3fc40000 	.inst	0x3fc40000 ; undefined
     1e7c:	ff800008 	.inst	0xff800008 ; undefined
     1e80:	068cffff 	.inst	0x068cffff ; undefined
     1e84:	00000000 	.inst	0x00000000 ; undefined
     1e88:	102b0000 	adr	x0, 57e88 <__bss_size+0x57e76>
     1e8c:	01020000 	.inst	0x01020000 ; undefined
-    1e90:	00017808 	.inst	0x00017808 ; undefined
+    1e90:	00018008 	.inst	0x00018008 ; undefined
     1e94:	07020200 	.inst	0x07020200 ; undefined
-    1e98:	0000010a 	.inst	0x0000010a ; undefined
-    1e9c:	00029903 	.inst	0x00029903 ; undefined
+    1e98:	00000119 	.inst	0x00000119 ; undefined
+    1e9c:	0002bb03 	.inst	0x0002bb03 ; undefined
     1ea0:	160b0200 	b	fffffffff82c26a0 <init_sp+0x7ff7ac26a0>
     1ea4:	00000047 	.inst	0x00000047 ; undefined
-    1ea8:	9c070402 	ldr	q2, ff28 <__bss_size+0xff16>
+    1ea8:	a4070402 	ld1rqb	{z2.b}, p1/z, [x0, x7]
     1eac:	03000001 	.inst	0x03000001 ; undefined
-    1eb0:	000001f0 	.inst	0x000001f0 ; undefined
+    1eb0:	000001f8 	.inst	0x000001f8 ; undefined
     1eb4:	5a170c02 	.inst	0x5a170c02 ; undefined
     1eb8:	02000000 	.inst	0x02000000 ; undefined
-    1ebc:	01970708 	.inst	0x01970708 ; undefined
-    1ec0:	ef030000 	.inst	0xef030000 ; undefined
+    1ebc:	019f0708 	.inst	0x019f0708 ; undefined
+    1ec0:	f6030000 	.inst	0xf6030000 ; undefined
     1ec4:	02000002 	.inst	0x02000002 ; undefined
     1ec8:	004e100d 	.inst	0x004e100d ; undefined
     1ecc:	08020000 	stxrb	w2, w0, [x0]
-    1ed0:	0002bd05 	.inst	0x0002bd05 ; undefined
+    1ed0:	0002df05 	.inst	0x0002df05 ; undefined
     1ed4:	05040400 	.inst	0x05040400 ; undefined
     1ed8:	00746e69 	.inst	0x00746e69 ; undefined
-    1edc:	8f050202 	.inst	0x8f050202 ; undefined
+    1edc:	b1050202 	adds	x2, x16, #0x140
     1ee0:	02000002 	.inst	0x02000002 ; undefined
-    1ee4:	01810801 	.inst	0x01810801 ; undefined
-    1ee8:	10050000 	adr	x0, bee8 <__bss_size+0xbed6>
+    1ee4:	01890801 	.inst	0x01890801 ; undefined
+    1ee8:	18050000 	ldr	w0, bee8 <__bss_size+0xbed6>
     1eec:	20000002 	.inst	0x20000002 ; undefined
     1ef0:	08130301 	stxrb	w19, w1, [x24]
     1ef4:	000000e7 	.inst	0x000000e7 ; undefined
@@ -20291,7 +20291,7 @@ Disassembly of section .debug_info:
     1f10:	00726c65 	.inst	0x00726c65 ; undefined
     1f14:	610d1703 	.inst	0x610d1703 ; undefined
     1f18:	00000000 	.inst	0x00000000 ; undefined
-    1f1c:	02a80801 	.inst	0x02a80801 ; undefined
+    1f1c:	02ca0801 	.inst	0x02ca0801 ; undefined
     1f20:	18030000 	ldr	w0, 7f20 <__bss_size+0x7f0e>
     1f24:	0000610d 	.inst	0x0000610d ; undefined
     1f28:	07010800 	.inst	0x07010800 ; undefined
@@ -20309,87 +20309,87 @@ Disassembly of section .debug_info:
     1f58:	00008209 	.inst	0x00008209 ; undefined
     1f5c:	00010200 	.inst	0x00010200 ; undefined
     1f60:	0c000b00 	st4	{v0.2s-v3.2s}, [x24]
-    1f64:	000001e2 	.inst	0x000001e2 ; undefined
+    1f64:	000001ea 	.inst	0x000001ea ; undefined
     1f68:	f70d3604 	.inst	0xf70d3604 ; undefined
     1f6c:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-    1f70:	000004af 	.inst	0x000004af ; undefined
+    1f70:	000004b9 	.inst	0x000004b9 ; undefined
     1f74:	f70d3704 	.inst	0xf70d3704 ; undefined
     1f78:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-    1f7c:	0000016d 	.inst	0x0000016d ; undefined
+    1f7c:	00000175 	.inst	0x00000175 ; undefined
     1f80:	61104f04 	.inst	0x61104f04 ; undefined
     1f84:	0d000000 	st1	{v0.b}[0], [x0]
     1f88:	05160510 	mov	z16.b, p6/z, #40
     1f8c:	0000014a 	.inst	0x0000014a ; undefined
-    1f90:	0001cd0e 	.inst	0x0001cd0e ; undefined
+    1f90:	0001d50e 	.inst	0x0001d50e ; undefined
     1f94:	05160500 	mov	z0.b, p6/z, #40
     1f98:	00000254 	.inst	0x00000254 ; undefined
-    1f9c:	01650e00 	.inst	0x01650e00 ; undefined
+    1f9c:	01520e00 	.inst	0x01520e00 ; undefined
     1fa0:	16050000 	b	fffffffff8141fa0 <init_sp+0x7ff7941fa0>
     1fa4:	00025a05 	.inst	0x00025a05 ; undefined
     1fa8:	0f000800 	.inst	0x0f000800 ; undefined
     1fac:	00766e45 	.inst	0x00766e45 ; undefined
     1fb0:	13050198 	sbfiz	w24, w12, #27, #1
     1fb4:	00025408 	.inst	0x00025408 ; undefined
-    1fb8:	02780e00 	.inst	0x02780e00 ; undefined
+    1fb8:	029a0e00 	.inst	0x029a0e00 ; undefined
     1fbc:	15050000 	b	4141fbc <__bss_size+0x4141faa>
     1fc0:	00008916 	.inst	0x00008916 ; undefined
-    1fc4:	9f080000 	.inst	0x9f080000 ; undefined
+    1fc4:	c1080000 	.inst	0xc1080000 ; undefined
     1fc8:	05000002 	orr	z2.s, z2.s, #0x1
     1fcc:	01261516 	.inst	0x01261516 ; undefined
     1fd0:	01200000 	.inst	0x01200000 ; undefined
-    1fd4:	0000d808 	.inst	0x0000d808 ; undefined
+    1fd4:	0000de08 	.inst	0x0000de08 ; undefined
     1fd8:	0b170500 	add	w0, w8, w23, lsl #1
     1fdc:	0000003b 	.inst	0x0000003b ; undefined
-    1fe0:	af080130 	.inst	0xaf080130 ; undefined
+    1fe0:	d1080130 	sub	x16, x9, #0x200
     1fe4:	05000002 	orr	z2.s, z2.s, #0x1
     1fe8:	003b0b18 	.inst	0x003b0b18 ; NYI
     1fec:	01340000 	.inst	0x01340000 ; undefined
-    1ff0:	00078b08 	.inst	0x00078b08 ; undefined
+    1ff0:	00079508 	.inst	0x00079508 ; undefined
     1ff4:	0b190500 	add	w0, w8, w25, lsl #1
     1ff8:	0000003b 	.inst	0x0000003b ; undefined
-    1ffc:	4d080138 	.inst	0x4d080138 ; undefined
+    1ffc:	55080138 	.inst	0x55080138 ; undefined
     2000:	05000002 	orr	z2.s, z2.s, #0x1
     2004:	02840e1a 	.inst	0x02840e1a ; undefined
     2008:	01400000 	.inst	0x01400000 ; undefined
-    200c:	00024508 	.inst	0x00024508 ; undefined
+    200c:	00024d08 	.inst	0x00024d08 ; undefined
     2010:	0d1b0500 	.inst	0x0d1b0500 ; undefined
     2014:	00000061 	.inst	0x00000061 ; undefined
-    2018:	a9080148 	stp	x8, x0, [x10, #128]
+    2018:	b1080148 	adds	x8, x10, #0x200
     201c:	05000001 	orr	z1.s, z1.s, #0x1
     2020:	0260151c 	.inst	0x0260151c ; undefined
     2024:	01500000 	.inst	0x01500000 ; undefined
-    2028:	00027f08 	.inst	0x00027f08 ; undefined
+    2028:	0002a108 	.inst	0x0002a108 ; undefined
     202c:	0b1d0500 	add	w0, w8, w29, lsl #1
     2030:	0000003b 	.inst	0x0000003b ; undefined
-    2034:	e1080160 	.inst	0xe1080160 ; undefined
+    2034:	e8080160 	.inst	0xe8080160 ; undefined
     2038:	05000002 	orr	z2.s, z2.s, #0x1
     203c:	003b0b20 	.inst	0x003b0b20 ; NYI
     2040:	01640000 	.inst	0x01640000 ; undefined
-    2044:	00021a08 	.inst	0x00021a08 ; undefined
+    2044:	00022208 	.inst	0x00022208 ; undefined
     2048:	0b210500 	add	w0, w8, w1, uxtb #1
     204c:	0000003b 	.inst	0x0000003b ; undefined
-    2050:	f7080168 	.inst	0xf7080168 ; undefined
+    2050:	ff080168 	.inst	0xff080168 ; undefined
     2054:	05000001 	orr	z1.s, z1.s, #0x1
     2058:	003b0b22 	.inst	0x003b0b22 ; NYI
     205c:	016c0000 	.inst	0x016c0000 ; undefined
-    2060:	00022708 	.inst	0x00022708 ; undefined
+    2060:	00022f08 	.inst	0x00022f08 ; undefined
     2064:	0d230500 	.inst	0x0d230500 ; undefined
     2068:	00000061 	.inst	0x00000061 ; undefined
-    206c:	d5080170 	sys	#0, C0, C1, #3, x16
+    206c:	dd080170 	.inst	0xdd080170 ; undefined
     2070:	05000001 	orr	z1.s, z1.s, #0x1
     2074:	00610d24 	.inst	0x00610d24 ; undefined
     2078:	01780000 	.inst	0x01780000 ; undefined
-    207c:	00025708 	.inst	0x00025708 ; undefined
+    207c:	00025f08 	.inst	0x00025f08 ; undefined
     2080:	0d270500 	.inst	0x0d270500 ; undefined
     2084:	00000061 	.inst	0x00000061 ; undefined
-    2088:	bf080180 	.inst	0xbf080180 ; undefined
+    2088:	c7080180 	.inst	0xc7080180 ; undefined
     208c:	05000001 	orr	z1.s, z1.s, #0x1
     2090:	00610d28 	.inst	0x00610d28 ; undefined
     2094:	01880000 	.inst	0x01880000 ; undefined
-    2098:	00018608 	.inst	0x00018608 ; undefined
+    2098:	00018e08 	.inst	0x00018e08 ; undefined
     209c:	0b2b0500 	add	w0, w8, w11, uxtb #1
     20a0:	0000003b 	.inst	0x0000003b ; undefined
-    20a4:	8f080190 	.inst	0x8f080190 ; undefined
+    20a4:	97080190 	bl	fffffffffc2026e4 <init_sp+0x7ffba026e4>
     20a8:	05000001 	orr	z1.s, z1.s, #0x1
     20ac:	003b0b2c 	.inst	0x003b0b2c ; NYI
     20b0:	01940000 	.inst	0x01940000 ; undefined
@@ -20398,35 +20398,35 @@ Disassembly of section .debug_info:
     20bc:	00025408 	.inst	0x00025408 ; undefined
     20c0:	05100d00 	mov	z0.b, p0/z, #104
     20c4:	0284051c 	.inst	0x0284051c ; undefined
-    20c8:	cd0e0000 	.inst	0xcd0e0000 ; undefined
+    20c8:	d50e0000 	sys	#6, C0, C0, #0, x0
     20cc:	05000001 	orr	z1.s, z1.s, #0x1
     20d0:	0254051c 	.inst	0x0254051c ; undefined
     20d4:	0e000000 	tbl	v0.8b, {v0.16b}, v0.8b
-    20d8:	00000165 	.inst	0x00000165 ; undefined
+    20d8:	00000152 	.inst	0x00000152 ; undefined
     20dc:	5a051c05 	.inst	0x5a051c05 ; undefined
     20e0:	08000002 	stxrb	w0, w2, [x0]
     20e4:	61081000 	.inst	0x61081000 ; undefined
     20e8:	11000000 	add	w0, w0, #0x0
-    20ec:	000001e7 	.inst	0x000001e7 ; undefined
+    20ec:	000001ef 	.inst	0x000001ef ; undefined
     20f0:	012f0508 	.inst	0x012f0508 ; undefined
     20f4:	000002a5 	.inst	0x000002a5 ; undefined
-    20f8:	0002070e 	.inst	0x0002070e ; undefined
+    20f8:	00020f0e 	.inst	0x00020f0e ; undefined
     20fc:	012f0500 	.inst	0x012f0500 ; undefined
     2100:	00000254 	.inst	0x00000254 ; undefined
-    2104:	730c0000 	.inst	0x730c0000 ; undefined
+    2104:	7b0c0000 	.inst	0x7b0c0000 ; undefined
     2108:	05000001 	orr	z1.s, z1.s, #0x1
     210c:	02541430 	.inst	0x02541430 ; undefined
-    2110:	1d0c0000 	.inst	0x1d0c0000 ; undefined
+    2110:	2c0c0000 	stnp	s0, s0, [x0, #96]
     2114:	05000001 	orr	z1.s, z1.s, #0x1
     2118:	02541431 	.inst	0x02541431 ; undefined
     211c:	8a090000 	and	x0, x0, x9
     2120:	cd000002 	.inst	0xcd000002 ; undefined
     2124:	0a000002 	and	w2, w0, w0
     2128:	0000005a 	.inst	0x0000005a ; undefined
-    212c:	fb0c0001 	.inst	0xfb0c0001 ; undefined
-    2130:	05000000 	orr	z0.s, z0.s, #0x1
+    212c:	0a0c0001 	and	w1, w0, w12
+    2130:	05000001 	orr	z1.s, z1.s, #0x1
     2134:	02bd1832 	.inst	0x02bd1832 ; undefined
-    2138:	ce120000 	eor3	v0.16b, v0.16b, v18.16b, v0.16b
+    2138:	d8120000 	prfm	pldl1keep, 26138 <__bss_size+0x26126>
     213c:	01000006 	.inst	0x01000006 ; undefined
     2140:	3fec0616 	.inst	0x3fec0616 ; undefined
     2144:	ff800008 	.inst	0xff800008 ; undefined
@@ -20434,12 +20434,12 @@ Disassembly of section .debug_info:
     214c:	00000000 	.inst	0x00000000 ; undefined
     2150:	9c010000 	ldr	q0, 4150 <__bss_size+0x413e>
     2154:	00000338 	.inst	0x00000338 ; undefined
-    2158:	00046c13 	.inst	0x00046c13 ; undefined
+    2158:	00047613 	.inst	0x00047613 ; undefined
     215c:	10180100 	adr	x0, 3217c <__bss_size+0x3216a>
     2160:	00000074 	.inst	0x00000074 ; undefined
     2164:	0ee00309 	.inst	0x0ee00309 ; undefined
     2168:	ff800009 	.inst	0xff800009 ; undefined
-    216c:	4c13ffff 	.inst	0x4c13ffff ; undefined
+    216c:	5613ffff 	.inst	0x5613ffff ; undefined
     2170:	01000005 	.inst	0x01000005 ; undefined
     2174:	00741019 	.inst	0x00741019 ; undefined
     2178:	03090000 	.inst	0x03090000 ; undefined
@@ -20450,7 +20450,7 @@ Disassembly of section .debug_info:
     218c:	03090000 	.inst	0x03090000 ; undefined
     2190:	00090ee8 	.inst	0x00090ee8 ; undefined
     2194:	ffffff80 	.inst	0xffffff80 ; undefined
-    2198:	06da1500 	.inst	0x06da1500 ; undefined
+    2198:	06e41500 	.inst	0x06e41500 ; undefined
     219c:	0f010000 	.inst	0x0f010000 ; undefined
     21a0:	083fc406 	.inst	0x083fc406 ; undefined
     21a4:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -20460,41 +20460,41 @@ Disassembly of section .debug_info:
     21b4:	00000469 	.inst	0x00000469 ; undefined
     21b8:	0ac10004 	and	w4, w0, w1, ror #0
     21bc:	01080000 	.inst	0x01080000 ; undefined
-    21c0:	00000025 	.inst	0x00000025 ; undefined
-    21c4:	0007070c 	.inst	0x0007070c ; undefined
-    21c8:	00031600 	.inst	0x00031600 ; undefined
+    21c0:	00000000 	.inst	0x00000000 ; undefined
+    21c4:	0007110c 	.inst	0x0007110c ; undefined
+    21c8:	00031d00 	.inst	0x00031d00 ; undefined
     21cc:	08465000 	ldxrb	w0, [x0]
     21d0:	ffff8000 	.inst	0xffff8000 ; undefined
     21d4:	0006b0ff 	.inst	0x0006b0ff ; undefined
     21d8:	00000000 	.inst	0x00000000 ; undefined
     21dc:	00119600 	.inst	0x00119600 ; undefined
     21e0:	08010200 	stxrb	w1, w0, [x16]
-    21e4:	00000178 	.inst	0x00000178 ; undefined
-    21e8:	00012403 	.inst	0x00012403 ; undefined
+    21e4:	00000180 	.inst	0x00000180 ; undefined
+    21e8:	00013303 	.inst	0x00013303 ; undefined
     21ec:	180a0200 	ldr	w0, 1622c <__bss_size+0x1621a>
     21f0:	00000040 	.inst	0x00000040 ; undefined
-    21f4:	0a070202 	and	w2, w16, w7
+    21f4:	19070202 	stlurb	w2, [x16, #112]
     21f8:	03000001 	.inst	0x03000001 ; undefined
-    21fc:	00000299 	.inst	0x00000299 ; undefined
+    21fc:	000002bb 	.inst	0x000002bb ; undefined
     2200:	53160b02 	ubfiz	w2, w24, #10, #3
     2204:	02000000 	.inst	0x02000000 ; undefined
-    2208:	019c0704 	.inst	0x019c0704 ; undefined
-    220c:	f0030000 	adrp	x0, 6005000 <__bss_size+0x6004fee>
+    2208:	01a40704 	.inst	0x01a40704 ; undefined
+    220c:	f8030000 	stur	x0, [x0, #48]
     2210:	02000001 	.inst	0x02000001 ; undefined
     2214:	0066170c 	.inst	0x0066170c ; undefined
     2218:	08020000 	stxrb	w2, w0, [x0]
-    221c:	00019707 	.inst	0x00019707 ; undefined
-    2220:	02ef0300 	.inst	0x02ef0300 ; undefined
+    221c:	00019f07 	.inst	0x00019f07 ; undefined
+    2220:	02f60300 	.inst	0x02f60300 ; undefined
     2224:	0d020000 	.inst	0x0d020000 ; undefined
     2228:	00005a10 	.inst	0x00005a10 ; undefined
     222c:	05080200 	.inst	0x05080200 ; undefined
-    2230:	000002bd 	.inst	0x000002bd ; undefined
+    2230:	000002df 	.inst	0x000002df ; undefined
     2234:	69050404 	stgp	x4, x1, [x0, #160]
     2238:	0200746e 	.inst	0x0200746e ; undefined
-    223c:	028f0502 	.inst	0x028f0502 ; undefined
+    223c:	02b10502 	.inst	0x02b10502 ; undefined
     2240:	01020000 	.inst	0x01020000 ; undefined
-    2244:	00018108 	.inst	0x00018108 ; undefined
-    2248:	02100500 	.inst	0x02100500 ; undefined
+    2244:	00018908 	.inst	0x00018908 ; undefined
+    2248:	02180500 	.inst	0x02180500 ; undefined
     224c:	01200000 	.inst	0x01200000 ; undefined
     2250:	f3081303 	.inst	0xf3081303 ; undefined
     2254:	06000000 	.inst	0x06000000 ; undefined
@@ -20507,7 +20507,7 @@ Disassembly of section .debug_info:
     2270:	0300726c 	.inst	0x0300726c ; undefined
     2274:	006d0d17 	.inst	0x006d0d17 ; undefined
     2278:	01000000 	.inst	0x01000000 ; undefined
-    227c:	0002a808 	.inst	0x0002a808 ; undefined
+    227c:	0002ca08 	.inst	0x0002ca08 ; undefined
     2280:	0d180300 	.inst	0x0d180300 ; undefined
     2284:	0000006d 	.inst	0x0000006d ; undefined
     2288:	66070108 	.inst	0x66070108 ; undefined
@@ -20524,88 +20524,88 @@ Disassembly of section .debug_info:
     22b4:	09001e00 	.inst	0x09001e00 ; undefined
     22b8:	0000008e 	.inst	0x0000008e ; undefined
     22bc:	0000010e 	.inst	0x0000010e ; undefined
-    22c0:	e20c000b 	.inst	0xe20c000b ; undefined
+    22c0:	ea0c000b 	ands	x11, x0, x12
     22c4:	04000001 	add	z1.b, p0/m, z1.b, z0.b
     22c8:	01030d36 	.inst	0x01030d36 ; undefined
-    22cc:	af0c0000 	.inst	0xaf0c0000 ; undefined
+    22cc:	b90c0000 	str	w0, [x0, #3072]
     22d0:	04000004 	add	z4.b, p0/m, z4.b, z0.b
     22d4:	01030d37 	.inst	0x01030d37 ; undefined
-    22d8:	6d0c0000 	stp	d0, d0, [x0, #192]
+    22d8:	750c0000 	.inst	0x750c0000 ; undefined
     22dc:	04000001 	add	z1.b, p0/m, z1.b, z0.b
     22e0:	006d104f 	.inst	0x006d104f ; undefined
     22e4:	100d0000 	adr	x0, 1c2e4 <__bss_size+0x1c2d2>
     22e8:	56051605 	.inst	0x56051605 ; undefined
     22ec:	0e000001 	tbl	v1.8b, {v0.16b}, v0.8b
-    22f0:	000001cd 	.inst	0x000001cd ; undefined
+    22f0:	000001d5 	.inst	0x000001d5 ; undefined
     22f4:	60051605 	.inst	0x60051605 ; undefined
     22f8:	00000002 	.inst	0x00000002 ; undefined
-    22fc:	0001650e 	.inst	0x0001650e ; undefined
+    22fc:	0001520e 	.inst	0x0001520e ; undefined
     2300:	05160500 	mov	z0.b, p6/z, #40
     2304:	00000266 	.inst	0x00000266 ; undefined
     2308:	450f0008 	.inst	0x450f0008 ; undefined
     230c:	9800766e 	ldrsw	x14, 31d8 <__bss_size+0x31c6>
     2310:	08130501 	stxrb	w19, w1, [x8]
     2314:	00000260 	.inst	0x00000260 ; undefined
-    2318:	0002780e 	.inst	0x0002780e ; undefined
+    2318:	00029a0e 	.inst	0x00029a0e ; undefined
     231c:	16150500 	b	fffffffff854371c <init_sp+0x7ff7d4371c>
     2320:	00000095 	.inst	0x00000095 ; undefined
-    2324:	029f0800 	.inst	0x029f0800 ; undefined
+    2324:	02c10800 	.inst	0x02c10800 ; undefined
     2328:	16050000 	b	fffffffff8142328 <init_sp+0x7ff7942328>
     232c:	00013215 	.inst	0x00013215 ; undefined
     2330:	08012000 	stxrb	w1, w0, [x0]
-    2334:	000000d8 	.inst	0x000000d8 ; undefined
+    2334:	000000de 	.inst	0x000000de ; undefined
     2338:	470b1705 	.inst	0x470b1705 ; undefined
     233c:	30000000 	adr	x0, 233d <__bss_size+0x232b>
-    2340:	02af0801 	.inst	0x02af0801 ; undefined
+    2340:	02d10801 	.inst	0x02d10801 ; undefined
     2344:	18050000 	ldr	w0, c344 <__bss_size+0xc332>
     2348:	0000470b 	.inst	0x0000470b ; undefined
     234c:	08013400 	stxrb	w1, w0, [x0]
-    2350:	0000078b 	.inst	0x0000078b ; undefined
+    2350:	00000795 	.inst	0x00000795 ; undefined
     2354:	470b1905 	.inst	0x470b1905 ; undefined
     2358:	38000000 	sturb	w0, [x0]
-    235c:	024d0801 	.inst	0x024d0801 ; undefined
+    235c:	02550801 	.inst	0x02550801 ; undefined
     2360:	1a050000 	adc	w0, w0, w5
     2364:	0002900e 	.inst	0x0002900e ; undefined
     2368:	08014000 	stxrb	w1, w0, [x0]
-    236c:	00000245 	.inst	0x00000245 ; undefined
+    236c:	0000024d 	.inst	0x0000024d ; undefined
     2370:	6d0d1b05 	stp	d5, d6, [x24, #208]
     2374:	48000000 	stxrh	w0, w0, [x0]
-    2378:	01a90801 	.inst	0x01a90801 ; undefined
+    2378:	01b10801 	.inst	0x01b10801 ; undefined
     237c:	1c050000 	ldr	s0, c37c <__bss_size+0xc36a>
     2380:	00026c15 	.inst	0x00026c15 ; undefined
     2384:	08015000 	stxrb	w1, w0, [x0]
-    2388:	0000027f 	.inst	0x0000027f ; undefined
+    2388:	000002a1 	.inst	0x000002a1 ; undefined
     238c:	470b1d05 	.inst	0x470b1d05 ; undefined
     2390:	60000000 	.inst	0x60000000 ; undefined
-    2394:	02e10801 	.inst	0x02e10801 ; undefined
+    2394:	02e80801 	.inst	0x02e80801 ; undefined
     2398:	20050000 	.inst	0x20050000 ; undefined
     239c:	0000470b 	.inst	0x0000470b ; undefined
     23a0:	08016400 	stxrb	w1, w0, [x0]
-    23a4:	0000021a 	.inst	0x0000021a ; undefined
+    23a4:	00000222 	.inst	0x00000222 ; undefined
     23a8:	470b2105 	.inst	0x470b2105 ; undefined
     23ac:	68000000 	.inst	0x68000000 ; undefined
-    23b0:	01f70801 	.inst	0x01f70801 ; undefined
+    23b0:	01ff0801 	.inst	0x01ff0801 ; undefined
     23b4:	22050000 	.inst	0x22050000 ; undefined
     23b8:	0000470b 	.inst	0x0000470b ; undefined
     23bc:	08016c00 	stxrb	w1, w0, [x0]
-    23c0:	00000227 	.inst	0x00000227 ; undefined
+    23c0:	0000022f 	.inst	0x0000022f ; undefined
     23c4:	6d0d2305 	stp	d5, d8, [x24, #208]
     23c8:	70000000 	adr	x0, 23cb <__bss_size+0x23b9>
-    23cc:	01d50801 	.inst	0x01d50801 ; undefined
+    23cc:	01dd0801 	.inst	0x01dd0801 ; undefined
     23d0:	24050000 	cmphs	p0.b, p0/z, z0.b, z5.b
     23d4:	00006d0d 	.inst	0x00006d0d ; undefined
     23d8:	08017800 	stxrb	w1, w0, [x0]
-    23dc:	00000257 	.inst	0x00000257 ; undefined
+    23dc:	0000025f 	.inst	0x0000025f ; undefined
     23e0:	6d0d2705 	stp	d5, d9, [x24, #208]
     23e4:	80000000 	.inst	0x80000000 ; undefined
-    23e8:	01bf0801 	.inst	0x01bf0801 ; undefined
+    23e8:	01c70801 	.inst	0x01c70801 ; undefined
     23ec:	28050000 	stnp	w0, w0, [x0, #40]
     23f0:	00006d0d 	.inst	0x00006d0d ; undefined
     23f4:	08018800 	stlxrb	w1, w0, [x0]
-    23f8:	00000186 	.inst	0x00000186 ; undefined
+    23f8:	0000018e 	.inst	0x0000018e ; undefined
     23fc:	470b2b05 	.inst	0x470b2b05 ; undefined
     2400:	90000000 	adrp	x0, 2000 <__bss_size+0x1fee>
-    2404:	018f0801 	.inst	0x018f0801 ; undefined
+    2404:	01970801 	.inst	0x01970801 ; undefined
     2408:	2c050000 	stnp	s0, s0, [x0, #40]
     240c:	0000470b 	.inst	0x0000470b ; undefined
     2410:	00019400 	.inst	0x00019400 ; undefined
@@ -20614,63 +20614,63 @@ Disassembly of section .debug_info:
     241c:	00000260 	.inst	0x00000260 ; undefined
     2420:	1c05100d 	ldr	s13, c620 <__bss_size+0xc60e>
     2424:	00029005 	.inst	0x00029005 ; undefined
-    2428:	01cd0e00 	.inst	0x01cd0e00 ; undefined
+    2428:	01d50e00 	.inst	0x01d50e00 ; undefined
     242c:	1c050000 	ldr	s0, c42c <__bss_size+0xc41a>
     2430:	00026005 	.inst	0x00026005 ; undefined
-    2434:	650e0000 	.inst	0x650e0000 ; undefined
+    2434:	520e0000 	eor	w0, w0, #0x40000
     2438:	05000001 	orr	z1.s, z1.s, #0x1
     243c:	0266051c 	.inst	0x0266051c ; undefined
     2440:	00080000 	.inst	0x00080000 ; undefined
     2444:	006d0810 	.inst	0x006d0810 ; undefined
-    2448:	e7110000 	.inst	0xe7110000 ; undefined
+    2448:	ef110000 	.inst	0xef110000 ; undefined
     244c:	08000001 	stxrb	w0, w1, [x0]
     2450:	b1012f05 	adds	x5, x24, #0x4b
     2454:	0e000002 	tbl	v2.8b, {v0.16b}, v0.8b
-    2458:	00000207 	.inst	0x00000207 ; undefined
+    2458:	0000020f 	.inst	0x0000020f ; undefined
     245c:	60012f05 	.inst	0x60012f05 ; undefined
     2460:	00000002 	.inst	0x00000002 ; undefined
-    2464:	01730c00 	.inst	0x01730c00 ; undefined
+    2464:	017b0c00 	.inst	0x017b0c00 ; undefined
     2468:	30050000 	adr	x0, c469 <__bss_size+0xc457>
     246c:	00026014 	.inst	0x00026014 ; undefined
-    2470:	011d0c00 	.inst	0x011d0c00 ; undefined
+    2470:	012c0c00 	.inst	0x012c0c00 ; undefined
     2474:	31050000 	adds	w0, w0, #0x140
     2478:	00026014 	.inst	0x00026014 ; undefined
     247c:	02960900 	.inst	0x02960900 ; undefined
     2480:	02d90000 	.inst	0x02d90000 ; undefined
     2484:	660a0000 	.inst	0x660a0000 ; undefined
     2488:	01000000 	.inst	0x01000000 ; undefined
-    248c:	00fb0c00 	.inst	0x00fb0c00 ; undefined
+    248c:	010a0c00 	.inst	0x010a0c00 ; undefined
     2490:	32050000 	orr	w0, w0, #0x8000000
     2494:	0002c918 	.inst	0x0002c918 ; undefined
-    2498:	012c1100 	.inst	0x012c1100 ; undefined
+    2498:	013b1100 	.inst	0x013b1100 ; undefined
     249c:	06180000 	.inst	0x06180000 ; undefined
     24a0:	030d080c 	.inst	0x030d080c ; undefined
-    24a4:	870e0000 	.inst	0x870e0000 ; undefined
+    24a4:	a90e0000 	stp	x0, x0, [x0, #224]
     24a8:	06000002 	.inst	0x06000002 ; undefined
     24ac:	033d170e 	.inst	0x033d170e ; undefined
     24b0:	0e000000 	tbl	v0.8b, {v0.16b}, v0.8b
-    24b4:	0000023e 	.inst	0x0000023e ; undefined
+    24b4:	00000246 	.inst	0x00000246 ; undefined
     24b8:	340d0f06 	cbz	w6, 1c698 <__bss_size+0x1c686>
     24bc:	10000000 	adr	x0, 24bc <__bss_size+0x24aa>
     24c0:	e5081000 	.inst	0xe5081000 ; undefined
     24c4:	0d000002 	st1	{v2.b}[0], [x0]
     24c8:	090a0610 	.inst	0x090a0610 ; undefined
     24cc:	00000337 	.inst	0x00000337 ; undefined
-    24d0:	0001cd0e 	.inst	0x0001cd0e ; undefined
+    24d0:	0001d50e 	.inst	0x0001d50e ; undefined
     24d4:	090a0600 	.inst	0x090a0600 ; undefined
     24d8:	0000030d 	.inst	0x0000030d ; undefined
-    24dc:	01650e00 	.inst	0x01650e00 ; undefined
+    24dc:	01520e00 	.inst	0x01520e00 ; undefined
     24e0:	0a060000 	and	w0, w0, w6
     24e4:	00033709 	.inst	0x00033709 ; undefined
     24e8:	10000800 	adr	x0, 25e8 <__bss_size+0x25d6>
     24ec:	00030d08 	.inst	0x00030d08 ; undefined
-    24f0:	01310300 	.inst	0x01310300 ; undefined
+    24f0:	01400300 	.inst	0x01400300 ; undefined
     24f4:	0a060000 	and	w0, w0, w6
     24f8:	0003131a 	.inst	0x0003131a ; undefined
-    24fc:	02720c00 	.inst	0x02720c00 ; undefined
+    24fc:	027a0c00 	.inst	0x027a0c00 ; undefined
     2500:	12060000 	and	w0, w0, #0x4000000
     2504:	00030d15 	.inst	0x00030d15 ; undefined
-    2508:	07201200 	.inst	0x07201200 ; undefined
+    2508:	072a1200 	.inst	0x072a1200 ; undefined
     250c:	82010000 	.inst	0x82010000 ; undefined
     2510:	084c0406 	ldxrb	w6, [x0]
     2514:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -20681,16 +20681,16 @@ Disassembly of section .debug_info:
     2528:	01006674 	.inst	0x01006674 ; undefined
     252c:	039f2b82 	.inst	0x039f2b82 ; undefined
     2530:	91030000 	add	x0, x0, #0xc0
-    2534:	14147dd8 	b	521c94 <__bss_size+0x521c82>
+    2534:	1e147dd8 	.inst	0x1e147dd8 ; undefined
     2538:	01000007 	.inst	0x01000007 ; undefined
     253c:	00951684 	.inst	0x00951684 ; undefined
     2540:	91030000 	add	x0, x0, #0xc0
-    2544:	1d0c7de0 	.inst	0x1d0c7de0 ; undefined
+    2544:	2c0c7de0 	stnp	s0, s31, [x15, #96]
     2548:	01000001 	.inst	0x01000001 ; undefined
     254c:	02601885 	.inst	0x02601885 ; undefined
     2550:	10000000 	adr	x0, 2550 <__bss_size+0x253e>
     2554:	00009508 	.inst	0x00009508 ; undefined
-    2558:	06f01500 	.inst	0x06f01500 ; undefined
+    2558:	06fa1500 	.inst	0x06fa1500 ; undefined
     255c:	18010000 	ldr	w0, 455c <__bss_size+0x454a>
     2560:	08465006 	ldxrb	w6, [x0]
     2564:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -20700,11 +20700,11 @@ Disassembly of section .debug_info:
     2574:	01006674 	.inst	0x01006674 ; undefined
     2578:	039f2418 	.inst	0x039f2418 ; undefined
     257c:	91020000 	add	x0, x0, #0x80
-    2580:	070e1648 	.inst	0x070e1648 ; undefined
+    2580:	07181648 	.inst	0x07181648 ; undefined
     2584:	18010000 	ldr	w0, 4584 <__bss_size+0x4572>
     2588:	00029031 	.inst	0x00029031 ; undefined
     258c:	40910200 	.inst	0x40910200 ; undefined
-    2590:	0006fc16 	.inst	0x0006fc16 ; undefined
+    2590:	00070616 	.inst	0x00070616 ; undefined
     2594:	41180100 	.inst	0x41180100 ; undefined
     2598:	00000290 	.inst	0x00000290 ; undefined
     259c:	7fb89103 	fmulx	s3, s8, v24.s[1]
@@ -20724,7 +20724,7 @@ Disassembly of section .debug_info:
     25d4:	0003e4ff 	.inst	0x0003e4ff ; undefined
     25d8:	00000000 	.inst	0x00000000 ; undefined
     25dc:	00044a00 	.inst	0x00044a00 ; undefined
-    25e0:	06e51400 	.inst	0x06e51400 ; undefined
+    25e0:	06ef1400 	.inst	0x06ef1400 ; undefined
     25e4:	25010000 	cmpge	p0.b, p0/z, z0.b, #1
     25e8:	00006d11 	.inst	0x00006d11 ; undefined
     25ec:	50910200 	adr	x0, fffffffffff2462e <init_sp+0x7fff72462e>
@@ -20736,51 +20736,51 @@ Disassembly of section .debug_info:
     2604:	dcffffff 	.inst	0xdcffffff ; undefined
     2608:	00000000 	.inst	0x00000000 ; undefined
     260c:	14000000 	b	260c <__bss_size+0x25fa>
-    2610:	00000702 	.inst	0x00000702 ; undefined
+    2610:	0000070c 	.inst	0x0000070c ; undefined
     2614:	6d116601 	stp	d1, d25, [x16, #272]
     2618:	02000000 	.inst	0x02000000 ; undefined
     261c:	00005891 	.inst	0x00005891 ; undefined
     2620:	0008c900 	.inst	0x0008c900 ; undefined
     2624:	41000400 	.inst	0x41000400 ; undefined
     2628:	0800000c 	stxrb	w0, w12, [x0]
-    262c:	00002501 	.inst	0x00002501 ; undefined
-    2630:	083f0c00 	.inst	0x083f0c00 ; undefined
-    2634:	03160000 	.inst	0x03160000 ; undefined
+    262c:	00000001 	.inst	0x00000001 ; undefined
+    2630:	08490c00 	ldxrb	w0, [x0]
+    2634:	031d0000 	.inst	0x031d0000 ; undefined
     2638:	4d000000 	st1	{v0.b}[8], [x0]
     263c:	ff800008 	.inst	0xff800008 ; undefined
     2640:	0860ffff 	.inst	0x0860ffff ; undefined
     2644:	00000000 	.inst	0x00000000 ; undefined
     2648:	13890000 	extr	w0, w0, w9, #0
     264c:	01020000 	.inst	0x01020000 ; undefined
-    2650:	00017808 	.inst	0x00017808 ; undefined
-    2654:	01240300 	.inst	0x01240300 ; undefined
+    2650:	00018008 	.inst	0x00018008 ; undefined
+    2654:	01330300 	.inst	0x01330300 ; undefined
     2658:	0a020000 	and	w0, w0, w2
     265c:	00004018 	.inst	0x00004018 ; undefined
     2660:	07020200 	.inst	0x07020200 ; undefined
-    2664:	0000010a 	.inst	0x0000010a ; undefined
-    2668:	00029903 	.inst	0x00029903 ; undefined
+    2664:	00000119 	.inst	0x00000119 ; undefined
+    2668:	0002bb03 	.inst	0x0002bb03 ; undefined
     266c:	160b0200 	b	fffffffff82c2e6c <init_sp+0x7ff7ac2e6c>
     2670:	00000053 	.inst	0x00000053 ; undefined
-    2674:	9c070402 	ldr	q2, 106f4 <__bss_size+0x106e2>
+    2674:	a4070402 	ld1rqb	{z2.b}, p1/z, [x0, x7]
     2678:	03000001 	.inst	0x03000001 ; undefined
-    267c:	000001f0 	.inst	0x000001f0 ; undefined
+    267c:	000001f8 	.inst	0x000001f8 ; undefined
     2680:	66170c02 	.inst	0x66170c02 ; undefined
     2684:	02000000 	.inst	0x02000000 ; undefined
-    2688:	01970708 	.inst	0x01970708 ; undefined
-    268c:	ef030000 	.inst	0xef030000 ; undefined
+    2688:	019f0708 	.inst	0x019f0708 ; undefined
+    268c:	f6030000 	.inst	0xf6030000 ; undefined
     2690:	02000002 	.inst	0x02000002 ; undefined
     2694:	005a100d 	.inst	0x005a100d ; undefined
-    2698:	79030000 	strh	w0, [x0, #384]
+    2698:	83030000 	.inst	0x83030000 ; undefined
     269c:	02000005 	.inst	0x02000005 ; undefined
     26a0:	00470f0e 	.inst	0x00470f0e ; undefined
     26a4:	08020000 	stxrb	w2, w0, [x0]
-    26a8:	0002bd05 	.inst	0x0002bd05 ; undefined
+    26a8:	0002df05 	.inst	0x0002df05 ; undefined
     26ac:	05040400 	.inst	0x05040400 ; undefined
     26b0:	00746e69 	.inst	0x00746e69 ; undefined
-    26b4:	8f050202 	.inst	0x8f050202 ; undefined
+    26b4:	b1050202 	adds	x2, x16, #0x140
     26b8:	02000002 	.inst	0x02000002 ; undefined
-    26bc:	01810801 	.inst	0x01810801 ; undefined
-    26c0:	10050000 	adr	x0, c6c0 <__bss_size+0xc6ae>
+    26bc:	01890801 	.inst	0x01890801 ; undefined
+    26c0:	18050000 	ldr	w0, c6c0 <__bss_size+0xc6ae>
     26c4:	20000002 	.inst	0x20000002 ; undefined
     26c8:	08130301 	stxrb	w19, w1, [x24]
     26cc:	000000ff 	.inst	0x000000ff ; undefined
@@ -20793,7 +20793,7 @@ Disassembly of section .debug_info:
     26e8:	00726c65 	.inst	0x00726c65 ; undefined
     26ec:	6d0d1703 	stp	d3, d5, [x24, #208]
     26f0:	00000000 	.inst	0x00000000 ; undefined
-    26f4:	02a80801 	.inst	0x02a80801 ; undefined
+    26f4:	02ca0801 	.inst	0x02ca0801 ; undefined
     26f8:	18030000 	ldr	w0, 86f8 <__bss_size+0x86e6>
     26fc:	00006d0d 	.inst	0x00006d0d ; undefined
     2700:	07010800 	.inst	0x07010800 ; undefined
@@ -20811,87 +20811,87 @@ Disassembly of section .debug_info:
     2730:	00009a09 	.inst	0x00009a09 ; undefined
     2734:	00011a00 	.inst	0x00011a00 ; undefined
     2738:	0c000b00 	st4	{v0.2s-v3.2s}, [x24]
-    273c:	000001e2 	.inst	0x000001e2 ; undefined
+    273c:	000001ea 	.inst	0x000001ea ; undefined
     2740:	0f0d3604 	srsra	v4.8b, v16.8b, #3
     2744:	0c000001 	st4	{v1.8b-v4.8b}, [x0]
-    2748:	000004af 	.inst	0x000004af ; undefined
+    2748:	000004b9 	.inst	0x000004b9 ; undefined
     274c:	0f0d3704 	srsra	v4.8b, v24.8b, #3
     2750:	0c000001 	st4	{v1.8b-v4.8b}, [x0]
-    2754:	0000016d 	.inst	0x0000016d ; undefined
+    2754:	00000175 	.inst	0x00000175 ; undefined
     2758:	6d104f04 	stp	d4, d19, [x24, #256]
     275c:	0d000000 	st1	{v0.b}[0], [x0]
     2760:	05160510 	mov	z16.b, p6/z, #40
     2764:	00000162 	.inst	0x00000162 ; undefined
-    2768:	0001cd0e 	.inst	0x0001cd0e ; undefined
+    2768:	0001d50e 	.inst	0x0001d50e ; undefined
     276c:	05160500 	mov	z0.b, p6/z, #40
     2770:	0000026c 	.inst	0x0000026c ; undefined
-    2774:	01650e00 	.inst	0x01650e00 ; undefined
+    2774:	01520e00 	.inst	0x01520e00 ; undefined
     2778:	16050000 	b	fffffffff8142778 <init_sp+0x7ff7942778>
     277c:	00027205 	.inst	0x00027205 ; undefined
     2780:	0f000800 	.inst	0x0f000800 ; undefined
     2784:	00766e45 	.inst	0x00766e45 ; undefined
     2788:	13050198 	sbfiz	w24, w12, #27, #1
     278c:	00026c08 	.inst	0x00026c08 ; undefined
-    2790:	02780e00 	.inst	0x02780e00 ; undefined
+    2790:	029a0e00 	.inst	0x029a0e00 ; undefined
     2794:	15050000 	b	4142794 <__bss_size+0x4142782>
     2798:	0000a116 	.inst	0x0000a116 ; undefined
-    279c:	9f080000 	.inst	0x9f080000 ; undefined
+    279c:	c1080000 	.inst	0xc1080000 ; undefined
     27a0:	05000002 	orr	z2.s, z2.s, #0x1
     27a4:	013e1516 	.inst	0x013e1516 ; undefined
     27a8:	01200000 	.inst	0x01200000 ; undefined
-    27ac:	0000d808 	.inst	0x0000d808 ; undefined
+    27ac:	0000de08 	.inst	0x0000de08 ; undefined
     27b0:	0b170500 	add	w0, w8, w23, lsl #1
     27b4:	00000047 	.inst	0x00000047 ; undefined
-    27b8:	af080130 	.inst	0xaf080130 ; undefined
+    27b8:	d1080130 	sub	x16, x9, #0x200
     27bc:	05000002 	orr	z2.s, z2.s, #0x1
     27c0:	00470b18 	.inst	0x00470b18 ; undefined
     27c4:	01340000 	.inst	0x01340000 ; undefined
-    27c8:	00078b08 	.inst	0x00078b08 ; undefined
+    27c8:	00079508 	.inst	0x00079508 ; undefined
     27cc:	0b190500 	add	w0, w8, w25, lsl #1
     27d0:	00000047 	.inst	0x00000047 ; undefined
-    27d4:	4d080138 	.inst	0x4d080138 ; undefined
+    27d4:	55080138 	.inst	0x55080138 ; undefined
     27d8:	05000002 	orr	z2.s, z2.s, #0x1
     27dc:	029c0e1a 	.inst	0x029c0e1a ; undefined
     27e0:	01400000 	.inst	0x01400000 ; undefined
-    27e4:	00024508 	.inst	0x00024508 ; undefined
+    27e4:	00024d08 	.inst	0x00024d08 ; undefined
     27e8:	0d1b0500 	.inst	0x0d1b0500 ; undefined
     27ec:	0000006d 	.inst	0x0000006d ; undefined
-    27f0:	a9080148 	stp	x8, x0, [x10, #128]
+    27f0:	b1080148 	adds	x8, x10, #0x200
     27f4:	05000001 	orr	z1.s, z1.s, #0x1
     27f8:	0278151c 	.inst	0x0278151c ; undefined
     27fc:	01500000 	.inst	0x01500000 ; undefined
-    2800:	00027f08 	.inst	0x00027f08 ; undefined
+    2800:	0002a108 	.inst	0x0002a108 ; undefined
     2804:	0b1d0500 	add	w0, w8, w29, lsl #1
     2808:	00000047 	.inst	0x00000047 ; undefined
-    280c:	e1080160 	.inst	0xe1080160 ; undefined
+    280c:	e8080160 	.inst	0xe8080160 ; undefined
     2810:	05000002 	orr	z2.s, z2.s, #0x1
     2814:	00470b20 	.inst	0x00470b20 ; undefined
     2818:	01640000 	.inst	0x01640000 ; undefined
-    281c:	00021a08 	.inst	0x00021a08 ; undefined
+    281c:	00022208 	.inst	0x00022208 ; undefined
     2820:	0b210500 	add	w0, w8, w1, uxtb #1
     2824:	00000047 	.inst	0x00000047 ; undefined
-    2828:	f7080168 	.inst	0xf7080168 ; undefined
+    2828:	ff080168 	.inst	0xff080168 ; undefined
     282c:	05000001 	orr	z1.s, z1.s, #0x1
     2830:	00470b22 	.inst	0x00470b22 ; undefined
     2834:	016c0000 	.inst	0x016c0000 ; undefined
-    2838:	00022708 	.inst	0x00022708 ; undefined
+    2838:	00022f08 	.inst	0x00022f08 ; undefined
     283c:	0d230500 	.inst	0x0d230500 ; undefined
     2840:	0000006d 	.inst	0x0000006d ; undefined
-    2844:	d5080170 	sys	#0, C0, C1, #3, x16
+    2844:	dd080170 	.inst	0xdd080170 ; undefined
     2848:	05000001 	orr	z1.s, z1.s, #0x1
     284c:	006d0d24 	.inst	0x006d0d24 ; undefined
     2850:	01780000 	.inst	0x01780000 ; undefined
-    2854:	00025708 	.inst	0x00025708 ; undefined
+    2854:	00025f08 	.inst	0x00025f08 ; undefined
     2858:	0d270500 	.inst	0x0d270500 ; undefined
     285c:	0000006d 	.inst	0x0000006d ; undefined
-    2860:	bf080180 	.inst	0xbf080180 ; undefined
+    2860:	c7080180 	.inst	0xc7080180 ; undefined
     2864:	05000001 	orr	z1.s, z1.s, #0x1
     2868:	006d0d28 	.inst	0x006d0d28 ; undefined
     286c:	01880000 	.inst	0x01880000 ; undefined
-    2870:	00018608 	.inst	0x00018608 ; undefined
+    2870:	00018e08 	.inst	0x00018e08 ; undefined
     2874:	0b2b0500 	add	w0, w8, w11, uxtb #1
     2878:	00000047 	.inst	0x00000047 ; undefined
-    287c:	8f080190 	.inst	0x8f080190 ; undefined
+    287c:	97080190 	bl	fffffffffc202ebc <init_sp+0x7ffba02ebc>
     2880:	05000001 	orr	z1.s, z1.s, #0x1
     2884:	00470b2c 	.inst	0x00470b2c ; undefined
     2888:	01940000 	.inst	0x01940000 ; undefined
@@ -20900,63 +20900,63 @@ Disassembly of section .debug_info:
     2894:	00026c08 	.inst	0x00026c08 ; undefined
     2898:	05100d00 	mov	z0.b, p0/z, #104
     289c:	029c051c 	.inst	0x029c051c ; undefined
-    28a0:	cd0e0000 	.inst	0xcd0e0000 ; undefined
+    28a0:	d50e0000 	sys	#6, C0, C0, #0, x0
     28a4:	05000001 	orr	z1.s, z1.s, #0x1
     28a8:	026c051c 	.inst	0x026c051c ; undefined
     28ac:	0e000000 	tbl	v0.8b, {v0.16b}, v0.8b
-    28b0:	00000165 	.inst	0x00000165 ; undefined
+    28b0:	00000152 	.inst	0x00000152 ; undefined
     28b4:	72051c05 	ands	w5, w0, #0xf8000007
     28b8:	08000002 	stxrb	w0, w2, [x0]
     28bc:	6d081000 	stp	d0, d4, [x0, #128]
     28c0:	11000000 	add	w0, w0, #0x0
-    28c4:	000001e7 	.inst	0x000001e7 ; undefined
+    28c4:	000001ef 	.inst	0x000001ef ; undefined
     28c8:	012f0508 	.inst	0x012f0508 ; undefined
     28cc:	000002bd 	.inst	0x000002bd ; undefined
-    28d0:	0002070e 	.inst	0x0002070e ; undefined
+    28d0:	00020f0e 	.inst	0x00020f0e ; undefined
     28d4:	012f0500 	.inst	0x012f0500 ; undefined
     28d8:	0000026c 	.inst	0x0000026c ; undefined
-    28dc:	730c0000 	.inst	0x730c0000 ; undefined
+    28dc:	7b0c0000 	.inst	0x7b0c0000 ; undefined
     28e0:	05000001 	orr	z1.s, z1.s, #0x1
     28e4:	026c1430 	.inst	0x026c1430 ; undefined
-    28e8:	1d0c0000 	.inst	0x1d0c0000 ; undefined
+    28e8:	2c0c0000 	stnp	s0, s0, [x0, #96]
     28ec:	05000001 	orr	z1.s, z1.s, #0x1
     28f0:	026c1431 	.inst	0x026c1431 ; undefined
     28f4:	a2090000 	.inst	0xa2090000 ; undefined
     28f8:	e5000002 	.inst	0xe5000002 ; undefined
     28fc:	0a000002 	and	w2, w0, w0
     2900:	00000066 	.inst	0x00000066 ; undefined
-    2904:	fb0c0001 	.inst	0xfb0c0001 ; undefined
-    2908:	05000000 	orr	z0.s, z0.s, #0x1
+    2904:	0a0c0001 	and	w1, w0, w12
+    2908:	05000001 	orr	z1.s, z1.s, #0x1
     290c:	02d51832 	.inst	0x02d51832 ; undefined
-    2910:	2c110000 	stnp	s0, s0, [x0, #136]
+    2910:	3b110000 	.inst	0x3b110000 ; undefined
     2914:	18000001 	ldr	w1, 2914 <__bss_size+0x2902>
     2918:	19080c06 	.inst	0x19080c06 ; undefined
     291c:	0e000003 	tbl	v3.8b, {v0.16b}, v0.8b
-    2920:	00000287 	.inst	0x00000287 ; undefined
+    2920:	000002a9 	.inst	0x000002a9 ; undefined
     2924:	49170e06 	.inst	0x49170e06 ; undefined
     2928:	00000003 	.inst	0x00000003 ; undefined
-    292c:	00023e0e 	.inst	0x00023e0e ; undefined
+    292c:	0002460e 	.inst	0x0002460e ; undefined
     2930:	0d0f0600 	.inst	0x0d0f0600 ; undefined
     2934:	00000034 	.inst	0x00000034 ; undefined
     2938:	08100010 	stxrb	w16, w16, [x0]
     293c:	000002f1 	.inst	0x000002f1 ; undefined
     2940:	0a06100d 	and	w13, w0, w6, lsl #4
     2944:	00034309 	.inst	0x00034309 ; undefined
-    2948:	01cd0e00 	.inst	0x01cd0e00 ; undefined
+    2948:	01d50e00 	.inst	0x01d50e00 ; undefined
     294c:	0a060000 	and	w0, w0, w6
     2950:	00031909 	.inst	0x00031909 ; undefined
-    2954:	650e0000 	.inst	0x650e0000 ; undefined
+    2954:	520e0000 	eor	w0, w0, #0x40000
     2958:	06000001 	.inst	0x06000001 ; undefined
     295c:	0343090a 	.inst	0x0343090a ; undefined
     2960:	00080000 	.inst	0x00080000 ; undefined
     2964:	03190810 	.inst	0x03190810 ; undefined
-    2968:	31030000 	adds	w0, w0, #0xc0
+    2968:	40030000 	.inst	0x40030000 ; undefined
     296c:	06000001 	.inst	0x06000001 ; undefined
     2970:	031f1a0a 	.inst	0x031f1a0a ; undefined
-    2974:	720c0000 	ands	w0, w0, #0x100000
+    2974:	7a0c0000 	sbcs	w0, w0, w12
     2978:	06000002 	.inst	0x06000002 ; undefined
     297c:	03191512 	.inst	0x03191512 ; undefined
-    2980:	24120000 	cmphs	p0.b, p0/z, z0.b, z18.b
+    2980:	2e120000 	ext	v0.8b, v0.8b, v18.8b, #0
     2984:	01000008 	.inst	0x01000008 ; undefined
     2988:	8c050136 	.inst	0x8c050136 ; undefined
     298c:	34000000 	cbz	w0, 298c <__bss_size+0x297a>
@@ -20977,7 +20977,7 @@ Disassembly of section .debug_info:
     29c8:	01360100 	.inst	0x01360100 ; undefined
     29cc:	00004731 	.inst	0x00004731 ; undefined
     29d0:	6c910200 	stp	d0, d0, [x16], #272
-    29d4:	07391200 	.inst	0x07391200 ; undefined
+    29d4:	07431200 	.inst	0x07431200 ; undefined
     29d8:	30010000 	adr	x0, 49d9 <__bss_size+0x49c7>
     29dc:	008c0501 	.inst	0x008c0501 ; undefined
     29e0:	55080000 	.inst	0x55080000 ; undefined
@@ -20998,7 +20998,7 @@ Disassembly of section .debug_info:
     2a1c:	32013001 	orr	w1, w0, #0x80000fff
     2a20:	00000047 	.inst	0x00000047 ; undefined
     2a24:	006c9102 	.inst	0x006c9102 ; undefined
-    2a28:	0007c912 	.inst	0x0007c912 ; undefined
+    2a28:	0007d312 	.inst	0x0007d312 ; undefined
     2a2c:	01000100 	.inst	0x01000100 ; undefined
     2a30:	00008c05 	.inst	0x00008c05 ; undefined
     2a34:	0853ac00 	ldaxrb	w0, [x0]
@@ -21007,19 +21007,19 @@ Disassembly of section .debug_info:
     2a40:	00000000 	.inst	0x00000000 ; undefined
     2a44:	959c0100 	bl	6702e44 <__bss_size+0x6702e32>
     2a48:	14000004 	b	2a58 <__bss_size+0x2a46>
-    2a4c:	000003a7 	.inst	0x000003a7 ; undefined
+    2a4c:	000003b1 	.inst	0x000003b1 ; undefined
     2a50:	1e010001 	.inst	0x1e010001 ; undefined
     2a54:	0000006d 	.inst	0x0000006d ; undefined
     2a58:	14589102 	b	1626e60 <__bss_size+0x1626e4e>
-    2a5c:	000002e9 	.inst	0x000002e9 ; undefined
+    2a5c:	000002f0 	.inst	0x000002f0 ; undefined
     2a60:	2b010001 	adds	w1, w0, w1
     2a64:	00000047 	.inst	0x00000047 ; undefined
     2a68:	14549102 	b	1526e70 <__bss_size+0x1526e5e>
-    2a6c:	0000081e 	.inst	0x0000081e ; undefined
+    2a6c:	00000828 	.inst	0x00000828 ; undefined
     2a70:	3a010001 	adcs	w1, w0, w1
     2a74:	0000006d 	.inst	0x0000006d ; undefined
     2a78:	14489102 	b	1226e80 <__bss_size+0x1226e6e>
-    2a7c:	000001dd 	.inst	0x000001dd ; undefined
+    2a7c:	000001e5 	.inst	0x000001e5 ; undefined
     2a80:	49010001 	.inst	0x49010001 ; undefined
     2a84:	0000006d 	.inst	0x0000006d ; undefined
     2a88:	15409102 	b	5026e90 <__bss_size+0x5026e7e>
@@ -21033,7 +21033,7 @@ Disassembly of section .debug_info:
     2aa8:	05010070 	orr	z16.s, z16.s, #0xf
     2aac:	03191201 	.inst	0x03191201 ; undefined
     2ab0:	91020000 	add	x0, x0, #0x80
-    2ab4:	5f160070 	.inst	0x5f160070 ; undefined
+    2ab4:	69160070 	stgp	x16, x0, [x3, #704]
     2ab8:	01000008 	.inst	0x01000008 ; undefined
     2abc:	534006ef 	.inst	0x534006ef ; undefined
     2ac0:	ff800008 	.inst	0xff800008 ; undefined
@@ -21041,11 +21041,11 @@ Disassembly of section .debug_info:
     2ac8:	00000000 	.inst	0x00000000 ; undefined
     2acc:	9c010000 	ldr	q0, 4acc <__bss_size+0x4aba>
     2ad0:	000004c3 	.inst	0x000004c3 ; undefined
-    2ad4:	00022f17 	.inst	0x00022f17 ; undefined
+    2ad4:	00023717 	.inst	0x00023717 ; undefined
     2ad8:	1bef0100 	.inst	0x1bef0100 ; undefined
     2adc:	0000006d 	.inst	0x0000006d ; undefined
     2ae0:	00789102 	.inst	0x00789102 ; undefined
-    2ae4:	0007f416 	.inst	0x0007f416 ; undefined
+    2ae4:	0007fe16 	.inst	0x0007fe16 ; undefined
     2ae8:	06ea0100 	.inst	0x06ea0100 ; undefined
     2aec:	00085318 	.inst	0x00085318 ; undefined
     2af0:	ffffff80 	.inst	0xffffff80 ; undefined
@@ -21058,7 +21058,7 @@ Disassembly of section .debug_info:
     2b0c:	91020000 	add	x0, x0, #0x80
     2b10:	08100078 	stxrb	w16, w24, [x3]
     2b14:	0000009a 	.inst	0x0000009a ; undefined
-    2b18:	0007b719 	.inst	0x0007b719 ; undefined
+    2b18:	0007c119 	.inst	0x0007c119 ; undefined
     2b1c:	05e40100 	.inst	0x05e40100 ; undefined
     2b20:	0000008c 	.inst	0x0000008c ; undefined
     2b24:	000852f0 	.inst	0x000852f0 ; undefined
@@ -21066,7 +21066,7 @@ Disassembly of section .debug_info:
     2b2c:	00000028 	.inst	0x00000028 ; undefined
     2b30:	00000000 	.inst	0x00000000 ; undefined
     2b34:	05379c01 	.inst	0x05379c01 ; undefined
-    2b38:	a7170000 	.inst	0xa7170000 ; undefined
+    2b38:	b1170000 	adds	x0, x0, #0x5c0
     2b3c:	01000003 	.inst	0x01000003 ; undefined
     2b40:	00471de4 	.inst	0x00471de4 ; undefined
     2b44:	91020000 	add	x0, x0, #0x80
@@ -21075,7 +21075,7 @@ Disassembly of section .debug_info:
     2b50:	00000537 	.inst	0x00000537 ; undefined
     2b54:	00709102 	.inst	0x00709102 ; undefined
     2b58:	00a10810 	.inst	0x00a10810 ; undefined
-    2b5c:	83190000 	.inst	0x83190000 ; undefined
+    2b5c:	8d190000 	.inst	0x8d190000 ; undefined
     2b60:	01000007 	.inst	0x01000007 ; undefined
     2b64:	008c05cb 	.inst	0x008c05cb ; undefined
     2b68:	51780000 	sub	w0, w0, #0xe00, lsl #12
@@ -21084,11 +21084,11 @@ Disassembly of section .debug_info:
     2b74:	00000000 	.inst	0x00000000 ; undefined
     2b78:	9c010000 	ldr	q0, 4b78 <__bss_size+0x4b66>
     2b7c:	0000059c 	.inst	0x0000059c ; undefined
-    2b80:	0003a717 	.inst	0x0003a717 ; undefined
+    2b80:	0003b117 	.inst	0x0003b117 ; undefined
     2b84:	1ecb0100 	.inst	0x1ecb0100 ; undefined
     2b88:	00000047 	.inst	0x00000047 ; undefined
     2b8c:	176c9102 	b	fffffffffdb26f94 <init_sp+0x7ffd326f94>
-    2b90:	0000078f 	.inst	0x0000078f ; undefined
+    2b90:	00000799 	.inst	0x00000799 ; undefined
     2b94:	472bcb01 	.inst	0x472bcb01 ; undefined
     2b98:	02000000 	.inst	0x02000000 ; undefined
     2b9c:	651a6891 	.inst	0x651a6891 ; undefined
@@ -21099,7 +21099,7 @@ Disassembly of section .debug_info:
     2bb0:	ce010074 	eor3	v20.16b, v3.16b, v1.16b, v0.16b
     2bb4:	00008c09 	.inst	0x00008c09 ; undefined
     2bb8:	7c910200 	.inst	0x7c910200 ; undefined
-    2bbc:	08311900 	.inst	0x08311900 ; undefined
+    2bbc:	083b1900 	.inst	0x083b1900 ; undefined
     2bc0:	b3010000 	.inst	0xb3010000 ; undefined
     2bc4:	00008c05 	.inst	0x00008c05 ; undefined
     2bc8:	0850ec00 	ldaxrb	w0, [x0]
@@ -21114,7 +21114,7 @@ Disassembly of section .debug_info:
     2bec:	0100651a 	.inst	0x0100651a ; undefined
     2bf0:	026c11b6 	.inst	0x026c11b6 ; undefined
     2bf4:	91020000 	add	x0, x0, #0x80
-    2bf8:	96190070 	bl	fffffffff8642db8 <init_sp+0x7ff7e42db8>
+    2bf8:	a0190070 	.inst	0xa0190070 ; undefined
     2bfc:	01000007 	.inst	0x01000007 ; undefined
     2c00:	008c05a4 	.inst	0x008c05a4 ; undefined
     2c04:	50840000 	adr	x0, fffffffffff0ac06 <init_sp+0x7fff70ac06>
@@ -21123,7 +21123,7 @@ Disassembly of section .debug_info:
     2c10:	00000000 	.inst	0x00000000 ; undefined
     2c14:	9c010000 	ldr	q0, 4c14 <__bss_size+0x4c02>
     2c18:	00000637 	.inst	0x00000637 ; undefined
-    2c1c:	0003a717 	.inst	0x0003a717 ; undefined
+    2c1c:	0003b117 	.inst	0x0003b117 ; undefined
     2c20:	19a40100 	.inst	0x19a40100 ; undefined
     2c24:	00000047 	.inst	0x00000047 ; undefined
     2c28:	186c9102 	ldr	w2, dbe48 <__bss_size+0xdbe36>
@@ -21138,7 +21138,7 @@ Disassembly of section .debug_info:
     2c4c:	11a70100 	.inst	0x11a70100 ; undefined
     2c50:	0000026c 	.inst	0x0000026c ; undefined
     2c54:	00709102 	.inst	0x00709102 ; undefined
-    2c58:	0007ab19 	.inst	0x0007ab19 ; undefined
+    2c58:	0007b519 	.inst	0x0007b519 ; undefined
     2c5c:	056d0100 	ext	z0.b, {z8.b, z9.b}, #104
     2c60:	0000008c 	.inst	0x0000008c ; undefined
     2c64:	00084f0c 	.inst	0x00084f0c ; undefined
@@ -21146,23 +21146,23 @@ Disassembly of section .debug_info:
     2c6c:	00000178 	.inst	0x00000178 ; undefined
     2c70:	00000000 	.inst	0x00000000 ; undefined
     2c74:	07139c01 	.inst	0x07139c01 ; undefined
-    2c78:	5f170000 	.inst	0x5f170000 ; undefined
+    2c78:	69170000 	stgp	x0, x0, [x0, #736]
     2c7c:	01000007 	.inst	0x01000007 ; undefined
     2c80:	0047176d 	.inst	0x0047176d ; undefined
     2c84:	91030000 	add	x0, x0, #0xc0
-    2c88:	1e177fbc 	.inst	0x1e177fbc ; undefined
+    2c88:	28177fbc 	stnp	w28, wzr, [x29, #184]
     2c8c:	01000008 	.inst	0x01000008 ; undefined
     2c90:	006d266d 	.inst	0x006d266d ; undefined
     2c94:	91030000 	add	x0, x0, #0xc0
-    2c98:	59177fb0 	.inst	0x59177fb0 ; undefined
+    2c98:	63177fb0 	.inst	0x63177fb0 ; undefined
     2c9c:	01000008 	.inst	0x01000008 ; undefined
     2ca0:	0047336d 	.inst	0x0047336d ; undefined
     2ca4:	91030000 	add	x0, x0, #0xc0
-    2ca8:	2f177fb8 	.inst	0x2f177fb8 ; undefined
+    2ca8:	37177fb8 	tbnz	w24, #2, 1c9c <__bss_size+0x1c8a>
     2cac:	01000002 	.inst	0x01000002 ; undefined
     2cb0:	006d426d 	.inst	0x006d426d ; undefined
     2cb4:	91030000 	add	x0, x0, #0xc0
-    2cb8:	dd177fa8 	.inst	0xdd177fa8 ; undefined
+    2cb8:	e5177fa8 	stnt1w	{z8.s}, p7, [x29, x23, lsl #2]
     2cbc:	01000001 	.inst	0x01000001 ; undefined
     2cc0:	006d516d 	.inst	0x006d516d ; undefined
     2cc4:	91030000 	add	x0, x0, #0xc0
@@ -21170,30 +21170,30 @@ Disassembly of section .debug_info:
     2ccc:	01007465 	.inst	0x01007465 ; undefined
     2cd0:	008c096f 	.inst	0x008c096f ; undefined
     2cd4:	91020000 	add	x0, x0, #0x80
-    2cd8:	08181b74 	stxrb	w24, w20, [x27]
+    2cd8:	08221b74 	.inst	0x08221b74 ; undefined
     2cdc:	70010000 	adr	x0, 4cdf <__bss_size+0x4ccd>
     2ce0:	00006d0d 	.inst	0x00006d0d ; undefined
     2ce4:	68910200 	stgp	x0, x0, [x16], #544
-    2ce8:	00080c1b 	.inst	0x00080c1b ; undefined
+    2ce8:	0008161b 	.inst	0x0008161b ; undefined
     2cec:	1a700100 	.inst	0x1a700100 ; undefined
     2cf0:	0000006d 	.inst	0x0000006d ; undefined
     2cf4:	1b609102 	.inst	0x1b609102 ; undefined
-    2cf8:	000007a4 	.inst	0x000007a4 ; undefined
+    2cf8:	000007ae 	.inst	0x000007ae ; undefined
     2cfc:	6c117101 	stnp	d1, d28, [x8, #272]
     2d00:	02000002 	.inst	0x02000002 ; undefined
-    2d04:	6a1b5891 	ands	w17, w4, w27, lsl #22
+    2d04:	741b5891 	.inst	0x741b5891 ; undefined
     2d08:	01000007 	.inst	0x01000007 ; undefined
     2d0c:	026c1172 	.inst	0x026c1172 ; undefined
     2d10:	91020000 	add	x0, x0, #0x80
-    2d14:	07331b50 	.inst	0x07331b50 ; undefined
+    2d14:	073d1b50 	.inst	0x073d1b50 ; undefined
     2d18:	73010000 	.inst	0x73010000 ; undefined
     2d1c:	00031912 	.inst	0x00031912 ; undefined
     2d20:	78910200 	ldursh	x0, [x16, #-240]
-    2d24:	0007651b 	.inst	0x0007651b ; undefined
+    2d24:	00076f1b 	.inst	0x00076f1b ; undefined
     2d28:	0e740100 	saddl	v0.4s, v8.4h, v20.4h
     2d2c:	0000029c 	.inst	0x0000029c ; undefined
     2d30:	00489102 	.inst	0x00489102 ; undefined
-    2d34:	0007fe19 	.inst	0x0007fe19 ; undefined
+    2d34:	00080819 	.inst	0x00080819 ; undefined
     2d38:	05480100 	.inst	0x05480100 ; undefined
     2d3c:	0000008c 	.inst	0x0000008c ; undefined
     2d40:	00084e24 	.inst	0x00084e24 ; undefined
@@ -21201,7 +21201,7 @@ Disassembly of section .debug_info:
     2d48:	000000e8 	.inst	0x000000e8 ; undefined
     2d4c:	00000000 	.inst	0x00000000 ; undefined
     2d50:	078f9c01 	.inst	0x078f9c01 ; undefined
-    2d54:	a7170000 	.inst	0xa7170000 ; undefined
+    2d54:	b1170000 	adds	x0, x0, #0x5c0
     2d58:	01000003 	.inst	0x01000003 ; undefined
     2d5c:	00471948 	.inst	0x00471948 ; undefined
     2d60:	91020000 	add	x0, x0, #0x80
@@ -21209,14 +21209,14 @@ Disassembly of section .debug_info:
     2d68:	28480100 	ldnp	w0, w0, [x8, #64]
     2d6c:	0000006d 	.inst	0x0000006d ; undefined
     2d70:	17509102 	b	fffffffffd427178 <init_sp+0x7ffcc27178>
-    2d74:	000001dd 	.inst	0x000001dd ; undefined
+    2d74:	000001e5 	.inst	0x000001e5 ; undefined
     2d78:	6d344801 	stp	d1, d18, [x0, #-192]
     2d7c:	02000000 	.inst	0x02000000 ; undefined
     2d80:	651a4891 	.inst	0x651a4891 ; undefined
     2d84:	0100766e 	.inst	0x0100766e ; undefined
     2d88:	026c114a 	.inst	0x026c114a ; undefined
     2d8c:	91020000 	add	x0, x0, #0x80
-    2d90:	07331b70 	.inst	0x07331b70 ; undefined
+    2d90:	073d1b70 	.inst	0x073d1b70 ; undefined
     2d94:	4b010000 	sub	w0, w0, w1
     2d98:	00031912 	.inst	0x00031912 ; undefined
     2d9c:	68910200 	stgp	x0, x0, [x16], #544
@@ -21224,7 +21224,7 @@ Disassembly of section .debug_info:
     2da4:	094c0100 	.inst	0x094c0100 ; undefined
     2da8:	0000008c 	.inst	0x0000008c ; undefined
     2dac:	007c9102 	.inst	0x007c9102 ; undefined
-    2db0:	00074719 	.inst	0x00074719 ; undefined
+    2db0:	00075119 	.inst	0x00075119 ; undefined
     2db4:	05360100 	ext	z0.b, z0.b, z8.b, #176
     2db8:	0000008c 	.inst	0x0000008c ; undefined
     2dbc:	00084dc0 	.inst	0x00084dc0 ; undefined
@@ -21232,15 +21232,15 @@ Disassembly of section .debug_info:
     2dc4:	00000064 	.inst	0x00000064 ; undefined
     2dc8:	00000000 	.inst	0x00000000 ; undefined
     2dcc:	07fd9c01 	.inst	0x07fd9c01 ; undefined
-    2dd0:	a7170000 	.inst	0xa7170000 ; undefined
+    2dd0:	b1170000 	adds	x0, x0, #0x5c0
     2dd4:	01000003 	.inst	0x01000003 ; undefined
     2dd8:	00472336 	.inst	0x00472336 ; undefined
     2ddc:	91020000 	add	x0, x0, #0x80
-    2de0:	077e176c 	.inst	0x077e176c ; undefined
+    2de0:	0788176c 	.inst	0x0788176c ; undefined
     2de4:	36010000 	tbz	w0, #0, 4de4 <__bss_size+0x4dd2>
     2de8:	00006d32 	.inst	0x00006d32 ; undefined
     2dec:	60910200 	.inst	0x60910200 ; undefined
-    2df0:	0001c317 	.inst	0x0001c317 ; undefined
+    2df0:	0001cb17 	.inst	0x0001cb17 ; undefined
     2df4:	40360100 	.inst	0x40360100 ; undefined
     2df8:	0000006d 	.inst	0x0000006d ; undefined
     2dfc:	1a589102 	.inst	0x1a589102 ; undefined
@@ -21251,7 +21251,7 @@ Disassembly of section .debug_info:
     2e10:	01007465 	.inst	0x01007465 ; undefined
     2e14:	008c0939 	.inst	0x008c0939 ; undefined
     2e18:	91020000 	add	x0, x0, #0x80
-    2e1c:	e419007c 	.inst	0xe419007c ; undefined
+    2e1c:	ee19007c 	.inst	0xee19007c ; undefined
     2e20:	01000007 	.inst	0x01000007 ; undefined
     2e24:	008c0528 	.inst	0x008c0528 ; undefined
     2e28:	4d740000 	.inst	0x4d740000 ; undefined
@@ -21260,7 +21260,7 @@ Disassembly of section .debug_info:
     2e34:	00000000 	.inst	0x00000000 ; undefined
     2e38:	9c010000 	ldr	q0, 4e38 <__bss_size+0x4e26>
     2e3c:	00000849 	.inst	0x00000849 ; undefined
-    2e40:	0003a717 	.inst	0x0003a717 ; undefined
+    2e40:	0003b117 	.inst	0x0003b117 ; undefined
     2e44:	1d280100 	.inst	0x1d280100 ; undefined
     2e48:	00000079 	.inst	0x00000079 ; undefined
     2e4c:	1a6c9102 	.inst	0x1a6c9102 ; undefined
@@ -21270,7 +21270,7 @@ Disassembly of section .debug_info:
     2e5c:	0100651a 	.inst	0x0100651a ; undefined
     2e60:	026c112b 	.inst	0x026c112b ; undefined
     2e64:	91020000 	add	x0, x0, #0x80
-    2e68:	da160070 	sbc	x16, x3, x22
+    2e68:	e4160070 	.inst	0xe4160070 ; undefined
     2e6c:	01000007 	.inst	0x01000007 ; undefined
     2e70:	4d340620 	.inst	0x4d340620 ; undefined
     2e74:	ff800008 	.inst	0xff800008 ; undefined
@@ -21286,14 +21286,14 @@ Disassembly of section .debug_info:
     2e9c:	37172301 	tbnz	w1, #2, 12fc <__bss_size+0x12ea>
     2ea0:	02000005 	.inst	0x02000005 ; undefined
     2ea4:	1c007091 	ldr	s17, 3cb4 <__bss_size+0x3ca2>
-    2ea8:	00000771 	.inst	0x00000771 ; undefined
+    2ea8:	0000077b 	.inst	0x0000077b ; undefined
     2eac:	47071b01 	.inst	0x47071b01 ; undefined
     2eb0:	20000000 	.inst	0x20000000 ; undefined
     2eb4:	8000084d 	.inst	0x8000084d ; undefined
     2eb8:	14ffffff 	b	4002eb4 <__bss_size+0x4002ea2>
     2ebc:	00000000 	.inst	0x00000000 ; undefined
     2ec0:	01000000 	.inst	0x01000000 ; undefined
-    2ec4:	084d1d9c 	ldxrb	w28, [x12]
+    2ec4:	08571d9c 	ldxrb	w28, [x12]
     2ec8:	15010000 	b	4042ec8 <__bss_size+0x4042eb6>
     2ecc:	084d0006 	ldxrb	w6, [x0]
     2ed0:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -21311,16 +21311,16 @@ Disassembly of section .debug_info:
     2f00:	ff800008 	.inst	0xff800008 ; undefined
     2f04:	5588ffff 	.inst	0x5588ffff ; undefined
     2f08:	ff800008 	.inst	0xff800008 ; undefined
-    2f0c:	086cffff 	.inst	0x086cffff ; undefined
-    2f10:	03160000 	.inst	0x03160000 ; undefined
-    2f14:	00c20000 	.inst	0x00c20000 ; undefined
+    2f0c:	0876ffff 	.inst	0x0876ffff ; undefined
+    2f10:	031d0000 	.inst	0x031d0000 ; undefined
+    2f14:	00c80000 	.inst	0x00c80000 ; undefined
     2f18:	80010000 	.inst	0x80010000 ; undefined
     2f1c:	0000022f 	.inst	0x0000022f ; undefined
     2f20:	0e4c0004 	.inst	0x0e4c0004 ; undefined
     2f24:	01080000 	.inst	0x01080000 ; undefined
-    2f28:	00000025 	.inst	0x00000025 ; undefined
-    2f2c:	0008f60c 	.inst	0x0008f60c ; undefined
-    2f30:	00031600 	.inst	0x00031600 ; undefined
+    2f28:	00000000 	.inst	0x00000000 ; undefined
+    2f2c:	0009000c 	.inst	0x0009000c ; undefined
+    2f30:	00031d00 	.inst	0x00031d00 ; undefined
     2f34:	08558800 	ldaxrb	w0, [x0]
     2f38:	ffff8000 	.inst	0xffff8000 ; undefined
     2f3c:	00026cff 	.inst	0x00026cff ; undefined
@@ -21329,23 +21329,23 @@ Disassembly of section .debug_info:
     2f48:	03080200 	.inst	0x03080200 ; undefined
     2f4c:	6e690504 	uhadd	v4.8h, v8.8h, v9.8h
     2f50:	01040074 	.inst	0x01040074 ; undefined
-    2f54:	00017808 	.inst	0x00017808 ; undefined
+    2f54:	00018008 	.inst	0x00018008 ; undefined
     2f58:	07020400 	.inst	0x07020400 ; undefined
-    2f5c:	0000010a 	.inst	0x0000010a ; undefined
-    2f60:	9c070404 	ldr	q4, 10fe0 <__bss_size+0x10fce>
+    2f5c:	00000119 	.inst	0x00000119 ; undefined
+    2f60:	a4070404 	ld1rqb	{z4.b}, p1/z, [x0, x7]
     2f64:	05000001 	orr	z1.s, z1.s, #0x1
-    2f68:	000001f0 	.inst	0x000001f0 ; undefined
+    2f68:	000001f8 	.inst	0x000001f8 ; undefined
     2f6c:	57170c02 	.inst	0x57170c02 ; undefined
     2f70:	04000000 	add	z0.b, p0/m, z0.b, z0.b
-    2f74:	01970708 	.inst	0x01970708 ; undefined
-    2f78:	ef050000 	.inst	0xef050000 ; undefined
+    2f74:	019f0708 	.inst	0x019f0708 ; undefined
+    2f78:	f6050000 	.inst	0xf6050000 ; undefined
     2f7c:	02000002 	.inst	0x02000002 ; undefined
     2f80:	004b100d 	.inst	0x004b100d ; undefined
     2f84:	08040000 	stxrb	w4, w0, [x0]
-    2f88:	0002bd05 	.inst	0x0002bd05 ; undefined
+    2f88:	0002df05 	.inst	0x0002df05 ; undefined
     2f8c:	05020400 	orr	z0.d, z0.d, #0x1ffffffff
-    2f90:	0000028f 	.inst	0x0000028f ; undefined
-    2f94:	81080104 	.inst	0x81080104 ; undefined
+    2f90:	000002b1 	.inst	0x000002b1 ; undefined
+    2f94:	89080104 	.inst	0x89080104 ; undefined
     2f98:	06000001 	.inst	0x06000001 ; undefined
     2f9c:	00000078 	.inst	0x00000078 ; undefined
     2fa0:	00009407 	.inst	0x00009407 ; undefined
@@ -21353,19 +21353,19 @@ Disassembly of section .debug_info:
     2fa8:	00570800 	.inst	0x00570800 ; undefined
     2fac:	000f0000 	.inst	0x000f0000 ; undefined
     2fb0:	007f0809 	.inst	0x007f0809 ; undefined
-    2fb4:	960a0000 	bl	fffffffff8282fb4 <init_sp+0x7ff7a82fb4>
+    2fb4:	a00a0000 	.inst	0xa00a0000 ; undefined
     2fb8:	01000008 	.inst	0x01000008 ; undefined
     2fbc:	00840d0b 	.inst	0x00840d0b ; undefined
     2fc0:	03090000 	.inst	0x03090000 ; undefined
     2fc4:	00088000 	.inst	0x00088000 ; undefined
     2fc8:	ffffff80 	.inst	0xffffff80 ; undefined
-    2fcc:	0008740b 	.inst	0x0008740b ; undefined
+    2fcc:	00087e0b 	.inst	0x00087e0b ; undefined
     2fd0:	06600100 	.inst	0x06600100 ; undefined
     2fd4:	00085790 	.inst	0x00085790 ; undefined
     2fd8:	ffffff80 	.inst	0xffffff80 ; undefined
     2fdc:	00000064 	.inst	0x00000064 ; undefined
     2fe0:	00000000 	.inst	0x00000000 ; undefined
-    2fe4:	db0c9c01 	.inst	0xdb0c9c01 ; undefined
+    2fe4:	e50c9c01 	st1w	{z1.d}, p7, [x0, z12.d, uxtw]
     2fe8:	01000008 	.inst	0x01000008 ; undefined
     2fec:	57200658 	.inst	0x57200658 ; undefined
     2ff0:	ff800008 	.inst	0xff800008 ; undefined
@@ -21373,14 +21373,14 @@ Disassembly of section .debug_info:
     2ff8:	00000000 	.inst	0x00000000 ; undefined
     2ffc:	9c010000 	ldr	q0, 4ffc <__bss_size+0x4fea>
     3000:	00000124 	.inst	0x00000124 ; undefined
-    3004:	00055f0d 	.inst	0x00055f0d ; undefined
+    3004:	0005690d 	.inst	0x0005690d ; undefined
     3008:	1e580100 	.inst	0x1e580100 ; undefined
     300c:	0000002f 	.inst	0x0000002f ; undefined
     3010:	0e6c9102 	sqdmlal	v2.4s, v8.4h, v12.4h
     3014:	00727365 	.inst	0x00727365 ; undefined
     3018:	57325801 	.inst	0x57325801 ; undefined
     301c:	02000000 	.inst	0x02000000 ; undefined
-    3020:	b70d6091 	tbnz	x17, #33, ffffffffffffdc30 <init_sp+0x7fff7fdc30>
+    3020:	c10d6091 	.inst	0xc10d6091 ; undefined
     3024:	01000008 	.inst	0x01000008 ; undefined
     3028:	00574558 	.inst	0x00574558 ; undefined
     302c:	91020000 	add	x0, x0, #0x80
@@ -21388,7 +21388,7 @@ Disassembly of section .debug_info:
     3034:	0d5a0100 	.inst	0x0d5a0100 ; undefined
     3038:	0000005e 	.inst	0x0000005e ; undefined
     303c:	00789102 	.inst	0x00789102 ; undefined
-    3040:	0008d510 	.inst	0x0008d510 ; undefined
+    3040:	0008df10 	.inst	0x0008df10 ; undefined
     3044:	06460100 	.inst	0x06460100 ; undefined
     3048:	000856a4 	.inst	0x000856a4 ; undefined
     304c:	ffffff80 	.inst	0xffffff80 ; undefined
@@ -21406,7 +21406,7 @@ Disassembly of section .debug_info:
     307c:	01007861 	.inst	0x01007861 ; undefined
     3080:	002d0b48 	.inst	0x002d0b48 ; NYI
     3084:	91020000 	add	x0, x0, #0x80
-    3088:	90100078 	adrp	x24, 2000f000 <__bss_size+0x2000efee>
+    3088:	9a100078 	adc	x24, x3, x16
     308c:	01000008 	.inst	0x01000008 ; undefined
     3090:	55f80632 	.inst	0x55f80632 ; undefined
     3094:	ff800008 	.inst	0xff800008 ; undefined
@@ -21431,13 +21431,13 @@ Disassembly of section .debug_info:
     30e0:	78910200 	ldursh	x0, [x16, #-240]
     30e4:	cf080900 	.inst	0xcf080900 ; undefined
     30e8:	11000001 	add	w1, w0, #0x0
-    30ec:	0008bf0b 	.inst	0x0008bf0b ; undefined
+    30ec:	0008c90b 	.inst	0x0008c90b ; undefined
     30f0:	062d0100 	.inst	0x062d0100 ; undefined
     30f4:	000855d0 	.inst	0x000855d0 ; undefined
     30f8:	ffffff80 	.inst	0xffffff80 ; undefined
     30fc:	00000028 	.inst	0x00000028 ; undefined
     3100:	00000000 	.inst	0x00000000 ; undefined
-    3104:	ab129c01 	adds	x1, x0, x18, lsl #39
+    3104:	b5129c01 	cbnz	x1, 28484 <__bss_size+0x28472>
     3108:	01000008 	.inst	0x01000008 ; undefined
     310c:	55a80627 	.inst	0x55a80627 ; undefined
     3110:	ff800008 	.inst	0xff800008 ; undefined
@@ -21449,7 +21449,7 @@ Disassembly of section .debug_info:
     3128:	09290100 	.inst	0x09290100 ; undefined
     312c:	0000002f 	.inst	0x0000002f ; undefined
     3130:	007c9102 	.inst	0x007c9102 ; undefined
-    3134:	0008ef0b 	.inst	0x0008ef0b ; undefined
+    3134:	0008f90b 	.inst	0x0008f90b ; undefined
     3138:	06220100 	.inst	0x06220100 ; undefined
     313c:	00085588 	.inst	0x00085588 ; undefined
     3140:	ffffff80 	.inst	0xffffff80 ; undefined
@@ -21458,66 +21458,66 @@ Disassembly of section .debug_info:
     314c:	8e009c01 	.inst	0x8e009c01 ; undefined
     3150:	04000001 	add	z1.b, p0/m, z1.b, z0.b
     3154:	000f6300 	.inst	0x000f6300 ; undefined
-    3158:	25010800 	cmpge	p0.b, p2/z, z0.b, #1
+    3158:	00010800 	.inst	0x00010800 ; undefined
     315c:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-    3160:	0000092a 	.inst	0x0000092a ; undefined
-    3164:	000008fd 	.inst	0x000008fd ; undefined
+    3160:	00000937 	.inst	0x00000937 ; undefined
+    3164:	00000913 	.inst	0x00000913 ; undefined
     3168:	000857f4 	.inst	0x000857f4 ; undefined
     316c:	ffffff80 	.inst	0xffffff80 ; undefined
     3170:	000002e8 	.inst	0x000002e8 ; undefined
     3174:	00000000 	.inst	0x00000000 ; undefined
     3178:	0000176c 	.inst	0x0000176c ; undefined
-    317c:	78080102 	sturh	w2, [x8, #128]
+    317c:	80080102 	.inst	0x80080102 ; undefined
     3180:	02000001 	.inst	0x02000001 ; undefined
-    3184:	010a0702 	.inst	0x010a0702 ; undefined
+    3184:	01190702 	.inst	0x01190702 ; undefined
     3188:	04020000 	.inst	0x04020000 ; undefined
-    318c:	00019c07 	.inst	0x00019c07 ; undefined
-    3190:	01f00300 	.inst	0x01f00300 ; undefined
+    318c:	0001a407 	.inst	0x0001a407 ; undefined
+    3190:	01f80300 	.inst	0x01f80300 ; undefined
     3194:	0c020000 	.inst	0x0c020000 ; undefined
     3198:	00004e17 	.inst	0x00004e17 ; undefined
     319c:	07080200 	.inst	0x07080200 ; undefined
-    31a0:	00000197 	.inst	0x00000197 ; undefined
-    31a4:	0002ef03 	.inst	0x0002ef03 ; undefined
+    31a0:	0000019f 	.inst	0x0000019f ; undefined
+    31a4:	0002f603 	.inst	0x0002f603 ; undefined
     31a8:	100d0200 	adr	x0, 1d1e8 <__bss_size+0x1d1d6>
     31ac:	00000042 	.inst	0x00000042 ; undefined
-    31b0:	bd050802 	str	s2, [x0, #1288]
+    31b0:	df050802 	.inst	0xdf050802 ; undefined
     31b4:	04000002 	add	z2.b, p0/m, z2.b, z0.b
     31b8:	6e690504 	uhadd	v4.8h, v8.8h, v9.8h
     31bc:	02020074 	.inst	0x02020074 ; undefined
-    31c0:	00028f05 	.inst	0x00028f05 ; undefined
+    31c0:	0002b105 	.inst	0x0002b105 ; undefined
     31c4:	08010200 	stxrb	w1, w0, [x16]
-    31c8:	00000181 	.inst	0x00000181 ; undefined
+    31c8:	00000189 	.inst	0x00000189 ; undefined
     31cc:	00007605 	.inst	0x00007605 ; undefined
     31d0:	00008800 	.inst	0x00008800 ; undefined
     31d4:	07000600 	.inst	0x07000600 ; undefined
-    31d8:	000001e2 	.inst	0x000001e2 ; undefined
+    31d8:	000001ea 	.inst	0x000001ea ; undefined
     31dc:	7d0d3603 	str	h3, [x16, #1690]
     31e0:	07000000 	.inst	0x07000000 ; undefined
-    31e4:	000004af 	.inst	0x000004af ; undefined
+    31e4:	000004b9 	.inst	0x000004b9 ; undefined
     31e8:	7d0d3703 	str	h3, [x24, #1690]
     31ec:	07000000 	.inst	0x07000000 ; undefined
-    31f0:	0000016d 	.inst	0x0000016d ; undefined
+    31f0:	00000175 	.inst	0x00000175 ; undefined
     31f4:	55104f03 	.inst	0x55104f03 ; undefined
     31f8:	08000000 	stxrb	w0, w0, [x0]
-    31fc:	00000303 	.inst	0x00000303 ; undefined
+    31fc:	0000030a 	.inst	0x0000030a ; undefined
     3200:	55090c01 	.inst	0x55090c01 ; undefined
     3204:	09000000 	.inst	0x09000000 ; undefined
     3208:	090f1803 	.inst	0x090f1803 ; undefined
     320c:	ffff8000 	.inst	0xffff8000 ; undefined
-    3210:	03b408ff 	.inst	0x03b408ff ; undefined
+    3210:	03be08ff 	.inst	0x03be08ff ; undefined
     3214:	0d010000 	.inst	0x0d010000 ; undefined
     3218:	0000d80a 	.inst	0x0000d80a ; undefined
     321c:	20030900 	.inst	0x20030900 ; undefined
     3220:	8000090f 	.inst	0x8000090f ; undefined
     3224:	09ffffff 	.inst	0x09ffffff ; undefined
     3228:	00005508 	.inst	0x00005508 ; undefined
-    322c:	094a0800 	.inst	0x094a0800 ; undefined
+    322c:	09570800 	.inst	0x09570800 ; undefined
     3230:	0e010000 	tbl	v0.8b, {v0.16b}, v1.8b
     3234:	0000d80a 	.inst	0x0000d80a ; undefined
     3238:	10030900 	adr	x0, 9358 <__bss_size+0x9346>
     323c:	8000090f 	.inst	0x8000090f ; undefined
     3240:	0affffff 	.inst	0x0affffff ; undefined
-    3244:	00000930 	.inst	0x00000930 ; undefined
+    3244:	0000093d 	.inst	0x0000093d ; undefined
     3248:	f4061001 	.inst	0xf4061001 ; undefined
     324c:	80000857 	.inst	0x80000857 ; undefined
     3250:	e8ffffff 	.inst	0xe8ffffff ; undefined
@@ -21531,14 +21531,14 @@ Disassembly of section .debug_info:
     3270:	14120100 	b	483670 <__bss_size+0x48365e>
     3274:	000000d8 	.inst	0x000000d8 ; undefined
     3278:	0c609102 	.inst	0x0c609102 ; undefined
-    327c:	00000920 	.inst	0x00000920 ; undefined
+    327c:	00000909 	.inst	0x00000909 ; undefined
     3280:	d81a1201 	prfm	pldl1strm, 374c0 <__bss_size+0x374ae>
     3284:	02000000 	.inst	0x02000000 ; undefined
     3288:	700b5091 	adr	x17, 19c9b <__bss_size+0x19c89>
     328c:	01006574 	.inst	0x01006574 ; undefined
     3290:	00d82612 	.inst	0x00d82612 ; undefined
     3294:	91020000 	add	x0, x0, #0x80
-    3298:	09400c48 	.inst	0x09400c48 ; undefined
+    3298:	094d0c48 	.inst	0x094d0c48 ; undefined
     329c:	12010000 	and	w0, w0, #0x80000000
     32a0:	0000d82c 	.inst	0x0000d82c ; undefined
     32a4:	40910200 	.inst	0x40910200 ; undefined
@@ -21552,101 +21552,101 @@ Disassembly of section .debug_info:
     32c4:	13010074 	sbfiz	w20, w3, #31, #1
     32c8:	00005513 	.inst	0x00005513 ; undefined
     32cc:	70910200 	adr	x0, fffffffffff2530f <init_sp+0x7fff72530f>
-    32d0:	00091e0c 	.inst	0x00091e0c ; undefined
+    32d0:	0009070c 	.inst	0x0009070c ; undefined
     32d4:	09240100 	.inst	0x09240100 ; undefined
     32d8:	00000068 	.inst	0x00000068 ; undefined
     32dc:	005c9102 	.inst	0x005c9102 ; undefined
     32e0:	000ef800 	.inst	0x000ef800 ; undefined
     32e4:	13000400 	sbfx	w0, w0, #0, #2
     32e8:	08000010 	stxrb	w0, w16, [x0]
-    32ec:	00002501 	.inst	0x00002501 ; undefined
-    32f0:	0a7a0c00 	bic	w0, w0, w26, lsr #3
-    32f4:	08fd0000 	.inst	0x08fd0000 ; undefined
+    32ec:	00000001 	.inst	0x00000001 ; undefined
+    32f0:	0a870c00 	and	w0, w0, w7, asr #3
+    32f4:	09130000 	.inst	0x09130000 ; undefined
     32f8:	5adc0000 	.inst	0x5adc0000 ; undefined
     32fc:	ff800008 	.inst	0xff800008 ; undefined
     3300:	1710ffff 	b	fffffffffc4432fc <init_sp+0x7ffbc432fc>
     3304:	00000000 	.inst	0x00000000 ; undefined
     3308:	18d20000 	ldr	w0, fffffffffffa7308 <init_sp+0x7fff7a7308>
     330c:	01020000 	.inst	0x01020000 ; undefined
-    3310:	00017808 	.inst	0x00017808 ; undefined
-    3314:	01240300 	.inst	0x01240300 ; undefined
+    3310:	00018008 	.inst	0x00018008 ; undefined
+    3314:	01330300 	.inst	0x01330300 ; undefined
     3318:	0a030000 	and	w0, w0, w3
     331c:	00004018 	.inst	0x00004018 ; undefined
     3320:	07020200 	.inst	0x07020200 ; undefined
-    3324:	0000010a 	.inst	0x0000010a ; undefined
-    3328:	00029903 	.inst	0x00029903 ; undefined
+    3324:	00000119 	.inst	0x00000119 ; undefined
+    3328:	0002bb03 	.inst	0x0002bb03 ; undefined
     332c:	160b0300 	b	fffffffff82c3f2c <init_sp+0x7ff7ac3f2c>
     3330:	00000053 	.inst	0x00000053 ; undefined
-    3334:	9c070402 	ldr	q2, 113b4 <__bss_size+0x113a2>
+    3334:	a4070402 	ld1rqb	{z2.b}, p1/z, [x0, x7]
     3338:	03000001 	.inst	0x03000001 ; undefined
-    333c:	000001f0 	.inst	0x000001f0 ; undefined
+    333c:	000001f8 	.inst	0x000001f8 ; undefined
     3340:	66170c03 	.inst	0x66170c03 ; undefined
     3344:	02000000 	.inst	0x02000000 ; undefined
-    3348:	01970708 	.inst	0x01970708 ; undefined
-    334c:	ef030000 	.inst	0xef030000 ; undefined
+    3348:	019f0708 	.inst	0x019f0708 ; undefined
+    334c:	f6030000 	.inst	0xf6030000 ; undefined
     3350:	03000002 	.inst	0x03000002 ; undefined
     3354:	005a100d 	.inst	0x005a100d ; undefined
-    3358:	79030000 	strh	w0, [x0, #384]
+    3358:	83030000 	.inst	0x83030000 ; undefined
     335c:	03000005 	.inst	0x03000005 ; undefined
     3360:	00470f0e 	.inst	0x00470f0e ; undefined
-    3364:	f0030000 	adrp	x0, 6006000 <__bss_size+0x6005fee>
+    3364:	f7030000 	.inst	0xf7030000 ; undefined
     3368:	03000002 	.inst	0x03000002 ; undefined
     336c:	00910e11 	.inst	0x00910e11 ; undefined
     3370:	08020000 	stxrb	w2, w0, [x0]
-    3374:	0002bd05 	.inst	0x0002bd05 ; undefined
+    3374:	0002df05 	.inst	0x0002df05 ; undefined
     3378:	05040400 	.inst	0x05040400 ; undefined
     337c:	00746e69 	.inst	0x00746e69 ; undefined
-    3380:	8f050202 	.inst	0x8f050202 ; undefined
+    3380:	b1050202 	adds	x2, x16, #0x140
     3384:	02000002 	.inst	0x02000002 ; undefined
-    3388:	01810801 	.inst	0x01810801 ; undefined
+    3388:	01890801 	.inst	0x01890801 ; undefined
     338c:	a6050000 	.inst	0xa6050000 ; undefined
     3390:	b8000000 	stur	w0, [x0]
     3394:	06000000 	.inst	0x06000000 ; undefined
-    3398:	01e20700 	.inst	0x01e20700 ; undefined
+    3398:	01ea0700 	.inst	0x01ea0700 ; undefined
     339c:	36040000 	tbz	w0, #0, ffffffffffffb39c <init_sp+0x7fff7fb39c>
     33a0:	0000ad0d 	.inst	0x0000ad0d ; undefined
-    33a4:	04af0700 	sub	z0.s, z24.s, z15.s
+    33a4:	04b90700 	sub	z0.s, z24.s, z25.s
     33a8:	37040000 	tbnz	w0, #0, ffffffffffffb3a8 <init_sp+0x7fff7fb3a8>
     33ac:	0000ad0d 	.inst	0x0000ad0d ; undefined
-    33b0:	016d0700 	.inst	0x016d0700 ; undefined
+    33b0:	01750700 	.inst	0x01750700 ; undefined
     33b4:	4f040000 	.inst	0x4f040000 ; undefined
     33b8:	00006d10 	.inst	0x00006d10 ; undefined
     33bc:	09080800 	.inst	0x09080800 ; undefined
-    33c0:	000009cf 	.inst	0x000009cf ; undefined
+    33c0:	000009dc 	.inst	0x000009dc ; undefined
     33c4:	01090108 	.inst	0x01090108 ; undefined
     33c8:	000000f9 	.inst	0x000000f9 ; undefined
-    33cc:	0002070a 	.inst	0x0002070a ; undefined
+    33cc:	00020f0a 	.inst	0x00020f0a ; undefined
     33d0:	01090100 	.inst	0x01090100 ; undefined
     33d4:	00000121 	.inst	0x00000121 ; undefined
-    33d8:	2c090000 	stnp	s0, s0, [x0, #72]
+    33d8:	3b090000 	.inst	0x3b090000 ; undefined
     33dc:	18000001 	ldr	w1, 33dc <__bss_size+0x33ca>
     33e0:	21080c01 	.inst	0x21080c01 ; undefined
     33e4:	0a000001 	and	w1, w0, w0
-    33e8:	00000287 	.inst	0x00000287 ; undefined
+    33e8:	000002a9 	.inst	0x000002a9 ; undefined
     33ec:	51170e01 	sub	w1, w16, #0x5c3
     33f0:	00000001 	.inst	0x00000001 ; undefined
-    33f4:	00023e0a 	.inst	0x00023e0a ; undefined
+    33f4:	0002460a 	.inst	0x0002460a ; undefined
     33f8:	0d0f0100 	.inst	0x0d0f0100 ; undefined
     33fc:	00000034 	.inst	0x00000034 ; undefined
     3400:	080b0010 	stxrb	w11, w16, [x0]
     3404:	000000f9 	.inst	0x000000f9 ; undefined
     3408:	0a01100c 	and	w12, w0, w1, lsl #4
     340c:	00014b09 	.inst	0x00014b09 ; undefined
-    3410:	01cd0a00 	.inst	0x01cd0a00 ; undefined
+    3410:	01d50a00 	.inst	0x01d50a00 ; undefined
     3414:	0a010000 	and	w0, w0, w1
     3418:	00012109 	.inst	0x00012109 ; undefined
-    341c:	650a0000 	.inst	0x650a0000 ; undefined
+    341c:	520a0000 	eor	w0, w0, #0x400000
     3420:	01000001 	.inst	0x01000001 ; undefined
     3424:	014b090a 	.inst	0x014b090a ; undefined
     3428:	00080000 	.inst	0x00080000 ; undefined
     342c:	0121080b 	.inst	0x0121080b ; undefined
-    3430:	31030000 	adds	w0, w0, #0xc0
+    3430:	40030000 	.inst	0x40030000 ; undefined
     3434:	01000001 	.inst	0x01000001 ; undefined
     3438:	01271a0a 	.inst	0x01271a0a ; undefined
-    343c:	72070000 	ands	w0, w0, #0x2000000
+    343c:	7a070000 	sbcs	w0, w0, w7
     3440:	01000002 	.inst	0x01000002 ; undefined
     3444:	01211512 	.inst	0x01211512 ; undefined
-    3448:	100d0000 	adr	x0, 1d448 <__bss_size+0x1d436>
+    3448:	180d0000 	ldr	w0, 1d448 <__bss_size+0x1d436>
     344c:	20000002 	.inst	0x20000002 ; undefined
     3450:	08130501 	stxrb	w19, w1, [x8]
     3454:	000001c7 	.inst	0x000001c7 ; undefined
@@ -21659,7 +21659,7 @@ Disassembly of section .debug_info:
     3470:	00726c65 	.inst	0x00726c65 ; undefined
     3474:	6d0d1705 	stp	d5, d5, [x24, #208]
     3478:	00000000 	.inst	0x00000000 ; undefined
-    347c:	02a81001 	.inst	0x02a81001 ; undefined
+    347c:	02ca1001 	.inst	0x02ca1001 ; undefined
     3480:	18050000 	ldr	w0, d480 <__bss_size+0xd46e>
     3484:	00006d0d 	.inst	0x00006d0d ; undefined
     3488:	0f010800 	.inst	0x0f010800 ; undefined
@@ -21676,77 +21676,77 @@ Disassembly of section .debug_info:
     34b4:	001e0000 	.inst	0x001e0000 ; undefined
     34b8:	1606100c 	b	fffffffff81874e8 <init_sp+0x7ff79874e8>
     34bc:	0001fb05 	.inst	0x0001fb05 ; undefined
-    34c0:	01cd0a00 	.inst	0x01cd0a00 ; undefined
+    34c0:	01d50a00 	.inst	0x01d50a00 ; undefined
     34c4:	16060000 	b	fffffffff81834c4 <init_sp+0x7ff79834c4>
     34c8:	00030505 	.inst	0x00030505 ; undefined
-    34cc:	650a0000 	.inst	0x650a0000 ; undefined
+    34cc:	520a0000 	eor	w0, w0, #0x400000
     34d0:	06000001 	.inst	0x06000001 ; undefined
     34d4:	030b0516 	.inst	0x030b0516 ; undefined
     34d8:	00080000 	.inst	0x00080000 ; undefined
     34dc:	766e4512 	.inst	0x766e4512 ; undefined
     34e0:	06019800 	.inst	0x06019800 ; undefined
     34e4:	03050813 	.inst	0x03050813 ; undefined
-    34e8:	780a0000 	sturh	w0, [x0, #160]
+    34e8:	9a0a0000 	adc	x0, x0, x10
     34ec:	06000002 	.inst	0x06000002 ; undefined
     34f0:	01691615 	.inst	0x01691615 ; undefined
     34f4:	10000000 	adr	x0, 34f4 <__bss_size+0x34e2>
-    34f8:	0000029f 	.inst	0x0000029f ; undefined
+    34f8:	000002c1 	.inst	0x000002c1 ; undefined
     34fc:	d7151606 	.inst	0xd7151606 ; undefined
     3500:	20000001 	.inst	0x20000001 ; undefined
-    3504:	00d81001 	.inst	0x00d81001 ; undefined
+    3504:	00de1001 	.inst	0x00de1001 ; undefined
     3508:	17060000 	b	fffffffffc183508 <init_sp+0x7ffb983508>
     350c:	0000470b 	.inst	0x0000470b ; undefined
     3510:	10013000 	adr	x0, 5b10 <__bss_size+0x5afe>
-    3514:	000002af 	.inst	0x000002af ; undefined
+    3514:	000002d1 	.inst	0x000002d1 ; undefined
     3518:	470b1806 	.inst	0x470b1806 ; undefined
     351c:	34000000 	cbz	w0, 351c <__bss_size+0x350a>
-    3520:	078b1001 	.inst	0x078b1001 ; undefined
+    3520:	07951001 	.inst	0x07951001 ; undefined
     3524:	19060000 	stlurb	w0, [x0, #96]
     3528:	0000470b 	.inst	0x0000470b ; undefined
     352c:	10013800 	adr	x0, 5c2c <__bss_size+0x5c1a>
-    3530:	0000024d 	.inst	0x0000024d ; undefined
+    3530:	00000255 	.inst	0x00000255 ; undefined
     3534:	350e1a06 	cbnz	w6, 1f874 <__bss_size+0x1f862>
     3538:	40000003 	.inst	0x40000003 ; undefined
-    353c:	02451001 	.inst	0x02451001 ; undefined
+    353c:	024d1001 	.inst	0x024d1001 ; undefined
     3540:	1b060000 	madd	w0, w0, w6, w0
     3544:	00006d0d 	.inst	0x00006d0d ; undefined
     3548:	10014800 	adr	x0, 5e48 <__bss_size+0x5e36>
-    354c:	000001a9 	.inst	0x000001a9 ; undefined
+    354c:	000001b1 	.inst	0x000001b1 ; undefined
     3550:	11151c06 	add	w6, w0, #0x547
     3554:	50000003 	adr	x3, 3556 <__bss_size+0x3544>
-    3558:	027f1001 	.inst	0x027f1001 ; undefined
+    3558:	02a11001 	.inst	0x02a11001 ; undefined
     355c:	1d060000 	.inst	0x1d060000 ; undefined
     3560:	0000470b 	.inst	0x0000470b ; undefined
     3564:	10016000 	adr	x0, 6164 <__bss_size+0x6152>
-    3568:	000002e1 	.inst	0x000002e1 ; undefined
+    3568:	000002e8 	.inst	0x000002e8 ; undefined
     356c:	470b2006 	.inst	0x470b2006 ; undefined
     3570:	64000000 	.inst	0x64000000 ; undefined
-    3574:	021a1001 	.inst	0x021a1001 ; undefined
+    3574:	02221001 	.inst	0x02221001 ; undefined
     3578:	21060000 	.inst	0x21060000 ; undefined
     357c:	0000470b 	.inst	0x0000470b ; undefined
     3580:	10016800 	adr	x0, 6280 <__bss_size+0x626e>
-    3584:	000001f7 	.inst	0x000001f7 ; undefined
+    3584:	000001ff 	.inst	0x000001ff ; undefined
     3588:	470b2206 	.inst	0x470b2206 ; undefined
     358c:	6c000000 	stnp	d0, d0, [x0]
-    3590:	02271001 	.inst	0x02271001 ; undefined
+    3590:	022f1001 	.inst	0x022f1001 ; undefined
     3594:	23060000 	.inst	0x23060000 ; undefined
     3598:	00006d0d 	.inst	0x00006d0d ; undefined
     359c:	10017000 	adr	x0, 639c <__bss_size+0x638a>
-    35a0:	000001d5 	.inst	0x000001d5 ; undefined
+    35a0:	000001dd 	.inst	0x000001dd ; undefined
     35a4:	6d0d2406 	stp	d6, d9, [x0, #208]
     35a8:	78000000 	sturh	w0, [x0]
-    35ac:	02571001 	.inst	0x02571001 ; undefined
+    35ac:	025f1001 	.inst	0x025f1001 ; undefined
     35b0:	27060000 	.inst	0x27060000 ; undefined
     35b4:	00006d0d 	.inst	0x00006d0d ; undefined
     35b8:	10018000 	adr	x0, 65b8 <__bss_size+0x65a6>
-    35bc:	000001bf 	.inst	0x000001bf ; undefined
+    35bc:	000001c7 	.inst	0x000001c7 ; undefined
     35c0:	6d0d2806 	stp	d6, d10, [x0, #208]
     35c4:	88000000 	stxr	w0, w0, [x0]
-    35c8:	01861001 	.inst	0x01861001 ; undefined
+    35c8:	018e1001 	.inst	0x018e1001 ; undefined
     35cc:	2b060000 	adds	w0, w0, w6
     35d0:	0000470b 	.inst	0x0000470b ; undefined
     35d4:	10019000 	adr	x0, 67d4 <__bss_size+0x67c2>
-    35d8:	0000018f 	.inst	0x0000018f ; undefined
+    35d8:	00000197 	.inst	0x00000197 ; undefined
     35dc:	470b2c06 	.inst	0x470b2c06 ; undefined
     35e0:	94000000 	bl	35e0 <__bss_size+0x35ce>
     35e4:	080b0001 	stxrb	w11, w1, [x0]
@@ -21755,35 +21755,35 @@ Disassembly of section .debug_info:
     35f0:	100c0000 	adr	x0, 1b5f0 <__bss_size+0x1b5de>
     35f4:	35051c06 	cbnz	w6, d974 <__bss_size+0xd962>
     35f8:	0a000003 	and	w3, w0, w0
-    35fc:	000001cd 	.inst	0x000001cd ; undefined
+    35fc:	000001d5 	.inst	0x000001d5 ; undefined
     3600:	05051c06 	.inst	0x05051c06 ; undefined
     3604:	00000003 	.inst	0x00000003 ; undefined
-    3608:	0001650a 	.inst	0x0001650a ; undefined
+    3608:	0001520a 	.inst	0x0001520a ; undefined
     360c:	051c0600 	mov	z0.b, p12/z, #48
     3610:	0000030b 	.inst	0x0000030b ; undefined
     3614:	080b0008 	stxrb	w11, w8, [x0]
     3618:	0000006d 	.inst	0x0000006d ; undefined
-    361c:	0001e709 	.inst	0x0001e709 ; undefined
+    361c:	0001ef09 	.inst	0x0001ef09 ; undefined
     3620:	2f060800 	.inst	0x2f060800 ; undefined
     3624:	00035601 	.inst	0x00035601 ; undefined
-    3628:	02070a00 	.inst	0x02070a00 ; undefined
+    3628:	020f0a00 	.inst	0x020f0a00 ; undefined
     362c:	2f060000 	.inst	0x2f060000 ; undefined
     3630:	00030501 	.inst	0x00030501 ; undefined
     3634:	07000000 	.inst	0x07000000 ; undefined
-    3638:	00000173 	.inst	0x00000173 ; undefined
+    3638:	0000017b 	.inst	0x0000017b ; undefined
     363c:	05143006 	.inst	0x05143006 ; undefined
     3640:	07000003 	.inst	0x07000003 ; undefined
-    3644:	0000011d 	.inst	0x0000011d ; undefined
+    3644:	0000012c 	.inst	0x0000012c ; undefined
     3648:	05143106 	.inst	0x05143106 ; undefined
     364c:	05000003 	orr	z3.s, z3.s, #0x1
     3650:	0000033b 	.inst	0x0000033b ; undefined
     3654:	0000037e 	.inst	0x0000037e ; undefined
     3658:	00006611 	.inst	0x00006611 ; undefined
     365c:	07000100 	.inst	0x07000100 ; undefined
-    3660:	000000fb 	.inst	0x000000fb ; undefined
+    3660:	0000010a 	.inst	0x0000010a ; undefined
     3664:	6e183206 	ext	v6.16b, v16.16b, v24.16b, #6
     3668:	13000003 	sbfx	w3, w0, #0, #1
-    366c:	00000ab8 	.inst	0x00000ab8 ; undefined
+    366c:	00000ac5 	.inst	0x00000ac5 ; undefined
     3670:	6d091002 	stp	d2, d4, [x0, #144]
     3674:	09000000 	.inst	0x09000000 ; undefined
     3678:	090f3003 	.inst	0x090f3003 ; undefined
@@ -21793,12 +21793,12 @@ Disassembly of section .debug_info:
     3688:	28030909 	stnp	w9, w2, [x8, #24]
     368c:	8000090f 	.inst	0x8000090f ; undefined
     3690:	13ffffff 	.inst	0x13ffffff ; undefined
-    3694:	00000abe 	.inst	0x00000abe ; undefined
+    3694:	00000acb 	.inst	0x00000acb ; undefined
     3698:	6d091202 	stp	d2, d4, [x16, #144]
     369c:	09000000 	.inst	0x09000000 ; undefined
     36a0:	090f3803 	.inst	0x090f3803 ; undefined
     36a4:	ffff8000 	.inst	0xffff8000 ; undefined
-    36a8:	0a4113ff 	and	wzr, wzr, w1, lsr #4
+    36a8:	0a4e13ff 	and	wzr, wzr, w14, lsr #4
     36ac:	13020000 	sbfiz	w0, w0, #30, #1
     36b0:	00006d09 	.inst	0x00006d09 ; undefined
     36b4:	40030900 	.inst	0x40030900 ; undefined
@@ -21808,56 +21808,56 @@ Disassembly of section .debug_info:
     36c4:	090e1502 	.inst	0x090e1502 ; undefined
     36c8:	090f4803 	.inst	0x090f4803 ; undefined
     36cc:	ffff8000 	.inst	0xffff8000 ; undefined
-    36d0:	09d915ff 	.inst	0x09d915ff ; undefined
+    36d0:	09e615ff 	.inst	0x09e615ff ; undefined
     36d4:	16020000 	b	fffffffff80836d4 <init_sp+0x7ff78836d4>
     36d8:	0000de19 	.inst	0x0000de19 ; undefined
     36dc:	f8030900 	sttr	x0, [x8, #48]
     36e0:	8000090e 	.inst	0x8000090e ; undefined
     36e4:	07ffffff 	.inst	0x07ffffff ; undefined
-    36e8:	00000303 	.inst	0x00000303 ; undefined
+    36e8:	0000030a 	.inst	0x0000030a ; undefined
     36ec:	6d101702 	stp	d2, d5, [x24, #256]
     36f0:	07000000 	.inst	0x07000000 ; undefined
-    36f4:	00000ab0 	.inst	0x00000ab0 ; undefined
+    36f4:	00000abd 	.inst	0x00000abd ; undefined
     36f8:	ad0d1902 	stp	q2, q6, [x8, #416]
     36fc:	07000000 	.inst	0x07000000 ; undefined
-    3700:	000003b4 	.inst	0x000003b4 ; undefined
+    3700:	000003be 	.inst	0x000003be ; undefined
     3704:	35111a02 	cbnz	w2, 25a44 <__bss_size+0x25a32>
     3708:	16000003 	b	fffffffff8003714 <init_sp+0x7ff7803714>
-    370c:	000009ed 	.inst	0x000009ed ; undefined
+    370c:	000009fa 	.inst	0x000009fa ; undefined
     3710:	0601c502 	.inst	0x0601c502 ; undefined
     3714:	00086fb8 	.inst	0x00086fb8 ; undefined
     3718:	ffffff80 	.inst	0xffffff80 ; undefined
     371c:	00000234 	.inst	0x00000234 ; undefined
     3720:	00000000 	.inst	0x00000000 ; undefined
     3724:	05539c01 	.inst	0x05539c01 ; undefined
-    3728:	65170000 	.inst	0x65170000 ; undefined
+    3728:	72170000 	ands	w0, w0, #0x200
     372c:	02000009 	.inst	0x02000009 ; undefined
     3730:	350e01c9 	cbnz	w9, 1f768 <__bss_size+0x1f756>
     3734:	02000003 	.inst	0x02000003 ; undefined
-    3738:	b0177091 	adrp	x17, 2ee14000 <__bss_size+0x2ee13fee>
+    3738:	ba177091 	.inst	0xba177091 ; undefined
     373c:	02000004 	.inst	0x02000004 ; undefined
     3740:	530e01ca 	ubfiz	w10, w14, #18, #1
     3744:	02000005 	.inst	0x02000005 ; undefined
-    3748:	dd176891 	.inst	0xdd176891 ; undefined
+    3748:	ea176891 	ands	x17, x4, x23, lsl #26
     374c:	0200000a 	.inst	0x0200000a ; undefined
     3750:	211201cb 	.inst	0x211201cb ; undefined
     3754:	03000001 	.inst	0x03000001 ; undefined
     3758:	177fb091 	b	fffffffffdfef99c <init_sp+0x7ffd7ef99c>
-    375c:	00000a70 	.inst	0x00000a70 ; undefined
+    375c:	00000a7d 	.inst	0x00000a7d ; undefined
     3760:	1201ce02 	and	w2, w16, #0x87878787
     3764:	00000121 	.inst	0x00000121 ; undefined
     3768:	7fa89103 	fmulx	s3, s8, v8.s[1]
-    376c:	0003b418 	.inst	0x0003b418 ; undefined
+    376c:	0003be18 	.inst	0x0003be18 ; undefined
     3770:	01d80200 	.inst	0x01d80200 ; undefined
     3774:	00033515 	.inst	0x00033515 ; undefined
-    3778:	094a1800 	.inst	0x094a1800 ; undefined
+    3778:	09571800 	.inst	0x09571800 ; undefined
     377c:	d9020000 	stlur	x0, [x0, #32]
     3780:	03351501 	.inst	0x03351501 ; undefined
-    3784:	69170000 	stgp	x0, x0, [x0, #736]
+    3784:	76170000 	.inst	0x76170000 ; undefined
     3788:	0200000a 	.inst	0x0200000a ; undefined
     378c:	350e01da 	cbnz	w26, 1f7c4 <__bss_size+0x1f7b2>
     3790:	02000003 	.inst	0x02000003 ; undefined
-    3794:	2d175091 	stp	s17, s20, [x4, #184]
+    3794:	66175091 	.inst	0x66175091 ; undefined
     3798:	0200000b 	.inst	0x0200000b ; undefined
     379c:	350e01db 	cbnz	w27, 1f7d4 <__bss_size+0x1f7c2>
     37a0:	03000003 	.inst	0x03000003 ; undefined
@@ -21898,7 +21898,7 @@ Disassembly of section .debug_info:
     382c:	02000000 	.inst	0x02000000 ; undefined
     3830:	00004091 	.inst	0x00004091 ; undefined
     3834:	0079080b 	.inst	0x0079080b ; undefined
-    3838:	591c0000 	stlurh	w0, [x0, #-64]
+    3838:	661c0000 	.inst	0x661c0000 ; undefined
     383c:	02000009 	.inst	0x02000009 ; undefined
     3840:	1806019a 	ldr	w26, f870 <__bss_size+0xf85e>
     3844:	8000086d 	.inst	0x8000086d ; undefined
@@ -21906,11 +21906,11 @@ Disassembly of section .debug_info:
     384c:	00000002 	.inst	0x00000002 ; undefined
     3850:	01000000 	.inst	0x01000000 ; undefined
     3854:	0006e79c 	.inst	0x0006e79c ; undefined
-    3858:	09771d00 	.inst	0x09771d00 ; undefined
+    3858:	09841d00 	.inst	0x09841d00 ; undefined
     385c:	9a020000 	adc	x0, x0, x2
     3860:	03352101 	.inst	0x03352101 ; undefined
     3864:	91030000 	add	x0, x0, #0xc0
-    3868:	53177ef8 	lsr	w24, w23, #23
+    3868:	60177ef8 	.inst	0x60177ef8 ; undefined
     386c:	02000009 	.inst	0x02000009 ; undefined
     3870:	9809019e 	ldrsw	x30, 158a0 <__bss_size+0x1588e>
     3874:	02000000 	.inst	0x02000000 ; undefined
@@ -21923,13 +21923,13 @@ Disassembly of section .debug_info:
     3890:	006d1201 	.inst	0x006d1201 ; undefined
     3894:	91020000 	add	x0, x0, #0x80
     3898:	00301e70 	.inst	0x00301e70 ; NYI
-    389c:	39170000 	strb	w0, [x0, #1472]
+    389c:	46170000 	.inst	0x46170000 ; undefined
     38a0:	0200000a 	.inst	0x0200000a ; undefined
     38a4:	6d1101a2 	stp	d2, d0, [x13, #272]
     38a8:	02000000 	.inst	0x02000000 ; undefined
     38ac:	601e5891 	.inst	0x601e5891 ; undefined
     38b0:	17000000 	b	fffffffffc0038b0 <init_sp+0x7ffb8038b0>
-    38b4:	0000096b 	.inst	0x0000096b ; undefined
+    38b4:	00000978 	.inst	0x00000978 ; undefined
     38b8:	1601a702 	b	fffffffff806d4c0 <init_sp+0x7ff786d4c0>
     38bc:	00000335 	.inst	0x00000335 ; undefined
     38c0:	19409102 	ldapurb	w2, [x8, #9]
@@ -21952,13 +21952,13 @@ Disassembly of section .debug_info:
     3904:	00006d1a 	.inst	0x00006d1a ; undefined
     3908:	68910200 	stgp	x0, x0, [x16], #544
     390c:	0000c01e 	.inst	0x0000c01e ; undefined
-    3910:	0a001700 	and	w0, w24, w0, lsl #5
+    3910:	0a0d1700 	and	w0, w24, w13, lsl #5
     3914:	aa020000 	orr	x0, x0, x2
     3918:	006d1901 	.inst	0x006d1901 ; undefined
     391c:	91030000 	add	x0, x0, #0xc0
     3920:	f01e7fb8 	adrp	x24, 3cffa000 <__bss_size+0x3cff9fee>
     3924:	17000000 	b	fffffffffc003924 <init_sp+0x7ffb803924>
-    3928:	0000098b 	.inst	0x0000098b ; undefined
+    3928:	00000998 	.inst	0x00000998 ; undefined
     392c:	1e01af02 	.inst	0x1e01af02 ; undefined
     3930:	00000335 	.inst	0x00000335 ; undefined
     3934:	7fa09103 	fmulx	s3, s8, v0.s[1]
@@ -21982,7 +21982,7 @@ Disassembly of section .debug_info:
     397c:	0000006d 	.inst	0x0000006d ; undefined
     3980:	1e609102 	.inst	0x1e609102 ; undefined
     3984:	00000150 	.inst	0x00000150 ; undefined
-    3988:	000ae617 	.inst	0x000ae617 ; undefined
+    3988:	000af317 	.inst	0x000af317 ; undefined
     398c:	01b20200 	.inst	0x01b20200 ; undefined
     3990:	00006d21 	.inst	0x00006d21 ; undefined
     3994:	98910300 	ldrsw	x0, fffffffffff259f4 <init_sp+0x7fff7259f4>
@@ -21997,7 +21997,7 @@ Disassembly of section .debug_info:
     39b8:	91030000 	add	x0, x0, #0xc0
     39bc:	00007f88 	.inst	0x00007f88 ; undefined
 	...
-    39c8:	000aa81c 	.inst	0x000aa81c ; undefined
+    39c8:	000ab51c 	.inst	0x000ab51c ; undefined
     39cc:	01860200 	.inst	0x01860200 ; undefined
     39d0:	086c2806 	.inst	0x086c2806 ; undefined
     39d4:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -22008,8 +22008,8 @@ Disassembly of section .debug_info:
     39e8:	02006176 	.inst	0x02006176 ; undefined
     39ec:	6d160186 	stp	d6, d0, [x12, #352]
     39f0:	02000000 	.inst	0x02000000 ; undefined
-    39f4:	f81d4891 	sttr	x17, [x4, #-44]
-    39f8:	02000009 	.inst	0x02000009 ; undefined
+    39f4:	051d4891 	mov	z17.b, p13/m, #68
+    39f8:	0200000a 	.inst	0x0200000a ; undefined
     39fc:	35230186 	cbnz	w6, 49a2c <__bss_size+0x49a1a>
     3a00:	02000003 	.inst	0x02000003 ; undefined
     3a04:	721a4091 	ands	w17, w4, #0x7fffc0
@@ -22036,7 +22036,7 @@ Disassembly of section .debug_info:
     3a58:	1f018b02 	fmsub	s2, s24, s1, s2
     3a5c:	0000006d 	.inst	0x0000006d ; undefined
     3a60:	00709102 	.inst	0x00709102 ; undefined
-    3a64:	097f1c00 	.inst	0x097f1c00 ; undefined
+    3a64:	098c1c00 	.inst	0x098c1c00 ; undefined
     3a68:	6b020000 	subs	w0, w0, w2
     3a6c:	6ba80601 	.inst	0x6ba80601 ; undefined
     3a70:	ff800008 	.inst	0xff800008 ; undefined
@@ -22052,15 +22052,15 @@ Disassembly of section .debug_info:
     3a98:	28016b02 	stnp	w2, w26, [x24, #8]
     3a9c:	0000006d 	.inst	0x0000006d ; undefined
     3aa0:	17609102 	b	fffffffffd827ea8 <init_sp+0x7ffd027ea8>
-    3aa4:	00000a48 	.inst	0x00000a48 ; undefined
+    3aa4:	00000a55 	.inst	0x00000a55 ; undefined
     3aa8:	0e016d02 	.inst	0x0e016d02 ; undefined
     3aac:	00000335 	.inst	0x00000335 ; undefined
     3ab0:	17709102 	b	fffffffffdc27eb8 <init_sp+0x7ffd427eb8>
-    3ab4:	00000733 	.inst	0x00000733 ; undefined
+    3ab4:	0000073d 	.inst	0x0000073d ; undefined
     3ab8:	12016e02 	and	w2, w16, #0x87ffffff
     3abc:	00000121 	.inst	0x00000121 ; undefined
     3ac0:	00789102 	.inst	0x00789102 ; undefined
-    3ac4:	000ac61c 	.inst	0x000ac61c ; undefined
+    3ac4:	000ad31c 	.inst	0x000ad31c ; undefined
     3ac8:	01630200 	.inst	0x01630200 ; undefined
     3acc:	086b6006 	.inst	0x086b6006 ; undefined
     3ad0:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -22072,7 +22072,7 @@ Disassembly of section .debug_info:
     3ae8:	211f0163 	.inst	0x211f0163 ; undefined
     3aec:	02000001 	.inst	0x02000001 ; undefined
     3af0:	20007891 	.inst	0x20007891 ; undefined
-    3af4:	00000af8 	.inst	0x00000af8 ; undefined
+    3af4:	00000b05 	.inst	0x00000b05 ; undefined
     3af8:	0e014502 	.inst	0x0e014502 ; undefined
     3afc:	00000121 	.inst	0x00000121 ; undefined
     3b00:	00086ad0 	.inst	0x00086ad0 ; undefined
@@ -22088,11 +22088,11 @@ Disassembly of section .debug_info:
     3b28:	45020061 	.inst	0x45020061 ; undefined
     3b2c:	006d3001 	.inst	0x006d3001 ; undefined
     3b30:	91020000 	add	x0, x0, #0x80
-    3b34:	07651d60 	.inst	0x07651d60 ; undefined
+    3b34:	076f1d60 	.inst	0x076f1d60 ; undefined
     3b38:	45020000 	.inst	0x45020000 ; undefined
     3b3c:	08853e01 	stllrb	w1, [x16]
     3b40:	91020000 	add	x0, x0, #0x80
-    3b44:	07331758 	.inst	0x07331758 ; undefined
+    3b44:	073d1758 	.inst	0x073d1758 ; undefined
     3b48:	47020000 	.inst	0x47020000 ; undefined
     3b4c:	01211201 	.inst	0x01211201 ; undefined
     3b50:	91020000 	add	x0, x0, #0x80
@@ -22102,7 +22102,7 @@ Disassembly of section .debug_info:
     3b60:	91020000 	add	x0, x0, #0x80
     3b64:	080b0070 	stxrb	w11, w16, [x3]
     3b68:	00000335 	.inst	0x00000335 ; undefined
-    3b6c:	000b0420 	.inst	0x000b0420 ; undefined
+    3b6c:	000b1120 	.inst	0x000b1120 ; undefined
     3b70:	01180200 	.inst	0x01180200 ; undefined
     3b74:	00009805 	.inst	0x00009805 ; undefined
     3b78:	08698400 	.inst	0x08698400 ; undefined
@@ -22122,19 +22122,19 @@ Disassembly of section .debug_info:
     3bb0:	18020061 	ldr	w1, 7bbc <__bss_size+0x7baa>
     3bb4:	006d3801 	.inst	0x006d3801 ; undefined
     3bb8:	91020000 	add	x0, x0, #0x80
-    3bbc:	01dd1d58 	.inst	0x01dd1d58 ; undefined
+    3bbc:	01e51d58 	.inst	0x01e51d58 ; undefined
     3bc0:	18020000 	ldr	w0, 7bc0 <__bss_size+0x7bae>
     3bc4:	006d4401 	.inst	0x006d4401 ; undefined
     3bc8:	91020000 	add	x0, x0, #0x80
-    3bcc:	09e81750 	.inst	0x09e81750 ; undefined
+    3bcc:	09f51750 	.inst	0x09f51750 ; undefined
     3bd0:	1b020000 	madd	w0, w0, w2, w0
     3bd4:	006d0d01 	.inst	0x006d0d01 ; undefined
     3bd8:	91020000 	add	x0, x0, #0x80
-    3bdc:	09971778 	.inst	0x09971778 ; undefined
+    3bdc:	09a41778 	.inst	0x09a41778 ; undefined
     3be0:	1c020000 	ldr	s0, 7be0 <__bss_size+0x7bce>
     3be4:	03350e01 	.inst	0x03350e01 ; undefined
     3be8:	91020000 	add	x0, x0, #0x80
-    3bec:	2e210070 	uaddl	v16.8h, v3.8b, v1.8b
+    3bec:	3b210070 	.inst	0x3b210070 ; undefined
     3bf0:	0200000a 	.inst	0x0200000a ; undefined
     3bf4:	009805d6 	.inst	0x009805d6 ; undefined
     3bf8:	67200000 	.inst	0x67200000 ; undefined
@@ -22151,26 +22151,26 @@ Disassembly of section .debug_info:
     3c24:	6d26d602 	stp	d2, d21, [x16, #-408]
     3c28:	03000000 	.inst	0x03000000 ; undefined
     3c2c:	237fa091 	.inst	0x237fa091 ; undefined
-    3c30:	00000426 	.inst	0x00000426 ; undefined
+    3c30:	00000430 	.inst	0x00000430 ; undefined
     3c34:	982ed602 	ldrsw	x2, 616f4 <__bss_size+0x616e2>
     3c38:	03000000 	.inst	0x03000000 ; undefined
     3c3c:	237f9c91 	.inst	0x237f9c91 ; undefined
-    3c40:	00000765 	.inst	0x00000765 ; undefined
+    3c40:	0000076f 	.inst	0x0000076f ; undefined
     3c44:	8540d602 	ld1rw	{z2.s}, p5/z, [x16]
     3c48:	03000008 	.inst	0x03000008 ; undefined
     3c4c:	157f9091 	b	5fe7e90 <__bss_size+0x5fe7e7e>
-    3c50:	00000733 	.inst	0x00000733 ; undefined
+    3c50:	0000073d 	.inst	0x0000073d ; undefined
     3c54:	2112d802 	.inst	0x2112d802 ; undefined
     3c58:	03000001 	.inst	0x03000001 ; undefined
     3c5c:	157fb891 	b	5ff1ea0 <__bss_size+0x5ff1e8e>
-    3c60:	00000ad2 	.inst	0x00000ad2 ; undefined
+    3c60:	00000adf 	.inst	0x00000adf ; undefined
     3c64:	350ed902 	cbnz	w2, 21784 <__bss_size+0x21772>
     3c68:	02000003 	.inst	0x02000003 ; undefined
     3c6c:	70247891 	adr	x17, 4cb7f <__bss_size+0x4cb6d>
     3c70:	0200646d 	.inst	0x0200646d ; undefined
     3c74:	03350eda 	.inst	0x03350eda ; undefined
     3c78:	91020000 	add	x0, x0, #0x80
-    3c7c:	0a9d1560 	and	w0, w11, w29, asr #5
+    3c7c:	0aaa1560 	bic	w0, w11, w10, asr #5
     3c80:	da020000 	sbc	x0, x0, x2
     3c84:	00033514 	.inst	0x00033514 ; undefined
     3c88:	58910200 	ldr	x0, fffffffffff25cc8 <init_sp+0x7fff725cc8>
@@ -22203,7 +22203,7 @@ Disassembly of section .debug_info:
     3cf4:	01120200 	.inst	0x01120200 ; undefined
     3cf8:	00006d16 	.inst	0x00006d16 ; undefined
     3cfc:	48910200 	stllrh	w0, [x16]
-    3d00:	a5250000 	.inst	0xa5250000 ; undefined
+    3d00:	b2250000 	orr	x0, x0, #0x800000008000000
     3d04:	02000009 	.inst	0x02000009 ; undefined
     3d08:	667406c2 	.inst	0x667406c2 ; undefined
     3d0c:	ff800008 	.inst	0xff800008 ; undefined
@@ -22215,7 +22215,7 @@ Disassembly of section .debug_info:
     3d24:	211dc202 	.inst	0x211dc202 ; undefined
     3d28:	02000001 	.inst	0x02000001 ; undefined
     3d2c:	21007891 	.inst	0x21007891 ; undefined
-    3d30:	000009af 	.inst	0x000009af ; undefined
+    3d30:	000009bc 	.inst	0x000009bc ; undefined
     3d34:	9805b002 	ldrsw	x2, f334 <__bss_size+0xf322>
     3d38:	dc000000 	.inst	0xdc000000 ; undefined
     3d3c:	80000865 	.inst	0x80000865 ; undefined
@@ -22227,18 +22227,18 @@ Disassembly of section .debug_info:
     3d54:	1eb00200 	.inst	0x1eb00200 ; undefined
     3d58:	0000014b 	.inst	0x0000014b ; undefined
     3d5c:	15689102 	b	5a28164 <__bss_size+0x5a28152>
-    3d60:	000009c4 	.inst	0x000009c4 ; undefined
+    3d60:	000009d1 	.inst	0x000009d1 ; undefined
     3d64:	2112b202 	.inst	0x2112b202 ; undefined
     3d68:	02000001 	.inst	0x02000001 ; undefined
     3d6c:	26007891 	.inst	0x26007891 ; undefined
-    3d70:	00000a0c 	.inst	0x00000a0c ; undefined
+    3d70:	00000a19 	.inst	0x00000a19 ; undefined
     3d74:	90068d02 	adrp	x2, d1a3000 <__bss_size+0xd1a2fee>
     3d78:	80000862 	.inst	0x80000862 ; undefined
     3d7c:	4cffffff 	.inst	0x4cffffff ; undefined
     3d80:	00000003 	.inst	0x00000003 ; undefined
     3d84:	01000000 	.inst	0x01000000 ; undefined
     3d88:	000b2e9c 	.inst	0x000b2e9c ; undefined
-    3d8c:	0b621500 	.inst	0x0b621500 ; undefined
+    3d8c:	0ba91500 	.inst	0x0ba91500 ; undefined
     3d90:	98020000 	ldrsw	x0, 7d90 <__bss_size+0x7d7e>
     3d94:	00009809 	.inst	0x00009809 ; undefined
     3d98:	6c910200 	stp	d0, d0, [x16], #272
@@ -22271,14 +22271,14 @@ Disassembly of section .debug_info:
     3e04:	006d25ab 	.inst	0x006d25ab ; undefined
     3e08:	91020000 	add	x0, x0, #0x80
     3e0c:	26000058 	.inst	0x26000058 ; undefined
-    3e10:	00000a81 	.inst	0x00000a81 ; undefined
+    3e10:	00000a8e 	.inst	0x00000a8e ; undefined
     3e14:	10067802 	adr	x2, 10d14 <__bss_size+0x10d02>
     3e18:	80000861 	.inst	0x80000861 ; undefined
     3e1c:	80ffffff 	.inst	0x80ffffff ; undefined
     3e20:	00000001 	.inst	0x00000001 ; undefined
     3e24:	01000000 	.inst	0x01000000 ; undefined
     3e28:	000ba89c 	.inst	0x000ba89c ; undefined
-    3e2c:	01730700 	.inst	0x01730700 ; undefined
+    3e2c:	017b0700 	.inst	0x017b0700 ; undefined
     3e30:	7a020000 	sbcs	w0, w0, w2
     3e34:	00030518 	.inst	0x00030518 ; undefined
     3e38:	006e2400 	.inst	0x006e2400 ; undefined
@@ -22301,7 +22301,7 @@ Disassembly of section .debug_info:
     3e7c:	2c880200 	stp	s0, s0, [x16], #64
     3e80:	0000006d 	.inst	0x0000006d ; undefined
     3e84:	00689102 	.inst	0x00689102 ; undefined
-    3e88:	0a582500 	and	w0, w8, w24, lsr #9
+    3e88:	0a652500 	bic	w0, w8, w5, lsr #9
     3e8c:	67020000 	.inst	0x67020000 ; undefined
     3e90:	08606806 	.inst	0x08606806 ; undefined
     3e94:	ffff8000 	.inst	0xffff8000 ; undefined
@@ -22316,25 +22316,25 @@ Disassembly of section .debug_info:
     3eb8:	67020061 	.inst	0x67020061 ; undefined
     3ebc:	00006d2d 	.inst	0x00006d2d ; undefined
     3ec0:	60910200 	.inst	0x60910200 ; undefined
-    3ec4:	000b6223 	.inst	0x000b6223 ; undefined
+    3ec4:	000ba923 	.inst	0x000ba923 ; undefined
     3ec8:	39670200 	ldrb	w0, [x16, #2496]
     3ecc:	0000006d 	.inst	0x0000006d ; undefined
     3ed0:	22589102 	.inst	0x22589102 ; undefined
     3ed4:	02006170 	.inst	0x02006170 ; undefined
     3ed8:	006d4767 	.inst	0x006d4767 ; undefined
     3edc:	91020000 	add	x0, x0, #0x80
-    3ee0:	01dd2350 	.inst	0x01dd2350 ; undefined
+    3ee0:	01e52350 	.inst	0x01e52350 ; undefined
     3ee4:	67020000 	.inst	0x67020000 ; undefined
     3ee8:	00006d53 	.inst	0x00006d53 ; undefined
     3eec:	48910200 	stllrh	w0, [x16]
     3ef0:	02006924 	.inst	0x02006924 ; undefined
     3ef4:	00980969 	.inst	0x00980969 ; undefined
     3ef8:	91020000 	add	x0, x0, #0x80
-    3efc:	0997157c 	.inst	0x0997157c ; undefined
+    3efc:	09a4157c 	.inst	0x09a4157c ; undefined
     3f00:	6a020000 	ands	w0, w0, w2
     3f04:	0003350e 	.inst	0x0003350e ; undefined
     3f08:	70910200 	adr	x0, fffffffffff25f4b <init_sp+0x7fff725f4b>
-    3f0c:	0a292700 	bic	w0, w24, w9, lsl #9
+    3f0c:	0a362700 	bic	w0, w24, w22, lsl #9
     3f10:	47020000 	.inst	0x47020000 ; undefined
     3f14:	00033511 	.inst	0x00033511 ; undefined
     3f18:	085e0400 	ldxrb	w0, [x0]
@@ -22350,11 +22350,11 @@ Disassembly of section .debug_info:
     3f40:	02006176 	.inst	0x02006176 ; undefined
     3f44:	006d3747 	.inst	0x006d3747 ; undefined
     3f48:	91030000 	add	x0, x0, #0xc0
-    3f4c:	26237f90 	.inst	0x26237f90 ; undefined
+    3f4c:	30237f90 	adr	x16, 4af3d <__bss_size+0x4af2b>
     3f50:	02000004 	.inst	0x02000004 ; undefined
     3f54:	00983f47 	.inst	0x00983f47 ; undefined
     3f58:	91030000 	add	x0, x0, #0xc0
-    3f5c:	d2157f8c 	.inst	0xd2157f8c ; undefined
+    3f5c:	df157f8c 	.inst	0xdf157f8c ; undefined
     3f60:	0200000a 	.inst	0x0200000a ; undefined
     3f64:	03350e49 	.inst	0x03350e49 ; undefined
     3f68:	91020000 	add	x0, x0, #0x80
@@ -22362,14 +22362,14 @@ Disassembly of section .debug_info:
     3f70:	4a020064 	eor	w4, w3, w2
     3f74:	0003350e 	.inst	0x0003350e ; undefined
     3f78:	78910200 	ldursh	x0, [x16, #-240]
-    3f7c:	000a9d15 	.inst	0x000a9d15 ; undefined
+    3f7c:	000aaa15 	.inst	0x000aaa15 ; undefined
     3f80:	144a0200 	b	1284780 <__bss_size+0x128476e>
     3f84:	00000335 	.inst	0x00000335 ; undefined
     3f88:	24489102 	cmpge	p2.h, p4/z, z8.h, z8.h
     3f8c:	02007470 	.inst	0x02007470 ; undefined
     3f90:	03350e4b 	.inst	0x03350e4b ; undefined
     3f94:	91020000 	add	x0, x0, #0x80
-    3f98:	09ba1570 	.inst	0x09ba1570 ; undefined
+    3f98:	09c71570 	.inst	0x09c71570 ; undefined
     3f9c:	4b020000 	sub	w0, w0, w2
     3fa0:	00033513 	.inst	0x00033513 ; undefined
     3fa4:	a8910300 	stp	x0, x0, [x24], #272
@@ -22416,7 +22416,7 @@ Disassembly of section .debug_info:
     4048:	1b5f0200 	.inst	0x1b5f0200 ; undefined
     404c:	0000006d 	.inst	0x0000006d ; undefined
     4050:	7fb09103 	fmulx	s3, s8, v16.s[1]
-    4054:	9f270000 	.inst	0x9f270000 ; undefined
+    4054:	a9270000 	stp	x0, x0, [x0, #-400]
     4058:	02000003 	.inst	0x02000003 ; undefined
     405c:	00dc0e26 	.inst	0x00dc0e26 ; undefined
     4060:	5cc80000 	ldr	d0, fffffffffff94060 <init_sp+0x7fff794060>
@@ -22428,15 +22428,15 @@ Disassembly of section .debug_info:
     4078:	02006e22 	.inst	0x02006e22 ; undefined
     407c:	006d1c26 	.inst	0x006d1c26 ; undefined
     4080:	91020000 	add	x0, x0, #0x80
-    4084:	05c52368 	.inst	0x05c52368 ; undefined
+    4084:	05cf2368 	.inst	0x05cf2368 ; undefined
     4088:	26020000 	.inst	0x26020000 ; undefined
     408c:	00006d27 	.inst	0x00006d27 ; undefined
     4090:	60910200 	.inst	0x60910200 ; undefined
-    4094:	000af223 	.inst	0x000af223 ; undefined
+    4094:	000aff23 	.inst	0x000aff23 ; undefined
     4098:	32260200 	orr	w0, w16, #0x4000000
     409c:	00000098 	.inst	0x00000098 ; undefined
     40a0:	155c9102 	b	57284a8 <__bss_size+0x5728496>
-    40a4:	00000a91 	.inst	0x00000a91 ; undefined
+    40a4:	00000a9e 	.inst	0x00000a9e ; undefined
     40a8:	6d0d2802 	stp	d2, d10, [x0, #208]
     40ac:	02000000 	.inst	0x02000000 ; undefined
     40b0:	6c1b7891 	stnp	d17, d30, [x4, #432]
@@ -22447,14 +22447,14 @@ Disassembly of section .debug_info:
     40c4:	36020061 	tbz	w1, #0, 80d0 <__bss_size+0x80be>
     40c8:	00006d09 	.inst	0x00006d09 ; undefined
     40cc:	70910200 	adr	x0, fffffffffff2610f <init_sp+0x7fff72610f>
-    40d0:	16280000 	b	fffffffff8a040d0 <init_sp+0x7ff82040d0>
+    40d0:	23280000 	.inst	0x23280000 ; undefined
     40d4:	0200000a 	.inst	0x0200000a ; undefined
     40d8:	5c1c061c 	ldr	d28, 3c198 <__bss_size+0x3c186>
     40dc:	ff800008 	.inst	0xff800008 ; undefined
     40e0:	00acffff 	.inst	0x00acffff ; undefined
     40e4:	00000000 	.inst	0x00000000 ; undefined
     40e8:	9c010000 	ldr	q0, 60e8 <__bss_size+0x60d6>
-    40ec:	00042d27 	.inst	0x00042d27 ; undefined
+    40ec:	00043727 	.inst	0x00043727 ; undefined
     40f0:	16260100 	b	fffffffff89844f0 <init_sp+0x7ff81844f0>
     40f4:	0000005a 	.inst	0x0000005a ; undefined
     40f8:	00085ba4 	.inst	0x00085ba4 ; undefined
@@ -22478,7 +22478,7 @@ Disassembly of section .debug_info:
     4140:	0c280100 	.inst	0x0c280100 ; undefined
     4144:	0000006d 	.inst	0x0000006d ; undefined
     4148:	00709102 	.inst	0x00709102 ; undefined
-    414c:	04072700 	.inst	0x04072700 ; undefined
+    414c:	04112700 	movprfx	z0.b, p1/m, z24.b
     4150:	1f010000 	fmadd	s0, s0, s1, s0
     4154:	0001211d 	.inst	0x0001211d ; undefined
     4158:	085b3000 	ldxrb	w0, [x0]
@@ -22490,7 +22490,7 @@ Disassembly of section .debug_info:
     4170:	01006170 	.inst	0x01006170 ; undefined
     4174:	005a2c1f 	.inst	0x005a2c1f ; undefined
     4178:	91020000 	add	x0, x0, #0x80
-    417c:	0f270078 	.inst	0x0f270078 ; undefined
+    417c:	19270078 	.inst	0x19270078 ; undefined
     4180:	01000004 	.inst	0x01000004 ; undefined
     4184:	006d171a 	.inst	0x006d171a ; undefined
     4188:	5b100000 	.inst	0x5b100000 ; undefined
@@ -22503,7 +22503,7 @@ Disassembly of section .debug_info:
     41a4:	212c1a01 	.inst	0x212c1a01 ; undefined
     41a8:	02000001 	.inst	0x02000001 ; undefined
     41ac:	29007891 	stp	w17, w30, [x4]
-    41b0:	000003f8 	.inst	0x000003f8 ; undefined
+    41b0:	00000402 	.inst	0x00000402 ; undefined
     41b4:	6d171501 	stp	d1, d5, [x8, #368]
     41b8:	dc000000 	.inst	0xdc000000 ; undefined
     41bc:	8000085a 	.inst	0x8000085a ; undefined
@@ -22517,87 +22517,87 @@ Disassembly of section .debug_info:
     41dc:	00006d00 	.inst	0x00006d00 ; undefined
     41e0:	da000400 	.inst	0xda000400 ; undefined
     41e4:	08000012 	stxrb	w0, w18, [x0]
-    41e8:	00002501 	.inst	0x00002501 ; undefined
-    41ec:	0b320c00 	add	w0, w0, w18, uxtb #3
-    41f0:	0b100000 	add	w0, w0, w16
+    41e8:	00000001 	.inst	0x00000001 ; undefined
+    41ec:	0b380c00 	add	w0, w0, w24, uxtb #3
+    41f0:	0b460000 	add	w0, w0, w6, lsr #0
     41f4:	1fd80000 	fmadd	h0, h0, h24, h0
     41f8:	35020000 	cbnz	w0, 81f8 <__bss_size+0x81e6>
     41fc:	2e000000 	ext	v0.8b, v0.8b, v0.8b, #0
     4200:	03000000 	.inst	0x03000000 ; undefined
     4204:	0000002e 	.inst	0x0000002e ; undefined
     4208:	04002eb0 	saddv	d16, p3, z21.b
-    420c:	01970708 	.inst	0x01970708 ; undefined
+    420c:	019f0708 	.inst	0x019f0708 ; undefined
     4210:	01040000 	.inst	0x01040000 ; undefined
-    4214:	00017808 	.inst	0x00017808 ; undefined
-    4218:	00df0500 	.inst	0x00df0500 ; undefined
+    4214:	00018008 	.inst	0x00018008 ; undefined
+    4218:	0b6b0500 	.inst	0x0b6b0500 ; undefined
     421c:	01010000 	.inst	0x01010000 ; undefined
     4220:	00001d0f 	.inst	0x00001d0f ; undefined
     4224:	80030900 	.inst	0x80030900 ; undefined
     4228:	80000880 	.inst	0x80000880 ; undefined
     422c:	06ffffff 	.inst	0x06ffffff ; undefined
-    4230:	000002c6 	.inst	0x000002c6 ; undefined
+    4230:	00000b1d 	.inst	0x00000b1d ; undefined
     4234:	0e02ef01 	.inst	0x0e02ef01 ; undefined
     4238:	00000069 	.inst	0x00000069 ; undefined
     423c:	af340309 	.inst	0xaf340309 ; undefined
     4240:	ff800008 	.inst	0xff800008 ; undefined
     4244:	0404ffff 	msb	z31.b, p7/m, z4.b, z31.b
-    4248:	00019c07 	.inst	0x00019c07 ; undefined
+    4248:	0001a407 	.inst	0x0001a407 ; undefined
     424c:	006d0000 	.inst	0x006d0000 ; undefined
     4250:	00040000 	.inst	0x00040000 ; undefined
     4254:	0000132d 	.inst	0x0000132d ; undefined
-    4258:	00250108 	.inst	0x00250108 ; NYI
-    425c:	400c0000 	.inst	0x400c0000 ; undefined
-    4260:	1000000b 	adr	x11, 4260 <__bss_size+0x424e>
+    4258:	00000108 	.inst	0x00000108 ; undefined
+    425c:	870c0000 	.inst	0x870c0000 ; undefined
+    4260:	4600000b 	.inst	0x4600000b ; undefined
     4264:	0600000b 	.inst	0x0600000b ; undefined
     4268:	02000020 	.inst	0x02000020 ; undefined
     426c:	00000035 	.inst	0x00000035 ; undefined
     4270:	0000002e 	.inst	0x0000002e ; undefined
     4274:	00002e03 	.inst	0x00002e03 ; undefined
     4278:	002fc000 	.inst	0x002fc000 ; NYI
-    427c:	97070804 	bl	fffffffffc1c628c <init_sp+0x7ffb9c628c>
+    427c:	9f070804 	.inst	0x9f070804 ; undefined
     4280:	04000001 	add	z1.b, p0/m, z1.b, z0.b
-    4284:	01780801 	.inst	0x01780801 ; undefined
-    4288:	67050000 	.inst	0x67050000 ; undefined
+    4284:	01800801 	.inst	0x01800801 ; undefined
+    4288:	ae050000 	.inst	0xae050000 ; undefined
     428c:	0100000b 	.inst	0x0100000b ; undefined
     4290:	001d0f01 	.inst	0x001d0f01 ; undefined
     4294:	03090000 	.inst	0x03090000 ; undefined
     4298:	0008af38 	.inst	0x0008af38 ; undefined
     429c:	ffffff80 	.inst	0xffffff80 ; undefined
-    42a0:	000b4d06 	.inst	0x000b4d06 ; undefined
+    42a0:	000b9406 	.inst	0x000b9406 ; undefined
     42a4:	03000100 	.inst	0x03000100 ; undefined
     42a8:	0000690e 	.inst	0x0000690e ; undefined
     42ac:	fc030900 	.inst	0xfc030900 ; undefined
     42b0:	800008de 	.inst	0x800008de ; undefined
     42b4:	04ffffff 	uqdecd	xzr, all, mul #16
-    42b8:	019c0704 	.inst	0x019c0704 ; undefined
+    42b8:	01a40704 	.inst	0x01a40704 ; undefined
     42bc:	6d000000 	stp	d0, d0, [x0]
     42c0:	04000000 	add	z0.b, p0/m, z0.b, z0.b
     42c4:	00138000 	.inst	0x00138000 ; undefined
-    42c8:	25010800 	cmpge	p0.b, p2/z, z0.b, #1
+    42c8:	00010800 	.inst	0x00010800 ; undefined
     42cc:	0c000000 	st4	{v0.8b-v3.8b}, [x0]
-    42d0:	00000bb7 	.inst	0x00000bb7 ; undefined
-    42d4:	00000b10 	.inst	0x00000b10 ; undefined
+    42d0:	00000bc9 	.inst	0x00000bc9 ; undefined
+    42d4:	00000b46 	.inst	0x00000b46 ; undefined
     42d8:	00002033 	.inst	0x00002033 ; undefined
     42dc:	00003502 	.inst	0x00003502 ; undefined
     42e0:	00002e00 	.inst	0x00002e00 ; undefined
     42e4:	002e0300 	.inst	0x002e0300 ; NYI
     42e8:	2fb80000 	mla	v0.2s, v0.2s, v24.s[1]
     42ec:	07080400 	.inst	0x07080400 ; undefined
-    42f0:	00000197 	.inst	0x00000197 ; undefined
-    42f4:	78080104 	sturh	w4, [x8, #128]
+    42f0:	0000019f 	.inst	0x0000019f ; undefined
+    42f4:	80080104 	.inst	0x80080104 ; undefined
     42f8:	05000001 	orr	z1.s, z1.s, #0x1
-    42fc:	00000b82 	.inst	0x00000b82 ; undefined
+    42fc:	0000015a 	.inst	0x0000015a ; undefined
     4300:	1d0f0101 	.inst	0x1d0f0101 ; undefined
     4304:	09000000 	.inst	0x09000000 ; undefined
     4308:	08df0003 	ldlarb	w3, [x0]
     430c:	ffff8000 	.inst	0xffff8000 ; undefined
-    4310:	0b9d06ff 	add	wzr, w23, w29, asr #1
+    4310:	028006ff 	.inst	0x028006ff ; undefined
     4314:	ff010000 	.inst	0xff010000 ; undefined
     4318:	00690e02 	.inst	0x00690e02 ; undefined
     431c:	03090000 	.inst	0x03090000 ; undefined
     4320:	00090ebc 	.inst	0x00090ebc ; undefined
     4324:	ffffff80 	.inst	0xffffff80 ; undefined
-    4328:	9c070404 	ldr	q4, 123a8 <__bss_size+0x12396>
+    4328:	a4070404 	ld1rqb	{z4.b}, p1/z, [x0, x7]
     432c:	00000001 	.inst	0x00000001 ; undefined
 
 Disassembly of section .debug_abbrev:
@@ -26121,759 +26121,765 @@ Disassembly of section .debug_line:
 Disassembly of section .debug_str:
 
 0000000000000000 <.debug_str>:
-   0:	6d6f682f 	ldp	d15, d26, [x1, #-272]
-   4:	68742f65 	.inst	0x68742f65 ; undefined
-   8:	61727379 	.inst	0x61727379 ; undefined
-   c:	4f2f6c65 	.inst	0x4f2f6c65 ; undefined
-  10:	49502f53 	.inst	0x49502f53 ; undefined
-  14:	542f534f 	b.nv	5ea7c <__bss_size+0x5ea6a>
-  18:	534f5948 	.inst	0x534f5948 ; undefined
-  1c:	6972642f 	ldpsw	x15, x25, [x1, #-112]
-  20:	73726576 	.inst	0x73726576 ; undefined
-  24:	554e4700 	.inst	0x554e4700 ; undefined
-  28:	37314320 	tbnz	w0, #6, 288c <__bss_size+0x287a>
-  2c:	322e3920 	orr	w0, w9, #0xfffc0001
-  30:	3220312e 	orr	w14, w9, #0x1fff
-  34:	31393130 	adds	w16, w9, #0xe4c
-  38:	20353230 	.inst	0x20353230 ; undefined
-  3c:	696c6d2d 	ldpsw	x13, x27, [x9, #-160]
-  40:	656c7474 	fnmls	z20.h, p5/m, z3.h, z12.h
-  44:	646e652d 	.inst	0x646e652d ; undefined
-  48:	206e6169 	.inst	0x206e6169 ; undefined
-  4c:	62616d2d 	.inst	0x62616d2d ; undefined
-  50:	706c3d69 	adr	x9, d87ff <__bss_size+0xd87ed>
-  54:	2d203436 	stp	s22, s13, [x1, #-256]
-  58:	662d2067 	.inst	0x662d2067 ; undefined
-  5c:	65657266 	fnmls	z6.h, p4/m, z19.h, z5.h
-  60:	6e617473 	uabd	v19.8h, v3.8h, v1.8h
-  64:	676e6964 	.inst	0x676e6964 ; undefined
-  68:	72617500 	.inst	0x72617500 ; undefined
-  6c:	65675f74 	fnmla	z20.h, p7/m, z27.h, z7.h
-  70:	75006374 	.inst	0x75006374 ; undefined
-  74:	5f747261 	sqdmlsl	s1, h19, v4.h[3]
-  78:	74696e69 	.inst	0x74696e69 ; undefined
-  7c:	72617500 	.inst	0x72617500 ; undefined
-  80:	00632e74 	.inst	0x00632e74 ; undefined
-  84:	74726175 	.inst	0x74726175 ; undefined
-  88:	6e65735f 	uabdl2	v31.4s, v26.8h, v5.8h
-  8c:	61750064 	.inst	0x61750064 ; undefined
-  90:	705f7472 	adr	x18, bef1f <__bss_size+0xbef0d>
-  94:	00737475 	.inst	0x00737475 ; undefined
-  98:	6d6d6e65 	ldp	d5, d27, [x19, #-304]
-  9c:	00532e75 	.inst	0x00532e75 ; undefined
-  a0:	6d6f682f 	ldp	d15, d26, [x1, #-272]
-  a4:	68742f65 	.inst	0x68742f65 ; undefined
-  a8:	61727379 	.inst	0x61727379 ; undefined
-  ac:	4f2f6c65 	.inst	0x4f2f6c65 ; undefined
-  b0:	49502f53 	.inst	0x49502f53 ; undefined
-  b4:	542f534f 	b.nv	5eb1c <__bss_size+0x5eb0a>
-  b8:	534f5948 	.inst	0x534f5948 ; undefined
-  bc:	6f6f622f 	umlsl2	v15.4s, v17.8h, v15.h[2]
-  c0:	4e470074 	.inst	0x4e470074 ; undefined
-  c4:	53412055 	.inst	0x53412055 ; undefined
-  c8:	332e3220 	.inst	0x332e3220 ; undefined
-  cc:	00312e33 	.inst	0x00312e33 ; NYI
-  d0:	72617473 	.inst	0x72617473 ; undefined
-  d4:	00532e74 	.inst	0x00532e74 ; undefined
-  d8:	5f766e65 	.inst	0x5f766e65 ; undefined
-  dc:	62006469 	.inst	0x62006469 ; undefined
-  e0:	72616e69 	.inst	0x72616e69 ; undefined
-  e4:	73755f79 	.inst	0x73755f79 ; undefined
-  e8:	745f7265 	.inst	0x745f7265 ; undefined
-  ec:	5f747365 	sqdmlsl	s5, h27, v4.h[3]
-  f0:	6b726f66 	.inst	0x6b726f66 ; undefined
-  f4:	6174735f 	.inst	0x6174735f ; undefined
-  f8:	65007472 	.inst	0x65007472 ; undefined
-  fc:	735f766e 	.inst	0x735f766e ; undefined
- 100:	64656863 	.inst	0x64656863 ; undefined
- 104:	73696c5f 	.inst	0x73696c5f ; undefined
- 108:	68730074 	.inst	0x68730074 ; undefined
- 10c:	2074726f 	.inst	0x2074726f ; undefined
- 110:	69736e75 	ldpsw	x21, x27, [x19, #-104]
- 114:	64656e67 	.inst	0x64656e67 ; undefined
- 118:	746e6920 	.inst	0x746e6920 ; undefined
- 11c:	72756300 	.inst	0x72756300 ; undefined
- 120:	00766e65 	.inst	0x00766e65 ; undefined
- 124:	68735f75 	.inst	0x68735f75 ; undefined
- 128:	0074726f 	.inst	0x0074726f ; undefined
- 12c:	65676150 	fnmls	z16.h, p0/m, z10.h, z7.h
- 130:	67615000 	.inst	0x67615000 ; undefined
- 134:	494c5f65 	.inst	0x494c5f65 ; undefined
- 138:	655f5453 	fcmgt	p3.h, p5/z, z2.h, z31.h
- 13c:	7972746e 	ldrh	w14, [x3, #6458]
- 140:	2f00745f 	bic	v31.2s, #0x2, lsl #24
- 144:	656d6f68 	fnmls	z8.h, p3/m, z27.h, z13.h
- 148:	7968742f 	ldrh	w15, [x1, #5178]
- 14c:	65617273 	fnmls	z19.h, p4/m, z19.h, z1.h
- 150:	534f2f6c 	.inst	0x534f2f6c ; undefined
- 154:	4f49502f 	.inst	0x4f49502f ; undefined
- 158:	48542f53 	ldxrh	w19, [x26]
- 15c:	2f534f59 	.inst	0x2f534f59 ; undefined
- 160:	74696e69 	.inst	0x74696e69 ; undefined
- 164:	5f656c00 	.inst	0x5f656c00 ; undefined
- 168:	76657270 	.inst	0x76657270 ; undefined
- 16c:	61706e00 	.inst	0x61706e00 ; undefined
- 170:	65006567 	.inst	0x65006567 ; undefined
- 174:	0073766e 	.inst	0x0073766e ; undefined
- 178:	69736e75 	ldpsw	x21, x27, [x19, #-104]
- 17c:	64656e67 	.inst	0x64656e67 ; undefined
- 180:	61686320 	.inst	0x61686320 ; undefined
- 184:	6e650072 	uaddl2	v18.4s, v3.8h, v5.8h
- 188:	75725f76 	.inst	0x75725f76 ; undefined
- 18c:	6500736e 	.inst	0x6500736e ; undefined
- 190:	6e5f766e 	.inst	0x6e5f766e ; undefined
- 194:	6c00706f 	stnp	d15, d28, [x3]
- 198:	20676e6f 	.inst	0x20676e6f ; undefined
- 19c:	69736e75 	ldpsw	x21, x27, [x19, #-104]
- 1a0:	64656e67 	.inst	0x64656e67 ; undefined
- 1a4:	746e6920 	.inst	0x746e6920 ; undefined
- 1a8:	766e6500 	.inst	0x766e6500 ; undefined
- 1ac:	6863735f 	.inst	0x6863735f ; undefined
- 1b0:	6c5f6465 	ldnp	d5, d25, [x3, #496]
- 1b4:	006b6e69 	.inst	0x006b6e69 ; undefined
- 1b8:	68635f75 	.inst	0x68635f75 ; undefined
- 1bc:	65007261 	.inst	0x65007261 ; undefined
- 1c0:	785f766e 	ldrh	w14, [x19], #-9
- 1c4:	63617473 	.inst	0x63617473 ; undefined
- 1c8:	706f746b 	adr	x11, df057 <__bss_size+0xdf045>
- 1cc:	5f656c00 	.inst	0x5f656c00 ; undefined
- 1d0:	7478656e 	.inst	0x7478656e ; undefined
- 1d4:	766e6500 	.inst	0x766e6500 ; undefined
- 1d8:	6370695f 	.inst	0x6370695f ; undefined
- 1dc:	7265705f 	.inst	0x7265705f ; undefined
- 1e0:	655f006d 	fadd	z13.h, z3.h, z31.h
- 1e4:	4500646e 	.inst	0x4500646e ; undefined
- 1e8:	6c5f766e 	ldnp	d14, d29, [x19, #496]
- 1ec:	00747369 	.inst	0x00747369 ; undefined
- 1f0:	6f6c5f75 	.inst	0x6f6c5f75 ; undefined
- 1f4:	6500676e 	.inst	0x6500676e ; undefined
- 1f8:	695f766e 	ldpsw	x14, x29, [x19, #248]
- 1fc:	725f6370 	.inst	0x725f6370 ; undefined
- 200:	69766365 	ldpsw	x5, x24, [x27, #-80]
- 204:	6c00676e 	stnp	d14, d25, [x27]
- 208:	69665f68 	ldpsw	x8, x23, [x27, #-208]
- 20c:	00747372 	.inst	0x00747372 ; undefined
- 210:	70617254 	adr	x20, c305b <__bss_size+0xc3049>
- 214:	6d617266 	ldp	d6, d28, [x19, #-496]
- 218:	6e650065 	uaddl2	v5.4s, v3.8h, v5.8h
- 21c:	70695f76 	adr	x22, d2e0b <__bss_size+0xd2df9>
- 220:	72665f63 	.inst	0x72665f63 ; undefined
- 224:	65006d6f 	.inst	0x65006d6f ; undefined
- 228:	695f766e 	ldpsw	x14, x29, [x19, #248]
- 22c:	645f6370 	fcmla	z16.h, p0/m, z27.h, z31.h, #270
- 230:	61767473 	.inst	0x61767473 ; undefined
- 234:	6d726100 	ldp	d0, d24, [x8, #-224]
- 238:	696e695f 	ldpsw	xzr, x26, [x10, #-144]
- 23c:	70700074 	adr	x20, e024b <__bss_size+0xe0239>
- 240:	6665725f 	.inst	0x6665725f ; undefined
- 244:	766e6500 	.inst	0x766e6500 ; undefined
- 248:	3372635f 	.inst	0x3372635f ; undefined
+   0:	20554e47 	.inst	0x20554e47 ; undefined
+   4:	20373143 	.inst	0x20373143 ; undefined
+   8:	2e322e39 	uqsub	v25.8b, v17.8b, v18.8b
+   c:	30322031 	adr	x17, 64411 <__bss_size+0x643ff>
+  10:	30313931 	adr	x17, 62735 <__bss_size+0x62723>
+  14:	2d203532 	stp	s18, s13, [x9, #-256]
+  18:	74696c6d 	.inst	0x74696c6d ; undefined
+  1c:	2d656c74 	ldp	s20, s27, [x3, #-216]
+  20:	69646e65 	ldpsw	x5, x27, [x19, #-224]
+  24:	2d206e61 	stp	s1, s27, [x19, #-256]
+  28:	6962616d 	ldpsw	x13, x24, [x11, #-240]
+  2c:	36706c3d 	tbz	w29, #14, db0 <__bss_size+0xd9e>
+  30:	672d2034 	.inst	0x672d2034 ; undefined
+  34:	66662d20 	.inst	0x66662d20 ; undefined
+  38:	73656572 	.inst	0x73656572 ; undefined
+  3c:	646e6174 	.inst	0x646e6174 ; undefined
+  40:	00676e69 	.inst	0x00676e69 ; undefined
+  44:	6d6f682f 	ldp	d15, d26, [x1, #-272]
+  48:	6f642f65 	.inst	0x6f642f65 ; undefined
+  4c:	676e6966 	.inst	0x676e6966 ; undefined
+  50:	2f747265 	fcmla	v5.4h, v19.4h, v20.h[1], #270
+  54:	72756f53 	.inst	0x72756f53 ; undefined
+  58:	4f2f6563 	.inst	0x4f2f6563 ; undefined
+  5c:	48542f53 	ldxrh	w19, [x26]
+  60:	2f534f59 	.inst	0x2f534f59 ; undefined
+  64:	76697264 	.inst	0x76697264 ; undefined
+  68:	00737265 	.inst	0x00737265 ; undefined
+  6c:	74726175 	.inst	0x74726175 ; undefined
+  70:	7465675f 	.inst	0x7465675f ; undefined
+  74:	61750063 	.inst	0x61750063 ; undefined
+  78:	695f7472 	ldpsw	x18, x29, [x3, #248]
+  7c:	0074696e 	.inst	0x0074696e ; undefined
+  80:	74726175 	.inst	0x74726175 ; undefined
+  84:	7500632e 	.inst	0x7500632e ; undefined
+  88:	5f747261 	sqdmlsl	s1, h19, v4.h[3]
+  8c:	646e6573 	.inst	0x646e6573 ; undefined
+  90:	72617500 	.inst	0x72617500 ; undefined
+  94:	75705f74 	.inst	0x75705f74 ; undefined
+  98:	65007374 	.inst	0x65007374 ; undefined
+  9c:	756d6d6e 	.inst	0x756d6d6e ; undefined
+  a0:	2f00532e 	.inst	0x2f00532e ; undefined
+  a4:	656d6f68 	fnmls	z8.h, p3/m, z27.h, z13.h
+  a8:	666f642f 	.inst	0x666f642f ; undefined
+  ac:	65676e69 	fnmls	z9.h, p3/m, z19.h, z7.h
+  b0:	532f7472 	.inst	0x532f7472 ; undefined
+  b4:	6372756f 	.inst	0x6372756f ; undefined
+  b8:	534f2f65 	.inst	0x534f2f65 ; undefined
+  bc:	5948542f 	.inst	0x5948542f ; undefined
+  c0:	622f534f 	.inst	0x622f534f ; undefined
+  c4:	00746f6f 	.inst	0x00746f6f ; undefined
+  c8:	20554e47 	.inst	0x20554e47 ; undefined
+  cc:	32205341 	orr	w1, w26, #0x1fffff
+  d0:	2e33332e 	usubw	v14.8h, v25.8h, v19.8b
+  d4:	74730031 	.inst	0x74730031 ; undefined
+  d8:	2e747261 	uabdl	v1.4s, v19.4h, v20.4h
+  dc:	6e650053 	uaddl2	v19.4s, v2.8h, v5.8h
+  e0:	64695f76 	.inst	0x64695f76 ; undefined
+  e4:	6f682f00 	.inst	0x6f682f00 ; undefined
+  e8:	642f656d 	.inst	0x642f656d ; undefined
+  ec:	6e69666f 	umax	v15.8h, v19.8h, v9.8h
+  f0:	74726567 	.inst	0x74726567 ; undefined
+  f4:	756f532f 	.inst	0x756f532f ; undefined
+  f8:	2f656372 	umlsl	v18.4s, v27.4h, v5.h[2]
+  fc:	542f534f 	b.nv	5eb64 <__bss_size+0x5eb52>
+ 100:	534f5948 	.inst	0x534f5948 ; undefined
+ 104:	696e692f 	ldpsw	x15, x26, [x9, #-144]
+ 108:	6e650074 	uaddl2	v20.4s, v3.8h, v5.8h
+ 10c:	63735f76 	.inst	0x63735f76 ; undefined
+ 110:	5f646568 	.inst	0x5f646568 ; undefined
+ 114:	7473696c 	.inst	0x7473696c ; undefined
+ 118:	6f687300 	fcmla	v0.8h, v24.8h, v8.h[1], #270
+ 11c:	75207472 	.inst	0x75207472 ; undefined
+ 120:	6769736e 	.inst	0x6769736e ; undefined
+ 124:	2064656e 	.inst	0x2064656e ; undefined
+ 128:	00746e69 	.inst	0x00746e69 ; undefined
+ 12c:	65727563 	fnmls	z3.h, p5/m, z11.h, z18.h
+ 130:	7500766e 	.inst	0x7500766e ; undefined
+ 134:	6f68735f 	fcmla	v31.8h, v26.8h, v8.h[1], #270
+ 138:	50007472 	adr	x18, fc6 <__bss_size+0xfb4>
+ 13c:	00656761 	.inst	0x00656761 ; undefined
+ 140:	65676150 	fnmls	z16.h, p0/m, z10.h, z7.h
+ 144:	53494c5f 	.inst	0x53494c5f ; undefined
+ 148:	6e655f54 	uqrshl	v20.8h, v26.8h, v5.8h
+ 14c:	5f797274 	sqdmlsl	s20, h19, v9.h[3]
+ 150:	656c0074 	fmla	z20.h, p0/m, z3.h, z12.h
+ 154:	6572705f 	fnmls	z31.h, p4/m, z2.h, z18.h
+ 158:	69620076 	ldpsw	x22, x0, [x3, #-240]
+ 15c:	7972616e 	ldrh	w14, [x11, #6448]
+ 160:	6573755f 	fnmls	z31.h, p5/m, z10.h, z19.h
+ 164:	65745f72 	fnmla	z18.h, p7/m, z27.h, z20.h
+ 168:	735f7473 	.inst	0x735f7473 ; undefined
+ 16c:	735f7379 	.inst	0x735f7379 ; undefined
+ 170:	74726174 	.inst	0x74726174 ; undefined
+ 174:	61706e00 	.inst	0x61706e00 ; undefined
+ 178:	65006567 	.inst	0x65006567 ; undefined
+ 17c:	0073766e 	.inst	0x0073766e ; undefined
+ 180:	69736e75 	ldpsw	x21, x27, [x19, #-104]
+ 184:	64656e67 	.inst	0x64656e67 ; undefined
+ 188:	61686320 	.inst	0x61686320 ; undefined
+ 18c:	6e650072 	uaddl2	v18.4s, v3.8h, v5.8h
+ 190:	75725f76 	.inst	0x75725f76 ; undefined
+ 194:	6500736e 	.inst	0x6500736e ; undefined
+ 198:	6e5f766e 	.inst	0x6e5f766e ; undefined
+ 19c:	6c00706f 	stnp	d15, d28, [x3]
+ 1a0:	20676e6f 	.inst	0x20676e6f ; undefined
+ 1a4:	69736e75 	ldpsw	x21, x27, [x19, #-104]
+ 1a8:	64656e67 	.inst	0x64656e67 ; undefined
+ 1ac:	746e6920 	.inst	0x746e6920 ; undefined
+ 1b0:	766e6500 	.inst	0x766e6500 ; undefined
+ 1b4:	6863735f 	.inst	0x6863735f ; undefined
+ 1b8:	6c5f6465 	ldnp	d5, d25, [x3, #496]
+ 1bc:	006b6e69 	.inst	0x006b6e69 ; undefined
+ 1c0:	68635f75 	.inst	0x68635f75 ; undefined
+ 1c4:	65007261 	.inst	0x65007261 ; undefined
+ 1c8:	785f766e 	ldrh	w14, [x19], #-9
+ 1cc:	63617473 	.inst	0x63617473 ; undefined
+ 1d0:	706f746b 	adr	x11, df05f <__bss_size+0xdf04d>
+ 1d4:	5f656c00 	.inst	0x5f656c00 ; undefined
+ 1d8:	7478656e 	.inst	0x7478656e ; undefined
+ 1dc:	766e6500 	.inst	0x766e6500 ; undefined
+ 1e0:	6370695f 	.inst	0x6370695f ; undefined
+ 1e4:	7265705f 	.inst	0x7265705f ; undefined
+ 1e8:	655f006d 	fadd	z13.h, z3.h, z31.h
+ 1ec:	4500646e 	.inst	0x4500646e ; undefined
+ 1f0:	6c5f766e 	ldnp	d14, d29, [x19, #496]
+ 1f4:	00747369 	.inst	0x00747369 ; undefined
+ 1f8:	6f6c5f75 	.inst	0x6f6c5f75 ; undefined
+ 1fc:	6500676e 	.inst	0x6500676e ; undefined
+ 200:	695f766e 	ldpsw	x14, x29, [x19, #248]
+ 204:	725f6370 	.inst	0x725f6370 ; undefined
+ 208:	69766365 	ldpsw	x5, x24, [x27, #-80]
+ 20c:	6c00676e 	stnp	d14, d25, [x27]
+ 210:	69665f68 	ldpsw	x8, x23, [x27, #-208]
+ 214:	00747372 	.inst	0x00747372 ; undefined
+ 218:	70617254 	adr	x20, c3063 <__bss_size+0xc3051>
+ 21c:	6d617266 	ldp	d6, d28, [x19, #-496]
+ 220:	6e650065 	uaddl2	v5.4s, v3.8h, v5.8h
+ 224:	70695f76 	adr	x22, d2e13 <__bss_size+0xd2e01>
+ 228:	72665f63 	.inst	0x72665f63 ; undefined
+ 22c:	65006d6f 	.inst	0x65006d6f ; undefined
+ 230:	695f766e 	ldpsw	x14, x29, [x19, #248]
+ 234:	645f6370 	fcmla	z16.h, p0/m, z27.h, z31.h, #270
+ 238:	61767473 	.inst	0x61767473 ; undefined
+ 23c:	6d726100 	ldp	d0, d24, [x8, #-224]
+ 240:	696e695f 	ldpsw	xzr, x26, [x10, #-144]
+ 244:	70700074 	adr	x20, e0253 <__bss_size+0xe0241>
+ 248:	6665725f 	.inst	0x6665725f ; undefined
  24c:	766e6500 	.inst	0x766e6500 ; undefined
- 250:	6467705f 	.inst	0x6467705f ; undefined
- 254:	65007269 	.inst	0x65007269 ; undefined
- 258:	705f766e 	adr	x14, bf127 <__bss_size+0xbf115>
- 25c:	75616667 	.inst	0x75616667 ; undefined
- 260:	685f746c 	.inst	0x685f746c ; undefined
- 264:	6c646e61 	ldnp	d1, d27, [x19, #-448]
- 268:	69007265 	stgp	x5, x28, [x19]
- 26c:	2e74696e 	.inst	0x2e74696e ; undefined
- 270:	61700063 	.inst	0x61700063 ; undefined
- 274:	00736567 	.inst	0x00736567 ; undefined
- 278:	5f766e65 	.inst	0x5f766e65 ; undefined
- 27c:	65006674 	.inst	0x65006674 ; undefined
- 280:	705f766e 	adr	x14, bf14f <__bss_size+0xbf13d>
- 284:	70006972 	adr	x18, fb3 <__bss_size+0xfa1>
- 288:	696c5f70 	ldpsw	x16, x23, [x27, #-160]
- 28c:	73006b6e 	.inst	0x73006b6e ; undefined
- 290:	74726f68 	.inst	0x74726f68 ; undefined
- 294:	746e6920 	.inst	0x746e6920 ; undefined
- 298:	695f7500 	ldpsw	x0, x29, [x8, #248]
- 29c:	6500746e 	.inst	0x6500746e ; undefined
- 2a0:	6c5f766e 	ldnp	d14, d29, [x19, #496]
- 2a4:	006b6e69 	.inst	0x006b6e69 ; undefined
- 2a8:	61747370 	.inst	0x61747370 ; undefined
- 2ac:	65006574 	.inst	0x65006574 ; undefined
- 2b0:	705f766e 	adr	x14, bf17f <__bss_size+0xbf16d>
- 2b4:	6e657261 	uabdl2	v1.4s, v19.8h, v5.8h
- 2b8:	64695f74 	.inst	0x64695f74 ; undefined
- 2bc:	6e6f6c00 	umin	v0.8h, v0.8h, v15.8h
- 2c0:	6e692067 	usubl2	v7.4s, v3.8h, v9.8h
- 2c4:	69620074 	ldpsw	x20, x0, [x3, #-240]
- 2c8:	7972616e 	ldrh	w14, [x11, #6448]
- 2cc:	6573755f 	fnmls	z31.h, p5/m, z10.h, z19.h
- 2d0:	65745f72 	fnmla	z18.h, p7/m, z27.h, z20.h
- 2d4:	665f7473 	.inst	0x665f7473 ; undefined
- 2d8:	5f6b726f 	sqdmlsl	s15, h19, v11.h[2]
- 2dc:	657a6973 	fnmls	z19.h, p2/m, z11.h, z26.h
- 2e0:	766e6500 	.inst	0x766e6500 ; undefined
- 2e4:	6370695f 	.inst	0x6370695f ; undefined
- 2e8:	6c61765f 	ldnp	d31, d29, [x18, #-496]
- 2ec:	75006575 	.inst	0x75006575 ; undefined
- 2f0:	5f746e69 	.inst	0x5f746e69 ; undefined
- 2f4:	6d003436 	stp	d22, d13, [x1]
- 2f8:	2e6e6961 	.inst	0x2e6e6961 ; undefined
- 2fc:	616d0063 	.inst	0x616d0063 ; undefined
- 300:	66006e69 	.inst	0x66006e69 ; undefined
- 304:	6d656572 	ldp	d18, d25, [x11, #-432]
- 308:	61006d65 	.inst	0x61006d65 ; undefined
- 30c:	745f6d73 	.inst	0x745f6d73 ; undefined
- 310:	2e6c6f6f 	umin	v15.4h, v27.4h, v12.4h
- 314:	682f0053 	.inst	0x682f0053 ; undefined
- 318:	2f656d6f 	.inst	0x2f656d6f ; undefined
- 31c:	73796874 	.inst	0x73796874 ; undefined
- 320:	6c656172 	ldnp	d18, d24, [x11, #-432]
- 324:	2f534f2f 	.inst	0x2f534f2f ; undefined
- 328:	534f4950 	.inst	0x534f4950 ; undefined
- 32c:	5948542f 	.inst	0x5948542f ; undefined
- 330:	6c2f534f 	stnp	d15, d20, [x26, #-272]
- 334:	65006269 	.inst	0x65006269 ; undefined
- 338:	7972746e 	ldrh	w14, [x3, #6458]
- 33c:	6500532e 	.inst	0x6500532e ; undefined
- 340:	615f766e 	.inst	0x615f766e ; undefined
- 344:	532e6d73 	.inst	0x532e6d73 ; undefined
+ 250:	3372635f 	.inst	0x3372635f ; undefined
+ 254:	766e6500 	.inst	0x766e6500 ; undefined
+ 258:	6467705f 	.inst	0x6467705f ; undefined
+ 25c:	65007269 	.inst	0x65007269 ; undefined
+ 260:	705f766e 	adr	x14, bf12f <__bss_size+0xbf11d>
+ 264:	75616667 	.inst	0x75616667 ; undefined
+ 268:	685f746c 	.inst	0x685f746c ; undefined
+ 26c:	6c646e61 	ldnp	d1, d27, [x19, #-448]
+ 270:	69007265 	stgp	x5, x28, [x19]
+ 274:	2e74696e 	.inst	0x2e74696e ; undefined
+ 278:	61700063 	.inst	0x61700063 ; undefined
+ 27c:	00736567 	.inst	0x00736567 ; undefined
+ 280:	616e6962 	.inst	0x616e6962 ; undefined
+ 284:	755f7972 	.inst	0x755f7972 ; undefined
+ 288:	5f726573 	.inst	0x5f726573 ; undefined
+ 28c:	74736574 	.inst	0x74736574 ; undefined
+ 290:	7379735f 	.inst	0x7379735f ; undefined
+ 294:	7a69735f 	.inst	0x7a69735f ; undefined
+ 298:	6e650065 	uaddl2	v5.4s, v3.8h, v5.8h
+ 29c:	66745f76 	.inst	0x66745f76 ; undefined
+ 2a0:	766e6500 	.inst	0x766e6500 ; undefined
+ 2a4:	6972705f 	ldpsw	xzr, x28, [x2, #-112]
+ 2a8:	5f707000 	sqdmlsl	s0, h0, v0.h[3]
+ 2ac:	6b6e696c 	.inst	0x6b6e696c ; undefined
+ 2b0:	6f687300 	fcmla	v0.8h, v24.8h, v8.h[1], #270
+ 2b4:	69207472 	stgp	x18, x29, [x3, #-1024]
+ 2b8:	7500746e 	.inst	0x7500746e ; undefined
+ 2bc:	746e695f 	.inst	0x746e695f ; undefined
+ 2c0:	766e6500 	.inst	0x766e6500 ; undefined
+ 2c4:	6e696c5f 	umin	v31.8h, v2.8h, v9.8h
+ 2c8:	7370006b 	.inst	0x7370006b ; undefined
+ 2cc:	65746174 	fnmls	z20.h, p0/m, z11.h, z20.h
+ 2d0:	766e6500 	.inst	0x766e6500 ; undefined
+ 2d4:	7261705f 	.inst	0x7261705f ; undefined
+ 2d8:	5f746e65 	.inst	0x5f746e65 ; undefined
+ 2dc:	6c006469 	stnp	d9, d25, [x3]
+ 2e0:	20676e6f 	.inst	0x20676e6f ; undefined
+ 2e4:	00746e69 	.inst	0x00746e69 ; undefined
+ 2e8:	5f766e65 	.inst	0x5f766e65 ; undefined
+ 2ec:	5f637069 	sqdmlsl	s9, h3, v3.h[2]
+ 2f0:	756c6176 	.inst	0x756c6176 ; undefined
+ 2f4:	69750065 	ldpsw	x5, x0, [x3, #-88]
+ 2f8:	365f746e 	tbz	w14, #11, fffffffffffff184 <init_sp+0x7fff7ff184>
+ 2fc:	616d0034 	.inst	0x616d0034 ; undefined
+ 300:	632e6e69 	.inst	0x632e6e69 ; undefined
+ 304:	69616d00 	ldpsw	x0, x27, [x8, #-248]
+ 308:	7266006e 	.inst	0x7266006e ; undefined
+ 30c:	656d6565 	fnmls	z5.h, p1/m, z11.h, z13.h
+ 310:	7361006d 	.inst	0x7361006d ; undefined
+ 314:	6f745f6d 	.inst	0x6f745f6d ; undefined
+ 318:	532e6c6f 	.inst	0x532e6c6f ; undefined
+ 31c:	6f682f00 	.inst	0x6f682f00 ; undefined
+ 320:	642f656d 	.inst	0x642f656d ; undefined
+ 324:	6e69666f 	umax	v15.8h, v19.8h, v9.8h
+ 328:	74726567 	.inst	0x74726567 ; undefined
+ 32c:	756f532f 	.inst	0x756f532f ; undefined
+ 330:	2f656372 	umlsl	v18.4s, v27.4h, v5.h[2]
+ 334:	542f534f 	b.nv	5ed9c <__bss_size+0x5ed8a>
+ 338:	534f5948 	.inst	0x534f5948 ; undefined
+ 33c:	62696c2f 	.inst	0x62696c2f ; undefined
+ 340:	746e6500 	.inst	0x746e6500 ; undefined
+ 344:	532e7972 	.inst	0x532e7972 ; undefined
  348:	766e6500 	.inst	0x766e6500 ; undefined
- 34c:	696e695f 	ldpsw	xzr, x26, [x10, #-144]
- 350:	6e690074 	uaddl2	v20.4s, v3.8h, v9.8h
- 354:	0072656e 	.inst	0x0072656e ; undefined
- 358:	64697361 	.inst	0x64697361 ; undefined
- 35c:	7469625f 	.inst	0x7469625f ; undefined
- 360:	0070616d 	.inst	0x0070616d ; undefined
- 364:	5f766e65 	.inst	0x5f766e65 ; undefined
- 368:	61657263 	.inst	0x61657263 ; undefined
- 36c:	705f6574 	adr	x20, bf01b <__bss_size+0xbf009>
- 370:	726f6972 	.inst	0x726f6972 ; undefined
- 374:	00797469 	.inst	0x00797469 ; undefined
- 378:	64697361 	.inst	0x64697361 ; undefined
- 37c:	6572665f 	fnmls	z31.h, p1/m, z18.h, z18.h
- 380:	6e650065 	uaddl2	v5.4s, v3.8h, v5.8h
- 384:	75725f76 	.inst	0x75725f76 ; undefined
- 388:	7470006e 	.inst	0x7470006e ; undefined
- 38c:	006f6e65 	.inst	0x006f6e65 ; undefined
- 390:	69766e65 	ldpsw	x5, x27, [x19, #-80]
- 394:	6e653264 	usubw2	v4.4s, v19.4s, v5.8h
- 398:	73610076 	.inst	0x73610076 ; undefined
- 39c:	615f6469 	.inst	0x615f6469 ; undefined
- 3a0:	636f6c6c 	.inst	0x636f6c6c ; undefined
- 3a4:	656b6d00 	fnmls	z0.h, p3/m, z8.h, z11.h
- 3a8:	6469766e 	.inst	0x6469766e ; undefined
- 3ac:	6e696200 	rsubhn2	v0.8h, v16.4s, v9.4s
- 3b0:	00797261 	.inst	0x00797261 ; undefined
- 3b4:	6e72656b 	umax	v11.8h, v11.8h, v18.8h
- 3b8:	705f6c65 	adr	x5, bf147 <__bss_size+0xbf135>
- 3bc:	65006475 	.inst	0x65006475 ; undefined
- 3c0:	665f766e 	.inst	0x665f766e ; undefined
- 3c4:	00656572 	.inst	0x00656572 ; undefined
- 3c8:	5f766e65 	.inst	0x5f766e65 ; undefined
- 3cc:	65657266 	fnmls	z6.h, p4/m, z19.h, z5.h
- 3d0:	73696c5f 	.inst	0x73696c5f ; undefined
- 3d4:	68630074 	.inst	0x68630074 ; undefined
- 3d8:	706b6365 	adr	x5, d7047 <__bss_size+0xd7035>
- 3dc:	006d7265 	.inst	0x006d7265 ; undefined
- 3e0:	5f766e65 	.inst	0x5f766e65 ; undefined
- 3e4:	75746573 	.inst	0x75746573 ; undefined
- 3e8:	6d765f70 	ldp	d16, d23, [x27, #-160]
- 3ec:	646d7000 	.inst	0x646d7000 ; undefined
- 3f0:	70006f6e 	adr	x14, 11df <__bss_size+0x11cd>
- 3f4:	00766e65 	.inst	0x00766e65 ; undefined
- 3f8:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- 3fc:	6e707032 	uabdl2	v18.4s, v1.8h, v16.8h
- 400:	64757000 	.inst	0x64757000 ; undefined
- 404:	70006f6e 	adr	x14, 11f3 <__bss_size+0x11e1>
- 408:	61703261 	.inst	0x61703261 ; undefined
- 40c:	70006567 	adr	x7, 10bb <__bss_size+0x10a9>
- 410:	32656761 	.inst	0x32656761 ; undefined
- 414:	61006170 	.inst	0x61006170 ; undefined
- 418:	00646973 	.inst	0x00646973 ; undefined
- 41c:	65646e69 	fnmls	z9.h, p3/m, z19.h, z4.h
- 420:	6e650078 	uaddl2	v24.4s, v3.8h, v5.8h
- 424:	72635f76 	.inst	0x72635f76 ; undefined
- 428:	65746165 	fnmls	z5.h, p0/m, z11.h, z20.h
- 42c:	67617000 	.inst	0x67617000 ; undefined
- 430:	766b3265 	.inst	0x766b3265 ; undefined
- 434:	6e650061 	uaddl2	v1.4s, v3.8h, v5.8h
- 438:	00632e76 	.inst	0x00632e76 ; undefined
- 43c:	655f6870 	fcmne	p0.h, p2/z, z3.h, z31.h
- 440:	7972746e 	ldrh	w14, [x3, #6458]
- 444:	7a69735f 	.inst	0x7a69735f ; undefined
- 448:	6f6c0065 	mla	v5.8h, v3.8h, v12.h[2]
- 44c:	655f6461 	fcmeq	p1.h, p1/z, z3.h, z31.h
- 450:	7000666c 	adr	x12, 111f <__bss_size+0x110d>
- 454:	6d656d5f 	ldp	d31, d27, [x10, #-432]
- 458:	70007a73 	adr	x19, 13a7 <__bss_size+0x1395>
- 45c:	6461705f 	.inst	0x6461705f ; undefined
- 460:	70007264 	adr	x4, 12af <__bss_size+0x129d>
- 464:	6e655f68 	uqrshl	v8.8h, v27.8h, v5.8h
- 468:	5f797274 	sqdmlsl	s20, h19, v9.h[3]
- 46c:	6e756f63 	umin	v3.8h, v27.8h, v21.8h
- 470:	69750074 	ldpsw	x20, x0, [x3, #-88]
- 474:	315f746e 	adds	w14, w3, #0x7dd, lsl #12
- 478:	5f700036 	.inst	0x5f700036 ; undefined
- 47c:	64646176 	.inst	0x64646176 ; undefined
- 480:	5f700072 	.inst	0x5f700072 ; undefined
- 484:	65707974 	fnmls	z20.h, p6/m, z11.h, z16.h
- 488:	616f6c00 	.inst	0x616f6c00 ; undefined
- 48c:	00632e64 	.inst	0x00632e64 ; undefined
- 490:	72646865 	.inst	0x72646865 ; undefined
- 494:	735f6500 	.inst	0x735f6500 ; undefined
- 498:	746e6568 	.inst	0x746e6568 ; undefined
- 49c:	657a6973 	fnmls	z19.h, p2/m, z11.h, z26.h
- 4a0:	666c4500 	.inst	0x666c4500 ; undefined
- 4a4:	4f5f3436 	srsra	v22.2d, v1.2d, #33
- 4a8:	75006666 	.inst	0x75006666 ; undefined
- 4ac:	5f726573 	.inst	0x5f726573 ; undefined
- 4b0:	61746164 	.inst	0x61746164 ; undefined
- 4b4:	655f6500 	fcmeq	p0.h, p1/z, z8.h, z31.h
- 4b8:	7a697368 	.inst	0x7a697368 ; undefined
- 4bc:	5f650065 	.inst	0x5f650065 ; undefined
- 4c0:	74736873 	.inst	0x74736873 ; undefined
- 4c4:	78646e72 	.inst	0x78646e72 ; undefined
- 4c8:	705f6500 	adr	x0, bf16b <__bss_size+0xbf159>
- 4cc:	746e6568 	.inst	0x746e6568 ; undefined
- 4d0:	657a6973 	fnmls	z19.h, p2/m, z11.h, z26.h
- 4d4:	705f6500 	adr	x0, bf177 <__bss_size+0xbf165>
- 4d8:	66666f68 	.inst	0x66666f68 ; undefined
- 4dc:	765f6500 	.inst	0x765f6500 ; undefined
- 4e0:	69737265 	ldpsw	x5, x28, [x19, #-104]
- 4e4:	69006e6f 	stgp	x15, x27, [x19]
- 4e8:	6c655f73 	ldnp	d19, d23, [x27, #-432]
- 4ec:	6f665f66 	.inst	0x6f665f66 ; undefined
- 4f0:	74616d72 	.inst	0x74616d72 ; undefined
- 4f4:	666c4500 	.inst	0x666c4500 ; undefined
- 4f8:	505f3436 	adr	x22, beb7e <__bss_size+0xbeb6c>
- 4fc:	00726468 	.inst	0x00726468 ; undefined
- 500:	5f6e6962 	.inst	0x5f6e6962 ; undefined
- 504:	657a6973 	fnmls	z19.h, p2/m, z11.h, z26.h
- 508:	6e697500 	uabd	v0.8h, v8.8h, v9.8h
- 50c:	00385f74 	.inst	0x00385f74 ; NYI
- 510:	64695f65 	.inst	0x64695f65 ; undefined
- 514:	00746e65 	.inst	0x00746e65 ; undefined
- 518:	5f727470 	sqshl	d16, d3, #50
- 51c:	745f6870 	.inst	0x745f6870 ; undefined
- 520:	656c6261 	fnmls	z1.h, p0/m, z19.h, z12.h
- 524:	73677300 	.inst	0x73677300 ; undefined
- 528:	00657a69 	.inst	0x00657a69 ; undefined
- 52c:	64616f6c 	.inst	0x64616f6c ; undefined
- 530:	6f63695f 	umlsl2	v31.4s, v10.8h, v3.h[6]
- 534:	6d5f6564 	ldp	d4, d25, [x11, #496]
- 538:	65707061 	fnmls	z1.h, p4/m, z3.h, z16.h
- 53c:	5f700072 	.inst	0x5f700072 ; undefined
- 540:	67616c66 	.inst	0x67616c66 ; undefined
- 544:	6e650073 	uaddl2	v19.4s, v3.8h, v5.8h
- 548:	5f797274 	sqdmlsl	s20, h19, v9.h[3]
- 54c:	6e696f70 	umin	v16.8h, v27.8h, v9.8h
- 550:	6c450074 	ldnp	d20, d0, [x3, #80]
- 554:	5f343666 	.inst	0x5f343666 ; undefined
- 558:	72646845 	.inst	0x72646845 ; undefined
- 55c:	745f6500 	.inst	0x745f6500 ; undefined
- 560:	00657079 	.inst	0x00657079 ; undefined
- 564:	36666c45 	tbz	w5, #12, ffffffffffffd2ec <init_sp+0x7fff7fd2ec>
- 568:	64415f34 	fcmla	z20.h, p7/m, z25.h, z1.h, #180
- 56c:	65007264 	.inst	0x65007264 ; undefined
- 570:	63616d5f 	.inst	0x63616d5f ; undefined
- 574:	656e6968 	fnmls	z8.h, p2/m, z11.h, z14.h
- 578:	6e697500 	uabd	v0.8h, v8.8h, v9.8h
- 57c:	32335f74 	orr	w20, w27, #0xffffe01f
- 580:	735f6500 	.inst	0x735f6500 ; undefined
- 584:	66666f68 	.inst	0x66666f68 ; undefined
- 588:	616f6c00 	.inst	0x616f6c00 ; undefined
- 58c:	63695f64 	.inst	0x63695f64 ; undefined
- 590:	0065646f 	.inst	0x0065646f ; undefined
- 594:	666f5f70 	.inst	0x666f5f70 ; undefined
- 598:	74657366 	.inst	0x74657366 ; undefined
- 59c:	64687000 	.inst	0x64687000 ; undefined
- 5a0:	5f700072 	.inst	0x5f700072 ; undefined
- 5a4:	656c6966 	fnmls	z6.h, p2/m, z11.h, z12.h
- 5a8:	65007a73 	.inst	0x65007a73 ; undefined
- 5ac:	6e68705f 	uabdl2	v31.4s, v2.8h, v8.8h
- 5b0:	65006d75 	.inst	0x65006d75 ; undefined
- 5b4:	616c665f 	.inst	0x616c665f ; undefined
- 5b8:	65007367 	.inst	0x65007367 ; undefined
- 5bc:	6e68735f 	uabdl2	v31.4s, v26.8h, v8.8h
- 5c0:	70006d75 	adr	x21, 136f <__bss_size+0x135d>
- 5c4:	696c615f 	ldpsw	xzr, x24, [x10, #-160]
- 5c8:	6c006e67 	stnp	d7, d27, [x19]
- 5cc:	00656e69 	.inst	0x00656e69 ; undefined
- 5d0:	75626564 	.inst	0x75626564 ; undefined
- 5d4:	72705f67 	.inst	0x72705f67 ; undefined
- 5d8:	66746e69 	.inst	0x66746e69 ; undefined
- 5dc:	735f5f00 	.inst	0x735f5f00 ; undefined
- 5e0:	6b636174 	.inst	0x6b636174 ; undefined
- 5e4:	69727000 	ldpsw	x0, x28, [x0, #-112]
- 5e8:	2e66746e 	uabd	v14.4h, v3.4h, v6.4h
- 5ec:	5f5f0063 	.inst	0x5f5f0063 ; undefined
- 5f0:	745f7267 	.inst	0x745f7267 ; undefined
- 5f4:	5f00706f 	.inst	0x5f00706f ; undefined
- 5f8:	5f72765f 	sqshl	d31, d18, #50
- 5fc:	7366666f 	.inst	0x7366666f ; undefined
+ 34c:	6d73615f 	ldp	d31, d24, [x10, #-208]
+ 350:	6500532e 	.inst	0x6500532e ; undefined
+ 354:	695f766e 	ldpsw	x14, x29, [x19, #248]
+ 358:	0074696e 	.inst	0x0074696e ; undefined
+ 35c:	656e6e69 	fnmls	z9.h, p3/m, z19.h, z14.h
+ 360:	73610072 	.inst	0x73610072 ; undefined
+ 364:	625f6469 	.inst	0x625f6469 ; undefined
+ 368:	616d7469 	.inst	0x616d7469 ; undefined
+ 36c:	6e650070 	uaddl2	v16.4s, v3.8h, v5.8h
+ 370:	72635f76 	.inst	0x72635f76 ; undefined
+ 374:	65746165 	fnmls	z5.h, p0/m, z11.h, z20.h
+ 378:	6972705f 	ldpsw	xzr, x28, [x2, #-112]
+ 37c:	7469726f 	.inst	0x7469726f ; undefined
+ 380:	73610079 	.inst	0x73610079 ; undefined
+ 384:	665f6469 	.inst	0x665f6469 ; undefined
+ 388:	00656572 	.inst	0x00656572 ; undefined
+ 38c:	5f766e65 	.inst	0x5f766e65 ; undefined
+ 390:	006e7572 	.inst	0x006e7572 ; undefined
+ 394:	6e657470 	uabd	v16.8h, v3.8h, v5.8h
+ 398:	6e65006f 	uaddl2	v15.4s, v3.8h, v5.8h
+ 39c:	32646976 	.inst	0x32646976 ; undefined
+ 3a0:	00766e65 	.inst	0x00766e65 ; undefined
+ 3a4:	64697361 	.inst	0x64697361 ; undefined
+ 3a8:	6c6c615f 	ldnp	d31, d24, [x10, #-320]
+ 3ac:	6d00636f 	stp	d15, d24, [x27]
+ 3b0:	766e656b 	.inst	0x766e656b ; undefined
+ 3b4:	62006469 	.inst	0x62006469 ; undefined
+ 3b8:	72616e69 	.inst	0x72616e69 ; undefined
+ 3bc:	656b0079 	fmla	z25.h, p0/m, z3.h, z11.h
+ 3c0:	6c656e72 	ldnp	d18, d27, [x19, #-432]
+ 3c4:	6475705f 	.inst	0x6475705f ; undefined
+ 3c8:	766e6500 	.inst	0x766e6500 ; undefined
+ 3cc:	6572665f 	fnmls	z31.h, p1/m, z18.h, z18.h
+ 3d0:	6e650065 	uaddl2	v5.4s, v3.8h, v5.8h
+ 3d4:	72665f76 	.inst	0x72665f76 ; undefined
+ 3d8:	6c5f6565 	ldnp	d5, d25, [x11, #496]
+ 3dc:	00747369 	.inst	0x00747369 ; undefined
+ 3e0:	63656863 	.inst	0x63656863 ; undefined
+ 3e4:	7265706b 	.inst	0x7265706b ; undefined
+ 3e8:	6e65006d 	uaddl2	v13.4s, v3.8h, v5.8h
+ 3ec:	65735f76 	fnmla	z22.h, p7/m, z27.h, z19.h
+ 3f0:	5f707574 	sqshl	d20, d11, #48
+ 3f4:	70006d76 	adr	x22, 11a3 <__bss_size+0x1191>
+ 3f8:	6f6e646d 	sqshlu	v13.2d, v3.2d, #46
+ 3fc:	6e657000 	uabdl2	v0.4s, v0.8h, v5.8h
+ 400:	61700076 	.inst	0x61700076 ; undefined
+ 404:	70326567 	adr	x7, 650b3 <__bss_size+0x650a1>
+ 408:	70006e70 	adr	x16, 11d7 <__bss_size+0x11c5>
+ 40c:	6f6e6475 	sqshlu	v21.2d, v3.2d, #46
+ 410:	32617000 	.inst	0x32617000 ; undefined
+ 414:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
+ 418:	67617000 	.inst	0x67617000 ; undefined
+ 41c:	61703265 	.inst	0x61703265 ; undefined
+ 420:	69736100 	ldpsw	x0, x24, [x8, #-104]
+ 424:	6e690064 	uaddl2	v4.4s, v3.8h, v9.8h
+ 428:	00786564 	.inst	0x00786564 ; undefined
+ 42c:	5f766e65 	.inst	0x5f766e65 ; undefined
+ 430:	61657263 	.inst	0x61657263 ; undefined
+ 434:	70006574 	adr	x20, 10e3 <__bss_size+0x10d1>
+ 438:	32656761 	.inst	0x32656761 ; undefined
+ 43c:	0061766b 	.inst	0x0061766b ; undefined
+ 440:	2e766e65 	umin	v5.4h, v19.4h, v22.4h
+ 444:	68700063 	.inst	0x68700063 ; undefined
+ 448:	746e655f 	.inst	0x746e655f ; undefined
+ 44c:	735f7972 	.inst	0x735f7972 ; undefined
+ 450:	00657a69 	.inst	0x00657a69 ; undefined
+ 454:	64616f6c 	.inst	0x64616f6c ; undefined
+ 458:	666c655f 	.inst	0x666c655f ; undefined
+ 45c:	6d5f7000 	ldp	d0, d28, [x0, #496]
+ 460:	7a736d65 	.inst	0x7a736d65 ; undefined
+ 464:	705f7000 	adr	x0, bf267 <__bss_size+0xbf255>
+ 468:	72646461 	.inst	0x72646461 ; undefined
+ 46c:	5f687000 	sqdmlsl	s0, h0, v8.h[2]
+ 470:	72746e65 	.inst	0x72746e65 ; undefined
+ 474:	6f635f79 	.inst	0x6f635f79 ; undefined
+ 478:	00746e75 	.inst	0x00746e75 ; undefined
+ 47c:	746e6975 	.inst	0x746e6975 ; undefined
+ 480:	0036315f 	.inst	0x0036315f ; NYI
+ 484:	61765f70 	.inst	0x61765f70 ; undefined
+ 488:	00726464 	.inst	0x00726464 ; undefined
+ 48c:	79745f70 	ldrh	w16, [x27, #6702]
+ 490:	6c006570 	stnp	d16, d25, [x11]
+ 494:	2e64616f 	rsubhn	v15.4h, v11.4s, v4.4s
+ 498:	68650063 	.inst	0x68650063 ; undefined
+ 49c:	65007264 	.inst	0x65007264 ; undefined
+ 4a0:	6568735f 	fnmls	z31.h, p4/m, z26.h, z8.h
+ 4a4:	6973746e 	ldpsw	x14, x29, [x3, #-104]
+ 4a8:	4500657a 	.inst	0x4500657a ; undefined
+ 4ac:	3436666c 	cbz	w12, 6d178 <__bss_size+0x6d166>
+ 4b0:	66664f5f 	.inst	0x66664f5f ; undefined
+ 4b4:	65737500 	fnmls	z0.h, p5/m, z8.h, z19.h
+ 4b8:	61645f72 	.inst	0x61645f72 ; undefined
+ 4bc:	65006174 	.inst	0x65006174 ; undefined
+ 4c0:	7368655f 	.inst	0x7368655f ; undefined
+ 4c4:	00657a69 	.inst	0x00657a69 ; undefined
+ 4c8:	68735f65 	.inst	0x68735f65 ; undefined
+ 4cc:	6e727473 	uabd	v19.8h, v3.8h, v18.8h
+ 4d0:	65007864 	.inst	0x65007864 ; undefined
+ 4d4:	6568705f 	fnmls	z31.h, p4/m, z2.h, z8.h
+ 4d8:	6973746e 	ldpsw	x14, x29, [x3, #-104]
+ 4dc:	6500657a 	.inst	0x6500657a ; undefined
+ 4e0:	6f68705f 	fcmla	v31.8h, v2.8h, v8.h[1], #270
+ 4e4:	65006666 	.inst	0x65006666 ; undefined
+ 4e8:	7265765f 	.inst	0x7265765f ; undefined
+ 4ec:	6e6f6973 	.inst	0x6e6f6973 ; undefined
+ 4f0:	5f736900 	.inst	0x5f736900 ; undefined
+ 4f4:	5f666c65 	.inst	0x5f666c65 ; undefined
+ 4f8:	6d726f66 	ldp	d6, d27, [x27, #-224]
+ 4fc:	45007461 	.inst	0x45007461 ; undefined
+ 500:	3436666c 	cbz	w12, 6d1cc <__bss_size+0x6d1ba>
+ 504:	6468505f 	.inst	0x6468505f ; undefined
+ 508:	69620072 	ldpsw	x18, x0, [x3, #-240]
+ 50c:	69735f6e 	ldpsw	x14, x23, [x27, #-104]
+ 510:	7500657a 	.inst	0x7500657a ; undefined
+ 514:	5f746e69 	.inst	0x5f746e69 ; undefined
+ 518:	5f650038 	.inst	0x5f650038 ; undefined
+ 51c:	6e656469 	umax	v9.8h, v3.8h, v5.8h
+ 520:	74700074 	.inst	0x74700074 ; undefined
+ 524:	68705f72 	.inst	0x68705f72 ; undefined
+ 528:	6261745f 	.inst	0x6261745f ; undefined
+ 52c:	7300656c 	.inst	0x7300656c ; undefined
+ 530:	7a697367 	.inst	0x7a697367 ; undefined
+ 534:	6f6c0065 	mla	v5.8h, v3.8h, v12.h[2]
+ 538:	695f6461 	ldpsw	x1, x25, [x3, #248]
+ 53c:	65646f63 	fnmls	z3.h, p3/m, z27.h, z4.h
+ 540:	70616d5f 	adr	xzr, c32eb <__bss_size+0xc32d9>
+ 544:	00726570 	.inst	0x00726570 ; undefined
+ 548:	6c665f70 	ldnp	d16, d23, [x27, #-416]
+ 54c:	00736761 	.inst	0x00736761 ; undefined
+ 550:	72746e65 	.inst	0x72746e65 ; undefined
+ 554:	6f705f79 	.inst	0x6f705f79 ; undefined
+ 558:	00746e69 	.inst	0x00746e69 ; undefined
+ 55c:	36666c45 	tbz	w5, #12, ffffffffffffd2e4 <init_sp+0x7fff7fd2e4>
+ 560:	68455f34 	.inst	0x68455f34 ; undefined
+ 564:	65007264 	.inst	0x65007264 ; undefined
+ 568:	7079745f 	adr	xzr, f33f3 <__bss_size+0xf33e1>
+ 56c:	6c450065 	ldnp	d5, d0, [x3, #80]
+ 570:	5f343666 	.inst	0x5f343666 ; undefined
+ 574:	72646441 	.inst	0x72646441 ; undefined
+ 578:	6d5f6500 	ldp	d0, d25, [x8, #496]
+ 57c:	69686361 	ldpsw	x1, x24, [x27, #-192]
+ 580:	7500656e 	.inst	0x7500656e ; undefined
+ 584:	5f746e69 	.inst	0x5f746e69 ; undefined
+ 588:	65003233 	.inst	0x65003233 ; undefined
+ 58c:	6f68735f 	fcmla	v31.8h, v26.8h, v8.h[1], #270
+ 590:	6c006666 	stnp	d6, d25, [x19]
+ 594:	5f64616f 	.inst	0x5f64616f ; undefined
+ 598:	646f6369 	.inst	0x646f6369 ; undefined
+ 59c:	5f700065 	.inst	0x5f700065 ; undefined
+ 5a0:	7366666f 	.inst	0x7366666f ; undefined
+ 5a4:	70007465 	adr	x5, 1433 <__bss_size+0x1421>
+ 5a8:	00726468 	.inst	0x00726468 ; undefined
+ 5ac:	69665f70 	ldpsw	x16, x23, [x27, #-208]
+ 5b0:	7a73656c 	.inst	0x7a73656c ; undefined
+ 5b4:	705f6500 	adr	x0, bf257 <__bss_size+0xbf245>
+ 5b8:	6d756e68 	ldp	d8, d27, [x19, #-176]
+ 5bc:	665f6500 	.inst	0x665f6500 ; undefined
+ 5c0:	7367616c 	.inst	0x7367616c ; undefined
+ 5c4:	735f6500 	.inst	0x735f6500 ; undefined
+ 5c8:	6d756e68 	ldp	d8, d27, [x19, #-176]
+ 5cc:	615f7000 	.inst	0x615f7000 ; undefined
+ 5d0:	6e67696c 	.inst	0x6e67696c ; undefined
+ 5d4:	6e696c00 	umin	v0.8h, v0.8h, v9.8h
+ 5d8:	65640065 	fmla	z5.h, p0/m, z3.h, z4.h
+ 5dc:	5f677562 	sqshl	d2, d11, #39
+ 5e0:	6e697270 	uabdl2	v16.4s, v19.8h, v9.8h
+ 5e4:	5f006674 	.inst	0x5f006674 ; undefined
+ 5e8:	6174735f 	.inst	0x6174735f ; undefined
+ 5ec:	70006b63 	adr	x3, 135b <__bss_size+0x1349>
+ 5f0:	746e6972 	.inst	0x746e6972 ; undefined
+ 5f4:	00632e66 	.inst	0x00632e66 ; undefined
+ 5f8:	72675f5f 	.inst	0x72675f5f ; undefined
+ 5fc:	706f745f 	adr	xzr, df487 <__bss_size+0xdf475>
  600:	765f5f00 	.inst	0x765f5f00 ; undefined
- 604:	696c5f61 	ldpsw	x1, x23, [x27, #-160]
- 608:	66007473 	.inst	0x66007473 ; undefined
- 60c:	00656c69 	.inst	0x00656c69 ; undefined
- 610:	756f796d 	.inst	0x756f796d ; undefined
- 614:	74757074 	.inst	0x74757074 ; undefined
- 618:	765f5f00 	.inst	0x765f5f00 ; undefined
- 61c:	6f745f72 	.inst	0x6f745f72 ; undefined
- 620:	5f5f0070 	.inst	0x5f5f0070 ; undefined
- 624:	63756e67 	.inst	0x63756e67 ; undefined
- 628:	5f61765f 	sqshl	d31, d18, #33
- 62c:	7473696c 	.inst	0x7473696c ; undefined
- 630:	675f5f00 	.inst	0x675f5f00 ; undefined
- 634:	666f5f72 	.inst	0x666f5f72 ; undefined
- 638:	6c007366 	stnp	d6, d28, [x27]
- 63c:	72505f70 	.inst	0x72505f70 ; undefined
- 640:	00746e69 	.inst	0x00746e69 ; undefined
- 644:	69676562 	ldpsw	x2, x25, [x11, #-200]
- 648:	7270006e 	.inst	0x7270006e ; undefined
- 64c:	2e746e69 	umin	v9.4h, v19.4h, v20.4h
- 650:	656e0063 	fmla	z3.h, p0/m, z3.h, z14.h
- 654:	616c4667 	.inst	0x616c4667 ; undefined
- 658:	68740067 	.inst	0x68740067 ; undefined
- 65c:	74614665 	.inst	0x74614665 ; undefined
- 660:	734d6c61 	.inst	0x734d6c61 ; undefined
- 664:	61700067 	.inst	0x61700067 ; undefined
- 668:	6c006364 	stnp	d4, d24, [x27]
- 66c:	756a6461 	.inst	0x756a6461 ; undefined
- 670:	70007473 	adr	x19, 14ff <__bss_size+0x14ed>
- 674:	00636572 	.inst	0x00636572 ; undefined
- 678:	61637075 	.inst	0x61637075 ; undefined
- 67c:	62006573 	.inst	0x62006573 ; undefined
- 680:	00657361 	.inst	0x00657361 ; undefined
- 684:	6e697250 	uabdl2	v16.4s, v18.8h, v9.8h
- 688:	6d754e74 	ldp	d20, d19, [x19, #-176]
- 68c:	64697700 	.inst	0x64697700 ; undefined
- 690:	50006874 	adr	x20, 139e <__bss_size+0x138c>
- 694:	746e6972 	.inst	0x746e6972 ; undefined
- 698:	69727453 	ldpsw	x19, x29, [x2, #-112]
- 69c:	6100676e 	.inst	0x6100676e ; undefined
- 6a0:	61757463 	.inst	0x61757463 ; undefined
- 6a4:	6e654c6c 	uqshl	v12.8h, v3.8h, v5.8h
- 6a8:	00687467 	.inst	0x00687467 ; undefined
- 6ac:	676e6f6c 	.inst	0x676e6f6c ; undefined
- 6b0:	67616c46 	.inst	0x67616c46 ; undefined
- 6b4:	69725000 	ldpsw	x0, x20, [x0, #-112]
- 6b8:	6843746e 	.inst	0x6843746e ; undefined
- 6bc:	6c007261 	stnp	d1, d28, [x19]
- 6c0:	74676e65 	.inst	0x74676e65 ; undefined
- 6c4:	63730068 	.inst	0x63730068 ; undefined
- 6c8:	2e646568 	umax	v8.4h, v11.4h, v4.4h
- 6cc:	63730063 	.inst	0x63730063 ; undefined
- 6d0:	5f646568 	.inst	0x5f646568 ; undefined
- 6d4:	6c656979 	ldnp	d25, d26, [x11, #-432]
- 6d8:	61680064 	.inst	0x61680064 ; undefined
- 6dc:	656c646e 	fnmls	z14.h, p1/m, z3.h, z12.h
- 6e0:	7172695f 	cmp	w10, #0xc9a, lsl #12
- 6e4:	73797300 	.inst	0x73797300 ; undefined
- 6e8:	6c6c6163 	ldnp	d3, d24, [x11, #-320]
- 6ec:	0064695f 	.inst	0x0064695f ; undefined
- 6f0:	646e6168 	.inst	0x646e6168 ; undefined
- 6f4:	735f656c 	.inst	0x735f656c ; undefined
- 6f8:	00636e79 	.inst	0x00636e79 ; undefined
- 6fc:	72627474 	.inst	0x72627474 ; undefined
- 700:	46440031 	.inst	0x46440031 ; undefined
- 704:	73004353 	.inst	0x73004353 ; undefined
- 708:	2e636e79 	umin	v25.4h, v19.4h, v3.4h
- 70c:	74740063 	.inst	0x74740063 ; undefined
- 710:	00307262 	.inst	0x00307262 ; NYI
- 714:	72546750 	.inst	0x72546750 ; undefined
- 718:	72467061 	.inst	0x72467061 ; undefined
- 71c:	00656d61 	.inst	0x00656d61 ; undefined
- 720:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- 724:	7561665f 	.inst	0x7561665f ; undefined
- 728:	685f746c 	.inst	0x685f746c ; undefined
- 72c:	6c646e61 	ldnp	d1, d27, [x19, #-448]
- 730:	70007265 	adr	x5, 157f <__bss_size+0x156d>
- 734:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- 738:	73797300 	.inst	0x73797300 ; undefined
- 73c:	6972775f 	ldpsw	xzr, x29, [x26, #-112]
- 740:	645f6574 	fcmla	z20.h, p1/m, z11.h, z31.h, #270
- 744:	73007665 	.inst	0x73007665 ; undefined
- 748:	735f7379 	.inst	0x735f7379 ; undefined
- 74c:	705f7465 	adr	x5, bf5db <__bss_size+0xbf5c9>
- 750:	75616667 	.inst	0x75616667 ; undefined
- 754:	685f746c 	.inst	0x685f746c ; undefined
- 758:	6c646e61 	ldnp	d1, d27, [x19, #-448]
- 75c:	73007265 	.inst	0x73007265 ; undefined
- 760:	64696372 	.inst	0x64696372 ; undefined
- 764:	74707000 	.inst	0x74707000 ; undefined
- 768:	73640065 	.inst	0x73640065 ; undefined
- 76c:	766e6574 	.inst	0x766e6574 ; undefined
- 770:	73797300 	.inst	0x73797300 ; undefined
- 774:	7465675f 	.inst	0x7465675f ; undefined
- 778:	69766e65 	ldpsw	x5, x27, [x19, #-80]
- 77c:	75660064 	.inst	0x75660064 ; undefined
- 780:	7300636e 	.inst	0x7300636e ; undefined
- 784:	735f7379 	.inst	0x735f7379 ; undefined
- 788:	655f7465 	fcmeq	p5.h, p5/z, z3.h, z31.h
- 78c:	735f766e 	.inst	0x735f766e ; undefined
- 790:	75746174 	.inst	0x75746174 ; undefined
- 794:	79730073 	ldrh	w19, [x3, #6528]
- 798:	656d5f73 	fnmla	z19.h, p7/m, z27.h, z13.h
- 79c:	6e755f6d 	uqrshl	v13.8h, v27.8h, v21.8h
- 7a0:	0070616d 	.inst	0x0070616d ; undefined
- 7a4:	65637273 	fnmls	z19.h, p4/m, z19.h, z3.h
- 7a8:	7300766e 	.inst	0x7300766e ; undefined
- 7ac:	6d5f7379 	ldp	d25, d28, [x27, #496]
- 7b0:	6d5f6d65 	ldp	d5, d27, [x11, #496]
- 7b4:	73007061 	.inst	0x73007061 ; undefined
- 7b8:	735f7379 	.inst	0x735f7379 ; undefined
- 7bc:	745f7465 	.inst	0x745f7465 ; undefined
- 7c0:	66706172 	.inst	0x66706172 ; undefined
- 7c4:	656d6172 	fnmls	z18.h, p0/m, z11.h, z13.h
- 7c8:	73797300 	.inst	0x73797300 ; undefined
- 7cc:	6370695f 	.inst	0x6370695f ; undefined
- 7d0:	6e61635f 	rsubhn2	v31.8h, v26.4s, v1.4s
- 7d4:	6e65735f 	uabdl2	v31.4s, v26.8h, v5.8h
- 7d8:	79730064 	ldrh	w4, [x3, #6528]
- 7dc:	69795f73 	ldpsw	x19, x23, [x27, #-56]
- 7e0:	00646c65 	.inst	0x00646c65 ; undefined
+ 604:	666f5f72 	.inst	0x666f5f72 ; undefined
+ 608:	5f007366 	.inst	0x5f007366 ; undefined
+ 60c:	5f61765f 	sqshl	d31, d18, #33
+ 610:	7473696c 	.inst	0x7473696c ; undefined
+ 614:	6c696600 	ldnp	d0, d25, [x16, #-368]
+ 618:	796d0065 	ldrh	w5, [x3, #5760]
+ 61c:	7074756f 	adr	x15, e94cb <__bss_size+0xe94b9>
+ 620:	5f007475 	.inst	0x5f007475 ; undefined
+ 624:	5f72765f 	sqshl	d31, d18, #50
+ 628:	00706f74 	.inst	0x00706f74 ; undefined
+ 62c:	6e675f5f 	uqrshl	v31.8h, v26.8h, v7.8h
+ 630:	765f6375 	.inst	0x765f6375 ; undefined
+ 634:	696c5f61 	ldpsw	x1, x23, [x27, #-160]
+ 638:	5f007473 	.inst	0x5f007473 ; undefined
+ 63c:	5f72675f 	.inst	0x5f72675f ; undefined
+ 640:	7366666f 	.inst	0x7366666f ; undefined
+ 644:	5f706c00 	.inst	0x5f706c00 ; undefined
+ 648:	6e697250 	uabdl2	v16.4s, v18.8h, v9.8h
+ 64c:	65620074 	fmla	z20.h, p0/m, z3.h, z2.h
+ 650:	006e6967 	.inst	0x006e6967 ; undefined
+ 654:	6e697270 	uabdl2	v16.4s, v19.8h, v9.8h
+ 658:	00632e74 	.inst	0x00632e74 ; undefined
+ 65c:	4667656e 	.inst	0x4667656e ; undefined
+ 660:	0067616c 	.inst	0x0067616c ; undefined
+ 664:	46656874 	.inst	0x46656874 ; undefined
+ 668:	6c617461 	ldnp	d1, d29, [x3, #-496]
+ 66c:	0067734d 	.inst	0x0067734d ; undefined
+ 670:	63646170 	.inst	0x63646170 ; undefined
+ 674:	64616c00 	.inst	0x64616c00 ; undefined
+ 678:	7473756a 	.inst	0x7473756a ; undefined
+ 67c:	65727000 	fnmls	z0.h, p4/m, z0.h, z18.h
+ 680:	70750063 	adr	x3, ea68f <__bss_size+0xea67d>
+ 684:	65736163 	fnmls	z3.h, p0/m, z11.h, z19.h
+ 688:	73616200 	.inst	0x73616200 ; undefined
+ 68c:	72500065 	.inst	0x72500065 ; undefined
+ 690:	4e746e69 	smin	v9.8h, v19.8h, v20.8h
+ 694:	77006d75 	.inst	0x77006d75 ; undefined
+ 698:	68746469 	.inst	0x68746469 ; undefined
+ 69c:	69725000 	ldpsw	x0, x20, [x0, #-112]
+ 6a0:	7453746e 	.inst	0x7453746e ; undefined
+ 6a4:	676e6972 	.inst	0x676e6972 ; undefined
+ 6a8:	74636100 	.inst	0x74636100 ; undefined
+ 6ac:	4c6c6175 	.inst	0x4c6c6175 ; undefined
+ 6b0:	74676e65 	.inst	0x74676e65 ; undefined
+ 6b4:	6f6c0068 	mla	v8.8h, v3.8h, v12.h[2]
+ 6b8:	6c46676e 	ldnp	d14, d25, [x27, #96]
+ 6bc:	50006761 	adr	x1, 13aa <__bss_size+0x1398>
+ 6c0:	746e6972 	.inst	0x746e6972 ; undefined
+ 6c4:	72616843 	.inst	0x72616843 ; undefined
+ 6c8:	6e656c00 	umin	v0.8h, v0.8h, v5.8h
+ 6cc:	00687467 	.inst	0x00687467 ; undefined
+ 6d0:	65686373 	fnmls	z19.h, p0/m, z27.h, z8.h
+ 6d4:	00632e64 	.inst	0x00632e64 ; undefined
+ 6d8:	65686373 	fnmls	z19.h, p0/m, z27.h, z8.h
+ 6dc:	69795f64 	ldpsw	x4, x23, [x27, #-56]
+ 6e0:	00646c65 	.inst	0x00646c65 ; undefined
+ 6e4:	646e6168 	.inst	0x646e6168 ; undefined
+ 6e8:	695f656c 	ldpsw	x12, x25, [x11, #248]
+ 6ec:	73007172 	.inst	0x73007172 ; undefined
+ 6f0:	61637379 	.inst	0x61637379 ; undefined
+ 6f4:	695f6c6c 	ldpsw	x12, x27, [x3, #248]
+ 6f8:	61680064 	.inst	0x61680064 ; undefined
+ 6fc:	656c646e 	fnmls	z14.h, p1/m, z3.h, z12.h
+ 700:	6e79735f 	uabdl2	v31.4s, v26.8h, v25.8h
+ 704:	74740063 	.inst	0x74740063 ; undefined
+ 708:	00317262 	.inst	0x00317262 ; NYI
+ 70c:	43534644 	.inst	0x43534644 ; undefined
+ 710:	6e797300 	uabdl2	v0.4s, v24.8h, v25.8h
+ 714:	00632e63 	.inst	0x00632e63 ; undefined
+ 718:	72627474 	.inst	0x72627474 ; undefined
+ 71c:	67500030 	.inst	0x67500030 ; undefined
+ 720:	70617254 	adr	x20, c356b <__bss_size+0xc3559>
+ 724:	6d617246 	ldp	d6, d28, [x18, #-496]
+ 728:	61700065 	.inst	0x61700065 ; undefined
+ 72c:	665f6567 	.inst	0x665f6567 ; undefined
+ 730:	746c7561 	.inst	0x746c7561 ; undefined
+ 734:	6e61685f 	fcvtxn2	v31.4s, v2.2d
+ 738:	72656c64 	.inst	0x72656c64 ; undefined
+ 73c:	61707000 	.inst	0x61707000 ; undefined
+ 740:	73006567 	.inst	0x73006567 ; undefined
+ 744:	775f7379 	.inst	0x775f7379 ; undefined
+ 748:	65746972 	fnmls	z18.h, p2/m, z11.h, z20.h
+ 74c:	7665645f 	.inst	0x7665645f ; undefined
+ 750:	73797300 	.inst	0x73797300 ; undefined
+ 754:	7465735f 	.inst	0x7465735f ; undefined
+ 758:	6667705f 	.inst	0x6667705f ; undefined
+ 75c:	746c7561 	.inst	0x746c7561 ; undefined
+ 760:	6e61685f 	fcvtxn2	v31.4s, v2.2d
+ 764:	72656c64 	.inst	0x72656c64 ; undefined
+ 768:	63727300 	.inst	0x63727300 ; undefined
+ 76c:	70006469 	adr	x9, 13fb <__bss_size+0x13e9>
+ 770:	00657470 	.inst	0x00657470 ; undefined
+ 774:	65747364 	fnmls	z4.h, p4/m, z27.h, z20.h
+ 778:	7300766e 	.inst	0x7300766e ; undefined
+ 77c:	675f7379 	.inst	0x675f7379 ; undefined
+ 780:	6e657465 	uabd	v5.8h, v3.8h, v5.8h
+ 784:	00646976 	.inst	0x00646976 ; undefined
+ 788:	636e7566 	.inst	0x636e7566 ; undefined
+ 78c:	73797300 	.inst	0x73797300 ; undefined
+ 790:	7465735f 	.inst	0x7465735f ; undefined
+ 794:	766e655f 	.inst	0x766e655f ; undefined
+ 798:	6174735f 	.inst	0x6174735f ; undefined
+ 79c:	00737574 	.inst	0x00737574 ; undefined
+ 7a0:	5f737973 	sqdmlsl	s19, h11, v3.h[7]
+ 7a4:	5f6d656d 	.inst	0x5f6d656d ; undefined
+ 7a8:	616d6e75 	.inst	0x616d6e75 ; undefined
+ 7ac:	72730070 	.inst	0x72730070 ; undefined
+ 7b0:	766e6563 	.inst	0x766e6563 ; undefined
+ 7b4:	73797300 	.inst	0x73797300 ; undefined
+ 7b8:	6d656d5f 	ldp	d31, d27, [x10, #-432]
+ 7bc:	70616d5f 	adr	xzr, c3567 <__bss_size+0xc3555>
+ 7c0:	73797300 	.inst	0x73797300 ; undefined
+ 7c4:	7465735f 	.inst	0x7465735f ; undefined
+ 7c8:	6172745f 	.inst	0x6172745f ; undefined
+ 7cc:	61726670 	.inst	0x61726670 ; undefined
+ 7d0:	7300656d 	.inst	0x7300656d ; undefined
+ 7d4:	695f7379 	ldpsw	x25, x28, [x27, #248]
+ 7d8:	635f6370 	.inst	0x635f6370 ; undefined
+ 7dc:	735f6e61 	.inst	0x735f6e61 ; undefined
+ 7e0:	00646e65 	.inst	0x00646e65 ; undefined
  7e4:	5f737973 	sqdmlsl	s19, h11, v3.h[7]
- 7e8:	5f766e65 	.inst	0x5f766e65 ; undefined
- 7ec:	74736564 	.inst	0x74736564 ; undefined
- 7f0:	00796f72 	.inst	0x00796f72 ; undefined
- 7f4:	5f737973 	sqdmlsl	s19, h11, v3.h[7]
- 7f8:	696e6170 	ldpsw	x16, x24, [x11, #-144]
- 7fc:	79730063 	ldrh	w3, [x3, #6528]
- 800:	656d5f73 	fnmla	z19.h, p7/m, z27.h, z13.h
- 804:	6c615f6d 	ldnp	d13, d23, [x27, #-496]
- 808:	00636f6c 	.inst	0x00636f6c ; undefined
- 80c:	6e756f72 	umin	v18.8h, v27.8h, v21.8h
- 810:	73645f64 	.inst	0x73645f64 ; undefined
- 814:	00617674 	.inst	0x00617674 ; undefined
- 818:	6e756f72 	umin	v18.8h, v27.8h, v21.8h
- 81c:	72735f64 	.inst	0x72735f64 ; undefined
- 820:	00617663 	.inst	0x00617663 ; undefined
- 824:	5f737973 	sqdmlsl	s19, h11, v3.h[7]
- 828:	64616572 	.inst	0x64616572 ; undefined
- 82c:	7665645f 	.inst	0x7665645f ; undefined
- 830:	73797300 	.inst	0x73797300 ; undefined
- 834:	766e655f 	.inst	0x766e655f ; undefined
- 838:	6c6c615f 	ldnp	d31, d24, [x10, #-320]
- 83c:	7300636f 	.inst	0x7300636f ; undefined
- 840:	61637379 	.inst	0x61637379 ; undefined
- 844:	615f6c6c 	.inst	0x615f6c6c ; undefined
- 848:	632e6c6c 	.inst	0x632e6c6c ; undefined
- 84c:	73797300 	.inst	0x73797300 ; undefined
- 850:	7475705f 	.inst	0x7475705f ; undefined
- 854:	72616863 	.inst	0x72616863 ; undefined
- 858:	74736400 	.inst	0x74736400 ; undefined
- 85c:	73006469 	.inst	0x73006469 ; undefined
- 860:	695f7379 	ldpsw	x25, x28, [x27, #248]
- 864:	725f6370 	.inst	0x725f6370 ; undefined
- 868:	00766365 	.inst	0x00766365 ; undefined
- 86c:	656d6974 	fnmls	z20.h, p2/m, z11.h, z13.h
- 870:	00532e72 	.inst	0x00532e72 ; undefined
- 874:	62616e65 	.inst	0x62616e65 ; undefined
- 878:	695f656c 	ldpsw	x12, x25, [x11, #248]
- 87c:	7265746e 	.inst	0x7265746e ; undefined
- 880:	74707572 	.inst	0x74707572 ; undefined
- 884:	6e6f635f 	rsubhn2	v31.8h, v26.4s, v15.4s
- 888:	6c6f7274 	ldnp	d20, d28, [x19, #-272]
- 88c:	0072656c 	.inst	0x0072656c ; undefined
- 890:	706f6362 	adr	x2, df4ff <__bss_size+0xdf4ed>
- 894:	6e650079 	uaddl2	v25.4s, v3.8h, v5.8h
- 898:	5f797274 	sqdmlsl	s20, h19, v9.h[3]
- 89c:	6f727265 	fcmla	v5.8h, v19.8h, v18.h[1], #270
- 8a0:	656d5f72 	fnmla	z18.h, p7/m, z27.h, z13.h
- 8a4:	67617373 	.inst	0x67617373 ; undefined
- 8a8:	70007365 	adr	x5, 1717 <__bss_size+0x1705>
- 8ac:	746e6972 	.inst	0x746e6972 ; undefined
- 8b0:	6174735f 	.inst	0x6174735f ; undefined
- 8b4:	61006b63 	.inst	0x61006b63 ; undefined
- 8b8:	65726464 	fnmls	z4.h, p1/m, z3.h, z18.h
- 8bc:	70007373 	adr	x19, 172b <__bss_size+0x1719>
- 8c0:	746e6972 	.inst	0x746e6972 ; undefined
- 8c4:	6378655f 	.inst	0x6378655f ; undefined
- 8c8:	69747065 	ldpsw	x5, x28, [x3, #-96]
- 8cc:	6c5f6e6f 	ldnp	d15, d27, [x19, #496]
- 8d0:	6c657665 	ldnp	d5, d29, [x19, #-432]
- 8d4:	657a6200 	fnmls	z0.h, p0/m, z16.h, z26.h
- 8d8:	75006f72 	.inst	0x75006f72 ; undefined
- 8dc:	706d696e 	adr	x14, db60b <__bss_size+0xdb5f9>
- 8e0:	656d656c 	fnmls	z12.h, p1/m, z11.h, z13.h
- 8e4:	685f746e 	.inst	0x685f746e ; undefined
- 8e8:	6c646e61 	ldnp	d1, d27, [x19, #-448]
- 8ec:	61007265 	.inst	0x61007265 ; undefined
- 8f0:	68756f6c 	.inst	0x68756f6c ; undefined
- 8f4:	6f740061 	mla	v1.8h, v3.8h, v4.h[3]
- 8f8:	632e6c6f 	.inst	0x632e6c6f ; undefined
- 8fc:	6f682f00 	.inst	0x6f682f00 ; undefined
- 900:	742f656d 	.inst	0x742f656d ; undefined
- 904:	72737968 	.inst	0x72737968 ; undefined
- 908:	2f6c6561 	.inst	0x2f6c6561 ; undefined
- 90c:	502f534f 	adr	x15, 5f376 <__bss_size+0x5f364>
- 910:	2f534f49 	.inst	0x2f534f49 ; undefined
- 914:	4f594854 	.inst	0x4f594854 ; undefined
- 918:	6d6d2f53 	ldp	d19, d11, [x26, #-304]
- 91c:	5f6e0075 	.inst	0x5f6e0075 ; undefined
- 920:	5f646d70 	.inst	0x5f646d70 ; undefined
- 924:	72746e65 	.inst	0x72746e65 ; undefined
- 928:	6d6d0079 	ldp	d25, d0, [x3, #-304]
- 92c:	00632e75 	.inst	0x00632e75 ; undefined
- 930:	74696e69 	.inst	0x74696e69 ; undefined
- 934:	6761705f 	.inst	0x6761705f ; undefined
- 938:	61745f65 	.inst	0x61745f65 ; undefined
- 93c:	00656c62 	.inst	0x00656c62 ; undefined
- 940:	5f657470 	sqshl	d16, d3, #37
- 944:	72746e65 	.inst	0x72746e65 ; undefined
- 948:	73750079 	.inst	0x73750079 ; undefined
- 94c:	705f7265 	adr	x5, bf79b <__bss_size+0xbf789>
- 950:	6c006475 	stnp	d21, d25, [x3]
- 954:	74696d69 	.inst	0x74696d69 ; undefined
- 958:	62656400 	.inst	0x62656400 ; undefined
- 95c:	705f6775 	adr	x21, bf64b <__bss_size+0xbf639>
- 960:	746e6972 	.inst	0x746e6972 ; undefined
- 964:	6467705f 	.inst	0x6467705f ; undefined
- 968:	6c007269 	stnp	d9, d28, [x19]
- 96c:	6c657665 	ldnp	d5, d29, [x19, #-432]
- 970:	6f725f32 	.inst	0x6f725f32 ; undefined
- 974:	7000746f 	adr	x15, 1803 <__bss_size+0x17f1>
- 978:	6f725f67 	.inst	0x6f725f67 ; undefined
- 97c:	7000746f 	adr	x15, 180b <__bss_size+0x17f9>
- 980:	5f656761 	.inst	0x5f656761 ; undefined
- 984:	6f6d6572 	sqshlu	v18.2d, v11.2d, #45
- 988:	6c006576 	stnp	d22, d25, [x11]
- 98c:	6c657665 	ldnp	d5, d29, [x19, #-432]
- 990:	6f725f33 	.inst	0x6f725f33 ; undefined
- 994:	7000746f 	adr	x15, 1823 <__bss_size+0x1811>
- 998:	62617467 	.inst	0x62617467 ; undefined
- 99c:	655f656c 	fcmeq	p12.h, p1/z, z11.h, z31.h
- 9a0:	7972746e 	ldrh	w14, [x3, #6458]
- 9a4:	67617000 	.inst	0x67617000 ; undefined
- 9a8:	72665f65 	.inst	0x72665f65 ; undefined
- 9ac:	70006565 	adr	x5, 165b <__bss_size+0x1649>
- 9b0:	5f656761 	.inst	0x5f656761 ; undefined
- 9b4:	6f6c6c61 	.inst	0x6f6c6c61 ; undefined
- 9b8:	74700063 	.inst	0x74700063 ; undefined
- 9bc:	746e655f 	.inst	0x746e655f ; undefined
- 9c0:	00707972 	.inst	0x00707972 ; undefined
- 9c4:	67617070 	.inst	0x67617070 ; undefined
- 9c8:	65745f65 	fnmla	z5.h, p7/m, z27.h, z20.h
- 9cc:	5000706d 	adr	x13, 17da <__bss_size+0x17c8>
- 9d0:	5f656761 	.inst	0x5f656761 ; undefined
- 9d4:	7473696c 	.inst	0x7473696c ; undefined
- 9d8:	67617000 	.inst	0x67617000 ; undefined
- 9dc:	72665f65 	.inst	0x72665f65 ; undefined
- 9e0:	6c5f6565 	ldnp	d5, d25, [x11, #496]
- 9e4:	00747369 	.inst	0x00747369 ; undefined
- 9e8:	4d524550 	.inst	0x4d524550 ; undefined
- 9ec:	73657400 	.inst	0x73657400 ; undefined
- 9f0:	67705f74 	.inst	0x67705f74 ; undefined
- 9f4:	00726964 	.inst	0x00726964 ; undefined
- 9f8:	746e6f63 	.inst	0x746e6f63 ; undefined
- 9fc:	00747865 	.inst	0x00747865 ; undefined
- a00:	6576656c 	fnmls	z12.h, p1/m, z11.h, z22.h
- a04:	695f326c 	.inst	0x695f326c ; undefined
- a08:	006f666e 	.inst	0x006f666e ; undefined
- a0c:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- a10:	696e695f 	ldpsw	xzr, x26, [x10, #-144]
- a14:	696d0074 	ldpsw	x20, x0, [x3, #-152]
- a18:	645f7370 	fcmla	z16.h, p4/m, z27.h, z31.h, #270
- a1c:	63657465 	.inst	0x63657465 ; undefined
- a20:	656d5f74 	fnmla	z20.h, p7/m, z27.h, z13.h
- a24:	79726f6d 	ldrh	w13, [x27, #6454]
- a28:	6f6f6200 	umlsl2	v0.4s, v16.8h, v15.h[2]
- a2c:	67705f74 	.inst	0x67705f74 ; undefined
- a30:	5f726964 	.inst	0x5f726964 ; undefined
- a34:	6b6c6177 	.inst	0x6b6c6177 ; undefined
- a38:	5f677000 	sqdmlsl	s0, h0, v7.h[2]
- a3c:	6f666e69 	.inst	0x6f666e69 ; undefined
- a40:	74786500 	.inst	0x74786500 ; undefined
- a44:	006d656d 	.inst	0x006d656d ; undefined
- a48:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- a4c:	6c626174 	ldnp	d20, d24, [x11, #-480]
- a50:	6e655f65 	uqrshl	v5.8h, v27.8h, v5.8h
- a54:	00797274 	.inst	0x00797274 ; undefined
- a58:	746f6f62 	.inst	0x746f6f62 ; undefined
- a5c:	70616d5f 	adr	xzr, c3807 <__bss_size+0xc37f5>
- a60:	6765735f 	.inst	0x6765735f ; undefined
- a64:	746e656d 	.inst	0x746e656d ; undefined
- a68:	72656b00 	.inst	0x72656b00 ; undefined
- a6c:	006c656e 	.inst	0x006c656e ; undefined
- a70:	61746164 	.inst	0x61746164 ; undefined
- a74:	6761705f 	.inst	0x6761705f ; undefined
- a78:	6d700065 	ldp	d5, d0, [x3, #-256]
- a7c:	632e7061 	.inst	0x632e7061 ; undefined
- a80:	63726100 	.inst	0x63726100 ; undefined
- a84:	61625f68 	.inst	0x61625f68 ; undefined
- a88:	5f636973 	.inst	0x5f636973 ; undefined
- a8c:	74696e69 	.inst	0x74696e69 ; undefined
- a90:	6c6c6100 	ldnp	d0, d24, [x8, #-320]
- a94:	6465636f 	.inst	0x6465636f ; undefined
- a98:	6d656d5f 	ldp	d31, d27, [x10, #-432]
- a9c:	646d7000 	.inst	0x646d7000 ; undefined
- aa0:	746e655f 	.inst	0x746e655f ; undefined
- aa4:	00707972 	.inst	0x00707972 ; undefined
- aa8:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- aac:	0074756f 	.inst	0x0074756f ; undefined
- ab0:	74696e69 	.inst	0x74696e69 ; undefined
- ab4:	0070735f 	.inst	0x0070735f ; undefined
- ab8:	7078616d 	adr	x13, f16e7 <__bss_size+0xf16d5>
- abc:	61620061 	.inst	0x61620061 ; undefined
- ac0:	656d6573 	fnmls	z19.h, p1/m, z11.h, z13.h
- ac4:	6170006d 	.inst	0x6170006d ; undefined
- ac8:	645f6567 	fcmla	z7.h, p1/m, z11.h, z31.h, #270
- acc:	65726365 	fnmls	z5.h, p0/m, z27.h, z18.h
- ad0:	75700066 	.inst	0x75700066 ; undefined
- ad4:	6e655f64 	uqrshl	v4.8h, v27.8h, v5.8h
- ad8:	70797274 	adr	x20, f3927 <__bss_size+0xf3915>
- adc:	74756c00 	.inst	0x74756c00 ; undefined
- ae0:	6761705f 	.inst	0x6761705f ; undefined
- ae4:	656c0065 	fmla	z5.h, p0/m, z3.h, z12.h
- ae8:	336c6576 	.inst	0x336c6576 ; undefined
- aec:	666e695f 	.inst	0x666e695f ; undefined
- af0:	6c63006f 	ldnp	d15, d0, [x3, #-464]
- af4:	00726165 	.inst	0x00726165 ; undefined
- af8:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- afc:	6f6f6c5f 	.inst	0x6f6f6c5f ; undefined
- b00:	0070756b 	.inst	0x0070756b ; undefined
- b04:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
- b08:	736e695f 	.inst	0x736e695f ; undefined
- b0c:	00747265 	.inst	0x00747265 ; undefined
- b10:	6d6f682f 	ldp	d15, d26, [x1, #-272]
- b14:	68742f65 	.inst	0x68742f65 ; undefined
- b18:	61727379 	.inst	0x61727379 ; undefined
- b1c:	4f2f6c65 	.inst	0x4f2f6c65 ; undefined
- b20:	49502f53 	.inst	0x49502f53 ; undefined
- b24:	542f534f 	b.nv	5f58c <__bss_size+0x5f57a>
- b28:	534f5948 	.inst	0x534f5948 ; undefined
- b2c:	6573752f 	fnmls	z15.h, p5/m, z9.h, z19.h
- b30:	65740072 	fmla	z18.h, p0/m, z3.h, z20.h
- b34:	665f7473 	.inst	0x665f7473 ; undefined
- b38:	2e6b726f 	uabdl	v15.4s, v19.4h, v11.4h
- b3c:	00632e62 	.inst	0x00632e62 ; undefined
- b40:	74736574 	.inst	0x74736574 ; undefined
- b44:	6370695f 	.inst	0x6370695f ; undefined
- b48:	632e622e 	.inst	0x632e622e ; undefined
- b4c:	6e696200 	rsubhn2	v0.8h, v16.4s, v9.4s
- b50:	5f797261 	sqdmlsl	s1, h19, v9.h[3]
- b54:	72657375 	.inst	0x72657375 ; undefined
- b58:	7365745f 	.inst	0x7365745f ; undefined
- b5c:	70695f74 	adr	x20, d374b <__bss_size+0xd3739>
- b60:	69735f63 	ldpsw	x3, x23, [x27, #-104]
- b64:	6200657a 	.inst	0x6200657a ; undefined
- b68:	72616e69 	.inst	0x72616e69 ; undefined
- b6c:	73755f79 	.inst	0x73755f79 ; undefined
- b70:	745f7265 	.inst	0x745f7265 ; undefined
- b74:	5f747365 	sqdmlsl	s5, h27, v4.h[3]
- b78:	5f637069 	sqdmlsl	s9, h3, v3.h[2]
- b7c:	72617473 	.inst	0x72617473 ; undefined
- b80:	69620074 	ldpsw	x20, x0, [x3, #-240]
- b84:	7972616e 	ldrh	w14, [x11, #6448]
- b88:	6573755f 	fnmls	z31.h, p5/m, z10.h, z19.h
- b8c:	65745f72 	fnmla	z18.h, p7/m, z27.h, z20.h
- b90:	735f7473 	.inst	0x735f7473 ; undefined
- b94:	735f7379 	.inst	0x735f7379 ; undefined
- b98:	74726174 	.inst	0x74726174 ; undefined
- b9c:	6e696200 	rsubhn2	v0.8h, v16.4s, v9.4s
- ba0:	5f797261 	sqdmlsl	s1, h19, v9.h[3]
- ba4:	72657375 	.inst	0x72657375 ; undefined
- ba8:	7365745f 	.inst	0x7365745f ; undefined
- bac:	79735f74 	ldrh	w20, [x27, #6574]
- bb0:	69735f73 	ldpsw	x19, x23, [x27, #-104]
- bb4:	7400657a 	.inst	0x7400657a ; undefined
- bb8:	5f747365 	sqdmlsl	s5, h27, v4.h[3]
- bbc:	2e737973 	.inst	0x2e737973 ; undefined
- bc0:	00632e62 	.inst	0x00632e62 ; undefined
+ 7e8:	6c656979 	ldnp	d25, d26, [x11, #-432]
+ 7ec:	79730064 	ldrh	w4, [x3, #6528]
+ 7f0:	6e655f73 	uqrshl	v19.8h, v27.8h, v5.8h
+ 7f4:	65645f76 	fnmla	z22.h, p7/m, z27.h, z4.h
+ 7f8:	6f727473 	uqshl	v19.2d, v3.2d, #50
+ 7fc:	79730079 	ldrh	w25, [x3, #6528]
+ 800:	61705f73 	.inst	0x61705f73 ; undefined
+ 804:	0063696e 	.inst	0x0063696e ; undefined
+ 808:	5f737973 	sqdmlsl	s19, h11, v3.h[7]
+ 80c:	5f6d656d 	.inst	0x5f6d656d ; undefined
+ 810:	6f6c6c61 	.inst	0x6f6c6c61 ; undefined
+ 814:	6f720063 	mla	v3.8h, v3.8h, v2.h[3]
+ 818:	5f646e75 	.inst	0x5f646e75 ; undefined
+ 81c:	76747364 	.inst	0x76747364 ; undefined
+ 820:	6f720061 	mla	v1.8h, v3.8h, v2.h[3]
+ 824:	5f646e75 	.inst	0x5f646e75 ; undefined
+ 828:	76637273 	.inst	0x76637273 ; undefined
+ 82c:	79730061 	ldrh	w1, [x3, #6528]
+ 830:	65725f73 	fnmla	z19.h, p7/m, z27.h, z18.h
+ 834:	645f6461 	fcmla	z1.h, p1/m, z3.h, z31.h, #270
+ 838:	73007665 	.inst	0x73007665 ; undefined
+ 83c:	655f7379 	fcmne	p9.h, p4/z, z27.h, z31.h
+ 840:	615f766e 	.inst	0x615f766e ; undefined
+ 844:	636f6c6c 	.inst	0x636f6c6c ; undefined
+ 848:	73797300 	.inst	0x73797300 ; undefined
+ 84c:	6c6c6163 	ldnp	d3, d24, [x11, #-320]
+ 850:	6c6c615f 	ldnp	d31, d24, [x10, #-320]
+ 854:	7300632e 	.inst	0x7300632e ; undefined
+ 858:	705f7379 	adr	x25, bf6c7 <__bss_size+0xbf6b5>
+ 85c:	68637475 	.inst	0x68637475 ; undefined
+ 860:	64007261 	.inst	0x64007261 ; undefined
+ 864:	64697473 	.inst	0x64697473 ; undefined
+ 868:	73797300 	.inst	0x73797300 ; undefined
+ 86c:	6370695f 	.inst	0x6370695f ; undefined
+ 870:	6365725f 	.inst	0x6365725f ; undefined
+ 874:	69740076 	ldpsw	x22, x0, [x3, #-96]
+ 878:	2e72656d 	umax	v13.4h, v11.4h, v18.4h
+ 87c:	6e650053 	uaddl2	v19.4s, v2.8h, v5.8h
+ 880:	656c6261 	fnmls	z1.h, p0/m, z19.h, z12.h
+ 884:	746e695f 	.inst	0x746e695f ; undefined
+ 888:	75727265 	.inst	0x75727265 ; undefined
+ 88c:	635f7470 	.inst	0x635f7470 ; undefined
+ 890:	72746e6f 	.inst	0x72746e6f ; undefined
+ 894:	656c6c6f 	fnmls	z15.h, p3/m, z3.h, z12.h
+ 898:	63620072 	.inst	0x63620072 ; undefined
+ 89c:	0079706f 	.inst	0x0079706f ; undefined
+ 8a0:	72746e65 	.inst	0x72746e65 ; undefined
+ 8a4:	72655f79 	.inst	0x72655f79 ; undefined
+ 8a8:	5f726f72 	.inst	0x5f726f72 ; undefined
+ 8ac:	7373656d 	.inst	0x7373656d ; undefined
+ 8b0:	73656761 	.inst	0x73656761 ; undefined
+ 8b4:	69727000 	ldpsw	x0, x28, [x0, #-112]
+ 8b8:	735f746e 	.inst	0x735f746e ; undefined
+ 8bc:	6b636174 	.inst	0x6b636174 ; undefined
+ 8c0:	64646100 	.inst	0x64646100 ; undefined
+ 8c4:	73736572 	.inst	0x73736572 ; undefined
+ 8c8:	69727000 	ldpsw	x0, x28, [x0, #-112]
+ 8cc:	655f746e 	fcmeq	p14.h, p5/z, z3.h, z31.h
+ 8d0:	70656378 	adr	x24, cb53f <__bss_size+0xcb52d>
+ 8d4:	6e6f6974 	.inst	0x6e6f6974 ; undefined
+ 8d8:	76656c5f 	.inst	0x76656c5f ; undefined
+ 8dc:	62006c65 	.inst	0x62006c65 ; undefined
+ 8e0:	6f72657a 	sqshlu	v26.2d, v11.2d, #50
+ 8e4:	696e7500 	ldpsw	x0, x29, [x8, #-144]
+ 8e8:	656c706d 	fnmls	z13.h, p4/m, z3.h, z12.h
+ 8ec:	746e656d 	.inst	0x746e656d ; undefined
+ 8f0:	6e61685f 	fcvtxn2	v31.4s, v2.2d
+ 8f4:	72656c64 	.inst	0x72656c64 ; undefined
+ 8f8:	6f6c6100 	umlsl2	v0.4s, v8.8h, v12.h[2]
+ 8fc:	00616875 	.inst	0x00616875 ; undefined
+ 900:	6c6f6f74 	ldnp	d20, d27, [x27, #-272]
+ 904:	6e00632e 	ext	v14.16b, v25.16b, v0.16b, #12
+ 908:	646d705f 	.inst	0x646d705f ; undefined
+ 90c:	746e655f 	.inst	0x746e655f ; undefined
+ 910:	2f007972 	.inst	0x2f007972 ; undefined
+ 914:	656d6f68 	fnmls	z8.h, p3/m, z27.h, z13.h
+ 918:	666f642f 	.inst	0x666f642f ; undefined
+ 91c:	65676e69 	fnmls	z9.h, p3/m, z19.h, z7.h
+ 920:	532f7472 	.inst	0x532f7472 ; undefined
+ 924:	6372756f 	.inst	0x6372756f ; undefined
+ 928:	534f2f65 	.inst	0x534f2f65 ; undefined
+ 92c:	5948542f 	.inst	0x5948542f ; undefined
+ 930:	6d2f534f 	stp	d15, d20, [x26, #-272]
+ 934:	6d00756d 	stp	d13, d29, [x11]
+ 938:	632e756d 	.inst	0x632e756d ; undefined
+ 93c:	696e6900 	ldpsw	x0, x26, [x8, #-144]
+ 940:	61705f74 	.inst	0x61705f74 ; undefined
+ 944:	745f6567 	.inst	0x745f6567 ; undefined
+ 948:	656c6261 	fnmls	z1.h, p0/m, z19.h, z12.h
+ 94c:	65747000 	fnmls	z0.h, p4/m, z0.h, z20.h
+ 950:	746e655f 	.inst	0x746e655f ; undefined
+ 954:	75007972 	.inst	0x75007972 ; undefined
+ 958:	5f726573 	.inst	0x5f726573 ; undefined
+ 95c:	00647570 	.inst	0x00647570 ; undefined
+ 960:	696d696c 	ldpsw	x12, x26, [x11, #-152]
+ 964:	65640074 	fmla	z20.h, p0/m, z3.h, z4.h
+ 968:	5f677562 	sqshl	d2, d11, #39
+ 96c:	6e697270 	uabdl2	v16.4s, v19.8h, v9.8h
+ 970:	67705f74 	.inst	0x67705f74 ; undefined
+ 974:	00726964 	.inst	0x00726964 ; undefined
+ 978:	6576656c 	fnmls	z12.h, p1/m, z11.h, z22.h
+ 97c:	725f326c 	.inst	0x725f326c ; undefined
+ 980:	00746f6f 	.inst	0x00746f6f ; undefined
+ 984:	725f6770 	.inst	0x725f6770 ; undefined
+ 988:	00746f6f 	.inst	0x00746f6f ; undefined
+ 98c:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
+ 990:	6d65725f 	ldp	d31, d28, [x18, #-432]
+ 994:	0065766f 	.inst	0x0065766f ; undefined
+ 998:	6576656c 	fnmls	z12.h, p1/m, z11.h, z22.h
+ 99c:	725f336c 	.inst	0x725f336c ; undefined
+ 9a0:	00746f6f 	.inst	0x00746f6f ; undefined
+ 9a4:	61746770 	.inst	0x61746770 ; undefined
+ 9a8:	5f656c62 	.inst	0x5f656c62 ; undefined
+ 9ac:	72746e65 	.inst	0x72746e65 ; undefined
+ 9b0:	61700079 	.inst	0x61700079 ; undefined
+ 9b4:	665f6567 	.inst	0x665f6567 ; undefined
+ 9b8:	00656572 	.inst	0x00656572 ; undefined
+ 9bc:	65676170 	fnmls	z16.h, p0/m, z11.h, z7.h
+ 9c0:	6c6c615f 	ldnp	d31, d24, [x10, #-320]
+ 9c4:	7000636f 	adr	x15, 1633 <__bss_size+0x1621>
+ 9c8:	6e655f74 	uqrshl	v20.8h, v27.8h, v5.8h
+ 9cc:	70797274 	adr	x20, f381b <__bss_size+0xf3809>
+ 9d0:	61707000 	.inst	0x61707000 ; undefined
+ 9d4:	745f6567 	.inst	0x745f6567 ; undefined
+ 9d8:	00706d65 	.inst	0x00706d65 ; undefined
+ 9dc:	65676150 	fnmls	z16.h, p0/m, z10.h, z7.h
+ 9e0:	73696c5f 	.inst	0x73696c5f ; undefined
+ 9e4:	61700074 	.inst	0x61700074 ; undefined
+ 9e8:	665f6567 	.inst	0x665f6567 ; undefined
+ 9ec:	5f656572 	.inst	0x5f656572 ; undefined
+ 9f0:	7473696c 	.inst	0x7473696c ; undefined
+ 9f4:	52455000 	.inst	0x52455000 ; undefined
+ 9f8:	6574004d 	fmla	z13.h, p0/m, z2.h, z20.h
+ 9fc:	705f7473 	adr	x19, bf88b <__bss_size+0xbf879>
+ a00:	72696467 	.inst	0x72696467 ; undefined
+ a04:	6e6f6300 	rsubhn2	v0.8h, v24.4s, v15.4s
+ a08:	74786574 	.inst	0x74786574 ; undefined
+ a0c:	76656c00 	.inst	0x76656c00 ; undefined
+ a10:	5f326c65 	.inst	0x5f326c65 ; undefined
+ a14:	6f666e69 	.inst	0x6f666e69 ; undefined
+ a18:	67617000 	.inst	0x67617000 ; undefined
+ a1c:	6e695f65 	uqrshl	v5.8h, v27.8h, v9.8h
+ a20:	6d007469 	stp	d9, d29, [x3]
+ a24:	5f737069 	sqdmlsl	s9, h3, v3.h[3]
+ a28:	65746564 	fnmls	z4.h, p1/m, z11.h, z20.h
+ a2c:	6d5f7463 	ldp	d3, d29, [x3, #496]
+ a30:	726f6d65 	.inst	0x726f6d65 ; undefined
+ a34:	6f620079 	mla	v25.8h, v3.8h, v2.h[2]
+ a38:	705f746f 	adr	x15, bf8c7 <__bss_size+0xbf8b5>
+ a3c:	72696467 	.inst	0x72696467 ; undefined
+ a40:	6c61775f 	ldnp	d31, d29, [x26, #-496]
+ a44:	6770006b 	.inst	0x6770006b ; undefined
+ a48:	666e695f 	.inst	0x666e695f ; undefined
+ a4c:	7865006f 	ldaddlh	w5, w15, [x3]
+ a50:	6d656d74 	ldp	d20, d27, [x11, #-432]
+ a54:	67617000 	.inst	0x67617000 ; undefined
+ a58:	62617465 	.inst	0x62617465 ; undefined
+ a5c:	655f656c 	fcmeq	p12.h, p1/z, z11.h, z31.h
+ a60:	7972746e 	ldrh	w14, [x3, #6458]
+ a64:	6f6f6200 	umlsl2	v0.4s, v16.8h, v15.h[2]
+ a68:	616d5f74 	.inst	0x616d5f74 ; undefined
+ a6c:	65735f70 	fnmla	z16.h, p7/m, z27.h, z19.h
+ a70:	6e656d67 	umin	v7.8h, v11.8h, v5.8h
+ a74:	656b0074 	fmla	z20.h, p0/m, z3.h, z11.h
+ a78:	6c656e72 	ldnp	d18, d27, [x19, #-432]
+ a7c:	74616400 	.inst	0x74616400 ; undefined
+ a80:	61705f61 	.inst	0x61705f61 ; undefined
+ a84:	70006567 	adr	x7, 1733 <__bss_size+0x1721>
+ a88:	2e70616d 	rsubhn	v13.4h, v11.4s, v16.4s
+ a8c:	72610063 	.inst	0x72610063 ; undefined
+ a90:	625f6863 	.inst	0x625f6863 ; undefined
+ a94:	63697361 	.inst	0x63697361 ; undefined
+ a98:	696e695f 	ldpsw	xzr, x26, [x10, #-144]
+ a9c:	6c610074 	ldnp	d20, d0, [x3, #-496]
+ aa0:	65636f6c 	fnmls	z12.h, p3/m, z27.h, z3.h
+ aa4:	656d5f64 	fnmla	z4.h, p7/m, z27.h, z13.h
+ aa8:	6d70006d 	ldp	d13, d0, [x3, #-256]
+ aac:	6e655f64 	uqrshl	v4.8h, v27.8h, v5.8h
+ ab0:	70797274 	adr	x20, f38ff <__bss_size+0xf38ed>
+ ab4:	67617000 	.inst	0x67617000 ; undefined
+ ab8:	74756f65 	.inst	0x74756f65 ; undefined
+ abc:	696e6900 	ldpsw	x0, x26, [x8, #-144]
+ ac0:	70735f74 	adr	x20, e76af <__bss_size+0xe769d>
+ ac4:	78616d00 	.inst	0x78616d00 ; undefined
+ ac8:	62006170 	.inst	0x62006170 ; undefined
+ acc:	6d657361 	ldp	d1, d28, [x27, #-432]
+ ad0:	70006d65 	adr	x5, 187f <__bss_size+0x186d>
+ ad4:	5f656761 	.inst	0x5f656761 ; undefined
+ ad8:	72636564 	.inst	0x72636564 ; undefined
+ adc:	70006665 	adr	x5, 17ab <__bss_size+0x1799>
+ ae0:	655f6475 	fcmne	p5.h, p1/z, z3.h, z31.h
+ ae4:	7972746e 	ldrh	w14, [x3, #6458]
+ ae8:	756c0070 	.inst	0x756c0070 ; undefined
+ aec:	61705f74 	.inst	0x61705f74 ; undefined
+ af0:	6c006567 	stnp	d7, d25, [x11]
+ af4:	6c657665 	ldnp	d5, d29, [x19, #-432]
+ af8:	6e695f33 	uqrshl	v19.8h, v25.8h, v9.8h
+ afc:	63006f66 	.inst	0x63006f66 ; undefined
+ b00:	7261656c 	.inst	0x7261656c ; undefined
+ b04:	67617000 	.inst	0x67617000 ; undefined
+ b08:	6f6c5f65 	.inst	0x6f6c5f65 ; undefined
+ b0c:	70756b6f 	adr	x15, eb87b <__bss_size+0xeb869>
+ b10:	67617000 	.inst	0x67617000 ; undefined
+ b14:	6e695f65 	uqrshl	v5.8h, v27.8h, v9.8h
+ b18:	74726573 	.inst	0x74726573 ; undefined
+ b1c:	6e696200 	rsubhn2	v0.8h, v16.4s, v9.4s
+ b20:	5f797261 	sqdmlsl	s1, h19, v9.h[3]
+ b24:	72657375 	.inst	0x72657375 ; undefined
+ b28:	7365745f 	.inst	0x7365745f ; undefined
+ b2c:	6f665f74 	.inst	0x6f665f74 ; undefined
+ b30:	735f6b72 	.inst	0x735f6b72 ; undefined
+ b34:	00657a69 	.inst	0x00657a69 ; undefined
+ b38:	74736574 	.inst	0x74736574 ; undefined
+ b3c:	726f665f 	.inst	0x726f665f ; undefined
+ b40:	2e622e6b 	uqsub	v11.4h, v19.4h, v2.4h
+ b44:	682f0063 	.inst	0x682f0063 ; undefined
+ b48:	2f656d6f 	.inst	0x2f656d6f ; undefined
+ b4c:	69666f64 	ldpsw	x4, x27, [x27, #-208]
+ b50:	7265676e 	.inst	0x7265676e ; undefined
+ b54:	6f532f74 	.inst	0x6f532f74 ; undefined
+ b58:	65637275 	fnmls	z21.h, p4/m, z19.h, z3.h
+ b5c:	2f534f2f 	.inst	0x2f534f2f ; undefined
+ b60:	4f594854 	.inst	0x4f594854 ; undefined
+ b64:	73752f53 	.inst	0x73752f53 ; undefined
+ b68:	62007265 	.inst	0x62007265 ; undefined
+ b6c:	72616e69 	.inst	0x72616e69 ; undefined
+ b70:	73755f79 	.inst	0x73755f79 ; undefined
+ b74:	745f7265 	.inst	0x745f7265 ; undefined
+ b78:	5f747365 	sqdmlsl	s5, h27, v4.h[3]
+ b7c:	6b726f66 	.inst	0x6b726f66 ; undefined
+ b80:	6174735f 	.inst	0x6174735f ; undefined
+ b84:	74007472 	.inst	0x74007472 ; undefined
+ b88:	5f747365 	sqdmlsl	s5, h27, v4.h[3]
+ b8c:	2e637069 	uabdl	v9.4s, v3.4h, v3.4h
+ b90:	00632e62 	.inst	0x00632e62 ; undefined
+ b94:	616e6962 	.inst	0x616e6962 ; undefined
+ b98:	755f7972 	.inst	0x755f7972 ; undefined
+ b9c:	5f726573 	.inst	0x5f726573 ; undefined
+ ba0:	74736574 	.inst	0x74736574 ; undefined
+ ba4:	6370695f 	.inst	0x6370695f ; undefined
+ ba8:	7a69735f 	.inst	0x7a69735f ; undefined
+ bac:	69620065 	ldpsw	x5, x0, [x3, #-240]
+ bb0:	7972616e 	ldrh	w14, [x11, #6448]
+ bb4:	6573755f 	fnmls	z31.h, p5/m, z10.h, z19.h
+ bb8:	65745f72 	fnmla	z18.h, p7/m, z27.h, z20.h
+ bbc:	695f7473 	ldpsw	x19, x29, [x3, #248]
+ bc0:	735f6370 	.inst	0x735f6370 ; undefined
+ bc4:	74726174 	.inst	0x74726174 ; undefined
+ bc8:	73657400 	.inst	0x73657400 ; undefined
+ bcc:	79735f74 	ldrh	w20, [x27, #6574]
+ bd0:	2e622e73 	uqsub	v19.4h, v19.4h, v2.4h
+ bd4:	Address 0x0000000000000bd4 is out of bounds.
+
 
 Disassembly of section .comment:
 
