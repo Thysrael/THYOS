@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "trap.h"
+#include "sysid.h"
 #include <stdarg.h>
 
 //------------------ fork.c ------------------//
@@ -62,6 +63,8 @@ int strcmp(const char *p, const char *q);
 
 //---------------- syscall_lib.c ---------------//
 
+extern uint_64 msyscall(uint_64, uint_64, uint_64, uint_64, uint_64, uint_64);
+
 int syscall_putchar(char ch);
 
 uint_32 syscall_getenvid(void);
@@ -77,8 +80,6 @@ int syscall_mem_alloc(uint_32 envid, uint_64 va, uint_64 perm);
 int syscall_mem_map(uint_32 srcid, uint_64 srcva, uint_32 dstid, uint_64 dstva, uint_64 perm);
 
 int syscall_mem_unmap(uint_32 envid, uint_64 va);
-
-int syscall_env_alloc(void);
 
 int syscall_set_env_status(uint_32 envid, uint_32 status);
 

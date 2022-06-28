@@ -43,11 +43,6 @@ int syscall_mem_unmap(uint_32 envid, uint_64 va)
     return msyscall(SYS_mem_unmap, (uint_64)envid, va, 0, 0, 0);
 }
 
-int syscall_env_alloc(void)
-{
-    return msyscall(SYS_env_alloc, 0, 0, 0, 0, 0); 
-}
-
 int syscall_set_env_status(uint_32 envid, uint_32 status)
 {
     return msyscall(SYS_set_env_status, (uint_64)envid, (uint_64)status, 0, 0, 0);

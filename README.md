@@ -122,3 +122,7 @@ esr 寄存器就是同步异常的错误原因，类似与 MOS 中的 Cause。�
 ## MMIO
 
 具体的文档可见该网址：https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/QA7_rev3.4.pdf 
+
+## 内存地址布局
+
+![内核地址布局.drawio](.assets/内核地址布局.drawio.png)

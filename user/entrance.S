@@ -63,9 +63,9 @@ __asm_pgfault_handler:
     // msr esr_el1     x16
     // 首先恢复 elr
     ldr x17,        [sp, #8 * 32]
-    
 	// restore SP，因为在用户态，所以使用的都是 sp_el0, 因此需要最后恢复
 	ldr x16,        [sp, #8 * 31]
-	msr sp_el0,     x16
+	mov sp,         x16
+    
     // 跳转到 x17
     br  x17

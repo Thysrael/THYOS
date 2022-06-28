@@ -16,25 +16,14 @@ extern uint_64 *vud;
 extern struct Env *envs;
 extern struct Env *env;
 
-static void print_page(uint_64 *begin)
-{
-    uint_64 i;
-
-    for (i = 0; i < 512; i++)
-    {
-        writef("%lx ", begin[i]);
-    }
-    writef("\n");
-}
-
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
-    writef("pgfault sp is 0x%lx\n", tf);
-    writef("normal sp is 0x%lx\n", tf->sp);
+    // writef("pgfault elr is 0x%lx\n", tf->elr);
+    // writef("normal sp is 0x%lx\n", tf->sp);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & 0xfff;
-    writef("user pgfault begin, va is 0x%lx, perm is 0x%lx\n", va, perm);
+    // writef("user pgfault begin, va is 0x%lx, perm is 0x%lx\n", va, perm);
     if ((perm & PTE_RO) == 0)
     {
         user_panic("pgfault err: COW not found");
@@ -59,8 +48,8 @@ static void duppage(u_int envid, uint_64 pn)
     uint_64 addr = pn << PTE_SHIFT;
     // *vpt + pn is the adress of page_table_entry which is corresponded to the va
     uint_64 perm = vpt[pn] & 0xfff;
-    writef("duppage addr is 0x%lx, entry is 0x%lx\n", addr, vpt[pn]);
     // if the page can be write and is not shared, so the page need to be COW and map twice
+    // writef("duppage addr is 0x%lx\n", addr);
     int flag = 0;
     if ((perm & PTE_RO) == 0)
     {
@@ -71,7 +60,6 @@ static void duppage(u_int envid, uint_64 pn)
     if (flag)
     {
         syscall_mem_map(0, addr, 0, addr, perm);
-        writef("duppage addr is 0x%lx, entry is 0x%lx\n", addr, vpt[pn]);
     }
     // uint_64 tmp = USTACKTOP;
     // syscall_mem_alloc(0, tmp, perm);
@@ -93,7 +81,7 @@ int fork(void)
     set_pgfault_handler(pgfault);
 
     // alloc a new alloc
-    newenvid = syscall_env_alloc();
+    newenvid = msyscall(SYS_env_alloc, 0, 0, 0, 0, 0);
 
     if (newenvid == 0)
     {
@@ -110,7 +98,7 @@ int fork(void)
     //     }
     // }
 
-    for (i = 0; i < 512; i++)
+    for (i = 0; i <= PUDX(USTACKTOP); i++)
     {
         if ((vud[i] & PTE_VALID) == 0)
         {
@@ -125,7 +113,7 @@ int fork(void)
             }
             for (k = 0; k < 512; k++)
             {
-                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0)
+                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0 || (i << 18) + (j << 9) + k >= USTACKTOP)
                 {
                     continue;
                 }
@@ -133,8 +121,6 @@ int fork(void)
             }
         }
     }
-
-    // duppage(newenvid, 0x3f7fffd);
 
     syscall_mem_alloc(newenvid, UXSTACKTOP - BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
     syscall_set_pgfault_handler(newenvid, (uint_64)__asm_pgfault_handler, UXSTACKTOP);

@@ -123,39 +123,40 @@ int sys_mem_map(u_int srcid, uint_64 srcva, u_int dstid, uint_64 dstva, uint_64 
     //  get corresponding env
     if (envid2env(srcid, &srcenv, 1) < 0)
     {
-        printf("sys_mem_map:srcenv doesn't exist\n");
+        panic("sys_mem_map:srcenv doesn't exist\n");
         return -E_BAD_ENV;
     }
     if (envid2env(dstid, &dstenv, 1) < 0)
     {
-        printf("sys_mem_map:dstenv doesn't exist\n");
+        panic("sys_mem_map:dstenv doesn't exist\n");
         return -E_BAD_ENV;
     }
 
     // perm is valid?
     if (!(perm & PTE_VALID))
     {
-        printf("sys_mem_map:permission denied, va is 0x%lx\n", round_srcva);
+        panic("sys_mem_map:permission denied, va is 0x%lx\n", round_srcva);
         return -E_NO_MEM;
     }
     // check the va
     if (srcva >= UTOP || dstva >= UTOP)
     {
-        printf("sys_mem_map:virtual address exceeds the UTOP\n");
+        printf("srcva = 0x%lx, dstva = 0x%lx\n", srcva, dstva);
+        panic("sys_mem_map:virtual address exceeds the UTOP\n");
         return -E_INVAL;
     }
     // try to get the page
     ppage = page_lookup(srcenv->env_pgdir, round_srcva, &ppte);
     if (ppage == NULL)
     {
-        printf("sys_mem_map:page of srcva is invalid\n");
+        panic("sys_mem_map:page of srcva is invalid\n");
         return -E_NO_MEM;
     }
     // try to insert the page
     ret = page_insert(dstenv->env_pgdir, ppage, round_dstva, perm);
     if (ret < 0)
     {
-        printf("sys_mem_map:page_insert denied\n");
+        panic("sys_mem_map:page_insert denied\n");
         return -E_NO_MEM;
     }
     return 0;
@@ -169,7 +170,7 @@ int sys_mem_unmap(u_int envid, uint_64 va)
     ret = envid2env(envid, &env, 1); 
     if (ret < 0)
     {
-        printf("sys_mem_alloc:failed to get the target env\n");
+        panic("sys_mem_alloc:failed to get the target env\n");
         return -E_BAD_ENV;
     }
     page_remove(env->env_pgdir, va);
@@ -255,7 +256,6 @@ void sys_ipc_recv(uint_64 dstva)
 
 int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm)
 {
-
     int r;
     struct Env *e;
     struct Page *p;

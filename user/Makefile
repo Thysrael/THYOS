@@ -34,6 +34,6 @@ all: test_sys.x test_fork.x test_ipc.x $(USERLIB)
 .PHONY: clean
 
 clean:
-	rm -rf *~ *.o *.b.c *.x *.b
+	rm -rf *~ *.o *.b.c *.x *.b *.symbol
 
 include ../include.mk

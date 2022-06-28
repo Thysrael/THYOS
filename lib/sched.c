@@ -58,5 +58,6 @@ void sched_yield(void)
     }
     count--;
     e->env_runs++;
+    debug("We will run env 0x%lx\n", e->env_id);
     env_run(e);
 }
