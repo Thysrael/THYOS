@@ -61,12 +61,11 @@ extern char _data[];
 #define UVPT                    0x0000004000000000
 #define UVMD                    (UVPT + (UVPT >> 9))
 #define UVUD                    (UVMD + (UVPT >> 18))
-#define UPAGES                  (UVPT - PUDMAP)
-#define UENVS                   (UPAGES - PUDMAP)
-#define UTOP                    (UENVS)
-#define UXSTACKTOP              (UTOP)
-#define USTACKTOP               (UXSTACKTOP - 2 * BY2PG)
-
+#define UPAGES                  (UVPT - PUDMAP)             // 0x3f_b000_0000
+#define UENVS                   (UPAGES - PUDMAP)           // 0x3f_8000_0000
+#define UTOP                    (UENVS)                     // 0x3f_8000_0000
+#define UXSTACKTOP              (UTOP)                      // 0x3f_8000_0000
+#define USTACKTOP               (UXSTACKTOP - 2 * BY2PG)    // 0x3f_7fff_e000
 
 /*================== 物理内存 =======================*/
 // 这是物理内存的可用上限，剩下的需要留给外设

@@ -2,7 +2,7 @@
 #include "print.h"
 #include "uart.h"
 
-#define DEBUG 1
+#define DEBUG 0
 
 static void myoutput(void *arg, char *s, int l)
 {

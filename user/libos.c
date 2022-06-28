@@ -22,17 +22,23 @@ void exit(void)
     syscall_env_destroy(0);
 }
 
-void user_bcopy(const void *src, void *dst, uint_32 len)
+void user_bcopy(const void *src, void *dst, uint_64 len)
 {
     void *max;
+
     max = dst + len;
+
     // copy machine words while possible
-    while (dst + 3 < max)
+    if (((uint_64)src % 8 == 0) && ((uint_64)dst % 8 == 0))
     {
-        *(int *)dst = *(int *)src;
-        dst += 4;
-        src += 4;
+        while (dst + 8 < max)
+        {
+            *(uint_64 *)dst = *(uint_64 *)src;
+            dst += 8;
+            src += 8;
+        }
     }
+
     // finish remaining 0-3 bytes
     while (dst < max)
     {
@@ -55,6 +61,11 @@ void user_bzero(void *v, u_int n)
     {
         *p++ = 0;
     }
+}
+
+void print_reg(uint_64 content)
+{
+    writef("register content is 0x%lx\n", content);
 }
 
 extern void umain(int argc, char **argv);

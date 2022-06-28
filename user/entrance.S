@@ -19,10 +19,13 @@ _start:
 	bl	libmain
 
 .section ".text"
+
+// 这个函数首先跳转到 pgfault 进行 COW 处理，然后再恢复现场
 .extern __pgfault_handler
 .global __asm_pgfault_handler
 __asm_pgfault_handler:
 	ldr	    x0,     [sp, #8 * 34]
+    mov     x1,     sp
 	ldr	    x16,    __pgfault_handler
 	blr     x16	
 
@@ -58,8 +61,9 @@ __asm_pgfault_handler:
     // restore ESR
     // ldr x16,        [sp, #8 * 35]
     // msr esr_el1     x16
-    // 首先保存 elr
-    ldr x17,        [sp, #8 * 33]
+    // 首先恢复 elr
+    ldr x17,        [sp, #8 * 32]
+    
 	// restore SP，因为在用户态，所以使用的都是 sp_el0, 因此需要最后恢复
 	ldr x16,        [sp, #8 * 31]
 	msr sp_el0,     x16

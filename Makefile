@@ -23,7 +23,7 @@ objects       := $(drivers_dir)/*.o 	\
 .PHONY: all $(modules) clean debug run
 
 all: $(modules) vmlinux
-	$(CROSS_COMPILE)objdump -alD $(vmlinux_elf) > ./asm.s
+	$(CROSS_COMPILE)objdump -alD $(vmlinux_elf) > ./kernel.symbol
 
 vmlinux: $(modules)
 	$(LD) -o $(vmlinux_elf) -T $(link_script) $(objects)

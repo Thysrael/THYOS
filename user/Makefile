@@ -15,6 +15,7 @@ all: test_sys.x test_fork.x test_ipc.x $(USERLIB)
 
 %.b: %.o $(USERLIB)
 	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
 
 %.elf: %.o $(USERLIB)
 	$(LD) -o $@ $(LDFLAGS) -T ./user.lds $^

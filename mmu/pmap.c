@@ -38,6 +38,7 @@ void mips_detect_memory()
 static void *alloc(uint_64 n, uint_64 align, int clear)
 {
     uint_64 alloced_mem;
+
     // 这里完成对 freemem 的重定位，因为需要 freemem 在高地址发挥作用
     if (freemem < (uint_64)_end)
     {
@@ -123,6 +124,8 @@ void arch_basic_init()
 
     int_64 n;
 
+    // 在这里要完成对于 kernel_pud 的重定位
+    kernel_pud = (uint_64 *)KADDR((uint_64) kernel_pud);
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
     n = ROUND(npage * sizeof(struct Page), BY2PG);
@@ -234,7 +237,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             else
             {
                 ppage->pp_ref = 1;
-                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF;
+                *pud_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF | PTE_ISH;
             }
         }
         else
@@ -260,7 +263,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
             else
             {
                 ppage->pp_ref = 1;
-                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF;
+                *pmd_entryp = page2pa(ppage) | PTE_VALID | PTE_TABLE | PTE_NORMAL | PTE_USER | PTE_AF | PTE_ISH;
             }
         }
         else
@@ -372,7 +375,7 @@ void page_remove(uint_64 *pud, uint_64 va)
     {
         return;
     }
-
+    debug("Wanna to remove page at pa 0x%lx to va 0x%lx\n", page2pa(ppage), va);
     /* Step 2: Decrease `pp_ref` and decide if it's necessary to free this page. */
 
     /* Hint: When there's no virtual address mapped to this page, release it. */

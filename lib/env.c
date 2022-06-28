@@ -210,12 +210,12 @@ static int env_setup_vm(struct Env *e)
     }
     pgdir[PUDX(UENVS)] = kernel_pud[PUDX(UENVS)];
     pgdir[PUDX(UPAGES)] = kernel_pud[PUDX(UPAGES)];
-
+    
     // UVPT maps the env's own page table, with read-only permission.
     e->env_pgdir = pgdir;
     e->env_cr3 = PADDR(pgdir);
     // that's the self-map
-    e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_TABLE;
+    e->env_pgdir[PUDX(UVPT)] = e->env_cr3 | PTE_VALID | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_TABLE | PTE_AF;
     
     return 0;
 }
@@ -317,7 +317,7 @@ void env_free(struct Env *e)
 {
     uint_64 pudno, pmdno, pteno, pa;
     uint_64 *pmd, *pt;
-    debug("[%08x] free env %08x\n", curenv ? curenv->env_id : 0, e->env_id);
+    debug("[%08x] free env 0x%08x\n", curenv ? curenv->env_id : 0, e->env_id);
     
     for (pudno = 0; pudno < PUDX(UTOP); pudno++)
     {
@@ -337,7 +337,7 @@ void env_free(struct Env *e)
             pt = (uint_64 *)KADDR(PTE_ADDR(pmd[pmdno]));
             for (pteno = 0; pteno < 512; pteno++)
             {
-                if (!((pt[pteno]) & PTE_VALID))
+                if (((pt[pteno]) & PTE_VALID))
                 {
                     page_remove(e->env_pgdir, (pudno << 30) + (pmdno << 21) + (pteno << 12));
                 }
@@ -370,7 +370,6 @@ void env_destroy(struct Env *e)
     if (curenv == e)
     {
         curenv = NULL;
-        /* Hint: Why this? */
         bcopy((void *)KERNEL_SP - sizeof(struct Trapframe),
               (void *)TIMESTACK - sizeof(struct Trapframe),
               sizeof(struct Trapframe));
@@ -392,9 +391,6 @@ void env_destroy(struct Env *e)
 void env_run(struct Env *e)
 {
     /* Step 1: save register state of curenv. */
-    /* Hint: if there is an environment running,
-     *   you should switch the context and save the registers.
-     *   You can imitate env_destroy() 's behaviors.*/
     if (curenv != NULL)
     {
         struct Trapframe *old = (struct Trapframe *)(TIMESTACK - sizeof(struct Trapframe));

@@ -6,3 +6,4 @@
 *.elf
 *.zip
 *.s
+*.symbol

@@ -14,7 +14,7 @@ extern void reset_timer();
 
 void handle_irq(void)
 {
-    printf("Timer interrupt received\n");
+    // printf("Timer interrupt received\n");
     reset_timer();
     sched_yield();
 }

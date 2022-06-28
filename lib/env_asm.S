@@ -34,8 +34,8 @@ env_pop_tf:
     // 恢复 spsr
 	ldr x17,        [x16, #8 * 33]
 	msr spsr_el1,   x17
-	ldr x17,        [x16, #8 * 32]
-	//br  x17
+	// ldr x17,        [x16, #8 * 32]
+	// br  x17
 	// 到最后也没有恢复 x16 和 x17，好像也没必要恢复 far 和 esr
 	eret
 

@@ -5,12 +5,11 @@
 #include "trap.h"
 #include <stdarg.h>
 
-
 //------------------ fork.c ------------------//
 
 int fork(void);
 
-void set_pgfault_handler(void (*fn)(uint_64 va));
+void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *));
 
 //------------------ ipc.c -------------------//
 
@@ -22,9 +21,11 @@ uint_32 ipc_recv(uint_32 *whom, uint_64 dstva, uint_64 *perm);
 
 void exit(void);
 
-void user_bcopy(const void *src, void *dst, uint_32 len);
+void user_bcopy(const void *src, void *dst, uint_64 len);
 
 void user_bzero(void *v, u_int n);
+
+void print_reg(uint_64 content);
 
 void libmain(int argc, char **argv);
 

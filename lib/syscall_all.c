@@ -135,7 +135,7 @@ int sys_mem_map(u_int srcid, uint_64 srcva, u_int dstid, uint_64 dstva, uint_64 
     // perm is valid?
     if (!(perm & PTE_VALID))
     {
-        printf("sys_mem_map:permission denied\n");
+        printf("sys_mem_map:permission denied, va is 0x%lx\n", round_srcva);
         return -E_NO_MEM;
     }
     // check the va

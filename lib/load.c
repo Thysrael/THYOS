@@ -157,7 +157,7 @@ void load_icode(struct Env *e, u_char *binary, u_long size)
     r = page_insert(e->env_pgdir, p, USTACKTOP - BY2PG, perm);
     if (r == -E_NO_MEM)
         return;
-
+        
     /* Step 3: load the binary using elf loader. */
     r = load_elf(binary, size, &entry_point, e, load_icode_mapper);
 

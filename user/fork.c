@@ -16,12 +16,25 @@ extern uint_64 *vud;
 extern struct Env *envs;
 extern struct Env *env;
 
-
-static void pgfault(uint_64 va)
+static void print_page(uint_64 *begin)
 {
+    uint_64 i;
+
+    for (i = 0; i < 512; i++)
+    {
+        writef("%lx ", begin[i]);
+    }
+    writef("\n");
+}
+
+static void pgfault(uint_64 va, struct Trapframe *tf)
+{
+    writef("pgfault sp is 0x%lx\n", tf);
+    writef("normal sp is 0x%lx\n", tf->sp);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & 0xfff;
+    writef("user pgfault begin, va is 0x%lx, perm is 0x%lx\n", va, perm);
     if ((perm & PTE_RO) == 0)
     {
         user_panic("pgfault err: COW not found");
@@ -30,12 +43,14 @@ static void pgfault(uint_64 va)
     // map the new page at a temporary place
     syscall_mem_alloc(0, tmp, perm);
     // copy the content
-    user_bcopy((void *)ROUNDDOWN(va, BY2PG), (void *)tmp, BY2PG);
+    user_bcopy((const void *)ROUNDDOWN(va, BY2PG), (void *)tmp, BY2PG);
     // map the page on the appropriate place
     syscall_mem_map(0, tmp, 0, va, perm);
     // unmap the temporary place
     syscall_mem_unmap(0, tmp);
 }
+
+
 
 // 我找不到 library 属性，就去掉了，这可能会造成原有的共享页面达不到效果
 static void duppage(u_int envid, uint_64 pn)
@@ -44,10 +59,10 @@ static void duppage(u_int envid, uint_64 pn)
     uint_64 addr = pn << PTE_SHIFT;
     // *vpt + pn is the adress of page_table_entry which is corresponded to the va
     uint_64 perm = vpt[pn] & 0xfff;
-
+    writef("duppage addr is 0x%lx, entry is 0x%lx\n", addr, vpt[pn]);
     // if the page can be write and is not shared, so the page need to be COW and map twice
     int flag = 0;
-    if (perm & PTE_RW)
+    if ((perm & PTE_RO) == 0)
     {
         perm |= PTE_RO;
         flag = 1;
@@ -56,35 +71,70 @@ static void duppage(u_int envid, uint_64 pn)
     if (flag)
     {
         syscall_mem_map(0, addr, 0, addr, perm);
+        writef("duppage addr is 0x%lx, entry is 0x%lx\n", addr, vpt[pn]);
     }
+    // uint_64 tmp = USTACKTOP;
+    // syscall_mem_alloc(0, tmp, perm);
+    // user_bcopy((void *)ROUNDDOWN(addr, BY2PG), (void *)tmp, BY2PG);
+    // syscall_mem_alloc(envid, addr, perm);
+    // syscall_mem_map(0, tmp, envid, addr, perm);
+    // syscall_mem_unmap(0, tmp);
 }
 
 extern void __asm_pgfault_handler(void);
-void (*__pgfault_handler)(uint_64);
+void (*__pgfault_handler)(uint_64, struct Trapframe*);
 
 int fork(void)
 {
-    u_int newenvid;
-    uint_64 i;
+    int newenvid;
+    uint_64 i, j, k;
 
     // The parent installs pgfault using set_pgfault_handler
     set_pgfault_handler(pgfault);
 
     // alloc a new alloc
     newenvid = syscall_env_alloc();
+
     if (newenvid == 0)
     {
         env = envs + ENVX(syscall_getenvid());
+        // writef("env id is 0x%lx\n", env->env_id);
         return 0;
     }
+    
+    // for (i = 0; i < VPN(USTACKTOP); i++)
+    // {
+    //     if ((vud[i >> 18] & PTE_VALID) && (vmd[i >> 9] & PTE_VALID) && (vpt[i] & PTE_VALID))
+    //     {
+    //         duppage(newenvid, i);
+    //     }
+    // }
 
-    for (i = 0; i < VPN(USTACKTOP); i++)
+    for (i = 0; i < 512; i++)
     {
-        if ((vud[i >> 18] & PTE_VALID) && (vmd[i >> 9] & PTE_VALID) && (vpt[i] & PTE_VALID))
+        if ((vud[i] & PTE_VALID) == 0)
         {
-            duppage(newenvid, i);
+            continue;
+        }
+        
+        for (j = 0; j < 512; j++)
+        {
+            if ((vmd[(i << 9) + j] & PTE_VALID) == 0)
+            {
+                continue;
+            }
+            for (k = 0; k < 512; k++)
+            {
+                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0)
+                {
+                    continue;
+                }
+                duppage(newenvid, (i << 18) + (j << 9) + k);
+            }
         }
     }
+
+    // duppage(newenvid, 0x3f7fffd);
 
     syscall_mem_alloc(newenvid, UXSTACKTOP - BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
     syscall_set_pgfault_handler(newenvid, (uint_64)__asm_pgfault_handler, UXSTACKTOP);
@@ -92,7 +142,7 @@ int fork(void)
     return newenvid;
 }
 
-void set_pgfault_handler(void (*fn)(uint_64 va))
+void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *))
 {
     if (__pgfault_handler == 0)
     {
