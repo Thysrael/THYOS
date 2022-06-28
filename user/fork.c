@@ -18,12 +18,10 @@ extern struct Env *env;
 
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
-    // writef("pgfault elr is 0x%lx\n", tf->elr);
-    // writef("normal sp is 0x%lx\n", tf->sp);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & 0xfff;
-    // writef("user pgfault begin, va is 0x%lx, perm is 0x%lx\n", va, perm);
+
     if ((perm & PTE_RO) == 0)
     {
         user_panic("pgfault err: COW not found");
@@ -49,7 +47,6 @@ static void duppage(u_int envid, uint_64 pn)
     // *vpt + pn is the adress of page_table_entry which is corresponded to the va
     uint_64 perm = vpt[pn] & 0xfff;
     // if the page can be write and is not shared, so the page need to be COW and map twice
-    // writef("duppage addr is 0x%lx\n", addr);
     int flag = 0;
     if ((perm & PTE_RO) == 0)
     {
@@ -61,12 +58,6 @@ static void duppage(u_int envid, uint_64 pn)
     {
         syscall_mem_map(0, addr, 0, addr, perm);
     }
-    // uint_64 tmp = USTACKTOP;
-    // syscall_mem_alloc(0, tmp, perm);
-    // user_bcopy((void *)ROUNDDOWN(addr, BY2PG), (void *)tmp, BY2PG);
-    // syscall_mem_alloc(envid, addr, perm);
-    // syscall_mem_map(0, tmp, envid, addr, perm);
-    // syscall_mem_unmap(0, tmp);
 }
 
 extern void __asm_pgfault_handler(void);
@@ -86,17 +77,8 @@ int fork(void)
     if (newenvid == 0)
     {
         env = envs + ENVX(syscall_getenvid());
-        // writef("env id is 0x%lx\n", env->env_id);
         return 0;
     }
-    
-    // for (i = 0; i < VPN(USTACKTOP); i++)
-    // {
-    //     if ((vud[i >> 18] & PTE_VALID) && (vmd[i >> 9] & PTE_VALID) && (vpt[i] & PTE_VALID))
-    //     {
-    //         duppage(newenvid, i);
-    //     }
-    // }
 
     for (i = 0; i <= PUDX(USTACKTOP); i++)
     {
