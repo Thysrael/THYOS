@@ -27,6 +27,7 @@ make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/lib'
 make --directory=mmu
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/mmu'
+ 
 make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/mmu'
  
@@ -42,7 +43,6 @@ make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/fs'
 dd if=/dev/zero of=../fs.img bs=4096 count=1024 2>/dev/null
 gcc -I../include/ -I../user/ fsformat.c -o ./fsformat -m32
 chmod +x ./fsformat
- 
 ./fsformat ../fs.img motd newmotd 
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/fs'
  

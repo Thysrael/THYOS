@@ -301,6 +301,11 @@ int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm)
     return 0;
 }
 
+void sys_sd_io(uint_64 va, uint_64 blockno, u_int write)
+{
+    
+}
+
 int sys_write_dev(uint_64 va, uint_64 dev, u_int len)
 {
     panic("sys_write_dev has not be implemented.\n");

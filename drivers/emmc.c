@@ -42,38 +42,48 @@
 
 unsigned char sd_malloc_buf[128 * 1024];
 unsigned int allocated = 0;
+struct block_device *emmc_dev;
+
+void sd_read_fixed(u_int64_t blockno, void *buffer)
+{
+    sd_read(emmc_dev, buffer, 512, blockno);
+}
+
+void sd_write_fixed(u_int64_t blockno, void *buffer)
+{
+    sd_write(emmc_dev, buffer, 512, blockno);
+}
 
 void sd_init()
 {
-    struct block_device *emmc_dev;
     sd_card_init(&emmc_dev);
     int block_size = emmc_dev->block_size;
     printf("Block size is %d\n", block_size);
-    char buf[512];
-    int i;
-    printf("write info...\n");
-    for (i = 0; i < block_size; i++)
-    {
-        buf[i] = i * i + 31941;
-        printf("%lx ", buf[i]);
-    }
-    printf("\ncleanup buf.,,\n");
-    emmc_dev->write(emmc_dev, buf, 4096, 0);
-    for (i = 0; i < block_size; i++)
-    {
-        buf[i] = 0;
-    }
-    printf("read info...\n");
-    emmc_dev->read(emmc_dev, buf, 4096, 0);
-    for (i = 0; i < block_size; i++)
-    {
-        if(buf[i] != (i * i + 31941) % 256)
-        {
-            printf("Error-");
-        }
-        printf("%lx ", buf[i]);
-    }
-    printf("\nsd card init ok,test ok...\n");
+    // char buf[512];
+    // int i;
+    // printf("write info...\n");
+    // for (i = 0; i < block_size; i++)
+    // {
+    //     buf[i] = i * i + 31941;
+    //     printf("%lx ", buf[i]);
+    // }
+    // printf("\ncleanup buf.,,\n");
+    // emmc_dev->write(emmc_dev, buf, 4096, 0);
+    // for (i = 0; i < block_size; i++)
+    // {
+    //     buf[i] = 0;
+    // }
+    // printf("read info...\n");
+    // emmc_dev->read(emmc_dev, buf, 4096, 0);
+    // for (i = 0; i < block_size; i++)
+    // {
+    //     if (buf[i] != (i * i + 31941) % 256)
+    //     {
+    //         printf("Error-");
+    //     }
+    //     printf("%lx ", buf[i]);
+    // }
+    // printf("\nsd card init ok,test ok...\n");
 }
 
 void *sd_malloc(size_t size)
