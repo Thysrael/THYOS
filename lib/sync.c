@@ -100,11 +100,11 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             break;
         case SYS_read_sd:
             debug("syscall is sys_read_dev\n");
-            r = sys_read_sd(tf->x[1], tf->x[2]);
+            r = sys_read_sd(tf->x[1], (void *)tf->x[2]);
             break;
         case SYS_write_sd:
             debug("syscall is sys_read_dev\n");
-            r = sys_write_sd(tf->x[1], tf->x[2]);
+            r = sys_write_sd(tf->x[1], (void *)tf->x[2]);
             break;
         case SYS_cgetc:
         default:

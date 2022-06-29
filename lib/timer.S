@@ -4,6 +4,7 @@
 
 */
 
+// TODO: 这里能不能更加自如一些
 .global reset_timer
 reset_timer:
     mov x0,             #0x3

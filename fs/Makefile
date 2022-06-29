@@ -4,40 +4,35 @@ user_dir := ../user
 tools_dir := .
 fsformat  := ./fsformat
 
-USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o
-USERLIB :=	$(user_dir)/entrance.o \
-		$(user_dir)/fork.o \
-		$(user_dir)/ipc.o \
-		$(user_dir)/libos.o \
-		$(user_dir)/msyscall.o \
-		$(user_dir)/print.o \
-		$(user_dir)/printf.o \
-		$(user_dir)/string.o \
-		$(user_dir)/syscall_lib.o \
-		$(user_dir)/pageref.o \
-		$(user_dir)/pageref.o \
-		$(user_dir)/fd.o \
-		$(user_dir)/file.o \
-		$(user_dir)/fsipc.o \
+USERLIB :=	$(user_dir)/entrance.o 	\
+		$(user_dir)/fork.o 			\
+		$(user_dir)/ipc.o 			\
+		$(user_dir)/libos.o 		\
+		$(user_dir)/msyscall.o 		\
+		$(user_dir)/print.o 		\
+		$(user_dir)/printf.o 		\
+		$(user_dir)/string.o 		\
+		$(user_dir)/syscall_lib.o 	\
+		$(user_dir)/fd.o 			\
+		$(user_dir)/file.o 			\
+		$(user_dir)/fsipc.o 		\
 		$(user_dir)/fprintf.o
 
-FSLIB :=	fs.o \
-		ide.o \
-		test.o
+FSLIB := fs.o ide.o test.o
 
-USERAPPS :=  $(user_dir)/num.b  \
-			 $(user_dir)/echo.b \
-			 $(user_dir)/ls.b \
-			 $(user_dir)/sh.b  \
-			 $(user_dir)/cat.b \
-		 $(user_dir)/testptelibrary.b
+USERAPPS := $(user_dir)/num.b  \
+			$(user_dir)/echo.b \
+			$(user_dir)/ls.b \
+			$(user_dir)/sh.b  \
+			$(user_dir)/cat.b \
+		 	$(user_dir)/testptelibrary.b
 
 
 FSIMGFILES := motd newmotd #$(user_dir)/testarg.b $(user_dir)/init.b $(USERAPPS)
 
 CFLAGS += -nostdlib -static
 
-all: fs.img serv.b serv.x serv.b.c
+all: fs.img serv.x
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -56,11 +51,9 @@ all: fs.img serv.b serv.x serv.b.c
 	$(CROSS_COMPILE)objdump -alD $^ > $@
 
 %.o: %.c
-	echo user1 cc $<
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 %.o: %.S
-	echo as $<
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 %.o: $(user_dir)/lib.h

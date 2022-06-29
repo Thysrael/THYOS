@@ -45,6 +45,12 @@ struct block_device
 
 void mmio_write(uintptr_t reg, uint32_t data);
 uint32_t mmio_read(uintptr_t reg);
-
+void sd_read_fixed(unsigned long blockno, void *buffer);
+void sd_write_fixed(unsigned long blockno, void *buffer);
+void sd_init();
+void *sd_malloc(size_t size);
+void sd_free(void *address);
+void sd_write_fixed(unsigned long blockno, void *buffer);
+void sd_read_fixed(unsigned long blockno, void *buffer);
 #endif // !MMIO_H
 

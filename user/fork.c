@@ -98,7 +98,7 @@ int fork(void)
             }
             for (k = 0; k < 512; k++)
             {
-                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0 || (i << 18) + (j << 9) + k >= USTACKTOP)
+                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0 || (((i << 18) + (j << 9) + k) << 12) >= USTACKTOP)
                 {
                     continue;
                 }

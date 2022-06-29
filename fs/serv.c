@@ -6,7 +6,7 @@
 #include "fs.h"
 #include "fd.h"
 #include "lib.h"
-#include <mmu.h>
+#include "mmu.h"
 
 struct Open
 {
@@ -31,7 +31,7 @@ struct Open opentab[MAXOPEN] = {{0, 0, 1}};
 void serve_init(void)
 {
 	int i;
-	u_int va;
+	uint_64 va;
 
 	// Set virtual address to map.
 	va = FILEVA;
@@ -208,11 +208,10 @@ void serve_close(u_int envid, struct Fsreq_close *rq)
 
 // Overview:
 //	fs service used to delete a file according path in `rq`.
-/*** exercise 5.10 ***/
 void serve_remove(u_int envid, struct Fsreq_remove *rq)
 {
 	int r;
-	u_char path[MAXPATHLEN];
+	char path[MAXPATHLEN];
 
 	// Step 1: Copy in the path, making sure it's terminated.
 	// Notice: add \0 to the tail of the path
@@ -255,7 +254,8 @@ void serve_sync(u_int envid)
 
 void serve(void)
 {
-	uint_64 req, whom, perm;
+	uint_64 req, perm;
+    uint_32 whom;
 
 	for (;;)
 	{

@@ -74,14 +74,9 @@ void init_page_table()
     pmd = (uint_64 *)freemem;
     freemem += BY2PG;
     pmd[0] = (0x40000000 | PTE_VALID | PTE_AF | PTE_USER | PTE_DEVICE);
-    if (kernel_pud == NULL)
-    {
-        kernel_pud = pud;
-        init_page_table();
-    }
-    else
-    {
-        user_pud = pud;
-    }
+
+    kernel_pud = pud;
+    user_pud = pud;
+    
     return;
 }

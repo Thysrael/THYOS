@@ -14,6 +14,7 @@
 #include "tool.h"
 #include "pmap.h"
 #include "sched.h"
+#include "emmc.h"
 
 extern struct Env *curenv;
 

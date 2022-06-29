@@ -1,9 +1,13 @@
 #ifndef _MMU_H_
 #define _MMU_H_
 
-#define BY2PG 4096
+
 // 这是一个第一级页表项对应的大小
-#define PUDMAP (0x40000000)
+#define PUDMAP  (0x40000000)
+// 这是一个第二级页表项对应的大小
+#define PMDMAP  (0x200000)
+// 这是一个第三级页表项对应的大小，也是一个页面的大小
+#define BY2PG   (0x1000)
 
 /*======================= 读取页表 ==========================*/
 #define	PUD_SHIFT   30

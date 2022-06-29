@@ -44,13 +44,13 @@ unsigned char sd_malloc_buf[128 * 1024];
 unsigned int allocated = 0;
 struct block_device *emmc_dev;
 
-void sd_read_fixed(u_int64_t blockno, void *buffer)
+void sd_read_fixed(unsigned long blockno, void *buffer)
 {
     sd_read(emmc_dev, buffer, 512, blockno);
     //printf("sd_read_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
 }
 
-void sd_write_fixed(u_int64_t blockno, void *buffer)
+void sd_write_fixed(unsigned long blockno, void *buffer)
 {
     sd_write(emmc_dev, buffer, 512, blockno);
     //printf("sd_write_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
@@ -98,6 +98,7 @@ void sd_free(void *address)
 {
     return;
 }
+
 static inline uint32_t read_word(const uint8_t *buf, int offset)
 {
     uint32_t b0 = buf[offset + 0] & 0xff;
@@ -107,6 +108,7 @@ static inline uint32_t read_word(const uint8_t *buf, int offset)
 
     return b0 | (b1 << 8) | (b2 << 16) | (b3 << 24);
 }
+
 static inline void write_word(uint32_t val, uint8_t *buf, int offset)
 {
     //printf("buf addr is 0x%lx with offset %d\n",buf,offset);

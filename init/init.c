@@ -9,6 +9,7 @@
 #include "pmap.h"
 #include "env.h"
 #include "tool.h"
+#include "emmc.h"
 
 extern void reset_timer();
 extern void irq_vector_init();
@@ -24,12 +25,11 @@ void arm_init()
     sd_init();
     // 初始化进程管理
     env_init();
-    ENV_CREATE(fs_serv);
-    ENV_CREATE(user_fstest);
 
     // 初始化进程
-    //ENV_CREATE(user_test_ipc);
-    // ENV_CREATE(test_sys);
+    ENV_CREATE(fs_serv);
+    ENV_CREATE(user_test_fs);
+    
     // 初始化异常向量表
     irq_vector_init();
     printf("Irq vector has inited successfully.\n");

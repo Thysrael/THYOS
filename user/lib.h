@@ -4,13 +4,62 @@
 #include "types.h"
 #include "trap.h"
 #include "sysid.h"
+#include "fd.h"
 #include <stdarg.h>
+
+//-------------------- fd.c -------------------//
+
+int close(int fd);
+
+int read(int fd, void *buf, u_int nbytes);
+
+int write(int fd, const void *buf, u_int nbytes);
+
+int seek(int fd, u_int offset);
+
+void close_all(void);
+
+int readn(int fd, void *buf, u_int nbytes);
+
+int dup(int oldfd, int newfd);
+
+int fstat(int fdnum, struct Stat *stat);
+
+int stat(const char *path, struct Stat *);
+
+//------------------- file.c ------------------//
+
+int open(const char *path, int mode);
+
+int read_map(int fd, u_int offset, void **blk);
+
+int remove(const char *path);
+
+int ftruncate(int fd, u_int size);
+
+int sync(void);
 
 //------------------ fork.c ------------------//
 
 int fork(void);
 
 void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *));
+
+int fsipc_set_size(u_int fileid, u_int size);
+
+int fsipc_close(u_int fileid);
+
+int fsipc_dirty(u_int fileid, u_int offset);
+
+int fsipc_remove(const char *path);
+
+int fsipc_sync(void);
+
+//------------------ fsipc.c ------------------//
+
+int fsipc_open(const char *path, u_int omode, struct Fd *fd);
+
+int fsipc_map(u_int fileid, u_int offset, uint_64 dstva);
 
 //------------------ ipc.c -------------------//
 
@@ -26,7 +75,7 @@ void user_bcopy(const void *src, void *dst, uint_64 len);
 
 void user_bzero(void *v, u_int n);
 
-void print_reg(uint_64 content);
+u_short pageref(void *v);
 
 void libmain(int argc, char **argv);
 
@@ -105,14 +154,14 @@ int syscall_write_sd(uint_64 blockno, void *data_addr);
 int syscall_read_sd(uint_64 blockno, void *data_addr);
 
 /* File open modes */
-#define O_RDONLY 0x0000  /* open for reading only */
-#define O_WRONLY 0x0001  /* open for writing only */
-#define O_RDWR 0x0002    /* open for reading and writing */
-#define O_ACCMODE 0x0003 /* mask for above modes */
+#define O_RDONLY            0x0000      /* open for reading only */
+#define O_WRONLY            0x0001      /* open for writing only */
+#define O_RDWR              0x0002      /* open for reading and writing */
+#define O_ACCMODE           0x0003      /* mask for above modes */
 
-#define O_CREAT 0x0100 /* create if nonexistent */
-#define O_TRUNC 0x0200 /* truncate to zero length */
-#define O_EXCL 0x0400  /* error if already exists */
-#define O_MKDIR 0x0800 /* create directory, not regular file */
+#define O_CREAT             0x0100      /* create if nonexistent */
+#define O_TRUNC             0x0200      /* truncate to zero length */
+#define O_EXCL              0x0400      /* error if already exists */
+#define O_MKDIR             0x0800      /* create directory, not regular file */
 
 #endif

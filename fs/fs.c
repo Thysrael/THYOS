@@ -1,11 +1,11 @@
 #include "fs.h"
 #include "lib.h"
-#include <mmu.h>
+#include "mmu.h"
 
 struct Super *super;
 
-u_int nbitmap; // number of bitmap blocks
-u_int *bitmap; // bitmap blocks mapped in memory
+u_int nbitmap;          // number of bitmap blocks
+u_int *bitmap;          // bitmap blocks mapped in memory
 extern uint_64 *vpt;
 extern uint_64 *vmd;
 extern uint_64 *vud;
@@ -83,7 +83,6 @@ u_int block_is_dirty(u_int blockno)
 //	If this block is already mapped to a virtual address(use `block_is_mapped`),
 // 	then return 0, indicate success, else alloc a page for this `va` address,
 //	and return the result(success or fail) of `syscall_mem_alloc`.
-/*** exercise 5.6 ***/
 int map_block(u_int blockno)
 {
 	// Step 1: Decide whether this block has already mapped to a page of physical memory.
@@ -97,11 +96,8 @@ int map_block(u_int blockno)
 
 // Overview:
 //	Unmap a block.
-/*** exercise 5.6 ***/
 void unmap_block(u_int blockno)
 {
-	int r;
-
 	// Step 1: check if this block is mapped.
 	u_int addr = block_is_mapped(blockno);
 
@@ -114,9 +110,7 @@ void unmap_block(u_int blockno)
 	}
 
 	// Step 3: use 'syscall_mem_unmap' to unmap corresponding virtual memory.
-	r = syscall_mem_unmap(0, addr);
-	if (r < 0)
-		return r;
+	syscall_mem_unmap(0, addr);
 
 	// Step 4: validate result of this unmap operation.
 	user_assert(!block_is_mapped(blockno));
@@ -613,7 +607,7 @@ int dir_lookup(struct File *dir, char *name, struct File **file)
 			// 	writef("%c",f[j].f_name[k]);
 			// }
 			// writef("\n");
-			if (strcmp(name, f[j].f_name) == 0)
+			if (strcmp(name, (const char *)f[j].f_name) == 0)
 			{
 				*file = f + j;
 				f[j].f_dir = dir;

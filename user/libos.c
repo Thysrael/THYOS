@@ -9,6 +9,7 @@
 #include "lib.h"
 #include "mmu.h"
 #include "env.h"
+#include "pmap.h"
 
 struct Env *env;
 uint_64 *vpt = (uint_64 *)UVPT;
@@ -63,9 +64,28 @@ void user_bzero(void *v, u_int n)
     }
 }
 
-void print_reg(uint_64 content)
+u_short pageref(void *v)
 {
-    writef("register content is 0x%lx\n", content);
+
+    if (!(vud[PUDX(v)] & PTE_VALID))
+    {
+        return 0;
+    }
+
+    uint_64 vmd_entry = vmd[(PUDX(v) << 9) | PMDX(v)];
+    if (!(vmd_entry & PTE_VALID))
+    {
+        return 0;
+    }
+
+    uint_64 pte = vpt[(PUDX(v) << 18) | (PMDX(v) << 9) | PTEX(v)];
+
+    if (!(pte & PTE_VALID))
+    {
+        return 0;
+    }
+
+    return pages[PPN(pte)].pp_ref;
 }
 
 extern void umain(int argc, char **argv);

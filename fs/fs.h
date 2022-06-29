@@ -1,12 +1,12 @@
 #include "lib.h"
 #include <fs.h>
-#include <mmu.h>
+#include "mmu.h"
 
 /* IDE disk number to look on for our file system */
 #define DISKNO		1
 
 #define BY2SECT		512	/* Bytes per disk sector */
-#define SECT2BLK	(BY2BLK/BY2SECT)	/* sectors to a block */
+#define SECT2BLK	(BY2BLK / BY2SECT)	/* sectors to a block */
 
 /* Disk block n, when in memory, is mapped into the file system
  * server's address space at DISKMAP+(n*BY2BLK). */
@@ -33,6 +33,7 @@ void fs_sync(void);
 extern u_int *bitmap;
 int map_block(u_int);
 int alloc_block(void);
+void write_block(u_int blockno);
 
 /* test.c */
 void fs_test(void);

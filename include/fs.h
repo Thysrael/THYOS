@@ -105,7 +105,7 @@ struct Fsreq_dirty
 
 struct Fsreq_remove
 {
-	u_char req_path[MAXPATHLEN];
+	char req_path[MAXPATHLEN];
 };
 
 #endif // _FS_H_

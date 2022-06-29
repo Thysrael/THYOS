@@ -29,6 +29,6 @@ struct Trapframe
 /*
  * Size of stack frame, word/double word alignment
  */
-#define TF_SIZE         288
+#define TF_SIZE         (sizeof(struct Trapframe))
 
 #endif /* _TRAP_H_ */
