@@ -13,14 +13,14 @@ int pageref(void *v)
 	//writef("[pgref] in\n");
 	if (!(vud[PUDX(v)] & PTE_VALID))
 	{
-		//writef("[pgref] out\n");
+		//writef("[pgref] out1\n");
 		return 0;
 	}
 
 	uint_64 vmd_entry = vmd[(PUDX(v) << 9) | PMDX(v)];
 	if (!(vmd_entry & PTE_VALID))
 	{
-		//writef("[pgref] out\n");
+		//writef("[pgref] out2\n");
 		return 0;
 	}
 
@@ -28,7 +28,7 @@ int pageref(void *v)
 
 	if (!(pte & PTE_VALID))
 	{
-		//writef("[pgref] out\n");
+		//writef("[pgref] out3\n");
 		return 0;
 	}
 

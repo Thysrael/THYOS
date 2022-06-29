@@ -152,11 +152,13 @@ int dup(int oldfdnum, int newfdnum)
 	ova = fd2data(oldfd);
 	nva = fd2data(newfd);
 
+	//writef("dup from %lx to %lx\n",oldfd, newfd);
+
 	if (vud[PUDX(ova)] & PTE_VALID)
 	{
 		for (i = 0; i < BY2PG * 4096; i += BY2PG)
 		{
-			pmd = vmd[PMDX(ova + i)];
+			pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
 			if (!(pmd & PTE_VALID))
 			{
 				i += 512 * BY2PG;
@@ -167,7 +169,7 @@ int dup(int oldfdnum, int newfdnum)
 			{
 				// should be no error here -- pd is already allocated
 				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-										 (pte & 0xfff) & (PTE_VALID | PTE_LIBRARY))) < 0)
+										 (pte & PTE_MASK) | (PTE_VALID | PTE_LIBRARY))) < 0)
 				{
 					goto err;
 				}
@@ -176,7 +178,7 @@ int dup(int oldfdnum, int newfdnum)
 	}
 
 	if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
-							 (vpt[VPN(oldfd)]) & (PTE_VALID | PTE_LIBRARY))) < 0)
+							 (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID | PTE_LIBRARY))) < 0)
 	{
 		goto err;
 	}

@@ -119,7 +119,9 @@ int pipeisclosed(int fdnum)
 
 	if ((r = fd_lookup(fdnum, &fd)) < 0)
 		return r;
+	//writef("fd: %lx\n", fd);
 	p = (struct Pipe *)fd2data(fd);
+	//writef("fd: %lx %lx\n", fd, p);
 	return _pipeisclosed(fd, p);
 }
 
@@ -172,23 +174,23 @@ pipewrite(struct Fd *fd, const void *vbuf, u_int n, u_int offset)
 
 	p = fd2data(fd);
 	wbuf = (char *)vbuf;
-	//writef("1\n");
+	// writef("1\n");
 	for (i = 0; i < n; ++i)
 	{
-		//writef("2\n");
+		// writef("2\n");
 		while (p->p_wpos - p->p_rpos == BY2PIPE)
 		{
-			//writef("6\n");
+			// writef("6\n");
 			if (_pipeisclosed(fd, p))
 				return 0;
-			//writef("4\n");
+			// writef("4\n");
 			syscall_yield();
-			//writef("5\n");
+			// writef("5\n");
 		}
 		p->p_buf[p->p_wpos % BY2PIPE] = wbuf[i];
 		p->p_wpos++;
 	}
-	//writef("3\n");
+	// writef("3\n");
 
 	//	return -E_INVAL;
 	//	user_panic("pipewrite not implemented");
