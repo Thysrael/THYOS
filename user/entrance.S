@@ -69,3 +69,14 @@ __asm_pgfault_handler:
     
     // 跳转到 x17
     br  x17
+
+.data
+
+	.p2align 12
+
+	.globl fsipcbuf
+fsipcbuf:
+	.space 4096
+	.globl fdtab
+fdtab:
+	.space 4096

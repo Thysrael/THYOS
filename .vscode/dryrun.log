@@ -47,21 +47,23 @@ chmod +x ./fsformat
 echo user1 cc serv.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o serv.o serv.c
 echo user1 cc fs.c
+ 
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o fs.o fs.c
 echo user1 cc ide.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ide.o ide.c
- 
 echo user1 cc test.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o test.o test.c
-aarch64-none-elf-ld -o serv.b  -G 0 -static -n -nostdlib -T ../user/user.lds serv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o fs.o ide.o test.o
+aarch64-none-elf-ld -o serv.b  -G 0 -static -n -nostdlib -T ../user/user.lds serv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o fs.o ide.o test.o
 chmod +x ./bintoc
 ./bintoc serv serv.b > serv.b.c~ && mv -f serv.b.c~ serv.b.c
 aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o serv.x serv.b.c
-rm serv.b.c serv.o fs.o ide.o test.o
+rm serv.b.c serv.o fs.o 
+ ide.o test.o
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/fs'
  
 aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x
 aarch64-none-elf-objcopy kernel.elf -O binary kernel.img
+ 
 aarch64-none-elf-objdump -alD kernel.elf > ./kernel.symbol
 make: Leaving directory '/home/dofingert/Source/OS/THYOS'
  

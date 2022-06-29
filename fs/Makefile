@@ -14,7 +14,12 @@ USERLIB :=	$(user_dir)/entrance.o \
 		$(user_dir)/printf.o \
 		$(user_dir)/string.o \
 		$(user_dir)/syscall_lib.o \
-		$(user_dir)/pageref.o
+		$(user_dir)/pageref.o \
+		$(user_dir)/pageref.o \
+		$(user_dir)/fd.o \
+		$(user_dir)/file.o \
+		$(user_dir)/fsipc.o \
+		$(user_dir)/fprintf.o
 
 FSLIB :=	fs.o \
 		ide.o \

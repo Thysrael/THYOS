@@ -139,7 +139,7 @@ void unmap_block(u_int blockno)
 //	use diskaddr, block_is_mapped, syscall_mem_alloc, and ide_read.
 int read_block(u_int blockno, void **blk, u_int *isnew)
 {
-	u_int va;
+	uint_64 va;
 
 	// Step 1: validate blockno. Make file the block to read is within the disk.
 	if (super && blockno >= super->s_nblocks)
@@ -194,7 +194,7 @@ int read_block(u_int blockno, void **blk, u_int *isnew)
 //	Wirte the current contents of the block out to disk.
 void write_block(u_int blockno)
 {
-	u_int va;
+	uint_64 va;
 
 	// Step 1: detect is this block is mapped, if not, can't write it's data to disk.
 	if (!block_is_mapped(blockno))

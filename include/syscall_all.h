@@ -26,7 +26,6 @@ int sys_set_trapframe(u_int envid, struct Trapframe *tf);
 void sys_panic(char *msg);
 void sys_ipc_recv(uint_64 dstva);
 int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm);
-int sys_write_dev(uint_64 va, uint_64 dev, u_int len);
-int sys_read_dev(uint_64 va, uint_64 dev, u_int len);
-
+int sys_write_sd(uint_64 blockno, void* data_addr);
+int sys_read_sd(uint_64 blockno, void* data_addr);
 #endif

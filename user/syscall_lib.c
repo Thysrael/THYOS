@@ -73,3 +73,12 @@ int syscall_cgetc()
 {
     return msyscall(SYS_cgetc, 0, 0, 0, 0, 0);
 }
+
+int syscall_write_sd(uint_64 blockno, void *data_addr)
+{
+    return msyscall(SYS_write_sd, blockno, data_addr, 0, 0, 0);
+}
+int syscall_read_sd(uint_64 blockno, void *data_addr)
+{
+    return msyscall(SYS_read_sd, blockno, data_addr, 0, 0, 0);
+}

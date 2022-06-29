@@ -301,14 +301,14 @@ int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm)
     return 0;
 }
 
-int sys_write_dev(uint_64 va, uint_64 dev, u_int len)
+int sys_write_sd(uint_64 blockno, void* data_addr)
 {
-    panic("sys_write_dev has not be implemented.\n");
+    sd_write_fixed(blockno,data_addr);
     return 0;
 }
 
-int sys_read_dev(uint_64 va, uint_64 dev, u_int len)
+int sys_read_sd(uint_64 blockno, void* data_addr)
 {
-    panic("sys_read_dev has not be implemented.\n");
+    sd_read_fixed(blockno,data_addr);
     return 0;
 }

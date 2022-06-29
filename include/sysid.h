@@ -25,7 +25,7 @@
 #define SYS_ipc_can_send            13
 #define SYS_ipc_recv                14
 #define SYS_cgetc                   15
-#define SYS_write_dev               16
-#define SYS_read_dev                17
+#define SYS_write_sd                16
+#define SYS_read_sd                 17
 
 #endif

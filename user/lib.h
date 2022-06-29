@@ -41,8 +41,12 @@ void _user_panic(const char *, int, const char *, ...)
 
 #define user_panic(...) _user_panic(__FILE__, __LINE__, __VA_ARGS__)
 
-#define user_assert(x)	\
-	do {	if (!(x)) user_panic("assertion failed: %s", #x); } while (0)
+#define user_assert(x)                              \
+    do                                              \
+    {                                               \
+        if (!(x))                                   \
+            user_panic("assertion failed: %s", #x); \
+    } while (0)
 
 //------------------ print.c ------------------//
 
@@ -95,5 +99,20 @@ int syscall_ipc_can_send(uint_32 envid, uint_32 value, uint_64 srcva, uint_64 pe
 void syscall_ipc_recv(uint_64 dstva);
 
 int syscall_cgetc();
+
+int syscall_write_sd(uint_64 blockno, void *data_addr);
+
+int syscall_read_sd(uint_64 blockno, void *data_addr);
+
+/* File open modes */
+#define O_RDONLY 0x0000  /* open for reading only */
+#define O_WRONLY 0x0001  /* open for writing only */
+#define O_RDWR 0x0002    /* open for reading and writing */
+#define O_ACCMODE 0x0003 /* mask for above modes */
+
+#define O_CREAT 0x0100 /* create if nonexistent */
+#define O_TRUNC 0x0200 /* truncate to zero length */
+#define O_EXCL 0x0400  /* error if already exists */
+#define O_MKDIR 0x0800 /* create directory, not regular file */
 
 #endif

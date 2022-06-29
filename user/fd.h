@@ -3,15 +3,16 @@
 
 #include <types.h>
 #include <fs.h>
+#include "mmu.h"
 
 #define debug 0
 
-#define MAXFD 32
-#define FILEBASE 0x60000000
-#define FDTABLE (FILEBASE-PDMAP)
+#define MAXFD 512
+#define FILEBASE 0x800000000
+#define FDTABLE (FILEBASE-(BY2PG*512))
 
 #define INDEX2FD(i)	(FDTABLE+(i)*BY2PG)
-#define INDEX2DATA(i)	(FILEBASE+(i)*PDMAP)
+#define INDEX2DATA(i)	(FILEBASE+(i)*BY2PG*4096)
 
 
 // pre-declare for forward references
@@ -57,7 +58,7 @@ struct Filefd {
 
 int fd_alloc(struct Fd **fd);
 int fd_lookup(int fdnum, struct Fd **fd);
-u_int fd2data(struct Fd *);
+uint_64 fd2data(struct Fd *);
 int fd2num(struct Fd *);
 int dev_lookup(int dev_id, struct Dev **dev);
 int

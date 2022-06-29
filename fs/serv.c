@@ -55,7 +55,7 @@ open_alloc(struct Open **o)
 	for (i = 0; i < MAXOPEN; i++) {
 		switch (pageref(opentab[i].o_ff)) {
 			case 0:
-				if ((r = syscall_mem_alloc(0, (u_int)opentab[i].o_ff,
+				if ((r = syscall_mem_alloc(0, (uint_64)opentab[i].o_ff,
 										   PTE_VALID | PTE_RO /*| PTE_LIBRARY*/)) < 0) {
 					return r;
 				}
@@ -94,12 +94,11 @@ open_lookup(u_int envid, u_int fileid, struct Open **po)
 void
 serve_open(u_int envid, struct Fsreq_open *rq)
 {
-	writef("serve_open %08x %x 0x%x\n", envid, (int)rq->req_path, rq->req_omode);
+	writef("serve_open %08x %x 0x%x\n", envid, (uint_64)rq->req_path, rq->req_omode);
 
 	u_char path[MAXPATHLEN];
 	struct File *f;
 	struct Filefd *ff;
-	int fileid;
 	int r;
 	struct Open *o;
 
@@ -112,8 +111,6 @@ serve_open(u_int envid, struct Fsreq_open *rq)
 		user_panic("open_alloc failed: %d, invalid path: %s", r, path);
 		ipc_send(envid, r, 0, 0);
 	}
-
-	fileid = r;
 
 	// Open the file.
 	if ((r = file_open((char *)path, &f)) < 0) {
@@ -133,7 +130,7 @@ serve_open(u_int envid, struct Fsreq_open *rq)
 	ff->f_fd.fd_omode = o->o_mode;
 	ff->f_fd.fd_dev_id = devfile.dev_id;
 
-	ipc_send(envid, 0, (u_int)o->o_ff, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
+	ipc_send(envid, 0, (uint_64)o->o_ff, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
 }
 
 void
@@ -160,7 +157,7 @@ serve_map(u_int envid, struct Fsreq_map *rq)
 		return;
 	}
 
-	ipc_send(envid, 0, (u_int)blk, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
+	ipc_send(envid, 0, (uint_64)blk, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
 }
 
 void
@@ -248,7 +245,7 @@ serve_sync(u_int envid)
 void
 serve(void)
 {
-	u_int req, whom, perm;
+	uint_64 req, whom, perm;
 
 	for (;;) {
 		perm = 0;
