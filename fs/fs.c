@@ -92,7 +92,7 @@ int map_block(u_int blockno)
 		return 0;
 	}
 	// Step 2: Alloc a page of memory for this block via syscall.
-	return syscall_mem_alloc(0, diskaddr(blockno), PTE_USER);
+	return syscall_mem_alloc(0, diskaddr(blockno), PTE_USER | PTE_VALID);
 }
 
 // Overview:
@@ -179,9 +179,7 @@ int read_block(u_int blockno, void **blk, u_int *isnew)
 			*isnew = 1;
 		}
 		syscall_mem_alloc(0, va, PTE_VALID);
-		writef("fs_serv: read_block() in ...1...\n");
 		ide_read(0, blockno * SECT2BLK, (void *)va, SECT2BLK);
-		writef("fs_serv: read_block() in ...2...\n");
 	}
 
 	// Step 5: if blk != NULL, set `va` to *blk.
@@ -302,15 +300,12 @@ void read_super(void)
 {
 	int r;
 	void *blk;
-
-	writef("fs_serv: check_write_block() in ...1...\n");
 	// Step 1: read super block.
 	if ((r = read_block(1, &blk, 0)) < 0)
 	{
 		user_panic("cannot read superblock: %e", r);
 	}
 
-	writef("fs_serv: check_write_block() in ...2...\n");
 	super = blk;
 
 	// Step 2: Check fs magic nunber.
@@ -319,14 +314,12 @@ void read_super(void)
 		user_panic("bad file system magic number %lx %lx", super->s_magic, FS_MAGIC);
 	}
 
-	writef("fs_serv: check_write_block() in ...3...\n");
 	// Step 3: validate disk size.
 	if (super->s_nblocks > DISKMAX / BY2BLK)
 	{
 		user_panic("file system is too large");
 	}
 
-	writef("fs_serv: check_write_block() in ...4...\n");
 	writef("superblock is good\n");
 }
 
@@ -371,27 +364,33 @@ void check_write_block(void)
 {
 	super = 0;
 
-	// backup the super block.
-	// copy the data in super block to the first block on the disk.
+	// writef("fs_serv: check_write_block() in ...1...\n");
+	//  backup the super block.
+	//  copy the data in super block to the first block on the disk.
 	read_block(0, 0, 0);
 	user_bcopy((char *)diskaddr(1), (char *)diskaddr(0), BY2PG);
+	// writef("fs_serv: check_write_block() in ...2...\n");
 
 	// smash it
 	strcpy((char *)diskaddr(1), "OOPS!\n");
 	write_block(1);
 	user_assert(block_is_mapped(1));
+	// writef("fs_serv: check_write_block() in ...3...\n");
 
 	// clear it out
 	syscall_mem_unmap(0, diskaddr(1));
 	user_assert(!block_is_mapped(1));
+	// writef("fs_serv: check_write_block() in ...4...\n");
 
 	// validate the data read from the disk.
 	read_block(1, 0, 0);
 	user_assert(strcmp((char *)diskaddr(1), "OOPS!\n") == 0);
+	// writef("fs_serv: check_write_block() in ...5...\n");
 
 	// restore the super block.
 	user_bcopy((char *)diskaddr(0), (char *)diskaddr(1), BY2PG);
 	write_block(1);
+	// writef("fs_serv: check_write_block() in ...6...\n");
 	super = (struct Super *)diskaddr(1);
 }
 
@@ -404,11 +403,11 @@ void check_write_block(void)
 void fs_init(void)
 {
 	read_super();
-	writef("fs_serv: read_super() ok\n");
+	// writef("fs_serv: read_super() ok\n");
 	check_write_block();
-	writef("fs_serv: check_write_block() ok\n");
+	// writef("fs_serv: check_write_block() ok\n");
 	read_bitmap();
-	writef("fs_serv: read_bitmap() ok\n");
+	// writef("fs_serv: read_bitmap() ok\n");
 }
 
 // Overview:
@@ -608,6 +607,11 @@ int dir_lookup(struct File *dir, char *name, struct File **file)
 		// If we find the target file, set the result to *file and set f_dir field.
 		for (j = 0; j < FILE2BLK; ++j)
 		{
+			for(int k = 0 ; k< 128;k++)
+			{
+				writef("%c",f[j].f_name[k]);
+			}
+			writef("\n");
 			if (strcmp(name, f[j].f_name) == 0)
 			{
 				*file = f + j;
@@ -705,6 +709,7 @@ int walk_path(char *path, struct File **pdir, struct File **pfile, char *lastele
 
 	*pfile = 0;
 
+	writef("%s\n", path);
 	// find the target file by name recursively.
 	while (*path != '\0')
 	{
@@ -732,6 +737,7 @@ int walk_path(char *path, struct File **pdir, struct File **pfile, char *lastele
 
 		if ((r = dir_lookup(dir, name, &file)) < 0)
 		{
+			writef("%s %d\n",name,r);
 			if (r == -E_NOT_FOUND && *path == '\0')
 			{
 				if (pdir)

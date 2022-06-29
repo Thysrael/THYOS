@@ -33,7 +33,7 @@ fs_test(void)
 
 	// allocate block
 	if ((r = alloc_block()) < 0) {
-		user_panic("alloc_block: %e", r);
+		user_panic("alloc_block: %d", r);
 	}
 
 	// check that block was free

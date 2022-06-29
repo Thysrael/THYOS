@@ -48,7 +48,7 @@ void ide_write(u_int diskno, u_int secno, void *src, u_int nsecs)
 {
 	for (int i = 0; i < nsecs; i++)
 	{
-		syscall_write_sd(secno + i, src + BY2PG * i);
+		syscall_write_sd(secno + i, src + 512 * i);
 	}
 }
 /*void ide_write(u_int diskno, u_int secno, void *src, u_int nsecs)
