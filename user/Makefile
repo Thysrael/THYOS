@@ -1,7 +1,7 @@
 INCLUDES = -I../include/
 
 USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o \
-		   fsipc.o fprintf.o
+		   fsipc.o fprintf.o pipe.o
 
 CFLAGS += -nostdlib -static
 

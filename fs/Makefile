@@ -19,7 +19,8 @@ USERLIB :=	$(user_dir)/entrance.o \
 		$(user_dir)/fd.o \
 		$(user_dir)/file.o \
 		$(user_dir)/fsipc.o \
-		$(user_dir)/fprintf.o
+		$(user_dir)/fprintf.o \
+		$(user_dir)/pipe.o
 
 FSLIB :=	fs.o \
 		ide.o \
