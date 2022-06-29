@@ -71,7 +71,10 @@ void syscall_ipc_recv(uint_64 dstva)
 
 int syscall_cgetc()
 {
-    return msyscall(SYS_cgetc, 0, 0, 0, 0, 0);
+    int ret;
+    while ((ret = msyscall(SYS_cgetc, 0, 0, 0, 0, 0)) == -2)
+        syscall_yield();
+    return ret;
 }
 
 int syscall_write_sd(uint_64 blockno, void *data_addr)

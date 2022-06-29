@@ -8,7 +8,7 @@
 #define debug 0
 
 #define MAXFD 512
-#define FILEBASE 0x800000000
+#define FILEBASE 0x80000000
 #define FDTABLE (FILEBASE-(BY2PG*512))
 
 #define INDEX2FD(i)	(FDTABLE+(i)*BY2PG)
@@ -61,8 +61,7 @@ int fd_lookup(int fdnum, struct Fd **fd);
 uint_64 fd2data(struct Fd *);
 int fd2num(struct Fd *);
 int dev_lookup(int dev_id, struct Dev **dev);
-int
-num2fd(int fd);
+struct Fd *num2fd(int fd);
 extern struct Dev devcons;
 extern struct Dev devfile;
 extern struct Dev devpipe;

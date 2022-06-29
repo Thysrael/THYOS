@@ -18,7 +18,7 @@ extern struct Env *env;
 
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
-    //writef("pgfault!\n");
+    writef("pgfault @0x%lx!\n",va);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & PTE_MASK;
@@ -55,7 +55,7 @@ static void duppage(u_int envid, uint_64 pn)
         flag = 1;
     }
 
-    //writef("addr 0x%lx, envid 0x%x, perm 0x%lx\n", addr, envid, perm);
+    writef("addr 0x%lx, envid 0x%x, perm 0x%lx flag %d\n", addr, envid, perm, flag);
     syscall_mem_map(0, addr, envid, addr, perm);
     //writef("flag: %d\n", flag);
     if (flag)

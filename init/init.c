@@ -26,8 +26,10 @@ void arm_init()
     env_init();
     ENV_CREATE(fs_serv);
     //ENV_CREATE(user_fstest);
-    ENV_CREATE(user_testpiperace);
+    //ENV_CREATE(user_testpiperace);
     //ENV_CREATE(user_testpipe);
+    //ENV_CREATE(user_testfdsharing);
+    ENV_CREATE(user_test_console);
     //ENV_CREATE(user_test_fork);
     // 初始化进程
     //ENV_CREATE(user_test_ipc);

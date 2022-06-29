@@ -43,7 +43,7 @@ int fd_alloc(struct Fd **fd)
 	for (fdno = 0; fdno < MAXFD - 1; fdno++)
 	{
 		va = INDEX2FD(fdno);
-		//writef("fd_alloc: va address is 0x%lx\n",va);
+		// writef("fd_alloc: va address is 0x%lx\n",va);
 
 		if ((vud[va / PUDMAP] & PTE_VALID) == 0)
 		{
@@ -105,7 +105,7 @@ int fd2num(struct Fd *fd)
 	return ((uint_64)fd - FDTABLE) / BY2PG;
 }
 
-int num2fd(int fd)
+struct Fd *num2fd(int fd)
 {
 	return fd * BY2PG + FDTABLE;
 }
@@ -152,7 +152,7 @@ int dup(int oldfdnum, int newfdnum)
 	ova = fd2data(oldfd);
 	nva = fd2data(newfd);
 
-	//writef("dup from %lx to %lx\n",oldfd, newfd);
+	// writef("dup from %lx to %lx\n",oldfd, newfd);
 
 	if (vud[PUDX(ova)] & PTE_VALID)
 	{
@@ -169,7 +169,7 @@ int dup(int oldfdnum, int newfdnum)
 			{
 				// should be no error here -- pd is already allocated
 				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-										 (pte & PTE_MASK) | (PTE_VALID | PTE_LIBRARY))) < 0)
+										 (pte & PTE_MASK) | (PTE_VALID))) < 0)
 				{
 					goto err;
 				}
@@ -178,7 +178,7 @@ int dup(int oldfdnum, int newfdnum)
 	}
 
 	if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
-							 (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID | PTE_LIBRARY))) < 0)
+							 (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID))) < 0)
 	{
 		goto err;
 	}
@@ -214,7 +214,7 @@ int read(int fdnum, void *buf, u_int n)
 	if ((r = fd_lookup(fdnum, &fd)) < 0)
 		return r;
 
-	//writef("read: fd_dev_id is %d\n",fd->fd_dev_id);
+	// writef("read: fd_dev_id is %d\n",fd->fd_dev_id);
 	if ((r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
 		return r;
 

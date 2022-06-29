@@ -5,7 +5,7 @@ USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o 
 
 CFLAGS += -nostdlib -static
 
-all: test_sys.x test_fork.x test_ipc.x fstest.x testpipe.x testpiperace.x $(USERLIB)
+all: test_sys.x test_fork.x test_ipc.x fstest.x testpipe.x testpiperace.x testfdsharing.x test_console.x $(USERLIB)
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<

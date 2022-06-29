@@ -99,14 +99,17 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             r = sys_ipc_can_send(tf->x[1], (u_int)tf->x[2], tf->x[3], tf->x[4]);
             break;
         case SYS_read_sd:
-            debug("syscall is sys_read_dev\n");
+            debug("syscall is sys_read_sd\n");
             r = sys_read_sd(tf->x[1], tf->x[2]);
             break;
         case SYS_write_sd:
-            debug("syscall is sys_read_dev\n");
+            debug("syscall is sys_write_sd\n");
             r = sys_write_sd(tf->x[1], tf->x[2]);
             break;
         case SYS_cgetc:
+            debug("syscall is sys_cgetc\n");
+            r = sys_cgetc();
+            break;
         default:
             printf("Unknown syscall id %d.\n", syscall_id);
             break;
