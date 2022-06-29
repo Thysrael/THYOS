@@ -43,7 +43,7 @@ int fd_alloc(struct Fd **fd)
 	for (fdno = 0; fdno < MAXFD - 1; fdno++)
 	{
 		va = INDEX2FD(fdno);
-		writef("fd_alloc: va address is 0x%lx\n",va);
+		//writef("fd_alloc: va address is 0x%lx\n",va);
 
 		if ((vud[va / PUDMAP] & PTE_VALID) == 0)
 		{
