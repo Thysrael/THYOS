@@ -21,6 +21,7 @@ void arm_init()
     mips_detect_memory();
     // 初始化虚拟地址
     arch_basic_init();
+    sd_init();
     // 初始化进程管理
     env_init();
 

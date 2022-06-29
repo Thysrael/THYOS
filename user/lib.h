@@ -41,6 +41,9 @@ void _user_panic(const char *, int, const char *, ...)
 
 #define user_panic(...) _user_panic(__FILE__, __LINE__, __VA_ARGS__)
 
+#define user_assert(x)	\
+	do {	if (!(x)) user_panic("assertion failed: %s", #x); } while (0)
+
 //------------------ print.c ------------------//
 
 #define LP_MAX_BUF 1000
