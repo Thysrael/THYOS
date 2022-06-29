@@ -30,12 +30,12 @@ int syscall_set_pgfault_handler(uint_32 envid, uint_64 func, uint_64 xstacktop)
 
 int syscall_mem_alloc(uint_32 envid, uint_64 va, uint_64 perm)
 {
-    return msyscall(SYS_mem_alloc, (uint_64)envid, va, (uint_64)perm, 0, 0);
+    return msyscall(SYS_mem_alloc, (uint_64)envid, va, perm, 0, 0);
 }
 
 int syscall_mem_map(uint_32 srcid, uint_64 srcva, uint_32 dstid, uint_64 dstva, uint_64 perm)
 {
-    return msyscall(SYS_mem_map, (uint_64)srcid, srcva, (uint_64)dstid, dstva, (uint_64)perm);
+    return msyscall(SYS_mem_map, (uint_64)srcid, srcva, (uint_64)dstid, dstva, perm);
 }
 
 int syscall_mem_unmap(uint_32 envid, uint_64 va)

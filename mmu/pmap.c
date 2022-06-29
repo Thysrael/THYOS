@@ -288,15 +288,13 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
     // 上面说错了，上面的认知应该来自指导书，指导书是错的，或者他用的是 block，这里是对的
     PERM = perm | PTE_VALID | PTE_NORMAL | PTE_AF | PTE_USER | PTE_ISH | PTE_TABLE;
-
     // Step 1: Get corresponding page table entry.
     pgdir_walk(pud, va, 0, &pgtable_entry);
-
     // pagetable_entry is exist and pagetable_entry is writable.
     if (pgtable_entry != 0 && (*pgtable_entry & PTE_VALID) != 0)
     {
         // If there is already a page mapped at `va`, call page_remove() to release this mapping.
-        if (pa2page(*pgtable_entry) != pp)
+        if (pe2page(*pgtable_entry) != pp)
         {
             page_remove(pud, va);
         }
@@ -344,9 +342,7 @@ struct Page *page_lookup(uint_64 *pud, uint_64 va, uint_64 **ppte)
     }
 
     /* Step 2: Get the corresponding Page struct. */
-
-    /* Hint: Use function `pa2page`, defined in include/pmap.h . */
-    ppage = pa2page(*pte);
+    ppage = pe2page(*pte);
     if (ppte)
     {
         *ppte = pte;

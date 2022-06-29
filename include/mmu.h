@@ -16,6 +16,10 @@
 #define PTEX(va) 	((((unsigned long)(va)) >> PTE_SHIFT) & 0x1ff)
 
 /*================== 页表标志位 =======================*/
+
+// 这个掩码可以取出页表项的权限位
+#define PTE_MASK           0xfff8000000000fff
+
 // 这位表示页表项或者页目录项是否有效
 #define PTE_VALID           1
 // 这位表示该项是页目录项，则置1,是页表项，则置0
@@ -40,10 +44,14 @@
 #define PTE_ISH             (3 << 8)
 // AF (Access Flag) 标志位
 #define PTE_AF 				(1 << 10)
-// 不可执行标记 (PrivilegedExecute-Never)
+// 软件权限位，不可执行标记 (PrivilegedExecute-Never)
 #define PTE_PXN 			(1UL << 53)
-// EL0 不可执行标记 (Unprivileged Execute-Never)
+// 软件权限位，EL0 不可执行标记 (Unprivileged Execute-Never)
 #define PTE_UXN 			(1UL << 54)
+// 软件权限位，copy on write
+#define PTE_COW             (1UL << 55)
+// 软件权限位，共享页面
+#define PTE_LIBRARY         (1UL << 56)
 
 /* Rounding; only works for n = power of two */
 #define ROUND(a, n) (((((unsigned long)(a)) + (n)-1)) & ~((n)-1))

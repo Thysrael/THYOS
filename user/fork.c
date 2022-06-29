@@ -20,13 +20,14 @@ static void pgfault(uint_64 va, struct Trapframe *tf)
 {
     uint_64 tmp = USTACKTOP;
 
-    uint_64 perm = vpt[VPN(va)] & 0xfff;
+    uint_64 perm = vpt[VPN(va)] & PTE_MASK;
 
-    if ((perm & PTE_RO) == 0)
+    if ((perm & PTE_COW) == 0)
     {
-        user_panic("pgfault err: COW not found");
+        user_panic("perm is 0x%lx, pgfault err: COW not found", perm);
     }
     perm -= PTE_RO;
+    perm -= PTE_COW;
     // map the new page at a temporary place
     syscall_mem_alloc(0, tmp, perm);
     // copy the content
@@ -45,14 +46,16 @@ static void duppage(u_int envid, uint_64 pn)
     // addr is the va we need to process
     uint_64 addr = pn << PTE_SHIFT;
     // *vpt + pn is the adress of page_table_entry which is corresponded to the va
-    uint_64 perm = vpt[pn] & 0xfff;
+    uint_64 perm = vpt[pn] & PTE_MASK;
     // if the page can be write and is not shared, so the page need to be COW and map twice
     int flag = 0;
-    if ((perm & PTE_RO) == 0)
+    if ((perm & PTE_RO) == 0 && !(perm & PTE_LIBRARY))
     {
         perm |= PTE_RO;
+        perm |= PTE_COW;
         flag = 1;
     }
+    
     syscall_mem_map(0, addr, envid, addr, perm);
     if (flag)
     {

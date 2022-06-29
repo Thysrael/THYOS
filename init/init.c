@@ -25,7 +25,7 @@ void arm_init()
     env_init();
 
     // 初始化进程
-    ENV_CREATE(test_fork);
+    ENV_CREATE(test_ipc);
     // ENV_CREATE(test_sys);
     // 初始化异常向量表
     irq_vector_init();

@@ -31,8 +31,21 @@ static inline uint_64 page2pa(struct Page *pp)
 static inline struct Page * pa2page(u_long pa)
 {
     if (PPN(pa) >= npage)
-        panic("pa2page called with invalid pa: %x", pa);
+    {
+        printf("PTE_ADDR(pa) = 0x%lx\n", PTE_ADDR(pa));
+        panic("pa2page called with invalid pa: 0x%lx", pa);
+    }
     return &pages[PPN(pa)];
+}
+
+static inline struct Page *pe2page(u_long pa)
+{
+    if (PPN(PTE_ADDR(pa)) >= npage)
+    {
+        printf("PTE_ADDR(pa) = 0x%lx\n", PTE_ADDR(pa));
+        panic("pa2page called with invalid pa: 0x%lx", pa);
+    }
+    return &pages[PPN(PTE_ADDR(pa))];
 }
 
 static inline u_long page2kva(struct Page *pp)

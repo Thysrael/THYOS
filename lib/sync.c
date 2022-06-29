@@ -64,11 +64,11 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             break;
         case SYS_mem_alloc:
             debug("syscall is sys_mem_alloc\n");
-            r = sys_mem_alloc((u_int)tf->x[1], tf->x[2], (u_int)tf->x[3]);
+            r = sys_mem_alloc((u_int)tf->x[1], tf->x[2], tf->x[3]);
             break;
         case SYS_mem_map:
             debug("syscall is sys_mem_map\n");
-            r = sys_mem_map((u_int)tf->x[1], tf->x[2], (u_int)tf->x[3], tf->x[4], (u_int)tf->x[5]);
+            r = sys_mem_map((u_int)tf->x[1], tf->x[2], (u_int)tf->x[3], tf->x[4], tf->x[5]);
             break;
         case SYS_mem_unmap:
             debug("syscall is sys_mem_umap\n");
@@ -96,7 +96,7 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             break;
         case SYS_ipc_can_send:
             debug("syscall is sys_ipc_can_send\n");
-            r = sys_ipc_can_send(tf->x[1], (u_int)tf->x[2], tf->x[3], (u_int)tf->x[4]);
+            r = sys_ipc_can_send(tf->x[1], (u_int)tf->x[2], tf->x[3], tf->x[4]);
             break;
         case SYS_write_dev:
             debug("syscall is sys_write_dev\n");
