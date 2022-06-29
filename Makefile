@@ -46,7 +46,7 @@ clean:
 		do 											\
 			$(MAKE) --directory=$$module clean;		\
 		done;										\
-	rm -rf *.o *~ $(vmlinux_elf) $(vmlinux_img) *.symbol
+	rm -rf *.o *~ $(vmlinux_elf) $(vmlinux_img) *.symbol *.img
 
 run:
 	qemu-system-aarch64 -M raspi3 -serial null -serial stdio -kernel $(vmlinux_img) -drive file=fs.img,format=raw
