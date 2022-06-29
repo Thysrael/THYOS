@@ -324,8 +324,8 @@ void umain(void)
 
 	serve_init();
 	fs_init();
-	fs_test();
-	writef("FS test pass.\n");
+	// fs_test();
+	// writef("FS test pass.\n");
 
 	serve();
 }

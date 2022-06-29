@@ -18,19 +18,15 @@ USERLIB :=	$(user_dir)/entrance.o 	\
 		$(user_dir)/fsipc.o 		\
 		$(user_dir)/fprintf.o		\
 		$(user_dir)/pipe.o 			\
+		$(user_dir)/spawn.o 		\
 		$(user_dir)/console.o
 
 FSLIB := fs.o ide.o test.o
 
-USERAPPS := $(user_dir)/num.b  \
-			$(user_dir)/echo.b \
-			$(user_dir)/ls.b \
-			$(user_dir)/sh.b  \
-			$(user_dir)/cat.b \
-		 	$(user_dir)/testptelibrary.b
+USERAPPS := $(user_dir)/sh.b  
 
 
-FSIMGFILES := motd newmotd #$(user_dir)/testarg.b $(user_dir)/init.b $(USERAPPS)
+FSIMGFILES := motd newmotd  $(user_dir)/init.b $(USERAPPS)
 
 CFLAGS += -nostdlib -static
 
