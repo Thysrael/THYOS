@@ -51,7 +51,7 @@ void serve_init(void)
 int open_alloc(struct Open **o)
 {
 	int i, r;
-	writef("[serve] ok0\n");
+	//writef("[serve] ok0\n");
 
 	// Find an available open-file table entry
 	for (i = 0; i < MAXOPEN; i++)
@@ -67,12 +67,12 @@ int open_alloc(struct Open **o)
 		case 1:
 			opentab[i].o_fileid += MAXOPEN;
 			*o = &opentab[i];
-			writef("[serve] ok1\n");
+			//writef("[serve] ok1\n");
 			user_bzero((void *)opentab[i].o_ff, BY2PG);
 			return (*o)->o_fileid;
 		}
 	}
-	writef("[serve] ok\n");
+	//writef("[serve] ok\n");
 
 	return -E_MAX_OPEN;
 }
@@ -100,7 +100,7 @@ int open_lookup(u_int envid, u_int fileid, struct Open **po)
 
 void serve_open(u_int envid, struct Fsreq_open *rq)
 {
-	writef("serve_open %x %lx 0x%x\n", envid, (uint_64)rq->req_path, rq->req_omode);
+	//writef("serve_open %x %lx 0x%x\n", envid, (uint_64)rq->req_path, rq->req_omode);
 
 	u_char path[MAXPATHLEN];
 	struct File *f;
@@ -138,7 +138,9 @@ void serve_open(u_int envid, struct Fsreq_open *rq)
 	ff->f_fd.fd_omode = o->o_mode;
 	ff->f_fd.fd_dev_id = devfile.dev_id;
 
-	ipc_send(envid, 0, (uint_64)o->o_ff, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
+	//writef("fs_serv fd_dev_id %d\n",ff->f_fd.fd_dev_id);
+
+	ipc_send(envid, 0, (uint_64)o->o_ff, PTE_VALID /*| PTE_LIBRARY*/);
 }
 
 void serve_map(u_int envid, struct Fsreq_map *rq)
@@ -166,7 +168,7 @@ void serve_map(u_int envid, struct Fsreq_map *rq)
 		return;
 	}
 
-	ipc_send(envid, 0, (uint_64)blk, PTE_VALID | PTE_RO /*| PTE_LIBRARY*/);
+	ipc_send(envid, 0, (uint_64)blk, PTE_VALID | PTE_LIBRARY);
 }
 
 void serve_set_size(u_int envid, struct Fsreq_set_size *rq)
@@ -261,11 +263,11 @@ void serve(void)
 
 		req = ipc_recv(&whom, REQVA, &perm);
 
-		writef("requirement got!\n");
+		//writef("requirement got!\n");
 		// All requests must contain an argument page
 		if (!(perm & PTE_VALID))
 		{
-			writef("Invalid request from %08x: no argument page\n", whom);
+			//writef("Invalid request from %08x: no argument page\n", whom);
 			continue; // just leave it hanging, waiting for the next request.
 		}
 

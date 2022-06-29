@@ -35,7 +35,7 @@ int open(const char *path, int mode)
 	struct Filefd *ffd;
 	u_int size, fileid;
 	int r;
-	u_int va;
+	uint_64 va;
 	u_int i;
 
 	// Step 1: Alloc a new Fd, return error code when fail to alloc.
@@ -46,7 +46,7 @@ int open(const char *path, int mode)
 
 	// Step 2: Get the file descriptor of the file to open.
 	// Hint: Read fsipc.c, and choose a function.
-	writef("user thread issue a ipc requirement with open %s...\n",path);
+	//writef("user thread issue a ipc requirement with open %s...\n",path);
 	r = fsipc_open(path, mode, fd);
 	if (r)
 		return r;

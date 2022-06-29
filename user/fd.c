@@ -43,6 +43,7 @@ int fd_alloc(struct Fd **fd)
 	for (fdno = 0; fdno < MAXFD - 1; fdno++)
 	{
 		va = INDEX2FD(fdno);
+		writef("fd_alloc: va address is 0x%lx\n",va);
 
 		if ((vud[va / PUDMAP] & PTE_VALID) == 0)
 		{
@@ -210,6 +211,7 @@ int read(int fdnum, void *buf, u_int n)
 	if ((r = fd_lookup(fdnum, &fd)) < 0)
 		return r;
 
+	//writef("read: fd_dev_id is %d\n",fd->fd_dev_id);
 	if ((r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
 		return r;
 

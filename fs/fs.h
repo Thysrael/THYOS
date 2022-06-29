@@ -10,10 +10,10 @@
 
 /* Disk block n, when in memory, is mapped into the file system
  * server's address space at DISKMAP+(n*BY2BLK). */
-#define DISKMAP		0x40000000
+#define DISKMAP		0x800000000
 
 /* Maximum disk size we can handle (1GB) */
-#define DISKMAX		0x60000000
+#define DISKMAX		0x900000000
 
 /* ide.c */
 void ide_read(u_int diskno, u_int secno, void *dst, u_int nsecs);

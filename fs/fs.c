@@ -27,7 +27,7 @@ uint_64 diskaddr(u_int blockno)
 
 // Overview:
 //	Check if this virtual address is mapped to a block. (check PTE_V bit)
-u_int va_is_mapped(u_int v)
+u_int va_is_mapped(uint_64 v)
 {
 	if (!(vud[PUDX(v)] & PTE_VALID))
 	{
@@ -53,7 +53,7 @@ u_int va_is_mapped(u_int v)
 //	Check if this disk block is mapped to a vitrual memory address. (check corresponding `va`)
 u_int block_is_mapped(u_int blockno)
 {
-	u_int va = diskaddr(blockno);
+	uint_64 va = diskaddr(blockno);
 	if (va_is_mapped(va))
 	{
 		return va;
