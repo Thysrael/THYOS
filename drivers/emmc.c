@@ -47,13 +47,13 @@ struct block_device *emmc_dev;
 void sd_read_fixed(u_int64_t blockno, void *buffer)
 {
     sd_read(emmc_dev, buffer, 512, blockno);
-    printf("sd_read_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
+    //printf("sd_read_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
 }
 
 void sd_write_fixed(u_int64_t blockno, void *buffer)
 {
     sd_write(emmc_dev, buffer, 512, blockno);
-    printf("sd_write_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
+    //printf("sd_write_fixed: ended with blockno: %d, addr: 0x%lx\n", blockno, buffer);
 }
 
 void sd_init()
@@ -100,20 +100,20 @@ void sd_free(void *address)
 }
 static inline uint32_t read_word(const uint8_t *buf, int offset)
 {
-    uint32_t b3 = buf[offset + 0] & 0xff;
-    uint32_t b2 = buf[offset + 1] & 0xff;
-    uint32_t b1 = buf[offset + 2] & 0xff;
-    uint32_t b0 = buf[offset + 3] & 0xff;
+    uint32_t b0 = buf[offset + 0] & 0xff;
+    uint32_t b1 = buf[offset + 1] & 0xff;
+    uint32_t b2 = buf[offset + 2] & 0xff;
+    uint32_t b3 = buf[offset + 3] & 0xff;
 
     return b0 | (b1 << 8) | (b2 << 16) | (b3 << 24);
 }
 static inline void write_word(uint32_t val, uint8_t *buf, int offset)
 {
     //printf("buf addr is 0x%lx with offset %d\n",buf,offset);
-    buf[offset + 3] = val & 0xff;
-    buf[offset + 2] = (val >> 8) & 0xff;
-    buf[offset + 1] = (val >> 16) & 0xff;
-    buf[offset + 0] = (val >> 24) & 0xff;
+    buf[offset + 0] = val & 0xff;
+    buf[offset + 1] = (val >> 8) & 0xff;
+    buf[offset + 2] = (val >> 16) & 0xff;
+    buf[offset + 3] = (val >> 24) & 0xff;
 }
 
 #define TIMEOUT_WAIT(stop_if_true, usec)     \

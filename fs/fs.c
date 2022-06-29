@@ -309,6 +309,7 @@ void read_super(void)
 	super = blk;
 
 	// Step 2: Check fs magic nunber.
+	writef("got magic number %lx\n",super->s_magic);
 	if (super->s_magic != FS_MAGIC)
 	{
 		user_panic("bad file system magic number %lx %lx", super->s_magic, FS_MAGIC);
@@ -607,11 +608,11 @@ int dir_lookup(struct File *dir, char *name, struct File **file)
 		// If we find the target file, set the result to *file and set f_dir field.
 		for (j = 0; j < FILE2BLK; ++j)
 		{
-			for(int k = 0 ; k< 128;k++)
-			{
-				writef("%c",f[j].f_name[k]);
-			}
-			writef("\n");
+			// for(int k = 0 ; k< 128;k++)
+			// {
+			// 	writef("%c",f[j].f_name[k]);
+			// }
+			// writef("\n");
 			if (strcmp(name, f[j].f_name) == 0)
 			{
 				*file = f + j;
@@ -709,7 +710,7 @@ int walk_path(char *path, struct File **pdir, struct File **pfile, char *lastele
 
 	*pfile = 0;
 
-	writef("%s\n", path);
+	//writef("%s\n", path);
 	// find the target file by name recursively.
 	while (*path != '\0')
 	{
@@ -737,7 +738,7 @@ int walk_path(char *path, struct File **pdir, struct File **pfile, char *lastele
 
 		if ((r = dir_lookup(dir, name, &file)) < 0)
 		{
-			writef("%s %d\n",name,r);
+			//writef("%s %d\n",name,r);
 			if (r == -E_NOT_FOUND && *path == '\0')
 			{
 				if (pdir)

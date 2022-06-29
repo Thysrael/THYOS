@@ -43,6 +43,7 @@ struct Block {
 
 // reverse: mutually transform between little endian and big endian.
 void reverse(uint32_t *p) {
+    return;
     uint8_t *x = (uint8_t *) p;
     uint32_t y = *(uint32_t *) x;
     x[3] = y & 0xFF;
