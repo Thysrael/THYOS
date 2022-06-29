@@ -107,6 +107,9 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             r = sys_write_sd(tf->x[1], (void *)tf->x[2]);
             break;
         case SYS_cgetc:
+            debug("syscall is sys_cgetc\n");
+            r = sys_cgetc();
+            break;
         default:
             printf("Unknown syscall id %d.\n", syscall_id);
             break;
@@ -159,15 +162,20 @@ void page_fault_handler(struct Trapframe *tf)
         tf->sp <= (curenv->env_xstacktop - 1))
     {
         tf->sp = tf->sp - sizeof(struct Trapframe);
+        debug("kernel page_fault_handler 1\n");
         bcopy(&PgTrapFrame, (void *)tf->sp, sizeof(struct Trapframe));
+        debug("kernel page_fault_handler 2\n");
     }
     else
     {
         tf->sp = curenv->env_xstacktop - sizeof(struct Trapframe);
+        debug("kernel page_fault_handler 3\n");
         bcopy(&PgTrapFrame, (void *)curenv->env_xstacktop - sizeof(struct Trapframe), sizeof(struct Trapframe));
+        debug("kernel page_fault_handler 4\n");
     }
     // Set EPC to a proper value in the trapframe
     tf->elr = curenv->env_pgfault_handler;
 
+    debug("kernel page_fault_handler exit\n");
     return;
 }

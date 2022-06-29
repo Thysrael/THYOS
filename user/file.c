@@ -1,7 +1,6 @@
 #include "lib.h"
 #include <fs.h>
 #include "fd.h"
-#define debug 0
 
 static int file_close(struct Fd *fd);
 static int file_read(struct Fd *fd, void *buf, u_int n, u_int offset);
@@ -174,10 +173,10 @@ int read_map(int fdnum, u_int offset, void **blk)
         return -E_NO_DISK;
     }
 
-    if (!(vud[PUDX(va)] & PTE_VALID) || !(vpt[VPN(va)] & PTE_VALID) || !(vmd[PMDX(va)] & PTE_VALID))
-    {
-        return -E_NO_DISK;
-    }
+	if (!(vud[PUDX(va)] & PTE_VALID) || !(vpt[VPN(va)] & PTE_VALID) || !(vmd[(PUDX(va) << 9) | PMDX(va)] & PTE_VALID))
+	{
+		return -E_NO_DISK;
+	}
 
     *blk = (void *)va;
     return 0;

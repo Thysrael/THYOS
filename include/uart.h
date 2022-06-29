@@ -5,5 +5,6 @@ void uart_init();
 extern void uart_send(unsigned int c);
 char uart_getc();
 void uart_puts(char *s);
+int uart_getc_non_block();
 
 #endif

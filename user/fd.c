@@ -1,17 +1,18 @@
 #include "lib.h"
 #include "fd.h"
-#include <mmu.h>
-#include <env.h>
+#include "mmu.h"
+#include "env.h"
 
 extern struct Env *env;
 extern uint_64 *vpt;
 extern uint_64 *vmd;
 extern uint_64 *vud;
-static struct Dev *devtab[] = 
+
+static struct Dev *devtab[] =
 {
     &devfile,
-    //&devcons,
-    //&devpipe,
+    &devcons,
+    &devpipe,
     0
 };
 
@@ -42,10 +43,11 @@ int fd_alloc(struct Fd **fd)
     uint_64 va;
     uint_64 fdno;
 
-    for (fdno = 0; fdno < MAXFD - 1; fdno++)
-    {
-        va = INDEX2FD(fdno);
-        // writef("fd_alloc: va address is 0x%lx\n",va);
+
+	for (fdno = 0; fdno < MAXFD - 1; fdno++)
+	{
+		va = INDEX2FD(fdno);
+		// writef("fd_alloc: va address is 0x%lx\n",va);
 
         if ((vud[va / PUDMAP] & PTE_VALID) == 0)
         {
@@ -88,7 +90,8 @@ int fd_lookup(int fdnum, struct Fd **fd)
     va = INDEX2FD(fdnum);
 
     if ((vpt[va / BY2PG] & PTE_VALID) != 0)
-    { // the fd is used
+    { 
+        // the fd is used
         *fd = (struct Fd *)va;
         return 0;
     }
@@ -106,9 +109,9 @@ int fd2num(struct Fd *fd)
     return ((uint_64)fd - FDTABLE) / BY2PG;
 }
 
-int num2fd(int fd)
+struct Fd *num2fd(int fd)
 {
-    return fd * BY2PG + FDTABLE;
+    return (struct Fd *)(fd * BY2PG + FDTABLE);
 }
 
 int close(int fdnum)
@@ -153,35 +156,36 @@ int dup(int oldfdnum, int newfdnum)
     ova = fd2data(oldfd);
     nva = fd2data(newfd);
 
-    if (vud[PUDX(ova)] & PTE_VALID)
-    {
-        for (i = 0; i < BY2PG * 4096; i += BY2PG)
-        {
-            pmd = vmd[PMDX(ova + i)];
-            if (!(pmd & PTE_VALID))
-            {
-                i += 512 * BY2PG;
-            }
-            pte = vpt[VPN(ova + i)];
 
-            if (pte & PTE_VALID)
-            {
-                // should be no error here -- pd is already allocated
-                if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-                                         (pte & 0xfff) & (PTE_VALID | PTE_LIBRARY))) < 0)
-                {
-                    goto err;
-                }
-            }
-        }
-    }
+	if (vud[PUDX(ova)] & PTE_VALID)
+	{
+		for (i = 0; i < BY2PG * 4096; i += BY2PG)
+		{
+			pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
+			if (!(pmd & PTE_VALID))
+			{
+				i += 512 * BY2PG;
+			}
+			pte = vpt[VPN(ova + i)];
 
-    if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
-                             (vpt[VPN(oldfd)]) & (PTE_VALID | PTE_LIBRARY))) < 0)
-    {
-        goto err;
-    }
-    return newfdnum;
+			if (pte & PTE_VALID)
+			{
+				// should be no error here -- pd is already allocated
+				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
+										 (pte & PTE_MASK) | (PTE_VALID))) < 0)
+				{
+					goto err;
+				}
+			}
+		}
+	}
+
+	if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
+							 (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID))) < 0)
+	{
+		goto err;
+	}
+	return newfdnum;
 
 err:
     syscall_mem_unmap(0, (uint_64)newfd);

@@ -27,7 +27,8 @@
         "istream": "c",
         "sstream": "c",
         "stop_token": "c",
-        "streambuf": "c"
+        "streambuf": "c",
+        "syscall_all.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

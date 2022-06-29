@@ -1,16 +1,16 @@
 #ifndef _USER_FD_H_
-#define _USER_FD_H_ 1
+#define _USER_FD_H_ 
 
-#include <types.h>
+#include "types.h"
 #include <fs.h>
 #include "mmu.h"
 
 #define MAXFD 512
 #define FILEBASE 0x800000000
-#define FDTABLE (FILEBASE - (BY2PG * 512))
+#define FDTABLE (FILEBASE - (PMDMAP))
 
-#define INDEX2FD(i) (FDTABLE + (i)*BY2PG)
-#define INDEX2DATA(i) (FILEBASE + (i)*BY2PG * 512)
+#define INDEX2FD(i) (FDTABLE + (i) * BY2PG)
+#define INDEX2DATA(i) (FILEBASE + (i) * PMDMAP)
 
 // pre-declare for forward references
 struct Fd;
@@ -31,6 +31,10 @@ struct Dev
     int (*dev_stat)(struct Fd *, struct Stat *);
     int (*dev_seek)(struct Fd *, u_int);
 };
+
+extern struct Dev devcons;
+extern struct Dev devfile;
+extern struct Dev devpipe;
 
 // file descriptor
 struct Fd
@@ -62,9 +66,6 @@ int fd_lookup(int fdnum, struct Fd **fd);
 uint_64 fd2data(struct Fd *);
 int fd2num(struct Fd *);
 int dev_lookup(int dev_id, struct Dev **dev);
-int num2fd(int fd);
-extern struct Dev devcons;
-extern struct Dev devfile;
-extern struct Dev devpipe;
+struct Fd *num2fd(int fd);
 
 #endif

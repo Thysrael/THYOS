@@ -6,10 +6,33 @@
 #include "sysid.h"
 #include "fd.h"
 #include <stdarg.h>
+#include "env.h"
+
+extern struct Env *env;
+extern struct Env *envs;
+extern uint_64 *vpt;
+extern uint_64 *vmd;
+extern uint_64 *vud;
+
+#define USED(x) (void)(x)
+
+//------------------ console.c -----------------//
+
+int iscons(int fdnum);
+
+int opencons(void);
+
+int cons_read(struct Fd *fd, void *vbuf, u_int n, u_int offset);
+
+int cons_write(struct Fd *fd, const void *vbuf, u_int n, u_int offset);
+
+int cons_close(struct Fd *fd);
+
+int cons_stat(struct Fd *fd, struct Stat *stat);
 
 //-------------------- fd.c -------------------//
 
-int close(int fd);
+    int close(int fd);
 
 int read(int fd, void *buf, u_int nbytes);
 
@@ -77,7 +100,15 @@ void user_bzero(void *v, u_int n);
 
 u_short pageref(void *v);
 
+void wait(u_int envid);
+
 void libmain(int argc, char **argv);
+
+//------------------ pipe.c -----------------//
+
+int pipe(int pfd[2]);
+
+int pipeisclosed(int fdnum);
 
 //------------------ printf.c -----------------//
 

@@ -7,6 +7,7 @@
 #include "fd.h"
 #include "lib.h"
 #include "mmu.h"
+#include "env.h"
 
 struct Open
 {
@@ -115,7 +116,7 @@ void serve_open(u_int envid, struct Fsreq_open *rq)
 	if ((r = open_alloc(&o)) < 0)
 	{
 		user_panic("open_alloc failed: %d, invalid path: %s", r, path);
-		writef("[serve] ok1\n");
+		//writef("[serve] ok1\n");
 		ipc_send(envid, r, 0, 0);
 	}
 
@@ -310,7 +311,6 @@ void serve(void)
 	}
 }
 
-#include "env.h"
 extern struct Env *env;
 extern struct Env *envs;
 

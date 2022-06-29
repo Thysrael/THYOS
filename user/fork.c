@@ -18,6 +18,7 @@ extern struct Env *env;
 
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
+    writef("pgfault @0x%lx!\n",va);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & PTE_MASK;
@@ -38,8 +39,6 @@ static void pgfault(uint_64 va, struct Trapframe *tf)
     syscall_mem_unmap(0, tmp);
 }
 
-
-
 // 我找不到 library 属性，就去掉了，这可能会造成原有的共享页面达不到效果
 static void duppage(u_int envid, uint_64 pn)
 {
@@ -49,39 +48,43 @@ static void duppage(u_int envid, uint_64 pn)
     uint_64 perm = vpt[pn] & PTE_MASK;
     // if the page can be write and is not shared, so the page need to be COW and map twice
     int flag = 0;
-    if ((perm & PTE_RO) == 0 && !(perm & PTE_LIBRARY))
+    if (((perm & PTE_RO) == 0 || (perm & PTE_COW)) && !(perm & PTE_LIBRARY))
     {
         perm |= PTE_RO;
         perm |= PTE_COW;
         flag = 1;
     }
-    
+
+    writef("addr 0x%lx, envid 0x%x, perm 0x%lx flag %d\n", addr, envid, perm, flag);
     syscall_mem_map(0, addr, envid, addr, perm);
+    //writef("flag: %d\n", flag);
     if (flag)
     {
         syscall_mem_map(0, addr, 0, addr, perm);
+        //writef("q\n");
     }
 }
 
 extern void __asm_pgfault_handler(void);
-void (*__pgfault_handler)(uint_64, struct Trapframe*);
+void (*__pgfault_handler)(uint_64, struct Trapframe *);
 
 int fork(void)
 {
     int newenvid;
     uint_64 i, j, k;
-
+    //writef("1\n");
     // The parent installs pgfault using set_pgfault_handler
     set_pgfault_handler(pgfault);
-
     // alloc a new alloc
     newenvid = msyscall(SYS_env_alloc, 0, 0, 0, 0, 0);
-
+    //writef("6\n");
+    // writef("3\n");
     if (newenvid == 0)
     {
         env = envs + ENVX(syscall_getenvid());
         return 0;
     }
+    //writef("7\n");
 
     for (i = 0; i <= PUDX(USTACKTOP); i++)
     {
@@ -89,7 +92,7 @@ int fork(void)
         {
             continue;
         }
-        
+
         for (j = 0; j < 512; j++)
         {
             if ((vmd[(i << 9) + j] & PTE_VALID) == 0)
@@ -98,7 +101,8 @@ int fork(void)
             }
             for (k = 0; k < 512; k++)
             {
-                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0 || (((i << 18) + (j << 9) + k) << 12) >= USTACKTOP)
+
+                if (((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) == 0) || ((((i << 18) + (j << 9) + k) << 12) >= USTACKTOP))
                 {
                     continue;
                 }
@@ -106,27 +110,32 @@ int fork(void)
             }
         }
     }
+    //writef("8\n");
 
     syscall_mem_alloc(newenvid, UXSTACKTOP - BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
+    syscall_mem_alloc(newenvid, UXSTACKTOP - 2 * BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
     syscall_set_pgfault_handler(newenvid, (uint_64)__asm_pgfault_handler, UXSTACKTOP);
     syscall_set_env_status(newenvid, ENV_RUNNABLE);
+    //writef("9\n");
     return newenvid;
 }
 
 void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *))
 {
+    //writef("4\n");
     if (__pgfault_handler == 0)
     {
         // map one page of exception stack with top at UXSTACKTOP
         // register assembly handler and stack with operating system
         if (syscall_mem_alloc(0, UXSTACKTOP - BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW) < 0 ||
+            syscall_mem_alloc(0, UXSTACKTOP - 2 * BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW) < 0 ||
             syscall_set_pgfault_handler(0, (uint_64)__asm_pgfault_handler, UXSTACKTOP) < 0)
         {
             writef("cannot set pgfault handler\n");
             return;
         }
+        __pgfault_handler = fn;
     }
-
+    //writef("5\n");
     // Save handler pointer for assembly to call.
-    __pgfault_handler = fn;
 }

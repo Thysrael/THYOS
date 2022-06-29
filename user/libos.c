@@ -88,6 +88,17 @@ u_short pageref(void *v)
     return pages[PPN(pte)].pp_ref;
 }
 
+void wait(u_int envid)
+{
+    struct Env *e;
+
+    e = &envs[ENVX(envid)];
+    while (e->env_id == envid && e->env_status != ENV_FREE)
+    {
+        syscall_yield();
+    }
+}
+
 extern void umain(int argc, char **argv);
 
 void libmain(int argc, char **argv)

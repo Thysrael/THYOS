@@ -28,4 +28,5 @@ void sys_ipc_recv(uint_64 dstva);
 int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm);
 int sys_write_sd(uint_64 blockno, void* data_addr);
 int sys_read_sd(uint_64 blockno, void* data_addr);
+int sys_cgetc();
 #endif

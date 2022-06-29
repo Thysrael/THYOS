@@ -2,8 +2,6 @@
 #include <fs.h>
 #include <env.h>
 
-#define debug 0
-
 extern u_char fsipcbuf[BY2PG];		// page-aligned, declared in entry.S
 
 // Overview:

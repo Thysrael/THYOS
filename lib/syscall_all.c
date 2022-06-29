@@ -47,7 +47,7 @@ int sys_env_destroy(uint_32 envid)
     {
         return r;
     }
-    
+
     env_destroy(e);
     return 0;
 }
@@ -168,7 +168,7 @@ int sys_mem_unmap(u_int envid, uint_64 va)
     int ret = 0;
     struct Env *env;
 
-    ret = envid2env(envid, &env, 1); 
+    ret = envid2env(envid, &env, 1);
     if (ret < 0)
     {
         panic("sys_mem_alloc:failed to get the target env\n");
@@ -302,16 +302,22 @@ int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm)
     return 0;
 }
 
-int sys_write_sd(uint_64 blockno, void* data_addr)
+int sys_write_sd(uint_64 blockno, void *data_addr)
 {
-    //printf("sys_write_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
-    sd_write_fixed(blockno,data_addr);
+    // printf("sys_write_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
+    sd_write_fixed(blockno, data_addr);
     return 0;
 }
 
-int sys_read_sd(uint_64 blockno, void* data_addr)
+int sys_read_sd(uint_64 blockno, void *data_addr)
 {
-    //printf("sys_read_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
-    sd_read_fixed(blockno,data_addr);
+    // printf("sys_read_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
+    sd_read_fixed(blockno, data_addr);
     return 0;
+}
+
+// getchar
+int sys_cgetc(void)
+{
+    return uart_getc_non_block();
 }

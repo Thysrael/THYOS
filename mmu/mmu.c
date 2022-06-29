@@ -77,6 +77,5 @@ void init_page_table()
 
     kernel_pud = pud;
     user_pud = pud;
-    
     return;
 }
