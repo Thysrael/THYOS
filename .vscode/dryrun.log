@@ -33,34 +33,7 @@ make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/mmu'
 make --directory=user
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/user'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o pipe.o pipe.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_sys.o test_sys.c
-aarch64-none-elf-ld -o test_sys.b  -G 0 -static -n -nostdlib -T ./user.lds test_sys.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
-aarch64-none-elf-objdump -alD test_sys.b > ./test_sys.b.symbol
-chmod +x ./bintoc
-./bintoc test_sys test_sys.b > test_sys.b.c~ && mv -f test_sys.b.c~ test_sys.b.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_sys.x test_sys.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_fork.o test_fork.c
-aarch64-none-elf-ld -o test_fork.b  -G 0 -static -n -nostdlib -T ./user.lds test_fork.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
-aarch64-none-elf-objdump -alD test_fork.b > ./test_fork.b.symbol
-chmod +x ./bintoc
-./bintoc test_fork test_fork.b > test_fork.b.c~ && mv -f test_fork.b.c~ test_fork.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_fork.x test_fork.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_ipc.o test_ipc.c
-aarch64-none-elf-ld -o test_ipc.b  -G 0 -static -n -nostdlib -T ./user.lds test_ipc.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
-aarch64-none-elf-objdump -alD test_ipc.b > ./test_ipc.b.symbol
-chmod +x ./bintoc
-./bintoc test_ipc test_ipc.b > test_ipc.b.c~ && mv -f test_ipc.b.c~ test_ipc.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_ipc.x test_ipc.b.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o fstest.o fstest.c
-aarch64-none-elf-ld -o fstest.b  -G 0 -static -n -nostdlib -T ./user.lds fstest.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
-aarch64-none-elf-objdump -alD fstest.b > ./fstest.b.symbol
-chmod +x ./bintoc
-./bintoc fstest fstest.b > fstest.b.c~ && mv -f fstest.b.c~ fstest.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o fstest.x fstest.b.c
-rm test_fork.b test_ipc.b.c fstest.b test_sys.b test_ipc.b test_sys.o fstest.b.c test_fork.o test_fork.b.c test_ipc.o test_sys.b.c fstest.o
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/user'
  
 make --directory=fs
@@ -71,26 +44,11 @@ gcc -I../include/ -I../user/ fsformat.c -o ./fsformat -m32
 chmod +x ./fsformat
 ./fsformat ../fs.img motd newmotd 
  
-echo user1 cc serv.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o serv.o serv.c
-echo user1 cc ../user/pipe.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/pipe.o ../user/pipe.c
-echo user1 cc fs.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o fs.o fs.c
-echo user1 cc ide.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ide.o ide.c
-echo user1 cc test.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o test.o test.c
- 
-aarch64-none-elf-ld -o serv.b  -G 0 -static -n -nostdlib -T ../user/user.lds serv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o fs.o ide.o test.o
-chmod +x ./bintoc
-./bintoc serv serv.b > serv.b.c~ && mv -f serv.b.c~ serv.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o serv.x serv.b.c
-rm serv.o fs.o ../user/pipe.o ide.o test.o
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/fs'
  
 aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x fs/*.x
 aarch64-none-elf-objcopy kernel.elf -O binary kernel.img
 aarch64-none-elf-objdump -alD kernel.elf > ./kernel.symbol
+ 
 make: Leaving directory '/home/dofingert/Source/OS/THYOS'
  

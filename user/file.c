@@ -176,7 +176,7 @@ read_map(int fdnum, u_int offset, void **blk)
 		return -E_NO_DISK;
 	}
 
-	if (!(vud[PUDX(va)] & PTE_VALID) || !(vpt[VPN(va)] & PTE_VALID) || !(vmd[PMDX(va)] & PTE_VALID))
+	if (!(vud[PUDX(va)] & PTE_VALID) || !(vpt[VPN(va)] & PTE_VALID) || !(vmd[(PUDX(va) << 9) | PMDX(va)] & PTE_VALID))
 	{
 		return -E_NO_DISK;
 	}

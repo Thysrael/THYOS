@@ -7,8 +7,9 @@ make --directory=drivers
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -54,7 +55,6 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 .VARIABLES := 
 # environment
 PWD = /home/dofingert/Source/OS/THYOS
- 
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -169,7 +169,6 @@ VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_langu
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 SDL_IM_MODULE = fcitx
- 
 # makefile
 SHELL = /bin/sh
 # environment
@@ -304,7 +303,6 @@ ELECTRON_RUN_AS_NODE = 1
 VSCODE_IPC_HOOK = /run/user/1000/vscode-c11d93c2-1.67.0-main.sock
 # environment
 TERM = xterm-256color
- 
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -344,6 +342,7 @@ PKGFILE_PROMPT_INSTALL_MISSING = 1
 # environment
 LC_IDENTIFICATION = zh_CN.UTF-8
 # variable set hash-table stats:
+ 
 # Load=164/1024=16%, Rehash=0, Collisions=30/201=15%
 
 # Pattern-specific Variable Values
@@ -397,7 +396,7 @@ uart.c:
 uart.o: uart.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'uart'
-#  Last modified 2022-06-29 20:32:19.339255178
+#  Last modified 2022-06-29 20:48:24.2803755
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -422,7 +421,6 @@ all: uart.o emmc.o
 
 # Not a target:
 emmc.c:
- 
 #  Implicit rule search has been done.
 #  Last modified 2022-06-29 17:36:15.171162214
 #  File has been updated.
@@ -431,7 +429,7 @@ emmc.c:
 emmc.o: emmc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'emmc'
-#  Last modified 2022-06-29 20:32:19.385921921
+#  Last modified 2022-06-29 20:48:24.327042209
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -451,9 +449,8 @@ emmc.o: emmc.c
 # strcache performance: lookups = 34 / hit rate = 41%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
- 
 make --directory=boot
  
 # GNU Make 4.3
@@ -462,9 +459,8 @@ make --directory=boot
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -506,7 +502,6 @@ verdi = verdi -full64
 KONSOLE_VERSION = 220402
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
- 
 # default
 .VARIABLES := 
 # environment
@@ -575,7 +570,6 @@ MFLAGS = -pqrRw
 QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
 # environment
 XDG_CONFIG_DIRS = /home/dofingert/.config/kdedefaults:/etc/xdg
- 
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -631,7 +625,6 @@ SHELL = /bin/sh
 # environment
 LESS_TERMCAP_us = [01;36m
 # environment
- 
 XMODIFIERS = @im=fcitx
 # environment
 LD_LIBRARY_PATH = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/NPI/lib/LINUX64_GNU_472:/home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64:
@@ -693,7 +686,6 @@ LESS = -R
 DESKTOP_SESSION = plasma
 # environment
 VERDI_DIR = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
- 
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # 'override' directive
@@ -744,6 +736,7 @@ CFLAGS := -Wall -ffreestanding -g
 DVE_HOME = /home/dofingert/Synopsys/vcs-mx/O-2018.09-SP2/gui/dve
 # environment
 COLORTERM = truecolor
+ 
 # environment
 NPI_PLATFORM = LINUX64_GNU_472
 # environment
@@ -787,7 +780,6 @@ LS_OPTIONS = --color=auto
 # environment
 SHELL_SESSION_ID = 2dbf4675244c4edaaebf9dec7c1c32ef
 # environment
- 
 KDE_SESSION_VERSION = 5
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
@@ -826,7 +818,7 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 enmmu.o: enmmu.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'enmmu'
-#  Last modified 2022-06-29 20:32:19.399255276
+#  Last modified 2022-06-29 20:48:24.340375555
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -835,7 +827,6 @@ enmmu.o: enmmu.S
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-19 16:57:52.925154308
 #  File has been updated.
 #  Successfully updated.
@@ -870,7 +861,7 @@ all: start.o enmmu.o
 start.o: start.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'start'
-#  Last modified 2022-06-29 20:32:19.395921937
+#  Last modified 2022-06-29 20:48:24.337042216
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -879,6 +870,7 @@ start.o: start.S
 # Not a target:
 enmmu.S:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-06-27 12:13:35.396741677
 #  File has been updated.
 #  Successfully updated.
@@ -886,7 +878,6 @@ enmmu.S:
 # Not a target:
 start.S:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-21 20:56:22.894117849
 #  File has been updated.
 #  Successfully updated.
@@ -910,9 +901,8 @@ start.S:
 # strcache performance: lookups = 34 / hit rate = 41%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
- 
 make --directory=init
  
 # GNU Make 4.3
@@ -923,7 +913,7 @@ make --directory=init
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -1004,7 +994,6 @@ COLORFGBG = 15;0
 # environment
 VCS_TARGET_ARCH = amd64
 # makefile
- 
 MAKEFLAGS = pqrRw
 # environment
 dve = dve -full64
@@ -1086,7 +1075,6 @@ MAKE_HOST := x86_64-pc-linux-gnu
 SDL_IM_MODULE = fcitx
 # makefile
 SHELL = /bin/sh
- 
 # environment
 LESS_TERMCAP_us = [01;36m
 # environment
@@ -1161,13 +1149,13 @@ QT_SCREEN_SCALE_FACTORS = HDMI-0=1;DP-0=1;DP-1=1;DP-2=1;DP-3=1;DP-4=1;DP-5=1;
 LOGNAME = dofingert
 # environment
 vcs64 = vcs -full64
- 
 # environment
 XDG_VTNR = 1
 # makefile
 .DEFAULT_GOAL := all
 # environment
 SYSTEMD_EXEC_PID = 1652
+ 
 # environment
 DISPLAY = :0
 # environment
@@ -1266,7 +1254,6 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 # No pattern-specific variable values.
 
 # Directories
- 
 
 # . (device 2066, inode 12133349): 7 files, no impossibilities.
 
@@ -1306,7 +1293,7 @@ clean:
 init.o: init.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'init'
-#  Last modified 2022-06-29 20:32:19.412588632
+#  Last modified 2022-06-29 20:48:24.357042236
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -1327,7 +1314,6 @@ all: init.o main.o
 # Not a target:
 main.c:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-19 16:57:52.925154308
 #  File has been updated.
 #  Successfully updated.
@@ -1335,14 +1321,14 @@ main.c:
 # Not a target:
 init.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 13:46:44.952276773
+#  Last modified 2022-06-29 20:46:24.613598278
 #  File has been updated.
 #  Successfully updated.
 
 main.o: main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-06-29 20:32:19.422588649
+#  Last modified 2022-06-29 20:48:24.367042245
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -1367,7 +1353,7 @@ main.o: main.c
 # strcache performance: lookups = 34 / hit rate = 44%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
  
 make --directory=lib
@@ -1378,12 +1364,12 @@ make --directory=lib
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
- 
 # environment
 GDK_BACKEND = x11
 # environment
@@ -1475,6 +1461,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
+ 
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 LESS_TERMCAP_ue = [0m
@@ -1566,7 +1553,6 @@ MAKEFILES :=
 LANGUAGE = 
 # environment
 LC_MONETARY = zh_CN.UTF-8
- 
 # environment
 MOTD_SHOWN = pam
 # automatic
@@ -1602,6 +1588,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
+ 
 LESS = -R
 # environment
 DESKTOP_SESSION = plasma
@@ -1708,7 +1695,6 @@ CC := aarch64-none-elf-gcc
 # environment
 KDE_FULL_SESSION = true
 # makefile (from '../include.mk', line 7)
- 
 OC := aarch64-none-elf-objcopy
 # environment
 PKGFILE_PROMPT_INSTALL_MISSING = 1
@@ -1743,7 +1729,7 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 syscall_all.o: syscall_all.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'syscall_all'
-#  Last modified 2022-06-29 20:32:19.565922214
+#  Last modified 2022-06-29 20:48:24.510375708
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1752,7 +1738,7 @@ syscall_all.o: syscall_all.c
 entry.o: entry.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'entry'
-#  Last modified 2022-06-29 20:32:19.449255358
+#  Last modified 2022-06-29 20:48:24.3903756
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 6):
@@ -1761,7 +1747,7 @@ entry.o: entry.S
 env_asm.o: env_asm.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'env_asm'
-#  Last modified 2022-06-29 20:32:19.452588697
+#  Last modified 2022-06-29 20:48:24.39704227
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 6):
@@ -1777,7 +1763,7 @@ env_asm.S:
 sched.o: sched.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'sched'
-#  Last modified 2022-06-29 20:32:19.529255488
+#  Last modified 2022-06-29 20:48:24.477042343
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1786,7 +1772,7 @@ sched.o: sched.c
 printf.o: printf.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'printf'
-#  Last modified 2022-06-29 20:32:19.519255472
+#  Last modified 2022-06-29 20:48:24.463708999
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1809,8 +1795,7 @@ syscall_all.c:
 tool.o: tool.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'tool'
- 
-#  Last modified 2022-06-29 20:32:19.435922003
+#  Last modified 2022-06-29 20:48:24.38037559
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1819,7 +1804,7 @@ tool.o: tool.c
 asm_tool.o: asm_tool.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'asm_tool'
-#  Last modified 2022-06-29 20:32:19.44258868
+#  Last modified 2022-06-29 20:48:24.383708925
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 6):
@@ -1850,7 +1835,7 @@ timer.S:
 timer.o: timer.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'timer'
-#  Last modified 2022-06-29 20:32:19.572588892
+#  Last modified 2022-06-29 20:48:24.517042381
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 6):
@@ -1887,10 +1872,11 @@ all: tool.o asm_tool.o entry.o env_asm.o env.o load.o print.o printf.o sched.o s
 print.o: print.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'print'
-#  Last modified 2022-06-29 20:32:19.509255457
+#  Last modified 2022-06-29 20:48:24.453708988
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
+ 
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<
 
 # Not a target:
@@ -1899,7 +1885,6 @@ print.c:
 #  Last modified 2022-06-19 16:57:52.925154308
 #  File has been updated.
 #  Successfully updated.
- 
 
 # Not a target:
 entry.S:
@@ -1918,7 +1903,7 @@ tool.c:
 sync.o: sync.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'sync'
-#  Last modified 2022-06-29 20:32:19.545922183
+#  Last modified 2022-06-29 20:48:24.490375688
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1948,7 +1933,7 @@ asm_tool.S:
 env.o: env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'env'
-#  Last modified 2022-06-29 20:32:19.472588729
+#  Last modified 2022-06-29 20:48:24.41704229
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
@@ -1969,11 +1954,12 @@ load.c:
 load.o: load.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'load'
-#  Last modified 2022-06-29 20:32:19.489255423
+#  Last modified 2022-06-29 20:48:24.433708973
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 3):
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<
+ 
 
 # files hash-table stats:
 # Load=31/1024=3%, Rehash=0, Collisions=0/97=0%
@@ -1988,9 +1974,8 @@ load.o: load.c
 
 # strcache performance: lookups = 100 / hit rate = 45%
 # hash-table stats:
- 
 # Load=55/8192=1%, Rehash=0, Collisions=0/100=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
  
 make --directory=mmu
@@ -2003,7 +1988,7 @@ make --directory=mmu
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -2051,7 +2036,6 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 PWD = /home/dofingert/Source/OS/THYOS
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
- 
 # environment
 MAIL = /var/spool/mail/dofingert
 # environment
@@ -2125,7 +2109,6 @@ XCURSOR_THEME = breeze_cursors
 # environment
 XDG_SESSION_DESKTOP = KDE
 # makefile (from '../include.mk', line 1)
- 
 MAKEFILE_LIST := Makefile ../include.mk
 # automatic
 @F = $(notdir $@)
@@ -2178,6 +2161,7 @@ SHLVL = 2
 # environment
 PROFILEHOME = 
 # environment
+ 
 MAKELEVEL := 1
 # default
 MAKE = $(MAKE_COMMAND)
@@ -2208,7 +2192,6 @@ LC_TELEPHONE = zh_CN.UTF-8
 # makefile (from '../include.mk', line 1)
 CROSS_COMPILE := aarch64-none-elf-
 # environment
- 
 KDE_APPLICATIONS_AS_SCOPE = 1
 # environment
 XDG_SEAT = seat0
@@ -2297,7 +2280,6 @@ QT_IM_MODULE = fcitx
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
- 
 VSCODE_IPC_HOOK = /run/user/1000/vscode-c11d93c2-1.67.0-main.sock
 # environment
 TERM = xterm-256color
@@ -2365,7 +2347,7 @@ pmap.o: pmap.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'pmap'
  
-#  Last modified 2022-06-29 20:32:19.609255618
+#  Last modified 2022-06-29 20:48:24.560375752
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 4):
@@ -2374,7 +2356,7 @@ pmap.o: pmap.c
 # Not a target:
 mmu.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-27 12:13:35.396741677
+#  Last modified 2022-06-29 20:39:29.136503863
 #  File has been updated.
 #  Successfully updated.
 
@@ -2422,17 +2404,16 @@ all: mmu.o pmap.o tlb.o
 mmu.o: mmu.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'mmu'
-#  Last modified 2022-06-29 20:32:19.585922248
+#  Last modified 2022-06-29 20:48:24.530375727
 #  File has been updated.
 #  Successfully updated.
- 
 #  recipe to execute (from 'Makefile', line 4):
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<
 
 # Not a target:
 tlb.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 20:32:19.615922296
+#  Last modified 2022-06-29 20:48:24.56370909
 #  File has been updated.
 #  Successfully updated.
 
@@ -2455,7 +2436,7 @@ tlb.o:
 # strcache performance: lookups = 40 / hit rate = 45%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
  
 make --directory=user
@@ -2468,7 +2449,7 @@ make --directory=user
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -2495,7 +2476,6 @@ WINDOWID = 71303175
 # environment
 LESS_TERMCAP_me = [0m
 # environment
- 
 UBUNTU_MENUPROXY = 1
 # environment
 LC_ADDRESS = zh_CN.UTF-8
@@ -2541,7 +2521,6 @@ LANG = C
 XAUTHORITY = /home/dofingert/.Xauthority
 # default
 .LOADED := 
- 
 # environment
 LESS_TERMCAP_md = [01;32m
 # default
@@ -2590,7 +2569,6 @@ P9K_SSH = 0
 XCURSOR_THEME = breeze_cursors
 # environment
 XDG_SESSION_DESKTOP = KDE
- 
 # makefile (from '../include.mk', line 1)
 MAKEFILE_LIST := Makefile ../include.mk
 # automatic
@@ -2608,6 +2586,7 @@ CUDA_PATH = /opt/cuda
 # environment
 INPUT_METHOD = fcitx
 # environment
+ 
 NOVAS_HOME = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
 # makefile (from 'Makefile', line 1)
 INCLUDES = -I../include/
@@ -2639,7 +2618,6 @@ LESS_TERMCAP_us = [01;36m
 XMODIFIERS = @im=fcitx
 # environment
 LD_LIBRARY_PATH = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/NPI/lib/LINUX64_GNU_472:/home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64:
- 
 # environment
 SHLVL = 2
 # environment
@@ -2696,7 +2674,6 @@ XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 LESS = -R
 # environment
 DESKTOP_SESSION = plasma
- 
 # environment
 VERDI_DIR = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
 # environment
@@ -2704,7 +2681,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # 'override' directive
 GNUMAKEFLAGS := 
 # makefile (from 'Makefile', line 3)
-USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
+USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
 # environment
 QT_SCREEN_SCALE_FACTORS = HDMI-0=1;DP-0=1;DP-1=1;DP-2=1;DP-3=1;DP-4=1;DP-5=1;
 # environment
@@ -2754,7 +2731,6 @@ COLORTERM = truecolor
 # environment
 NPI_PLATFORM = LINUX64_GNU_472
 # environment
- 
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -2800,7 +2776,6 @@ KDE_SESSION_VERSION = 5
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # makefile (from '../include.mk', line 2)
 CC := aarch64-none-elf-gcc
- 
 # environment
 KDE_FULL_SESSION = true
 # makefile (from '../include.mk', line 7)
@@ -2810,7 +2785,7 @@ PKGFILE_PROMPT_INSTALL_MISSING = 1
 # environment
 LC_IDENTIFICATION = zh_CN.UTF-8
 # variable set hash-table stats:
-# Load=165/1024=16%, Rehash=0, Collisions=34/219=16%
+# Load=165/1024=16%, Rehash=0, Collisions=32/207=15%
 
 # Pattern-specific Variable Values
 
@@ -2818,9 +2793,9 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 
 # Directories
 
-# . (device 2066, inode 12133352): 41 files, no impossibilities.
+# . (device 2066, inode 12133352): 60 files, no impossibilities.
 
-# 41 files, no impossibilities in 1 directories.
+# 60 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -2833,13 +2808,12 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 	chmod +x ./bintoc
 	./bintoc $* $< > $@~ && mv -f $@~ $@
 
-%.b: %.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
+%.b: %.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
 #  recipe to execute (from 'Makefile', line 18):
 	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
 	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
 
-%.elf: %.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
- 
+%.elf: %.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
 #  recipe to execute (from 'Makefile', line 22):
 	$(LD) -o $@ $(LDFLAGS) -T ./user.lds $^
 
@@ -2863,7 +2837,7 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 fsipc.o: fsipc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'fsipc'
-#  Last modified 2022-06-29 20:32:19.782589234
+#  Last modified 2022-06-29 20:48:24.737042578
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -2872,24 +2846,40 @@ fsipc.o: fsipc.c
 fd.o: fd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'fd'
-#  Last modified 2022-06-29 20:32:19.749255847
+#  Last modified 2022-06-29 20:48:24.703709215
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
+test_fork.b: test_fork.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_fork'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
+
 # Not a target:
 pipe.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-15 18:15:16.636310395
+#  Last modified 2022-06-29 20:34:20.416107889
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
- 
 pageref.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-29 17:36:31.904519902
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+testpiperace.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-15 18:15:16.636310395
 #  File has been updated.
 #  Successfully updated.
 
@@ -2903,18 +2893,45 @@ string.c:
 printf.o: printf.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'printf'
-#  Last modified 2022-06-29 20:32:19.699255765
+#  Last modified 2022-06-29 20:48:24.647042499
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
+test_ipc.b.c: test_ipc.b
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_ipc'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	chmod +x ./bintoc
+	./bintoc $* $< > $@~ && mv -f $@~ $@
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 20:31:50.869208077
+#  Last modified 2022-06-29 20:48:20.447038689
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+test_fork.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 10:32:44.872916625
+#  File has been updated.
+#  Successfully updated.
+
+fstest.b: fstest.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'fstest'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
 
 # Not a target:
 test_sys.c:
@@ -2925,32 +2942,38 @@ test_sys.c:
 
 pageref.o: pageref.c
 #  Implicit rule search has been done.
- 
 #  Implicit/static pattern stem: 'pageref'
-#  Last modified 2022-06-29 20:32:19.732589154
+#  Last modified 2022-06-29 20:48:24.683709199
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+ 
 
 syscall_lib.o: syscall_lib.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'syscall_lib'
-#  Last modified 2022-06-29 20:32:19.722589137
+#  Last modified 2022-06-29 20:48:24.67370919
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
-test_sys.b: test_sys.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
+wait.o: wait.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'wait'
+#  Last modified 2022-06-29 20:48:24.790375962
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+test_sys.b: test_sys.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'test_sys'
 #  File is an intermediate prerequisite.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 18):
 	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
 	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
@@ -2966,10 +2989,42 @@ clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 38):
 	rm -rf *~ *.o *.b.c *.x *.b *.symbol
+
+test_ipc.b: test_ipc.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_ipc'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
+
+# Not a target:
+fstest.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 17:32:49.770901634
+#  File has been updated.
+#  Successfully updated.
+
+testpiperace.x: testpiperace.b.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpiperace'
+#  Last modified 2022-06-29 20:48:25.227043024
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 11):
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Not a target:
+testpipe.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-15 18:15:16.636310395
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 ../include.mk:
@@ -2983,87 +3038,83 @@ test_sys.o: test_sys.c
 #  Implicit/static pattern stem: 'test_sys'
 #  File is an intermediate prerequisite.
 #  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+console.o: console.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'console'
+#  Last modified 2022-06-29 20:48:24.777042617
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := test_sys.o
-# automatic
-# * := test_sys
-# automatic
-# < := test_sys.c
-# automatic
-# + := test_sys.c
-# automatic
-# % := 
-# automatic
-# ^ := test_sys.c
-# automatic
-# ? := test_sys.c
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/16=12%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 libos.o: libos.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'libos'
-#  Last modified 2022-06-29 20:32:19.662589039
+#  Last modified 2022-06-29 20:48:24.607042461
 #  File has been updated.
 #  Successfully updated.
- 
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 pipe.o: pipe.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'pipe'
-#  File does not exist.
+#  Last modified 2022-06-29 20:48:24.763709272
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := pipe.o
-# automatic
-# * := pipe
-# automatic
-# < := pipe.c
-# automatic
-# + := pipe.c
-# automatic
-# % := 
-# automatic
-# ^ := pipe.c
-# automatic
-# ? := pipe.c
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/16=12%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 # Not a target:
 file.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 17:40:27.184817452
+#  Last modified 2022-06-29 20:34:14.07943201
 #  File has been updated.
 #  Successfully updated.
 
 file.o: file.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'file'
-#  Last modified 2022-06-29 20:32:19.76925588
+#  Last modified 2022-06-29 20:48:24.723709235
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 # Not a target:
- 
 entrance.S:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-29 12:24:58.461881793
+#  File has been updated.
+#  Successfully updated.
+
+fstest.b.c: fstest.b
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'fstest'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	chmod +x ./bintoc
+	./bintoc $* $< > $@~ && mv -f $@~ $@
+
+test_fork.o: test_fork.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_fork'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+# Not a target:
+console.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 20:44:07.650132719
 #  File has been updated.
 #  Successfully updated.
 
@@ -3074,14 +3125,33 @@ fsipc.c:
 #  File has been updated.
 #  Successfully updated.
 
+testpipe.x: testpipe.b.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpipe'
+#  Last modified 2022-06-29 20:48:25.153709625
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 11):
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 msyscall.o: msyscall.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'msyscall'
-#  Last modified 2022-06-29 20:32:19.669255717
+#  Last modified 2022-06-29 20:48:24.613709135
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 31):
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+testpipe.b.c: testpipe.b
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpipe'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	chmod +x ./bintoc
+	./bintoc $* $< > $@~ && mv -f $@~ $@
 
 # Not a target:
 .DEFAULT:
@@ -3089,25 +3159,25 @@ msyscall.o: msyscall.S
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-test_ipc.x:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+test_ipc.x: test_ipc.b.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_ipc'
+#  Last modified 2022-06-29 20:48:24.997042814
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 11):
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-all: test_sys.x test_fork.x test_ipc.x fstest.x entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o
+all: test_sys.x test_fork.x test_ipc.x fstest.x testpipe.x testpiperace.x entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
- 
+#  Successfully updated.
 
 ipc.o: ipc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ipc'
-#  Last modified 2022-06-29 20:32:19.649255683
+#  Last modified 2022-06-29 20:48:24.593709117
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -3116,7 +3186,7 @@ ipc.o: ipc.c
 print.o: print.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'print'
-#  Last modified 2022-06-29 20:32:19.685922411
+#  Last modified 2022-06-29 20:48:24.633709154
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -3129,10 +3199,20 @@ print.c:
 #  File has been updated.
 #  Successfully updated.
 
+testpipe.b: testpipe.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpipe'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
+
 string.o: string.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'string'
-#  Last modified 2022-06-29 20:32:19.709255782
+#  Last modified 2022-06-29 20:48:24.660375844
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -3145,11 +3225,30 @@ ipc.c:
 #  File has been updated.
 #  Successfully updated.
 
+testpiperace.b: testpiperace.o entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o fsipc.o fprintf.o pipe.o console.o wait.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpiperace'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T ./user.lds $^
+	$(CROSS_COMPILE)objdump -alD $@ > ./$@.symbol
+
+testpiperace.b.c: testpiperace.b
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpiperace'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	chmod +x ./bintoc
+	./bintoc $* $< > $@~ && mv -f $@~ $@
+
 fprintf.o: fprintf.c
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'fprintf'
-#  Last modified 2022-06-29 20:32:19.792589251
+#  Last modified 2022-06-29 20:48:24.747042589
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -3158,7 +3257,7 @@ fprintf.o: fprintf.c
 entrance.o: entrance.S
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'entrance'
-#  Last modified 2022-06-29 20:32:19.625922313
+#  Last modified 2022-06-29 20:48:24.573709097
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 31):
@@ -3167,38 +3266,72 @@ entrance.o: entrance.S
 test_sys.x: test_sys.b.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'test_sys'
-#  File does not exist.
+#  Last modified 2022-06-29 20:48:24.860376026
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-# Not a target:
-fstest.x:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
+test_fork.b.c: test_fork.b
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_fork'
+#  File is an intermediate prerequisite.
+#  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	chmod +x ./bintoc
+	./bintoc $* $< > $@~ && mv -f $@~ $@
+
+testpiperace.o: testpiperace.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpiperace'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+test_ipc.o: test_ipc.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_ipc'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+fstest.x: fstest.b.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'fstest'
+#  Last modified 2022-06-29 20:48:25.077042888
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 11):
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 test_sys.b.c: test_sys.b
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'test_sys'
 #  File is an intermediate prerequisite.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
 	chmod +x ./bintoc
 	./bintoc $* $< > $@~ && mv -f $@~ $@
- 
+
+testpipe.o: testpipe.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'testpipe'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 # Not a target:
 fd.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 17:41:37.361559704
+#  Last modified 2022-06-29 20:43:31.506763313
 #  File has been updated.
 #  Successfully updated.
 
@@ -3210,10 +3343,20 @@ libos.c:
 #  Successfully updated.
 
 # Not a target:
-test_fork.x:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+wait.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-15 18:15:16.636310395
+#  File has been updated.
+#  Successfully updated.
+
+test_fork.x: test_fork.b.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'test_fork'
+#  Last modified 2022-06-29 20:48:24.92704275
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 11):
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 # Not a target:
 fork.c:
@@ -3221,6 +3364,15 @@ fork.c:
 #  Last modified 2022-06-29 10:32:44.872916625
 #  File has been updated.
 #  Successfully updated.
+
+fstest.o: fstest.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'fstest'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 28):
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 # Not a target:
 printf.c:
@@ -3237,8 +3389,7 @@ printf.c:
 fork.o: fork.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'fork'
- 
-#  Last modified 2022-06-29 20:32:19.639255668
+#  Last modified 2022-06-29 20:48:24.583709106
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -3252,6 +3403,13 @@ fprintf.c:
 #  Successfully updated.
 
 # Not a target:
+test_ipc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 10:32:44.872916625
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 msyscall.S:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-19 16:57:52.925154308
@@ -3259,21 +3417,555 @@ msyscall.S:
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=45/1024=4%, Rehash=0, Collisions=3/175=2%
+# Load=71/1024=7%, Rehash=0, Collisions=18/485=4%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 84 / storage = 687 B / avg = 8 B
-# current buf: size = 8162 B / used = 687 B / count = 84 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 120 / storage = 1129 B / avg = 9 B
+# current buf: size = 8162 B / used = 1129 B / count = 120 / avg = 9 B
 
-# strcache performance: lookups = 215 / hit rate = 60%
+# strcache performance: lookups = 497 / hit rate = 75%
 # hash-table stats:
-# Load=84/8192=1%, Rehash=0, Collisions=0/215=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Load=120/8192=1%, Rehash=0, Collisions=3/497=1%
+# Finished Make data base on Wed Jun 29 20:48:52 2022
+
  
+make --directory=fs
+ 
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Wed Jun 29 20:48:52 2022
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# environment
+GTK_RC_FILES = /etc/gtk/gtkrc:/home/dofingert/.gtkrc:/home/dofingert/.config/gtkrc
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-32cbf13c-c730-4dad-bb8c-7c00702b7cdb.sock
+# environment
+KONSOLE_DBUS_SERVICE = :1.124
+# environment
+LC_NAME = zh_CN.UTF-8
+# environment
+LC_NUMERIC = zh_CN.UTF-8
+# makefile (from 'Makefile', line 26)
+FSLIB := fs.o ide.o test.o
+# environment
+VSCODE_CWD = /home/dofingert/Source/OS/THYOS
+# environment
+WINDOWID = 71303175
+# environment
+LESS_TERMCAP_me = [0m
+# environment
+UBUNTU_MENUPROXY = 1
+# environment
+LC_ADDRESS = zh_CN.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# environment
+verdi = verdi -full64
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+KONSOLE_VERSION = 220402
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/dofingert/Source/OS/THYOS
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+MAIL = /var/spool/mail/dofingert
+# environment
+XDG_DATA_DIRS = /home/dofingert/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/dofingert/Source/OS/THYOS
+# environment
+KONSOLE_DBUS_WINDOW = /Windows/1
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/dofingert/.config/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/dofingert/.Xauthority
+# default
+.LOADED := 
+# environment
+LESS_TERMCAP_md = [01;32m
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+COLORFGBG = 15;0
+# environment
+VCS_TARGET_ARCH = amd64
+# makefile
+MAKEFLAGS = pqrRw
+# environment
+dve = dve -full64
+# environment
+LESS_TERMCAP_so = [01;47;34m
+# makefile
+CURDIR := /home/dofingert/Source/OS/THYOS/fs
+# environment
+LM_LICENSE_FILE = /home/dofingert/Synopsys/Synopsys.dat
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+LESS_TERMCAP_ue = [0m
+# environment
+lmli = lmgrd -c /home/dofingert/Synopsys/Synopsys.dat
+# environment
+PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
+# environment
+MFLAGS = -pqrRw
+# default
+.SHELLFLAGS := -c
+# environment
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
+# environment
+XDG_CONFIG_DIRS = /home/dofingert/.config/kdedefaults:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+vivado = sudo /home/dofingert/Xilinx/Vivado/2019.2/bin/vivado
+# environment
+P9K_SSH = 0
+# environment
+XCURSOR_THEME = breeze_cursors
+# environment
+XDG_SESSION_DESKTOP = KDE
+# makefile (from '../include.mk', line 1)
+MAKEFILE_LIST := Makefile ../include.mk
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 15616
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+CUDA_PATH = /opt/cuda
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+INPUT_METHOD = fcitx
+# environment
+NOVAS_HOME = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
+# makefile (from 'Makefile', line 1)
+INCLUDES = -I../include/ -I../user/
+# environment
+SESSION_MANAGER = local/dofingert-ms7c94:@/tmp/.ICE-unix/1770,unix/dofingert-ms7c94:/tmp/.ICE-unix/1770
+# automatic
+*F = $(notdir $*)
+# environment
+VERDI_HOME = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# makefile (from 'Makefile', line 5)
+fsformat := ./fsformat
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+P9K_TTY = old
+# environment
+ 
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/home/dofingert/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/home/dofingert/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/home/dofingert/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"/home/dofingert/.config/Code/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+SDL_IM_MODULE = fcitx
+# makefile
+SHELL = /bin/sh
+# environment
+LESS_TERMCAP_us = [01;36m
+# environment
+XMODIFIERS = @im=fcitx
+# environment
+LD_LIBRARY_PATH = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/NPI/lib/LINUX64_GNU_472:/home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64:
+# environment
+SHLVL = 2
+# environment
+PROFILEHOME = 
+# environment
+MAKELEVEL := 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/dofingert/Synopsys/scl/2018.06/linux64/bin:/home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/bin:/home/dofingert/Synopsys/vcs-mx/O-2018.09-SP2/bin:/home/dofingert/Synopsys/vcs-mx/O-2018.09-SP2/gui/dve/bin:/home/dofingert/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/opt/gcc-4.3-ls232/bin
+# environment
+LESS_TERMCAP_se = [0m
+# default
+MAKEFILES := 
+# environment
+LANGUAGE = 
+# environment
+LC_MONETARY = zh_CN.UTF-8
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = zh_CN.UTF-8
+# environment
+LESS_TERMCAP_mb = [01;32m
+# makefile (from 'Makefile', line 30)
+USERAPPS := ../user/num.b ../user/echo.b ../user/ls.b ../user/sh.b ../user/cat.b ../user/testptelibrary.b
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+LC_TELEPHONE = zh_CN.UTF-8
+# automatic
+?F = $(notdir $?)
+# makefile (from '../include.mk', line 1)
+CROSS_COMPILE := aarch64-none-elf-
+# environment
+KDE_APPLICATIONS_AS_SCOPE = 1
+# environment
+XDG_SEAT = seat0
+# environment
+GTK_IM_MODULE = fcitx
+# environment
+XDG_CURRENT_DESKTOP = KDE
+# environment
+NOVAS_INST_DIR = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
+# environment
+MKLROOT = /opt/intel/mkl
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+LESS = -R
+# environment
+DESKTOP_SESSION = plasma
+# environment
+VERDI_DIR = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = KDE
+# 'override' directive
+GNUMAKEFLAGS := 
+# makefile (from 'Makefile', line 8)
+USERLIB := ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o ../user/pageref.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/console.o
+# environment
+QT_SCREEN_SCALE_FACTORS = HDMI-0=1;DP-0=1;DP-1=1;DP-2=1;DP-3=1;DP-4=1;DP-5=1;
+# environment
+LOGNAME = dofingert
+# environment
+vcs64 = vcs -full64
+# makefile (from 'Makefile', line 38)
+FSIMGFILES := motd newmotd 
+# environment
+XDG_VTNR = 1
+# makefile
+.DEFAULT_GOAL := all
+# environment
+SYSTEMD_EXEC_PID = 1652
+# environment
+DISPLAY = :0
+# environment
+GTK_MODULES = canberra-gtk-module:appmenu-gtk-module
+# environment
+USER = dofingert
+# default
+MAKE_VERSION := 4.3
+# environment
+KDE_SESSION_UID = 1000
+# environment
+VCS_HOME = /home/dofingert/Synopsys/vcs-mx/O-2018.09-SP2
+# environment
+KONSOLE_DBUS_SESSION = /Sessions/1
+# environment
+SYNOPSYS = /home/dofingert/Synopsys
+# environment
+LC_MEASUREMENT = zh_CN.UTF-8
+# environment
+DEBUGINFOD_URLS = https://debuginfod.archlinux.org 
+# environment
+_ = /usr/bin/make
+# environment
+LC_PAPER = zh_CN.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+SNPSLMD_LICENSE_FILE = 27000@dofingert-ms7c94
+# makefile (from '../include.mk', line 3)
+CFLAGS := -Wall -ffreestanding -g
+# environment
+DVE_HOME = /home/dofingert/Synopsys/vcs-mx/O-2018.09-SP2/gui/dve
+# environment
+COLORTERM = truecolor
+# environment
+NPI_PLATFORM = LINUX64_GNU_472
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/dofingert/.gtkrc-2.0:/home/dofingert/.config/gtkrc-2.0
+# environment
+HOME = /home/dofingert
+# environment
+QT_IM_MODULE = fcitx
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-c11d93c2-1.67.0-main.sock
+# environment
+TERM = xterm-256color
+# environment
+XDG_SESSION_ID = 2
+# environment
+XCURSOR_SIZE = 24
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# makefile (from '../include.mk', line 4)
+LD := aarch64-none-elf-ld
+# environment
+QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+_P9K_TTY = /dev/pts/1
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from 'Makefile', line 4)
+tools_dir := .
+# environment
+LS_OPTIONS = --color=auto
+# environment
+SHELL_SESSION_ID = 2dbf4675244c4edaaebf9dec7c1c32ef
+# environment
+KDE_SESSION_VERSION = 5
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# makefile (from '../include.mk', line 2)
+CC := aarch64-none-elf-gcc
+# environment
+KDE_FULL_SESSION = true
+# makefile (from '../include.mk', line 7)
+OC := aarch64-none-elf-objcopy
+# environment
+PKGFILE_PROMPT_INSTALL_MISSING = 1
+# environment
+LC_IDENTIFICATION = zh_CN.UTF-8
+# makefile (from 'Makefile', line 3)
+user_dir := ../user
+# variable set hash-table stats:
+# Load=171/1024=17%, Rehash=0, Collisions=61/248=25%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2066, inode 12165364): 16 files, no impossibilities.
+
+# 16 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+%.x: %.b.c
+#  recipe to execute (from 'Makefile', line 45):
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+%.b.c: %.b
+#  recipe to execute (from 'Makefile', line 48):
+	chmod +x ./bintoc
+ 
+	./bintoc $* $< > $@~ && mv -f $@~ $@
+
+%.b: %.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o ../user/pageref.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/console.o fs.o ide.o test.o
+#  recipe to execute (from 'Makefile', line 52):
+	$(LD) -o $@ $(LDFLAGS) -G 0 -static -n -nostdlib -T $(user_dir)/user.lds $^
+
+%.elf: %.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/pageref.o ../user/pageref.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/console.o fs.o ide.o test.o
+#  recipe to execute (from 'Makefile', line 55):
+	$(LD) -o $@ $(LDFLAGS) -T $(user_dir)/user.lds $^
+
+%.asm: %.elf
+#  recipe to execute (from 'Makefile', line 58):
+	$(CROSS_COMPILE)objdump -alD $^ > $@
+
+%.o: %.c
+#  recipe to execute (from 'Makefile', line 61):
+	echo user1 cc $<
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+%.o: %.S
+#  recipe to execute (from 'Makefile', line 65):
+	echo as $<
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+%.o: ../user/lib.h
+
+# 8 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+newmotd:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 10:34:20.689510932
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+serv.b:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 20:43:14.973413274
+#  File has been updated.
+#  Successfully updated.
+
+fs.img: motd newmotd
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := fs.img
+# automatic
+# * := 
+# automatic
+# < := motd
+# automatic
+# + := motd newmotd
+# automatic
+# % := 
+# automatic
+# ^ := motd newmotd
+# automatic
+# ? := motd newmotd
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  recipe to execute (from 'Makefile', line 71):
+	dd if=/dev/zero of=../fs.img bs=4096 count=1024 2>/dev/null
+	gcc $(INCLUDES) fsformat.c -o $(tools_dir)/fsformat -m32
+	chmod +x $(tools_dir)/fsformat
+	$(tools_dir)/fsformat ../fs.img $(FSIMGFILES)
+
+# Not a target:
+serv.b.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+serv.x:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 79):
+	rm -rf *~ *.o *.b.c *.b *.x $(fsformat)
+
+# Not a target:
+../include.mk:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 16:57:52.925154308
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: fs.img serv.b serv.x serv.b.c
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+
+# Not a target:
+motd:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-29 10:34:20.689510932
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=13/1024=1%, Rehash=0, Collisions=0/35=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 54 / storage = 537 B / avg = 9 B
+# current buf: size = 8162 B / used = 537 B / count = 54 / avg = 9 B
+
+# strcache performance: lookups = 98 / hit rate = 44%
+# hash-table stats:
+# Load=54/8192=1%, Rehash=0, Collisions=0/98=0%
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
  
 # GNU Make 4.3
@@ -3284,7 +3976,7 @@ msyscall.S:
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Jun 29 20:32:30 2022
+# Make data base, printed on Wed Jun 29 20:48:52 2022
 
 # Variables
 
@@ -3304,7 +3996,6 @@ VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-32cbf13c-c730-4dad-bb8c-7c00
 KONSOLE_DBUS_SERVICE = :1.124
 # environment
 LC_NAME = zh_CN.UTF-8
- 
 # environment
 LC_NUMERIC = zh_CN.UTF-8
 # environment
@@ -3366,7 +4057,6 @@ XAUTHORITY = /home/dofingert/.Xauthority
 # default
 .LOADED := 
 # environment
- 
 LESS_TERMCAP_md = [01;32m
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
@@ -3374,6 +4064,7 @@ LESS_TERMCAP_md = [01;32m
 COLORFGBG = 15;0
 # environment
 VCS_TARGET_ARCH = amd64
+ 
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -3416,7 +4107,6 @@ XCURSOR_THEME = breeze_cursors
 XDG_SESSION_DESKTOP = KDE
 # makefile (from 'include.mk', line 1)
 MAKEFILE_LIST := Makefile include.mk
- 
 # automatic
 @F = $(notdir $@)
 # environment
@@ -3465,7 +4155,6 @@ XMODIFIERS = @im=fcitx
 LD_LIBRARY_PATH = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/NPI/lib/LINUX64_GNU_472:/home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64:
 # makefile (from 'Makefile', line 19)
 objects := drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x fs/*.x
- 
 # environment
 SHLVL = 2
 # environment
@@ -3511,11 +4200,11 @@ GTK_IM_MODULE = fcitx
 # environment
 XDG_CURRENT_DESKTOP = KDE
 # environment
- 
 NOVAS_INST_DIR = /home/dofingert/Synopsys/verdi/Verdi_O-2018.09-SP2
 # environment
 MKLROOT = /opt/intel/mkl
 # environment
+ 
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
 # automatic
 +F = $(notdir $+)
@@ -3545,7 +4234,6 @@ vcs64 = vcs -full64
 XDG_VTNR = 1
 # makefile
 .DEFAULT_GOAL := all
- 
 # environment
 SYSTEMD_EXEC_PID = 1652
 # environment
@@ -3593,7 +4281,6 @@ XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
- 
 GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/dofingert/.gtkrc-2.0:/home/dofingert/.config/gtkrc-2.0
 # environment
 HOME = /home/dofingert
@@ -3628,7 +4315,6 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # makefile (from 'Makefile', line 3)
 init_dir := init
 # makefile (from 'Makefile', line 7)
- 
 tools_dir := tools
 # environment
 LS_OPTIONS = --color=auto
@@ -3653,7 +4339,7 @@ LC_IDENTIFICATION = zh_CN.UTF-8
 # makefile (from 'Makefile', line 8)
 user_dir := user
 # variable set hash-table stats:
-# Load=178/1024=17%, Rehash=0, Collisions=35/254=14%
+# Load=178/1024=17%, Rehash=0, Collisions=35/259=14%
 
 # Pattern-specific Variable Values
 
@@ -3661,10 +4347,9 @@ user_dir := user
 
 # Directories
 
-# . (device 2066, inode 12133080): 20 files, no impossibilities.
+# . (device 2066, inode 12133080): 23 files, no impossibilities.
 
- 
-# 20 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -3675,6 +4360,7 @@ user_dir := user
 # Not a target:
 include.mk:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-06-19 16:57:52.925154308
 #  File has been updated.
 #  Successfully updated.
@@ -3682,8 +4368,28 @@ include.mk:
 fs:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := fs
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/14=14%
 #  recipe to execute (from 'Makefile', line 40):
 	$(MAKE) --directory=$@
 
@@ -3698,7 +4404,6 @@ debug:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-29 13:46:04.845728154
 #  File has been updated.
 #  Successfully updated.
@@ -3734,7 +4439,6 @@ lib:
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 45):
@@ -3769,7 +4473,6 @@ mmu:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/14=14%
- 
 #  recipe to execute (from 'Makefile', line 40):
 	$(MAKE) --directory=$@
 
@@ -3797,7 +4500,6 @@ boot:
 # automatic
 # | := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=2/14=14%
 #  recipe to execute (from 'Makefile', line 40):
 	$(MAKE) --directory=$@
@@ -3840,11 +4542,10 @@ all: drivers boot init lib mmu user fs vmlinux
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/30=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/35=0%
 #  recipe to execute (from 'Makefile', line 30):
 	$(CROSS_COMPILE)objdump -alD $(vmlinux_elf) > ./kernel.symbol
 
@@ -3884,7 +4585,6 @@ target:
 #  recipe to execute (from 'Makefile', line 58):
 	aarch64-none-elf-gdb kernel.elf
 
- 
 .PHONY: all drivers boot init lib mmu user fs clean debug run
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -3924,7 +4624,7 @@ user:
 #  Implicit/static pattern stem: ''
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # automatic
 # @ := user
 # automatic
@@ -3954,20 +4654,20 @@ gdb:
 	gdb-multiarch kernel.elf
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/76=0%
+# Load=20/1024=2%, Rehash=0, Collisions=0/77=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
- 
 # No general ('VPATH' variable) search path.
+ 
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 234 B / avg = 7 B
-# current buf: size = 8162 B / used = 234 B / count = 33 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 36 / storage = 270 B / avg = 7 B
+# current buf: size = 8162 B / used = 270 B / count = 36 / avg = 7 B
 
-# strcache performance: lookups = 95 / hit rate = 65%
+# strcache performance: lookups = 99 / hit rate = 63%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=0/95=0%
-# Finished Make data base on Wed Jun 29 20:32:30 2022
+# Load=36/8192=0%, Rehash=0, Collisions=0/99=0%
+# Finished Make data base on Wed Jun 29 20:48:52 2022
 
  

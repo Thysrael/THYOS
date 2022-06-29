@@ -125,7 +125,7 @@ void arch_basic_init()
     int_64 n;
 
     // 在这里要完成对于 kernel_pud 的重定位
-    kernel_pud = (uint_64 *)KADDR((uint_64) kernel_pud);
+    kernel_pud = (uint_64 *)KADDR((uint_64)kernel_pud);
     // "pages" is an global array
     pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
     n = ROUND(npage * sizeof(struct Page), BY2PG);
@@ -188,7 +188,7 @@ int page_alloc(struct Page **pp)
     ppage_temp = LIST_FIRST(&page_free_list);
     LIST_REMOVE(ppage_temp, pp_link);
 
-    //Initialize this page.
+    // Initialize this page.
     bzero((void *)page2kva(ppage_temp), BY2PG);
     *pp = ppage_temp;
     return 0;
@@ -221,7 +221,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
     uint_64 *pmd, *pmd_entryp;
     uint_64 *pte;
     *ppte = NULL;
-    
+
     // 首先看第一级页表项
     pud_entryp = pud + PUDX(va);
 
@@ -282,7 +282,7 @@ int pgdir_walk(uint_64 *pud, uint_64 va, int create, uint_64 **ppte)
 
 int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
 {
-    debug("Wanna to insert page at pa 0x%lx to va 0x%lx\n", page2pa(pp), va);
+    debug("Wanna to insert page at pa 0x%lx to va 0x%lx with perm %lx\n", page2pa(pp), va, perm & PTE_RO);
     uint_64 PERM;
     uint_64 *pgtable_entry = NULL;
     // 这里的 PERM 应该是对应第三级页表项，没有 PTE_TABLE
@@ -300,8 +300,8 @@ int page_insert(uint_64 *pud, struct Page *pp, uint_64 va, uint_64 perm)
         }
         else
         {
-            tlb_invalidate();
             *pgtable_entry = (page2pa(pp) | PERM);
+            tlb_invalidate();
             return 0;
         }
     }
@@ -391,11 +391,11 @@ void pageout(uint_64 va, uint_64 *context)
     int r;
     struct Page *p = NULL;
 
-    uint_64* pud = (uint_64 *)KADDR((uint_64)context);
+    uint_64 *pud = (uint_64 *)KADDR((uint_64)context);
 
     if (va < 0x10000)
     {
-        panic("^^^^^^TOO LOW @0x%lx^^^^^^^^^",va);
+        panic("^^^^^^TOO LOW @0x%lx^^^^^^^^^", va);
     }
 
     if ((r = page_alloc(&p)) < 0)

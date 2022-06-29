@@ -6,6 +6,15 @@
 #include "sysid.h"
 #include <stdarg.h>
 
+#include "env.h"
+extern struct Env *env;
+extern struct Env *envs;
+extern uint_64 *vpt;
+extern uint_64 *vmd;
+extern uint_64 *vud;
+
+#define USED(x) (void)(x)
+
 //------------------ fork.c ------------------//
 
 int fork(void);

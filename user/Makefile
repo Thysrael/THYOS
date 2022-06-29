@@ -1,11 +1,11 @@
 INCLUDES = -I../include/
 
 USERLIB := entrance.o fork.o ipc.o libos.o msyscall.o print.o printf.o string.o syscall_lib.o pageref.o fd.o file.o \
-		   fsipc.o fprintf.o pipe.o
+		   fsipc.o fprintf.o pipe.o console.o wait.o
 
 CFLAGS += -nostdlib -static
 
-all: test_sys.x test_fork.x test_ipc.x fstest.x $(USERLIB)
+all: test_sys.x test_fork.x test_ipc.x fstest.x testpipe.x testpiperace.x $(USERLIB)
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<

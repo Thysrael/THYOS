@@ -38,14 +38,15 @@ struct Pipe
 
 int pipe(int pfd[2])
 {
-	int r, va;
+	int r;
+	uint_64 va;
 	struct Fd *fd0, *fd1;
 
 	// allocate the file descriptor table entries
-	if ((r = fd_alloc(&fd0)) < 0 || (r = syscall_mem_alloc(0, (u_int)fd0, PTE_VALID | PTE_LIBRARY)) < 0)
+	if ((r = fd_alloc(&fd0)) < 0 || (r = syscall_mem_alloc(0, fd0, PTE_VALID | PTE_LIBRARY)) < 0)
 		goto err;
 
-	if ((r = fd_alloc(&fd1)) < 0 || (r = syscall_mem_alloc(0, (u_int)fd1, PTE_VALID | PTE_LIBRARY)) < 0)
+	if ((r = fd_alloc(&fd1)) < 0 || (r = syscall_mem_alloc(0, fd1, PTE_VALID | PTE_LIBRARY)) < 0)
 		goto err1;
 
 	// allocate the pipe structure as first data page in both
@@ -71,9 +72,9 @@ int pipe(int pfd[2])
 err3:
 	syscall_mem_unmap(0, va);
 err2:
-	syscall_mem_unmap(0, (u_int)fd1);
+	syscall_mem_unmap(0, (uint_64)fd1);
 err1:
-	syscall_mem_unmap(0, (u_int)fd0);
+	syscall_mem_unmap(0, (uint_64)fd0);
 err:
 	return r;
 }
@@ -99,8 +100,10 @@ _pipeisclosed(struct Fd *fd, struct Pipe *p)
 	do
 	{
 		runs = env->env_runs;
+		//writef("11\n");
 		pfd = pageref(fd);
 		pfp = pageref(p);
+		//writef("10\n");
 	} while (runs != env->env_runs);
 
 	if (pfd == pfp)
@@ -171,17 +174,23 @@ pipewrite(struct Fd *fd, const void *vbuf, u_int n, u_int offset)
 
 	p = fd2data(fd);
 	wbuf = (char *)vbuf;
+	//writef("1\n");
 	for (i = 0; i < n; ++i)
 	{
+		//writef("2\n");
 		while (p->p_wpos - p->p_rpos == BY2PIPE)
 		{
+			//writef("6\n");
 			if (_pipeisclosed(fd, p))
 				return 0;
+			//writef("4\n");
 			syscall_yield();
+			//writef("5\n");
 		}
 		p->p_buf[p->p_wpos % BY2PIPE] = wbuf[i];
 		p->p_wpos++;
 	}
+	//writef("3\n");
 
 	//	return -E_INVAL;
 	//	user_panic("pipewrite not implemented");

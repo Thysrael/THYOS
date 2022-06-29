@@ -9,8 +9,8 @@ extern uint_64 *vmd;
 extern uint_64 *vud;
 static struct Dev *devtab[] = {
 	&devfile,
-	//&devcons,
-	//&devpipe,
+	&devcons,
+	&devpipe,
 	0};
 
 int dev_lookup(int dev_id, struct Dev **dev)
@@ -90,6 +90,7 @@ int fd_lookup(int fdnum, struct Fd **fd)
 		*fd = (struct Fd *)va;
 		return 0;
 	}
+	writef("25\n");
 
 	return -E_INVAL;
 }

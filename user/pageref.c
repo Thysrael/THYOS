@@ -24,7 +24,7 @@ int pageref(void *v)
 		return 0;
 	}
 
-	uint_64 pte = vpt[(PUDX(v) << 18) | (PMDX(v) << 9) | PTEX(v)];
+	uint_64 pte = vpt[VPN(v)];
 
 	if (!(pte & PTE_VALID))
 	{
@@ -32,6 +32,6 @@ int pageref(void *v)
 		return 0;
 	}
 
-	//writef("[pgref] out\n");
+	//writef("[pgref] out %lx\n",PPN(pte));
 	return pages[PPN(pte)].pp_ref;
 }
