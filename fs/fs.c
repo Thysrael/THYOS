@@ -18,7 +18,7 @@ int block_is_free(u_int);
 //	Return the virtual address of this disk block. If the `blockno` is greater
 //	than disk's nblocks, panic.
 /*** exercise 5.5 ***/
-u_int diskaddr(u_int blockno)
+uint_64 diskaddr(u_int blockno)
 {
 	if (super != NULL && blockno > super->s_nblocks)
 		user_panic("diskaddr panic");
@@ -179,7 +179,9 @@ int read_block(u_int blockno, void **blk, u_int *isnew)
 			*isnew = 1;
 		}
 		syscall_mem_alloc(0, va, PTE_VALID);
+		writef("fs_serv: read_block() in ...1...\n");
 		ide_read(0, blockno * SECT2BLK, (void *)va, SECT2BLK);
+		writef("fs_serv: read_block() in ...2...\n");
 	}
 
 	// Step 5: if blk != NULL, set `va` to *blk.
@@ -301,26 +303,30 @@ void read_super(void)
 	int r;
 	void *blk;
 
+	writef("fs_serv: check_write_block() in ...1...\n");
 	// Step 1: read super block.
 	if ((r = read_block(1, &blk, 0)) < 0)
 	{
 		user_panic("cannot read superblock: %e", r);
 	}
 
+	writef("fs_serv: check_write_block() in ...2...\n");
 	super = blk;
 
 	// Step 2: Check fs magic nunber.
 	if (super->s_magic != FS_MAGIC)
 	{
-		user_panic("bad file system magic number %x %x", super->s_magic, FS_MAGIC);
+		user_panic("bad file system magic number %lx %lx", super->s_magic, FS_MAGIC);
 	}
 
+	writef("fs_serv: check_write_block() in ...3...\n");
 	// Step 3: validate disk size.
 	if (super->s_nblocks > DISKMAX / BY2BLK)
 	{
 		user_panic("file system is too large");
 	}
 
+	writef("fs_serv: check_write_block() in ...4...\n");
 	writef("superblock is good\n");
 }
 
@@ -398,8 +404,11 @@ void check_write_block(void)
 void fs_init(void)
 {
 	read_super();
+	writef("fs_serv: read_super() ok\n");
 	check_write_block();
+	writef("fs_serv: check_write_block() ok\n");
 	read_bitmap();
+	writef("fs_serv: read_bitmap() ok\n");
 }
 
 // Overview:

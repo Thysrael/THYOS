@@ -37,7 +37,7 @@ FSIMGFILES := motd newmotd #$(user_dir)/testarg.b $(user_dir)/init.b $(USERAPPS)
 
 CFLAGS += -nostdlib -static
 
-all: fs.img serv.b serv.x
+all: fs.img serv.b serv.x serv.b.c
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<

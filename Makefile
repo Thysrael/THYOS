@@ -21,7 +21,8 @@ objects       := $(drivers_dir)/*.o 	\
                  $(init_dir)/*.o 		\
                  $(lib_dir)/*.o 		\
 				 $(mmu_dir)/*.o			\
-				 $(user_dir)/*.x
+				 $(user_dir)/*.x		\
+				 $(fs_dir)/*.x
 
 .PHONY: all $(modules) clean debug run
 

@@ -24,9 +24,11 @@ void arm_init()
     sd_init();
     // 初始化进程管理
     env_init();
+    ENV_CREATE(fs_serv);
+    ENV_CREATE(user_fstest);
 
     // 初始化进程
-    ENV_CREATE(test_ipc);
+    //ENV_CREATE(user_test_ipc);
     // ENV_CREATE(test_sys);
     // 初始化异常向量表
     irq_vector_init();

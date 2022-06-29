@@ -26,7 +26,7 @@ void ide_read(u_int diskno, u_int secno, void *dst, u_int nsecs)
 {
 	for (int i = 0; i < nsecs; i++)
 	{
-		syscall_read_sd(secno + i, dst + BY2PG * i);
+		syscall_read_sd(secno + i, dst + 512 * i);
 	}
 }
 

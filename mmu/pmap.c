@@ -395,7 +395,7 @@ void pageout(uint_64 va, uint_64 *context)
 
     if (va < 0x10000)
     {
-        panic("^^^^^^TOO LOW^^^^^^^^^");
+        panic("^^^^^^TOO LOW @0x%lx^^^^^^^^^",va);
     }
 
     if ((r = page_alloc(&p)) < 0)

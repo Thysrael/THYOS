@@ -71,18 +71,18 @@ void env_run(struct Env *e);
 
 #define ENV_CREATE_PRIORITY(x, y)                              \
     {                                                          \
-        extern u_char binary_user_##x##_start[];               \
-        extern u_int binary_user_##x##_size;                   \
-        env_create_priority(binary_user_##x##_start,           \
-                            (u_int)binary_user_##x##_size, y); \
+        extern u_char binary_##x##_start[];               \
+        extern u_int binary_##x##_size;                   \
+        env_create_priority(binary_##x##_start,           \
+                            (u_int)binary_##x##_size, y); \
     }
 
 #define ENV_CREATE(x)                              \
     {                                              \
-        extern u_char binary_user_##x##_start[];   \
-        extern u_int binary_user_##x##_size;       \
-        env_create(binary_user_##x##_start,        \
-                   (u_int)binary_user_##x##_size); \
+        extern u_char binary_##x##_start[];   \
+        extern u_int binary_##x##_size;       \
+        env_create(binary_##x##_start,        \
+                   (u_int)binary_##x##_size); \
     }
 
 #endif // !_ENV_H_

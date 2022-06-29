@@ -42,6 +42,7 @@ serve_init(void)
 		opentab[i].o_ff = (struct Filefd *)va;
 		va += BY2PG;
 	}
+	//writef("fs_serv: serve_init ok\n");
 }
 
 // Overview:
@@ -300,6 +301,7 @@ serve(void)
 void
 umain(void)
 {
+	writef("struct File size is %d\n",sizeof(struct File));
 	user_assert(sizeof(struct File) == BY2FILE);
 
 	writef("FS is running\n");
