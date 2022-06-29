@@ -100,10 +100,8 @@ _pipeisclosed(struct Fd *fd, struct Pipe *p)
 	do
 	{
 		runs = env->env_runs;
-		//writef("11\n");
 		pfd = pageref(fd);
 		pfp = pageref(p);
-		//writef("10\n");
 	} while (runs != env->env_runs);
 
 	if (pfd == pfp)
