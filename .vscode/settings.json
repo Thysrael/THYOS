@@ -17,7 +17,8 @@
         "load.h": "c",
         "env.h": "c",
         "syscall.h": "c",
-        "fd.h": "c"
+        "fd.h": "c",
+        "limits": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

@@ -20,11 +20,12 @@ extern u_char fsipcbuf[BY2PG];		// page-aligned, declared in entry.S
 //	0 if successful,
 //	< 0 on failure.
 static int
-fsipc(u_int type, void *fsreq, u_int dstva, u_int *perm)
+fsipc(u_int type, void *fsreq, u_int dstva, uint_64 *perm)
 {
 	u_int whom;
 	// NOTEICE: Our file system no.1 process!
-	ipc_send(envs[1].env_id, type, (u_int)fsreq, PTE_VALID);
+	writef("file ipc req addr is 0x%lx\n",fsreq);
+	ipc_send(envs[0].env_id, type, (uint_64)fsreq, PTE_VALID);
 	return ipc_recv(&whom, dstva, perm);
 }
 
@@ -42,7 +43,7 @@ fsipc_open(const char *path, u_int omode, struct Fd *fd)
 	struct Fsreq_open *req;
 
 	req = (struct Fsreq_open *)fsipcbuf;
-
+	writef("req buf is located in %lx\n",req);
 	// The path is too long.
 	if (strlen(path) >= MAXPATHLEN) {
 		return -E_BAD_PATH;
@@ -50,7 +51,7 @@ fsipc_open(const char *path, u_int omode, struct Fd *fd)
 
 	strcpy((char *)req->req_path, path);
 	req->req_omode = omode;
-	return fsipc(FSREQ_OPEN, req, (u_int)fd, &perm);
+	return fsipc(FSREQ_OPEN, req, (uint_64)fd, &perm);
 }
 
 // Overview:

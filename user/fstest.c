@@ -5,6 +5,7 @@ static char *diff_msg = "This is a different massage of the day!\n\n";
 
 void umain()
 {
+	writef("user file test start...\n");
         int r;
         int fdnum;
         char buf[512];

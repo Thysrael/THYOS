@@ -46,6 +46,7 @@ int open(const char *path, int mode)
 
 	// Step 2: Get the file descriptor of the file to open.
 	// Hint: Read fsipc.c, and choose a function.
+	writef("user thread issue a ipc requirement with open %s...\n",path);
 	r = fsipc_open(path, mode, fd);
 	if (r)
 		return r;
