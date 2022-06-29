@@ -15,7 +15,7 @@ int memcmp(char *a, char *b, int n)
 
 void umain(int argc, char **argv)
 {
-    int fd, r, n, n2;
+    int fd, r, n, n2 = 1;
 
     if ((fd = open("motd", O_RDONLY)) < 0)
         user_panic("open motd: %e", fd);

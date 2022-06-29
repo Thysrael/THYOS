@@ -1,7 +1,5 @@
 #include "lib.h"
 
-
-
 static void user_out2string(void *arg, const char *s, int l)
 {
 	int i;

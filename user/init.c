@@ -12,7 +12,7 @@ struct
 
 char bss[6000];
 
-inline int MY_MUL(int a, int b)
+int MY_MUL(int a, int b)
 {
     int i;
     int sum;

@@ -28,7 +28,6 @@ struct Dev devfile =
 // Returns:
 //	the file descriptor onsuccess,
 //	< 0 on failure.
-/*** exercise 5.8 ***/
 int open(const char *path, int mode)
 {
     struct Fd *fd;
@@ -150,7 +149,7 @@ static int file_read(struct Fd *fd, void *buf, u_int n, u_int offset)
 // Overview:
 //	Find the virtual address of the page that maps the file block
 //	starting at 'offset'.
-int read_map(int fdnum, u_int offset, void **blk)
+int read_map(int fdnum, uint_64 offset, void **blk)
 {
     int r;
     uint_64 va;
