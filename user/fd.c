@@ -291,7 +291,7 @@ int write(int fdnum, const void *buf, u_int n)
     return r;
 }
 
-int seek(int fdnum, u_int offset)
+int seek(int fdnum, uint_64 offset)
 {
     int r;
     struct Fd *fd;

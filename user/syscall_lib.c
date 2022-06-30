@@ -86,3 +86,8 @@ int syscall_read_sd(uint_64 blockno, void *data_addr)
 {
     return msyscall(SYS_read_sd, blockno, (uint_64)data_addr, 0, 0, 0);
 }
+
+void syscall_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg)
+{
+    msyscall(SYS_init_stack, (uint_64)envid, esp, argc_in_reg, argv_in_reg, 0);
+}

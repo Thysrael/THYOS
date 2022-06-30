@@ -321,3 +321,20 @@ int sys_cgetc(void)
 {
     return uart_getc_non_block();
 }
+
+void sys_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg)
+{
+    struct Env *e;
+    int r;
+    r = envid2env(envid, &e, 0);
+
+    if (r < 0)
+    {
+        panic("sys_init_stack : Can't get env\n");
+    }
+
+    e->env_tf.elr = 0x00400000;
+    e->env_tf.sp = esp;
+    e->env_tf.x[0] = argc_in_reg;
+    e->env_tf.x[1] = argv_in_reg;
+}

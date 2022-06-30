@@ -5,8 +5,8 @@
 #define TMPPAGETOP      (2 * BY2PG)
 #define TMPPAGE         (BY2PG)
 
-int init_stack(u_int child, char **argv, uint_64 *init_esp, 
-        uint_64 *argc_in_reg, uint_64 *argv_in_reg)
+int init_stack(u_int child, char **argv, uint_64 *init_esp,
+               uint_64 *argc_in_reg, uint_64 *argv_in_reg)
 {
     int argc, i, r, tot;
     char *strings;
@@ -16,30 +16,36 @@ int init_stack(u_int child, char **argv, uint_64 *init_esp,
     // and the total amount of space needed for strings (tot)
     tot = 0;
     for (argc = 0; argv[argc]; argc++)
+    {
         tot += strlen(argv[argc]) + 1;
+    }
 
     // Make sure everything will fit in the initial stack page
     if (ROUND(tot, 16) + ROUND((argc + 1) * 8, 16) > BY2PG)
+    {
         return -E_NO_MEM;
+    }
 
     // Determine where to place the strings and the args array
     strings = (char *)TMPPAGETOP - tot;
     args = (uint_64 *)(TMPPAGETOP - ROUND(tot, 16) - ROUND((argc + 1) * 8, 16));
 
     if ((r = syscall_mem_alloc(0, TMPPAGE, PTE_VALID)) < 0)
+    {
         return r;
-    // Replace this with your code to:
-    //
+    }
+
     //	- copy the argument strings into the stack page at 'strings'
     char *ctemp, *argv_temp;
+
+    // j 是用来遍历每个字符串中的字符的
     uint_64 j;
+    // ctemp 也是用来遍历所有字符串字符的
     ctemp = strings;
     for (i = 0; i < argc; i++)
     {
-        j = USTACKTOP - TMPPAGETOP + (uint_64)strings;
         argv_temp = argv[i];
-        args[i] = j;
-        for (; *argv_temp; j++)
+        for (j = 0; j < strlen(argv[i]); j++)
         {
             *ctemp = *argv_temp;
             ctemp++;
@@ -47,12 +53,22 @@ int init_stack(u_int child, char **argv, uint_64 *init_esp,
         }
         *ctemp = 0;
         ctemp++;
-        j++;
     }
+
     //	- initialize args[0..argc-1] to be pointers to these strings
     //	  that will be valid addresses for the child environment
     //	  (for whom this page will be at USTACKTOP-BY2PG!).
     //	- set args[argc] to 0 to null-terminate the args array.
+    // 此时的 ctemp 是指向每个字符串头的指针
+    ctemp = (char *)(USTACKTOP - TMPPAGETOP + (uint_64)strings);
+    for (i = 0; i < argc; i++)
+    {
+        args[i] = (uint_64)ctemp;
+        ctemp += strlen(argv[i]) + 1;
+    }
+
+    //	- set args[argc] to 0 to null-terminate the args array.
+    // TODO : 这里跟源码不一样
     args[argc] = 0;
 
     //
@@ -61,7 +77,6 @@ int init_stack(u_int child, char **argv, uint_64 *init_esp,
     *init_esp = USTACKTOP - TMPPAGETOP + (uint_64)args;
     *argc_in_reg = argc;
     *argv_in_reg = USTACKTOP - TMPPAGETOP + (uint_64)args;
-    //	*init_esp = USTACKTOP;	// Change this!
 
     if ((r = syscall_mem_map(0, TMPPAGE, child, USTACKTOP - BY2PG, PTE_VALID)) < 0)
         goto error;
@@ -159,15 +174,23 @@ int spawn(char *prog, char **argv)
     // Note 0: some variable may be not used,you can cancel them as you like
     u_char elfbuf[512];
     int r;
-    uint_64 fd;
+    int fd;
     u_int child_envid;
     uint_16 size;
     uint_64 text_start;
-    uint_64 esp;
+    uint_64 esp, argc_in_reg, argv_in_reg;
     Elf64_Ehdr *elf;
     Elf64_Phdr *ph;
     uint_64 i, j, k, va;
     // Step 1: Open the file specified by `prog` (prog is the path of the program)
+    i = 0;
+    while (argv[i])
+    {
+        writef("argv is %s\n", argv[i]);
+        i++;
+    }
+    
+
     if ((r = open(prog, O_RDONLY)) < 0)
     {
         user_panic("spawn ::open line 102 RDONLY wrong !\n");
@@ -199,7 +222,7 @@ int spawn(char *prog, char **argv)
     child_envid = r;
 
     // Step 3: Using init_stack(...) to initialize the stack of the allocated env
-    // init_stack(child_envid, argv, &esp);
+    init_stack(child_envid, argv, &esp, &argc_in_reg, &argv_in_reg);
 
     text_start = elf->e_phoff;
     size = elf->e_phentsize;
@@ -226,11 +249,8 @@ int spawn(char *prog, char **argv)
     }
 
 
-    struct Trapframe *tf;
-    writef("\n::::::::::spawn size : %x  sp : %x::::::::\n", size, esp);
-    tf = &(envs[ENVX(child_envid)].env_tf);
-    tf->elr = 0x00400000;
-    tf->sp = esp;
+    writef("\n::::::::::spawn argc : %d  sp : 0x%x::::::::\n", argc_in_reg, esp);
+    syscall_init_stack(child_envid, esp, argc_in_reg, argv_in_reg);
 
     // 上面只是加载了程序的代码段，后面还有文件描述符等东西需要加载
     for (i = 0; i <= PUDX(USTACKTOP); i++)
@@ -272,7 +292,21 @@ int spawn(char *prog, char **argv)
     return child_envid;
 }
 
-int spawnl(char *prog, char *args, ...)
+int spawnl(char *prog, ...)
 {
-    return spawn(prog, &args);
+    va_list ap;
+    char *buf[512];
+    va_start(ap, prog);
+    char *args;
+    int i = 0;
+
+    while ((args = (char *)va_arg(ap, uint_64)) != NULL)
+    {
+        writef("args: 0x%lx %s\n", args, args);
+        buf[i++] = args;
+    }
+    buf[i] = NULL;
+    va_end(ap);
+
+    return spawn(prog, buf);
 }

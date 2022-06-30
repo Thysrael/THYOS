@@ -40,7 +40,7 @@ extern struct Dev devpipe;
 struct Fd
 {
     u_int fd_dev_id;
-    u_int fd_offset;
+    uint_64 fd_offset;
     u_int fd_omode;
 };
 
@@ -48,7 +48,7 @@ struct Fd
 struct Stat
 {
     char st_name[MAXNAMELEN];
-    u_int st_size;
+    uint_64 st_size;
     u_int st_isdir;
     struct Dev *st_dev;
 };

@@ -39,7 +39,7 @@ int read(int fd, void *buf, u_int nbytes);
 
 int write(int fd, const void *buf, u_int nbytes);
 
-int seek(int fd, u_int offset);
+int seek(int fd, uint_64 offset);
 
 void close_all(void);
 
@@ -143,7 +143,7 @@ void user_lp_Print(void (*output)(void *, const char *, int),
 
 //------------------ spawn.c ------------------//
 
-int spawnl(char *prog, char *args, ...);
+int spawnl(char *prog, ...);
 
 int spawn(char *prog, char **argv);
 
@@ -194,6 +194,8 @@ int syscall_cgetc();
 int syscall_write_sd(uint_64 blockno, void *data_addr);
 
 int syscall_read_sd(uint_64 blockno, void *data_addr);
+
+void syscall_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg);
 
 /* File open modes */
 #define O_RDONLY 0x0000  /* open for reading only */

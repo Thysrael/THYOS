@@ -55,7 +55,7 @@ static void duppage(u_int envid, uint_64 pn)
         flag = 1;
     }
 
-    writef("addr 0x%lx, envid 0x%x, perm 0x%lx flag %d\n", addr, envid, perm, flag);
+    // writef("addr 0x%lx, envid 0x%x, perm 0x%lx flag %d\n", addr, envid, perm, flag);
     syscall_mem_map(0, addr, envid, addr, perm);
     //writef("flag: %d\n", flag);
     if (flag)
