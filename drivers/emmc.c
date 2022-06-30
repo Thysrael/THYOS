@@ -121,7 +121,7 @@ static inline void write_word(uint32_t val, uint8_t *buf, int offset)
 #define TIMEOUT_WAIT(stop_if_true, usec)     \
     do                                       \
     {                                        \
-        unsigned long long tw = usec * 1000; \
+        unsigned long long tw = usec * 1000 * 0; \
         do                                   \
         {                                    \
             if (stop_if_true)                \
@@ -131,7 +131,7 @@ static inline void write_word(uint32_t val, uint8_t *buf, int offset)
 
 int usleep(useconds_t usec)
 {
-    unsigned long long tw = usec * 1000;
+    unsigned long long tw = usec * 1000 * 0;
     while (tw--)
         ;
     return 0;
