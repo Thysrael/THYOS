@@ -33,11 +33,11 @@ int sum(char *s, int n)
     return tot;
 }
 
-void umain(int argc, char **argv)
+void umain(uint_64 argc, char **argv)
 {
     int i, r, x, want;
 
-    writef("init: running\n");
+    writef("init: running, argc is %d\n", argc);
 
     want = 0xf989e;
     if ((x = sum((char *)&data, sizeof data)) != want)
@@ -84,15 +84,23 @@ void umain(int argc, char **argv)
 
     write(1, "LALA", 4);
 
-    for (;;)
+    // for (;;)
+    // {
+    //     writef("init: starting sh\n");
+    //     r = spawnl("sh.b", "sh", (char *)0);
+    //     if (r < 0)
+    //     {
+    //         user_panic("init: spawn sh: %e\n", r); 
+    //         continue;
+    //     }
+    //     wait(r);
+    // }
+
+    writef("init: starting sh\n");
+    r = spawnl("test_arg.b", "ab", "cd", (char *)0);
+    if (r < 0)
     {
-        writef("init: starting sh\n");
-        r = spawnl("sh.b", "sh", (char *)0);
-        if (r < 0)
-        {
-            writef("init: spawn sh: %e\n", r);
-            continue;
-        }
-        wait(r);
+        user_panic("init: spawn sh: %e\n", r);
     }
+    wait(r);
 }

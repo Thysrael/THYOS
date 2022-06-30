@@ -13,7 +13,7 @@ void umain(int argc, char **argv)
     if (argc != 0)
         childofspawn();
 
-    if ((r = syscall_mem_alloc(0, TMPVA, PTE_VALID | PTE_LIBRARY)) < 0)
+    if ((r = syscall_mem_alloc(0, (uint_64)TMPVA, PTE_VALID | PTE_LIBRARY)) < 0)
         user_panic("syscall error!");
     if ((r = fork()) < 0)
         user_panic("fork: %d", r);

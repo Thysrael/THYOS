@@ -402,5 +402,6 @@ void env_run(struct Env *e)
     curenv = e;
     set_ttbr0(curenv->env_cr3);
     tlb_invalidate();
+    // printf("env tf x0 is %d\n", e->env_tf.x[0]);
     env_pop_tf(&(curenv->env_tf));
 }

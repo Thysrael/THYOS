@@ -108,8 +108,6 @@ int usr_is_elf_format(u_char *binary)
 // 这就拷加载一个段
 int usr_load_elf(int fd, Elf64_Phdr *ph, int child_envid)
 {
-    // Hint: maybe this function is useful
-    //       If you want to use this func, you should fill it ,it's not hard
     uint_64 va = ph->p_vaddr;
     uint_64 sgsize = ph->p_memsz;
     uint_64 bin_size = ph->p_filesz;
@@ -249,7 +247,7 @@ int spawn(char *prog, char **argv)
     }
 
 
-    writef("\n::::::::::spawn argc : %d  sp : 0x%x::::::::\n", argc_in_reg, esp);
+    writef("\n::::::::::spawn  %s  argc : %d  sp : 0x%x::::::::\n", prog, argc_in_reg, esp);
     syscall_init_stack(child_envid, esp, argc_in_reg, argv_in_reg);
 
     // 上面只是加载了程序的代码段，后面还有文件描述符等东西需要加载
@@ -302,7 +300,6 @@ int spawnl(char *prog, ...)
 
     while ((args = (char *)va_arg(ap, uint_64)) != NULL)
     {
-        writef("args: 0x%lx %s\n", args, args);
         buf[i++] = args;
     }
     buf[i] = NULL;

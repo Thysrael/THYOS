@@ -12,9 +12,9 @@
 .globl _start
 
 _start:
-    sub     sp,     sp,                 #16
-	ldr	    x0,     [sp, #8 * 0]
-	ldr	    x1,     [sp, #8 * 1]
+    // sub     sp,     sp,                 #16
+	// ldr	    x0,     [sp, #8 * 0]
+	// ldr	    x1,     [sp, #8 * 1]
 
 	bl	libmain
 
