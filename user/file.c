@@ -42,13 +42,16 @@ int open(const char *path, int mode)
     r = fd_alloc(&fd);
     if (r)
         return r;
-
+    writef("fd num is %d\n", r);
     // Step 2: Get the file descriptor of the file to open.
     // Hint: Read fsipc.c, and choose a function.
     // writef("user thread issue a ipc requirement with open %s...\n",path);
     r = fsipc_open(path, mode, fd);
     if (r)
+    {
         return r;
+    }
+    writef("finished open\n");
     // Step 3: Set the start address storing the file's content. Set size and fileid correctly.
     // Hint: Use fd2data to get the start address.
     va = fd2data(fd);
@@ -61,10 +64,14 @@ int open(const char *path, int mode)
     {
         r = syscall_mem_alloc(0, va + i, PTE_VALID);
         if (r)
+        {
             return r;
+        }
         r = fsipc_map(fileid, i, va + i);
         if (r)
+        {
             return r;
+        }
     }
 
     // Step 5: Return the number of file descriptor.
@@ -78,9 +85,10 @@ int open(const char *path, int mode)
 //	Close a file descriptor
 static int file_close(struct Fd *fd)
 {
+    writef("file close begin\n");
     int r;
     struct Filefd *ffd;
-    u_int va, size, fileid;
+    uint_64 va, size, fileid;
     u_int i;
 
     ffd = (struct Filefd *)fd;
@@ -88,6 +96,7 @@ static int file_close(struct Fd *fd)
     size = ffd->f_file.f_size;
 
     // Set the start address storing the file's content.
+    writef("fd va is 0x%lx\n", fd);
     va = fd2data(fd);
 
     // Tell the file server the dirty page.
@@ -95,13 +104,14 @@ static int file_close(struct Fd *fd)
     {
         fsipc_dirty(fileid, i);
     }
-
+    writef("file close begin\n");
     // Request the file server to close the file with fsipc.
     if ((r = fsipc_close(fileid)) < 0)
     {
         writef("cannot close the file\n");
         return r;
     }
+    writef("file close begin\n");
 
     // Unmap the content of file, release memory.
     if (size == 0)
@@ -110,12 +120,14 @@ static int file_close(struct Fd *fd)
     }
     for (i = 0; i < size; i += BY2PG)
     {
+        writef("I am here, va is %lx\n", va);
         if ((r = syscall_mem_unmap(0, va + i)) < 0)
         {
             writef("cannont unmap the file.\n");
             return r;
         }
     }
+    writef("file close begin\n");
     return 0;
 }
 
@@ -216,12 +228,13 @@ static int file_write(struct Fd *fd, const void *buf, u_int n, u_int offset)
 static int file_stat(struct Fd *fd, struct Stat *st)
 {
     struct Filefd *f;
-
+    writef("file stat begin\n");
     f = (struct Filefd *)fd;
 
     strcpy(st->st_name, (char *)f->f_file.f_name);
     st->st_size = f->f_file.f_size;
     st->st_isdir = f->f_file.f_type == FTYPE_DIR;
+    writef("file stat end\n");
     return 0;
 }
 

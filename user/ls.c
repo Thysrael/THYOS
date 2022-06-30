@@ -9,11 +9,14 @@ void ls(char *path, char *prefix)
 {
     int r;
     struct Stat st;
-
+    writef("ls is here.\n");
     if ((r = stat(path, &st)) < 0)
     {
         user_panic("stat %s: %e", path, r);
     }
+
+    writef("state is %d", st.st_name);
+
     if (st.st_isdir && !flag['d'])
     {
         lsdir(path, prefix);
@@ -80,6 +83,8 @@ void usage(void)
 
 void umain(int argc, char **argv)
 {
+
+    writef("ls begin\n");
     int i;
 
     ARGBEGIN
@@ -94,11 +99,17 @@ void umain(int argc, char **argv)
     }
     ARGEND
 
+    
+
     if (argc == 0)
+    {
         ls("/", "");
+    }
     else
     {
         for (i = 0; i < argc; i++)
+        {
             ls(argv[i], argv[i]);
+        }
     }
 }

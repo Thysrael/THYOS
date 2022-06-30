@@ -351,6 +351,8 @@ void umain(int argc, char **argv)
 
         readline(buf, sizeof buf);
 
+        writef("command is %s\n", buf);
+
         if (buf[0] == '#')
         {
             continue;

@@ -82,8 +82,6 @@ void umain(uint_64 argc, char **argv)
         user_panic("dup: %d", r);
     }
 
-    write(1, "LALA", 4);
-
     // for (;;)
     // {
     //     writef("init: starting sh\n");
@@ -97,7 +95,7 @@ void umain(uint_64 argc, char **argv)
     // }
 
     writef("init: starting sh\n");
-    r = spawnl("test_arg.b", "ab", "cd", (char *)0);
+    r = spawnl("ls.b", "ls", (char *)0);
     if (r < 0)
     {
         user_panic("init: spawn sh: %e\n", r);

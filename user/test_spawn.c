@@ -29,7 +29,7 @@ void umain(int argc, char **argv)
         writef("fork solved the problem of PTE_LIBRARY,congratulations!\n");
     else
         user_panic("sorry , your fork may be wrong\n");
-    if ((r = spawnl("testptelibrary.b", "testptelibrary", "arg", 0)) < 0)
+    if ((r = spawnl("test_spawn.b", "test_spawn", "arg", 0)) < 0)
         user_panic("spawn wrong: %d", r);
     wait(r);
     if (strcmp(TMPVA, msg2) == 0)

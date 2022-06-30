@@ -282,11 +282,16 @@ int spawn(char *prog, char **argv)
         }
     }
 
+    writef("finsished the child.\n");
+
     if ((r = syscall_set_env_status(child_envid, ENV_RUNNABLE)) < 0)
     {
         user_panic("set child runnable is wrong\n");
         return r;
     }
+
+    writef("finished spawn\n");
+
     return child_envid;
 }
 
