@@ -180,15 +180,8 @@ int spawn(char *prog, char **argv)
     Elf64_Ehdr *elf;
     Elf64_Phdr *ph;
     uint_64 i, j, k, va;
-    // Step 1: Open the file specified by `prog` (prog is the path of the program)
-    i = 0;
-    while (argv[i])
-    {
-        debug("argv is %s\n", argv[i]);
-        i++;
-    }
-    
 
+    // Step 1: Open the file specified by `prog` (prog is the path of the program)    
     if ((r = open(prog, O_RDONLY)) < 0)
     {
         user_panic("spawn ::open line 102 RDONLY wrong !\n");
@@ -247,7 +240,6 @@ int spawn(char *prog, char **argv)
     }
 
 
-    debug("\n::::::::::spawn  %s  argc : %d  sp : 0x%x::::::::\n", prog, argc_in_reg, esp);
     syscall_init_stack(child_envid, esp, argc_in_reg, argv_in_reg);
 
     // 上面只是加载了程序的代码段，后面还有文件描述符等东西需要加载
@@ -282,15 +274,12 @@ int spawn(char *prog, char **argv)
         }
     }
 
-    debug("finsished the child.\n");
 
     if ((r = syscall_set_env_status(child_envid, ENV_RUNNABLE)) < 0)
     {
         user_panic("set child runnable is wrong\n");
         return r;
     }
-
-    debug("finished spawn\n");
 
     return child_envid;
 }

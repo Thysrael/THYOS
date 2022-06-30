@@ -9,13 +9,11 @@ void ls(char *path, char *prefix)
 {
     int r;
     struct Stat st;
-    debug("ls is here.\n");
     if ((r = stat(path, &st)) < 0)
     {
         user_panic("stat %s: %e", path, r);
     }
 
-    debug("state is %d", st.st_name);
 
     if (st.st_isdir && !flag['d'])
     {
@@ -44,7 +42,7 @@ void lsdir(char *path, char *prefix)
             ls1(prefix, f.f_type == FTYPE_DIR, f.f_size, (char *)f.f_name);
         }
     }
-
+    writef("\n");
     if (n > 0)
     {
         user_panic("short read in directory %s", path);
@@ -84,7 +82,6 @@ void usage(void)
 void umain(int argc, char **argv)
 {
 
-    debug("ls begin\n");
     int i;
 
     ARGBEGIN

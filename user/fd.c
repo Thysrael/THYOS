@@ -124,11 +124,8 @@ int close(int fdnum)
     {
         return r;
     }
-    debug("finished close lookup\n");
     r = (*dev->dev_close)(fd);
-    debug("finished dev close\n");
     fd_close(fd);
-    debug("finished fd_close\n");
     return r;
 }
 
@@ -313,13 +310,11 @@ int fstat(int fdnum, struct Stat *stat)
     struct Dev *dev;
     struct Fd *fd;
 
-    debug("fstat begin\n");
 
     if ((r = fd_lookup(fdnum, &fd)) < 0 || (r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
     {
         return r;
     }
-    debug("look up end\n");
 
     stat->st_name[0] = 0;
     stat->st_size = 0;
@@ -331,15 +326,15 @@ int fstat(int fdnum, struct Stat *stat)
 int stat(const char *path, struct Stat *stat)
 {
     int fd, r;
-    debug("stat begin, path is %s\n",path);
+
     if ((fd = open(path, O_RDONLY)) < 0)
     {
         return fd;
     }
-    debug("open the file, fd is %d\n", fd);
+
     r = fstat(fd, stat);
-    debug("finsished stat\n");
+
     close(fd);
-    debug("finished close\n");
+    
     return r;
 }

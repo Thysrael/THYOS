@@ -144,6 +144,8 @@ void user_lp_Print(void (*output)(void *, const char *, int),
                    va_list ap);
 #define debug(...) debug_printf(__FILE__, __LINE__, __VA_ARGS__)
 
+void debug_printf(char *src, int line, char *fmt, ...);
+
 //------------------ spawn.c ------------------//
 
 int spawnl(char *prog, ...);

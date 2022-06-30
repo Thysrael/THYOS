@@ -48,7 +48,6 @@ int fsipc_open(const char *path, u_int omode, struct Fd *fd)
     strcpy((char *)req->req_path, path);
     req->req_omode = omode;
 
-    debug("fsopen path is %s\n", path);
     int r = fsipc(FSREQ_OPEN, req, (uint_64)fd, &perm);
     return r;
 }

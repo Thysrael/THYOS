@@ -171,8 +171,6 @@ void env_init(void)
         envs[i].env_status = ENV_FREE;
         LIST_INSERT_HEAD(&env_free_list, &envs[i], env_link);
     }
-
-    debug("Process management init success.\n");
 }
 
 /* Overview:
@@ -317,7 +315,6 @@ void env_free(struct Env *e)
 {
     uint_64 pudno, pmdno, pteno, pa;
     uint_64 *pmd, *pt;
-    debug("[%08x] free env 0x%08x\n", curenv ? curenv->env_id : 0, e->env_id);
     
     for (pudno = 0; pudno < PUDX(UTOP); pudno++)
     {

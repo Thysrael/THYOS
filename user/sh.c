@@ -92,7 +92,7 @@ int gettoken(char *s, char **p1)
 void runcmd(char *s)
 {
     char *argv[MAXARGS], *t;
-    int argc, c, i, r, p[2], fd, rightpipe;
+    int argc, c, r, p[2], rightpipe;
     int fdnum;
 
     struct Stat state;
@@ -211,15 +211,6 @@ runit:
         return;
     }
     argv[argc] = 0;
-    if (1)
-    {
-        debug("[%08x] SPAWN:", env->env_id);
-        for (i = 0; argv[i]; i++)
-        {
-            debug(" %s", argv[i]);
-        }
-        writef("\n");
-    }
 
     if ((r = spawn(argv[0], argv)) < 0)
     {
@@ -350,8 +341,6 @@ void umain(int argc, char **argv)
         }
 
         readline(buf, sizeof buf);
-
-        debug("command is %s\n", buf);
 
         if (buf[0] == '#')
         {
