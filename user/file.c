@@ -245,7 +245,7 @@ int ftruncate(int fdnum, u_int size)
     int i, r;
     struct Fd *fd;
     struct Filefd *f;
-    u_int oldsize, va, fileid;
+    uint_64 oldsize, va, fileid;
 
     if (size > MAXFILESIZE)
     {

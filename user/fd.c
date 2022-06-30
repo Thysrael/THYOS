@@ -9,12 +9,11 @@ extern uint_64 *vmd;
 extern uint_64 *vud;
 
 static struct Dev *devtab[] =
-{
-    &devfile,
-    &devcons,
-    &devpipe,
-    0
-};
+    {
+        &devfile,
+        &devcons,
+        &devpipe,
+        0};
 
 int dev_lookup(int dev_id, struct Dev **dev)
 {
@@ -31,6 +30,13 @@ int dev_lookup(int dev_id, struct Dev **dev)
     return -E_INVAL;
 }
 
+void print_ref_num(int fdnum)
+{
+    struct Fd *fd = num2fd(fdnum);
+    uint_64 va = fd2data(fd);
+    writef("%d ref is %d %d\n", fdnum, pageref(fd), pageref(va));
+}
+
 int fd_alloc(struct Fd **fd)
 {
     // Find the smallest i from 0 to MAXFD-1 that doesn't have
@@ -43,11 +49,10 @@ int fd_alloc(struct Fd **fd)
     uint_64 va;
     uint_64 fdno;
 
-
-	for (fdno = 0; fdno < MAXFD - 1; fdno++)
-	{
-		va = INDEX2FD(fdno);
-		// writef("fd_alloc: va address is 0x%lx\n",va);
+    for (fdno = 0; fdno < MAXFD - 1; fdno++)
+    {
+        va = INDEX2FD(fdno);
+        // writef("fd_alloc: va address is 0x%lx\n",va);
 
         if ((vud[va / PUDMAP] & PTE_VALID) == 0)
         {
@@ -89,8 +94,8 @@ int fd_lookup(int fdnum, struct Fd **fd)
 
     va = INDEX2FD(fdnum);
 
-    if ((vpt[va / BY2PG] & PTE_VALID) != 0)
-    { 
+    if (((vpt[VPN(va)] & PTE_VALID) != 0) && ((vmd[(PUDX(va) << 9) | PMDX(va)] & PTE_VALID) != 0) && ((vud[PUDX(va)] & PTE_VALID) != 0))
+    {
         // the fd is used
         *fd = (struct Fd *)va;
         return 0;
@@ -120,7 +125,11 @@ int close(int fdnum)
     struct Dev *dev;
     struct Fd *fd;
 
-    if ((r = fd_lookup(fdnum, &fd)) < 0 || (r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
+    if ((r = fd_lookup(fdnum, &fd)) < 0)
+    {
+        return r;
+    }
+    if ((r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
     {
         return r;
     }
@@ -144,7 +153,7 @@ void close_all(void)
 
 int dup(int oldfdnum, int newfdnum)
 {
-    int i, r;
+    uint_64 i, r;
     uint_64 ova, nva, pte, pmd;
     struct Fd *oldfd, *newfd;
 
@@ -152,44 +161,43 @@ int dup(int oldfdnum, int newfdnum)
     {
         return r;
     }
-
     close(newfdnum);
     newfd = (struct Fd *)INDEX2FD(newfdnum);
     ova = fd2data(oldfd);
     nva = fd2data(newfd);
 
+    if (vud[PUDX(ova)] & PTE_VALID)
+    {
+        for (i = 0; i < PMDMAP; i += BY2PG)
+        {
+            pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
+            if (!(pmd & PTE_VALID))
+            {
+                continue;
+            }
+            pte = vpt[VPN(ova + i)];
 
-	if (vud[PUDX(ova)] & PTE_VALID)
-	{
-		for (i = 0; i < BY2PG * 4096; i += BY2PG)
-		{
-			pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
-			if (!(pmd & PTE_VALID))
-			{
-				i += 512 * BY2PG;
-			}
-			pte = vpt[VPN(ova + i)];
+            if (pte & PTE_VALID)
+            {
+                // should be no error here -- pd is already allocated
+                if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
+                                         (pte & PTE_MASK) | (PTE_VALID))) < 0)
+                {
+                    goto err;
+                }
+            }
+        }
+    }
 
-			if (pte & PTE_VALID)
-			{
-				// should be no error here -- pd is already allocated
-				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-										 (pte & PTE_MASK) | (PTE_VALID))) < 0)
-				{
-					goto err;
-				}
-			}
-		}
-	}
-
-	if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
-							 (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID))) < 0)
-	{
-		goto err;
-	}
-	return newfdnum;
+    if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
+                             (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID))) < 0)
+    {
+        goto err;
+    }
+    return newfdnum;
 
 err:
+    writef("error in dup\n");
     syscall_mem_unmap(0, (uint_64)newfd);
 
     for (i = 0; i < BY2PG * 4096; i += BY2PG)
@@ -331,7 +339,7 @@ int fstat(int fdnum, struct Stat *stat)
 int stat(const char *path, struct Stat *stat)
 {
     int fd, r;
-    debug("stat begin, path is %s\n",path);
+    debug("stat begin, path is %s\n", path);
     if ((fd = open(path, O_RDONLY)) < 0)
     {
         return fd;

@@ -218,9 +218,8 @@ runit:
         {
             debug(" %s", argv[i]);
         }
-        writef("\n");
+        //writef("\n");
     }
-
     if ((r = spawn(argv[0], argv)) < 0)
     {
         debug("spawn %s: %e\n", argv[0], r);

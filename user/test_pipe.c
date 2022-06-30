@@ -17,8 +17,10 @@ void umain(void)
 	{
 		writef("[%08x] pipereadeof close %d\n", env->env_id, p[1]);
 		close(p[1]);
+		dup(p[0],10);
+		close(p[0]);
 		writef("[%08x] pipereadeof readn %d\n", env->env_id, p[0]);
-		i = readn(p[0], buf, sizeof buf - 1);
+		i = readn(10, buf, sizeof buf - 1);
 		if (i < 0)
 			user_panic("read: %d", i);
 		buf[i] = 0;
@@ -32,10 +34,12 @@ void umain(void)
 	{
 		writef("[%08x] pipereadeof close %d\n", env->env_id, p[0]);
 		close(p[0]);
-		writef("[%08x] pipereadeof write %d\n", env->env_id, p[1]);
-		if ((i = write(p[1], msg, strlen(msg))) != strlen(msg))
-			user_panic("write: %d", i);
+		dup(p[1],11);
 		close(p[1]);
+		writef("[%08x] pipereadeof write %d\n", env->env_id, p[1]);
+		if ((i = write(11, msg, strlen(msg))) != strlen(msg))
+			user_panic("write: %d", i);
+		close(11);
 	}
 	wait(pid);
 
@@ -47,13 +51,29 @@ void umain(void)
 	if (pid == 0)
 	{
 		close(p[0]);
+		dup(p[1],10);
+		close(p[1]);
 		for (;;)
 		{
 			writef(".");
-			if (write(p[1], "x", 1) != 1)
+			if (write(10, "x", 1) != 1)
 				break;
 		}
+		close(10);
 		writef("\npipe write closed properly\n");
+	}
+	else
+	{
+		close(p[0]);
+		close(p[1]);
+		for (;;)
+		{
+			if (pipeisclosed(p[0]))
+			{
+				writef("pipe is closed in father\n");
+				exit();
+			}
+		}
 	}
 	close(p[0]);
 	close(p[1]);

@@ -363,7 +363,7 @@ void env_free(struct Env *e)
 void env_destroy(struct Env *e)
 {
     /* Hint: free e. */
-    printf("Env %lx has been killed ... \n", e->env_id);
+    debug("Env %lx has been killed ... \n", e->env_id);
     env_free(e);
 
     /* Hint: schedule to run a new environment. */

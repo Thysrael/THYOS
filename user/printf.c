@@ -34,6 +34,18 @@ void writef(char *fmt, ...)
     va_end(ap);
 }
 
+void debug_printf(char *src, int line, char *fmt, ...)
+{
+    if (DEBUG)
+    {
+        writef("[DEBUG_INFO] %s @ %d: ", src, line);
+        va_list ap;
+        va_start(ap, fmt);
+        user_lp_Print(user_myoutput, 0, fmt, ap);
+        va_end(ap);
+    }
+}
+
 void _user_panic(const char *file, int line, const char *fmt, ...)
 {
     va_list ap;
@@ -44,5 +56,5 @@ void _user_panic(const char *file, int line, const char *fmt, ...)
     writef("\n");
     va_end(ap);
 
-    while (1);
+    exit();
 }
