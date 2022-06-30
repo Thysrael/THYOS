@@ -304,14 +304,12 @@ int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm)
 
 int sys_write_sd(uint_64 blockno, void *data_addr)
 {
-    // printf("sys_write_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
     sd_write_fixed(blockno, data_addr);
     return 0;
 }
 
 int sys_read_sd(uint_64 blockno, void *data_addr)
 {
-    // printf("sys_read_sd: called with blockno: %d, addr: 0x%lx\n",blockno,data_addr);
     sd_read_fixed(blockno, data_addr);
     return 0;
 }

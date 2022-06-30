@@ -26,7 +26,7 @@ FSLIB := fs.o ide.o test.o
 USERAPPS := $(user_dir)/sh.b  $(user_dir)/ls.b $(user_dir)/test_arg.b
 
 
-FSIMGFILES := motd newmotd  $(user_dir)/init.b $(USERAPPS)
+FSIMGFILES := motd newmotd $(USERAPPS)
 
 CFLAGS += -nostdlib -static
 

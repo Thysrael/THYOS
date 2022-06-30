@@ -2,11 +2,11 @@
 #include "load.h"
 #include "tool.h"
 
-#define TMPPAGETOP      (2 * BY2PG)
-#define TMPPAGE         (BY2PG)
+#define TMPPAGETOP (2 * BY2PG)
+#define TMPPAGE (BY2PG)
 
-int init_stack(u_int child, char **argv, uint_64 *init_esp, 
-        uint_64 *argc_in_reg, uint_64 *argv_in_reg)
+int init_stack(u_int child, char **argv, uint_64 *init_esp,
+               uint_64 *argc_in_reg, uint_64 *argv_in_reg)
 {
     int argc, i, r, tot;
     char *strings;
@@ -170,7 +170,7 @@ int spawn(char *prog, char **argv)
     // Step 1: Open the file specified by `prog` (prog is the path of the program)
     if ((r = open(prog, O_RDONLY)) < 0)
     {
-        user_panic("spawn ::open line 102 RDONLY wrong !\n");
+        user_panic("spawn ::open wrong %s %d !\n", prog, r);
         return r;
     }
 
@@ -197,10 +197,13 @@ int spawn(char *prog, char **argv)
         return 0;
     }
     child_envid = r;
-
+    struct Trapframe *tf;
+    tf = &(envs[ENVX(child_envid)].env_tf);
     // Step 3: Using init_stack(...) to initialize the stack of the allocated env
-    // init_stack(child_envid, argv, &esp);
-
+    writef("\n::::::::::spawn size : %lx  sp : %lx::::::::\n", size, esp);
+    init_stack(child_envid, argv, &esp, &tf->x[0], &tf->x[1]);
+    tf->elr = 0x00400000;
+    tf->sp = esp;
     text_start = elf->e_phoff;
     size = elf->e_phentsize;
     for (i = 0; i < elf->e_phnum; i++)
@@ -225,13 +228,6 @@ int spawn(char *prog, char **argv)
         text_start += size;
     }
 
-
-    struct Trapframe *tf;
-    writef("\n::::::::::spawn size : %x  sp : %x::::::::\n", size, esp);
-    tf = &(envs[ENVX(child_envid)].env_tf);
-    tf->elr = 0x00400000;
-    tf->sp = esp;
-
     // 上面只是加载了程序的代码段，后面还有文件描述符等东西需要加载
     for (i = 0; i <= PUDX(USTACKTOP); i++)
     {
@@ -248,8 +244,8 @@ int spawn(char *prog, char **argv)
             }
             for (k = 0; k < 512; k++)
             {
-                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) && 
-                    ((vpt[(i << 18) + (j << 9) + k] & PTE_LIBRARY)) && 
+                if ((vpt[(i << 18) + (j << 9) + k] & PTE_VALID) &&
+                    ((vpt[(i << 18) + (j << 9) + k] & PTE_LIBRARY)) &&
                     ((((i << 18) + (j << 9) + k) << 12) < USTACKTOP))
                 {
                     va = ((i << 18) + (j << 9) + k) << 12;
@@ -272,7 +268,20 @@ int spawn(char *prog, char **argv)
     return child_envid;
 }
 
-int spawnl(char *prog, char *args, ...)
+int spawnl(char *prog, ...)
 {
-    return spawn(prog, &args);
+    va_list ap;
+    char *buf[512];
+    va_start(ap, prog);
+    char *args;
+    int i = 0;
+    while ((args = va_arg(ap, uint_64)) != NULL)
+    {
+        writef("args: 0x%lx %s\n", args, args);
+        buf[i++] = args;
+    }
+    buf[i] = NULL;
+    va_end(ap);
+    // return 1;
+    return spawn(prog, buf);
 }

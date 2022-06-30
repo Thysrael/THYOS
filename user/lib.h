@@ -143,7 +143,7 @@ void user_lp_Print(void (*output)(void *, const char *, int),
 
 //------------------ spawn.c ------------------//
 
-int spawnl(char *prog, char *args, ...);
+int spawnl(char *prog, ...);
 
 int spawn(char *prog, char **argv);
 

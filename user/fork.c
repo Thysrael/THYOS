@@ -18,14 +18,14 @@ extern struct Env *env;
 
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
-    writef("pgfault @0x%lx!\n",va);
+    writef("pgfault @0x%lx!\n", va);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & PTE_MASK;
 
     if ((perm & PTE_COW) == 0)
     {
-        user_panic("perm is 0x%lx, pgfault err: COW not found", perm);
+        user_panic("%d env: 0x%lx perm is 0x%lx, pgfault err: COW not found", syscall_getenvid(), va, perm);
     }
     perm -= PTE_RO;
     perm -= PTE_COW;
@@ -57,11 +57,11 @@ static void duppage(u_int envid, uint_64 pn)
 
     writef("addr 0x%lx, envid 0x%x, perm 0x%lx flag %d\n", addr, envid, perm, flag);
     syscall_mem_map(0, addr, envid, addr, perm);
-    //writef("flag: %d\n", flag);
+    // writef("flag: %d\n", flag);
     if (flag)
     {
         syscall_mem_map(0, addr, 0, addr, perm);
-        //writef("q\n");
+        // writef("q\n");
     }
 }
 
@@ -72,19 +72,19 @@ int fork(void)
 {
     int newenvid;
     uint_64 i, j, k;
-    //writef("1\n");
-    // The parent installs pgfault using set_pgfault_handler
+    // writef("1\n");
+    //  The parent installs pgfault using set_pgfault_handler
     set_pgfault_handler(pgfault);
     // alloc a new alloc
     newenvid = msyscall(SYS_env_alloc, 0, 0, 0, 0, 0);
-    //writef("6\n");
-    // writef("3\n");
+    // writef("6\n");
+    //  writef("3\n");
     if (newenvid == 0)
     {
         env = envs + ENVX(syscall_getenvid());
         return 0;
     }
-    //writef("7\n");
+    // writef("7\n");
 
     for (i = 0; i <= PUDX(USTACKTOP); i++)
     {
@@ -110,19 +110,19 @@ int fork(void)
             }
         }
     }
-    //writef("8\n");
+    // writef("8\n");
 
     syscall_mem_alloc(newenvid, UXSTACKTOP - BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
     syscall_mem_alloc(newenvid, UXSTACKTOP - 2 * BY2PG, PTE_VALID | PTE_AF | PTE_USER | PTE_ISH | PTE_NORMAL | PTE_RW);
     syscall_set_pgfault_handler(newenvid, (uint_64)__asm_pgfault_handler, UXSTACKTOP);
     syscall_set_env_status(newenvid, ENV_RUNNABLE);
-    //writef("9\n");
+    // writef("9\n");
     return newenvid;
 }
 
 void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *))
 {
-    //writef("4\n");
+    // writef("4\n");
     if (__pgfault_handler == 0)
     {
         // map one page of exception stack with top at UXSTACKTOP
@@ -136,6 +136,6 @@ void set_pgfault_handler(void (*fn)(uint_64 va, struct Trapframe *))
         }
         __pgfault_handler = fn;
     }
-    //writef("5\n");
-    // Save handler pointer for assembly to call.
+    // writef("5\n");
+    //  Save handler pointer for assembly to call.
 }
