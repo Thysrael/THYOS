@@ -18,7 +18,7 @@ extern struct Env *env;
 
 static void pgfault(uint_64 va, struct Trapframe *tf)
 {
-    writef("pgfault @0x%lx!\n",va);
+    debug("pgfault @0x%lx!\n",va);
     uint_64 tmp = USTACKTOP;
 
     uint_64 perm = vpt[VPN(va)] & PTE_MASK;

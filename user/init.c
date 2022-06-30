@@ -95,7 +95,7 @@ void umain(uint_64 argc, char **argv)
     // }
 
     writef("init: starting sh\n");
-    r = spawnl("ls.b", "ls", (char *)0);
+    r = spawnl("sh.b", "ls", (char *)0);
     if (r < 0)
     {
         user_panic("init: spawn sh: %e\n", r);

@@ -213,17 +213,17 @@ runit:
     argv[argc] = 0;
     if (1)
     {
-        writef("[%08x] SPAWN:", env->env_id);
+        debug("[%08x] SPAWN:", env->env_id);
         for (i = 0; argv[i]; i++)
         {
-            writef(" %s", argv[i]);
+            debug(" %s", argv[i]);
         }
         writef("\n");
     }
 
     if ((r = spawn(argv[0], argv)) < 0)
     {
-        writef("spawn %s: %e\n", argv[0], r);
+        debug("spawn %s: %e\n", argv[0], r);
     }
     close_all();
     if (r >= 0)
@@ -351,7 +351,7 @@ void umain(int argc, char **argv)
 
         readline(buf, sizeof buf);
 
-        writef("command is %s\n", buf);
+        debug("command is %s\n", buf);
 
         if (buf[0] == '#')
         {

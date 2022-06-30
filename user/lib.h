@@ -17,6 +17,8 @@ extern uint_64 *vud;
 
 #define USED(x) (void)(x)
 
+#define DEBUG 1
+
 //------------------ console.c -----------------//
 
 int iscons(int fdnum);
@@ -140,6 +142,7 @@ void user_lp_Print(void (*output)(void *, const char *, int),
                    void *arg,
                    const char *fmt,
                    va_list ap);
+#define debug(...) debug_printf(__FILE__, __LINE__, __VA_ARGS__)
 
 //------------------ spawn.c ------------------//
 

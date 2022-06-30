@@ -184,7 +184,7 @@ int spawn(char *prog, char **argv)
     i = 0;
     while (argv[i])
     {
-        writef("argv is %s\n", argv[i]);
+        debug("argv is %s\n", argv[i]);
         i++;
     }
     
@@ -247,7 +247,7 @@ int spawn(char *prog, char **argv)
     }
 
 
-    writef("\n::::::::::spawn  %s  argc : %d  sp : 0x%x::::::::\n", prog, argc_in_reg, esp);
+    debug("\n::::::::::spawn  %s  argc : %d  sp : 0x%x::::::::\n", prog, argc_in_reg, esp);
     syscall_init_stack(child_envid, esp, argc_in_reg, argv_in_reg);
 
     // 上面只是加载了程序的代码段，后面还有文件描述符等东西需要加载
@@ -282,7 +282,7 @@ int spawn(char *prog, char **argv)
         }
     }
 
-    writef("finsished the child.\n");
+    debug("finsished the child.\n");
 
     if ((r = syscall_set_env_status(child_envid, ENV_RUNNABLE)) < 0)
     {
@@ -290,7 +290,7 @@ int spawn(char *prog, char **argv)
         return r;
     }
 
-    writef("finished spawn\n");
+    debug("finished spawn\n");
 
     return child_envid;
 }
