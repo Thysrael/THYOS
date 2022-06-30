@@ -21,7 +21,7 @@ USERLIB := 	printf.o 		\
 CFLAGS += -nostdlib -static
 
 all: test_sys.x test_fork.x test_ipc.x test_fs.x test_pipe.x test_piperace.x test_fdsharing.x test_console.x test_spawn.x\
-		icode.x ls.b test_arg.b sh.b init.b $(USERLIB)
+		icode.x ls.b test_arg.b sh.b init.b tsh.b $(USERLIB)
 
 %.x: %.b.c
 	$(CC) $(CFLAGS) -c -o $@ $<
