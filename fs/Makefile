@@ -24,13 +24,13 @@ USERLIB :=	$(user_dir)/entrance.o 	\
 
 FSLIB := fs.o ide.o test.o
 
-USERAPPS := $(user_dir)/sh.b  			\
-			$(user_dir)/ls.b 			\
+USERAPPS := $(app_dir)/sh.b  			\
+			$(app_dir)/ls.b 			\
 			$(app_dir)/echo.b			\
 			$(app_dir)/cat.b 			\
-			$(user_dir)/test_arg.b 		\
-			$(user_dir)/test_spawn.b	\
-			$(user_dir)/tsh.b
+			$(app_dir)/args.b 			\
+			$(app_dir)/tsh.b			\
+			$(app_dir)/bpmv.b
 
 
 FSIMGFILES := name pic.bpm $(user_dir)/init.b $(USERAPPS)

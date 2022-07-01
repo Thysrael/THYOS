@@ -30,13 +30,6 @@ int dev_lookup(int dev_id, struct Dev **dev)
     return -E_INVAL;
 }
 
-void print_ref_num(int fdnum)
-{
-    struct Fd *fd = num2fd(fdnum);
-    uint_64 va = fd2data(fd);
-    writef("%d ref is %d %d\n", fdnum, pageref(fd), pageref((void *)va));
-}
-
 int fd_alloc(struct Fd **fd)
 {
     // Find the smallest i from 0 to MAXFD-1 that doesn't have
@@ -94,7 +87,7 @@ int fd_lookup(int fdnum, struct Fd **fd)
 
     va = INDEX2FD(fdnum);
 
-    if (((vpt[VPN(va)] & PTE_VALID) != 0) && ((vmd[(PUDX(va) << 9) | PMDX(va)] & PTE_VALID) != 0) && ((vud[PUDX(va)] & PTE_VALID) != 0))
+    if ((vpt[va / BY2PG] & PTE_VALID) != 0)
     {
         // the fd is used
         *fd = (struct Fd *)va;
@@ -125,11 +118,7 @@ int close(int fdnum)
     struct Dev *dev;
     struct Fd *fd;
 
-    if ((r = fd_lookup(fdnum, &fd)) < 0)
-    {
-        return r;
-    }
-    if ((r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
+    if ((r = fd_lookup(fdnum, &fd)) < 0 || (r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
     {
         return r;
     }
@@ -152,7 +141,7 @@ void close_all(void)
 // dup(out, 1) 的意思就是将标准输出重定向到指定文件
 int dup(int oldfdnum, int newfdnum)
 {
-    uint_64 i, r;
+    int i, r;
     uint_64 ova, nva, pte, pmd;
     struct Fd *oldfd, *newfd;
 
@@ -160,6 +149,7 @@ int dup(int oldfdnum, int newfdnum)
     {
         return r;
     }
+
     close(newfdnum);
     newfd = (struct Fd *)INDEX2FD(newfdnum);
     ova = fd2data(oldfd);
@@ -176,38 +166,26 @@ int dup(int oldfdnum, int newfdnum)
             }
             pte = vpt[VPN(ova + i)];
 
-	if (vud[PUDX(ova)] & PTE_VALID)
-	{
-		for (i = 0; i < PMDMAP; i += BY2PG)
-		{
-			pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
-			if (!(pmd & PTE_VALID))
-			{
-				continue;
-			}
-			pte = vpt[VPN(ova + i)];
-
-			if (pte & PTE_VALID)
-			{
-				// should be no error here -- pd is already allocated
-				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-										 (pte & PTE_MASK) | (PTE_LIBRARY) | (PTE_VALID))) < 0)
-				{
-					goto err;
-				}
-			}
-		}
-	}
+            if (pte & PTE_VALID)
+            {
+                // should be no error here -- pd is already allocated
+                if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
+                                         (pte & PTE_MASK) | (PTE_LIBRARY) | (PTE_VALID))) < 0)
+                {
+                    goto err;
+                }
+            }
+        }
+    }
 
     if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
                              (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_LIBRARY) | (PTE_VALID))) < 0)
     {
-		goto err;
-	}
-	return newfdnum;
+        goto err;
+    }
+    return newfdnum;
 
 err:
-    writef("error in dup\n");
     syscall_mem_unmap(0, (uint_64)newfd);
 
     for (i = 0; i < BY2PG * 4096; i += BY2PG)
@@ -225,6 +203,7 @@ err:
 //	Update seek position.
 //	Return the number of bytes read successfully.
 //		< 0 on error
+/*** exercise 5.9 ***/
 int read(int fdnum, void *buf, u_int n)
 {
     int r;
@@ -261,6 +240,28 @@ int read(int fdnum, void *buf, u_int n)
     return r;
 }
 
+int readn(int fdnum, void *buf, u_int n)
+{
+    int m, tot;
+
+    for (tot = 0; tot < n; tot += m)
+    {
+        m = read(fdnum, (char *)buf + tot, n - tot);
+
+        if (m < 0)
+        {
+            return m;
+        }
+
+        if (m == 0)
+        {
+            break;
+        }
+    }
+
+    return tot;
+}
+
 int bread(int fdnum, void *buf, u_int n)
 {
     int r;
@@ -295,28 +296,6 @@ int bread(int fdnum, void *buf, u_int n)
     return r;
 }
 
-int readn(int fdnum, void *buf, u_int n)
-{
-    int m, tot;
-
-    for (tot = 0; tot < n; tot += m)
-    {
-        m = read(fdnum, (char *)buf + tot, n - tot);
-
-        if (m < 0)
-        {
-            return m;
-        }
-
-        if (m == 0)
-        {
-            break;
-        }
-    }
-
-    return tot;
-}
-
 int write(int fdnum, const void *buf, u_int n)
 {
     int r;
@@ -333,7 +312,7 @@ int write(int fdnum, const void *buf, u_int n)
         writef("[%08x] write %d -- bad mode\n", env->env_id, fdnum);
         return -E_INVAL;
     }
-    
+
     r = (*dev->dev_write)(fd, buf, n, fd->fd_offset);
     if (r > 0)
     {
@@ -363,7 +342,6 @@ int fstat(int fdnum, struct Stat *stat)
     struct Dev *dev;
     struct Fd *fd;
 
-
     if ((r = fd_lookup(fdnum, &fd)) < 0 || (r = dev_lookup(fd->fd_dev_id, &dev)) < 0)
     {
         return r;
@@ -379,7 +357,7 @@ int fstat(int fdnum, struct Stat *stat)
 int stat(const char *path, struct Stat *stat)
 {
     int fd, r;
-    
+
     if ((fd = open(path, O_RDONLY)) < 0)
     {
         return fd;
@@ -388,6 +366,6 @@ int stat(const char *path, struct Stat *stat)
     r = fstat(fd, stat);
 
     close(fd);
-    
+
     return r;
 }

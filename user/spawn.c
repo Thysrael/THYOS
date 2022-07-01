@@ -193,6 +193,7 @@ int spawn(char *prog, char **argv)
     // Step 1: Open the file specified by `prog` (prog is the path of the program)
     if ((r = open(prog_path, O_RDONLY)) < 0)
     {
+        writef("path is %s\n", prog_path);
         user_panic("spawn ::open line 102 RDONLY wrong !\n");
         return r;
     }
