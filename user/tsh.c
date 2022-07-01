@@ -151,9 +151,9 @@ void parse_line()
 {
     parse_init();
     tokenize();
-    print_tokens();
+    //print_tokens();
     parse_commands();
-    print_commands();
+    //print_commands();
 }
 
 void parse_init()
@@ -369,7 +369,7 @@ void parse_commands()
 
 void execute_command(Command command, int fd_in, int fd_out)
 {
-    writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
+    //writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
     if (!builtin_command(command))
     {
         int command_pid;
