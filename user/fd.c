@@ -34,7 +34,7 @@ void print_ref_num(int fdnum)
 {
     struct Fd *fd = num2fd(fdnum);
     uint_64 va = fd2data(fd);
-    writef("%d ref is %d %d\n", fdnum, pageref(fd), pageref(va));
+    writef("%d ref is %d %d\n", fdnum, pageref(fd), pageref((void *)va));
 }
 
 int fd_alloc(struct Fd **fd)
