@@ -123,10 +123,20 @@ void serve_open(u_int envid, struct Fsreq_open *rq)
 	// Open the file.
 	if ((r = file_open((char *)path, &f)) < 0)
 	{
-		//	user_panic("file_open failed: %d, invalid path: %s", r, path);
-		ipc_send(envid, r, 0, 0);
-		return;
-	}
+        if (rq->req_omode & O_CREAT)
+        {
+            if ((r = file_create((char *)path, &f)) < 0)
+            {
+                return;
+            }
+            f->f_type = FTYPE_REG;
+        }
+        else
+        {
+            ipc_send(envid, r, 0, 0);
+            return;
+        }
+    }
 
 	// Save the file pointer.
 	o->o_file = f;
@@ -138,8 +148,6 @@ void serve_open(u_int envid, struct Fsreq_open *rq)
 	o->o_mode = rq->req_omode;
 	ff->f_fd.fd_omode = o->o_mode;
 	ff->f_fd.fd_dev_id = devfile.dev_id;
-
-	//writef("fs_serv fd_dev_id %d\n",ff->f_fd.fd_dev_id);
 
 	ipc_send(envid, 0, (uint_64)o->o_ff, PTE_VALID /*| PTE_LIBRARY*/);
 }

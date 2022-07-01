@@ -73,3 +73,12 @@ int strcmp(const char *p, const char *q)
 
     return 0;
 }
+
+char *strcat(char *dst, const char *src)
+{
+    char *ret = dst;
+    while (*ret)
+        ret++;
+    while ((*ret++ = *src++) != 0);
+    return dst;
+}

@@ -130,6 +130,7 @@ void _user_panic(const char *file, int line, const char *fmt, ...);
 
 void _user_panic(const char *, int, const char *, ...);
 
+
 #define user_panic(...) _user_panic(__FILE__, __LINE__, __VA_ARGS__)
 
 #define user_assert(x)                              \
@@ -166,6 +167,8 @@ const char *strchr(const char *s, char c);
 void *memcpy(void *destaddr, void const *srcaddr, u_int len);
 
 int strcmp(const char *p, const char *q);
+
+char *strcat(char *dst, const char *src);
 
 //---------------- syscall_lib.c ---------------//
 
@@ -217,5 +220,6 @@ void syscall_draw_area(int x, int y, int user_width, int user_height, unsigned c
 #define O_TRUNC 0x0200 /* truncate to zero length */
 #define O_EXCL 0x0400  /* error if already exists */
 #define O_MKDIR 0x0800 /* create directory, not regular file */
+#define O_APPEND 0x1000
 
 #endif

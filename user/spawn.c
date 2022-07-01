@@ -181,8 +181,17 @@ int spawn(char *prog, char **argv)
     Elf64_Phdr *ph;
     uint_64 i, j, k, va;
 
-    // Step 1: Open the file specified by `prog` (prog is the path of the program)    
-    if ((r = open(prog, O_RDONLY)) < 0)
+    // 这样没有 “.b” 也没事了
+    char prog_path[128];
+    int name_len = strlen(prog);
+    strcpy(prog_path, prog);
+    if (name_len <= 2 || prog[name_len - 1] != 'b' || prog[name_len - 2] != '.')
+    {
+        strcat(prog_path, ".b");
+    }
+
+    // Step 1: Open the file specified by `prog` (prog is the path of the program)
+    if ((r = open(prog_path, O_RDONLY)) < 0)
     {
         user_panic("spawn ::open line 102 RDONLY wrong !\n");
         return r;

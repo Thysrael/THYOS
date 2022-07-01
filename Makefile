@@ -6,6 +6,7 @@ fs_dir		  := fs
 mmu_dir       := mmu
 tools_dir	  := tools
 user_dir	  := user
+app_dir		  := app
 
 vmlinux_elf   := kernel.elf
 vmlinux_img   := kernel.img
@@ -14,7 +15,7 @@ user_disk     := fs.img
 link_script   := kernel.lds
 
 # calling them directory other than modules maybe more easy to understand
-modules       := drivers boot init lib mmu user fs
+modules       := drivers boot init lib mmu user app fs
 
 objects       := $(drivers_dir)/*.o 	\
 				 $(boot_dir)/*.o 		\

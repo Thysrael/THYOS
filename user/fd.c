@@ -148,6 +148,8 @@ void close_all(void)
     }
 }
 
+// dup 的意思是用 oldfdnum 覆盖 newfdnum，之后所有对于 new 的操作都是对于 old 的操作
+// dup(out, 1) 的意思就是将标准输出重定向到指定文件
 int dup(int oldfdnum, int newfdnum)
 {
     uint_64 i, r;
@@ -174,24 +176,35 @@ int dup(int oldfdnum, int newfdnum)
             }
             pte = vpt[VPN(ova + i)];
 
-            if (pte & PTE_VALID)
-            {
-                // should be no error here -- pd is already allocated
-                if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
-                                         (pte & PTE_MASK) | (PTE_VALID))) < 0)
-                {
-                    goto err;
-                }
-            }
-        }
-    }
+	if (vud[PUDX(ova)] & PTE_VALID)
+	{
+		for (i = 0; i < PMDMAP; i += BY2PG)
+		{
+			pmd = vmd[(PUDX(ova + i) << 9) | PMDX(ova + i)];
+			if (!(pmd & PTE_VALID))
+			{
+				continue;
+			}
+			pte = vpt[VPN(ova + i)];
+
+			if (pte & PTE_VALID)
+			{
+				// should be no error here -- pd is already allocated
+				if ((r = syscall_mem_map(0, ova + i, 0, nva + i,
+										 (pte & PTE_MASK) | (PTE_LIBRARY) | (PTE_VALID))) < 0)
+				{
+					goto err;
+				}
+			}
+		}
+	}
 
     if ((r = syscall_mem_map(0, (uint_64)oldfd, 0, (uint_64)newfd,
-                             (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_VALID))) < 0)
+                             (vpt[VPN(oldfd)] & PTE_MASK) | (PTE_LIBRARY) | (PTE_VALID))) < 0)
     {
-        goto err;
-    }
-    return newfdnum;
+		goto err;
+	}
+	return newfdnum;
 
 err:
     writef("error in dup\n");
@@ -212,7 +225,6 @@ err:
 //	Update seek position.
 //	Return the number of bytes read successfully.
 //		< 0 on error
-/*** exercise 5.9 ***/
 int read(int fdnum, void *buf, u_int n)
 {
     int r;
@@ -321,9 +333,8 @@ int write(int fdnum, const void *buf, u_int n)
         writef("[%08x] write %d -- bad mode\n", env->env_id, fdnum);
         return -E_INVAL;
     }
-
+    
     r = (*dev->dev_write)(fd, buf, n, fd->fd_offset);
-
     if (r > 0)
     {
         fd->fd_offset += r;

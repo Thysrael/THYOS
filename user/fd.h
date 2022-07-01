@@ -8,6 +8,8 @@
 #define MAXFD 512
 #define FILEBASE 0x1f80000000
 #define FDTABLE (FILEBASE - (PMDMAP))
+#define STDIN_FILENO 0
+#define STDOUT_FILENO 1
 
 #define INDEX2FD(i) (FDTABLE + (i) * BY2PG)
 #define INDEX2DATA(i) (FILEBASE + (i) * PMDMAP)

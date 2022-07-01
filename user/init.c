@@ -35,9 +35,7 @@ int sum(char *s, int n)
 
 void umain(uint_64 argc, char **argv)
 {
-    int i, r, x, want;
-
-    writef("init: running, argc is %d\n", argc);
+    int r, x, want;
 
     want = 0xf989e;
     if ((x = sum((char *)&data, sizeof data)) != want)
@@ -58,14 +56,7 @@ void umain(uint_64 argc, char **argv)
         writef("init: bss seems okay\n");
     }
 
-    writef("init: args:");
-    for (i = 0; i < argc; i++)
-    {
-        writef(" '%s'", argv[i]);
-    }
-    writef("\n");
-
-    writef("init: running sh\n");
+    writef("init: running tsh\n");
 
     // being run directly from kernel, so no file descriptors open yet
     close(0);
@@ -82,20 +73,7 @@ void umain(uint_64 argc, char **argv)
         user_panic("dup: %d", r);
     }
 
-    // for (;;)
-    // {
-    //     writef("init: starting sh\n");
-    //     r = spawnl("sh.b", "sh", (char *)0);
-    //     if (r < 0)
-    //     {
-    //         user_panic("init: spawn sh: %e\n", r); 
-    //         continue;
-    //     }
-    //     wait(r);
-    // }
-
-    writef("init: starting sh\n");
-    r = spawnl("sh.b", "ls", (char *)0);
+    r = spawnl("tsh.b", "tsh", (char *)0);
     if (r < 0)
     {
         user_panic("init: spawn sh: %e\n", r);
