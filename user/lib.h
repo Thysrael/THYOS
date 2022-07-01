@@ -17,14 +17,7 @@ extern uint_64 *vud;
 
 #define USED(x) (void)(x)
 
-#define MAXNAMELEN 32
-#define MAXVALUELEN 256
-#define MAXVARNUM 256
-#define V_RDONLY 1
-#define V_GLOBAL 2
-#define DEBUG_ 0
-
-#define IF_D if (DEBUG_)
+#define DEBUG 0
 
 //------------------ console.c -----------------//
 
