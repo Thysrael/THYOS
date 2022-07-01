@@ -130,7 +130,6 @@ void eval()
     {
         for (j = 0; j < command_cur[i]; j++)
         {
-            writef("command will be executed is %s\n", commands[i][j].argv[0]);
             pipe(fd);
             pid = fork();
             if (pid == 0)
