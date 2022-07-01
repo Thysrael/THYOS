@@ -28,5 +28,6 @@
 #define SYS_write_sd                16
 #define SYS_read_sd                 17
 #define SYS_init_stack              18
+#define SYS_draw_area               19
 
 #endif

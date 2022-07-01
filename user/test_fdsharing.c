@@ -31,7 +31,8 @@ void umain(int argc, char **argv)
     {
         seek(fd, 0);
         writef("going to read in child (might page fault if your sharing is buggy)\n");
-        if ((n2 = readn(fd, buf2, sizeof buf2)) != n2)
+        int old_n2 = n2;
+        if ((n2 = readn(fd, buf2, sizeof buf2)) != old_n2)
             user_panic("read in parent got %d, read in child got %d", n, n2);
         if (memcmp(buf, buf2, n) != 0)
             user_panic("read in parent got different bytes from read in child");

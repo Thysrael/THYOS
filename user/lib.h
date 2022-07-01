@@ -126,8 +126,7 @@ void debug_printf(char *src, int line, char *fmt, ...);
 
 void _user_panic(const char *file, int line, const char *fmt, ...);
 
-void _user_panic(const char *, int, const char *, ...)
-    __attribute__((noreturn));
+void _user_panic(const char *, int, const char *, ...);
 
 #define user_panic(...) _user_panic(__FILE__, __LINE__, __VA_ARGS__)
 
@@ -201,6 +200,8 @@ int syscall_write_sd(uint_64 blockno, void *data_addr);
 int syscall_read_sd(uint_64 blockno, void *data_addr);
 
 void syscall_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg);
+
+void syscall_draw_area(int x, int y, int user_width, int user_height, unsigned char *user_ptr);
 
 /* File open modes */
 #define O_RDONLY 0x0000  /* open for reading only */

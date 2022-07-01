@@ -4,7 +4,6 @@
 
 */
 
-
 #include "printf.h"
 #include "pmap.h"
 #include "env.h"
@@ -17,26 +16,26 @@ extern void irq_vector_init();
 
 void arm_init()
 {
-	printf("arm_init() is called\n");
+    printf("arm_init() is called\n");
 
+    lfb_init();
     // 初始化物理地址
     mips_detect_memory();
     // 初始化虚拟地址
     arch_basic_init();
     sd_init();
-    lfb_init();
     lfb_showpicture();
     // 初始化进程管理
     env_init();
 
     // 初始化进程
     ENV_CREATE(fs_serv);
-    //ENV_CREATE(user_fstest);
-    //ENV_CREATE(user_test_piperace);
-    //ENV_CREATE(user_test_pipe);
-    //ENV_CREATE(user_testfdsharing);
+    // ENV_CREATE(user_fstest);
+    // ENV_CREATE(user_test_piperace);
+    // ENV_CREATE(user_test_pipe);
+    // ENV_CREATE(user_testfdsharing);
     ENV_CREATE(user_icode);
-    //ENV_CREATE(user_test_fork);
+    // ENV_CREATE(user_test_fork);
 
     // 初始化异常向量表
     irq_vector_init();
@@ -48,6 +47,7 @@ void arm_init()
     reset_timer();
     printf("Timer start.\n");
 
-    while(1);
+    while (1)
+        ;
     panic("end of arm_init() reached!");
 }

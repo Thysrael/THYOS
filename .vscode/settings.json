@@ -28,7 +28,8 @@
         "sstream": "c",
         "stop_token": "c",
         "streambuf": "c",
-        "syscall_all.h": "c"
+        "syscall_all.h": "c",
+        "lfb.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

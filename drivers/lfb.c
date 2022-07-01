@@ -22,9 +22,10 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
-
+#include "types.h"
 #include "mbox.h"
-#include "homer.h"
+#include "mmu.h"
+#include "printf.h"
 
 unsigned int width, height, pitch, isrgb; /* dimensions and channel order */
 unsigned char *lfb;                       /* raw frame buffer address */
@@ -88,6 +89,7 @@ void lfb_init()
         pitch = mbox[33];       // get number of bytes per line
         isrgb = mbox[24];       // get the actual channel order
         lfb = (void *)((unsigned long)mbox[28]);
+        lfb = lfb + KERNEL_BASE;
     }
     else
     {
@@ -102,7 +104,7 @@ void lfb_showpicture()
 {
     int x, y;
     unsigned char *ptr = lfb;
-    char *data = homer_data, pixel[4];
+    char pixel[4];
 
     // ptr += (height - homer_height) / 2 * pitch + (width - homer_width) * 2;
     for (y = 0; y < height; y++)
@@ -114,10 +116,31 @@ void lfb_showpicture()
             //  directly, but for BGR we must swap R (pixel[0]) and B (pixel[2]) channels.
             pixel[0] = y * 255 / height;
             pixel[1] = x * 255 / width;
-            pixel[3] = 100;
+            pixel[2] = 100;
             *((unsigned int *)ptr) = isrgb ? (unsigned int)(pixel[2] << 16 | pixel[1] << 8 | pixel[0]) : (unsigned int)(pixel[0] << 16 | pixel[1] << 8 | pixel[2]);
             ptr += 4;
         }
         ptr += pitch - width * 4;
+    }
+}
+
+void lfb_draw_area(int ix, int iy, int user_width, int user_height, unsigned char *user_ptr)
+{
+    unsigned char *ptr = lfb;
+    unsigned char *pixel = user_ptr;
+    ptr += ix + iy * pitch;
+    int x, y;
+    for (y = 0; y < user_height; y++)
+    {
+        for (x = 0; x < user_width; x++)
+        {
+            // HEADER_PIXEL(data, pixel);
+            //  the image is in RGB. So if we have an RGB framebuffer, we can copy the pixels
+            //  directly, but for BGR we must swap R (pixel[0]) and B (pixel[2]) channels.
+            *((unsigned int *)ptr) = *((unsigned int *)pixel);
+            ptr += 4;
+            pixel += 4;
+        }
+        ptr += pitch - user_width * 4;
     }
 }

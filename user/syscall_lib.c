@@ -75,7 +75,7 @@ int syscall_cgetc()
     while ((ret = msyscall(SYS_cgetc, 0, 0, 0, 0, 0)) == -2)
     {
         asm("wfe");
-        //syscall_yield();
+        // syscall_yield();
     }
     return ret;
 }
@@ -93,4 +93,9 @@ int syscall_read_sd(uint_64 blockno, void *data_addr)
 void syscall_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg)
 {
     msyscall(SYS_init_stack, (uint_64)envid, esp, argc_in_reg, argv_in_reg, 0);
+}
+
+void syscall_draw_area(int x, int y, int user_width, int user_height, unsigned char *user_ptr)
+{
+    msyscall(SYS_draw_area, x, y, user_width, user_height, (uint_64)user_ptr);
 }

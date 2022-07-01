@@ -92,7 +92,7 @@ int gettoken(char *s, char **p1)
 void runcmd(char *s)
 {
     char *argv[MAXARGS], *t;
-    int argc, c, i, r, p[2], fd, rightpipe;
+    int argc, c, i, r, p[2], rightpipe/*, fd*/;
     int fdnum;
 
     struct Stat state;

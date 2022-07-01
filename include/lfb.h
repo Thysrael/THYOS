@@ -25,3 +25,4 @@
 
 void lfb_init();
 void lfb_showpicture();
+void lfb_draw_area(int ix, int iy, int user_width, int user_height, unsigned char *user_ptr);
