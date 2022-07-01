@@ -118,23 +118,32 @@ void eval()
     parse_line();
 
     int fd[2], prev_out_fd = -1;
+    int pid = 0;
 
     for (int i = 0; i < command_cur; i++)
     {
         pipe(fd);
-        execute_command(commands[i], prev_out_fd, (i == command_cur - 1) ? -1 : fd[1]);
-        close(fd[1]);
-        if (prev_out_fd > 0)
+        pid = fork();
+        if (pid == 0)
         {
-            close(prev_out_fd);
+            if (i == command_cur - 1)
+                close(fd[1]);
+            close(fd[0]);
+            execute_command(commands[i], prev_out_fd, (i == command_cur - 1) ? -1 : fd[1]);
+            exit();
         }
-
+        close(prev_out_fd);
         prev_out_fd = fd[0];
+        close(fd[1]);
     }
 
     if (prev_out_fd > 0)
     {
         close(prev_out_fd);
+    }
+    if (pid)
+    {
+        wait(pid);
     }
 }
 
@@ -363,51 +372,42 @@ void execute_command(Command command, int fd_in, int fd_out)
     writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
     if (!builtin_command(command))
     {
-        int child_shell_pid, command_pid;
-        child_shell_pid = fork();
-        if (child_shell_pid == 0)
+        int command_pid;
+        if (command.file_in)
         {
-            if (command.file_in)
-            {
-                int in = open(command.file_in, O_RDONLY);
-                dup(in, STDIN_FILENO);
-                close(in);
-                close(fd_in);
-            }
-            else if (fd_in > 0)
-            {
-                dup(fd_in, STDIN_FILENO);
-                close(fd_in);
-            }
-
-            if (command.file_out)
-            {
-                int out = open(command.file_out, O_RDWR | O_CREAT | O_TRUNC);
-                dup(out, STDOUT_FILENO);
-                close(out);
-                close(fd_out);
-            }
-            else if (command.file_append)
-            {
-                int append = open(command.file_append, O_WRONLY | O_CREAT | O_APPEND);
-                dup(append, STDOUT_FILENO);
-                close(append);
-                close(fd_out);
-            }
-            else if (fd_out > 0)
-            {
-                dup(fd_out, STDOUT_FILENO);
-                close(fd_out);
-            }
-
-            command_pid = spawn(command.argv[0], command.argv);
-            close_all();
-            wait(command_pid);
+            int in = open(command.file_in, O_RDONLY);
+            dup(in, STDIN_FILENO);
+            close(in);
+            close(fd_in);
         }
-        else
+        else if (fd_in > 0)
         {
-            wait(child_shell_pid);
+            dup(fd_in, STDIN_FILENO);
+            close(fd_in);
         }
+
+        if (command.file_out)
+        {
+            int out = open(command.file_out, O_RDWR | O_CREAT | O_TRUNC);
+            dup(out, STDOUT_FILENO);
+            close(out);
+            close(fd_out);
+        }
+        else if (command.file_append)
+        {
+            int append = open(command.file_append, O_WRONLY | O_CREAT | O_APPEND);
+            dup(append, STDOUT_FILENO);
+            close(append);
+            close(fd_out);
+        }
+        else if (fd_out > 0)
+        {
+            dup(fd_out, STDOUT_FILENO);
+            close(fd_out);
+        }
+        command_pid = spawn(command.argv[0], command.argv);
+        close_all();
+        wait(command_pid);
     }
 }
 
