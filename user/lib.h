@@ -39,6 +39,8 @@ int close(int fd);
 
 int read(int fd, void *buf, u_int nbytes);
 
+int bread(int fdnum, void *buf, u_int n);
+
 int write(int fd, const void *buf, u_int nbytes);
 
 int seek(int fd, uint_64 offset);
