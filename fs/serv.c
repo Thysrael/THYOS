@@ -265,7 +265,7 @@ void serve_create(u_int envid, struct Fsreq_create *rq)
 {
     writef("serve_create: %s\n", rq->req_path);
     int r;
-    char *path = rq->req_path;
+    char *path = (char *)rq->req_path;
     struct File *file;
     // file_create(char *path, struct File **file)
     if ((r = file_create(path, &file)) < 0)

@@ -36,7 +36,7 @@ void gettree(int depth, char *path)
         return;
 
     fd = (struct Fd *)num2fd(r);
-    fileFd = (struct FileFd *)fd;
+    fileFd = (struct Filefd *)fd;
     u_int size = fileFd->f_file.f_size;
     //    print_tab(depth);
     fwritef(1, "\x1b[34m%s\x1b[0m\n", fileFd->f_file.f_name);
@@ -64,7 +64,7 @@ void gettree(int depth, char *path)
             int len = strlen(path);
             if (newpath[len - 1] != '/')
                 *(newpath + len++) = '/';
-            strcpy(newpath + len, file[i].f_name);
+            strcpy(newpath + len, (const char *)file[i].f_name);
             //                      writef("npath: %s", newpath);
             gettree(depth + 1, newpath);
         }
