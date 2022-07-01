@@ -114,6 +114,10 @@ void handle_sync(struct Trapframe *tf, uint_64 *ttbr0, uint_64 *ttbr1)
             debug("syscall is sys_init_stack\n");
             sys_init_stack((uint_32)tf->x[1], tf->x[2], tf->x[3], tf->x[4]);
             break;
+        case SYS_draw_area:
+            debug("syscall is sys_init_stack\n");
+            sys_draw_area(tf->x[1], tf->x[2], tf->x[3], tf->x[4], (unsigned char *)tf->x[5]);
+            break;
         default:
             printf("Unknown syscall id %d.\n", syscall_id);
             break;

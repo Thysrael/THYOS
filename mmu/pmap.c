@@ -158,14 +158,27 @@ void page_init()
     {
         pages[i].pp_ref = 1;
     }
-    printf("There are %d pages has been used for the kernel.\n", size);
+    extern unsigned char *lfb;
+    extern unsigned int width, height;
+    int fbmax = PPN((uint_64)(PADDR(lfb) + width * height * 4));
+
+    for (i = PPN(PADDR(lfb)); i < fbmax; i++)
+    {
+        pages[i].pp_ref = 1;
+    }
+
+    printf("There are %d pages has been used for the kernel.\n", size + fbmax - PPN(PADDR(lfb)));
     /* Step 4: Mark the other memory as free. */
+    int free_page_cnt = 0;
     for (i = npage - 1; i >= size; --i)
     {
+        if (pages[i].pp_ref != 0)
+            continue;
         pages[i].pp_ref = 0;
+        free_page_cnt++;
         LIST_INSERT_HEAD(&page_free_list, pages + i, pp_link);
     }
-    printf("There are %d pages are free.\n", npage - size);
+    printf("There are %d pages are free.\n", free_page_cnt);
 
     // 这里没有采用原有的 list_remove，我觉得这样写更好
     // that's for the TIMESTACK, which store the data of old env.tf

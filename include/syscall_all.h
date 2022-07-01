@@ -26,9 +26,10 @@ int sys_set_trapframe(u_int envid, struct Trapframe *tf);
 void sys_panic(char *msg);
 void sys_ipc_recv(uint_64 dstva);
 int sys_ipc_can_send(uint_64 envid, u_int value, uint_64 srcva, uint_64 perm);
-int sys_write_sd(uint_64 blockno, void* data_addr);
-int sys_read_sd(uint_64 blockno, void* data_addr);
+int sys_write_sd(uint_64 blockno, void *data_addr);
+int sys_read_sd(uint_64 blockno, void *data_addr);
 int sys_cgetc();
 void sys_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 argv_in_reg);
+void sys_draw_area(int x, int y, int user_width, int user_height, unsigned char *user_ptr);
 
 #endif

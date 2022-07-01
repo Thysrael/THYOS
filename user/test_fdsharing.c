@@ -16,8 +16,7 @@ int memcmp(char *a, char *b, int n)
 void umain(int argc, char **argv)
 {
     int fd, r, n;
-    int n2 = 1, n3;
-    n3 = n2;
+    int n2 = 1;
 
     if ((fd = open("motd", O_RDONLY)) < 0)
         user_panic("open motd: %e", fd);
@@ -33,7 +32,10 @@ void umain(int argc, char **argv)
     {
         seek(fd, 0);
         writef("going to read in child (might page fault if your sharing is buggy)\n");
-        if ((n2 = readn(fd, buf2, sizeof buf2)) != n3)
+
+        int old_n2 = n2;
+        if ((n2 = readn(fd, buf2, sizeof buf2)) != old_n2)
+
             user_panic("read in parent got %d, read in child got %d", n, n2);
         if (memcmp(buf, buf2, n) != 0)
             user_panic("read in parent got different bytes from read in child");

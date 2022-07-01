@@ -15,6 +15,7 @@
 #include "pmap.h"
 #include "sched.h"
 #include "emmc.h"
+#include "lfb.h"
 
 extern struct Env *curenv;
 
@@ -337,4 +338,10 @@ void sys_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64 arg
     e->env_tf.sp = esp;
     e->env_tf.x[0] = argc_in_reg;
     e->env_tf.x[1] = argv_in_reg;
+}
+
+void sys_draw_area(int x, int y, int user_width, int user_height, unsigned char *user_ptr)
+{
+    lfb_draw_area(x, y, user_width, user_height, user_ptr);
+    return;
 }
