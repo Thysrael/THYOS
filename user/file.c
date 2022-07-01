@@ -73,11 +73,12 @@ int open(const char *path, int mode)
             return r;
         }
     }
-
     // Step 5: Return the number of file descriptor.
     int fdnum = fd2num(fd);
-    // if (mode & O_APPND)
-    // 	seek(fdnum, size);
+    if (mode & O_APPEND)
+    {
+        seek(fdnum, size);
+    }
     return fdnum;
 }
 
@@ -195,7 +196,6 @@ static int file_write(struct Fd *fd, const void *buf, u_int n, u_int offset)
     int r;
     u_int tot;
     struct Filefd *f;
-
     f = (struct Filefd *)fd;
 
     // Don't write more than the maximum file size.
@@ -217,6 +217,7 @@ static int file_write(struct Fd *fd, const void *buf, u_int n, u_int offset)
 
     // Write the data
     user_bcopy(buf, (char *)fd2data(fd) + offset, n);
+
     return n;
 }
 
@@ -239,7 +240,7 @@ int ftruncate(int fdnum, u_int size)
     int i, r;
     struct Fd *fd;
     struct Filefd *f;
-    u_int oldsize, va, fileid;
+    uint_64 oldsize, va, fileid;
 
     if (size > MAXFILESIZE)
     {

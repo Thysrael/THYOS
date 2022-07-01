@@ -25,6 +25,7 @@ int fwritef(int fd, const char *fmt, ...)
 	user_bzero((void *)buf, 512);
 	user_lp_Print(user_out2string, buf, fmt, ap);
 	va_end(ap);
+    
 	return write(fd, buf, strlen(buf));
 }
 

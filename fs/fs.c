@@ -602,11 +602,6 @@ int dir_lookup(struct File *dir, char *name, struct File **file)
 		// If we find the target file, set the result to *file and set f_dir field.
 		for (j = 0; j < FILE2BLK; ++j)
 		{
-			// for(int k = 0 ; k< 128;k++)
-			// {
-			// 	writef("%c",f[j].f_name[k]);
-			// }
-			// writef("\n");
 			if (strcmp(name, (const char *)f[j].f_name) == 0)
 			{
 				*file = f + j;
@@ -799,7 +794,7 @@ int file_create(char *path, struct File **file)
 		return r;
 	}
 
-	strcpy((char *)f->f_name, name);
+    strcpy((char *)f->f_name, name);
 	*file = f;
 	return 0;
 }

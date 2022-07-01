@@ -166,21 +166,7 @@ again:
             break;
 
         case '|':
-            // Your code here.
-            // 	First, allocate a pipe.
-            //	Then fork.
-            //	the child runs the right side of the pipe:
-            //		dup the read end of the pipe onto 0
-            //		close the read end of the pipe
-            //		close the write end of the pipe
-            //		goto again, to parse the rest of the command line
-            //	the parent runs the left side of the pipe:
-            //		dup the write end of the pipe onto 1
-            //		close the write end of the pipe
-            //		close the read end of the pipe
-            //		set "rightpipe" to the child envid
-            //		goto runit, to execute this piece of the pipeline
-            //			and then wait for the right side to finish
+
             pipe(p);
             rightpipe = fork();
             if (rightpipe == 0)
@@ -337,7 +323,7 @@ void umain(int argc, char **argv)
     {
         if (interactive)
         {
-            fwritef(1, "\n$ ");
+            fwritef(STDOUT_FILENO, "\n$ ");
         }
 
         readline(buf, sizeof buf);
@@ -349,7 +335,7 @@ void umain(int argc, char **argv)
         // echocmds mean repeat the cmd
         if (echocmds)
         {
-            fwritef(1, "# %s\n", buf);
+            fwritef(STDOUT_FILENO, "# %s\n", buf);
         }
 
         // we fork a child process, let him to execute command

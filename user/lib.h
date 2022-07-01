@@ -17,7 +17,14 @@ extern uint_64 *vud;
 
 #define USED(x) (void)(x)
 
-#define DEBUG 1
+#define MAXNAMELEN 32
+#define MAXVALUELEN 256
+#define MAXVARNUM 256
+#define V_RDONLY 1
+#define V_GLOBAL 2
+#define DEBUG_ 0
+
+#define IF_D if (DEBUG_)
 
 //------------------ console.c -----------------//
 
@@ -121,8 +128,6 @@ int pipeisclosed(int fdnum);
 
 void writef(char *fmt, ...);
 
-void _user_panic(const char *file, int line, const char *fmt, ...);
-
 void _user_panic(const char *, int, const char *, ...)
     __attribute__((noreturn));
 
@@ -163,6 +168,8 @@ const char *strchr(const char *s, char c);
 void *memcpy(void *destaddr, void const *srcaddr, u_int len);
 
 int strcmp(const char *p, const char *q);
+
+char *strcat(char *dst, const char *src);
 
 //---------------- syscall_lib.c ---------------//
 
@@ -212,5 +219,6 @@ void syscall_init_stack(uint_32 envid, uint_64 esp, uint_64 argc_in_reg, uint_64
 #define O_TRUNC 0x0200 /* truncate to zero length */
 #define O_EXCL 0x0400  /* error if already exists */
 #define O_MKDIR 0x0800 /* create directory, not regular file */
+#define O_APPEND 0x1000
 
 #endif

@@ -61,7 +61,7 @@ int pipe(int pfd[2])
     fd1->fd_dev_id = devpipe.dev_id;
     fd1->fd_omode = O_WRONLY;
 
-    writef("[%08x] pipecreate \n", env->env_id, vpt[VPN(va)]);
+    // writef("[%08x] pipecreate \n", env->env_id, vpt[VPN(va)]);
 
     pfd[0] = fd2num(fd0);
     pfd[1] = fd2num(fd1);

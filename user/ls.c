@@ -58,24 +58,24 @@ void ls1(char *prefix, u_int isdir, u_int size, char *name)
     char *sep;
 
     if (flag['l'])
-        fwritef(1, "%11d %c ", size, isdir ? 'd' : '-');
+        fwritef(STDOUT_FILENO, "%11d %c ", size, isdir ? 'd' : '-');
     if (prefix)
     {
         if (prefix[0] && prefix[strlen(prefix) - 1] != '/')
             sep = "/";
         else
             sep = "";
-        fwritef(1, "%s%s", prefix, sep);
+        fwritef(STDOUT_FILENO, "%s%s", prefix, sep);
     }
-    fwritef(1, "%s", name);
+    fwritef(STDOUT_FILENO, "%s", name);
     if (flag['F'] && isdir)
-        fwritef(1, "/");
-    fwritef(1, " ");
+        fwritef(STDOUT_FILENO, "/");
+    fwritef(STDOUT_FILENO, " ");
 }
 
 void usage(void)
 {
-    fwritef(1, "usage: ls [-dFl] [file...]\n");
+    fwritef(STDOUT_FILENO, "usage: ls [-dFl] [file...]\n");
     exit();
 }
 

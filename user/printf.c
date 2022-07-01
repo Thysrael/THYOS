@@ -44,5 +44,5 @@ void _user_panic(const char *file, int line, const char *fmt, ...)
     writef("\n");
     va_end(ap);
 
-    while (1);
+    exit();
 }

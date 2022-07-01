@@ -1,8 +1,9 @@
 INCLUDES = -I../include/ -I../user/
 
-user_dir := ../user
-tools_dir := .
-fsformat  := ./fsformat
+user_dir 	:= ../user
+tools_dir 	:= .
+app_dir 	:= ../app
+fsformat  	:= ./fsformat
 
 USERLIB :=	$(user_dir)/entrance.o 	\
 		$(user_dir)/fork.o 			\
@@ -25,6 +26,8 @@ FSLIB := fs.o ide.o test.o
 
 USERAPPS := $(user_dir)/sh.b  			\
 			$(user_dir)/ls.b 			\
+			$(app_dir)/echo.b			\
+			$(app_dir)/cat.b 			\
 			$(user_dir)/test_arg.b 		\
 			$(user_dir)/test_spawn.b	\
 			$(user_dir)/tsh.b
