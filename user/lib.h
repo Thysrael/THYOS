@@ -67,6 +67,8 @@ int ftruncate(int fd, u_int size);
 
 int sync(void);
 
+int create(const char *path, int type);
+
 //------------------ fork.c ------------------//
 
 int fork(void);
@@ -88,6 +90,16 @@ int fsipc_sync(void);
 int fsipc_open(const char *path, u_int omode, struct Fd *fd);
 
 int fsipc_map(u_int fileid, u_int offset, uint_64 dstva);
+
+int fsipc_create(const char *path, int type);
+
+int fsipc_sync(void);
+
+int fsipc_remove(const char *path);
+
+int fsipc_dirty(u_int fileid, u_int offset);
+
+int fsipc_set_size(u_int fileid, u_int size);
 
 //----------------- fprintf.c -----------------//
 
@@ -129,7 +141,6 @@ void debug_printf(char *src, int line, char *fmt, ...);
 void _user_panic(const char *file, int line, const char *fmt, ...);
 
 void _user_panic(const char *, int, const char *, ...);
-
 
 #define user_panic(...) _user_panic(__FILE__, __LINE__, __VA_ARGS__)
 

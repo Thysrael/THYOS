@@ -14,7 +14,8 @@ typedef enum
     TYPE_OUT_REDIRECT,
     TYPE_OUT_APPEND,
     TYPE_PIPE,
-    TYPE_END
+    TYPE_END,
+    TYPE_BAR
 } Type;
 
 // 'STATE' is the FSM state
@@ -28,7 +29,8 @@ typedef enum
     STATE_OUT_APPEND,
     STATE_IN_REDIRECT,
     STATE_SINGLE_STR,
-    STATE_DOUBLE_STR
+    STATE_DOUBLE_STR,
+    STATE_BAR
 } State;
 
 typedef struct

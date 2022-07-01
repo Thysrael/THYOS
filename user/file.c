@@ -294,8 +294,6 @@ int ftruncate(int fdnum, u_int size)
 /*** exercise 5.10 ***/
 int remove(const char *path)
 {
-    // Your code here.
-    // Call fsipc_remove.
     return fsipc_remove(path);
 }
 
@@ -304,4 +302,9 @@ int remove(const char *path)
 int sync(void)
 {
     return fsipc_sync();
+}
+
+int create(const char *path, int type)
+{
+    return fsipc_create(path, type);
 }

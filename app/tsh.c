@@ -10,8 +10,9 @@ int _hist = 0;
 Token tokens[MAX_TOKENS];
 int token_cur;
 
-Command commands[MAX_COMMANDS];
-int command_cur;
+Command commands[16][MAX_COMMANDS];
+int command_cur[16];
+int statement_cur;
 
 void umain(int_64 argc, char **argv)
 {
@@ -36,10 +37,10 @@ void print_head()
 {
     writef("\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
     writef("::                                                         ::\n");
-    writef("::                      Thysrael Shell                     ::\n");
+    writef("::                        Bath Shell                       ::\n");
     writef("::                                                         ::\n");
     writef(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-    writef("\n                 Can you hear me, my sweetie?\n\n");
+    writef("\n                 Can you hear me, my Banana?\n\n");
 }
 
 void print_prompt()
@@ -69,27 +70,31 @@ static void print_tokens()
 
 static void print_commands()
 {
-    int i;
+    int i, j;
 
-    writef("command number is %d\n", command_cur);
     if (TSH_DEBUG)
     {
-        for (i = 0; i < command_cur; i++)
+        writef("statement num is %d\n", statement_cur);
+        for (i = 0; i < statement_cur; i++)
         {
-            writef("command is %s ", commands[i].argv[0]);
-            if (commands[i].file_append)
+            writef("command num is %d\n", command_cur[i]);
+            for (j = 0; j < command_cur[i]; j++)
             {
-                writef("append file is %s", commands[i].file_append);
+                writef("command is %s ", commands[i][j].argv[0]);
+                if (commands[i][j].file_append)
+                {
+                    writef("append file is %s", commands[i][j].file_append);
+                }
+                if (commands[i][j].file_in)
+                {
+                    writef("in file is %s", commands[i][j].file_in);
+                }
+                if (commands[i][j].file_out)
+                {
+                    writef("out file is %s", commands[i][j].file_out);
+                }
+                writef("\n");
             }
-            if (commands[i].file_in)
-            {
-                writef("in file is %s", commands[i].file_in);
-            }
-            if (commands[i].file_out)
-            {
-                writef("out file is %s", commands[i].file_out);
-            }
-            writef("\n");
         }
         writef("parse command end\n");
     }
@@ -119,31 +124,36 @@ void eval()
 
     int fd[2], prev_out_fd = -1;
     int pid = 0;
+    int i, j;    
 
-    for (int i = 0; i < command_cur; i++)
+    for (i = 0; i < statement_cur; i++)
     {
-        pipe(fd);
-        pid = fork();
-        if (pid == 0)
+        for (j = 0; j < command_cur[i]; j++)
         {
-            if (i == command_cur - 1)
-                close(fd[1]);
-            close(fd[0]);
-            execute_command(commands[i], prev_out_fd, (i == command_cur - 1) ? -1 : fd[1]);
-            exit();
+            writef("command will be executed is %s\n", commands[i][j].argv[0]);
+            pipe(fd);
+            pid = fork();
+            if (pid == 0)
+            {
+                if (j == command_cur[i] - 1)
+                    close(fd[1]);
+                close(fd[0]);
+                execute_command(commands[i][j], prev_out_fd, (i == command_cur[i] - 1) ? -1 : fd[1]);
+                exit();
+            }
+            close(prev_out_fd);
+            prev_out_fd = fd[0];
+            close(fd[1]);
         }
-        close(prev_out_fd);
-        prev_out_fd = fd[0];
-        close(fd[1]);
-    }
 
-    if (prev_out_fd > 0)
-    {
-        close(prev_out_fd);
-    }
-    if (pid)
-    {
-        wait(pid);
+        if (prev_out_fd > 0)
+        {
+            close(prev_out_fd);
+        }
+        if (pid)
+        {
+            wait(pid);
+        }
     }
 }
 
@@ -161,7 +171,8 @@ void parse_init()
     user_bzero((void *)tokens, sizeof(tokens));
     token_cur = 0;
     user_bzero((void *)commands, sizeof(tokens));
-    command_cur = 0;
+    user_bzero((void *)command_cur, sizeof(command_cur));
+    statement_cur = 0;
 }
 
 void tokenize()
@@ -180,7 +191,7 @@ void tokenize()
     {
         if (state == STATE_NORMAL)
         {
-            if (*cur == ' ' || *cur == '>' || *cur == '<' || *cur == '|' || *cur == '\0')
+            if (*cur == ' ' || *cur == '>' || *cur == '<' || *cur == '|' || *cur == '\0' || *cur == ';')
             {
                 tokens[token_cur].content = start;
                 tokens[token_cur++].type = TYPE_NORMAL;
@@ -194,6 +205,8 @@ void tokenize()
                     state = STATE_PIPE;
                 else if (*cur == '\0')
                     state = STATE_END;
+                else if (*cur == ';')
+                    state = STATE_BAR;
 
                 *cur = '\0';
             }
@@ -328,6 +341,20 @@ void tokenize()
             tokens[token_cur++].type = TYPE_END;
             break;
         }
+        else if (state == STATE_BAR)
+        {
+            tokens[token_cur].content = ";";
+            tokens[token_cur++].type = TYPE_BAR;
+            if (*cur == ' ')
+            {
+                state = STATE_INTERVAL;
+            }
+            else
+            {
+                start = cur;
+                state = STATE_NORMAL;
+            }
+        }
         cur++;
     }
 }
@@ -335,34 +362,42 @@ void tokenize()
 void parse_commands()
 {
     token_cur = 0;
-    command_cur = 0;
     while (tokens[token_cur].type != TYPE_END)
     {
-        while (tokens[token_cur].type != TYPE_END && tokens[token_cur].type != TYPE_PIPE)
+        while (tokens[token_cur].type != TYPE_END && tokens[token_cur].type != TYPE_PIPE &&tokens[token_cur].type != TYPE_BAR)
         {
             if (tokens[token_cur].type == TYPE_NORMAL)
             {
-                commands[command_cur].argv[commands[command_cur].argc++] = tokens[token_cur].content;
+                commands[statement_cur][command_cur[statement_cur]].argv[commands[statement_cur][command_cur[statement_cur]].argc++] = tokens[token_cur].content;
             }
             else if (tokens[token_cur].type == TYPE_IN_REDIRECT)
             {
-                commands[command_cur].file_in = tokens[++token_cur].content;
+                commands[statement_cur][command_cur[statement_cur]].file_in = tokens[++token_cur].content;
             }
             else if (tokens[token_cur].type == TYPE_OUT_REDIRECT)
             {
-                commands[command_cur].file_out = tokens[++token_cur].content;
+                commands[statement_cur][command_cur[statement_cur]].file_out = tokens[++token_cur].content;
             }
             else if (tokens[token_cur].type == TYPE_OUT_APPEND)
             {
-                commands[command_cur].file_append = tokens[++token_cur].content;
+                commands[statement_cur][command_cur[statement_cur]].file_append = tokens[++token_cur].content;
             }
             token_cur++;
         }
         // we need it to execvp
-        command_cur++;
+        command_cur[statement_cur]++;
         if (tokens[token_cur].type == TYPE_PIPE)
         {
             token_cur++;
+        }
+        else if (tokens[token_cur].type == TYPE_BAR)
+        {
+            token_cur++;
+            statement_cur++;
+        }
+        else if (tokens[token_cur].type == TYPE_END)
+        {
+            statement_cur++;
         }
     }
 }

@@ -27,7 +27,7 @@ USERLIB :=	$(user_dir)/entrance.o 	\
 
 .PHONY: clean
 
-all: echo.b cat.b sh.b tsh.b args.b bpmv.b ls.b
+all: echo.b cat.b sh.b tsh.b args.b bpmv.b ls.b touch.b rm.b mkdir.b tree.b
 
 clean:
 	rm -rf *~ *.o *.b

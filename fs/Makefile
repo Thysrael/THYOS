@@ -30,7 +30,11 @@ USERAPPS := $(app_dir)/sh.b  			\
 			$(app_dir)/cat.b 			\
 			$(app_dir)/args.b 			\
 			$(app_dir)/tsh.b			\
-			$(app_dir)/bpmv.b
+			$(app_dir)/bpmv.b			\
+			$(app_dir)/touch.b			\
+			$(app_dir)/tree.b 			\
+			$(app_dir)/rm.b  			\
+			$(app_dir)/mkdir.b			
 
 
 FSIMGFILES := name pic.bpm $(user_dir)/init.b $(USERAPPS)
