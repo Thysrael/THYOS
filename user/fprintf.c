@@ -27,17 +27,3 @@ int fwritef(int fd, const char *fmt, ...)
 	va_end(ap);
 	return write(fd, buf, strlen(buf));
 }
-
-void debug_printf(char *src, int line, char *fmt, ...)
-{
-    if (DEBUG)
-    {
-        char buf[512];
-        writef("[DEBUG_INFO] %s @ %d: ", src, line);
-        va_list ap;
-        va_start(ap, fmt);
-        user_bzero((void *)buf, 512);
-        user_lp_Print(user_out2string, buf, fmt, ap);
-        va_end(ap);
-    }
-}

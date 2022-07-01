@@ -6,7 +6,7 @@
 #include "mmu.h"
 
 #define MAXFD 512
-#define FILEBASE 0x800000000
+#define FILEBASE 0x1f80000000
 #define FDTABLE (FILEBASE - (PMDMAP))
 
 #define INDEX2FD(i) (FDTABLE + (i) * BY2PG)

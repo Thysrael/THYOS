@@ -16,16 +16,16 @@ extern uint_64 *vmd;
 extern uint_64 *vud;
 
 struct Dev devpipe =
-{
-    .dev_id = 'p',
-    .dev_name = "pipe",
-    .dev_read = piperead,
-    .dev_write = pipewrite,
-    .dev_close = pipeclose,
-    .dev_stat = pipestat,
+    {
+        .dev_id = 'p',
+        .dev_name = "pipe",
+        .dev_read = piperead,
+        .dev_write = pipewrite,
+        .dev_close = pipeclose,
+        .dev_stat = pipestat,
 };
 
-#define BY2PIPE 32 // small to provoke races
+#define BY2PIPE 128 // small to provoke races
 
 struct Pipe
 {
@@ -53,6 +53,8 @@ int pipe(int pfd[2])
         goto err2;
     if ((r = syscall_mem_map(0, va, 0, fd2data(fd1), PTE_VALID | PTE_LIBRARY)) < 0)
         goto err3;
+    // print_ref_num(fd2num(fd0));
+    // print_ref_num(fd2num(fd1));
 
     // set up fd structures
     fd0->fd_dev_id = devpipe.dev_id;
@@ -61,7 +63,7 @@ int pipe(int pfd[2])
     fd1->fd_dev_id = devpipe.dev_id;
     fd1->fd_omode = O_WRONLY;
 
-    writef("[%08x] pipecreate \n", env->env_id, vpt[VPN(va)]);
+    //writef("[%08x] pipecreate %d\n", env->env_id, pageref(va));
 
     pfd[0] = fd2num(fd0);
     pfd[1] = fd2num(fd1);
@@ -100,9 +102,13 @@ static int _pipeisclosed(struct Fd *fd, struct Pipe *p)
         pfd = pageref(fd);
         pfp = pageref(p);
     } while (runs != env->env_runs);
+    //writef("ref: %d %d %d\n", pfd, pfp,pfp - pfd);
 
-    if (pfd == pfp)
+    if (pfp == pfd)
+    {
+        //writef("ref: %d %d %d\n", pfd, pfp, pfp - pfd);
         return 1;
+    }
 
     //	user_panic("_pipeisclosed not implemented");
     return 0;
@@ -203,6 +209,7 @@ static int pipestat(struct Fd *fd, struct Stat *stat)
     return 0;
 }
 
+#include "pmap.h"
 static int pipeclose(struct Fd *fd)
 {
     syscall_mem_unmap(0, (uint_64)fd);

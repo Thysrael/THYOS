@@ -17,7 +17,7 @@ extern uint_64 *vud;
 
 #define USED(x) (void)(x)
 
-#define DEBUG 1
+#define DEBUG 0
 
 //------------------ console.c -----------------//
 
@@ -120,6 +120,9 @@ int pipeisclosed(int fdnum);
 //------------------ printf.c -----------------//
 
 void writef(char *fmt, ...);
+void debug_printf(char *src, int line, char *fmt, ...);
+
+#define debug(...) debug_printf(__FILE__, __LINE__, __VA_ARGS__)
 
 void _user_panic(const char *file, int line, const char *fmt, ...);
 
@@ -142,7 +145,6 @@ void user_lp_Print(void (*output)(void *, const char *, int),
                    void *arg,
                    const char *fmt,
                    va_list ap);
-#define debug(...) debug_printf(__FILE__, __LINE__, __VA_ARGS__)
 
 void debug_printf(char *src, int line, char *fmt, ...);
 

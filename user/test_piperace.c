@@ -11,7 +11,7 @@ void umain(void)
 	writef("testing for dup race...\n");
 	if ((r = pipe(p)) < 0)
 		user_panic("pipe: %e", r);
-	max = 200;
+	max = 2;
 	if ((r = fork()) < 0)
 		user_panic("fork: %e", r);
 	if (r == 0)
