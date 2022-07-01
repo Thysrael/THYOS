@@ -261,12 +261,30 @@ void serve_sync(u_int envid)
 	ipc_send(envid, 0, 0, 0);
 }
 
+void serve_create(u_int envid, struct Fsreq_create *rq)
+{
+    writef("serve_create: %s\n", rq->req_path);
+    int r;
+    char *path = rq->req_path;
+    struct File *file;
+    // file_create(char *path, struct File **file)
+    if ((r = file_create(path, &file)) < 0)
+    {
+        ipc_send(envid, r, 0, 0);
+        return;
+    }
+    // file_create里面没有设置文件，在这里要设置一下
+    file->f_type = rq->type;
+    // 返回0 表示成功
+    ipc_send(envid, 0, 0, 0);
+}
+
 void serve(void)
 {
 	uint_64 req, perm;
     uint_32 whom;
 
-	for (;;)
+	while(1)
 	{
 		perm = 0;
 
@@ -309,8 +327,12 @@ void serve(void)
 		case FSREQ_SYNC:
 			serve_sync(whom);
 			break;
+            
+        case FSREQ_CREATE:
+            serve_create(whom, (struct Fsreq_create *)REQVA);
+            break;
 
-		default:
+        default:
 			writef("Invalid request code %d from %08x\n", whom, req);
 			break;
 		}
