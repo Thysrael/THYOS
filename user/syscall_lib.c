@@ -73,7 +73,10 @@ int syscall_cgetc()
 {
     int ret;
     while ((ret = msyscall(SYS_cgetc, 0, 0, 0, 0, 0)) == -2)
-        syscall_yield();
+    {
+        asm("wfe");
+        //syscall_yield();
+    }
     return ret;
 }
 
