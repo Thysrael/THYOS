@@ -10,6 +10,7 @@
 #include "env.h"
 #include "tool.h"
 #include "emmc.h"
+#include "lfb.h"
 
 extern void reset_timer();
 extern void irq_vector_init();
@@ -23,6 +24,8 @@ void arm_init()
     // 初始化虚拟地址
     arch_basic_init();
     sd_init();
+    lfb_init();
+    lfb_showpicture();
     // 初始化进程管理
     env_init();
 
