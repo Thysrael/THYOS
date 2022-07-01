@@ -1,7 +1,7 @@
 #include "lib.h"
 #include "tsh.h"
 
-#define TSH_DEBUG 1
+#define TSH_DEBUG 0
 
 char buf[BUFF_SIZE];
 
@@ -151,9 +151,9 @@ void parse_line()
 {
     parse_init();
     tokenize();
-    //print_tokens();
+    print_tokens();
     parse_commands();
-    //print_commands();
+    print_commands();
 }
 
 void parse_init()
