@@ -70,7 +70,7 @@ static void print_tokens()
 static void print_commands()
 {
     int i;
-    
+
     writef("command number is %d\n", command_cur);
     if (TSH_DEBUG)
     {
@@ -103,7 +103,7 @@ void save_line(char *buf)
     }
     _hist = 0;
     int his = open(".history", O_APPEND | O_WRONLY | O_CREAT);
-    
+
     if (his < 0)
     {
         fwritef(STDOUT_FILENO, "cannot open history\n");
@@ -118,23 +118,32 @@ void eval()
     parse_line();
 
     int fd[2], prev_out_fd = -1;
+    int pid = 0;
 
     for (int i = 0; i < command_cur; i++)
     {
         pipe(fd);
-        execute_command(commands[i], prev_out_fd, i == command_cur - 1 ? -1 : fd[1]);
-        close(fd[1]);
-        if (prev_out_fd > 0)
+        pid = fork();
+        if (pid == 0)
         {
-            close(prev_out_fd);
+            if (i == command_cur - 1)
+                close(fd[1]);
+            close(fd[0]);
+            execute_command(commands[i], prev_out_fd, (i == command_cur - 1) ? -1 : fd[1]);
+            exit();
         }
-
+        close(prev_out_fd);
         prev_out_fd = fd[0];
+        close(fd[1]);
     }
 
     if (prev_out_fd > 0)
     {
         close(prev_out_fd);
+    }
+    if (pid)
+    {
+        wait(pid);
     }
 }
 
@@ -142,9 +151,9 @@ void parse_line()
 {
     parse_init();
     tokenize();
-    print_tokens();
+    //print_tokens();
     parse_commands();
-    print_commands();
+    //print_commands();
 }
 
 void parse_init()
@@ -161,7 +170,8 @@ void tokenize()
     char *start;
     State state = STATE_NORMAL;
     // skip the ' '
-    while (*cur && (*cur == ' ')) cur++;
+    while (*cur && (*cur == ' '))
+        cur++;
 
     start = cur;
     buf[strlen(buf)] = '\0';
@@ -359,45 +369,45 @@ void parse_commands()
 
 void execute_command(Command command, int fd_in, int fd_out)
 {
-    writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
+    //writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
     if (!builtin_command(command))
     {
-        int child_shell_pid, command_pid;
-        child_shell_pid = fork();
-        if (child_shell_pid == 0)
+        int command_pid;
+        if (command.file_in)
         {
-            if (command.file_in)
-            {
-                int in = open(command.file_in, O_RDONLY);
-                dup(in, STDIN_FILENO);
-            }
-            else if (fd_in > 0)
-            {
-                dup(fd_in, STDIN_FILENO);
-            }
+            int in = open(command.file_in, O_RDONLY);
+            dup(in, STDIN_FILENO);
+            close(in);
+            close(fd_in);
+        }
+        else if (fd_in > 0)
+        {
+            dup(fd_in, STDIN_FILENO);
+            close(fd_in);
+        }
 
-            if (command.file_out)
-            {
-                int out = open(command.file_out, O_RDWR | O_CREAT | O_TRUNC);
-                dup(out, STDOUT_FILENO);
-            }
-            else if (command.file_append)
-            {
-                int append = open(command.file_append, O_WRONLY | O_CREAT | O_APPEND);
-                dup(append, STDOUT_FILENO);
-            }
-            else if (fd_out > 0)
-            {
-                dup(fd_out, STDOUT_FILENO);
-            }
-            
-            command_pid = spawn(command.argv[0], command.argv);
-            wait(command_pid);
-        }
-        else
+        if (command.file_out)
         {
-            wait(child_shell_pid);
+            int out = open(command.file_out, O_RDWR | O_CREAT | O_TRUNC);
+            dup(out, STDOUT_FILENO);
+            close(out);
+            close(fd_out);
         }
+        else if (command.file_append)
+        {
+            int append = open(command.file_append, O_WRONLY | O_CREAT | O_APPEND);
+            dup(append, STDOUT_FILENO);
+            close(append);
+            close(fd_out);
+        }
+        else if (fd_out > 0)
+        {
+            dup(fd_out, STDOUT_FILENO);
+            close(fd_out);
+        }
+        command_pid = spawn(command.argv[0], command.argv);
+        close_all();
+        wait(command_pid);
     }
 }
 
