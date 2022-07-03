@@ -203,7 +203,7 @@ static int file_write(struct Fd *fd, const void *buf, u_int n, u_int offset)
 
     if (tot > MAXFILESIZE)
     {
-        return -E_NO_DISK;
+        return -tot;
     }
 
     // Increase the file's size if necessary
