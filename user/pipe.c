@@ -25,7 +25,7 @@ struct Dev devpipe =
         .dev_stat = pipestat,
 };
 
-#define BY2PIPE 128 // small to provoke races
+#define BY2PIPE 504 // small to provoke races
 
 struct Pipe
 {

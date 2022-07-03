@@ -126,6 +126,7 @@ void lfb_showpicture()
 
 void lfb_draw_area(int ix, int iy, int user_width, int user_height, unsigned char *user_ptr)
 {
+    //  printf("%d %d %d %d %lx\n", ix, iy, user_width, user_height, user_ptr);
     unsigned char *ptr = lfb;
     unsigned char *pixel = user_ptr;
     ptr += ix + iy * pitch;
@@ -137,7 +138,8 @@ void lfb_draw_area(int ix, int iy, int user_width, int user_height, unsigned cha
             // HEADER_PIXEL(data, pixel);
             //  the image is in RGB. So if we have an RGB framebuffer, we can copy the pixels
             //  directly, but for BGR we must swap R (pixel[0]) and B (pixel[2]) channels.
-            *((unsigned int *)ptr) = *((unsigned int *)pixel);
+            if (pixel[3] != 0x00)
+                *((unsigned int *)ptr) = *((unsigned int *)pixel);
             ptr += 4;
             pixel += 4;
         }

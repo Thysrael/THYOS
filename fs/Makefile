@@ -24,17 +24,7 @@ USERLIB :=	$(user_dir)/entrance.o 	\
 
 FSLIB := fs.o ide.o test.o
 
-USERAPPS := $(app_dir)/sh.b  			\
-			$(app_dir)/ls.b 			\
-			$(app_dir)/echo.b			\
-			$(app_dir)/cat.b 			\
-			$(app_dir)/args.b 			\
-			$(app_dir)/tsh.b			\
-			$(app_dir)/bpmv.b			\
-			$(app_dir)/touch.b			\
-			$(app_dir)/tree.b 			\
-			$(app_dir)/rm.b  			\
-			$(app_dir)/mkdir.b			
+USERAPPS := $(app_dir)/*.b
 
 
 FSIMGFILES := name pic.bpm $(user_dir)/init.b $(USERAPPS)

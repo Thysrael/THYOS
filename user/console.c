@@ -51,9 +51,9 @@ int cons_read(struct Fd *fd, void *vbuf, u_int n, u_int offset)
         syscall_yield();
 
     if (c != '\r')
-        writef("%c", c);
+        fwritef(STDOUT_FILENO,"%c", c);
     else
-        writef("\n");
+        fwritef(STDOUT_FILENO,"\n");
     if (c < 0)
         return c;
     if (c == 0x04) // ctl-d is eof

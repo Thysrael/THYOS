@@ -282,11 +282,11 @@ void umain(int argc, char **argv)
     int r, interactive, echocmds;
     interactive = '?';
     echocmds = 0;
-    writef("\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-    writef("::                                                         ::\n");
-    writef("::              Super Shell  V0.0.0_1                      ::\n");
-    writef("::                                                         ::\n");
-    writef(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+    fwritef(STDOUT_FILENO,"\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+    fwritef(STDOUT_FILENO,"::                                                         ::\n");
+    fwritef(STDOUT_FILENO,"::              Super Shell  V0.0.0_1                      ::\n");
+    fwritef(STDOUT_FILENO,"::                                                         ::\n");
+    fwritef(STDOUT_FILENO,":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
 
     ARGBEGIN
     {

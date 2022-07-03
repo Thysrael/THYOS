@@ -35,17 +35,17 @@ void umain(int_64 argc, char **argv)
 
 void print_head()
 {
-    writef("\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-    writef("::                                                         ::\n");
-    writef("::                        Bath Shell                       ::\n");
-    writef("::                                                         ::\n");
-    writef(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-    writef("\n                 A Powerful and Builtiful Shell By QS.\n\n");
+    fwritef(STDOUT_FILENO,"\n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+    fwritef(STDOUT_FILENO,"::                                                         ::\n");
+    fwritef(STDOUT_FILENO,"::                        Bath Shell                       ::\n");
+    fwritef(STDOUT_FILENO,"::                                                         ::\n");
+    fwritef(STDOUT_FILENO,":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+    fwritef(STDOUT_FILENO,"\n          A Powerful and Builtiful Shell By QS.\n\n");
 }
 
 void print_prompt()
 {
-    writef("\n\x1b[32m$\x1b[0m \n\x1b[1A\x1b[2C");
+    fwritef(STDOUT_FILENO,"\n\x1b[32m$\x1b[0m \n\x1b[1A\x1b[2C");
 }
 
 static void print_tokens()
@@ -57,14 +57,14 @@ static void print_tokens()
         {
             if (tokens[i].type != TYPE_END)
             {
-                writef("token type is %d, token content is %s\n", tokens[i].type, tokens[i].content);
+                fwritef(STDOUT_FILENO,"token type is %d, token content is %s\n", tokens[i].type, tokens[i].content);
             }
             else
             {
-                writef("token type is %d\n", tokens[i].type);
+                fwritef(STDOUT_FILENO,"token type is %d\n", tokens[i].type);
             }
         }
-        writef("tokenize end.\n");
+        fwritef(STDOUT_FILENO,"tokenize end.\n");
     }
 }
 
@@ -74,29 +74,29 @@ static void print_commands()
 
     if (TSH_DEBUG)
     {
-        writef("statement num is %d\n", statement_cur);
+        fwritef(STDOUT_FILENO,"statement num is %d\n", statement_cur);
         for (i = 0; i < statement_cur; i++)
         {
-            writef("command num is %d\n", command_cur[i]);
+            fwritef(STDOUT_FILENO,"command num is %d\n", command_cur[i]);
             for (j = 0; j < command_cur[i]; j++)
             {
-                writef("command is %s ", commands[i][j].argv[0]);
+                fwritef(STDOUT_FILENO,"command is %s ", commands[i][j].argv[0]);
                 if (commands[i][j].file_append)
                 {
-                    writef("append file is %s", commands[i][j].file_append);
+                    fwritef(STDOUT_FILENO,"append file is %s", commands[i][j].file_append);
                 }
                 if (commands[i][j].file_in)
                 {
-                    writef("in file is %s", commands[i][j].file_in);
+                    fwritef(STDOUT_FILENO,"in file is %s", commands[i][j].file_in);
                 }
                 if (commands[i][j].file_out)
                 {
-                    writef("out file is %s", commands[i][j].file_out);
+                    fwritef(STDOUT_FILENO,"out file is %s", commands[i][j].file_out);
                 }
-                writef("\n");
+                fwritef(STDOUT_FILENO,"\n");
             }
         }
-        writef("parse command end\n");
+        fwritef(STDOUT_FILENO,"parse command end\n");
     }
 }
 
@@ -403,7 +403,7 @@ void parse_commands()
 
 void execute_command(Command command, int fd_in, int fd_out)
 {
-    //writef("execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
+    //fwritef(STDOUT_FILENO,"execute:fd in is %d, fd out is %d\n", fd_in, fd_out);
     if (!builtin_command(command))
     {
         int command_pid;
@@ -454,7 +454,7 @@ int builtin_command(Command command)
     }
     else if (!strcmp(command.argv[0], "clear"))
     {
-        writef("\x1b[2J\x1b[H");
+        fwritef(STDOUT_FILENO,"\x1b[2J\x1b[H");
         return 1;
     }
     return 0;
@@ -569,7 +569,7 @@ void read_line(char *buf, u_int n)
         {
             if (r < 0)
             {
-                writef("read error: %e", r);
+                fwritef(STDOUT_FILENO,"read error: %e", r);
             }
             exit();
         }
@@ -640,7 +640,7 @@ void read_line(char *buf, u_int n)
             return;
         }
     }
-    writef("line too long\n");
+    fwritef(STDOUT_FILENO,"line too long\n");
     while ((r = read(0, buf, 1)) == 1 && buf[0] != '\n')
         ;
     buf[0] = 0;

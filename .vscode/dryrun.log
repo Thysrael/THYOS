@@ -1,227 +1,43 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/dofingert/Source/OS/THYOS'
 make --directory=drivers
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/drivers'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c uart.c 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c emmc.c 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c lfb.c 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c mbox.c 
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/drivers'
- 
 make --directory=boot
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/boot'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c start.S 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c enmmu.S 
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/boot'
 make --directory=init
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/init'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c init.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c main.c
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/init'
 make --directory=lib
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/lib'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c tool.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c asm_tool.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c entry.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c env_asm.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c env.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c load.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c print.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c printf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c sched.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c sync.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c syscall_all.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user -c timer.S
+make[1]: 'all' is up to date.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/lib'
 make --directory=mmu
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/mmu'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c mmu.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include -c pmap.c
-aarch64-none-elf-gcc    -c -o tlb.o tlb.S
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/mmu'
 make --directory=user
  
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/user'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o printf.o printf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o entrance.o entrance.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o print.o print.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o libos.o libos.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o fork.o fork.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o syscall_lib.o syscall_lib.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o ipc.o ipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o string.o string.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o fd.o fd.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o file.o file.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o pipe.o pipe.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o fsipc.o fsipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o console.o console.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o msyscall.o msyscall.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o spawn.o spawn.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o fprintf.o fprintf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_sys.o test_sys.c
-aarch64-none-elf-ld -o test_sys.b  -G 0 -static -n -nostdlib -T ./user.lds test_sys.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
- 
-aarch64-none-elf-objdump -alD test_sys.b > ./test_sys.b.symbol
-chmod +x ./bintoc
-./bintoc test_sys test_sys.b > test_sys.b.c~ && mv -f test_sys.b.c~ test_sys.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_sys.x test_sys.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_fork.o test_fork.c
-aarch64-none-elf-ld -o test_fork.b  -G 0 -static -n -nostdlib -T ./user.lds test_fork.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_fork.b > ./test_fork.b.symbol
-chmod +x ./bintoc
-./bintoc test_fork test_fork.b > test_fork.b.c~ && mv -f test_fork.b.c~ test_fork.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_fork.x test_fork.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_ipc.o test_ipc.c
-aarch64-none-elf-ld -o test_ipc.b  -G 0 -static -n -nostdlib -T ./user.lds test_ipc.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_ipc.b > ./test_ipc.b.symbol
-chmod +x ./bintoc
-./bintoc test_ipc test_ipc.b > test_ipc.b.c~ && mv -f test_ipc.b.c~ test_ipc.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_ipc.x test_ipc.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_fs.o test_fs.c
-aarch64-none-elf-ld -o test_fs.b  -G 0 -static -n -nostdlib -T ./user.lds test_fs.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_fs.b > ./test_fs.b.symbol
-chmod +x ./bintoc
-./bintoc test_fs test_fs.b > test_fs.b.c~ && mv -f test_fs.b.c~ test_fs.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_fs.x test_fs.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_pipe.o test_pipe.c
-aarch64-none-elf-ld -o test_pipe.b  -G 0 -static -n -nostdlib -T ./user.lds test_pipe.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_pipe.b > ./test_pipe.b.symbol
-chmod +x ./bintoc
-./bintoc test_pipe test_pipe.b > test_pipe.b.c~ && mv -f test_pipe.b.c~ test_pipe.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_pipe.x test_pipe.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_piperace.o test_piperace.c
-aarch64-none-elf-ld -o test_piperace.b  -G 0 -static -n -nostdlib -T ./user.lds test_piperace.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_piperace.b > ./test_piperace.b.symbol
-chmod +x ./bintoc
-./bintoc test_piperace test_piperace.b > test_piperace.b.c~ && mv -f test_piperace.b.c~ test_piperace.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_piperace.x test_piperace.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_fdsharing.o test_fdsharing.c
-aarch64-none-elf-ld -o test_fdsharing.b  -G 0 -static -n -nostdlib -T ./user.lds test_fdsharing.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_fdsharing.b > ./test_fdsharing.b.symbol
-chmod +x ./bintoc
-./bintoc test_fdsharing test_fdsharing.b > test_fdsharing.b.c~ && mv -f test_fdsharing.b.c~ test_fdsharing.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_fdsharing.x test_fdsharing.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_console.o test_console.c
-aarch64-none-elf-ld -o test_console.b  -G 0 -static -n -nostdlib -T ./user.lds test_console.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_console.b > ./test_console.b.symbol
-chmod +x ./bintoc
-./bintoc test_console test_console.b > test_console.b.c~ && mv -f test_console.b.c~ test_console.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_console.x test_console.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_spawn.o test_spawn.c
-aarch64-none-elf-ld -o test_spawn.b  -G 0 -static -n -nostdlib -T ./user.lds test_spawn.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_spawn.b > ./test_spawn.b.symbol
-chmod +x ./bintoc
-./bintoc test_spawn test_spawn.b > test_spawn.b.c~ && mv -f test_spawn.b.c~ test_spawn.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o test_spawn.x test_spawn.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o icode.o icode.c
-aarch64-none-elf-ld -o icode.b  -G 0 -static -n -nostdlib -T ./user.lds icode.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD icode.b > ./icode.b.symbol
-chmod +x ./bintoc
-./bintoc icode icode.b > icode.b.c~ && mv -f icode.b.c~ icode.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o icode.x icode.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o init.o init.c
-aarch64-none-elf-ld -o init.b  -G 0 -static -n -nostdlib -T ./user.lds init.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD init.b > ./init.b.symbol
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -c -o test_screen.o test_screen.c
-aarch64-none-elf-ld -o test_screen.b  -G 0 -static -n -nostdlib -T ./user.lds test_screen.o printf.o entrance.o print.o libos.o fork.o syscall_lib.o ipc.o string.o fd.o file.o pipe.o fsipc.o console.o msyscall.o spawn.o fprintf.o
-aarch64-none-elf-objdump -alD test_screen.b > ./test_screen.b.symbol
-rm test_console.b icode.b.c test_fork.b test_ipc.b.c test_spawn.o test_piperace.o test_console.o icode.o test_sys.b test_spawn.b.c test_ipc.b icode.b test_sys.o test_piperace.b.c test_pipe.o test_piperace.b test_pipe.b init.o test_fs.b.c test_fork.o test_fs.b test_console.b.c test_pipe.b.c test_fs.o test_fdsharing.b test_fdsharing.b.c test_fork.b.c test_ipc.o test_sys.b.c test_fdsharing.o test_screen.o
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/user'
 make --directory=app
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/app'
-aarch64-none-elf-gcc    -c -o ../user/entrance.o ../user/entrance.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fork.o ../user/fork.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/ipc.o ../user/ipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/libos.o ../user/libos.c
-aarch64-none-elf-gcc    -c -o ../user/msyscall.o ../user/msyscall.S
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/print.o ../user/print.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/printf.o ../user/printf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/string.o ../user/string.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/syscall_lib.o ../user/syscall_lib.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fd.o ../user/fd.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/file.o ../user/file.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fsipc.o ../user/fsipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fprintf.o ../user/fprintf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/pipe.o ../user/pipe.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/spawn.o ../user/spawn.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/console.o ../user/console.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o echo.o echo.c
-aarch64-none-elf-ld -o echo.b  -G 0 -static -n -nostdlib -T ../user/user.lds echo.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o cat.o cat.c
-aarch64-none-elf-ld -o cat.b  -G 0 -static -n -nostdlib -T ../user/user.lds cat.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o sh.o sh.c
-aarch64-none-elf-ld -o sh.b  -G 0 -static -n -nostdlib -T ../user/user.lds sh.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o tsh.o tsh.c
-aarch64-none-elf-ld -o tsh.b  -G 0 -static -n -nostdlib -T ../user/user.lds tsh.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o args.o args.c
-aarch64-none-elf-ld -o args.b  -G 0 -static -n -nostdlib -T ../user/user.lds args.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o bpmv.o bpmv.c
-aarch64-none-elf-ld -o bpmv.b  -G 0 -static -n -nostdlib -T ../user/user.lds bpmv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ls.o ls.c
-aarch64-none-elf-ld -o ls.b  -G 0 -static -n -nostdlib -T ../user/user.lds ls.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o
-rm bpmv.o echo.o cat.o args.o sh.o tsh.o ls.o
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/app'
 make --directory=fs
- 
 make[1]: Entering directory '/home/dofingert/Source/OS/THYOS/fs'
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/entrance.o ../user/entrance.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fork.o ../user/fork.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/ipc.o ../user/ipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/libos.o ../user/libos.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/msyscall.o ../user/msyscall.S
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/print.o ../user/print.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/printf.o ../user/printf.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/string.o ../user/string.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/syscall_lib.o ../user/syscall_lib.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fd.o ../user/fd.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/file.o ../user/file.c
- 
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fsipc.o ../user/fsipc.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/fprintf.o ../user/fprintf.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/pipe.o ../user/pipe.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/spawn.o ../user/spawn.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/console.o ../user/console.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../user/init.o ../user/init.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o fs.o fs.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ide.o ide.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o test.o test.c
-aarch64-none-elf-ld -o ../user/init.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../user/init.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/sh.o ../app/sh.c
-aarch64-none-elf-ld -o ../app/sh.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/sh.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/ls.o ../app/ls.c
-aarch64-none-elf-ld -o ../app/ls.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/ls.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/echo.o ../app/echo.c
-aarch64-none-elf-ld -o ../app/echo.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/echo.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/cat.o ../app/cat.c
-aarch64-none-elf-ld -o ../app/cat.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/cat.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/args.o ../app/args.c
-aarch64-none-elf-ld -o ../app/args.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/args.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/tsh.o ../app/tsh.c
-aarch64-none-elf-ld -o ../app/tsh.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/tsh.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o ../app/bpmv.o ../app/bpmv.c
-aarch64-none-elf-ld -o ../app/bpmv.b  -G 0 -static -n -nostdlib -T ../user/user.lds ../app/bpmv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
 dd if=/dev/zero of=../fs.img bs=4096 count=1024 2>/dev/null
 gcc -I../include/ -I../user/ fsformat.c -o ./fsformat -m32
 chmod +x ./fsformat
-./fsformat ../fs.img name pic.bpm ../user/init.b ../app/sh.b ../app/ls.b ../app/echo.b ../app/cat.b ../app/args.b ../app/tsh.b ../app/bpmv.b
-aarch64-none-elf-gcc -Wall -ffreestanding -g -I../include/ -I../user/ -c -o serv.o serv.c
-aarch64-none-elf-ld -o serv.b  -G 0 -static -n -nostdlib -T ../user/user.lds serv.o ../user/entrance.o ../user/fork.o ../user/ipc.o ../user/libos.o ../user/msyscall.o ../user/print.o ../user/printf.o ../user/string.o ../user/syscall_lib.o ../user/fd.o ../user/file.o ../user/fsipc.o ../user/fprintf.o ../user/pipe.o ../user/spawn.o ../user/console.o fs.o ide.o test.o
-chmod +x ./bintoc
-./bintoc serv serv.b > serv.b.c~ && mv -f serv.b.c~ serv.b.c
-aarch64-none-elf-gcc -Wall -ffreestanding -g -c -o serv.x serv.b.c
-rm serv.b serv.b.c serv.o fs.o ../app/cat.o ../app/ls.o ../app/bpmv.o ide.o ../app/sh.o test.o ../app/echo.o ../app/args.o ../user/init.o ../app/tsh.o
+./fsformat ../fs.img name pic.bpm ../user/init.b ../app/*.b
 make[1]: Leaving directory '/home/dofingert/Source/OS/THYOS/fs'
- 
 aarch64-none-elf-ld -o kernel.elf -T kernel.lds drivers/*.o boot/*.o init/*.o lib/*.o mmu/*.o user/*.x fs/*.x
 aarch64-none-elf-objcopy kernel.elf -O binary kernel.img
 aarch64-none-elf-objdump -alD kernel.elf > ./kernel.symbol
