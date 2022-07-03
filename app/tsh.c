@@ -40,7 +40,7 @@ void print_head()
     writef("::                        Bath Shell                       ::\n");
     writef("::                                                         ::\n");
     writef(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-    writef("\n                 Can you hear me, my Banana?\n\n");
+    writef("\n                 A Powerful and Builtiful Shell By QS.\n\n");
 }
 
 void print_prompt()

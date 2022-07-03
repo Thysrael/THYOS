@@ -44,7 +44,7 @@ void umain(uint_64 argc, char **argv)
     }
     else
     {
-        writef("init: data seems okay\n");
+        //writef("init: data seems okay\n");
     }
 
     if ((x = sum(bss, sizeof(bss))) != 0)
@@ -53,10 +53,10 @@ void umain(uint_64 argc, char **argv)
     }
     else
     {
-        writef("init: bss seems okay\n");
+        //writef("init: bss seems okay\n");
     }
 
-    writef("init: running tsh\n");
+    //writef("init: running tsh\n");
 
     // being run directly from kernel, so no file descriptors open yet
     close(0);
