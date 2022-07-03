@@ -127,11 +127,24 @@ void umain(int argc, char *argv[])
     char buf_arr[4096];
     int char_num = 0;
     int cnt = 0;
+    int is_changing_style = 0;
     while ((n = bread(STDIN_FILENO, buf_arr, 4096)) > 0)
     {
         for (int i = 0; i < n; i++)
         {
             char buf = buf_arr[i];
+            if (is_changing_style)
+            {
+                if ((buf >= 'a' && buf <= 'z') || (buf >= 'A' && buf <= 'Z'))
+                {
+                    is_changing_style = 0;
+                }
+                continue;
+            }
+            if (buf == '\x1b')
+            {
+                is_changing_style = 1;
+            }
             cnt++;
             if (buf == '\n')
             {
@@ -145,6 +158,13 @@ void umain(int argc, char *argv[])
             {
                 char_num = 0;
                 continue;
+            }
+            if (buf == 0x8)
+            {
+                char_num--;
+                if (char_num < 0)
+                    char_num = 0;
+                ascii_info[end_line % MAXLENINCHAR][char_num] = 0;
             }
             ascii_info[end_line % MAXLENINCHAR][char_num] = buf;
             char_num += 1;

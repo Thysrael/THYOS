@@ -45,7 +45,7 @@ void print_head()
 
 void print_prompt()
 {
-    fwritef(STDOUT_FILENO,"\n\x1b[32m$\x1b[0m \n\x1b[1A\x1b[2C");
+    fwritef(STDOUT_FILENO,"\n\x1b[32m$\x1b[0m ");
 }
 
 static void print_tokens()
